@@ -1,6 +1,8 @@
 import React from 'react'
 import {Header,UL,LI,ULI,LogoText,Brand} from './Navbar.Style'
+import {MainOutlineButton} from '../buttons/MainButton'
 import kde_whiteBg from './Image/kde_whiteBg.png'
+import {Link} from 'react-router-dom'
 const Navbar = () =>{
     return(
         <>
@@ -32,8 +34,12 @@ const Navbar = () =>{
                         <LI>ABOUT</LI>
                         <LI>AFFILIATE</LI>
                     </UL>
-                </div>   
-                               
+                </div>
+                <Brand>
+                    SELL
+                    <MainOutlineButton>SIGN UP</MainOutlineButton>
+                </Brand>                   
+
             </Header>            
         </>
     )
