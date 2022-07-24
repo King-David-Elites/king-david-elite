@@ -18,14 +18,26 @@ const Navbar = () =>{
                 </Brand>            
                 <div>
                     <UL>
-                        <LI>HOME</LI>
+                        <Link to="/" style={{   
+                            color:"inherit",                         
+                            textDecoration:"None"
+                        }}>
+                            <LI>HOME</LI>
+                        </Link>                        
                         <LI>
                             CATEGORIES
                             <ULI>
                                 <LI>Real Estate</LI>
                                 <LI>Yachts</LI>
                                 <LI>Hotels</LI>
-                                <LI>Cars</LI>
+                                <LI>
+                                   <Link to="/cars" style={{
+                                       color:"inherit",
+                                        textDecoration:"None"
+                                       }}>
+                                        Cars
+                                   </Link> 
+                                </LI>
                                 <LI>Jets</LI>
                                 <LI>Airplanes</LI>
                                 <LI>Watches & Jelwelry</LI>                                
