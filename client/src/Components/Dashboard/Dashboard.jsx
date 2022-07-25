@@ -2,6 +2,7 @@ import React from 'react'
 import { navigators } from './contents'
 import { DashboardContainer, LeftContainer, RightContainer } from './Dashboard.Styles'
 import { FaSearch } from "react-icons/fa"
+import Messages from './Messages'
 
 const Dashboard = () => {
   return (
@@ -41,6 +42,10 @@ const Dashboard = () => {
                         <p>dealerlambo@gmail.com</p>
                     </div>
                 </div>
+            </div>
+
+            <div className="mainContent">
+                <Messages />
             </div>
 
         </RightContainer>

@@ -5,7 +5,7 @@ const Messages = () => {
   return (
     <MessagesContainer>
         <div className="listOfMessages">
-            <h3>Messages</h3>
+            <h3 className='title'>Messages</h3>
 
             <div className="messages">
                 <div className="message">
@@ -34,6 +34,10 @@ const Messages = () => {
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div className="eachChat">
+
         </div>
     </MessagesContainer>
   )

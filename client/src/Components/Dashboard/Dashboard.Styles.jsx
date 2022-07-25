@@ -96,9 +96,55 @@ export const RightContainer = styled.div`
             }
         }
     }
+
+    .mainContent{
+        padding: 20px;
+    }
 `
 
 export const MessagesContainer = styled.div`
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
+    background-color: white;
+    border-radius: 8px;
+    height: 80vh;
+
+    .listOfMessages{
+        border-right: lightgray;
+        padding: 10px 20px;
+        
+        .title{
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        img{
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .messages{
+            display: grid;
+            
+        }
+
+        .message{
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+
+            h5{
+                font-size: 14px;
+            }
+
+            p{
+                font-size: 12px;
+                color: #737373;
+            }
+        }
+    }
+
+    
 `
