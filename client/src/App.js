@@ -15,7 +15,7 @@ import Navbar from "./Components/Navbar/Navbar"
 function App() {
   return (
     <Router>
-      <Navbar/>
+      {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<HomePage /> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
