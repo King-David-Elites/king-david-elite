@@ -158,6 +158,31 @@ export const NotificationContainer = styled.div`
     background-color: white;
     border-radius: 8px;
     height: 80vh;
+    padding: 20px 0;
+
+    .notification{
+        padding: 10px 50px;
+        display: grid;
+        grid-template-columns: 1fr 10fr 1fr;
+        border-bottom: 1px solid gray;
+    }
+
+    .content{
+        .title{
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .sub{
+            font-weight: 500;
+            font-size: 12px;
+            color: #737373;
+        }
+    }
+
+    .time{
+        font-size: 12px;
+    }
   
 `
 
