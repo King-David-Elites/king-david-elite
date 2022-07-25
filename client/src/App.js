@@ -9,6 +9,7 @@ import HomePage from './Components/Home/HomePage';
 import RealEstateListing from "./Components/RealEstate/RealEstateListing";
 import Cars from "./Components/Cars/CarsListing"
 import OtherSections from "./Components/OtherSections/OtherSections"
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/others" element={<OtherSections />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
