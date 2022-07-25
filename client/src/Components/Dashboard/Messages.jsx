@@ -1,7 +1,8 @@
 import React from 'react'
+import Dashboard from './Dashboard'
 import { MessagesContainer } from './Dashboard.Styles'
 
-const Messages = () => {
+const MessagesAsElement = () => {
   return (
     <MessagesContainer>
         <div className="listOfMessages">
@@ -41,6 +42,12 @@ const Messages = () => {
         </div>
     </MessagesContainer>
   )
+}
+
+const Messages = ()=>{
+    return(
+    <Dashboard element={<MessagesAsElement />} index="1"/>
+    )
 }
 
 export default Messages

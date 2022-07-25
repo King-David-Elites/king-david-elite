@@ -2,7 +2,7 @@ import React from 'react'
 import Dashboard from './Dashboard'
 import { GenericContainer } from './Dashboard.Styles'
 
-const ProfileAsElement = ()=>{
+const WalletAsElement = ()=>{
     return(
         <GenericContainer>
 
@@ -10,10 +10,10 @@ const ProfileAsElement = ()=>{
     )
 }
 
-const Profile = () => {
+const Wallet = () => {
   return (
-    <Dashboard index="4" element={<ProfileAsElement />}/>
+    <Dashboard element={<WalletAsElement />} index="2" />
   )
 }
 
-export default Profile
+export default Wallet

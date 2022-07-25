@@ -32,9 +32,14 @@ export const LeftContainer = styled.div`
             transition: .3s;
         }
 
-        .item:hover{
+        .active{
             background-color: #252625;
             color: white;
+        }
+
+        .item:hover:not(.active){
+            background-color: #EEF0F1;
+            
         }
     }
 `
@@ -104,7 +109,7 @@ export const RightContainer = styled.div`
 
 export const MessagesContainer = styled.div`
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1.3fr 3fr;
     background-color: white;
     border-radius: 8px;
     height: 80vh;
@@ -112,6 +117,8 @@ export const MessagesContainer = styled.div`
     .listOfMessages{
         border-right: lightgray;
         padding: 10px 20px;
+        /* background-color: red; */
+        border-radius: 8px 0 0 8px;
         
         .title{
             padding: 10px 20px;
@@ -145,6 +152,17 @@ export const MessagesContainer = styled.div`
             }
         }
     }
+`
 
-    
+export const NotificationContainer = styled.div`
+    background-color: white;
+    border-radius: 8px;
+    height: 80vh;
+  
+`
+
+export const GenericContainer = styled.div`
+    background-color: white;
+    border-radius: 8px;
+    height: 80vh;
 `

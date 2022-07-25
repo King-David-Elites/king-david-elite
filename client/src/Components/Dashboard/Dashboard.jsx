@@ -3,8 +3,10 @@ import { navigators } from './contents'
 import { DashboardContainer, LeftContainer, RightContainer } from './Dashboard.Styles'
 import { FaSearch } from "react-icons/fa"
 import Messages from './Messages'
+import { useNavigate } from 'react-router-dom'
 
-const Dashboard = () => {
+const Dashboard = ({element, index}) => {
+    const navigate = useNavigate()
   return (
     <DashboardContainer>
         <LeftContainer>
@@ -16,7 +18,7 @@ const Dashboard = () => {
                 {
                 navigators.map((nav, i)=>{
                     return(
-                        <div key={i} className="item">
+                        <div key={i} className={ index == i ? "item active" : "item"} onClick={()=> navigate(`/dashboard/${nav.link}`)}>
                             <p>{nav.icon }</p>
                             <p>{nav.title}</p>
                         </div>
@@ -45,7 +47,7 @@ const Dashboard = () => {
             </div>
 
             <div className="mainContent">
-                <Messages />
+                {element}
             </div>
 
         </RightContainer>
