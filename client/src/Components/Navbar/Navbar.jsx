@@ -4,6 +4,7 @@ import {MainOutlineButton} from '../buttons/MainButton'
 import kde_whiteBg from './Image/kde_whiteBg.png'
 import {Link} from 'react-router-dom'
 const Navbar = () =>{
+
     return(
         <>
             <Header>  
@@ -51,7 +52,6 @@ const Navbar = () =>{
                     SELL
                     <MainOutlineButton>SIGN UP</MainOutlineButton>
                 </Brand>                   
-
             </Header>            
         </>
     )

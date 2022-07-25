@@ -29,7 +29,7 @@ const MainButton = styled.button`
 
 const MainOutlineButton = styled(MainButton)`
     color: ${props => props.color ? props.color : theme.color};
-   background-color: ${theme.textColor};
+    background: rgba(0,0,0,0.0);
   border-radius: 8px;  
 `;
 

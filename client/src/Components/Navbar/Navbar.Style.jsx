@@ -2,14 +2,17 @@ import styled from 'styled-components'
 import theme from '../../application/utils/Theme';
 
 export const Header = styled.div`    
-    top:0;
-    color: ${theme.color};
-    postition:fixed;
-    padding:0em 2em;    
+    top:0.5em;    
+    position:fixed;                
+    width:100%;
+    color:${theme.textColor};
+    background: rgba(0,0,0,0.0);            
     display:flex;
-    justify-content:space-between;
+    justify-content:space-around;
     align-items:center;
+    gap:5em;
     font-family: ${theme.fontFamily}; 
+    z-index:3;
 `
 
 export const UL = styled.ul`    
