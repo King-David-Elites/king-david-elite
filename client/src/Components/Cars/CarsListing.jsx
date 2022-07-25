@@ -1,8 +1,11 @@
 import React from 'react'
+import { HeroSection } from './Cars.Style'
 
 const CarsListing = () => {
   return (
-    <div>CarsListing</div>
+    <>
+      <HeroSection></HeroSection>
+    </>
   )
 }
 

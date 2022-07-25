@@ -10,10 +10,12 @@ import RealEstateListing from "./Components/RealEstate/RealEstateListing";
 import Cars from "./Components/Cars/CarsListing"
 import OtherSections from "./Components/OtherSections/OtherSections"
 import Dashboard from './Components/Dashboard/Dashboard';
+import Navbar from "./Components/Navbar/Navbar"
 
 function App() {
   return (
     <Router>
+      <Navbar/>
       <Routes>
         <Route path='/' element={<HomePage /> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
