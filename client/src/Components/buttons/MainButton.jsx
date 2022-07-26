@@ -17,7 +17,7 @@ const MainButton = styled.button`
     align-items: center;
     padding: 2px 16px;
     font-family: ${theme.fontFamily};
-    cursor:pointer;
+    cursor:pointer;    
 
 @media (min-width: ${theme.breakPoint['tablet']}) {
             width: 88px;

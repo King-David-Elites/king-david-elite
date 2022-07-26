@@ -5,10 +5,12 @@ import {
   SearchSection,
   Search,
   Input,
-  Text 
+  Text,
+  FilterBox
 } from './Cars.Style'
 import Navbar from '../Navbar/Navbar'
 import carpic from './Image/carpic.jpg'
+import MainButton from "../buttons/MainButton"
 
 const CarsListing = () => {
   return (
@@ -16,12 +18,16 @@ const CarsListing = () => {
       <Navbar/>
       <Background imageUrl={carpic}>
         <HeroSection>
-          <Text>Luxury Cars</Text>          
+          <Text fontSize="2rem">Luxury Cars</Text>          
           <SearchSection>
             <Search>
               <Input placeholder='search makes or model'/>
-            </Search>            
+            </Search>   
+            <FilterBox>
+              <MainButton>filter</MainButton>     
+            </FilterBox>               
           </SearchSection>
+          <Text>find new and preowned cars for sale</Text>
         </HeroSection>          
       </Background>
     </>
