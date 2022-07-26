@@ -60,11 +60,33 @@ export const FilterBox = styled(SearchC)`
     gap:0em;
 `
 
-export const Body = styled.div`
-    width:100%;
+export const Body = styled.div`    
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    margin-top:2em;
+    margin:2em;
+    margin-top:4em;    
+    gap:3em;    
+`
+
+export const CarTypes = styled.div`
+    display:flex;
+    justify-content:space-between;  
+    align-items:center;  
+    gap:1em;
+    padding:0.5em;    
+    flex-wrap:wrap;
+    width:100%;
+`
+
+export const CarType = styled.div`
+    flex: 0 1 18em;    
+    display:flex;
+    flex-direction:column;    
+    justify-content:center;    
+    align-items:flex-start;
+    background:red;
+    border-top-left-radius:0.5em;
+    border-bottom-right-radius:0.5em;
 `
