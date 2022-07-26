@@ -3,14 +3,15 @@ import {
   Background,
   HeroSection,
   SearchSection,
-  Search,
+  SearchC,
   Input,
   Text,
-  FilterBox
+  FilterBox,Body
 } from './Cars.Style'
 import Navbar from '../Navbar/Navbar'
 import carpic from './Image/carpic.jpg'
 import MainButton from "../buttons/MainButton"
+import {Search,Adjustments} from "heroicons-react"
 
 const CarsListing = () => {
   return (
@@ -20,16 +21,21 @@ const CarsListing = () => {
         <HeroSection>
           <Text fontSize="2rem">Luxury Cars</Text>          
           <SearchSection>
-            <Search>
+            <SearchC>
               <Input placeholder='search makes or model'/>
-            </Search>   
+              <Search width="30px"/>
+            </SearchC>   
             <FilterBox>
-              <MainButton>filter</MainButton>     
+              <MainButton width="60px">Filter</MainButton>               
+              <Adjustments width ="30px"/>
             </FilterBox>               
           </SearchSection>
           <Text>find new and preowned cars for sale</Text>
         </HeroSection>          
       </Background>
+      <Body>        
+        <Text fontSize="1rem" fontWeight="700" color="black">Explore Luxury Cars</Text>
+      </Body>
     </>
   )
 }
