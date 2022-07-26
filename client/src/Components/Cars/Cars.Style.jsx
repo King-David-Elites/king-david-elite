@@ -7,7 +7,7 @@ export const Background =styled.div`
     background-size:100%;
     background-repeat:no-repeat;    
     width:100vw;
-    height:40em;
+    height:45em;
 `
 
 export const HeroSection = styled.div`
@@ -17,6 +17,7 @@ export const HeroSection = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    gap:1em;
     width:inherit;
     height:inherit;
 `
@@ -31,7 +32,17 @@ export const SearchSection = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    width:5em;
-    heigth:5em;
-    background:blue;
+    padding:1em;        
+`
+export const Search = styled(SearchSection)`
+    flex:0 1 20em;
+    background:rgb(255,255,255,0.7);
+    padding:0.5em;
+    border-radius: 0.5em;
+`;
+export const Input = styled.input`    
+    background:transparent;
+    outline:None;
+    padding:0.5em;
+    border: 2px solid transparent;
 `

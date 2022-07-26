@@ -1,5 +1,12 @@
 import React from 'react'
-import { Background,HeroSection,SearchSection,Text } from './Cars.Style'
+import { 
+  Background,
+  HeroSection,
+  SearchSection,
+  Search,
+  Input,
+  Text 
+} from './Cars.Style'
 import Navbar from '../Navbar/Navbar'
 import carpic from './Image/carpic.jpg'
 
@@ -9,8 +16,12 @@ const CarsListing = () => {
       <Navbar/>
       <Background imageUrl={carpic}>
         <HeroSection>
-          <Text>Luxury Cars</Text>
-          <SearchSection></SearchSection>
+          <Text>Luxury Cars</Text>          
+          <SearchSection>
+            <Search>
+              <Input placeholder='search makes or model'/>
+            </Search>            
+          </SearchSection>
         </HeroSection>          
       </Background>
     </>
