@@ -2,11 +2,11 @@ import styled from 'styled-components'
 import theme from '../../application/utils/Theme';
 
 export const Header = styled.div`    
-    top:0.5em;    
+    padding-top: 0.5em;    
     position:fixed;                
     width:100%;
     color:${theme.textColor};
-    background: rgba(0,0,0,0.0);            
+    background: rgba(0,0,0,0.2);            
     display:flex;
     justify-content:space-around;
     align-items:center;
@@ -24,29 +24,13 @@ export const UL = styled.ul`
     font-weight:700;
     list-style-type:None;       
 `
-export const ULI = styled.ul`    
-    font-size:0.8rem;   
-    display:None;
-    position:absolute;
-    left:0;
-    top:4.2em;
-    justify-content:center;
-    align-items:center;
-    gap:5em;        
-    list-style-type:None;  
-    color:${theme.textColor};        
-`
 
 export const LI = styled.li`    
     font-weight:light;           
     padding: 1.5em 0em; 
-    cursor:pointer;             
-    &:hover ${ULI}{        
-        width:100%;
-        display:flex;                
-        background:rgba(0,0,0,0.7);  
-        cursor:auto;      
-    };    
+    cursor:pointer;   
+    font-size:0.8rem; 
+    color:${props => props.color ? props.color : theme.textColor};              
     &:hover{
         color:${theme.color};
     }  
@@ -54,7 +38,7 @@ export const LI = styled.li`
 
 export const LogoText = styled.div`
     color: ${theme.color};
-    font-size:1.2rem;   
+    font-size:1rem;   
     font-weight:700;    
     cursor:pointer;
 `

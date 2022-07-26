@@ -1,10 +1,18 @@
 import React from 'react'
-import { HeroSection } from './Cars.Style'
+import { Background,HeroSection,SearchSection,Text } from './Cars.Style'
+import Navbar from '../Navbar/Navbar'
+import carpic from './Image/carpic.jpg'
 
 const CarsListing = () => {
   return (
     <>
-      <HeroSection></HeroSection>
+      <Navbar/>
+      <Background imageUrl={carpic}>
+        <HeroSection>
+          <Text>Luxury Cars</Text>
+          <SearchSection></SearchSection>
+        </HeroSection>          
+      </Background>
     </>
   )
 }

@@ -3,14 +3,15 @@ import {Header,UL,LI,ULI,LogoText,Brand} from './Navbar.Style'
 import {MainOutlineButton} from '../buttons/MainButton'
 import kde_whiteBg from './Image/kde_whiteBg.png'
 import {Link} from 'react-router-dom'
+import theme from '../../application/utils/Theme';
 const Navbar = () =>{
 
     return(
         <>
             <Header>  
                 <Brand>
-                    <div style={{width:"3em", height:"auto"}}>
-                        <img src={kde_whiteBg} 
+                    <div style={{width:"4em", height:"auto"}}>
+                        <img src={kde_whiteBg}
                         width="100%"  
                         heigth="100%"
                         alt="brandlogo"/>
@@ -19,31 +20,15 @@ const Navbar = () =>{
                 </Brand>            
                 <div>
                     <UL>
-                        <Link to="/" style={{   
-                            color:"inherit",                         
-                            textDecoration:"None"
-                        }}>
-                            <LI>HOME</LI>
-                        </Link>                        
                         <LI>
-                            CATEGORIES
-                            <ULI>
-                                <LI>Real Estate</LI>
-                                <LI>Yachts</LI>
-                                <LI>Hotels</LI>
-                                <LI>
-                                   <Link to="/cars" style={{
-                                       color:"inherit",
-                                        textDecoration:"None"
-                                       }}>
-                                        Cars
-                                   </Link> 
-                                </LI>
-                                <LI>Jets</LI>
-                                <LI>Airplanes</LI>
-                                <LI>Watches & Jelwelry</LI>                                
-                            </ULI>
+                            <Link to="/real-estate" style={{   
+                                color:"inherit",                         
+                                textDecoration:"None"
+                            }}>
+                                REAL ESTATE
+                            </Link>                        
                         </LI>
+                        <LI color={theme.color}>CARS</LI>
                         <LI>ABOUT</LI>
                         <LI>AFFILIATE</LI>
                     </UL>
