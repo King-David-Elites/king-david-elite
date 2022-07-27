@@ -4,7 +4,7 @@ import theme from '../../application/utils/Theme';
 export const Background =styled.div`       
     background-image:url(${props => props.imageUrl});
     background-position:center;
-    background-size:100%;
+    background-size:cover;
     background-repeat:no-repeat;    
     width:100vw;
     height:40em;
@@ -103,7 +103,7 @@ export const PicDealer = styled.img`
 
 export const PicCar = styled(Background)`
     width:100%;
-    height:12em;    
+    height:13em;    
     border-top-left-radius:2em;
     border-bottom-right-radius:2em;
     margin:1em 0em;

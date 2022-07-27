@@ -76,13 +76,13 @@ const Car = (props) =>{
       <CarType>
         <Dealer>
           <PicDealer 
-          src={carpic} 
+          src={DealerPic} 
           alt={DealerName}                    
           />
           <Text fontSize="0.8rem"color="black">{DealerName}</Text>
           <BadgeCheck color="blue" width="30px"/>
         </Dealer>      
-        <PicCar imageUrl={carpic}></PicCar>  
+        <PicCar imageUrl={CarPic}></PicCar>  
         <Text color="black" fontWeight="700">{Description}</Text>        
         <Text color="black" fontWeight="700" fontSize="0.8rem">{price}</Text>
         <Position>
