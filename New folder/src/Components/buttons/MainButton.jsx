@@ -5,12 +5,11 @@ const MainButton = styled.button`
   width: ${props => props.width ? props.width : "65px"};
    height: ${props => props.height ? props.height : "25px"};
    font-weight: 700;
-    font-size: ${props => props.fontSize ? props.fontSize : "0.7em"};
+    font-size: 0.7em;
     line-height: 0.8em;
     color: ${props => props.color ? props.color : theme.textColor};
   background-color: ${theme.color};
     border: 2px solid ${theme.color};
-    border-radius: 0.5em;
     white-space: nowrap;
     display: flex;
     flex-direction: row;
@@ -23,10 +22,8 @@ const MainButton = styled.button`
 @media (min-width: ${theme.breakPoint['tablet']}) {
             width: ${props => props.width ? props.width : "88px"};
             height: ${props => props.height ? props.height : "40px"};
-            font-size: ${props => props.fontSize ? props.fontSize : "0.8em"};
-            letter-spacing: 0.1em;    
-            border-radius: 0.5em;  
-            margin-top:${props => props.marginTop ? props.marginTop : "0em"}      
+            font-size: 0.8em; 
+            letter-spacing: 0.1em;            
         }
 `;
 

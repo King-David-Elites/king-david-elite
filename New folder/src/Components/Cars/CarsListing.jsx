@@ -7,12 +7,7 @@ import {
   Input,
   Text,
   FilterBox,
-  Body,CarTypes,
-  CarType,
-  Dealer,
-  PicDealer,
-  PicCar,
-  Position
+  Body,CarTypes,CarType
 } from './Cars.Style'
 import Navbar from '../Navbar/Navbar'
 import carpic from './Image/carpic.jpg'
@@ -60,41 +55,11 @@ const CarsListing = () => {
 
 export default CarsListing
 
-const Car = (props) =>{
- var {
-    DealerPic, 
-    DealerName, 
-    CarPic, 
-    Loved, 
-    Description,
-    price,
-    location
-  } = props
-
+const Car = ({car}) =>{
   return(
     <>
       <CarType>
-        <Dealer>
-          <PicDealer 
-          src={carpic} 
-          alt={DealerName}                    
-          />
-          <Text fontSize="0.8rem"color="black">{DealerName}</Text>
-        </Dealer>      
-        <PicCar imageUrl={carpic}></PicCar>  
-        <Text color="black" fontWeight="700">{Description}</Text>        
-        <Text color="black" fontWeight="700" fontSize="0.8rem">{price}</Text>
-        <Position>
-          <Text color="black" fontSize="0.8rem">{location}</Text>
-        </Position>
-        <MainButton 
-          width="10em" 
-          height="3em" 
-          fontSize="0.8rem"
-          marginTop="2em"
-        >
-          Enquire Now
-        </MainButton>
+        <h2>{car}</h2>
       </CarType>
     </>
   )

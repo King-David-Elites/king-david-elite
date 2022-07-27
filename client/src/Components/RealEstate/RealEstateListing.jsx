@@ -17,7 +17,7 @@ import MOCK_DATA from './MOCK_DATA'
 const RealEstateListing = () => {
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <Background imageUrl={realEstatePics} >
         <HeroSection>
           <Text fontSize="2rem">Luxury Real Estate</Text>

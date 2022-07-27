@@ -40,12 +40,17 @@ const Navbar = (element, index) => {
                                 REAL ESTATE
                             </Link>
                         </LI>
-                        <LI color={theme.color}><Link to="/cars" style={{
+                        {
+                            
+                        }
+                        <LI color={theme.color}>
+                            <Link to="/cars" style={{
                                 color: "inherit",
                                 textDecoration: "None"
                             }}>
                                 CARS
-                            </Link></LI>
+                            </Link>
+                        </LI>
                         <LI>ABOUT</LI>
                         <LI>AFFILIATE</LI>
                         

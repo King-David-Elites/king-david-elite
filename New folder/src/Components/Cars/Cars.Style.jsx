@@ -72,42 +72,21 @@ export const Body = styled.div`
 
 export const CarTypes = styled.div`
     display:flex;
-    justify-content:center;  
+    justify-content:space-between;  
     align-items:center;  
-    gap:1.5em;
+    gap:1em;
     padding:0.5em;    
     flex-wrap:wrap;
     width:100%;
 `
 
 export const CarType = styled.div`
-    flex: 1 1 18em;    
+    flex: 0 1 18em;    
     display:flex;
     flex-direction:column;    
     justify-content:center;    
     align-items:flex-start;
-    gap:0.2em;    
-`
-
-export const Dealer = styled(SearchSection)`
-    padding:0em;
-    justify-content:flex-start;
-`
-
-export const PicDealer = styled.img`
-    width:${props => props.width ? props.width : "2em"};
-    height:${props => props.height ? props.height : "2em"};
-    border-radius:${props => props.radius ? props.radius : "2em"};    
-`
-
-export const PicCar = styled(Background)`
-    width:100%;
-    height:12em;    
-    border-top-left-radius:2em;
-    border-bottom-right-radius:2em;
-    margin:1em 0em;
-`
-
-export const Position = styled(Dealer)`
-
+    background:red;
+    border-top-left-radius:0.5em;
+    border-bottom-right-radius:0.5em;
 `
