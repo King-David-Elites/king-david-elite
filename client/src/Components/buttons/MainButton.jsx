@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import theme from '../../application/utils/Theme';
 
 const MainButton = styled.button`   
-  width: 65px;
-   height: 25px;
+  width: ${props => props.width ? props.width : "65px"};
+   height: ${props => props.height ? props.height : "25px"};
    font-weight: 700;
     font-size: 0.7em;
     line-height: 0.8em;
@@ -20,8 +20,8 @@ const MainButton = styled.button`
     cursor:pointer;    
 
 @media (min-width: ${theme.breakPoint['tablet']}) {
-            width: 88px;
-            height: 40px;
+            width: ${props => props.width ? props.width : "88px"};
+            height: ${props => props.height ? props.height : "40px"};
             font-size: 0.8em; 
             letter-spacing: 0.1em;            
         }
