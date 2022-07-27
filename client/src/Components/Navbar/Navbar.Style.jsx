@@ -34,6 +34,10 @@ export const LI = styled.li`
     &:hover{
         color:${theme.color};
     }  
+
+    .item-active{
+        color:${theme.color};
+    }
 `
 
 export const LogoText = styled.div`
