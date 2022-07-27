@@ -17,7 +17,7 @@ import {
 import Navbar from '../Navbar/Navbar'
 import carpic from './Image/carpic.jpg'
 import MainButton from "../buttons/MainButton"
-import {Search,Adjustments} from "heroicons-react"
+import {Search,Adjustments,BadgeCheck} from "heroicons-react"
 import {CarAPI} from "./DemoAPI/api"
 
 const CarsListing = () => {
@@ -80,6 +80,7 @@ const Car = (props) =>{
           alt={DealerName}                    
           />
           <Text fontSize="0.8rem"color="black">{DealerName}</Text>
+          <BadgeCheck color="blue" width="30px"/>
         </Dealer>      
         <PicCar imageUrl={carpic}></PicCar>  
         <Text color="black" fontWeight="700">{Description}</Text>        
