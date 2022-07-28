@@ -96,19 +96,37 @@ export const Dealer = styled(SearchSection)`
 `
 
 export const PicDealer = styled.img`
-    width:${props => props.width ? props.width : "2em"};
-    height:${props => props.height ? props.height : "2em"};
-    border-radius:${props => props.radius ? props.radius : "2em"};    
+    width:${props => props.width ? props.width : "2.5em"};
+    height:${props => props.height ? props.height : "2.5em"};
+    border-radius:${props => props.radius ? props.radius : "2.5em"};    
 `
 
 export const PicCar = styled(Background)`
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
     width:100%;
     height:13em;    
     border-top-left-radius:2em;
     border-bottom-right-radius:2em;
     margin:1em 0em;
+    padding:1em 0em 0em 1em;
 `
 
 export const Position = styled(Dealer)`
+    gap:0.5em
+`
 
+export const Reaction = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:${props => props.width ? props.width : "2em"};
+    height:${props => props.height ? props.height : "2em"};
+    border-radius:${props => props.radius ? props.radius : "2em"};
+    background:rgba(255,255,255,0.4);   
+    padding:${props => props.padding ? props.padding : "0em"};
+    border-bottom-right-radius:2em;
+    cursor:pointer;
 `

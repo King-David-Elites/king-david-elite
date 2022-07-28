@@ -12,12 +12,19 @@ import {
   Dealer,
   PicDealer,
   PicCar,
-  Position
+  Position,
+  Reaction
 } from './Cars.Style'
 import Navbar from '../Navbar/Navbar'
 import carpic from './Image/carpic.jpg'
 import MainButton from "../buttons/MainButton"
-import {Search,Adjustments,BadgeCheck,LocationMarkerOutline} from "heroicons-react"
+import {
+  Search,
+  Adjustments,
+  BadgeCheck,
+  LocationMarkerOutline,
+  Heart
+} from "heroicons-react"
 import {CarAPI} from "./DemoAPI/api"
 
 const CarsListing = () => {
@@ -82,7 +89,34 @@ const Car = (props) =>{
           <Text fontSize="0.8rem"color="black">{DealerName}</Text>
           <BadgeCheck color="blue" width="30px"/>
         </Dealer>      
-        <PicCar imageUrl={CarPic}></PicCar>  
+        <PicCar imageUrl={CarPic}>
+          <div style={{
+            width:"100%",
+            display:"flex", 
+            justifyContent:"flex-start"
+          }}>
+            <Reaction>
+              {
+                Loved ? 
+                <Heart color="yellow" border="2px solid white"/>
+                :
+                <Heart color="grey"/>
+              }
+            </Reaction>
+          </div>
+          <div style={{
+            width:"100%",
+            display:"flex", 
+            justifyContent:"flex-end"
+          }}>
+            <Reaction                             
+              radius="0em" 
+              padding="1em 3em"
+            >
+              <Text fontSize="0.8em ">ViewMore</Text>
+            </Reaction>
+          </div>
+        </PicCar>  
         <Text color="black" fontWeight="700">{Description}</Text>        
         <Text color="black" fontWeight="700" fontSize="0.8rem">{price}</Text>
         <Position>
