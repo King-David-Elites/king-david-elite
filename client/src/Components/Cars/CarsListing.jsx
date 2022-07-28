@@ -1,4 +1,5 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
 import { 
   Background,
   HeroSection,
@@ -68,17 +69,17 @@ const CarsListing = () => {
 
 export default CarsListing
 
-const Car = (props) =>{
+const Car = (props) =>{    
  var {
     DealerPic, 
     DealerName, 
-    CarPic, 
-    Loved, 
+    CarPic,     
     Description,
     price,
+    Loved,
     location
   } = props
-
+  const [love, setLove] = useState(Loved)
   return(
     <>
       <CarType>
@@ -96,9 +97,13 @@ const Car = (props) =>{
             display:"flex", 
             justifyContent:"flex-start"
           }}>
-            <Reaction>
+            <Reaction 
+              onClick = {() => {
+                setLove(!love)
+              }}
+            >
               {
-                Loved ? 
+                love ? 
                 <Heart color="#FFDF00"/>
                 :
                 <HeartOutline color="white"/>
