@@ -23,6 +23,7 @@ import {
   Adjustments,
   BadgeCheck,
   LocationMarkerOutline,
+  HeartOutline,
   Heart
 } from "heroicons-react"
 import {CarAPI} from "./DemoAPI/api"
@@ -100,7 +101,7 @@ const Car = (props) =>{
                 Loved ? 
                 <Heart color="#FFDF00"/>
                 :
-                <Heart color="white"/>
+                <HeartOutline color="white"/>
               }
             </Reaction>
           </div>
