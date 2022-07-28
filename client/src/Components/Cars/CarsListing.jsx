@@ -98,9 +98,9 @@ const Car = (props) =>{
             <Reaction>
               {
                 Loved ? 
-                <Heart color="yellow" border="2px solid white"/>
+                <Heart color="#FFDF00"/>
                 :
-                <Heart color="grey"/>
+                <Heart color="white"/>
               }
             </Reaction>
           </div>
