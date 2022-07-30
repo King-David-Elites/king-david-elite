@@ -26,6 +26,8 @@ export const Text =styled.div`
     color:${props => props.color ? props.color : theme.textColor};
     font-size:${props => props.fontSize ? props.fontSize : "1rem"};
     font-weight:${props => props.fontWeight ? props.fontWeight : "light"};    
+    margin:${props => props.margin ? props.margin : "0em"};    
+    padding:${props => props.padding ? props.padding : "0em"};    
 `
 
 export const SearchSection = styled.div`
@@ -129,4 +131,16 @@ export const Reaction = styled.div`
     padding:${props => props.padding ? props.padding : "0em"};
     border-bottom-right-radius:2em;
     cursor:pointer;
+`
+
+export const LuxuryLabel = styled(Background)`    
+    height:10em;
+`
+
+export const LuxuryBody = styled(HeroSection)`
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    flex-direction:colummn;
+    justify-content:flex-start;
+    align-itemsf:flex-start;
 `

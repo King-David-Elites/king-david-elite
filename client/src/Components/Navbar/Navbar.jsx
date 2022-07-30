@@ -32,25 +32,25 @@ const Navbar = (element, index) => {
                 </Brand>
                 <div>
                     <UL>
-                        <LI>
-                            <Link to="/real-estate" style={{
-                                color: "inherit",
-                                textDecoration: "None"
-                            }}>
-                                REAL ESTATE
-                            </Link>
-                        </LI>
+                        <Link to="/real-estate" style={{
+                            color: "inherit",
+                            textDecoration: "None"
+                        }}>                                                            
+                            <LI>                            
+                                REAL ESTATE                            
+                            </LI>
+                        </Link>
                         {
                             
                         }
-                        <LI color={theme.color}>
-                            <Link to="/cars" style={{
-                                color: "inherit",
-                                textDecoration: "None"
-                            }}>
-                                CARS
-                            </Link>
-                        </LI>
+                        <Link to="/cars" style={{
+                            color: "inherit",
+                            textDecoration: "None"
+                        }}>                                                            
+                            <LI color={theme.color}>                            
+                                CARS                            
+                            </LI>
+                        </Link>
                         <LI>ABOUT</LI>
                         <LI>AFFILIATE</LI>
                         
