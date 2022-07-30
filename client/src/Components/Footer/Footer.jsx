@@ -1,32 +1,32 @@
 import React from 'react'
-import {FooterSection,Section,Text} from './Footer.Style';
+import {FooterSection,Section,List,Head} from './Footer.Style';
 const Footer = () =>{
     return(
         <>
             <FooterSection>
                 <Section>
-                    <Text fontSize="1rem" fontWeight="700">King David Elites</Text>
-                    <Text>About</Text>
-                    <Text>Team</Text>
-                    <Text>Contact Us</Text>
-                    <Text>Terms And Conditions</Text>
+                    <Head>King David Elites</Head>
+                    <List>About</List>
+                    <List>Team</List>
+                    <List>Contact Us</List>
+                    <List>Terms And Conditions</List>
                 </Section>
                 <Section>
-                    <Text fontSize="1rem" fontWeight="700">Categories</Text>
-                    <Text>Real Estates</Text>
-                    <Text>Cars</Text>                                
+                    <Head>Categories</Head>
+                    <List>Real Estates</List>
+                    <List>Cars</List>                                
                 </Section>
                 <Section>
-                    <Text fontSize="1rem" fontWeight="700">Business</Text>
-                    <Text>Affiliate Marketing</Text>
-                    <Text>List With Us</Text>                    
+                    <Head>Business</Head>
+                    <List>Affiliate Marketing</List>
+                    <List>List With Us</List>                    
                 </Section>
                 <Section>
-                    <Text fontSize="1rem" fontWeight="700">Social Media</Text>
-                    <Text>Facebook</Text>
-                    <Text>Instagram</Text>
-                    <Text>Twitter</Text>
-                    <Text>LinkedIn</Text>
+                    <Head>Social Media</Head>
+                    <List>Facebook</List>
+                    <List>Instagram</List>
+                    <List>Twitter</List>
+                    <List>LinkedIn</List>
                 </Section>
             </FooterSection>            
         </>

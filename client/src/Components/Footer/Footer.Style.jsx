@@ -19,11 +19,19 @@ export const Section = styled.div`
     align-items:flex-start;
     gap:1em;    
 `
-export const Text =styled.div`
+
+export const Head = styled.div`
+    color:${props => props.color ? props.color : theme.textColor};
+    font-size:${props => props.fontSize ? props.fontSize : "1rem"};
+    font-weight:${props => props.fontWeight ? props.fontWeight : "700"};                
+`
+export const List =styled.div`
     color:${props => props.color ? props.color : theme.textColor};
     font-size:${props => props.fontSize ? props.fontSize : "0.8rem"};
-    font-weight:${props => props.fontWeight ? props.fontWeight : "light"};    
-    margin:${props => props.margin ? props.margin : "0em"};    
-    padding:${props => props.padding ? props.padding : "0em"};  
+    font-weight:${props => props.fontWeight ? props.fontWeight : "light"};        
     cursor:pointer;  
+    &:hover{
+        color:${theme.color};
+        font-weight:700
+    }
 `
