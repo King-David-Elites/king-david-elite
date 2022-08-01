@@ -1,6 +1,6 @@
 import React from 'react'
-import {useState, useEffect} from 'react'
-import { 
+import { useState, useEffect } from 'react'
+import {
   Background,
   HeroSection,
   SearchSection,
@@ -8,7 +8,7 @@ import {
   Input,
   Text,
   FilterBox,
-  Body,CarTypes,
+  Body, CarTypes,
   CarType,
   Dealer,
   PicDealer,
@@ -30,136 +30,136 @@ import {
   HeartOutline,
   Heart
 } from "heroicons-react"
-import {CarAPI} from "./DemoAPI/api"
+import { CarAPI } from "./DemoAPI/api"
 import Footer from "../Footer/Footer"
 
 const CarsListing = () => {
   return (
     <>
-      <Navbar/>
+      <Navbar />
 
       <Background imageUrl={carpic}>
         <HeroSection>
-          <Text fontSize="2rem">Luxury Cars</Text>          
+          <Text fontSize="2rem">Luxury Cars</Text>
           <SearchSection>
             <SearchC>
-              <Input placeholder='search makes or model'/>
-              <Search width="30px"/>
-            </SearchC>   
+              <Input placeholder='search makes or model' />
+              <Search width="30px" />
+            </SearchC>
             <FilterBox>
-              <MainButton width="60px">Filter</MainButton>               
-              <Adjustments width ="30px"/>
-            </FilterBox>               
+              <MainButton width="60px">Filter</MainButton>
+              <Adjustments width="30px" />
+            </FilterBox>
           </SearchSection>
           <Text>find new and preowned cars for sale</Text>
-        </HeroSection>          
+        </HeroSection>
       </Background>
 
-      <Body>        
+      <Body>
         <Text fontSize="1rem" fontWeight="700" color="black">Explore Luxury Cars</Text>
         <CarTypes>
           {
-            CarAPI.map((items)=>{
+            CarAPI.map((items) => {
               return (
-                <Car key={items.id} {...items}/> 
+                <Car key={items.id} {...items} />
               )
-            })            
-          }          
+            })
+          }
         </CarTypes>
         <LuxuryLabel imageUrl={transverse}>
           <LuxuryBody>
-            <Text 
-              margin="1em auto 0em 3em" 
+            <Text
+              margin="1em auto 0em 3em"
               fontSize="1.5rem"
               fontWeight="500"
             >
               Luxury Cars
             </Text>
-            <Text 
-              margin="0em auto auto 6em"                             
+            <Text
+              margin="0em auto auto 6em"
             >
               King David Elites
             </Text>
           </LuxuryBody>
         </LuxuryLabel>
         <Text color="black" fontSize="0.8rem">
-        King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
-        Quis similique corrupti porro reiciendis dolore ipsa nobis mollitia explicabo, voluptatibus quibusdam illum perferendis libero est iusto ab, maxime quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
-        Quasi molestias consequatur earum enim dolorem rem excepturi illo eius ut sint laborum quibusdam, accusamus ullam, voluptatum totam tempora eum! Optio ipsum maiores saepe officiis delectus minus. Alias, voluptas fuga?
-        Doloremque quos eum libero deleniti ducimus suscipit mollitia consequatur neque perspiciatis, autem ipsa deserunt facilis numquam veritatis nulla quidem esse officiis inventore rerum adipisci, velit ipsam dolorum saepe? Exercitationem, esse!        
+          King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
+          Quis similique corrupti porro reiciendis dolore ipsa nobis mollitia explicabo, voluptatibus quibusdam illum perferendis libero est iusto ab, maxime quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
+          Quasi molestias consequatur earum enim dolorem rem excepturi illo eius ut sint laborum quibusdam, accusamus ullam, voluptatum totam tempora eum! Optio ipsum maiores saepe officiis delectus minus. Alias, voluptas fuga?
+          Doloremque quos eum libero deleniti ducimus suscipit mollitia consequatur neque perspiciatis, autem ipsa deserunt facilis numquam veritatis nulla quidem esse officiis inventore rerum adipisci, velit ipsam dolorum saepe? Exercitationem, esse!
         </Text>
       </Body>
-      
-      <Footer/>
+
+      <Footer />
     </>
   )
 }
 
 export default CarsListing
 
-const Car = (props) =>{    
- var {
-    DealerPic, 
-    DealerName, 
-    CarPic,     
+const Car = (props) => {
+  var {
+    DealerPic,
+    DealerName,
+    CarPic,
     Description,
     price,
     Loved,
     location
   } = props
   const [love, setLove] = useState(Loved)
-  return(
+  return (
     <>
       <CarType>
         <Dealer>
-          <PicDealer 
-          src={DealerPic} 
-          alt={DealerName}                    
+          <PicDealer
+            src={DealerPic}
+            alt={DealerName}
           />
-          <Text fontSize="0.8rem"color="black">{DealerName}</Text>
-          <BadgeCheck color="blue" width="30px"/>
-        </Dealer>      
+          <Text fontSize="0.8rem" color="black">{DealerName}</Text>
+          <BadgeCheck color="blue" width="30px" />
+        </Dealer>
         <PicCar imageUrl={CarPic}>
           <div style={{
-            width:"100%",
-            display:"flex", 
-            justifyContent:"flex-start"
+            width: "100%",
+            display: "flex",
+            justifyContent: "flex-start"
           }}>
-            <Reaction 
-              onClick = {() => {
+            <Reaction
+              onClick={() => {
                 setLove(!love)
               }}
             >
               {
-                love ? 
-                <Heart color="#FFDF00"/>
-                :
-                <HeartOutline color="yellow"/>
+                love ?
+                  <Heart color="#FFDF00" />
+                  :
+                  <HeartOutline color="yellow" />
               }
             </Reaction>
           </div>
           <div style={{
-            width:"100%",
-            display:"flex", 
-            justifyContent:"flex-end"
+            width: "100%",
+            display: "flex",
+            justifyContent: "flex-end"
           }}>
-            <Reaction                             
-              radius="0em" 
+            <Reaction
+              radius="0em"
               padding="1em 3em"
             >
               <Text fontSize="0.8em ">ViewMore</Text>
             </Reaction>
           </div>
-        </PicCar>  
-        <Text color="black" fontWeight="700">{Description}</Text>        
+        </PicCar>
+        <Text color="black" fontWeight="700">{Description}</Text>
         <Text color="black" fontWeight="700" fontSize="0.8rem">{price}</Text>
         <Position>
-          <LocationMarkerOutline width="20px"/>
+          <LocationMarkerOutline width="20px" />
           <Text color="black" fontSize="0.8rem">{location}</Text>
         </Position>
-        <MainButton 
-          width="10em" 
-          height="3em" 
+        <MainButton
+          width="10em"
+          height="3em"
           fontSize="0.8rem"
           marginTop="2em"
         >

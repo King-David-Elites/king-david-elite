@@ -11,12 +11,11 @@ export const EstateProperties = styled.div`
 `
 
 export const PropertyType = styled.div`
-    width: 25em;
-    height: 13em;  
+    flex: 1 1 25em;    
     display:flex;
     flex-direction:column;    
     justify-content:center;    
     align-items:flex-start;
-    background:red;
-   border-radius: 2em 0;
+    gap:0.2em;    
+    margin:1em 0em;
 `

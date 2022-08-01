@@ -117,7 +117,7 @@ export const PicCar = styled(Background)`
 `
 
 export const Position = styled(Dealer)`
-    gap:0.5em
+    gap:0.5em;
 `
 
 export const Reaction = styled.div`
@@ -140,7 +140,7 @@ export const LuxuryLabel = styled(Background)`
 export const LuxuryBody = styled(HeroSection)`
     background:rgba(0,0,0,0.7);
     display:flex;
-    flex-direction:colummn;
+    flex-direction:column;
     justify-content:flex-start;
-    align-itemsf:flex-start;
+    align-items:flex-start;
 `
