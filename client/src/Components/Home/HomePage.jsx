@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import theme from '../../application/utils/Theme'
 import PhotoButton from '../buttons/PhotoButton'
 import MainButton, { MainOutlineButton } from '../buttons/MainButton'
 import VideoButton from '../buttons/VideoButton'
+import Navbar from '../Navbar/Navbar'
+import Dashboard from '../Dashboard/Dashboard'
+import Category from './categories'
+import Subfooter from './subfooter'
+import Footer from '../Footer/Footer'
+// import './style.css' 
 
 const HomePage = () => {
   return (
-    <div>
-    <MainButton>SIGN UP</MainButton>
-    <MainOutlineButton>SIGN UP</MainOutlineButton>
-    <PhotoButton>Photos</PhotoButton>
-    <VideoButton>Video</VideoButton>
-    <PhotoButton backgroundColor={theme.textColor} color={theme.color}>Photos</PhotoButton>
-    <VideoButton backgroundColor={theme.textColor} color={theme.textColor}>Video</VideoButton>
-    </div>
+    <Fragment>
+      <Navbar/>
+      <Category/>
+      <Subfooter/>
+      <Footer/>
+    </Fragment>
+    
   )
 }
 
