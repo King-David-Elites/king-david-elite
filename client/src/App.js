@@ -16,6 +16,7 @@ import Notifications from './Components/Dashboard/Notifications';
 import Profile from './Components/Dashboard/Profile';
 import Wallet from './Components/Dashboard/Wallet';
 import EachBuilding from './Components/RealEstate/EachBuilding';
+import EachCars from './Components/Cars/EachCars';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/real-estate/:title" element={<EachBuilding />} />
         <Route path="/cars" element={<Cars />} />
+        <Route path="/cars/:title" element={<EachCars />} />
         <Route path="/others" element={<OtherSections />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/dashboard/messages" element={<Messages />} />

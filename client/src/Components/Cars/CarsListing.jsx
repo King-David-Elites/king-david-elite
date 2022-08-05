@@ -32,6 +32,7 @@ import {
 } from "heroicons-react"
 import { CarAPI } from "./DemoAPI/api"
 import Footer from "../Footer/Footer"
+import { useNavigate } from 'react-router-dom'
 
 const CarsListing = () => {
   return (
@@ -108,6 +109,7 @@ const Car = (props) => {
     location
   } = props
   const [love, setLove] = useState(Loved)
+  const navigate = useNavigate()
   return (
     <>
       <CarType>
@@ -162,6 +164,7 @@ const Car = (props) => {
           height="3em"
           fontSize="0.8rem"
           marginTop="2em"
+          onClick={()=> navigate(`${Description}`)}
         >
           Enquire Now
         </MainButton>
