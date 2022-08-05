@@ -5,7 +5,7 @@ import kde_whiteBg from './Image/kde_whiteBg.png'
 import { Link } from 'react-router-dom'
 import theme from '../../application/utils/Theme';
 
-const Navbar = (element, index) => {
+const Navbar = ({bg, sticky}) => {
     
     const navOptions = [
         {
@@ -20,7 +20,7 @@ const Navbar = (element, index) => {
 
     return (
         <>
-            <Header>
+            <Header bg={bg} sticky={sticky}>
                 <Brand>
                     <div style={{ width: "4em", height: "auto" }}>
                         <img src={kde_whiteBg}

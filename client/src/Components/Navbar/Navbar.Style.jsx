@@ -3,10 +3,11 @@ import theme from '../../application/utils/Theme';
 
 export const Header = styled.div`    
     padding-top: 0.5em;    
-    position:fixed;                
+    position:${(prop)=> prop.sticky || "fixed" };                
     width:100%;
     color:${theme.textColor};
-    background: rgba(0,0,0,0.2);            
+    /* background: rgba(0,0,0,0.2);             */
+    background-color: ${(prop)=> prop.bg || "rgba(0,0,0,0.2)" };
     display:flex;
     justify-content:space-around;
     align-items:center;

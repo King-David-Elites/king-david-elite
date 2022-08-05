@@ -24,8 +24,10 @@ import { useState } from 'react'
 import { MOCK_DATA } from './MOCK_DATA'
 import MainButton from '../buttons/MainButton'
 import Footer from "../Footer/Footer"
+import { useNavigate } from 'react-router-dom'
 
 const RealEstateListing = () => {
+  
   return (
     <>
       <Navbar />
@@ -92,7 +94,8 @@ const RealEstate = (props) => {
     location
   } = props
   const [love, setLove] = useState(Loved)
-
+  const navigate = useNavigate()
+  
   return (
     <>
       <PropertyType>
@@ -146,6 +149,7 @@ const RealEstate = (props) => {
           height="3em"
           fontSize="0.8rem"
           marginTop="2em"
+          onClick={()=> navigate(`${propertyName}`)}
         >
           Enquire Now
         </MainButton>

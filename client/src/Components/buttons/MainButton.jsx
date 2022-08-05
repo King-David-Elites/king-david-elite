@@ -10,7 +10,7 @@ const MainButton = styled.button`
     color: ${props => props.color ? props.color : theme.textColor};
   background-color: ${theme.color};
     border: 2px solid ${theme.color};
-    border-radius: 0.5em;
+    border-radius: 6px;
     white-space: nowrap;
     display: flex;
     flex-direction: row;
@@ -33,7 +33,7 @@ const MainButton = styled.button`
 const MainOutlineButton = styled(MainButton)`
     color: ${props => props.color ? props.color : theme.color};
     background: rgba(0,0,0,0.0);
-  border-radius: 8px;  
+  border-radius: 6px;  
 `;
 
 export default MainButton;
