@@ -131,6 +131,7 @@ const Car = (props) => {
             <Reaction
               radius="0em"
               padding="1em 3em"
+              onClick={()=> navigate(`${title}`)}
             >
               <Text fontSize="0.8em ">ViewMore</Text>
             </Reaction>
