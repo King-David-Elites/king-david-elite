@@ -32,10 +32,10 @@ import { CarAPI } from "./DemoAPI/api"
 import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom'
 
-const CarsListing = () => {
+const EachCarPhotos = () => {
   return (
     <>
-      <Navbar />
+      <Navbar bg="black" sticky="sticky"/>
 
       <Background imageUrl={carpic}>
         <HeroSection>
@@ -79,7 +79,7 @@ const CarsListing = () => {
   )
 }
 
-export default CarsListing
+export default EachCarPhotos;
 
 const Car = (props) => {
   var {

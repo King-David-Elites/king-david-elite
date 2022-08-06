@@ -10,6 +10,20 @@ export const Background =styled.div`
     height:40em;
 `
 
+export const MorePic = styled(Background)`       
+    width:18em;
+    height:250px;    
+`
+export const MoreBg = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;    
+    width:100%;
+    height:100%;    
+    background:rgba(255,255,255,0.5);
+    cursor:pointer;
+`
+
 export const HeroSection = styled.div`
     background:rgba(0,0,0,0.4);
     font-family:${theme.fontFamily};
