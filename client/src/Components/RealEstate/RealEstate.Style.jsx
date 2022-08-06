@@ -45,17 +45,26 @@ export const EachBuildingContainer = styled.div`
     }
 
     .imageGallery{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        width:100%;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-items:center;                
+        // display: grid;
+        // grid-template-columns: 1fr 1fr;        
         gap: 5px;
-        padding: 16px 76px;
+        padding: 16px 30px;
+    }
 
-        img{
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
+    .image{        
+        width:18em;
+        height: 250px;            
+    }        
 
+    .image > img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
 

@@ -1,13 +1,18 @@
-import { LocationMarker } from 'heroicons-react'
+import { LocationMarker, BadgeCheck } from 'heroicons-react'
 import React, { Fragment } from 'react'
 import { useParams } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
-import { BottomBanner, EachBuildingContainer } from '../RealEstate/RealEstate.Style'
-import carpic from './Image/carpic.jpg'
+import { EachBuildingContainer } from '../RealEstate/RealEstate.Style'
+import { CarAPI } from './DemoAPI/api'
+import Banner from "../Banner/Banner";
+import {useNavigate} from 'react-router-dom';
+import { LuxuryLabel, MorePic, Text, MoreBg} from './Cars.Style'
 
 const EachCars = () => {
+    const navigate = useNavigate()
     const {title} = useParams()
+    const selectedCar = CarAPI.find((items)=> items.title === title);
   return (
     <Fragment>
         <Navbar bg="black" sticky="sticky"/>
@@ -18,36 +23,80 @@ const EachCars = () => {
             </div>
 
             <div className="banner">
-                <h3>{title}</h3>
-                    <h5>US $287,000.00</h5>
-                    <p><LocationMarker width={15}/> Doha, Quatar.</p>
+                <h3>{selectedCar.title}</h3>
+                    <h5>US {selectedCar.price}</h5>
+                    <p><LocationMarker width={15}/> {selectedCar.location}.</p>
             </div>
 
             <div className="imageGallery">
-                <img src={carpic} alt="" />
-                <img src={carpic} alt="" />
-                <img src={carpic} alt="" />
-                <img src={carpic} alt="" />
-                <p>Listed on June 28, 2022</p>
+                {
+                    selectedCar.images.map((image)=>{
+                        return(             
+                            <>
+                            <div id={image.id} {...image} selectedCar={selectedCar}>
+                                {
+                                    image.id==1 ?
+                                    <div 
+                                        style={{
+                                            width:"50em",
+                                            height:"400px"
+                                        }} 
+                                    >                                    
+                                        <img 
+                                            src={image.carListed} 
+                                            alt="car" 
+                                            width="100%"                                       
+                                            height="100%"
+                                        />              
+                                    </div>                      
+                                    :        
+                                    (
+                                        image.id<=3 &&
+                                        <div className="image">                          
+                                            <img 
+                                                src={image.carListed} 
+                                                alt="car"
+                                            />
+                                        </div>  
+                                    )                                                                                                                                                                                     
+                                }
+                                {
+                                (
+                                    image.id==4 &&
+                                    <MorePic imageUrl={image.carListed}>
+                                        <MoreBg
+                                            onClick={()=>navigate(`${selectedCar.id}`)}
+                                        >
+                                            <Text>+16</Text>
+                                        </MoreBg>
+                                    </MorePic>                                    
+                                )
+                                }
+                            </div>
+                            </>                                               
+                        )                        
+                    })
+                }                
+                <p>Listed on {selectedCar.dateListed}</p>
             </div>
 
             <div className="details">
                 <div className="listDetails">
                     <h4>Car Details and Specs</h4>
-                    <p>Year: 2018</p>
-                    <p>Address: 11B Shanar, Doha, Quatar</p>
-                    <p>Condition: Preowned</p>
-                    <p>Brand Name: Rolls Royce</p>
-                    <p>Car Model: Dusk</p>
-                    <p>Engine: V16</p>
-                    <p>Colour: White</p>
+                    <p>Year: {selectedCar.carDetails['Year']}</p>
+                    <p>Address: {selectedCar.carDetails['Address']}</p>
+                    <p>Condition: {selectedCar.carDetails['Condition']}</p>
+                    <p>Brand Name: {selectedCar.DealerName}</p>
+                    <p>Car Model: {selectedCar.carDetails['CarModel']}</p>
+                    <p>Engine: {selectedCar.carDetails['Engine']}</p>
+                    <p>Colour: {selectedCar.carDetails['Colour']}</p>
                 </div>
 
                 <div className="posterDetails">
                     <div className="container">
-                        <h4>Lambo Dealer</h4>
-                        <p>Shaner estate, Doha, Qatar.</p>
-                        <p>Joined: 28th July, 2022</p>
+                        <h4>{selectedCar.DealerName} <BadgeCheck color="blue" width="30px" /></h4>
+                        <p>Shaner estate, {selectedCar.location}.</p>
+                        <p>Joined: {selectedCar.dateJoined}</p>
 
                         <div className="options">
                             <div className="option solid">
@@ -60,15 +109,13 @@ const EachCars = () => {
                         </div>
                     </div>
 
-                    <img src={carpic} alt="" />
+                    <img src={selectedCar.CarPic} alt="dealer pic" />
                 </div>
             </div>
 
-            <BottomBanner url={carpic}>
-                <h1>Luxury Cars</h1>
-                <p>King David Elites</p>
-            </BottomBanner>
-
+            <Banner category="Cars" />
+            <br/>
+            <br/>
             <Footer />
         </EachBuildingContainer>
     </Fragment>

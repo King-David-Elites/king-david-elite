@@ -14,14 +14,12 @@ import {
   PicDealer,
   PicCar,
   Position,
-  Reaction,
-  LuxuryLabel,
-  LuxuryBody
+  Reaction
 } from './Cars.Style'
 import Navbar from '../Navbar/Navbar'
 import carpic from './Image/carpic.jpg'
-import transverse from './Image/transverse.jfif'
 import MainButton from "../buttons/MainButton"
+import Banner from "../Banner/Banner";
 import {
   Search,
   Adjustments,
@@ -67,22 +65,7 @@ const CarsListing = () => {
             })
           }
         </CarTypes>
-        <LuxuryLabel imageUrl={transverse}>
-          <LuxuryBody>
-            <Text
-              margin="1em auto 0em 3em"
-              fontSize="1.5rem"
-              fontWeight="500"
-            >
-              Luxury Cars
-            </Text>
-            <Text
-              margin="0em auto auto 6em"
-            >
-              King David Elites
-            </Text>
-          </LuxuryBody>
-        </LuxuryLabel>
+        <Banner category="Cars"/>
         <Text color="black" fontSize="0.8rem">
           King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
           Quis similique corrupti porro reiciendis dolore ipsa nobis mollitia explicabo, voluptatibus quibusdam illum perferendis libero est iusto ab, maxime quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
@@ -103,7 +86,7 @@ const Car = (props) => {
     DealerPic,
     DealerName,
     CarPic,
-    Description,
+    title,
     price,
     Loved,
     location
@@ -148,12 +131,13 @@ const Car = (props) => {
             <Reaction
               radius="0em"
               padding="1em 3em"
+              onClick={()=> navigate(`${title}`)}
             >
               <Text fontSize="0.8em ">ViewMore</Text>
             </Reaction>
           </div>
         </PicCar>
-        <Text color="black" fontWeight="700">{Description}</Text>
+        <Text color="black" fontWeight="700">{title}</Text>
         <Text color="black" fontWeight="700" fontSize="0.8rem">{price}</Text>
         <Position>
           <LocationMarkerOutline width="20px" />
@@ -164,7 +148,7 @@ const Car = (props) => {
           height="3em"
           fontSize="0.8rem"
           marginTop="2em"
-          onClick={()=> navigate(`${Description}`)}
+          onClick={()=> navigate(`${title}`)}
         >
           Enquire Now
         </MainButton>

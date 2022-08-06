@@ -4,6 +4,7 @@ import { Fragment } from 'react'
 import Navbar from '../Navbar/Navbar'
 import { BottomBanner, EachBuildingContainer } from './RealEstate.Style'
 import realEstatePics from './Image/real-estate-pics.jpg'
+import Banner from "../Banner/Banner";
 import Footer from '../Footer/Footer'
 import { useParams } from 'react-router-dom'
 
@@ -69,6 +70,7 @@ const EachBuilding = () => {
                 <h1>Luxury Cars</h1>
                 <p>King David Elites</p>
             </BottomBanner>
+            <Banner category="Real Estate"/>
 
             <Footer />
             

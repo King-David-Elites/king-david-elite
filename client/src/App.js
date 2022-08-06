@@ -17,6 +17,7 @@ import Profile from './Components/Dashboard/Profile';
 import Wallet from './Components/Dashboard/Wallet';
 import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachCars from './Components/Cars/EachCars';
+import EachCarPhotos from './Components/Cars/EachCarPhotos'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/real-estate/:title" element={<EachBuilding />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/cars/:title" element={<EachCars />} />
+        <Route path="/cars/:title/:Id" element={<EachCarPhotos />} />
         <Route path="/others" element={<OtherSections />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/dashboard/messages" element={<Messages />} />
