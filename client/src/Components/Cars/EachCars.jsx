@@ -6,9 +6,11 @@ import Navbar from '../Navbar/Navbar'
 import { EachBuildingContainer } from '../RealEstate/RealEstate.Style'
 import { CarAPI } from './DemoAPI/api'
 import Banner from "../Banner/Banner";
+import {useNavigate} from 'react-router-dom';
 import { LuxuryLabel, MorePic, Text, MoreBg} from './Cars.Style'
 
 const EachCars = () => {
+    const navigate = useNavigate()
     const {title} = useParams()
     const selectedCar = CarAPI.find((items)=> items.title === title);
   return (
@@ -31,7 +33,7 @@ const EachCars = () => {
                     selectedCar.images.map((image)=>{
                         return(             
                             <>
-                            <div id={image.id} {...image}>
+                            <div id={image.id} {...image} selectedCar={selectedCar}>
                                 {
                                     image.id==1 ?
                                     <div 
@@ -62,7 +64,9 @@ const EachCars = () => {
                                 (
                                     image.id==4 &&
                                     <MorePic imageUrl={image.carListed}>
-                                        <MoreBg>
+                                        <MoreBg
+                                            onClick={()=>navigate(`${selectedCar.id}`)}
+                                        >
                                             <Text>+16</Text>
                                         </MoreBg>
                                     </MorePic>                                    
