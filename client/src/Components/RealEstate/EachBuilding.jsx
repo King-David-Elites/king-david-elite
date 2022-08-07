@@ -1,55 +1,103 @@
-import { LocationMarker } from 'heroicons-react'
+import { LocationMarker, BadgeCheck } from 'heroicons-react'
 import React from 'react'
 import { Fragment } from 'react'
 import Navbar from '../Navbar/Navbar'
-import { BottomBanner, EachBuildingContainer } from './RealEstate.Style'
+import { EachBuildingContainer } from './RealEstate.Style'
 import realEstatePics from './Image/real-estate-pics.jpg'
 import Banner from "../Banner/Banner";
 import Footer from '../Footer/Footer'
 import { useParams } from 'react-router-dom'
+import { MOCK_DATA } from './MOCK_DATA'
+import {useNavigate} from 'react-router-dom';
+import { MorePic, Text, MoreBg } from '../Cars/Cars.Style'
 
 const EachBuilding = () => {
+    const navigate = useNavigate()
     const {title} = useParams()
+    const selectedBuilding = MOCK_DATA.find((items)=> items.propertyName === title);
   return (
     <Fragment>
         <Navbar bg="black" sticky="sticky"/>
 
         <EachBuildingContainer>
             <div className="upper">
-                <p>King David Elites | Luxury Cars</p>
+                <p>King David Elites | Luxury Real Estates</p>
             </div>
-
+            
             <div className="banner">
-                <h3>{title}</h3>
-                <h5>US $287,000.00</h5>
-                <p><LocationMarker width={15}/> Doha, Quatar.</p>
+                <h3>{selectedBuilding.title}</h3>
+                    <h5>US {selectedBuilding.price}</h5>
+                    <p><LocationMarker width={15}/> {selectedBuilding.location}.</p>
             </div>
 
             <div className="imageGallery">
-                <img src={realEstatePics} alt="" />
-                <img src={realEstatePics} alt="" />
-                <img src={realEstatePics} alt="" />
-                <img src={realEstatePics} alt="" />
-                <p>Listed on June 28, 2022</p>
+                {
+                    selectedBuilding.images.map((image)=>{
+                        return(             
+                            <>
+                            <div id={image.id} {...image} selectedBuilding={selectedBuilding}>
+                                {
+                                    image.id===1 ?
+                                    <div 
+                                        style={{
+                                            width:"50em",
+                                            height:"400px"
+                                        }} 
+                                    >                                    
+                                        <img 
+                                            src={image.estateListed} 
+                                            alt="car" 
+                                            width="100%"                                       
+                                            height="100%"
+                                        />              
+                                    </div>                      
+                                    :        
+                                    (
+                                        image.id<=3 &&
+                                        <div className="image">                          
+                                            <img 
+                                                src={image.estateListed} 
+                                                alt="car"
+                                            />
+                                        </div>  
+                                    )                                                                                                                                                                                     
+                                }
+                                {
+                                (
+                                    image.id===4 &&
+                                    <MorePic imageUrl={image.estateListed}>
+                                        <MoreBg
+                                            onClick={()=>navigate(`${selectedBuilding.id}`)}
+                                        >
+                                            <Text>+16</Text>
+                                        </MoreBg>
+                                    </MorePic>                                    
+                                )
+                                }
+                            </div>
+                            </>                                               
+                        )                        
+                    })
+                }                
+                <p>Listed on {selectedBuilding.dateListed}</p>
             </div>
 
             <div className="details">
                 <div className="listDetails">
                     <h4>Car Details and Specs</h4>
-                    <p>Year: 2018</p>
-                    <p>Address: 11B Shanar, Doha, Quatar</p>
-                    <p>Condition: Preowned</p>
-                    <p>Brand Name: Rolls Royce</p>
-                    <p>Car Model: Dusk</p>
-                    <p>Engine: V16</p>
-                    <p>Colour: White</p>
+                    <p>Year: {selectedBuilding.BuildingDetails['Year']}</p>
+                    <p>Address: {selectedBuilding.BuildingDetails['Address']}</p>
+                    <p>Condition: {selectedBuilding.BuildingDetails['Condition']}</p>
+                    <p>Brand Name: {selectedBuilding.DealerName}</p>
+                    <p>Car Model: {selectedBuilding.BuildingDetails['CarModel']}</p>
+                    <p>Engine: {selectedBuilding.BuildingDetails['Engine']}</p>
+                    <p>Colour: {selectedBuilding.BuildingDetails['Colour']}</p>
                 </div>
-
                 <div className="posterDetails">
                     <div className="container">
-                        <h4>Lambo Dealer</h4>
-                        <p>Shaner estate, Doha, Qatar.</p>
-                        <p>Joined: 28th July, 2022</p>
+                        <h4>{selectedBuilding.DealerName} <BadgeCheck color="blue" width="30px" /></h4>
+                        <p>Shaner estate, {selectedBuilding.location}.</p>
+                        <p>Joined: {selectedBuilding.dateJoined}</p>
 
                         <div className="options">
                             <div className="option solid">
@@ -65,13 +113,10 @@ const EachBuilding = () => {
                     <img src={realEstatePics} alt="" />
                 </div>
             </div>
-
-            <BottomBanner url={realEstatePics}>
-                <h1>Luxury Cars</h1>
-                <p>King David Elites</p>
-            </BottomBanner>
+            
             <Banner category="Real Estate"/>
-
+            <br/>
+            <br/>
             <Footer />
             
         </EachBuildingContainer>

@@ -7,7 +7,7 @@ import { EachBuildingContainer } from '../RealEstate/RealEstate.Style'
 import { CarAPI } from './DemoAPI/api'
 import Banner from "../Banner/Banner";
 import {useNavigate} from 'react-router-dom';
-import { LuxuryLabel, MorePic, Text, MoreBg} from './Cars.Style'
+import { MorePic, Text, MoreBg } from './Cars.Style'
 
 const EachCars = () => {
     const navigate = useNavigate()
@@ -35,7 +35,7 @@ const EachCars = () => {
                             <>
                             <div id={image.id} {...image} selectedCar={selectedCar}>
                                 {
-                                    image.id==1 ?
+                                    image.id===1 ?
                                     <div 
                                         style={{
                                             width:"50em",
@@ -62,7 +62,7 @@ const EachCars = () => {
                                 }
                                 {
                                 (
-                                    image.id==4 &&
+                                    image.id===4 &&
                                     <MorePic imageUrl={image.carListed}>
                                         <MoreBg
                                             onClick={()=>navigate(`${selectedCar.id}`)}

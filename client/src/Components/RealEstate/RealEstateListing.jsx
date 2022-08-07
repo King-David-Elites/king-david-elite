@@ -7,9 +7,7 @@ import {
   SearchC,
   Input,
   Text,
-  Body,
-  LuxuryLabel,
-  LuxuryBody,
+  Body,    
   Dealer,
   PicDealer,
   PicCar,
@@ -73,7 +71,7 @@ const RealEstate = (props) => {
     DealerPic,
     DealerName,
     image,
-    propertyName,
+    propertyName,    
     price,
     Loved,
     location
@@ -119,6 +117,7 @@ const RealEstate = (props) => {
             <Reaction
               radius="0em"
               padding="1em 3em"
+              onClick={()=> navigate(`${propertyName}`)}
             >
               <Text fontSize="0.8em ">ViewMore</Text>
             </Reaction>
