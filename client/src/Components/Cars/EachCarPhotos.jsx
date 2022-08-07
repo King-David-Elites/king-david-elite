@@ -28,32 +28,33 @@ const EachCarPhotos = ({active}) => {
         <Navbar bg="black" sticky="sticky"/>
 
         <EachBuildingContainer>
-            <div 
-                style={{cursor:"pointer"}}
-                className="upper"
-                onClick={()=>navigate(`/cars/${selectedCar.title}`)}
-            >
-                <ArrowLeft width="20px"/>
-                <p>Back</p>
-            </div>            
-
-            <div className="medias">
-                {
-                    MediaType.map((mediatype,i)=>{
-                        return(
-                            <MainButton
-                                key={i}
-                                background = {active===i ? "black": "white"}
-                                color = {active===i ? "white": "black"}
-                                border = "black"
-                                onClick={()=>navigate(`${mediatype.link}`)}
-                            >
-                                {mediatype.media}
-                            </MainButton>
-                        )
-                    })
-                }                
-            </div>
+            <div className="upper">
+                <div 
+                    className="upperContent"
+                    style={{cursor:"pointer"}}
+                    onClick={()=>navigate(`/cars/${selectedCar.title}`)}
+                >
+                    <ArrowLeft width="20px"/>
+                    <p>Back</p>
+                </div>   
+                <div className="medias">
+                    {
+                        MediaType.map((mediatype,i)=>{
+                            return(
+                                <MainButton
+                                    key={i}
+                                    background = {active===i ? "black": "white"}
+                                    color = {active===i ? "white": "black"}
+                                    border = "black"
+                                    onClick={()=>navigate(`${mediatype.link}`)}
+                                >
+                                    {mediatype.media}
+                                </MainButton>
+                            )
+                        })
+                    }                
+                </div>                             
+            </div>                        
 
             <div className="imageGallery">
                 {

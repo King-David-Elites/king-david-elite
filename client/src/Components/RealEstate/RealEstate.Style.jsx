@@ -30,7 +30,13 @@ export const EachBuildingContainer = styled.div`
         font-style: normal;
         font-weight: 300;
         font-size: 14px;     
-        gap:0.5em;   
+        gap:30vw;   
+    }
+
+    .upperContent{
+        display:flex;
+        align-items:center;                        
+        gap:0.5em;
     }
 
     .medias{
