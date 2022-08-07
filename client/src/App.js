@@ -26,10 +26,10 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage /> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
-        <Route path="/real-estate/:title" element={<EachBuilding />} />
+        <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/cars" element={<Cars />} />
-        <Route path="/cars/:title" element={<EachCars />} />
-        <Route path="/cars/:title/:Id" element={<EachCarPhotos />} />
+        <Route path="/cars/:title" element={<EachCars active={0} />} />
+        <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0}/>} />
         <Route path="/others" element={<OtherSections />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/dashboard/messages" element={<Messages />} />

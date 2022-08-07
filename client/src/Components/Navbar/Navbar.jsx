@@ -53,7 +53,7 @@ const Navbar = ({bg, sticky, active}) => {
                                     onClick={()=> navigate(nav.link)}
                                     
                                     >
-                                        <div className={active == i && "item-active"}>
+                                        <div className={active === i && "item-active"}>
                                            {nav.title} 
                                         </div>
                                         

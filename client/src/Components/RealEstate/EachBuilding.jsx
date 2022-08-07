@@ -9,12 +9,23 @@ import Footer from '../Footer/Footer'
 import { useParams } from 'react-router-dom'
 import { MOCK_DATA } from './MOCK_DATA'
 import {useNavigate} from 'react-router-dom';
+import theme from '../../application/utils/Theme';
 import { MorePic, Text, MoreBg } from '../Cars/Cars.Style'
 
-const EachBuilding = () => {
+const EachBuilding = ({active}) => {
     const navigate = useNavigate()
     const {title} = useParams()
     const selectedBuilding = MOCK_DATA.find((items)=> items.propertyName === title);
+    const MediaType = [
+        {
+            link:`/real-estate/${selectedBuilding.propertyName}`,
+            media:"Photos"
+        },
+        {
+            link:`/real-estate/${selectedBuilding.propertyName}/videos`,
+            media:"Videos"
+        }
+    ]
   return (
     <Fragment>
         <Navbar bg="black" sticky="sticky"/>
@@ -28,6 +39,23 @@ const EachBuilding = () => {
                 <h3>{selectedBuilding.title}</h3>
                     <h5>US {selectedBuilding.price}</h5>
                     <p><LocationMarker width={15}/> {selectedBuilding.location}.</p>
+            </div>
+
+            <div className="mediaType"> 
+                {
+                    MediaType.map((mediatype, i)=>{   
+                        return(
+                        <Text
+                            style={{cursor:"pointer"}}
+                            key={i}
+                            color = {active===i ? theme.color : "black"}
+                            onClick={()=>navigate(mediatype.link)}
+                        >
+                            {mediatype.media}
+                        </Text>
+                        )                                             
+                    })
+                }                                               
             </div>
 
             <div className="imageGallery">
