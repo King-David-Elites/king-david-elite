@@ -31,7 +31,8 @@ export const LI = styled.li`
     padding: 1.5em 0em; 
     cursor:pointer;   
     font-size:0.8rem; 
-    color:${props => props.color ? props.color : theme.textColor};              
+    color:${props => props.color ? props.color : theme.textColor};    
+              
     &:hover{
         color:${theme.color};
     }  

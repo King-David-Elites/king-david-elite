@@ -6,7 +6,7 @@ export const Background =styled.div`
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;    
-    width:100vw;
+    width:100%;
     height:40em;
 `
 

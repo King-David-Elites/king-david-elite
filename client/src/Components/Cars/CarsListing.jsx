@@ -35,7 +35,7 @@ import { useNavigate } from 'react-router-dom'
 const CarsListing = () => {
   return (
     <>
-      <Navbar />
+      <Navbar active={1}/>
 
       <Background imageUrl={carpic}>
         <HeroSection>

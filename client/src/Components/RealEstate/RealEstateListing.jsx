@@ -28,7 +28,7 @@ const RealEstateListing = () => {
   
   return (
     <>
-      <Navbar />
+      <Navbar active={0}/>
       <Background imageUrl={realEstatePics} >
         <HeroSection>
           <Text fontSize="2rem">Luxury Real Estate</Text>
