@@ -1,16 +1,16 @@
-import { LocationMarker, BadgeCheck } from 'heroicons-react'
-import React from 'react'
-import { Fragment } from 'react'
-import Navbar from '../Navbar/Navbar'
-import { EachBuildingContainer } from './RealEstate.Style'
-import realEstatePics from './Image/real-estate-pics.jpg'
+import { LocationMarker, BadgeCheck } from 'heroicons-react';
+import React from 'react';
+import { Fragment } from 'react';
+import Navbar from '../Navbar/Navbar';
+import { EachBuildingContainer } from './RealEstate.Style';
+import realEstatePics from './Image/real-estate-pics.jpg';
 import Banner from "../Banner/Banner";
-import Footer from '../Footer/Footer'
-import { useParams } from 'react-router-dom'
-import { MOCK_DATA } from './MOCK_DATA'
+import Footer from '../Footer/Footer';
+import { useParams } from 'react-router-dom';
+import { MOCK_DATA } from './MOCK_DATA';
 import {useNavigate} from 'react-router-dom';
 import theme from '../../application/utils/Theme';
-import { MorePic, Text, MoreBg } from '../Cars/Cars.Style'
+import { MorePic, Text, MoreBg } from '../Cars/Cars.Style';
 
 const EachBuilding = ({active}) => {
     const navigate = useNavigate()
@@ -140,14 +140,10 @@ const EachBuilding = ({active}) => {
 
                     <img src={realEstatePics} alt="" />
                 </div>
-            </div>
-            
-            <Banner category="Real Estate"/>
-            <br/>
-            <br/>
-            <Footer />
-            
+            </div>                                                                        
         </EachBuildingContainer>
+        <Banner category="Real Estate"/>
+        <Footer />
     </Fragment>
   )
 }

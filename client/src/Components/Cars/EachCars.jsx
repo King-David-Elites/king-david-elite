@@ -140,12 +140,10 @@ const EachCars = ({active}) => {
                     <img src={selectedCar.CarPic} alt="dealer pic" />
                 </div>
             </div>
-
-            <Banner category="Cars" />
-            <br/>
-            <br/>
-            <Footer />
+                                    
         </EachBuildingContainer>
+        <Banner category="Cars" />
+        <Footer />
     </Fragment>
   )
 }

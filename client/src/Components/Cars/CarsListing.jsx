@@ -64,16 +64,15 @@ const CarsListing = () => {
               )
             })
           }
-        </CarTypes>
-        <Banner category="Cars"/>
-        <Text color="black" fontSize="0.8rem">
-          King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
-          Quis similique corrupti porro reiciendis dolore ipsa nobis mollitia explicabo, voluptatibus quibusdam illum perferendis libero est iusto ab, maxime quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
-          Quasi molestias consequatur earum enim dolorem rem excepturi illo eius ut sint laborum quibusdam, accusamus ullam, voluptatum totam tempora eum! Optio ipsum maiores saepe officiis delectus minus. Alias, voluptas fuga?
-          Doloremque quos eum libero deleniti ducimus suscipit mollitia consequatur neque perspiciatis, autem ipsa deserunt facilis numquam veritatis nulla quidem esse officiis inventore rerum adipisci, velit ipsam dolorum saepe? Exercitationem, esse!
-        </Text>
+        </CarTypes>        
       </Body>
-
+      <Banner category="Cars"/>
+      <Text color="black" fontSize="0.8rem" margin="2em">
+        King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
+        Quis similique corrupti porro reiciendis dolore ipsa nobis mollitia explicabo, voluptatibus quibusdam illum perferendis libero est iusto ab, maxime quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
+        Quasi molestias consequatur earum enim dolorem rem excepturi illo eius ut sint laborum quibusdam, accusamus ullam, voluptatum totam tempora eum! Optio ipsum maiores saepe officiis delectus minus. Alias, voluptas fuga?
+        Doloremque quos eum libero deleniti ducimus suscipit mollitia consequatur neque perspiciatis, autem ipsa deserunt facilis numquam veritatis nulla quidem esse officiis inventore rerum adipisci, velit ipsam dolorum saepe? Exercitationem, esse!
+      </Text>
       <Footer />
     </>
   )

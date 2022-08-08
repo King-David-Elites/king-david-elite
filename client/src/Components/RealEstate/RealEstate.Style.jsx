@@ -20,7 +20,7 @@ export const PropertyType = styled.div`
     margin:1em 0em;
 `
 
-export const EachBuildingContainer = styled.div`
+export const EachBuildingContainer = styled.div`    
     .upper{
         display:flex;
         align-items:center;

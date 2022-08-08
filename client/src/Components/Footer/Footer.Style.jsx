@@ -10,6 +10,7 @@ export const FooterSection = styled.div`
     align-items:flex-start;    
     font-weight:light;
     color:${theme.footerColor};
+    margin-top:2em;
 `
 
 export const Section = styled.div`
