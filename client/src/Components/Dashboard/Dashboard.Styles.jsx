@@ -24,15 +24,17 @@ export const LeftContainer = styled.div`
 
     .nav_items{
         display: grid;
+        gap: 10px;
         margin: 60px 0;
         /* gap: 20px; */
 
         .item{
             display: flex;
             gap: 10px;
+            font-size: 14px;
             cursor: pointer;
             color: #252625;
-            padding: 10px 20px;
+            padding: 7px 17px;
             border-radius: 8px;
             transition: .3s;
         }

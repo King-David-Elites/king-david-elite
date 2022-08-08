@@ -15,10 +15,10 @@ import c2 from "./images/c2.jpg"
 import c3 from "./images/c3.jpg"
 import c4 from "./images/c4.jpg"
 import c5 from "./images/c5.jpg"
-import { Categories, CategoriesContainer, Category, Information, InformationContainer } from './Home.Style'
+import { BorderText, Categories, CategoriesContainer, Category, Information, InformationContainer, SubFooter } from './Home.Style'
 import business from "./images/business.jpg"
 import coffee from "./images/coffee.jpg"
-
+import blur from "./images/blur.jpg"
 
 
 const HomePage = () => {
@@ -109,6 +109,17 @@ const HomePage = () => {
       </Information>
       </InformationContainer>
    
+      <SubFooter bg={blur}>
+        <Text fontSize="24px">
+          Let's help you make more money by becoming an Affiliate
+        </Text>
+        <Text fontSize="14px">
+          King David Elite work closely with Affiliate Marketer that are compatible in terms of values and synergy.
+        </Text>
+        <BorderText>
+          SIGN UP FOR AN INVITE
+        </BorderText>
+      </SubFooter>
 
       <Footer/>
     </Fragment>
