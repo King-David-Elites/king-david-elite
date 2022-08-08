@@ -74,7 +74,7 @@ const EachBuilding = ({active}) => {
                                     >                                    
                                         <img 
                                             src={image.estateListed} 
-                                            alt="car" 
+                                            alt="realestate" 
                                             width="100%"                                       
                                             height="100%"
                                         />              
@@ -85,7 +85,7 @@ const EachBuilding = ({active}) => {
                                         <div className="image">                          
                                             <img 
                                                 src={image.estateListed} 
-                                                alt="car"
+                                                alt="realestate"
                                             />
                                         </div>  
                                     )                                                                                                                                                                                     

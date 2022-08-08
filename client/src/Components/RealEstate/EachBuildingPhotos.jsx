@@ -65,7 +65,7 @@ const EachBuildingPhotos = ({active}) => {
                                     <div className="image">                          
                                         <img 
                                             src={image.estateListed} 
-                                            alt="car"
+                                            alt="realestate"
                                         />
                                     </div>                                                                      
                                </div> 
