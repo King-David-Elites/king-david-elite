@@ -129,7 +129,7 @@ const Car = (props) => {
             justifyContent: "flex-end"
           }}>
             <Reaction
-              radius="0em"
+              radius="0em" 
               padding="1em 3em"
               onClick={()=> navigate(`${title}`)}
             >

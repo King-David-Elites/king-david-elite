@@ -7,12 +7,23 @@ import { EachBuildingContainer } from '../RealEstate/RealEstate.Style'
 import { CarAPI } from './DemoAPI/api'
 import Banner from "../Banner/Banner";
 import {useNavigate} from 'react-router-dom';
-import { LuxuryLabel, MorePic, Text, MoreBg} from './Cars.Style'
+import { MorePic, Text, MoreBg } from './Cars.Style'
+import theme from '../../application/utils/Theme';
 
-const EachCars = () => {
+const EachCars = ({active}) => {    
     const navigate = useNavigate()
     const {title} = useParams()
     const selectedCar = CarAPI.find((items)=> items.title === title);
+    const MediaType = [
+        {
+            link:`/cars/${selectedCar.title}`,
+            media:"Photos"
+        },
+        {
+            link:`/cars/${selectedCar.title}/videos`,
+            media:"Videos"
+        }
+    ]
   return (
     <Fragment>
         <Navbar bg="black" sticky="sticky"/>
@@ -24,8 +35,25 @@ const EachCars = () => {
 
             <div className="banner">
                 <h3>{selectedCar.title}</h3>
-                    <h5>US {selectedCar.price}</h5>
-                    <p><LocationMarker width={15}/> {selectedCar.location}.</p>
+                <h5>US {selectedCar.price}</h5>
+                <p><LocationMarker width={15}/> {selectedCar.location}.</p>
+            </div>
+
+            <div className="mediaType"> 
+                {
+                    MediaType.map((mediatype, i)=>{   
+                        return(
+                        <Text
+                            style={{cursor:"pointer"}}
+                            key={i}
+                            color = {active===i ? theme.color : "black"}
+                            onClick={()=>navigate(mediatype.link)}
+                        >
+                            {mediatype.media}
+                        </Text>
+                        )                                             
+                    })
+                }                                               
             </div>
 
             <div className="imageGallery">
@@ -35,7 +63,7 @@ const EachCars = () => {
                             <>
                             <div id={image.id} {...image} selectedCar={selectedCar}>
                                 {
-                                    image.id==1 ?
+                                    image.id===1 ?
                                     <div 
                                         style={{
                                             width:"50em",
@@ -62,7 +90,7 @@ const EachCars = () => {
                                 }
                                 {
                                 (
-                                    image.id==4 &&
+                                    image.id===4 &&
                                     <MorePic imageUrl={image.carListed}>
                                         <MoreBg
                                             onClick={()=>navigate(`${selectedCar.id}`)}

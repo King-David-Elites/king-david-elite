@@ -22,12 +22,28 @@ export const PropertyType = styled.div`
 
 export const EachBuildingContainer = styled.div`
     .upper{
+        display:flex;
+        align-items:center;
         background: rgba(20, 18, 0, 0.05);
         backdrop-filter: blur(20px);
         padding: 16px 64px;
         font-style: normal;
         font-weight: 300;
-        font-size: 14px;
+        font-size: 14px;     
+        gap:30vw;   
+    }
+
+    .upperContent{
+        display:flex;
+        align-items:center;                        
+        gap:0.5em;
+    }
+
+    .medias{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:2em;
     }
 
     .banner{
@@ -42,6 +58,14 @@ export const EachBuildingContainer = styled.div`
             text-align: center;
             justify-content: center;
         }
+    }
+
+    .mediaType{
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        gap:1.5em;
+        padding: 0px 6em;
     }
 
     .imageGallery{
