@@ -55,4 +55,5 @@ export const Brand = styled.div`
     align-items: center;
     gap:1em;    
     font-weight:700;
+    cursor: pointer;
 `

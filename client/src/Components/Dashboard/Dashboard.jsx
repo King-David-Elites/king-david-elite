@@ -4,21 +4,31 @@ import { DashboardContainer, LeftContainer, RightContainer } from './Dashboard.S
 import { FaSearch } from "react-icons/fa"
 import Messages from './Messages'
 import { useNavigate } from 'react-router-dom'
+import kde_whiteBg from '../Navbar/Image/kde_whiteBg.png'
+import { LogoText } from '../Navbar/Navbar.Style'
+
 
 const Dashboard = ({element, index}) => {
     const navigate = useNavigate()
   return (
     <DashboardContainer>
         <LeftContainer>
-            <div className="top_logo">
-                King David Elites
+            <div
+             className="top_logo"
+             onClick={()=> navigate("/")}
+            >
+                <img src={kde_whiteBg} alt="" />
+                <LogoText>
+                    KING DAVID ELITE
+                </LogoText>
+                
             </div>
 
             <div className="nav_items">
                 {
                 navigators.map((nav, i)=>{
                     return(
-                        <div key={i} className={ index == i ? "item active" : "item"} onClick={()=> navigate(`/dashboard/${nav.link}`)}>
+                        <div key={i} className={ index == i +1 ? "item active" : "item"} onClick={()=> navigate(`/dashboard/${nav.link}`)}>
                             <p>{nav.icon }</p>
                             <p>{nav.title}</p>
                         </div>

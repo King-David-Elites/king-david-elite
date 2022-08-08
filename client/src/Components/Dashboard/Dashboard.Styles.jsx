@@ -14,7 +14,12 @@ export const LeftContainer = styled.div`
     min-height: 100vh;
 
     .top_logo{
-        padding: 10px 3px ;
+        padding:  3px ;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        cursor: pointer;
     }
 
     .nav_items{

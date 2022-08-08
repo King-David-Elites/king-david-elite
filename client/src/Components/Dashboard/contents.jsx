@@ -2,11 +2,6 @@ import {FaHome, FaComment, FaWallet, FaBell, FaUser} from "react-icons/fa"
 
 export const navigators = [
     {
-        title: "Home",
-        icon: <FaHome color="#FFDF00"/>,
-        link: "/"
-    },
-    {
         title: "Messages",
         icon: <FaComment color="#FFDF00"/>,
         link: "messages"

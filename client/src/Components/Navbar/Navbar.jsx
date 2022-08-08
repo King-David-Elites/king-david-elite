@@ -63,9 +63,9 @@ const Navbar = ({bg, sticky, active}) => {
                         }
                     </UL>
                 </div>
-                <Brand>
-                    SELL
-                    <MainOutlineButton>SIGN UP</MainOutlineButton>
+                <Brand
+                 onClick={()=> navigate("/dashboard")}>
+                  DASHBOARD
                 </Brand>
             </Header>
         </>
