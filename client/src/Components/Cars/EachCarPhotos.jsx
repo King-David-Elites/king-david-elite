@@ -73,13 +73,10 @@ const EachCarPhotos = ({active}) => {
                         )                        
                     })
                 }                                
-            </div>           
-
-            <Banner category="Cars" />
-            <br/>
-            <br/>
-            <Footer />
+            </div>                      
         </EachBuildingContainer>
+        <Banner category="Cars" />                                         
+        <Footer />        
     </Fragment>
   )
 }

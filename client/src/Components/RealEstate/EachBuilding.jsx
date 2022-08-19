@@ -1,19 +1,18 @@
-import { LocationMarker, BadgeCheck } from 'heroicons-react'
-import React from 'react'
-import { Fragment } from 'react'
-import Navbar from '../Navbar/Navbar'
-import { EachBuildingContainer } from './RealEstate.Style'
-import realEstatePics from './Image/real-estate-pics.jpg'
+import { LocationMarker, BadgeCheck } from 'heroicons-react';
+import React from 'react';
+import Navbar from '../Navbar/Navbar';
+import { EachBuildingContainer } from './RealEstate.Style';
+import realEstatePics from './Image/real-estate-pics.jpg';
 import Banner from "../Banner/Banner";
-import Footer from '../Footer/Footer'
-import { useParams } from 'react-router-dom'
-import { MOCK_DATA } from './MOCK_DATA'
+import Footer from '../Footer/Footer';
+import { useParams } from 'react-router-dom';
+import { MOCK_DATA } from './MOCK_DATA';
 import {useNavigate} from 'react-router-dom';
 import theme from '../../application/utils/Theme';
-import { MorePic, Text, MoreBg } from '../Cars/Cars.Style'
+import { MorePic, Text, MoreBg } from '../Cars/Cars.Style';
 
 const EachBuilding = ({active}) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const {title} = useParams()
     const selectedBuilding = MOCK_DATA.find((items)=> items.propertyName === title);
     const MediaType = [
@@ -27,7 +26,7 @@ const EachBuilding = ({active}) => {
         }
     ]
   return (
-    <Fragment>
+    <>
         <Navbar bg="black" sticky="sticky"/>
 
         <EachBuildingContainer>
@@ -74,8 +73,8 @@ const EachBuilding = ({active}) => {
                                     >                                    
                                         <img 
                                             src={image.estateListed} 
-                                            alt="car" 
-                                            width="100%"                                       
+                                            alt="realestate" 
+                                            width="100%"                                 
                                             height="100%"
                                         />              
                                     </div>                      
@@ -85,10 +84,10 @@ const EachBuilding = ({active}) => {
                                         <div className="image">                          
                                             <img 
                                                 src={image.estateListed} 
-                                                alt="car"
+                                                alt="realestate"
                                             />
                                         </div>  
-                                    )                                                                                                                                                                                     
+                                    )                                                  
                                 }
                                 {
                                 (
@@ -112,14 +111,14 @@ const EachBuilding = ({active}) => {
 
             <div className="details">
                 <div className="listDetails">
-                    <h4>Car Details and Specs</h4>
-                    <p>Year: {selectedBuilding.BuildingDetails['Year']}</p>
-                    <p>Address: {selectedBuilding.BuildingDetails['Address']}</p>
-                    <p>Condition: {selectedBuilding.BuildingDetails['Condition']}</p>
-                    <p>Brand Name: {selectedBuilding.DealerName}</p>
-                    <p>Car Model: {selectedBuilding.BuildingDetails['CarModel']}</p>
-                    <p>Engine: {selectedBuilding.BuildingDetails['Engine']}</p>
-                    <p>Colour: {selectedBuilding.BuildingDetails['Colour']}</p>
+                    <h4>Amenities</h4>
+                    <p>Swimming Pool</p>
+                    <p>Gymnasium</p>
+                    <p>Garden</p>
+                    <p>Jacuzzi</p>
+                    <p>Fireplace</p>
+                    <p>Air Conditioning</p>
+                    <p className="yearDetail">Year: {selectedBuilding.BuildingDetails['YearBuilt']}</p>
                 </div>
                 <div className="posterDetails">
                     <div className="container">
@@ -140,15 +139,11 @@ const EachBuilding = ({active}) => {
 
                     <img src={realEstatePics} alt="" />
                 </div>
-            </div>
-            
-            <Banner category="Real Estate"/>
-            <br/>
-            <br/>
-            <Footer />
-            
+            </div>                                                                        
         </EachBuildingContainer>
-    </Fragment>
+        <Banner category="Real Estate"/>
+        <Footer />
+    </>
   )
 }
 
