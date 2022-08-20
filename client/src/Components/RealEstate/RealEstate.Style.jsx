@@ -1,14 +1,18 @@
 import styled from "styled-components"
+import theme from "../../application/utils/Theme";
 
 export const EstateProperties = styled.div`
     display:flex;
     justify-content:space-between;  
     align-items:center;  
     gap:1em;
-    padding:2em;    
+    padding:0em;    
     flex-wrap:wrap;
     width:100%;
-`
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        padding:2em;
+    }`
 
 export const PropertyType = styled.div`
     flex: 1 1 25em;    

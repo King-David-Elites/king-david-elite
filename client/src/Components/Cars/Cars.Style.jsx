@@ -38,10 +38,14 @@ export const HeroSection = styled.div`
 
 export const Text =styled.div`
     color:${props => props.color ? props.color : theme.textColor};
-    font-size:${props => props.fontSize ? props.fontSize : "1rem"};
-    font-weight:${props => props.fontWeight ? props.fontWeight : "light"};    
+    font-size:${props => props.fontSize ? props.fontSize : "1.4rem"};
+    font-weight:${props => props.fontWeight ? props.fontWeight : "bold"};    
     margin:${props => props.margin ? props.margin : "0em"};    
     padding:${props => props.padding ? props.padding : "0em"};    
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        font-size:${props => props.fontSize ? props.fontSize : "1rem"};
+    }
 `
 
 export const SearchSection = styled.div`

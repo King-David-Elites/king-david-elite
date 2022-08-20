@@ -1,11 +1,5 @@
 import React, { Fragment } from 'react'
-import theme from '../../application/utils/Theme'
-import PhotoButton from '../buttons/PhotoButton'
-import MainButton, { MainOutlineButton } from '../buttons/MainButton'
-import VideoButton from '../buttons/VideoButton'
 import Navbar from '../Navbar/Navbar'
-import Dashboard from '../Dashboard/Dashboard'
-import Subfooter from './subfooter'
 import Footer from '../Footer/Footer'
 import { Background, HeroSection, Text } from '../Cars/Cars.Style'
 // import './style.css' 
@@ -14,7 +8,6 @@ import c1 from "./images/c1.jpg"
 import c2 from "./images/c2.jpg"
 import c3 from "./images/c3.jpg"
 import c4 from "./images/c4.jpg"
-import c5 from "./images/c5.jpg"
 import { BorderText, Categories, CategoriesContainer, Category, Information, InformationContainer, SubFooter } from './Home.Style'
 import business from "./images/business.jpg"
 import coffee from "./images/coffee.jpg"

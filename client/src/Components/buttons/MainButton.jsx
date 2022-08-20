@@ -5,7 +5,7 @@ const MainButton = styled.button`
   width: ${props => props.width ? props.width : "65px"};
    height: ${props => props.height ? props.height : "25px"};
    font-weight: 700;
-    font-size: ${props => props.fontSize ? props.fontSize : "0.7em"};
+    font-size: ${props => props.fontSize ? props.fontSize : "0.9em"};
     line-height: 0.8em;
     color: ${props => props.color ? props.color : theme.textColor};
   background-color: ${theme.color};

@@ -1,15 +1,13 @@
 import React from 'react'
 import { Header, UL, LI, ULI, LogoText, Brand } from './Navbar.Style'
-import { MainOutlineButton } from '../buttons/MainButton'
 import kde_whiteBg from './Image/kde_whiteBg.png'
-import { Link, useNavigate } from 'react-router-dom'
-import theme from '../../application/utils/Theme';
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { MdDashboard } from 'react-icons/md';
 
-const Navbar = ({bg, sticky, active}) => {
+const Navbar = ({ bg, sticky, active }) => {
 
     const navigate = useNavigate()
-    
+
     const navOptions = [
         {
             title: "REAL ESTATE",
@@ -29,16 +27,15 @@ const Navbar = ({bg, sticky, active}) => {
         }
     ]
 
-    
+
 
     return (
         <>
-            <Header bg={bg} sticky={sticky}>
-                <Brand onClick={()=> navigate("/")}>
+            <Header className='bg-cover' bg={bg} sticky={sticky}>
+                <Brand onClick={() => navigate("/")}>
                     <div style={{ width: "4em", height: "auto" }}>
                         <img src={kde_whiteBg}
-                            width="100%"
-                            heigth="100%"
+                            className='w-[100%] h-[100%]'
                             alt="brandlogo" />
                     </div>
                     <LogoText>KING DAVID ELITES</LogoText>
@@ -46,27 +43,43 @@ const Navbar = ({bg, sticky, active}) => {
                 <div>
                     <UL>
                         {
-                            navOptions.map((nav, i)=>{
-                                return(
-                                    <LI 
-                                    key={i}
-                                    onClick={()=> navigate(nav.link)}
-                                    
+                            navOptions.map((nav, i) => {
+                                return (
+                                    <LI
+                                        key={i}
+                                        onClick={() => navigate(nav.link)}
+
                                     >
                                         <div className={active === i && "item-active"}>
-                                           {nav.title} 
+                                            {nav.title}
                                         </div>
-                                        
+
                                     </LI>
                                 )
                             })
                         }
                     </UL>
                 </div>
-                <Brand
-                 onClick={()=> navigate("/dashboard")}>
-                  DASHBOARD
+
+                <Brand onClick={() => navigate("/dashboard")}>
+                    <div className='dashboard'>DASHBOARD</div>
+                    <div className="h-[8%] w-[full] z-[10]">
+                        <div className="dashboardIcon">
+                            <MdDashboard size={20} />
+                            {/* <span className='text'>DASHBOARD</span> */}
+                        </div>
+                    </div>
                 </Brand>
+                {/* <div className="h-[8%] fixed bottom-0 z-[10] w-full bg-white md:hidden">
+                        <div className="bottom-option-mini-container">
+                            <div className={`bottom-options ${active === 0.5 && "item-active"}`}>
+                                <div className={`icon ${active === 0.5 && "item-active" ? ` bg-red-800` : ""}`} >
+                                    <FaHome size={20} />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> */}
             </Header>
         </>
     )
