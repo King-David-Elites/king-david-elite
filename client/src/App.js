@@ -9,8 +9,6 @@ import HomePage from './Components/Home/HomePage';
 import RealEstateListing from "./Components/RealEstate/RealEstateListing";
 import Cars from "./Components/Cars/CarsListing"
 import OtherSections from "./Components/OtherSections/OtherSections"
-import Dashboard from './Components/Dashboard/Dashboard';
-import Navbar from "./Components/Navbar/Navbar"
 import Messages from './Components/Dashboard/Messages';
 import Notifications from './Components/Dashboard/Notifications';
 import Profile from './Components/Dashboard/Profile';
