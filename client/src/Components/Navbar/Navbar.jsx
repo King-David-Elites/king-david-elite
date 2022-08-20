@@ -2,7 +2,7 @@ import React from 'react'
 import { Header, UL, LI, ULI, LogoText, Brand } from './Navbar.Style'
 import kde_whiteBg from './Image/kde_whiteBg.png'
 import { useNavigate } from 'react-router-dom'
-import { MdDashboard } from 'react-icons/md';
+import { MdMenu } from 'react-icons/md';
 
 const Navbar = ({ bg, sticky, active }) => {
 
@@ -65,21 +65,11 @@ const Navbar = ({ bg, sticky, active }) => {
                     <div className='dashboard'>DASHBOARD</div>
                     <div className="h-[8%] w-[full] z-[10]">
                         <div className="dashboardIcon">
-                            <MdDashboard size={20} />
+                            <MdMenu size={20} />
                             {/* <span className='text'>DASHBOARD</span> */}
                         </div>
                     </div>
                 </Brand>
-                {/* <div className="h-[8%] fixed bottom-0 z-[10] w-full bg-white md:hidden">
-                        <div className="bottom-option-mini-container">
-                            <div className={`bottom-options ${active === 0.5 && "item-active"}`}>
-                                <div className={`icon ${active === 0.5 && "item-active" ? ` bg-red-800` : ""}`} >
-                                    <FaHome size={20} />
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> */}
             </Header>
         </>
     )

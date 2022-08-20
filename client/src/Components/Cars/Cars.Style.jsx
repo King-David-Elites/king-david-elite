@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import theme from '../../application/utils/Theme';
 
-export const Background =styled.div`       
+export const Background = styled.div`       
     background-image:url(${props => props.imageUrl});
     background-position:center;
     background-size:cover;
@@ -36,9 +36,15 @@ export const HeroSection = styled.div`
     height:inherit;
 `
 
-export const Text =styled.div`
+export const Seperator = styled.div`
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+`
+
+export const Text = styled.div`
     color:${props => props.color ? props.color : theme.textColor};
-    font-size:${props => props.fontSize ? props.fontSize : "1.4rem"};
+    font-size:${props => props.fontSize ? props.fontSize : "1.3rem"};
     font-weight:${props => props.fontWeight ? props.fontWeight : "bold"};    
     margin:${props => props.margin ? props.margin : "0em"};    
     padding:${props => props.padding ? props.padding : "0em"};    
@@ -52,16 +58,40 @@ export const SearchSection = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
+    flex-direction: column;
     gap:1em;
     padding-top: 2em;  
-    width:100%;      
+    width:100%; 
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        flex-direction: row;
+        }
 `
+
+export const SharedSection = styled.div`
+     display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:1em;
+    padding-top: 2em;  
+    width:100%; 
+`
+
+
 export const SearchC = styled(SearchSection)`    
-    flex: 0 1 25em;
+    flex: 0 1 0em;
+    padding:0.5em 2em;;
     background:rgb(255,255,255,0.7);
-    padding:0.5em 1em;
     border-radius: 0.5em;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 85%;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        flex: 0 1 25em;
+        padding:0.5em 1em;
+        }
 `
 
 export const Input = styled.input`    
@@ -78,6 +108,11 @@ export const FilterBox = styled(SearchC)`
     background:${theme.color};
     justify-content:center;
     gap:0em;
+    width: 50%;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+       width: 100%;
+        }
 `
 
 export const Body = styled.div`    
@@ -110,7 +145,7 @@ export const CarType = styled.div`
     margin:1em 0em;
 `
 
-export const Dealer = styled(SearchSection)`
+export const Dealer = styled(SharedSection)`
     padding:0em;
     justify-content:flex-start;
 `

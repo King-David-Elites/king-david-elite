@@ -82,6 +82,7 @@ export const Brand = styled.div`
         color: white;
         border: 6px solid #EEF0F2;
         padding: 0.8em;
+        cursor: pointer;
     }
 
     .text{

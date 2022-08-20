@@ -3,8 +3,6 @@ import React from 'react'
 import {
   Background,
   HeroSection,
-  SearchSection,
-  SearchC,
   Input,
   Text,
   Body,    
@@ -14,6 +12,7 @@ import {
   Reaction,
   Position
 } from '..//Cars/Cars.Style'
+import { SearchSection, SearchC  } from './RealEstate.Style';
 import Navbar from '../Navbar/Navbar'
 import realEstatePics from './Image/real-estate-pics.jpg'
 import { EstateProperties, PropertyType } from './RealEstate.Style'

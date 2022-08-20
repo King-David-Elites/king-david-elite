@@ -24,6 +24,28 @@ export const PropertyType = styled.div`
     margin:1em 0em;
 `
 
+export const SearchSection = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:1em;
+    padding-top: 2em;  
+    width:100%;        
+`
+
+export const SearchC = styled(SearchSection)`    
+    flex: 0 1 20em;
+    padding:0.5em 1em;
+    background:rgb(255,255,255,0.7);
+    border-radius: 0.5em;
+    justify-content: space-between;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        flex: 0 1 25em;
+        padding:0.5em 1em;
+        }
+`
+
 export const EachBuildingContainer = styled.div`    
     .upper{
         display:flex;

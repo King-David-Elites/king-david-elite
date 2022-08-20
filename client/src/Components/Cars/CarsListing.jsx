@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {
   Background,
   HeroSection,
@@ -14,7 +14,7 @@ import {
   PicDealer,
   PicCar,
   Position,
-  Reaction
+  Reaction,
 } from './Cars.Style'
 import Navbar from '../Navbar/Navbar'
 import carpic from './Image/carpic.jpg'
@@ -35,21 +35,20 @@ import { useNavigate } from 'react-router-dom'
 const CarsListing = () => {
   return (
     <>
-      <Navbar active={1}/>
-
+      <Navbar active={1} />
       <Background imageUrl={carpic}>
         <HeroSection>
           <Text fontSize="2rem">Luxury Cars</Text>
-          <SearchSection>
-            <SearchC>
-              <Input placeholder='search makes or model' />
-              <Search width="30px" />
-            </SearchC>
-            <FilterBox>
-              <MainButton width="60px">Filter</MainButton>
-              <Adjustments width="30px" />
-            </FilterBox>
-          </SearchSection>
+            <SearchSection>
+              <SearchC>
+                <Input placeholder='search makes or model' />
+                <Search width="30px" />
+              </SearchC>
+              <FilterBox>
+                <MainButton width="60px">Filter</MainButton>
+                <Adjustments width="30px" />
+              </FilterBox>
+            </SearchSection>
           <Text>find new and preowned cars for sale</Text>
         </HeroSection>
       </Background>
@@ -64,9 +63,9 @@ const CarsListing = () => {
               )
             })
           }
-        </CarTypes>        
+        </CarTypes>
       </Body>
-      <Banner category="Cars"/>
+      <Banner category="Cars" />
       <Text color="black" fontSize="0.8rem" margin="2em">
         King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
         Quis similique corrupti porro reiciendis dolore ipsa nobis mollitia explicabo, voluptatibus quibusdam illum perferendis libero est iusto ab, maxime quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
@@ -128,9 +127,9 @@ const Car = (props) => {
             justifyContent: "flex-end"
           }}>
             <Reaction
-              radius="0em" 
+              radius="0em"
               padding="1em 3em"
-              onClick={()=> navigate(`${title}`)}
+              onClick={() => navigate(`${title}`)}
             >
               <Text fontSize="0.8em ">ViewMore</Text>
             </Reaction>
@@ -147,7 +146,7 @@ const Car = (props) => {
           height="3em"
           fontSize="0.8rem"
           marginTop="2em"
-          onClick={()=> navigate(`${title}`)}
+          onClick={() => navigate(`${title}`)}
         >
           Enquire Now
         </MainButton>
