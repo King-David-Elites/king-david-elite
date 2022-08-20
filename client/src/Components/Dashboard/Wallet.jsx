@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import Dashboard from './Dashboard'
-import { GenericContainer } from './Dashboard.Styles'
+import { GenericContainer, LeftContainer } from './Dashboard.Styles'
 import { Leftwallet } from './Dashboard.Styles'
 import { Rightwallet } from './Dashboard.Styles'
 import { Bottom } from './Dashboard.Styles'
+
 
 
 
@@ -25,7 +26,7 @@ const WalletAsElement = ()=>{
           </Leftwallet>
 
           <Rightwallet>
-
+           
           </Rightwallet>
 
           <Bottom>
@@ -34,35 +35,35 @@ const WalletAsElement = ()=>{
                 <th>Transaction</th>
               </tr>
               <tr>
-                <td>$1,200.00</td>
+                <td><span className='green'>$1,200.00</span></td>
                 <td>112233HR</td>
                 <td>Daniels Whales</td>
                 <td>16 July,2022</td>
                 <td>2:50pm</td>
               </tr>
               <tr>
-                <td>$21,710.00</td>
+                <td><span className='red'>$21,710.00</span></td>
                 <td>5413691359</td>
                 <td>Lambo Dealer</td>
                 <td>02 July,2022</td>
                 <td>5:00am</td>
               </tr>
               <tr>
-                <td>$7,200.00</td>
+                <td><span className='green'>$7,200.00</span></td>
                 <td>223833AS</td>
                 <td>Leonardo Caprisonne</td>
                 <td>24 March,2022</td>
                 <td>2:51am</td>
               </tr>
               <tr>
-                <td>$1,200.00</td>
+                <td><span className='green'>$1,200.00</span></td>
                 <td>112233HR</td>
                 <td>Daniel Whales</td>
                 <td>16 July,2022</td>
                 <td>7:09pm</td>
               </tr>
               <tr>
-                <td>$9,450.00</td>
+                <td><span className='red'>$9,450.00</span></td>
                 <td>112233FT</td>
                 <td>Daniel Whales</td>
                 <td>19 July,2022</td>

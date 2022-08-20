@@ -194,10 +194,12 @@ export const NotificationContainer = styled.div`
 `
 
 export const GenericContainer = styled.div`
-    background-color: white;
     border-radius: 8px;
-    height: 80vh;
+    height: 115vh;
 `
+
+
+// wallet code section
 
 export const Leftwallet = styled.div`
 
@@ -256,10 +258,7 @@ div{
         background: #A6A6A6;
         border-radius: 4px;
     }
-
-    // .transfer{
-    //     background: #FFDF00;
-    // }
+q1  we
 }
 
 p{
@@ -279,6 +278,14 @@ p{
 `
 
 export const Rightwallet = styled.div`
+position: absolute;
+width: 500px;
+height: 369px;
+left: 824px;
+top: 110px;
+background: #FFFFFF;
+border-radius: 8px;
+
 
 
 
@@ -289,31 +296,51 @@ export const Rightwallet = styled.div`
 export const Bottom = styled.div`
 
 position: absolute;
-width: 1003px;
-height: 442px;
+width: 1045px;
+height: 310px;
 left: 277px;
-top: 502px;
+top: 522px;
 background: #FFFFFF;
-border-radius: 8px;
+border-radius:8px;
 
  table{
+    border-collapse:collapse;
     width:100%;  
+    overflow:hidden;
 }
 
 td{
-    padding:10px;
+    padding:12px 44px;
     font-family: 'Inter';
     font-style: normal;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 22px;
-    text-align: center;
+    text-align:left;
 }
 
-table,td,tr{
-    border-collapse:collapse;
-    border-bottom:0.01px solid black;
+
+table tr {
+    border-bottom:1px solid #dddddd;
 }
 
+table th{
+    padding:20px;
+    padding-left:0px;
+    // text-align:left;
+}
+
+table tr:nth-of-type(6 ) {
+    border-bottom:none;
+
+}
+.red{
+    color:red;
+}
+
+.green{
+    color:green;
+}
 
 
 `
+
