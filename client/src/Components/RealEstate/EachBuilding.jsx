@@ -27,7 +27,7 @@ const EachBuilding = ({ active }) => {
     ]
     return (
         <>
-            <Navbar bg="black" sticky="sticky" />
+            <Navbar bg="black" position="sticky" />
 
             <EachBuildingContainer>
                 <div className="upper">
@@ -68,18 +68,10 @@ const EachBuilding = ({ active }) => {
                                     <div id={image.id} {...image} selectedBuilding={selectedBuilding}>
                                         {
                                             image.id === 1 ?
-                                                <div className='imgCont'
-                                                    // style={{
-                                                    //     width: "30em",
-                                                    //     height: "400px"
-                                                    // }}
-                                                >
+                                                <div className='imgCont'>
                                                     <img
                                                         src={image.estateListed}
-                                                        alt="realestate"
-                                                        width="100%"
-                                                        height="100%"
-                                                    />
+                                                        alt="realestate"/>
                                                 </div>
                                                 :
                                                 (
@@ -140,7 +132,7 @@ const EachBuilding = ({ active }) => {
                             </div>
                         </div>
 
-                        <img src={realEstatePics} alt="" />
+                        <img className='buildingImage' src={realEstatePics} alt="" />
                     </div>
                 </div>
             </EachBuildingContainer>

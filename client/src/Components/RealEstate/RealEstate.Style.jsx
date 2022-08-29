@@ -136,8 +136,8 @@ export const EachBuildingContainer = styled.div`
     }
 
     .imgCont{
-        width: 50em;
-        height: 350px;
+        width:20em;
+        height: 250px;   
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
             width: 50em;
@@ -145,8 +145,14 @@ export const EachBuildingContainer = styled.div`
         }    
     }
 
+    .imgCont > img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
     .image{        
-        width:18em;
+        width:20em;
         height: 250px;            
     }        
 
@@ -159,9 +165,17 @@ export const EachBuildingContainer = styled.div`
 
     .details{
         display: flex;
+        flex-direction: column;
         margin: 50px 72px;
         align-items: center;
         justify-content: space-between;
+        gap: 2em; 
+
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+           flex-direction: row;
+           align-items: center;
+        justify-content: space-between;
+        }  
 
         .listDetails{
             display: grid;
@@ -173,19 +187,30 @@ export const EachBuildingContainer = styled.div`
         }
 
         .posterDetails > img{
-            width: 200px;
+            width: 300px;
             height: 200px;
-            border-radius: 48px 0 48px 0;
+            border-radius: 40px 0 40px 0;
+
+            @media (min-width: ${theme.breakPoint['tablet']}) {
+                width: 200px;
+                height: 200px;
+                border-radius: 48px 0 48px 0;
+            }  
         }
     }
 
     .posterDetails{
         display: flex;
-        padding: 30px 50px;
+        flex-direction: column;
+        padding: 30px 60px;
         gap: 20px;
         align-items: center;
         background: rgba(255, 223, 0, 0.1);
-        backdrop-filter: blur(40px);
+
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+           flex-direction: row;
+           padding: 30px 50px;
+        }  
 
         .container{
             display: grid;
@@ -212,6 +237,7 @@ export const EachBuildingContainer = styled.div`
                 }
 
             }
+
         }
 
     }

@@ -23,6 +23,7 @@ export const FooterSection = styled.div`
         font-weight:light;
         margin-top:2em;
         gap: 1em;
+       
     }`
 
 export const Section = styled.div`
@@ -35,6 +36,7 @@ export const Section = styled.div`
     @media (min-width: ${theme.breakPoint['tablet']}) {
        justify-content:flex-start;
        align-items:flex-start; 
+       
     }`
 
 export const Head = styled.div`
