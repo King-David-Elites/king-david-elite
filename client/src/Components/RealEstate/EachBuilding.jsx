@@ -123,7 +123,7 @@ const EachBuilding = ({ active }) => {
                         <p>Air Conditioning</p>
                         <p className="yearDetail">Year: {selectedBuilding.BuildingDetails['YearBuilt']}</p>
                     </div>
-                    {/* <div className="posterDetails">
+                    <div className="posterDetails">
                         <div className="container">
                             <h4>{selectedBuilding.DealerName} <BadgeCheck color="blue" width="30px" /></h4>
                             <p>Shaner estate, {selectedBuilding.location}.</p>
@@ -141,7 +141,7 @@ const EachBuilding = ({ active }) => {
                         </div>
 
                         <img src={realEstatePics} alt="" />
-                    </div> */}
+                    </div>
                 </div>
             </EachBuildingContainer>
             <Banner category="Real Estate" />
