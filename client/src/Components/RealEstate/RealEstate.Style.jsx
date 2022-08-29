@@ -52,11 +52,35 @@ export const EachBuildingContainer = styled.div`
         align-items:center;
         background: rgba(20, 18, 0, 0.05);
         backdrop-filter: blur(20px);
-        padding: 16px 64px;
+        padding: 16px 0px;
+        justify-content: center;
         font-style: normal;
-        font-weight: 300;
-        font-size: 14px;     
-        gap:30vw;   
+        font-weight: 600;
+        font-size: 18px;  
+        white-space  : nowrap;
+        gap:30vw;
+        
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+            padding: 16px 64px;
+            font-weight: 300;
+            font-size: 14px; 
+            justify-content   :start ;
+        }
+    }
+
+    .locationIcon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3em;
+    }
+
+    .icon{
+        margin-top: -2em;
+
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+            margin-top: 0em;
+        }
     }
 
     .upperContent{
@@ -83,6 +107,11 @@ export const EachBuildingContainer = styled.div`
             align-items: center;
             text-align: center;
             justify-content: center;
+            font-weight: 500;
+
+            @media (min-width: ${theme.breakPoint['tablet']}) {
+                font-weight: 300;
+            }     
         }
     }
 
@@ -104,6 +133,16 @@ export const EachBuildingContainer = styled.div`
         // grid-template-columns: 1fr 1fr;        
         gap: 5px;
         padding: 16px 30px;
+    }
+
+    .imgCont{
+        width: 50em;
+        height: 350px;
+
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+            width: 50em;
+            height: 400px;
+        }    
     }
 
     .image{        
@@ -179,7 +218,7 @@ export const EachBuildingContainer = styled.div`
 `
 
 export const BottomBanner = styled.div`
-    background: linear-gradient(90.1deg, #000000 0.09%, rgba(0, 0, 0, 0) 96.23%), url(${(prop)=> prop.url});
+    background: linear-gradient(90.1deg, #000000 0.09%, rgba(0, 0, 0, 0) 96.23%), url(${(prop) => prop.url});
     width: 100%;
     height: 241px;
     margin: 50px 0;

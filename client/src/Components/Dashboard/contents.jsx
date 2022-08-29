@@ -1,4 +1,4 @@
-import {FaHome, FaComment, FaWallet, FaBell, FaUser} from "react-icons/fa"
+import { FaComment, FaWallet, FaBell, FaUser} from "react-icons/fa"
 
 export const navigators = [
     {
