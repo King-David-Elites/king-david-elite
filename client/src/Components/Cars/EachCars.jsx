@@ -61,12 +61,12 @@ const EachCars = ({ active }) => {
                         selectedCar.images.map((image) => {
                             return (
                                 <>
-                                    <div id={image.id} {...image} selectedCar={selectedCar}>
+                                    <div className='imageFlex' id={image.id} {...image} selectedCar={selectedCar}>
                                         {
                                             image.id === 1 ?
                                                 <div className='imgCont'>
                                                     <img
-                                                        src={image.carListed}
+                                                        src={selectedCar.CarPic}
                                                         alt="car"
                                                     />
                                                 </div>

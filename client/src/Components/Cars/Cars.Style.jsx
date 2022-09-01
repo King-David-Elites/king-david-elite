@@ -8,28 +8,11 @@ export const Background = styled.div`
     background-repeat:no-repeat;    
     width:100%;
     height:40em;
-
-    .imgCont{
-        width:20em;
-        height: 250px;   
-
-        @media (min-width: ${theme.breakPoint['tablet']}) {
-            width: 50em;
-            height: 400px;
-        }    
-    }
-
-    .imgCont > img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
 `
 
-export const MorePic = styled(Background)`       
-    width:20em;
-    height:250px;   
+export const MorePic = styled(Background)`  
+    width: 100%;
+    height:100px;   
     
     @media (min-width: ${theme.breakPoint['tablet']}) {
         width:18em;

@@ -27,7 +27,7 @@ const EachBuilding = ({ active }) => {
     ]
     return (
         <>
-            <Navbar bg="black" position="sticky" />
+            <Navbar bg="black" sticky="sticky" />
 
             <EachBuildingContainer>
                 <div className="upper">
@@ -65,13 +65,15 @@ const EachBuilding = ({ active }) => {
                         selectedBuilding.images.map((image) => {
                             return (
                                 <>
-                                    <div id={image.id} {...image} selectedBuilding={selectedBuilding}>
+                                    <div className='imageFlex' id={image.id} {...image} selectedBuilding={selectedBuilding}>
                                         {
                                             image.id === 1 ?
                                                 <div className='imgCont'>
                                                     <img
                                                         src={image.estateListed}
-                                                        alt="realestate"/>
+                                                        alt="realestate"
+                                                        />
+                                                        
                                                 </div>
                                                 :
                                                 (
