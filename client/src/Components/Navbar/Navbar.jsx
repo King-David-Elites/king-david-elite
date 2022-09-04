@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, UL, LI, ULI, LogoText, Brand } from './Navbar.Style'
+import { Header, UL, LI,  LogoText, Brand } from './Navbar.Style'
 import kde_whiteBg from './Image/kde_whiteBg.png'
 import { useNavigate } from 'react-router-dom'
 import { MdMenu } from 'react-icons/md';
@@ -31,7 +31,7 @@ const Navbar = ({ bg, sticky, active }) => {
 
     return (
         <>
-            <Header className='bg-cover' bg={bg} sticky={sticky}>
+            <Header className='bg-cover' bg={bg} position={sticky}>
                 <Brand onClick={() => navigate("/")}>
                     <div style={{ width: "4em", height: "auto" }}>
                         <img src={kde_whiteBg}

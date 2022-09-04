@@ -10,9 +10,14 @@ export const Background = styled.div`
     height:40em;
 `
 
-export const MorePic = styled(Background)`       
-    width:18em;
-    height:250px;    
+export const MorePic = styled(Background)`  
+    width: 100%;
+    height:100px;   
+    
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        width:18em;
+        height:250px; 
+    }  
 `
 export const MoreBg = styled.div`
     display:flex;

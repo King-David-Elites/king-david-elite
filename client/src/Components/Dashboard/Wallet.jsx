@@ -1,7 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
 import Dashboard from './Dashboard'
-import { GenericContainer, LeftContainer } from './Dashboard.Styles'
+import { GenericContainer } from './Dashboard.Styles'
 import { Leftwallet } from './Dashboard.Styles'
 import { Rightwallet } from './Dashboard.Styles'
 import { Bottom } from './Dashboard.Styles'

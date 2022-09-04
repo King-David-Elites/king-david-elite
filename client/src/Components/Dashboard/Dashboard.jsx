@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { navigators } from './contents'
 import { DashboardContainer, LeftContainer, RightContainer } from './Dashboard.Styles'
 import { FaSearch } from "react-icons/fa"
-import Messages from './Messages'
 import { useNavigate } from 'react-router-dom'
 import kde_whiteBg from '../Navbar/Image/kde_whiteBg.png'
 import { LogoText } from '../Navbar/Navbar.Style'
