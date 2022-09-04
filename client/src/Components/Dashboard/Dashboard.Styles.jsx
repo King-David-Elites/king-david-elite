@@ -14,12 +14,13 @@ export const LeftContainer = styled.div`
     min-height: 100vh;
 
     .top_logo{
-        padding:  3px ;
+        padding:3px;
         display: grid;
         align-items: center;
         justify-content: center;
         justify-items: center;
         cursor: pointer;
+       
     }
 
     .nav_items{
@@ -49,6 +50,7 @@ export const LeftContainer = styled.div`
             
         }
     }
+
 `
 
 export const RightContainer = styled.div`
@@ -112,6 +114,8 @@ export const RightContainer = styled.div`
     .mainContent{
         padding: 20px;
     }
+
+
 `
 
 export const MessagesContainer = styled.div`
@@ -258,7 +262,7 @@ div{
         background: #A6A6A6;
         border-radius: 4px;
     }
-q1  we
+
 }
 
 p{
@@ -273,6 +277,71 @@ p{
     color: #FFFFFF;
     margin-top:12px;
     margin-left:33px;
+}
+
+@media (max-width:650px){
+position: absolute;
+width:300px;
+height:330px;
+left:160px;
+top:90px;
+
+
+h4{
+    font-style: normal;
+    font-weight:500;
+    font-size:14px;
+    margin-top:30px;
+    margin-left:23px;
+}
+
+h2{
+    position:absolute;
+    left:100px;
+    top:0px;
+    width: 141px;
+    height: 29px;
+    font-weight: 600;
+    font-size:22px;
+}
+
+div{
+    display:grid;
+    margin-top:60px;
+    margin-left:43px;
+
+    button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 40px;
+        gap: 10px;
+        margin-right:10px;
+        width: 135px;
+        margin-top:20px;
+        height: 40px;
+        background: #A6A6A6;
+        border-radius: 4px;
+    }
+
+}
+
+p{
+    width: 175px;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400px;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top:12px;
+    margin-left:33px;
+}
+
+
 }
 
 `

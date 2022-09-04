@@ -11,6 +11,7 @@ export const FooterSection = styled.div`
     font-weight:light;
     color:${theme.footerColor};
     margin-top:2em;
+
 `
 
 export const Section = styled.div`
@@ -18,13 +19,22 @@ export const Section = styled.div`
     flex-direction:column;
     justify-content:flex-start;
     align-items:flex-start;
-    gap:1em;    
+    gap:1em;  
+    
+    @media(max-width:650px){
+        margin-left:5px;
+    }
 `
 
 export const Head = styled.div`
     color:${props => props.color ? props.color : theme.textColor};
     font-size:${props => props.fontSize ? props.fontSize : "1rem"};
-    font-weight:${props => props.fontWeight ? props.fontWeight : "700"};                
+    font-weight:${props => props.fontWeight ? props.fontWeight : "700"};  
+    
+    @media(max-width:650px){
+        font-size:15px;
+        margin-right:20px;
+    }
 `
 export const List =styled.div`
     color:${props => props.color ? props.color : theme.textColor};
@@ -34,5 +44,10 @@ export const List =styled.div`
     &:hover{
         color:${theme.color};
         font-weight:700
+    }
+
+    @media(max-width:650px){
+        font-size:10px;
+        padding-top:0px;
     }
 `

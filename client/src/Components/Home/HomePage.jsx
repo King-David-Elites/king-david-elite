@@ -41,7 +41,8 @@ const HomePage = () => {
       <Background imageUrl={bg}>
         <HeroSection>
           <Text fontSize="96px">
-            Luxury Hub
+            <h3>Luxury Hub</h3>
+            
           </Text>
           <Text>
             Elegance is a state of mind.
@@ -75,7 +76,7 @@ const HomePage = () => {
 
         <div className="textContent">
           <h3>Get To Know Us</h3>
-          <p>Every Brand have an interesting story to tell.
+          <p className='p'>Every Brand have an interesting story to tell.
           Find out more about us.</p>
 
           <div className="action">
@@ -86,7 +87,7 @@ const HomePage = () => {
 
       <Information>
         <div className="textContent">
-          <h3>Elite Luxury NewsLetter</h3>
+          <h4>Elite Luxury NewsLetter</h4>
           <p>Let’s keep you updated with what’s trending inLuxury.</p>
 
           <form action="">
@@ -95,8 +96,8 @@ const HomePage = () => {
           </form>
         </div>
 
-        <div className="image">
-          <img src={coffee} alt="" />
+        <div className="coffee image">
+          <img className='img_coffee' src={coffee} alt="" />
         </div>
 
       </Information>
@@ -104,10 +105,12 @@ const HomePage = () => {
    
       <SubFooter bg={blur}>
         <Text fontSize="24px">
-          Let's help you make more money by becoming an Affiliate
+          <p className='sub-p1'>
+          Let's help you make more money by becoming an Affiliate</p>
         </Text>
         <Text fontSize="14px">
-          King David Elite work closely with Affiliate Marketer that are compatible in terms of values and synergy.
+          <p className='sub-p2'>
+          King David Elite work closely with Affiliate Marketer that are compatible in terms of values and synergy.</p>
         </Text>
         <BorderText>
           SIGN UP FOR AN INVITE

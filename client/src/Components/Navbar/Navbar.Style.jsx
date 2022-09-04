@@ -46,6 +46,8 @@ export const LI = styled.li`
     .item-active{
         color:${theme.color};
     }
+
+   
 `
 
 export const LogoText = styled.div`
@@ -60,6 +62,10 @@ export const LogoText = styled.div`
         font-weight:700;    
         cursor:pointer;
         }
+
+    @media(max-width:650px){
+        font-size:8px;
+    }
 `
 
 export const Brand = styled.div`
@@ -86,7 +92,7 @@ export const Brand = styled.div`
     }
 
     .text{
-        font-size: 12px;
+        font-size:12px;
         opacity: 1;
         letter-spacing: 0.05em;
         font-weight: bold;

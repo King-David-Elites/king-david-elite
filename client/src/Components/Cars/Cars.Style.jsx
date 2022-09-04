@@ -52,6 +52,12 @@ export const Text = styled.div`
     @media (min-width: ${theme.breakPoint['tablet']}) {
         font-size:${props => props.fontSize ? props.fontSize : "1rem"};
     }
+
+    @media(max-width:650px){
+        h3{
+            font-size:70px;
+        }
+    }
 `
 
 export const SearchSection = styled.div`

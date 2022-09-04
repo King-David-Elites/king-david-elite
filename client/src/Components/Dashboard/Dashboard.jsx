@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { navigators } from './contents'
 import { DashboardContainer, LeftContainer, RightContainer } from './Dashboard.Styles'
 import { FaSearch } from "react-icons/fa"
