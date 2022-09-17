@@ -17,6 +17,7 @@ import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
 import EachCars from './Components/Cars/EachCars';
 import EachCarPhotos from './Components/Cars/EachCarPhotos'
+import About from './Components/About/About';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/dashboard/notifications" element={<Notifications />} />
         <Route path="/dashboard/" element={<Profile />} />
         <Route path="/dashboard/wallet" element={<Wallet />} />
+        <Route path="/about" element={<About />}/>
       </Routes>
     </Router>
   );
