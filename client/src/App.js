@@ -18,6 +18,9 @@ import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
 import EachCars from './Components/Cars/EachCars';
 import EachCarPhotos from './Components/Cars/EachCarPhotos'
 import About from './Components/About/About';
+import Help from './Components/About/Help';
+import Earning from './Components/About/Earning';
+import Benefits from './Components/About/Benefits';
 
 function App() {
   return (
@@ -38,6 +41,9 @@ function App() {
         <Route path="/dashboard/" element={<Profile />} />
         <Route path="/dashboard/wallet" element={<Wallet />} />
         <Route path="/about" element={<About />}/>
+        <Route path="/help" element={<Help />}/>
+        <Route path="/help/earning" element={<Earning />}/>
+        <Route path="/help/benefits" element={<Benefits />}/>
       </Routes>
     </Router>
   );

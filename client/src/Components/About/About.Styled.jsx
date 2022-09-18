@@ -12,6 +12,8 @@ export const Flex = styled.div`
 
 export const GlobalContainer = styled.div`
     width: ${({width})=> width};
+    padding: ${({padding})=> padding};
+    margin: ${({margin})=> margin};
 `
 
 export const StackedImage = styled.div`

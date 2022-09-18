@@ -2,6 +2,7 @@ import React from 'react'
 import { Fragment } from 'react'
 import MainButton from '../buttons/MainButton'
 import { Background, HeroSection, Text } from '../Cars/Cars.Style'
+import Generic from '../ContactUs/Generic'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
 import { AbsoluteImage, Flex, GlobalContainer, StackedImage } from './About.Styled'
@@ -84,6 +85,8 @@ const About = () => {
                 </MainButton>
             </GlobalContainer>
         </Flex>
+
+        <Generic />
 
         <Footer />
     </Fragment>
