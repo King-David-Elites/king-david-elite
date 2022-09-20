@@ -8,7 +8,7 @@ const MainButton = styled.button`
     font-size: ${props => props.fontSize ? props.fontSize : "0.9em"};
     line-height: 0.8em;
     color: ${props => props.color ? props.color : theme.textColor};
-  background-color: ${theme.color};
+  background-color: ${({bg})=> bg || theme.color};
     border: 2px solid ${theme.color};
     border-radius: 6px;
     white-space: nowrap;

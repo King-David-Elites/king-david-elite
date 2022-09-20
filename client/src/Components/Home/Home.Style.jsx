@@ -221,7 +221,7 @@ export const SubFooter = styled.div`
     @media(max-width:650px){
         position:relative;
         top:-100px;
-        background-size:;
+        /* background-size:; */
         background-repeat:no-repeat;
         padding:0px;
 

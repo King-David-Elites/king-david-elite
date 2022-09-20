@@ -17,7 +17,14 @@ import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
 import EachCars from './Components/Cars/EachCars';
 import EachCarPhotos from './Components/Cars/EachCarPhotos'
+<<<<<<< HEAD
 import Signup from './Signup/Signup';
+=======
+import About from './Components/About/About';
+import Help from './Components/About/Help';
+import Earning from './Components/About/Earning';
+import Benefits from './Components/About/Benefits';
+>>>>>>> 56fc9b03a73e321b0923e7744fb9d8e592bd3fdb
 
 function App() {
   return (
@@ -37,6 +44,10 @@ function App() {
         <Route path="/dashboard/notifications" element={<Notifications />} />
         <Route path="/dashboard/" element={<Profile />} />
         <Route path="/dashboard/wallet" element={<Wallet />} />
+        <Route path="/about" element={<About />}/>
+        <Route path="/help" element={<Help />}/>
+        <Route path="/help/earning" element={<Earning />}/>
+        <Route path="/help/benefits" element={<Benefits />}/>
       </Routes>
     </Router>
   );
