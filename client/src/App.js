@@ -17,6 +17,7 @@ import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
 import EachCars from './Components/Cars/EachCars';
 import EachCarPhotos from './Components/Cars/EachCarPhotos'
+import Signup from './Signup/Signup';
 
 function App() {
   return (
