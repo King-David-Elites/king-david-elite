@@ -21,6 +21,7 @@ import About from './Components/About/About';
 import Help from './Components/About/Help';
 import Earning from './Components/About/Earning';
 import Benefits from './Components/About/Benefits';
+import AddCar from './Components/Cars/AddCar';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
         <Route path="/cars" element={<Cars />} />
+        <Route path="/cars/add" element={<AddCar />} />
         <Route path="/cars/:title" element={<EachCars active={0} />} />
         <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0}/>} />
         <Route path="/others" element={<OtherSections />} />
