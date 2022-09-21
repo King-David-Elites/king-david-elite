@@ -22,11 +22,8 @@ import Help from './Components/About/Help';
 import Earning from './Components/About/Earning';
 import Benefits from './Components/About/Benefits';
 import AddCar from './Components/Cars/AddCar';
-=======
 import SignupPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
-
->>>>>>> c73ae53c87a7ead2fa949a9c84e690c8247c0d53
 
 function App() {
   return (
