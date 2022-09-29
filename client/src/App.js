@@ -5,7 +5,7 @@ import
   Routes,
   Route
 } from "react-router-dom"
-// import HomePage from './Components/Home/HomePage';
+import HomePage from './Components/Home/HomePage';
 import RealEstateListing from "./Components/RealEstate/RealEstateListing";
 import Cars from "./Components/Cars/CarsListing"
 import OtherSections from "./Components/OtherSections/OtherSections"
@@ -17,6 +17,9 @@ import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
 import EachCars from './Components/Cars/EachCars';
 import EachCarPhotos from './Components/Cars/EachCarPhotos'
+import Otp from './Components/Dashboard/Otp';
+import Deposit from './Components/Dashboard/Deposit';
+import Withdrawal from './Components/Dashboard/Withdrawal';
 import SignupPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
 
@@ -26,7 +29,9 @@ function App() {
     <Router>
       {/* <Navbar/> */}
       <Routes>
-        <Route path='/' element={<SignupPage/> } />
+        <Route path="/" element={<HomePage/>} />
+        <Route path='/SignupPage' element={<SignupPage/> } />
+        <Route path='/LoginPage' element={<LoginPage/> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
@@ -39,6 +44,9 @@ function App() {
         <Route path="/dashboard/notifications" element={<Notifications />} />
         <Route path="/dashboard/" element={<Profile />} />
         <Route path="/dashboard/wallet" element={<Wallet />} />
+        <Route path="/Otp" element={<Otp/>}/>
+        <Route path="/Deposit" element={<Deposit/>}/>
+        <Route path="/Withdrawal" element={<Withdrawal/>}/>
       </Routes>
     </Router>
   );

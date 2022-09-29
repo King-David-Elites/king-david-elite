@@ -87,12 +87,12 @@ const WalletAsElement = ()=>{
     )
 }
 
-const Wallet = () => {
+const Deposit = () => {
   return (
     <Dashboard element={<WalletAsElement />} index="2" />
   )
 }
 
-export default Wallet
+export default Deposit
 
 
