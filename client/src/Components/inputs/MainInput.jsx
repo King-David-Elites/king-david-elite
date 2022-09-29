@@ -32,7 +32,6 @@ const InputLabel = styled.label`
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
            font-size: 15px;
-           /* margin-bottom: 20em; */
         }
     `;
 

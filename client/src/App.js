@@ -24,6 +24,7 @@ import Benefits from './Components/About/Benefits';
 import AddCar from './Components/Cars/AddCar';
 import SignupPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
+import AddRealEstate from './Components/RealEstate/AddRealEstate';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path='/' element={<SignupPage/> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
+        <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
         <Route path="/cars" element={<Cars />} />
