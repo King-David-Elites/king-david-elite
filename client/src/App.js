@@ -25,13 +25,16 @@ import AddCar from './Components/Cars/AddCar';
 import SignupPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
 import AddRealEstate from './Components/RealEstate/AddRealEstate';
+import Dashboard from './Components/Dashboard/Dashboard';
+import Navbar from './Components/Navbar/Navbar';
+import HomePage from './Components/Home/HomePage';
 
 function App() {
   return (
     <Router>
       {/* <Navbar/> */}
       <Routes>
-        <Route path='/' element={<SignupPage/> } />
+        <Route path='/' element={<HomePage/> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
