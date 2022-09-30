@@ -25,6 +25,7 @@ import AddCar from './Components/Cars/AddCar';
 import SignupPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
 import AddRealEstate from './Components/RealEstate/AddRealEstate';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
