@@ -5,7 +5,7 @@ import
   Routes,
   Route
 } from "react-router-dom"
-// import HomePage from './Components/Home/HomePage';
+import HomePage from './Components/Home/HomePage';
 import RealEstateListing from "./Components/RealEstate/RealEstateListing";
 import Cars from "./Components/Cars/CarsListing"
 import OtherSections from "./Components/OtherSections/OtherSections"
@@ -31,7 +31,7 @@ function App() {
     <Router>
       {/* <Navbar/> */}
       <Routes>
-        <Route path='/' element={<SignupPage/> } />
+        <Route path='/' element={<HomePage/> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
@@ -41,7 +41,7 @@ function App() {
         <Route path="/cars/:title" element={<EachCars active={0} />} />
         <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0}/>} />
         <Route path="/others" element={<OtherSections />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        {<Route path="/dashboard" element={<Dashboard />} />}
         <Route path="/dashboard/messages" element={<Messages />} />
         <Route path="/dashboard/notifications" element={<Notifications />} />
         <Route path="/dashboard/" element={<Profile />} />
