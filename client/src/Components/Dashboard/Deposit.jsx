@@ -10,7 +10,7 @@ import Hotel from "./wallet-image/Hotel.jpg"
 
 
 
-const WalletAsElement = ()=>{
+const Deposit= ()=>{
     return(
         <GenericContainer>
 
@@ -87,11 +87,6 @@ const WalletAsElement = ()=>{
     )
 }
 
-const Deposit = () => {
-  return (
-    <Dashboard element={<WalletAsElement />} index="2" />
-  )
-}
 
 export default Deposit
 

@@ -13,7 +13,7 @@ import Hotel from "./wallet-image/Hotel.jpg"
 
 
 
-const WalletAsElement = ()=>{
+const Withdrawal = ()=>{
     return(
         <GenericContainer>
 
@@ -85,12 +85,6 @@ const WalletAsElement = ()=>{
 
         </GenericContainer>
     )
-}
-
-const Withdrawal = () => {
-  return (
-    <Dashboard element={<WalletAsElement />} index="2" />
-  )
 }
 
 export default Withdrawal

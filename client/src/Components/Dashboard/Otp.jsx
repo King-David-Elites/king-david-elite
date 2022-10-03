@@ -10,7 +10,7 @@ import Hotel from "./wallet-image/Hotel.jpg"
 
 
 
-const WalletAsElement = ()=>{
+const Otp= ()=>{
     return(
         <GenericContainer>
 
@@ -85,11 +85,6 @@ const WalletAsElement = ()=>{
     )
 }
 
-const Otp = () => {
-  return (
-    <Dashboard element={<WalletAsElement />} index="2" />
-  )
-}
 
 export default Otp
 

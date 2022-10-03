@@ -17,12 +17,16 @@ import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
 import EachCars from './Components/Cars/EachCars';
 import EachCarPhotos from './Components/Cars/EachCarPhotos'
+import About from './Components/About/About';
+import Help from './Components/About/Help';
+import Earning from './Components/About/Earning';
+import Benefits from './Components/About/Benefits';
+import AddCar from './Components/Cars/AddCar';
+import SignupPage from './Components/Page/SignupPage';
+import LoginPage from './Components/Page/LoginPage';
 import Otp from './Components/Dashboard/Otp';
 import Deposit from './Components/Dashboard/Deposit';
 import Withdrawal from './Components/Dashboard/Withdrawal';
-import SignupPage from './Components/Page/SignupPage';
-import LoginPage from './Components/Page/LoginPage';
-
 
 function App() {
   return (
@@ -36,6 +40,7 @@ function App() {
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
         <Route path="/cars" element={<Cars />} />
+        <Route path="/cars/add" element={<AddCar />} />
         <Route path="/cars/:title" element={<EachCars active={0} />} />
         <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0}/>} />
         <Route path="/others" element={<OtherSections />} />
