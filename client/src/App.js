@@ -24,9 +24,10 @@ import Benefits from './Components/About/Benefits';
 import AddCar from './Components/Cars/AddCar';
 import SignupPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
-import Otp from './Components/Dashboard/Otp';
-import Deposit from './Components/Dashboard/Deposit';
-import Withdrawal from './Components/Dashboard/Withdrawal';
+import AddRealEstate from './Components/RealEstate/AddRealEstate';
+import Dashboard from './Components/Dashboard/Dashboard';
+import Navbar from './Components/Navbar/Navbar';
+
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path='/SignupPage' element={<SignupPage/> } />
         <Route path='/LoginPage' element={<LoginPage/> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
+        <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
         <Route path="/cars" element={<Cars />} />
@@ -44,7 +46,7 @@ function App() {
         <Route path="/cars/:title" element={<EachCars active={0} />} />
         <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0}/>} />
         <Route path="/others" element={<OtherSections />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        {<Route path="/dashboard" element={<Dashboard />} />}
         <Route path="/dashboard/messages" element={<Messages />} />
         <Route path="/dashboard/notifications" element={<Notifications />} />
         <Route path="/dashboard/" element={<Profile />} />

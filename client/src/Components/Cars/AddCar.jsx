@@ -95,7 +95,7 @@ const otherInput = [
   {
     label: "Price",
     name: "price",
-    control: "select",
+    control: "price",
     options: priceOption
   },
 ]
