@@ -27,9 +27,6 @@ import LoginPage from './Components/Page/LoginPage';
 import AddRealEstate from './Components/RealEstate/AddRealEstate';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Navbar from './Components/Navbar/Navbar';
-import Help from './Components/About/Help';
-import Earning from './Components/About/Earning';
-import Benefits from './Components/About/Benefits';
 
 
 function App() {
