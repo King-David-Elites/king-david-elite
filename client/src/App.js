@@ -34,9 +34,7 @@ function App() {
     <Router>
       {/* <Navbar/> */}
       <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path='/SignupPage' element={<SignupPage/> } />
-        <Route path='/LoginPage' element={<LoginPage/> } />
+        <Route path='/' element={<HomePage/> } />
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
@@ -51,9 +49,6 @@ function App() {
         <Route path="/dashboard/notifications" element={<Notifications />} />
         <Route path="/dashboard/" element={<Profile />} />
         <Route path="/dashboard/wallet" element={<Wallet />} />
-        <Route path="/Otp" element={<Otp/>}/>
-        <Route path="/Deposit" element={<Deposit/>}/>
-        <Route path="/Withdrawal" element={<Withdrawal/>}/>
       </Routes>
     </Router>
   );
