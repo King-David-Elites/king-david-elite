@@ -26,6 +26,7 @@ import SignupPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
 import AddRealEstate from './Components/RealEstate/AddRealEstate';
 import Dashboard from './Components/Dashboard/Dashboard';
+import Savedpost from './Components/Dashboard/Savedpost';
 import Navbar from './Components/Navbar/Navbar';
 
 
@@ -35,6 +36,7 @@ function App() {
       {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<HomePage/> } />
+        <Route path='/savedpost' element={<Savedpost/>}/>
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
