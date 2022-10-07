@@ -27,6 +27,7 @@ import LoginPage from './Components/Page/LoginPage';
 import AddRealEstate from './Components/RealEstate/AddRealEstate';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Navbar from './Components/Navbar/Navbar';
+import ProfileContainer from './container/ProfileContainer.jsx';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/help" element={<Help />}/>
         <Route path="/help/earning" element={<Earning />}/>
         <Route path="/help/benefits" element={<Benefits />}/>
+        <Route path="/profile/" element={<ProfileContainer />} />
       </Routes>
     </Router>
   );
