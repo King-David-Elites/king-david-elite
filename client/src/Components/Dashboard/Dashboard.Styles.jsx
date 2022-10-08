@@ -211,7 +211,7 @@ export const ProfileContainer = styled.div`
     background: gray;
 
     .leftSection{
-        width:35%;
+        width:40%;
         height:100%;
         border-radius:8px 0px 0px 8px;
     }
@@ -224,7 +224,7 @@ export const ProfileContainer = styled.div`
         height:100%
     }
     .rightSection{
-        width:65%;
+        width:60%;
         height:100%;
         background:white;
         border-radius:0px 8px 8px 0px
