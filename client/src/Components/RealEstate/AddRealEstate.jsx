@@ -38,12 +38,12 @@ const initialValues = {
 
 const displayInput = [
   {
-    label: "Title",
+    label: "Title/Name",
     name: "title",
     control: "input",
   },
   {
-    label: "Descriptiom",
+    label: "Description",
     name: "description",
     control: "textarea",
   },
@@ -54,28 +54,28 @@ const displayInput = [
   },
 ]
 
-const otherInput = [
+// const otherInput = [
  
-  {
-    label: "Images",
-    name: "image",
-    control: "image",
-  },
-  {
-    label: "Video",
-    name: "video",
-    control: "video",
-  },
-  {
-    label: "Price",
-    name: "price",
-    control: "price",
-    options: priceOption
-  },
-]
+//   {
+//     label: "Images",
+//     name: "image",
+//     control: "image",
+//   },
+//   {
+//     label: "Video",
+//     name: "video",
+//     control: "video",
+//   },
+//   {
+//     label: "Price",
+//     name: "price",
+//     control: "price",
+//     options: priceOption
+//   },
+// ]
 
 const validationSchema = Yup.object({
-  title: Yup.string().required("Title is required"),
+  title: Yup.string().required("Title/Name is required"),
   description: Yup.string().required("Description is required"),
   address: Yup.string().required('Address is required'),
   caryear: Yup.string().required("Car year is required"),
@@ -147,7 +147,8 @@ const AddRealEstate = (values, onSubmitProps) => {
 
             <Text color="black" fontSize="1rem" marginTop="1.2em" marginBottom="1.5em">Amenities</Text>
 
-            {otherInput.map((d, index) => (
+          
+            {/* {otherInput.map((d, index) => (
               <FormikControl
                 key={index * 0.5}
                 label={d?.label}
@@ -156,8 +157,8 @@ const AddRealEstate = (values, onSubmitProps) => {
                 options={d?.options}
                 control={d.control}
               />
-            ))}
-            <button className='create' type="submit">Create</button>
+            ))} */}
+            {/* <button className='create' type="submit">Create</button> */}
           </Form>
         </Formik>
       </FormBody>
