@@ -21,13 +21,19 @@ const ProfileAsElement = ()=>{
                 <img src={profileImg} alt="profileImg"/>
               </div>
             </div>
-            <div className="rightSection">
-              <div className="closeBtn">
-                <X color="black"/>
-                {
 
-                }
+            <div className="rightSection">
+
+              <div className="closeField">
+                <div className="closeBtn">
+                  <X size="20px" color="black"/>
+                </div>                
               </div>
+
+              {
+
+              }
+
             </div>
           </ProfileContainer>
         </GenericContainer>

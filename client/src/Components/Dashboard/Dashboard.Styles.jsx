@@ -229,11 +229,17 @@ export const ProfileContainer = styled.div`
         background:white;
         border-radius:0px 8px 8px 0px
     }
-    .rightSection > .closeBtn{
+    .rightSection > .closeField{
         width:100%;
         padding:1em;
         display:flex;
         justify-content:flex-end;
+    }
+    .closeBtn{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
     }
 `
 
