@@ -202,6 +202,41 @@ export const GenericContainer = styled.div`
     height: 115vh;
 `
 
+export const ProfileContainer = styled.div`
+    border-radius: 8px;
+    height: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    background: gray;
+
+    .leftSection{
+        width:35%;
+        height:100%;
+        border-radius:8px 0px 0px 8px;
+    }
+    .leftSection > .domiProfile{
+        width:100%;
+        height:100%;
+    }
+    .domiProfile img{
+        width:100%;
+        height:100%
+    }
+    .rightSection{
+        width:65%;
+        height:100%;
+        background:white;
+        border-radius:0px 8px 8px 0px
+    }
+    .rightSection > .closeBtn{
+        width:100%;
+        padding:1em;
+        display:flex;
+        justify-content:flex-end;
+    }
+`
+
 
 // wallet code section
 

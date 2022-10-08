@@ -11,7 +11,7 @@ import Cars from "./Components/Cars/CarsListing"
 import OtherSections from "./Components/OtherSections/OtherSections"
 import Messages from './Components/Dashboard/Messages';
 import Notifications from './Components/Dashboard/Notifications';
-import Profile from './Components/Dashboard/Profile';
+import Profile from './Components/Dashboard/Profile/Profile';
 import Wallet from './Components/Dashboard/Wallet';
 import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
