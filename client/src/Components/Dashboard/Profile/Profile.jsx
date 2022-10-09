@@ -1,18 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import Dashboard from '../Dashboard'
-import { GenericContainer, ProfileContainer } from '../Dashboard.Styles'
-import {X} from "heroicons-react"
+import { GenericContainer, ProfileContainer, Form} from '../Dashboard.Styles'
+import {Selector, X} from "heroicons-react"
 import profileImg from "../Dashboard-Image/profileImg.png"
+import GetStarted from "./GetStarted"
+import BasicInfo from "./BasicInfo"
 
 const ProfileAsElement = ()=>{
-  const [step1, setStep1] = useState(false);
-  const [step2, setStep2] = useState(false);
-  const [step3, setStep3] = useState(false);
-  const [step4, setStep4] = useState(false);
-  const [step5, setStep5] = useState(false);
-  const [step6, setStep6] = useState(false);
-  const [step7, setStep7] = useState(false);
+  const [stage, setStage] = useState(0);
+  const [registering, setRegistering] = useState(false);
+  const [country, setCountry] = useState("None");
+
     return(
         <GenericContainer>
           <ProfileContainer>
@@ -28,16 +27,142 @@ const ProfileAsElement = ()=>{
                 <div className="closeBtn">
                   <X size="20px" color="black"/>
                 </div>                
-              </div>
+              </div>              
+              <Form>
+                {
+                  registering ? 
+                  <div></div>
+                  :
+                  <GetStarted 
+                    country={country}
+                    setCountry={setCountry} 
+                    stage={stage} 
+                    setStage={setStage} 
+                    setRegistering={setRegistering} 
+                  />
+                }
 
-              {
+                {
+                  stage === 1 && 
+                  <BasicInfo 
+                    country={country} 
+                    stage={stage} 
+                    setStage={setStage}
+                    setRegistering={setRegistering}
+                  />
+                }
 
-              }
+                {
+                  stage === 2 && 
+                  <Advanced_Verf 
+                    stage={stage} 
+                    setStage={setStage} 
+                  />
+                }
+
+                {
+                  stage === 3 && 
+                  <Advanced_Verf_1 
+                    stage={stage} 
+                    setStage={setStage}
+                  />
+                }
+
+                {
+                  stage === 4 && 
+                  <Advanced_Verf_2 
+                    stage={stage} 
+                    setStage={setStage} 
+                  />
+                }
+
+                {
+                  stage === 5 && 
+                  <Advanced_Verf_3 
+                    stage={stage} 
+                    setStage={setStage} 
+                  />
+                }
+
+                {
+                  stage === 6 && 
+                  <Verified 
+                    stage={stage} 
+                    setStage={setStage} 
+                  />
+                }
+
+              </Form>
 
             </div>
           </ProfileContainer>
         </GenericContainer>
     )
+}
+
+const Advanced_Verf = (props) =>{
+  let {
+    stage,
+    setStage
+  } = props
+
+  return(
+    <>
+      <h1>Stage 2</h1>
+    </>
+  )
+}
+
+const Advanced_Verf_1 = (props) =>{
+  let {
+    stage,
+    setStage
+  } = props
+
+  return(
+    <>
+      <h1>Stage 3</h1>
+    </>
+  )
+}
+
+const Advanced_Verf_2 = (props) =>{
+  let {
+    stage,
+    setStage
+  } = props
+
+  return(
+    <>
+      <h1>Stage 4</h1>
+    </>
+  )
+}
+
+const Advanced_Verf_3 = (props) =>{
+  let {
+    stage,
+    setStage
+  } = props
+
+  return(
+    <>
+      <h1>Stage 5</h1>
+    </>
+  )
+}
+
+const Verified = (props) =>{
+  let {
+    stage,
+    setStage
+  } = props
+
+  return(
+    <>
+      <h1>Stage 6</h1>
+    </>
+  )
 }
 
 const Profile = () => {
