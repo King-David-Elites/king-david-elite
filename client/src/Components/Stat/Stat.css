@@ -1,0 +1,49 @@
+.stat-wrapper>h3 {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 1.5em 0em 0em 1.5em;
+}
+
+.line {
+    margin-top: 1em;
+    background: #ECEDEE;
+    height: 2px;
+}
+
+.personal-details {
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+    margin: 1.8em 0em 0em 2.4em;
+}
+
+.verification {
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    flex-direction: column;
+    margin: 1.4em 0em 0em 4.5em;
+}
+
+.verification > p{
+    color: #0D0D0D;
+    font-weight: 600;
+}
+
+.verification > ul{
+    color: #696969;
+    margin-left: 2em;
+    margin-top: 1em;
+    font-weight: 400;
+}
+
+.stat-wrapper > button{
+    color: white;
+    padding: 12px 16px;
+    background: #2301F3;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    width: 100px;
+    margin:2em 0em 0em 6.5em;
+}

@@ -1,6 +1,5 @@
 import './TopNavigationComponent.css'
 
-
 const TopNavigationComponent = ({ navOptions, activeOption, setActiveOption }) => {
 
     return (
@@ -8,8 +7,8 @@ const TopNavigationComponent = ({ navOptions, activeOption, setActiveOption }) =
             {
                 navOptions.map((navOption, index) =>
                     <div key={index} className={`topnav-item  ${activeOption == navOption.state ? `active` : ""}`} onClick={() => { setActiveOption(navOption.state) }}>
-                        <div className={`${activeOption === navOption.state ? `active border-b-2 border-b-theme-color` : ""}`}>
-                            <span>{navOption.displayText.toUpperCase()}</span>
+                        <div className={`${activeOption == navOption.state ? `active border-b-2 border-b-theme-color` : ""}`}>
+                            <span>{navOption.displayText}</span>
 
                         </div>
                     </div>
