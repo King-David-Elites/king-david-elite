@@ -202,6 +202,170 @@ export const GenericContainer = styled.div`
     height: 115vh;
 `
 
+// profile code section
+
+export const ProfileContainer = styled.div`
+    border-radius: 8px;
+    height: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    .leftSection{
+        width:40%;
+        height:100%;
+        border-radius:8px 0px 0px 8px;
+    }
+    .leftSection > .domiProfile{
+        width:100%;
+        height:100%;
+    }
+    .domiProfile img{
+        width:100%;
+        height:100%
+    }
+    .rightSection{
+        width:60%;
+        height:100%;
+        background:white;
+        border-radius:0px 8px 8px 0px
+    }
+    .rightSection > .closeField{
+        width:100%;
+        padding:1em 2em 0em 0em;
+        display:flex;
+        justify-content:flex-end;
+    }
+    .closeBtn{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+    }
+`
+export const Form = styled.form`
+    width:100%;
+    padding:1em 2em 2em 2em;
+
+    .id_info {
+        color:gray;
+        font-size:0.8rem;
+        padding-top:2em;
+    }
+    .region{
+        font-size:0.8rem;
+        padding-top:2em;
+    }
+    .region select{
+        width:100%;
+        border-radius:8px;
+        cursor:pointer;
+        padding:1em;
+        margin-top:0.5em;  
+        font-weight:bolder;      
+    }
+    .region select:focus{
+        border:2px solid black;
+    }
+    .details{
+        margin-top:3em;
+    }
+    .details > .title{
+        display:flex;
+        gap:1em;
+    }
+    .details > .title .tag{
+        width:1.5em;
+        height:1.5em;
+        border-radius:0.75em;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#FFDF00;
+        font-weight:bolder;
+    }
+    .details ul{
+        font-size:0.8rem;
+        color:gray;
+        margin-left:3em;
+    }
+    .details ul li{
+        margin:0.5em;
+    }
+    .button{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        margin-top:5em;
+        width:100%;
+        background:#FFDF00;
+        padding:0.8em;
+        font-size:1rem;
+        font-weight:bolder;
+        border:2px solid #FFDF00;
+        border-radius: 8px;
+        cursor:pointer
+    }
+    .formField{
+        padding-top:3em;
+        width:100%;
+    }    
+    .formField > .section{
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        padding-top:1em;
+        flex-wrap:wrap;
+        gap:3em;
+
+        #resident{
+            flex: 0 1 100%;
+        }
+        #back {
+            margin-top:0em;
+            flex: 0 1 10em;
+            background:transparent;
+            border:2px solid black;
+        }
+        #continue {
+            margin-top:0em;
+            flex: 0 1 20em;
+        }
+
+    }
+    .formField{
+        #section{
+            flex-wrap:nowrap;
+            justify-content:space-between;
+        }
+    }
+    .formField > .section > .input{
+        display:flex;
+        flex-direction:column;
+        gap:0.5em;
+        flex: 0 1 15em;
+
+        label{
+            font-size:0.8rem;
+        }
+        input{
+            padding:1em;
+            background:#EEF0F1;
+            border:2px solid #EEF0F1;
+            outline:none;
+            border-radius:8px;
+            padding-left:1em;
+        }
+        input:focus{
+            outline:none;
+        }
+        .resident{
+            width:100%;
+        }
+    }
+
+
+`
 
 // wallet code section
 

@@ -11,7 +11,7 @@ import Cars from "./Components/Cars/CarsListing"
 import OtherSections from "./Components/OtherSections/OtherSections"
 import Messages from './Components/Dashboard/Messages';
 import Notifications from './Components/Dashboard/Notifications';
-import Profile from './Components/Dashboard/Profile';
+import Profile from './Components/Dashboard/Profile/Profile';
 import Wallet from './Components/Dashboard/Wallet';
 import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
@@ -52,6 +52,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/messages" element={<Messages />} />
         <Route path="/dashboard/notifications" element={<Notifications />} />
+        <Route path="/dashboard/profile" element={<Profile/>}/>
         <Route path="/dashboard/" element={<Profile />} />
         <Route path="/dashboard/wallet" element={<Wallet />} />
         <Route path="/about" element={<About />} />
