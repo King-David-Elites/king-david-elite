@@ -88,10 +88,10 @@ const ProfileLayout = () => {
                     <div className='border2'></div>
                     <div className="w-full h-full py-5 md:h-[90%] overflow-y-auto">
                         {
-                            (activeOption == "stats") && <Stat />
+                            (activeOption === "stats") && <Stat />
                         }
                         {
-                            (activeOption == "verification") && <Verification />
+                            (activeOption === "verification") && <Verification />
                         }
                     </div>
 

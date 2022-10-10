@@ -49,7 +49,7 @@ const ProfileContainer = () => {
         <ProfileLayout>
             <div className="w-full h-full py-5 md:h-[90%] overflow-y-auto">
                 {
-                    (activeOption == "stats") && <Stat />
+                    (activeOption === "stats") && <Stat />
                 }
             </div>
         </ProfileLayout>
