@@ -1,12 +1,12 @@
-import './Stat.css'
+import './Verification.css'
 import React from 'react';
 import { FaRegUserCircle } from 'react-icons/fa'
 
-const Stat = () => {
+const Verification = () => {
 
     return (
         <div className="container">
-            <div className="stat-wrapper">
+            <div className="verification-wrapper">
                 <h3>Identity Verification</h3>
                 <div className='line'></div>
 
@@ -29,4 +29,4 @@ const Stat = () => {
     );
 }
 
-export default Stat;
+export default Verification;

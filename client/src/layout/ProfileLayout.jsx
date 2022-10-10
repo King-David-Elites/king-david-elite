@@ -1,10 +1,55 @@
-import style from './ProfileLayout.css'
+import './ProfileLayout.css'
 import { MdEdit } from 'react-icons/md'
 import { MdUpgrade } from 'react-icons/md'
 import { BsCameraFill } from 'react-icons/bs'
 import { BadgeCheck } from 'heroicons-react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import TopNavigationComponent from '../Components/topnav/TopNavigationComponent'
+import Stat from '../Components/Stat/Stat'
+import Verification from '../Components/Verification/Verification'
 
 const ProfileLayout = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const activeOption = location.pathname.split("/")[2] ?? "verification";
+    console.log(activeOption);
+
+    const navigateOptions = (activeOpt) => {
+        // if (activeOpt === "stats") {
+        //     navigate(`/profile`);
+        // }
+        // else if (activeOpt === "list") {
+        //     navigate(`/profile/list`);
+        // }
+        // else if (activeOpt === "account") {
+        //     navigate(`/profile/account`);
+        // }
+        // else {
+        //     navigate(`/profile/verification`);
+        // }
+    }
+
+    const navOptions = [
+        {
+            state: "stats",
+            displayText: "Stats"
+        },
+        {
+            state: "list",
+            displayText: "List"
+        },
+        {
+            state: "account",
+            displayText: "Account"
+        },
+        {
+            state: "verification",
+            displayText: "Verification"
+        },
+    ]
+
+
     return (
         <div className='wrapper'>
             <div className='upper-div'></div>
@@ -39,8 +84,17 @@ const ProfileLayout = () => {
 
                 <div className='detail2'>
                     <div className='border'></div>
+                    <TopNavigationComponent navOptions={navOptions} activeOption={activeOption} setActiveOption={navigateOptions} />
+                    <div className='border2'></div>
+                    <div className="w-full h-full py-5 md:h-[90%] overflow-y-auto">
+                        {
+                            (activeOption == "stats") && <Stat />
+                        }
+                        {
+                            (activeOption == "verification") && <Verification />
+                        }
+                    </div>
 
-                    <div className='border'></div>
                 </div>
             </div>
         </div >
