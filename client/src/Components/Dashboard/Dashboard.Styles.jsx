@@ -231,22 +231,10 @@ export const ProfileContainer = styled.div`
         border-radius:0px 8px 8px 0px;
         overflow-y:scroll;
     }
-    .rightSection > .closeField{
-        width:100%;
-        padding:1em 2em 0em 0em;
-        display:flex;
-        justify-content:flex-end;
-    }
-    .closeBtn{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        cursor:pointer;
-    }
 `
 export const Form = styled.form`
     width:100%;
-    padding:1em 3em 2em 3em;
+    padding:3em 3em 2em 3em;
 
     .id_info {
         color:gray;
