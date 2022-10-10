@@ -8,6 +8,7 @@ const BasicInfo = (props) =>{
     const [resAddress, setResAddress] = useState("")
     const [city, setCity] = useState("")
     const [postalCode, setPostalCode] = useState("")
+    const [enable, setEnable] = useState(false)
 
     let {
       setRegistering,
@@ -147,7 +148,7 @@ const BasicInfo = (props) =>{
                     </div>
                     <div          
                         className="button"
-                        id="continue"
+                        id={enable ? "continue_enable" : "continue_disable"}
                         onClick={()=>{
                             setStage(stage+1)
                         }}
