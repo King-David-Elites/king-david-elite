@@ -394,8 +394,9 @@ export const Form = styled.form`
         #section{
             flex-wrap:nowrap;
             justify-content:space-between;
+            flex-wrap:wrap;
         }
-        
+
     }
     .formField > .section > .input{
         display:flex;
