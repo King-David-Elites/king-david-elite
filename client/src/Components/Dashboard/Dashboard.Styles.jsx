@@ -229,6 +229,7 @@ export const ProfileContainer = styled.div`
     .rightSection{
         width:60%;
         height:100%;
+<<<<<<< HEAD
         background:"white";
         border-radius:0px 8px 8px 0px;
     }
@@ -243,16 +244,25 @@ export const ProfileContainer = styled.div`
         justify-content:center;
         align-items:center;
         cursor:pointer;
+=======
+        background:white;
+        border-radius:0px 8px 8px 0px;
+        overflow-y:scroll;
+>>>>>>> 93a082efe7881b73e3314273370016f6794d017d
     }
 `
 export const Form = styled.form`
     width:100%;
-    padding:1em 2em 2em 2em;
+    padding:3em 3em 2em 3em;
 
     .id_info {
         color:gray;
         font-size:0.8rem;
         padding-top:2em;
+    }
+    #verify{
+        padding-top:0.5em;
+        font-size:0.9rem;
     }
     .region{
         font-size:0.8rem;
@@ -272,9 +282,16 @@ export const Form = styled.form`
     .details{
         margin-top:3em;
     }
+    #veri_details{
+        margin-top:0em;
+    }
     .details > .title{
         display:flex;
         gap:1em;
+
+        #tag{
+            background:#EEF0F1;
+        }
     }
     .details > .title .tag{
         width:1.5em;
@@ -309,8 +326,15 @@ export const Form = styled.form`
         cursor:pointer
     }
     .formField{
-        padding-top:3em;
+        padding-top:2em;
         width:100%;
+
+        #id_section{
+            gap:1.5em;
+        }
+        #id_section_veri{
+            gap:0.5em;
+        }
     }    
     .formField > .section{
         display:flex;
@@ -320,6 +344,34 @@ export const Form = styled.form`
         flex-wrap:wrap;
         gap:3em;
 
+        .id_type{
+            display:flex;
+            justify-content:flex-start;
+            align-items:center;
+            gap:1em;
+            padding:0.5em;
+            padding-left:1em;
+            flex 0 1 30em;
+            background:#EEF0F1;
+            border-radius:8px;
+            color: #737373;
+            cursor:pointer;
+        }
+        .id_type:hover{
+            background:#FFDF00;
+        }
+        .id_type > .lsc{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width:25px;
+            height:auto;
+            margin:0.5em 0em 0.5em 0em;
+        }
+        .id_type > .lsc img{
+            width:100%;
+            height:100%;
+        }
         #resident{
             flex: 0 1 100%;
         }
@@ -329,23 +381,35 @@ export const Form = styled.form`
             background:transparent;
             border:2px solid black;
         }
-        #continue {
+        #continue_enable {
             margin-top:0em;
             flex: 0 1 20em;
+            background:#FFDF00;
+            border: 2px solid #FFDF00;
         }
-
+        #continue_disable{
+            margin-top:0em;
+            flex: 0 1 20em;
+            background:#EEF0F1;
+            border: 2px solid #EEF0F1;
+        }
+        hr{
+            width:5em;
+        }
     }
     .formField{
         #section{
             flex-wrap:nowrap;
             justify-content:space-between;
+            flex-wrap:wrap;
         }
+
     }
     .formField > .section > .input{
         display:flex;
         flex-direction:column;
         gap:0.5em;
-        flex: 0 1 15em;
+        flex: 1 1 15em;
 
         label{
             font-size:0.8rem;

@@ -6,6 +6,8 @@ import {Selector, X} from "heroicons-react"
 import profileImg from "../Dashboard-Image/profileImg.png"
 import GetStarted from "./GetStarted"
 import BasicInfo from "./BasicInfo"
+import Advanced_Verf from './Advanced_Verf'
+import Advanced_Verf_1 from './Advanced_Verf_1'
 
 const ProfileAsElement = ()=>{
   const [stage, setStage] = useState(0);
@@ -22,12 +24,7 @@ const ProfileAsElement = ()=>{
             </div>
 
             <div className="rightSection">
-
-              <div className="closeField">
-                <div className="closeBtn">
-                  <X size="20px" color="black"/>
-                </div>                
-              </div>              
+                          
               <Form>
                 {
                   registering ? 
@@ -52,7 +49,7 @@ const ProfileAsElement = ()=>{
                   />
                 }
 
-                {
+                { 
                   stage === 2 && 
                   <Advanced_Verf 
                     stage={stage} 
@@ -98,32 +95,6 @@ const ProfileAsElement = ()=>{
           </ProfileContainer>
         </GenericContainer>
     )
-}
-
-const Advanced_Verf = (props) =>{
-  let {
-    stage,
-    setStage
-  } = props
-
-  return(
-    <>
-      <h1>Stage 2</h1>
-    </>
-  )
-}
-
-const Advanced_Verf_1 = (props) =>{
-  let {
-    stage,
-    setStage
-  } = props
-
-  return(
-    <>
-      <h1>Stage 3</h1>
-    </>
-  )
 }
 
 const Advanced_Verf_2 = (props) =>{
