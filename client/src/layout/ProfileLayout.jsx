@@ -78,7 +78,7 @@ const ProfileLayout = () => {
                     <div className='border'></div>
                     <TopNavigationComponent navOptions={navOptions} activeComponent={activeComponent} setActiveComponent={switchComp} />
                     <div className='border2'></div>
-                    <div className="py-5 md:h-[90%] overflow-y-auto">
+                    <div className="w-full h-full py-5 md:h-[90%] overflow-y-auto">
                         {
                             (activeComponent == "stats") && <p>Stat</p>
                         }
