@@ -21,16 +21,25 @@ export const ProfileWrapper = styled.div`
     }  
 }
 
+.slack{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        width: 150px;
+        height: 150px; 
+    }  
+}
+
 .detail1 {
     display: flex;
     flex-direction: column;
     min-height: 30%;
     margin: 0.8em;
     gap: 0.3em;
- 
-    @media (min-width: ${theme.breakPoint['tablet']}) {
-       
-    }  
+
 }
 
 .sub-detail1 {
@@ -95,8 +104,8 @@ export const ProfileWrapper = styled.div`
     position: absolute;
     justify-content: center;
     align-items: center;
-    left: 45px;
-    top: 48px;
+    left: 60px;
+    top: 51px;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         left: 120px;
@@ -229,12 +238,11 @@ export const UpperDiv = styled.div`
 export const Slack = styled.div`
     border: 2px solid #ECEDEE;
     border-radius: 1000px;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     background-image:url(${props => props.imageUrl});
     background-size: contain;
     object-fit: contain;
-    background-repeat: no-repeat;
     position: relative;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {

@@ -14,13 +14,13 @@ const InputField = styled.input`
         outline: none;
         padding: 0 0.5em;
         letter-spacing: 0.1em;
+        border: 2px solid gray;
         
         @media (min-width: ${theme.breakPoint['tablet']}) {
             width: ${props => props.width ? props.width : "100%"};
             height: 2.5em;
             font-size: 17px;
             border-radius: 0.3em;
-            margin-bottom: 2em;
         }
     `;
 

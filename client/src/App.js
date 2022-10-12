@@ -29,8 +29,6 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
 import Navbar from './Components/Navbar/Navbar';
 import ProfileContainer from './container/ProfileContainer.jsx';
-import Stat from './Components/Stat/Stat';
-import Verification from './Components/Verification/Verification';
 
 
 function App() {
@@ -60,8 +58,7 @@ function App() {
         <Route path="/help/earning" element={<Earning />}/>
         <Route path="/help/benefits" element={<Benefits />}/>
         <Route path="/profile/" element={<ProfileContainer />} />
-        <Route path="/profile/stats" element={<Stat />} />
-        <Route path="/profile/verification" element={<Verification />} />
+
       </Routes>
     </Router>
   );

@@ -46,10 +46,10 @@ const ProfileLayout = () => {
             <div className='lower-div'>
                 <div className='detail1'>
                     <div className='sub-detail1'>
-                        <Slack imageUrl={slack}>
+                        <Slack>
+                            <img src={slack} className='slack' alt='slack'></img>
                             <div className='camera-div'> <BsCameraFill size={15} /></div>
                         </Slack>
-
 
                         <div className='detail-text'>
                             <div className='badge-div'>
