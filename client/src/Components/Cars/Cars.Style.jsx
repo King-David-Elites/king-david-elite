@@ -241,9 +241,10 @@ export const Heading = styled.div`
 `
 
 export const FormBody = styled.div`
-    padding:2em 3em;
+    padding:${props => props.padding ? props.padding : "0em"};
+
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        padding:4em 6em;
+        padding:${props => props.padding ? props.padding : "4em 6em"};
     }
 
     .register-component{
@@ -265,8 +266,13 @@ export const FormBody = styled.div`
         padding: 1em 2em;
         border-radius: 4px;
         border: none;
-        background: rgba(35, 1, 243, 0.8);
+        background: ${theme.blueText};
         color: #fff;
+        margin-top: 4em;
+
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+          font-size: 17px;
+        }  
     }
 `
 

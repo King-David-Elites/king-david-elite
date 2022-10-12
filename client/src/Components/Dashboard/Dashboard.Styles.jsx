@@ -200,6 +200,8 @@ export const NotificationContainer = styled.div`
 export const GenericContainer = styled.div`
     border-radius: 8px;
     height: 115vh;
+    padding: ${props => props.padding ? props.padding : "0em"};
+    display: ${props => props.display ? props.display : "block"};
 `
 
 // profile code section
@@ -227,8 +229,8 @@ export const ProfileContainer = styled.div`
     .rightSection{
         width:60%;
         height:100%;
-        background:white;
-        border-radius:0px 8px 8px 0px
+        background:"white";
+        border-radius:0px 8px 8px 0px;
     }
     .rightSection > .closeField{
         width:100%;

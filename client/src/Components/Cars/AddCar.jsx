@@ -4,8 +4,6 @@ import FormikControl from '../formik/FormikControl';
 import { FormBody, Heading, Position, Text } from './Cars.Style';
 import { Dropdown, Option } from '../inputs/DropdownInput'
 import { LocationMarkerOutline } from 'heroicons-react';
-import { useState, useRef } from 'react';
-
 
 const carOption = [
   { key: "Car", value: "car" },
@@ -143,7 +141,7 @@ const AddCar = (values, onSubmitProps) => {
         </Heading>
       </div>
 
-      <FormBody>
+      <FormBody padding='2em 3em'>
         <Position>
           <LocationMarkerOutline width="20px" color='#2301F3' />
           <Text color="black" fontSize="0.8rem">Add a Location</Text>
