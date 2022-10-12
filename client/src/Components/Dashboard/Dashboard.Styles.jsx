@@ -204,7 +204,7 @@ export const GenericContainer = styled.div`
     display: ${props => props.display ? props.display : "block"};
 `
 
-// profile code section
+// Dashboard profile code section
 
 export const ProfileContainer = styled.div`
     border-radius: 8px;
@@ -229,26 +229,9 @@ export const ProfileContainer = styled.div`
     .rightSection{
         width:60%;
         height:100%;
-<<<<<<< HEAD
-        background:"white";
-        border-radius:0px 8px 8px 0px;
-    }
-    .rightSection > .closeField{
-        width:100%;
-        padding:1em 2em 0em 0em;
-        display:flex;
-        justify-content:flex-end;
-    }
-    .closeBtn{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        cursor:pointer;
-=======
         background:white;
         border-radius:0px 8px 8px 0px;
         overflow-y:scroll;
->>>>>>> 93a082efe7881b73e3314273370016f6794d017d
     }
 `
 export const Form = styled.form`
