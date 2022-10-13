@@ -1,13 +1,19 @@
 import './Verification.Style.jsx'
-import React from 'react';
+import React, {useState} from 'react';
 import { FaRegUserCircle } from 'react-icons/fa'
 import profileImg from '../Dashboard/Dashboard-Image/profileImg.png'
 import { DesktopContainer, VerificationContainer } from './Verification.Style.jsx';
-
+import {useNavigate} from "react-router-dom";
 const Verification = () => {
-
+const navigate = useNavigate();
+const [verified, setVerified] = useState(false)
     return (
-        <VerificationContainer>
+        <>
+        {
+            verified ?
+            <p>Verified</p>
+            :
+            <VerificationContainer>
             <div className="container">
                 <div className="verification-wrapper">
                     <h3>Identity Verification</h3>
@@ -52,14 +58,20 @@ const Verification = () => {
                                 <li>To Validate transactions</li>
                                 <li>To keep KDE safe for Users</li>
                             </ul>
-                            <button>Verify</button>
+                            <button
+                                onClick={()=>{
+                                    navigate('/dashboard/profile/verification')
+                                }}
+                            >Verify</button>
                         </div>
 
                     </div>
                 </div>
-            </DesktopContainer>
+                </DesktopContainer>
 
-        </VerificationContainer>
+            </VerificationContainer>
+        } 
+        </>
     );
 }
 

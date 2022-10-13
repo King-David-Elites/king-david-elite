@@ -204,7 +204,7 @@ export const GenericContainer = styled.div`
     display: ${props => props.display ? props.display : "block"};
 `
 
-// profile code section
+// Dashboard profile code section
 
 export const ProfileContainer = styled.div`
     border-radius: 8px;

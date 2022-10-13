@@ -51,7 +51,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/messages" element={<Messages />} />
         <Route path="/dashboard/notifications" element={<Notifications />} />
-        <Route path="/dashboard/profile" element={<Profile/>}/>
+        <Route path="/dashboard/profile/verification" element={<Profile/>}/>
         <Route path="/dashboard/" element={<Profile />} />
         <Route path="/dashboard/wallet" element={<Wallet />} />
         <Route path="/about" element={<About />} />
