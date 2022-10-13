@@ -161,7 +161,7 @@ const EditProfile = (props) => {
                                 </select>
 
                             </div>
-                            <div className="sub-dropdown">
+                            <div className="sub-dropdown space">
                                 <label htmlFor="state">State</label>
                                 <select
                                     name="state"
@@ -189,7 +189,7 @@ const EditProfile = (props) => {
                         </div>
 
                         <div className="dropdown">
-                            <div className="sub-dropdown">
+                            <div className="sub-dropdown space">
                                 <label htmlFor="city">City</label>
                                 <select
                                     name="city"
@@ -214,7 +214,7 @@ const EditProfile = (props) => {
                                     }
                                 </select>
                             </div>
-                            <div className="sub-dropdown">
+                            <div className="sub-dropdown space">
                                 <label htmlFor="postalCode">Zip / Postal Code</label>
                                 <select
                                     name="postalCode"
