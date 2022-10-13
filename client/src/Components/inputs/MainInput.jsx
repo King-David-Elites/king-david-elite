@@ -15,6 +15,7 @@ const InputField = styled.input`
         padding: 0 0.5em;
         letter-spacing: 0.1em;
         border: 2px solid gray;
+        margin-bottom: 1em;
         
         @media (min-width: ${theme.breakPoint['tablet']}) {
             width: ${props => props.width ? props.width : "100%"};
@@ -24,7 +25,6 @@ const InputField = styled.input`
         }
     `;
 
-
 const InputLabel = styled.label`
         color: black;
         font-size: 15px;
@@ -32,7 +32,6 @@ const InputLabel = styled.label`
         letter-spacing: 0.05em;
         white-space: nowrap;
       
-
         @media (min-width: ${theme.breakPoint['tablet']}) {
            font-size: 15px;
         }

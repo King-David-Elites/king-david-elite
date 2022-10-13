@@ -229,7 +229,6 @@ export const ProfileContainer = styled.div`
     .rightSection{
         width:60%;
         height:100%;
-<<<<<<< HEAD
         background:"white";
         border-radius:0px 8px 8px 0px;
     }
@@ -244,11 +243,9 @@ export const ProfileContainer = styled.div`
         justify-content:center;
         align-items:center;
         cursor:pointer;
-=======
         background:white;
         border-radius:0px 8px 8px 0px;
         overflow-y:scroll;
->>>>>>> 93a082efe7881b73e3314273370016f6794d017d
     }
 `
 export const Form = styled.form`
@@ -351,7 +348,7 @@ export const Form = styled.form`
             gap:1em;
             padding:0.5em;
             padding-left:1em;
-            flex 0 1 30em;
+            flex: 0 1 30em;
             background:#EEF0F1;
             border-radius:8px;
             color: #737373;
@@ -642,4 +639,3 @@ table tr:nth-of-type(6 ) {
 
 
 `
-

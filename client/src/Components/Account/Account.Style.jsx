@@ -114,7 +114,7 @@ export const Wrapper = styled.div`
         width: 5em;
         display: flex;
         justify-content: center;
-        float: right;
+       
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
           font-size: 17px;

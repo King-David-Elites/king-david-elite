@@ -8,27 +8,25 @@ const MainButton = styled.button`
     font-size: ${props => props.fontSize ? props.fontSize : "0.9em"};
     line-height: 0.8em;
     color: ${props => props.color ? props.color : theme.textColor};
-  background-color: ${({bg})=> bg || theme.color};
-    border: 2px solid ${theme.color};
+    background-color: ${props => props.background ? props.background : theme.color};
+    border: 2px solid ${props => props.border ? props.border : theme.color};
     border-radius: 6px;
     white-space: nowrap;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 2px 16px;
+    padding: ${props => props.padding ? props.padding : "16px"} ;
     font-family: ${theme.fontFamily};
+    margin-top:${props => props.marginTop ? props.marginTop : "0em"};   
     cursor:pointer;    
 
-@media (min-width: ${theme.breakPoint['tablet']}) {
+    @media (min-width: ${theme.breakPoint['tablet']}) {
             width: ${props => props.width ? props.width : "88px"};
             height: ${props => props.height ? props.height : "40px"};
             font-size: ${props => props.fontSize ? props.fontSize : "0.8em"};
-            background-color: ${props => props.background ? props.background: theme.color};
-            border: 2px solid ${props => props.border ? props.border : theme.color};
             letter-spacing: 0.1em;    
-            border-radius: 0.5em;  
-            margin-top:${props => props.marginTop ? props.marginTop : "0em"}      
+            border-radius: 0.5em;    
         }
 `;
 

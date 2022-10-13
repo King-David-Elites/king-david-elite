@@ -278,15 +278,15 @@ export const FormBody = styled.div`
 
 export const FileUploadContainer = styled.section`
   position: relative;
-  margin: 25px 0 15px;
-  border: 2px dotted lightgray;
+  margin: 10px 0 15px;
+  border: 2px dashed lightgray;
   padding: 35px 20px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
-  width: 60%
+  width: 100%
 `;
 
 export const FormField = styled.input`

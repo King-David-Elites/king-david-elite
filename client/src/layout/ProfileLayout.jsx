@@ -11,8 +11,11 @@ import { ProfileWrapper, UpperDiv, Slack } from './ProfileLayout.Style'
 import bg from './Image/profilebg.png'
 import slack from './Image/slack.png'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ProfileLayout = () => {
+
+    const navigate = useNavigate();
 
     const navOptions = [
         {
@@ -54,13 +57,13 @@ const ProfileLayout = () => {
                         <div className='detail-text'>
                             <div className='badge-div'>
                                 <h3>KingDavid Team</h3>
-                                <BadgeCheck className='badge' />
+                                <BadgeCheck size={15} className='badge' />
                             </div>
                             <p>Joined: 2022</p>
                         </div>
 
                         <div className='btn-wrapper'>
-                            <button className='btn'><MdEdit size={15} className='icon' />Edit Profile</button>
+                            <button className='btn' onClick={() => navigate("/profile/edit")}><MdEdit size={15} className='icon' />Edit Profile</button>
                             <button className='hide-btn'><MdUpgrade size={18} className='upgrade-icon' />Upgrade Account</button>
                         </div>
 

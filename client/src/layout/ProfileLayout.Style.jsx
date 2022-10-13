@@ -77,10 +77,11 @@ export const ProfileWrapper = styled.div`
 
 .sub-detail2 {
     height: 100px;
-    letter-spacing: 0.010em;
+    letter-spacing: 0.05em;
     font-weight: 500;
-    line-height: 18px;
-    color: rgba(68, 69, 68, 0.95);
+    line-height: 24px;
+    margin-top: 1em;
+    min-height: 15em;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         margin-top: 2em;
@@ -114,9 +115,14 @@ export const ProfileWrapper = styled.div`
 }
 
 .detail-text {
-    margin-left: 2em;
+    margin-left: 1em;
     display: flex;
     flex-direction: column;
+    min-width: 40%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    overflow-x: auto;
    
     @media (min-width: ${theme.breakPoint['tablet']}) {
        align-items: flex-start;
@@ -135,15 +141,8 @@ export const ProfileWrapper = styled.div`
     margin-left: 0.3em;
 }
 
-.detail-text > h3 {
-    font-weight: 700;
-    font-size: 18px;
+.badge-div{
     white-space: nowrap;
-
-    @media (min-width: ${theme.breakPoint['tablet']}) {
-        font-size: 15em;
-        letter-spacing: 0.3em;
-    }  
 }
 
 .detail-text > p{
@@ -154,8 +153,8 @@ export const ProfileWrapper = styled.div`
     background-color: #BABABB;
     border: none;
     color: white;
-    padding: 10px 14px;
-    font-size: 16px;
+    padding: 8px 4px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: 2px;
     white-space: nowrap;
@@ -177,7 +176,7 @@ export const ProfileWrapper = styled.div`
     font-size: 16px;
     cursor: pointer;
     border-radius: 2px;
-    margin-top: 5em;
+    margin-top: 2em;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -39,8 +39,6 @@ const Account = () => {
         validate
     })
 
-    console.log("errors", formik.errors)
-
     const navigate = useNavigate();
 
     return (
@@ -70,10 +68,9 @@ const Account = () => {
 
                 <button className='create' type="submit">Save</button>
 
-
             </form>
 
-            <p className="blue-text" onClick={() => navigate("/dashboard")}>proceed to dashboard</p>
+            <p className="blue-text" onClick={() => navigate("/dashboard/wallet")}>proceed to dashboard</p>
         </Wrapper >
     );
 }

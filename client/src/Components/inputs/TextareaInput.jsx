@@ -9,13 +9,15 @@ const TextareaInput = (props) => {
     const TextArea = styled.textarea`
     background-color: white;
     min-width: 300px;
-    height: 40px;
+    height: 80px;
     border-radius: 0.2em;
     font-size: 15px;
     font-weight: 400;
     outline: none;
     padding: 0 0.5em;
     letter-spacing: 0.1em;
+    margin-bottom: 1em;
+    
     @media (min-width: ${theme.breakPoint['tablet']}) {
         width:${props => props.width ? props.width : "100%"}; 
         margin:${props => props.margin ? props.margin : "0em"}; 
