@@ -31,7 +31,8 @@ import Navbar from './Components/Navbar/Navbar';
 import ProfileContainer from './container/ProfileContainer.jsx';
 import Stat from './Components/Stat/Stat';
 import Verification from './Components/Verification/Verification';
-
+import ProfileList from './container/ProfileList';
+import ProfileStat from './container/ProfileStat';
 
 function App() {
   return (
@@ -62,6 +63,8 @@ function App() {
         <Route path="/profile/" element={<ProfileContainer />} />
         <Route path="/profile/stats" element={<Stat />} />
         <Route path="/profile/verification" element={<Verification />} />
+        <Route path="/profile/list" element={<ProfileList/>} />
+        <Route path="/profile/stat" element={<ProfileStat/>} />
       </Routes>
     </Router>
   );
