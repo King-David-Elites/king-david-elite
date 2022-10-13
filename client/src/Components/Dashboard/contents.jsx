@@ -19,6 +19,6 @@ export const navigators = [
     {
         title: "Profile",
         icon: <FaUser color="#FFDF00"/>,
-        link: "profile"
+        link: "profile/verification"
     }
 ]
