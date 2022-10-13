@@ -106,7 +106,7 @@ const DropdownInput = (props) => {
                             />
                         </FileUploadContainer>
                         <FilePreviewContainer>
-                            <p className="textOpaque">mark and upload more than one high-quality images. listings with low quality images may be rejected</p>
+                            {/* <p className="textOpaque">mark and upload more than one high-quality images. listings with low quality images may be rejected</p> */}
                             {/* <span>To Upload</span> */}
                             <PreviewList>
                                 {Object.keys(files).map((fileName, index) => {

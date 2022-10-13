@@ -1,16 +1,18 @@
+import { useNavigate } from 'react-router-dom'
 import './TopNavigationComponent.css'
 
-const TopNavigationComponent = ({ navOptions, activeOption, setActiveOption }) => {
+
+const TopNavigationComponent = ({ navOptions, activeComponent, setActiveComponent }) => {
+    const navigate = useNavigate();
 
     return (
         <div className="topnav-container">
             {
                 navOptions.map((navOption, index) =>
-                    <div key={index} className={`topnav-item  ${activeOption == navOption.state ? `active` : ""}`} onClick={() => { setActiveOption(navOption.state) }}>
-                        <div className={`${activeOption == navOption.state ? `active border-b-2 border-b-theme-color` : ""}`}>
+                    <div key={index} className={`topnav-item  ${activeComponent === navOption.state ? `active` : ""}`} onClick={() => { setActiveComponent(navOption.state) }}>
+                        <button className={`nav-btn ${activeComponent === navOption.state ? `active` : ""}`}>
                             <span>{navOption.displayText}</span>
-
-                        </div>
+                        </button>
                     </div>
                 )
             }

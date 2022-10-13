@@ -4,6 +4,7 @@ import {InputLabel} from "./MainInput";
 const InputLayoutComp = styled.div`
     display: flex;
     flex-direction: column;
+
 `
 
 const InputLayout = ({label, name, children}) => {

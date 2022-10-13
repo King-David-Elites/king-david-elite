@@ -200,9 +200,11 @@ export const NotificationContainer = styled.div`
 export const GenericContainer = styled.div`
     border-radius: 8px;
     height: 115vh;
+    padding: ${props => props.padding ? props.padding : "0em"};
+    display: ${props => props.display ? props.display : "block"};
 `
 
-// profile code section
+// Dashboard profile code section
 
 export const ProfileContainer = styled.div`
     border-radius: 8px;
@@ -227,6 +229,20 @@ export const ProfileContainer = styled.div`
     .rightSection{
         width:60%;
         height:100%;
+        background:"white";
+        border-radius:0px 8px 8px 0px;
+    }
+    .rightSection > .closeField{
+        width:100%;
+        padding:1em 2em 0em 0em;
+        display:flex;
+        justify-content:flex-end;
+    }
+    .closeBtn{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
         background:white;
         border-radius:0px 8px 8px 0px;
         overflow-y:scroll;
@@ -332,7 +348,7 @@ export const Form = styled.form`
             gap:1em;
             padding:0.5em;
             padding-left:1em;
-            flex 0 1 30em;
+            flex: 0 1 30em;
             background:#EEF0F1;
             border-radius:8px;
             color: #737373;
@@ -623,4 +639,3 @@ table tr:nth-of-type(6 ) {
 
 
 `
-
