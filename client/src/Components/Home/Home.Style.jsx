@@ -74,7 +74,7 @@ export const Information = styled.div`
         position: absolute;
         width:50px;
         height: 110px;
-        background-color: #FFDF00;
+        background-color: #F2BE5C;
         right:-25px;
         top:53px;
     }
