@@ -4,7 +4,7 @@ export const Container = styled.div`
 
 margin:0;
 padding:0;
-background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.jpg);
+background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./images/.jpg);
 position: relative;
 width:auto;
 height:657px;
@@ -24,9 +24,9 @@ export const Page = styled.div`
 
 position: absolute;
 width:470px;
-height:550px;
+height:570px;
 left:450px;
-top:55px;
+top:50px;
 background: #FFFFFF;
 border-radius: 6px;
 
@@ -78,21 +78,22 @@ height:45px;
 background: #FFFFFF;
 border: 1px solid #737373;
 border-radius: 4px;
+margin-top:10px;
 }
 
 .password{
-width: 78px;
+margin-left:45px;
 margin-top:10px;
-margin-left:39px;
+margin-left:px;
 height: 24px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
-text-align: center;
 color: #000000;
 }
+
 
 .forgot{
 margin-top:8px;
@@ -121,13 +122,12 @@ color: #000000;
     width:360px;
     height: 44px;
     margin-left:47px;
-    margin-top:25px;
+    margin-top:15px;
     background: linear-gradient(90deg, #FFDF00 23.7%, #000000 286.13%);
     border-radius: 4px;
-
     font-family: 'Poppins';
     font-style: normal;
-    font-weight:500;
+    font-weight:550;
     font-size: 16px;
     line-height: 24px;
     text-align: center;
@@ -138,11 +138,11 @@ color: #000000;
 
 .or{
 height: 30px;
-margin-top:15px;
+margin-top:10px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 500;
-font-size: 20px;
+font-size:17px;
 line-height: 30px;
 text-align: center;
 color: #000000;
@@ -150,7 +150,7 @@ color: #000000;
 
 
 .google{
-margin-top:17px;   
+margin-top:-5px;   
 width:360px;
 height:44px;
 margin-left:47px;
@@ -161,7 +161,7 @@ border-radius:6px;
 }
 
 .account{
-    margin-top:20px;
+    margin-top:15px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -174,7 +174,7 @@ border-radius:6px;
 }
 
 
-@media only screen and(max-width:600px){
+@media screen and (max-width:480px){
     
 position: absolute;
 width:350px;
@@ -183,7 +183,6 @@ left:27px;
 top:55px;
 background: #FFFFFF;
 border-radius: 6px;
-
 
 input{
     margin-left:47px;
@@ -204,7 +203,6 @@ input{
 }
 
 }
-
 
 
 

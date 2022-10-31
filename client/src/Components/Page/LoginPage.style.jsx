@@ -4,7 +4,7 @@ export const Container = styled.div`
 
 margin:0;
 padding:0;
-background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./images/.jpg);
+background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.jpg);
 position: relative;
 width:auto;
 height:657px;
@@ -24,9 +24,9 @@ export const Page = styled.div`
 
 position: absolute;
 width:470px;
-height:570px;
+height:550px;
 left:450px;
-top:50px;
+top:55px;
 background: #FFFFFF;
 border-radius: 6px;
 
@@ -81,18 +81,18 @@ border-radius: 4px;
 }
 
 .password{
-margin-left:45px;
+width: 78px;
 margin-top:10px;
-margin-left:px;
+margin-left:39px;
 height: 24px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
+text-align: center;
 color: #000000;
 }
-
 
 .forgot{
 margin-top:8px;
@@ -121,12 +121,13 @@ color: #000000;
     width:360px;
     height: 44px;
     margin-left:47px;
-    margin-top:15px;
+    margin-top:25px;
     background: linear-gradient(90deg, #FFDF00 23.7%, #000000 286.13%);
     border-radius: 4px;
+
     font-family: 'Poppins';
     font-style: normal;
-    font-weight:550;
+    font-weight:500;
     font-size: 16px;
     line-height: 24px;
     text-align: center;
@@ -137,7 +138,7 @@ color: #000000;
 
 .or{
 height: 30px;
-margin-top:10px;
+margin-top:15px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 500;
@@ -149,7 +150,7 @@ color: #000000;
 
 
 .google{
-margin-top:10px;   
+margin-top:17px;   
 width:360px;
 height:44px;
 margin-left:47px;
@@ -173,7 +174,7 @@ border-radius:6px;
 }
 
 
-@media screen and (max-width:480px){
+@media only screen and(max-width:600px){
     
 position: absolute;
 width:350px;
@@ -182,6 +183,7 @@ left:27px;
 top:55px;
 background: #FFFFFF;
 border-radius: 6px;
+
 
 input{
     margin-left:47px;
@@ -202,6 +204,7 @@ input{
 }
 
 }
+
 
 
 
