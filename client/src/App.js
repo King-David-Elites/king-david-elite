@@ -29,15 +29,8 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
 import Navbar from './Components/Navbar/Navbar';
 import ProfileContainer from './container/ProfileContainer.jsx';
-<<<<<<< HEAD
-import Stat from './Components/Stat/Stat';
-import Verification from './Components/Verification/Verification';
-import ProfileList from './container/ProfileList';
-import ProfileStat from './container/ProfileStat';
-=======
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
 
->>>>>>> 4ea8bb4fc4d959f3e4bffcae424a2352e8c2a54b
 
 function App() {
   return (
@@ -66,14 +59,7 @@ function App() {
         <Route path="/help/earning" element={<Earning />}/>
         <Route path="/help/benefits" element={<Benefits />}/>
         <Route path="/profile/" element={<ProfileContainer />} />
-<<<<<<< HEAD
-        <Route path="/profile/stats" element={<Stat />} />
-        <Route path="/profile/verification" element={<Verification />} />
-        <Route path="/profile/list" element={<ProfileList/>} />
-        <Route path="/profile/stat" element={<ProfileStat/>} />
-=======
         <Route path='/profile/edit' element={<EditProfile/>}></Route>
->>>>>>> 4ea8bb4fc4d959f3e4bffcae424a2352e8c2a54b
       </Routes>
     </Router>
   );
