@@ -1,7 +1,7 @@
 import React from 'react'
 import S from './images/S.jpg'
-import { Container } from './LoginPage.style'
-import { Page } from './LoginPage.style'
+import { Container } from './LoginPage.Style'
+import { Page } from './LoginPage.Style'
 import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';

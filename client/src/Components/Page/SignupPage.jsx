@@ -1,13 +1,13 @@
 import React from 'react'
 // import S from './images/.jpg'
-import { Container } from './SignupPage.style'
-import { Page } from './SignupPage.style'
+import { Container } from './LoginPage.Style'
+import { Page } from './LoginPage.Style'
 import { Link } from 'react-router-dom'
 import { useRef } from 'react'
-import axios from "axios"
+import services from '../../ioc/services'
 
 
-const SignPage = () => {
+const SignUpPage = () => {
 
   const emailRef = useRef();
   const fnameRef = useRef();
@@ -24,9 +24,10 @@ const SignPage = () => {
       password:passwordRef.current.value,
       } 
     
-      await axios.post("https://kde-api.herokuapp.com/users/sign-up", userDetails)
-      .then(resp => console.log(resp))
-      .catch(err => console.log(err))
+     await services.api.userRequests.signUp(userDetails).then(res => {
+      console.log(res);
+    }).catch(err => console.log(err));
+      
   } 
 
   return (
@@ -53,4 +54,4 @@ const SignPage = () => {
   )
 }
 
-export default SignPage
+export default SignUpPage
