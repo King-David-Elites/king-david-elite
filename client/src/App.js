@@ -22,8 +22,8 @@ import Help from './Components/About/Help';
 import Earning from './Components/About/Earning';
 import Benefits from './Components/About/Benefits';
 import AddCar from './Components/Cars/AddCar';
-import SignupPage from './Components/Page/SignupPage';
-import LoginPage from './Components/Page/LoginPage';
+import SignupPage from './Components/Page/LoginPage';
+import LoginPage from './Components/Page/SignupPage';
 import AddRealEstate from './Components/RealEstate/AddRealEstate';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
@@ -41,6 +41,8 @@ function App() {
       {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<HomePage/> } />
+        <Route path='/signup' element={<SignupPage/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
         <Route path='/savedpost' element={<Savedpost/>}/>
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/real-estate/add" element={<AddRealEstate />} />
