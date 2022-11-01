@@ -28,7 +28,7 @@ const LoginPage = () => {
       <Page>
         <h1>King David Elite</h1>
         <p className='back'>welcome back</p>
-        <form onSubmit={(e)=> signUp(e)}>
+        <form onSubmit={(e)=> login(e)}>
           <p className='mail'>Email</p>
           <input type='email' ref={emailRef} placeholder='Enter your email here' />
           <p className='password'>Password</p>
@@ -36,7 +36,7 @@ const LoginPage = () => {
         </form>
           <p className='forgot'>Forgot password? <span className='red'>Click here</span></p>
           
-          <button className='login' onClick={signUp}>login</button>
+          <button className='login' onClick={login}>login</button>
           <p className='or'>- OR -</p>
           <button className='google' >log in with Google</button>
           <p className='account'>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p>
