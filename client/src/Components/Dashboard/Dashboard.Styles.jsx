@@ -229,7 +229,7 @@ export const ProfileContainer = styled.div`
     .rightSection{
         width:60%;
         height:100%;
-        background:"white";
+        background:white;
         border-radius:0px 8px 8px 0px;
     }
     .rightSection > .closeField{
