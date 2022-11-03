@@ -232,6 +232,7 @@ export const ProfileContainer = styled.div`
         height:100%;
         background:white;
         border-radius:0px 8px 8px 0px;
+        overflow-y:scroll
     }
     .rightSection > .closeField{
         width:100%;
@@ -251,8 +252,8 @@ export const ProfileContainer = styled.div`
 `
 export const Form = styled.form`
     width:100%;
-    padding:3em 3em 2em 3em;
-
+    padding:3em 3em 2em 3em;    
+    
     .id_info {
         color:gray;
         font-size:0.8rem;
@@ -333,6 +334,48 @@ export const Form = styled.form`
         #id_section_veri{
             gap:0.5em;
         }
+        .upload{
+            padding:1em;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            gap:1em;
+            .uploading{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                flex-wrap:wrap;
+                gap:5em;
+            }
+            .uploading > .pages{
+                width:10em;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+            }
+            .pages img{
+                width:100%;
+                height:auto;
+            }
+            .uploading > .uploadType{
+                width:10em;
+                display:flex;
+                flex-direction:column;
+                gap:0.5em;
+                justify-content:center;
+                align-items:flex-start;                                
+            }
+            .uploadType > .load{
+                width:100%;
+                padding:1em;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                background:#EEF0F1;
+                border-radius:0.3em;
+            }
+        }
     }    
     .formField > .section{
         display:flex;
@@ -397,7 +440,6 @@ export const Form = styled.form`
     }
     .formField{
         #section{
-            flex-wrap:nowrap;
             justify-content:space-between;
             flex-wrap:wrap;
         }

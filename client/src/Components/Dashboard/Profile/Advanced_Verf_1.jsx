@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import {Identification, GlobeAlt,} from "heroicons-react"
 import liscence from "../Dashboard-Image/liscence.png"
+import frontpage from "../Dashboard-Image/frontpage.png";
+import backpage from "../Dashboard-Image/backpage.png";
 
 const Advanced_Verf_1 = (props) =>{
     let {
@@ -41,12 +43,37 @@ const Advanced_Verf_1 = (props) =>{
 
         <div className="formField">
             <h5>Upload Identification card</h5>
-            <div className="section">
-                
-                <div className="input">
+            <div className="upload">
+                <div className="uploading">
+                    <div className="pages">
+                        <img src={frontpage} alt="frontpage" />
+                    </div>
+                    <div className="uploadType">
+                        <h5>Upload front page</h5>
+                        <div className="load">
 
-                </div>
-            </div>
+                        </div>
+                        <div className="load">
+
+                        </div>
+                    </div> 
+                </div>           
+                <hr style={{color:"gray",width:"100%"}}/>         
+                <div className="uploading">
+                    <div className="pages">
+                        <img src={backpage} alt="backpage" />
+                    </div>
+                    <div className="uploadType">
+                        <h5>Upload back page</h5>
+                        <div className="load">
+
+                        </div>
+                        <div className="load">
+
+                        </div>
+                    </div>
+                </div>                               
+            </div>            
         </div>
 
         <div          
