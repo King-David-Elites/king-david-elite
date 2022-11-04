@@ -426,6 +426,7 @@ export const Post = styled.div`
         width:290px;
         height:160px;
         position:absolute;
+        top:1100px;
         border-radius: 40px 0px;
         
         .love{
@@ -513,7 +514,7 @@ export const Post = styled.div`
 .b{
     display:flex;
     position:absolute;
-    top:1380px;
+    top:1290px;
 
 
     button{

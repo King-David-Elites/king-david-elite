@@ -12,6 +12,7 @@ import bg from './Image/profilebg.png'
 import slack from './Image/slack.png'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ProfileStat from '../container/ProfileStat'
 
 const ProfileLayout = () => {
 
@@ -83,7 +84,7 @@ const ProfileLayout = () => {
                     <div className='border2'></div>
                     <div className="w-full h-full py-5 md:h-[90%] overflow-y-auto">
                         {
-                            (activeComponent == "stats") && <p>Stat</p>
+                            (activeComponent == "stats") && <ProfileStat/>
                         }
                         {
                             (activeComponent == "list") && <p>List</p>

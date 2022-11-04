@@ -21,7 +21,7 @@ import { FaHeart } from 'react-icons/fa'
 export default function ProfileStat() {
   return (
     <List>
-      <TopContainer>
+      {/* <TopContainer>
         <div className='bg' style={{backgroundImage:`url(${B1})`}}>
          </div>
         <div className='slac'>
@@ -56,7 +56,7 @@ export default function ProfileStat() {
             <button>Verification</button>
         </div>
         <div className='lines2'></div>
-    </MiddleContainer>
+    </MiddleContainer> */}
 
     <Overview>
 

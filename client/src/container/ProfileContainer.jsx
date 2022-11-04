@@ -6,11 +6,7 @@ const ProfileContainer = () => {
     const activeOption = location.pathname.split("/")[2] ?? "verification";
 
     return (
-
-        <ProfileLayout>
-  
-        </ProfileLayout>
-
+        <ProfileLayout />
     );
 }
 

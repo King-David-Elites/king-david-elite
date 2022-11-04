@@ -30,6 +30,7 @@ import Savedpost from './Components/Dashboard/Savedpost';
 import Navbar from './Components/Navbar/Navbar';
 import ProfileContainer from './container/ProfileContainer.jsx';
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
+import ProfileStat from './container/ProfileStat';
 
 
 
@@ -62,6 +63,7 @@ function App() {
         <Route path="/help/earning" element={<Earning />}/>
         <Route path="/help/benefits" element={<Benefits />}/>
         <Route path="/profile/" element={<ProfileContainer />} />
+        <Route path="/profile/stat" element={<ProfileStat />} />
         <Route path='/profile/edit' element={<EditProfile/>}></Route>
       </Routes>
     </Router>
