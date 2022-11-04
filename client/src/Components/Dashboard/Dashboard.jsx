@@ -45,7 +45,7 @@ const Dashboard = ({element, index}) => {
                     <input type="text" placeholder='search '/>
                 </div>
 
-                <div className="profile">
+                <div className="profile" onClick={()=> navigate("/profile")}>
                     <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
 
                     <div className="textContent">

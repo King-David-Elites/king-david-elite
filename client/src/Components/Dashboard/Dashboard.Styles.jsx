@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import theme from "../../application/utils/Theme"
 
 export const DashboardContainer = styled.div`
     display: grid;
@@ -229,7 +230,7 @@ export const ProfileContainer = styled.div`
     .rightSection{
         width:60%;
         height:100%;
-        background:"white";
+        background:white;
         border-radius:0px 8px 8px 0px;
     }
     .rightSection > .closeField{
@@ -297,7 +298,7 @@ export const Form = styled.form`
         display:flex;
         justify-content:center;
         align-items:center;
-        background:#FFDF00;
+        background:#F2BE5C;
         font-weight:bolder;
     }
     .details ul{
@@ -314,11 +315,11 @@ export const Form = styled.form`
         align-items:center;
         margin-top:5em;
         width:100%;
-        background:#FFDF00;
+        background:#F2BE5C;
         padding:0.8em;
         font-size:1rem;
         font-weight:bolder;
-        border:2px solid #FFDF00;
+        border:2px solid #F2BE5C;
         border-radius: 8px;
         cursor:pointer
     }
@@ -355,7 +356,7 @@ export const Form = styled.form`
             cursor:pointer;
         }
         .id_type:hover{
-            background:#FFDF00;
+            background:#F2BE5C;
         }
         .id_type > .lsc{
             display:flex;
@@ -381,8 +382,8 @@ export const Form = styled.form`
         #continue_enable {
             margin-top:0em;
             flex: 0 1 20em;
-            background:#FFDF00;
-            border: 2px solid #FFDF00;
+            background:#F2BE5C;
+            border: 2px solid #F2BE5C;
         }
         #continue_disable{
             margin-top:0em;
@@ -452,7 +453,7 @@ h4{
     font-size: 14px;
     line-height: 17px;
     text-align: center;
-    color: #FFDF00;
+    color: #F2BE5C;
     margin-top:42px;
     margin-left:43px;
 }

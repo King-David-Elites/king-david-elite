@@ -2,7 +2,7 @@ import React from 'react'
 import S from './images/S.jpg'
 import { Container } from './LoginPage.Style'
 import { Page } from './LoginPage.Style'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';
 
@@ -11,6 +11,7 @@ const LoginPage = () => {
 
   const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate()
 
   const login = async (e) => {
     e.preventDefault()
@@ -20,9 +21,15 @@ const LoginPage = () => {
     }
 
     await services.api.userRequests.login(userDetail).then(res => {
-      console.log(res);
+      let token = res.token;
+      let user = res.user;
+      localStorage.setItem("token", token)
+      localStorage.setItem("user", JSON.stringify(user))
+      console.log(res.message)
+      navigate("/")
     }).catch(err => console.log(err));
   }
+  
   return (
     <Container>
       <Page>
