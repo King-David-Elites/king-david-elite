@@ -254,6 +254,17 @@ export const Form = styled.form`
     width:100%;
     padding:3em 3em 2em 3em;    
     
+    .id-v{        
+        margin:0.5em;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:0.5em;
+        p{
+            font-size:0.8rem;
+            color:gray;
+        }        
+    }
     .id_info {
         color:gray;
         font-size:0.8rem;
@@ -309,6 +320,9 @@ export const Form = styled.form`
     }
     .details ul li{
         margin:0.5em;
+    }
+    #button{
+        margin-top:1em;
     }
     .button{
         display:flex;
@@ -368,12 +382,18 @@ export const Form = styled.form`
             }
             .uploadType > .load{
                 width:100%;
-                padding:1em;
+                padding:0.5em;
                 display:flex;
                 justify-content:center;
                 align-items:center;
                 background:#EEF0F1;
                 border-radius:0.3em;
+                color:gray;
+                gap:0.5em;
+            }
+            p{
+                color:gray;
+                font-size:0.8rem;
             }
         }
     }    
