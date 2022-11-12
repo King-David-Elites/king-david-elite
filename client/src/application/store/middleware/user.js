@@ -8,7 +8,7 @@ const setLoggedInUserDetailsFlow =
                 (action) => {
 
                     if (action.type === SET_SETLOGGEDINUSER_DETAILS) {
-                        localStorage.setItem("userDetails", JSON.stringify(action.payload));
+                        localStorage.setItem("user", JSON.stringify(action.payload));
                         next(action);
                     }
 

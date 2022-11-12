@@ -2,7 +2,6 @@ import * as uiActions from '../actions/ui';
 
 const initialState = {
     loading: false,
-    
 }
 
 export default (state = initialState, action) => {

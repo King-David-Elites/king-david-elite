@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { navigators } from './contents'
 import { DashboardContainer, LeftContainer, RightContainer } from './Dashboard.Styles'
 import { FaSearch } from "react-icons/fa"
 import { useNavigate } from 'react-router-dom'
 import kde_whiteBg from '../Navbar/Image/kde_whiteBg.png'
 import { LogoText } from '../Navbar/Navbar.Style'
-
+import { useSelector } from "react-redux";
+import useAuthentication from '../../application/hooks/useAuthentication'
 
 const Dashboard = ({element, index}) => {
-    const navigate = useNavigate()
+    useAuthentication();
+    const navigate = useNavigate();
+    const user = useSelector(state => state.user);
+    const userFirstName = user.firstName;
+    const userLastName = user.lastName;
+    const userEmail = user.email;
+
   return (
     <DashboardContainer>
         <LeftContainer>
@@ -49,8 +56,8 @@ const Dashboard = ({element, index}) => {
                     <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
 
                     <div className="textContent">
-                        <h6>Lambo Dealer</h6>
-                        <p>dealerlambo@gmail.com</p>
+                        <h6>{userFirstName?.toUpperCase()} {userLastName?.toUpperCase()}</h6>
+                        <p>{userEmail}</p>
                     </div>
                 </div>
             </div>

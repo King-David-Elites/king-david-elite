@@ -5,7 +5,7 @@ export const MiddleContainer = styled.div`
 
 .lines{
     position: absolute;
-    width:1345px;
+    width:100%;
     height:0px;
     left:3px;
     top:450px;
@@ -23,7 +23,6 @@ export const MiddleContainer = styled.div`
         padding: 12px 24px;
         width: 140px;
         height: 48px;
-        background: rgba(166, 166, 166, 0.7);
         border-radius: 4px;
         margin-right:40px;   
         border:none;
@@ -37,6 +36,7 @@ export const MiddleContainer = styled.div`
     .list{
         color:white;
         background:black;
+        cursor: pointer;
     }
 
 }

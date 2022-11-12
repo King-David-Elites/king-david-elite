@@ -1,12 +1,9 @@
 .topnav-container {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100vw;
-    height: 5em;
     gap: 0.5em;
-    overflow-x: auto;
-    padding-left: 2em;
+    overflow-x: auto; 
 }
 
 .topnav-item {
@@ -14,7 +11,6 @@
     width: 8em;
     align-items: center;
     justify-content: center;
-    opacity: 49%;
     font-weight: 600;
     letter-spacing: 0.3em;
     font-size: 13px;
@@ -36,10 +32,11 @@
 .topnav-item.active:after {
     content: "";
     margin-top: 3px;
+    /* background: black; */
 }
 
 
-.nav-btn {
+.nav-button {
     background: rgba(166, 166, 166, 0.7);
     color: black;
     border-radius: 4px;
@@ -51,8 +48,9 @@
     border: none;
 }
 
-.nav-btn.active {
-    opacity: 100%;
-    background: black;
+
+.nav-button.active {
+    /* opacity: 100%; */
+    background-color: black;
     color: #fff;
 }
