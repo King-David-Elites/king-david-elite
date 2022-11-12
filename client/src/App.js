@@ -55,7 +55,7 @@ function App() {
 >>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
         <Route path='/savedpost' element={<Savedpost/>}/>
         <Route path="/real-estate" element={<RealEstateListing />} />
-        <Route path="/real-estate/add" element={<AddRealEstate />} />
+//         <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
         <Route path="/cars" element={<Cars />} />
