@@ -28,6 +28,7 @@ const Navbar = ({ bg, sticky, active }) => {
     ]
 
 
+    const token = localStorage.getItem("token")
 
     return (
         <>
@@ -61,8 +62,13 @@ const Navbar = ({ bg, sticky, active }) => {
                     </UL>
                 </div>
 
-                <Brand onClick={() => navigate("/dashboard")}>
-                    <div className='dashboard'>DASHBOARD</div>
+                <Brand>
+                    {
+                        token ? 
+                        <div onClick={() => navigate("/dashboard")} className='dashboard'>DASHBOARD</div>
+                        :
+                        <div className="login" onClick={() => navigate("/signup")}>Login/Sign Up</div>
+                    }
                     <div className="h-[8%] w-[full] z-[10]">
                         <div className="dashboardIcon">
                             <MdMenu size={20} />

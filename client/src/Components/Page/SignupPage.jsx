@@ -2,7 +2,7 @@ import React from 'react'
 // import S from './images/.jpg'
 import { Container } from './SignupPage.style'
 import { Page } from './SignupPage.style'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import axios from "axios"
 
@@ -13,6 +13,7 @@ const SignPage = () => {
   const fnameRef = useRef();
   const lnameRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate()
 
   const signUp = async (e) =>{
     e.preventDefault();
@@ -25,7 +26,15 @@ const SignPage = () => {
       } 
     
       await axios.post("https://kde-api.herokuapp.com/users/sign-up", userDetails)
-      .then(resp => console.log(resp))
+      .then(resp => {
+        let res=resp.data;
+        let token = res.token;
+        let user = res.user;
+        localStorage.setItem("token", token)
+        localStorage.setItem("user", JSON.stringify(user))
+        console.log(res.message)
+        navigate("/")
+      })
       .catch(err => console.log(err))
   } 
 
@@ -35,7 +44,7 @@ const SignPage = () => {
         <h1>King David Elite</h1>
         <p className='back'>welcome</p>
         <form onSubmit={(e)=> signUp(e)}>
-          <input type='text' ref={emailRef} placeholder='Enter your email here' />
+          <input type='email' ref={emailRef} placeholder='Enter your email here' />
           <input type='text' ref={fnameRef} placeholder='First name'/>
           <input type='text'ref={lnameRef} placeholder='Last name'/>
           <input type='password' ref={passwordRef} placeholder='Password'/>

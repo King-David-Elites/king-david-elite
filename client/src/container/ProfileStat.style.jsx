@@ -1,122 +1,12 @@
 import styled from "styled-components"
 
-
-export const MiddleContainer = styled.div`
-
-.lines{
-    position: absolute;
-    width:1345px;
-    height:0px;
-    left:3px;
-    top:450px;
-    border:4px solid rgba(166, 166, 166, 0.2);
-    transform: rotate(-0.26deg);
-}
-
-.middle_btn{
-    display:flex;
-    position:absolute;
-    top:535px;
-    left:165px;
-
-    button{
-        padding: 12px 24px;
-        width: 140px;
-        height: 48px;
-        background: rgba(166, 166, 166, 0.7);
-        border-radius: 4px;
-        margin-right:40px;   
-        border:none;
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 500;
-        font-size:13px;
-        line-height:24px;
-    }
-
-    .list{
-        color:white;
-        background:black;
-    }
-
-}
-
-.lines2{
-    position: absolute;
-    width:1345px;
-    height:0px;
-    left:3px;
-    top:650px;
-    border:4px solid rgba(166, 166, 166, 0.2);
-    transform: rotate(-0.26deg);
-}
-
-
-@media(max-width:450px){
-
-    .lines{
-        position: absolute;
-        width:385px;
-        height:0px;
-        left:3px;
-        top:440px;
-        border:2px solid rgba(166, 166, 166, 0.2);
-        transform: rotate(-0.26deg);
-    }
-    
-    .middle_btn{
-        display:flex;
-        position:absolute;
-        top:460px;
-        left:30px;
-    
-        button{
-            padding: 12px 15px;
-            width:30px;
-            height:0px;
-            background:white;
-            border-radius: 4px;
-            margin-right:40px;   
-            border:none;
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 500;
-            font-size:12px;
-            line-height:0px;
-            color: #696969;
-
-        }
-
-
-        .stat{
-            color:#252625;
-            font-weight:900px;
-        }
-    
-        .list{
-            color:#696969;
-            background:white;
-        }
-    
-    }
-    
-    .lines2{
-        position: absolute;
-        width:385px;
-        height:0px;
-        left:3px;
-        top:500px;
-        border:2px solid rgba(166, 166, 166, 0.2);
-        transform: rotate(-0.26deg);
-    }
-
-}
-
+export const List = styled.div`
 `
+
 
 export const Overview = styled.div`
 position:absolute;
-top:730px;
+top:50px;
 display:flex;
 left:160px;
 
@@ -377,8 +267,7 @@ left:160px;
 
 export const Post = styled.div`
 
-   postion:absolute;
-   margin:800px 110px;
+   margin:330px 120px;
    display:flex;
 
    h3{
@@ -389,7 +278,7 @@ export const Post = styled.div`
     line-height: 36px;
     color: #000000;
     position:absolute;
-    top:960px;
+    top:250px;
     left:150px;
    }
 
@@ -426,7 +315,7 @@ export const Post = styled.div`
         width:290px;
         height:160px;
         position:absolute;
-        top:1100px;
+        top:400px;
         border-radius: 40px 0px;
         
         .love{
@@ -449,7 +338,7 @@ export const Post = styled.div`
             justify-content: center;
             align-items: center;
             padding: 8px 16px;
-            gap: 10px;
+            gap:10px;
             position: absolute;
             width:110px;
             height:30px;
@@ -514,10 +403,11 @@ export const Post = styled.div`
 .b{
     display:flex;
     position:absolute;
-    top:1290px;
+    top:670px;
 
 
     button{
+        margin-top:0px;
         margin-left:15px;
         display: flex;
         justify-content: center;

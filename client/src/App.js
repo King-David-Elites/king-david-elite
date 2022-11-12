@@ -29,19 +29,21 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
 import Navbar from './Components/Navbar/Navbar';
 import ProfileContainer from './container/ProfileContainer.jsx';
+import Stat from './Components/Stat/Stat';
+import Verification from './Components/Verification/Verification';
+import ProfileList from './container/ProfileList';
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
 import ProfileStat from './container/ProfileStat';
-
-
+import Waitlist from './Components/Page/Waitlist';
 
 function App() {
   return (
     <Router>
       {/* <Navbar/> */}
       <Routes>
-        <Route path='/' element={<HomePage/> } />
-        <Route path='/signup' element={<SignupPage/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/' element={<Waitlist/> } />
+        <Route path='/signup' element={<LoginPage/>}/>
+        <Route path='/login' element={<SignupPage/>}/>
         <Route path='/savedpost' element={<Savedpost/>}/>
         <Route path="/real-estate" element={<RealEstateListing />} />
         <Route path="/real-estate/add" element={<AddRealEstate />} />
@@ -63,7 +65,9 @@ function App() {
         <Route path="/help/earning" element={<Earning />}/>
         <Route path="/help/benefits" element={<Benefits />}/>
         <Route path="/profile/" element={<ProfileContainer />} />
-        <Route path="/profile/stat" element={<ProfileStat />} />
+        <Route path="/profile/verification" element={<Verification />} />
+        <Route path="/profile/list" element={<ProfileList/>} />
+        <Route path="/profile/stat" element={<ProfileStat/>} />
         <Route path='/profile/edit' element={<EditProfile/>}></Route>
       </Routes>
     </Router>

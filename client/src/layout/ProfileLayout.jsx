@@ -13,6 +13,7 @@ import slack from './Image/slack.png'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProfileStat from '../container/ProfileStat'
+import ProfileList from '../container/ProfileList'
 
 const ProfileLayout = () => {
 
@@ -87,7 +88,7 @@ const ProfileLayout = () => {
                             (activeComponent == "stats") && <ProfileStat/>
                         }
                         {
-                            (activeComponent == "list") && <p>List</p>
+                            (activeComponent == "list") && <ProfileList/>
                         }
                         {
                             (activeComponent == "verification") && <Verification />

@@ -16,7 +16,7 @@ export default function ProfileList() {
   return (
     <List>
 
-      <TopContainer>
+      {/* <TopContainer>
          <div className='bg' style={{backgroundImage:`url(${B1})`}}>
          </div>
         <div className='slac'>
@@ -54,7 +54,7 @@ export default function ProfileList() {
             <button>Verification</button>
         </div>
         <div className='lines2'></div>
-    </MiddleContainer>
+    </MiddleContainer> */}
 
     <LastContainer>
         <FaFolderPlus className='folder'/>

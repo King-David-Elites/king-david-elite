@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import theme from "../../application/utils/Theme"
 
 export const DashboardContainer = styled.div`
     display: grid;
@@ -229,8 +230,9 @@ export const ProfileContainer = styled.div`
     .rightSection{
         width:60%;
         height:100%;
-        background:"white";
+        background:white;
         border-radius:0px 8px 8px 0px;
+        overflow-y:scroll
     }
     .rightSection > .closeField{
         width:100%;
@@ -250,8 +252,19 @@ export const ProfileContainer = styled.div`
 `
 export const Form = styled.form`
     width:100%;
-    padding:3em 3em 2em 3em;
-
+    padding:3em 3em 2em 3em;    
+    
+    .id-v{        
+        margin:0.5em;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:0.5em;
+        p{
+            font-size:0.8rem;
+            color:gray;
+        }        
+    }
     .id_info {
         color:gray;
         font-size:0.8rem;
@@ -297,7 +310,7 @@ export const Form = styled.form`
         display:flex;
         justify-content:center;
         align-items:center;
-        background:#FFDF00;
+        background:#F2BE5C;
         font-weight:bolder;
     }
     .details ul{
@@ -308,17 +321,20 @@ export const Form = styled.form`
     .details ul li{
         margin:0.5em;
     }
+    #button{
+        margin-top:1em;
+    }
     .button{
         display:flex;
         justify-content:center;
         align-items:center;
         margin-top:5em;
         width:100%;
-        background:#FFDF00;
+        background:#F2BE5C;
         padding:0.8em;
         font-size:1rem;
         font-weight:bolder;
-        border:2px solid #FFDF00;
+        border:2px solid #F2BE5C;
         border-radius: 8px;
         cursor:pointer
     }
@@ -331,6 +347,54 @@ export const Form = styled.form`
         }
         #id_section_veri{
             gap:0.5em;
+        }
+        .upload{
+            padding:1em;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            gap:1em;
+            .uploading{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                flex-wrap:wrap;
+                gap:5em;
+            }
+            .uploading > .pages{
+                width:10em;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+            }
+            .pages img{
+                width:100%;
+                height:auto;
+            }
+            .uploading > .uploadType{
+                width:10em;
+                display:flex;
+                flex-direction:column;
+                gap:0.5em;
+                justify-content:center;
+                align-items:flex-start;                                
+            }
+            .uploadType > .load{
+                width:100%;
+                padding:0.5em;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                background:#EEF0F1;
+                border-radius:0.3em;
+                color:gray;
+                gap:0.5em;
+            }
+            p{
+                color:gray;
+                font-size:0.8rem;
+            }
         }
     }    
     .formField > .section{
@@ -355,7 +419,7 @@ export const Form = styled.form`
             cursor:pointer;
         }
         .id_type:hover{
-            background:#FFDF00;
+            background:#F2BE5C;
         }
         .id_type > .lsc{
             display:flex;
@@ -381,8 +445,8 @@ export const Form = styled.form`
         #continue_enable {
             margin-top:0em;
             flex: 0 1 20em;
-            background:#FFDF00;
-            border: 2px solid #FFDF00;
+            background:#F2BE5C;
+            border: 2px solid #F2BE5C;
         }
         #continue_disable{
             margin-top:0em;
@@ -396,7 +460,6 @@ export const Form = styled.form`
     }
     .formField{
         #section{
-            flex-wrap:nowrap;
             justify-content:space-between;
             flex-wrap:wrap;
         }
@@ -452,7 +515,7 @@ h4{
     font-size: 14px;
     line-height: 17px;
     text-align: center;
-    color: #FFDF00;
+    color: #F2BE5C;
     margin-top:42px;
     margin-left:43px;
 }

@@ -6,6 +6,7 @@ const theme = {
     blackBackgroundColor: "#0D0D0D",
     footerColor: "#252625",
     blueText: "#2301F3",
+    neutralColor: "rgba(166, 166, 166, 0.5)",
     breakPoint :{
         'tablet' : "768px",     
     }

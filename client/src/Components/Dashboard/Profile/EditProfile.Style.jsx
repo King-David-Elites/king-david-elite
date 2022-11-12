@@ -4,8 +4,9 @@ import theme from "../../../application/utils/Theme";
 export const EditProfileContainer = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 1em;
-    gap: 2em;
+    padding: ${props => props.padding ? props.padding : "1em"} ;
+    gap: ${props => props.gap ? props.gap : "2em"};
+    background: ${props => props.background ? props.background : "#f5f5f5"};
 
     form{
         display: flex;
@@ -21,17 +22,23 @@ export const EditProfileContainer = styled.div`
 
     .form2 > form >  label{
         opacity: 64%;
-
     }
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         gap: 5em;
         flex-direction: row;
         padding: 3em;
+        background: ${props => props.background ? props.background : "none"};
     }  
 
     .content-text > h3{
         line-height: 28px;
+    }
+
+    .small-text{
+        font-size: 13px;
+        color: #A6A6A6;
+        font-weight: 600;
     }
 
     .content-text > p{
@@ -44,20 +51,7 @@ export const EditProfileContainer = styled.div`
         @media (min-width: ${theme.breakPoint['tablet']}) {
             font-weight: 600;
             line-height: 28px;
-            font-size: 18x;
-        }
-    }
-
-    .content-card{
-        height: 120em;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        border-radius: 4px;
-        padding: 1em;
-
-        @media (min-width: ${theme.breakPoint['tablet']}) {
-            height: 110em;
-            padding: 3em;
-            width: 100%;
+            font-size: 18px;
         }
     }
 
@@ -79,7 +73,7 @@ export const EditProfileContainer = styled.div`
         height: 3em;
         border-radius: 4px;
         border: 2px solid #cacbcd;
-        margin: 1em 0em;
+        /* margin: 1em 0em; */
         outline: none;
     }
 
@@ -103,7 +97,7 @@ export const EditProfileContainer = styled.div`
         align-items: center;
         gap: 1em;
         opacity: 64%;
-        margin-bottom: 1em;
+        /* margin-bottom: ${props => props.marginBottom ? props.marginBottom : "1em"}; */
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
             font-weight: 500;
@@ -167,7 +161,7 @@ export const EditProfileContainer = styled.div`
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
             flex-direction: row;
-           gap: 3em;
+            gap: 3em;
         }
     }
 
@@ -183,5 +177,57 @@ export const EditProfileContainer = styled.div`
 
     .space{
         margin-top: 1em;
+    }
+`
+
+export const ContentCard = styled.div`
+    height: "125em";
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 4px;
+    padding: 1em;
+    background: ${props => props.background ? props.background : "#f5f5f5"};
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        height: ${props => props.height ? props.height : "110em"};
+        padding: 3em;
+        width: 100%;
+        }
+`
+
+export const MidSection = styled.div`
+    padding: ${props => props.padding ? props.padding : "1em"} ;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    white-space: nowrap;
+    display: ${props => props.display ? props.display : "flex"};
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+           display: ${props => props.display ? props.display : "flex"};
+        }
+
+    p{
+        font-size: 13px;
+        color: #A6A6A6;
+        font-weight: 600;
+
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+            font-size: 15px;
+            font-weight: 700;
+        }
+    }
+
+    button{
+        padding: 4px;
+        background: rgba(1, 98, 243, 0.05);
+        color:#2301F3;
+        border: 2px solid #2301F3;
+        border-radius: 4px;
+        cursor: pointer;
+       
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+            font-weight: 600;
+            padding: 8px;
+        }
     }
 `
