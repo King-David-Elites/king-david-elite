@@ -1,23 +1,30 @@
 import './ProfileLayout.Style'
-import { MdEdit } from 'react-icons/md'
-import { MdUpgrade } from 'react-icons/md'
-import { BsCameraFill } from 'react-icons/bs'
-import { BadgeCheck } from 'heroicons-react'
 import TopNavigationComponent from '../Components/topnav/TopNavigationComponent'
-import Stat from '../Components/Stat/Stat'
 import Verification from '../Components/Verification/Verification'
 import Account from '../Components/Account/Account'
-import { ProfileWrapper, UpperDiv, Slack } from './ProfileLayout.Style'
 import bg from './Image/profilebg.png'
-import slack from './Image/slack.png'
+import check from "../Components/Home/images/check.png"
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+<<<<<<< HEAD
+=======
+import useAuthentication from '../application/hooks/useAuthentication'
+import { useSelector } from 'react-redux'
+import { TopContainer } from '../container/ProfileList.style'
+import { MiddleContainer } from '../container/ProfileStat.style'
+import { FaCamera, FaLongArrowAltUp, FaPen } from 'react-icons/fa'
+>>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
 import ProfileStat from '../container/ProfileStat'
 import ProfileList from '../container/ProfileList'
 
 const ProfileLayout = () => {
-
+    useAuthentication();
     const navigate = useNavigate();
+    const user = useSelector(state => state.user);
+    const userFirstName = user.firstName;
+    const userLastName = user.lastName;
+    const userProfilePic = user.profilePicture;
+    const createdAt = user.createdAt;
 
     const navOptions = [
         {
@@ -45,43 +52,40 @@ const ProfileLayout = () => {
     }
 
     return (
-        <ProfileWrapper>
-            <UpperDiv imageUrl={bg}></UpperDiv>
-
-            <div className='lower-div'>
-                <div className='detail1'>
-                    <div className='sub-detail1'>
-                        <Slack>
-                            <img src={slack} className='slack' alt='slack'></img>
-                            <div className='camera-div'> <BsCameraFill size={15} /></div>
-                        </Slack>
-
-                        <div className='detail-text'>
-                            <div className='badge-div'>
-                                <h3>KingDavid Team</h3>
-                                <BadgeCheck size={15} className='badge' />
-                            </div>
-                            <p>Joined: 2022</p>
-                        </div>
-
-                        <div className='btn-wrapper'>
-                            <button className='btn' onClick={() => navigate("/profile/edit")}><MdEdit size={15} className='icon' />Edit Profile</button>
-                            <button className='hide-btn'><MdUpgrade size={18} className='upgrade-icon' />Upgrade Account</button>
-                        </div>
-
-
+        <div>
+            <TopContainer>
+                <div className='bg' style={{ backgroundImage: `url(${bg})` }}>
+                </div>
+                <div className='slac'>
+                    <img className='B2' src={userProfilePic} alt="profilePics" />
+                    <div className='camera'>
+                        <FaCamera className='cam' />
+                    </div>
+                    <div className='team'>
+                        <h3>{userFirstName} {userLastName}</h3>
+                        <img className='check' src={check} alt="checkIcon" />
+                        <p>Joined:  {new Date(createdAt).getFullYear().toString()}</p>
                     </div>
 
-                    <div className='sub-detail2'>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At tempor mattis turpis egestas quam cursus sit lobortis. Quam cursus bibendum imperdiet sollicitudin porttitor. Eleifend nisi, mattis pulvinar sagittis at nisi aliquam metus. Ante accumsan vitae tristique at laoreet libero. Mauris tellus, nulla aliquam ut in quam et dis dui. Egestas egestas elementum proin purus.  </p>
+                    <div className='top_btn'>
+                        <button className='edit_profile' onClick={() => navigate("/profile/edit")}>
+                            <FaPen className='pen' />
+                            Edit Profile
+                        </button>
+                        <button className='upgrade'><FaLongArrowAltUp />Upgrade Account</button>
                     </div>
-
-                    <button className='black-btn'><MdUpgrade size={18} className='upgrade-icon' />Upgrade Account</button>
                 </div>
 
-                <div className='detail2'>
-                    <div className='border'></div>
+                <div className='lorem'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quae ducimus officia adipisci? Obcaecati aperiam, sapiente incidunt omnis mollitia in vel voluptate recusandae ipsam, odit ut similique eius quam doloremque!
+                Porro sint suscipit doloremque praesentium minus ipsum harum sequi voluptatibus quaerat, quibusdam, inventore repellat, eius enim quis quod perferendis animi maiores soluta necessitatibus eos ipsa! Ex temporibus vero cumque dolorum.
+                Ratione sapiente inventore esse doloribus.</div>
+            </TopContainer>
+
+            <MiddleContainer>
+                <div className='lines'></div>
+                <div className='middle_btn'>
                     <TopNavigationComponent navOptions={navOptions} activeComponent={activeComponent} setActiveComponent={switchComp} />
+<<<<<<< HEAD
                     <div className='border2'></div>
                     <div className="w-full h-full py-5 md:h-[90%] overflow-y-auto">
                         {
@@ -97,9 +101,28 @@ const ProfileLayout = () => {
                             (activeComponent == "account") && <Account />
                         }
                     </div>
+=======
+>>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
                 </div>
+                <div className='lines2'></div>
+            </MiddleContainer>
+
+
+            <div className=" h-full md:h-[90%] overflow-y-auto">
+                {
+                    (activeComponent === "stats") && <ProfileStat />
+                }
+                {
+                    (activeComponent === "list") && <ProfileList/>
+                }
+                {
+                    (activeComponent === "verification") && <Verification />
+                }
+                {
+                    (activeComponent === "account") && <Account />
+                }
             </div>
-        </ProfileWrapper  >
+        </div>
     );
 }
 

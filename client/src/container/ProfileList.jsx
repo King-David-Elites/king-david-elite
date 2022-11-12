@@ -14,6 +14,7 @@ import { FaLongArrowAltUp } from 'react-icons/fa'
 
 export default function ProfileList() {
   return (
+<<<<<<< HEAD
     <List>
 
       {/* <TopContainer>
@@ -55,16 +56,17 @@ export default function ProfileList() {
         </div>
         <div className='lines2'></div>
     </MiddleContainer> */}
+=======
+    // <LisXt>
+>>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
 
     <LastContainer>
         <FaFolderPlus className='folder'/>
         <h3>No listings</h3>
         <p>Get started by creating a new listing</p>
         <button><FaPlus/>New listing</button>
-
     </LastContainer>
 
-    </List>
 
     
   )

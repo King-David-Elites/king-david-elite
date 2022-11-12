@@ -4,6 +4,7 @@ import { FaRegUserCircle } from 'react-icons/fa'
 import profileImg from '../Dashboard/Dashboard-Image/profileImg.png'
 import { DesktopContainer, VerificationContainer } from './Verification.Style.jsx';
 import {useNavigate} from "react-router-dom";
+import { List } from '../../container/ProfileList.style.jsx';
 const Verification = () => {
 const navigate = useNavigate();
 const [verified, setVerified] = useState(false)

@@ -7,11 +7,69 @@ import { useRef, useState } from "react";
 import { Country } from './Profile_Mockdata'
 import DisableButton from "../../buttons/DisabledButton";
 import theme from "../../../application/utils/Theme";
+import { useEffect } from "react";
+import axios from "axios";
 
 const EditProfile = (props) => {
 
     const fileInputField = useRef(null);
     const [files, setFiles] = useState({});
+
+    const [initialValues, setInitialValues] = useState({
+        name: "",
+        about: "",
+        websiteURL: "",
+        facebookURL: "",
+        instagramURL: "",
+        cover: null,
+        address: "",
+        country: ""
+    });
+
+    const comapanyInitialValues = {
+        companyName: "",
+        websiteURL: "",
+        facebookURL: "",
+        instagramURL: "",
+        address1: "",
+        address2: "",
+        country: "",
+        state: "",
+        city: "",
+        zipCode: "",
+        email: "",
+        alternativeEmail: "",
+        phone1: "",
+        phone2: "",
+        cover: null
+    }
+
+    const setConfig = () => {
+        const authToken = localStorage.getItem("token");
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${authToken}`,
+                ContentType: "application/x-www-form-urlencoded",
+            },
+        };
+
+        return config;
+    };
+
+    const getSignedInUserDetails = async () => {
+        await axios.get("https://kde-api.herokuapp.com/users/me", setConfig).then(resp => {
+            // const user = {
+            //     firstName: resp.firstName,
+            //     lastname: resp.lastName,
+            //     email: resp.email,
+            //     profilePicture: resp.profilePicture
+            // }
+            // setInitialValues(user);
+            console.log("res", resp);
+        })
+            .catch(err => console.log(err))
+    }
 
     const { label, name, type, options, updateFilesCb, maxFileSizeInBytes, DEFAULT_MAX_FILE_SIZE_IN_BYTES, ...rest } = props;
 
@@ -40,6 +98,9 @@ const EditProfile = (props) => {
         updateFilesCb(filesAsArray);
     };
 
+    useEffect(() => {
+        getSignedInUserDetails();
+    }, []);
 
     const handleNewFileUpload = (e) => {
         const { files: newFiles } = e.target;
@@ -49,36 +110,6 @@ const EditProfile = (props) => {
             callUpdateFilesCb(updatedFiles);
         }
     };
-
-
-    const initialValues = {
-        name: "",
-        about: "",
-        websiteURL: "",
-        facebookURL: "",
-        instagramURL: "",
-        cover: null,
-        address: "",
-        country: ""
-    }
-
-    const comapanyInitialValues = {
-        companyName: "",
-        websiteURL: "",
-        facebookURL: "",
-        instagramURL: "",
-        address1: "",
-        address2: "",
-        country: "",
-        state: "",
-        city: "",
-        zipCode: "",
-        email: "",
-        alternativeEmail: "",
-        phone1: "",
-        phone2: "",
-        cover: null
-    }
 
     const onCompanySubmit = values => {
         console.log("data", values)

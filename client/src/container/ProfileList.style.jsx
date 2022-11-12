@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import theme from "../application/utils/Theme";
 
 export const List = styled.div`
-height:1400px;
+height:600px;
 `
 
 export const TopContainer = styled.div`
@@ -112,6 +113,7 @@ export const TopContainer = styled.div`
             background:white;
             border:1px solid gray;
             border-radius:4px;
+            cursor: pointer;
         }
 
         .pen{
@@ -138,7 +140,12 @@ export const TopContainer = styled.div`
             font-size:13px;
             line-height:24px;
             color:white;
+            margin-top: 4em;
             margin-left:30px;
+
+            @media (min-width: ${theme.breakPoint['tablet']}) {
+                margin-top: 0em;
+        }
         }
     }
 
@@ -269,7 +276,7 @@ export const TopContainer = styled.div`
                 position:absolute;
                 top:190px;
                 left:-20px;
-
+            
                 .arrow{
                     color:yellow;
                 }
@@ -302,7 +309,7 @@ export const MiddleContainer = styled.div`
 
 .lines{
     position: absolute;
-    width:1345px;
+    width:100%;
     height:0px;
     left:3px;
     top:450px;
@@ -340,7 +347,7 @@ export const MiddleContainer = styled.div`
 
 .lines2{
     position: absolute;
-    width:1345px;
+    width:100%;
     height:0px;
     left:3px;
     top:650px;
@@ -353,7 +360,7 @@ export const MiddleContainer = styled.div`
 
     .lines{
         position: absolute;
-        width:385px;
+        width:100%;
         height:0px;
         left:3px;
         top:440px;
@@ -399,7 +406,7 @@ export const MiddleContainer = styled.div`
     
     .lines2{
         position: absolute;
-        width:385px;
+        width:100%;
         height:0px;
         left:3px;
         top:500px;
@@ -413,6 +420,7 @@ export const MiddleContainer = styled.div`
 
 
 export const LastContainer = styled.div`
+height: 1000px;
 
 .folder{
     display:flex;

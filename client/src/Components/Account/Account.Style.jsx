@@ -2,11 +2,16 @@ import styled from "styled-components"
 import theme from "../../application/utils/Theme"
 
 export const Wrapper = styled.div`
+     margin: 25em 2em;
+     height: 100px;
+   
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        height: 400px;
+        }
 
-    padding: 3em 2em;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-      padding: 3em 8em;
+      margin: 33em 10em 0em 10em;
     }  
 
     .bold-text{
@@ -68,7 +73,7 @@ export const Wrapper = styled.div`
     .text-wrapper{
         display: flex;
         flex-direction: column;
-        gap: 0.5em;
+        gap: 1em;
         margin-top: 1em;
 
         @media (min-width: ${theme.breakPoint['tablet']}) {

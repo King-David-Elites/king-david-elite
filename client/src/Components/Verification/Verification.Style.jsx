@@ -3,8 +3,15 @@ import theme from "../../application/utils/Theme";
 
 export const VerificationContainer = styled.div`
 
+ height: 400px;
+   
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        height: 1000px;
+        }
+
     .container{
         display: block;
+        margin: 25em 2em;
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
             display: none;
@@ -102,12 +109,13 @@ export const VerificationContainer = styled.div`
 
 export const DesktopContainer = styled.div`
     display: none;
+   
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        margin: 4em 6em;
+        margin: 33em 10em 0em 10em;
         display: flex;
         width: auto;
-        height: 40em;
+        height: 50em;
         align-items: center; 
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }  
