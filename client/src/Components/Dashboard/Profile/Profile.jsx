@@ -8,6 +8,7 @@ import GetStarted from "./GetStarted"
 import BasicInfo from "./BasicInfo"
 import Advanced_Verf from './Advanced_Verf'
 import Advanced_Verf_1 from './Advanced_Verf_1'
+import Advanced_Verf_2 from './Advanced_verf_2'
 
 const ProfileAsElement = ()=>{
   const [stage, setStage] = useState(0);
@@ -95,19 +96,6 @@ const ProfileAsElement = ()=>{
           </ProfileContainer>
         </GenericContainer>
     )
-}
-
-const Advanced_Verf_2 = (props) =>{
-  let {
-    stage,
-    setStage
-  } = props
-
-  return(
-    <>
-      <h1>Stage 4</h1>
-    </>
-  )
 }
 
 const Advanced_Verf_3 = (props) =>{
