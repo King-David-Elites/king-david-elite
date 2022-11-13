@@ -1,7 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
 import { CameraOutline, UploadOutline, ShieldCheckOutline} from 'heroicons-react'
-import liscence from "../Dashboard-Image/liscence.png"
 import frontpage from "../Dashboard-Image/frontpage.png";
 import backpage from "../Dashboard-Image/backpage.png";
 

@@ -17,7 +17,7 @@ export default function Waitlist() {
         e.preventDefault()
         let name = nameRef.current.value;
         let email = emailRef.current.value;
-        if(name != "" && email != ""){
+        if(name !== "" && email !== ""){
            await axios.post("https://kde-api.herokuapp.com/wait-list", {name, email})
         .then(resp => {
             setDisplayText('Thank you, Successfully Submitted!')
@@ -46,7 +46,7 @@ export default function Waitlist() {
     <Container>
      
         <div className='logo-div'>
-            <img src={logo}/>
+            <img src={logo} alt="KDE logo"/>
             <p>KING DAVID ELITES</p>
         </div>
 

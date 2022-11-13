@@ -1,7 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
-import { CameraOutline, UploadOutline, ShieldCheckOutline} from 'heroicons-react'
-import liscence from "../Dashboard-Image/liscence.png"
+import { CameraOutline, UploadOutline} from 'heroicons-react'
 import frontpage from "../Dashboard-Image/frontpage.png";
 
 const Advanced_Verf_2 = (props) =>{

@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import Dashboard from '../Dashboard'
 import { GenericContainer, ProfileContainer, Form} from '../Dashboard.Styles'
-import {Selector, X} from "heroicons-react"
 import profileImg from "../Dashboard-Image/profileImg.png"
 import GetStarted from "./GetStarted"
 import BasicInfo from "./BasicInfo"
