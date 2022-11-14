@@ -44,7 +44,10 @@ export default function Waitlist() {
 
 
   return (
-    <Container style={{background:`url(${building})`,
+    <Container style={
+                      {
+                       background:'rgba(0,0,0,0.4)',
+                    //    background:`url(${building})`,
                        backgroundSize:'cover',
                        backgroundPosition:'center',
                        height:'660px',
