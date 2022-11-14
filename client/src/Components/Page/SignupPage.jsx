@@ -1,12 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 // import S from './images/.jpg'
-import { Container } from './LoginPage.Style'
-import { Page } from './LoginPage.Style'
+import { Container } from './LoginPage.style'
+import { Page } from './LoginPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
-import services from '../../ioc/services'
-
 
 const SignUpPage = () => {
 

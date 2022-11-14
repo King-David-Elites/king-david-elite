@@ -34,7 +34,7 @@ const Dashboard = ({element, index}) => {
                 {
                 navigators.map((nav, i)=>{
                     return(
-                        <div key={i} className={ index == i +1 ? "item active" : "item"} onClick={()=> navigate(`/dashboard/${nav.link}`)}>
+                        <div key={i} className={ index === i +1 ? "item active" : "item"} onClick={()=> navigate(`/dashboard/${nav.link}`)}>
                             <p>{nav.icon }</p>
                             <p>{nav.title}</p>
                         </div>

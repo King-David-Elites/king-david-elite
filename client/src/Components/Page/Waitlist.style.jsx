@@ -6,13 +6,16 @@ box-sizing:border-box;
 
 .logo-div{
     display:flex;
-    padding:30px 40px;
+    padding:30px 0px;
+    align-self: center;
+    justify-content: center;
     align-items:center;
-    margin:0px 50px;
+    margin:0px auto;
     color:#F2BE5C;
 
     p{
-        padding-left:15px;
+        // padding-left:15px;
+        font-weight: 600;
     }
 }
 
@@ -21,6 +24,13 @@ h3{
     width:fit-content;
     text-align:center;
     margin:20px auto;
+}
+
+h4{
+    font-size:30px;
+    width:50%;
+    text-align:center;
+    margin:20px auto 2px;
 }
 
 .p{
@@ -55,17 +65,19 @@ h3{
 }
 
 input{
-    box-shadow:3px 4px 2px rgba(0,0,0,.1);
+    box-shadow:0px 4px 20px rgba(100,100,100,.2);
     display:block;
     border:none;
+    border-radius: 6px;
     text-align:center;
     width:50%;
+    padding: 10px 12px;
     margin:20px auto;
-    height:40px;
+    // height:40px;
 }
 
 button{
-    box-shadow:3px 4px 2px rgba(0,0,0,.1);
+    box-shadow:0px 4px 20px rgba(0,0,0,.1);
     display:block;
     border:none;
     text-align:center;
@@ -74,6 +86,29 @@ button{
     height:40px;
     color:white;
     background:#F2BE5C;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+@media only screen and (max-width: 500px){
+    h3{
+        font-size: 20px;
+    }
+
+    h4{
+        font-size: 16px;
+        width: fit-content;
+        margin: 0;
+    }
+
+    .p{
+        font-size: 14px;
+        width: 90%;
+    }
+
+    .message, input, button{
+        width: 75%;
+    }
 }
 
 `

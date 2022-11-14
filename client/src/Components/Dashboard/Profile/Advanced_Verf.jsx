@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import {Identification, GlobeAlt,} from "heroicons-react"
 import liscence from "../Dashboard-Image/liscence.png"
 

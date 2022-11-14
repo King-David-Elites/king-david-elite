@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import theme from "../../application/utils/Theme"
 
 export const DashboardContainer = styled.div`
     display: grid;

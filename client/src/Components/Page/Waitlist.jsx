@@ -17,7 +17,7 @@ export default function Waitlist() {
         e.preventDefault()
         let name = nameRef.current.value;
         let email = emailRef.current.value;
-        if(name != "" && email != ""){
+        if(name !== "" && email !== ""){
            await axios.post("https://kde-api.herokuapp.com/wait-list", {name, email})
         .then(resp => {
             setDisplayText('Thank you, Successfully Submitted!')
@@ -46,12 +46,14 @@ export default function Waitlist() {
     <Container>
      
         <div className='logo-div'>
-            <img src={logo}/>
+            <img src={logo} alt="KDE logo"/>
             <p>KING DAVID ELITES</p>
         </div>
 
         <h3>A Luxury Market And Networking Platform For All</h3>
         <p className='p'>Our platform is a luxury market and networking platform that seeks to provide a meeting place for luxury buyers and sellers to carry out their transactions. It is designed such that every verified user involved in the luxury transactions on the platform can earn a substantial amount of income either actively or passively ranging from the luxury realtors to the buyers or the investors.</p>
+
+        <h4> Join the Wait List and Get Newsletters and mails from us by filling the form below</h4>
 
         <div className='btn'>
             <form>

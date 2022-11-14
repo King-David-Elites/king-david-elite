@@ -50,14 +50,14 @@ const EditProfile = (props) => {
         const config = {
             headers: {
                 Authorization: `Bearer ${authToken}`,
-                ContentType: "application/x-www-form-urlencoded",
+                ContentType: "application/json",
             },
         };
 
         return config;
     };
 
-    const getSignedInUserDetails = async () => {
+    const getSignedInUserDetails =  async () => {
         await axios.get("https://kde-api.herokuapp.com/users/me", setConfig).then(resp => {
             // const user = {
             //     firstName: resp.firstName,
