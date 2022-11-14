@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Container} from './Waitlist.style'
 import logo from "../Navbar/Image/kde_whiteBg.png"
+import building from "../RealEstate/Image/real-estate-pics.jpg"
 import { useRef } from 'react'
 import axios from 'axios'
 
@@ -43,17 +44,22 @@ export default function Waitlist() {
 
 
   return (
-    <Container>
+    <Container style={{background:`url(${building})`,
+                       backgroundSize:'cover',
+                       backgroundPosition:'center',
+                       height:'660px',
+                       backgroundRepeat:'no-repeat'}}>
      
         <div className='logo-div'>
             <img src={logo} alt="KDE logo"/>
             <p>KING DAVID ELITES</p>
         </div>
 
-        <h3>A Luxury Market And Networking Platform For All</h3>
-        <p className='p'>Our platform is a luxury market and networking platform that seeks to provide a meeting place for luxury buyers and sellers to carry out their transactions. It is designed such that every verified user involved in the luxury transactions on the platform can earn a substantial amount of income either actively or passively ranging from the luxury realtors to the buyers or the investors.</p>
+        <h3>KING DAVID ELITES IS LAUNCHING SOON</h3>
+        <p className='p'>An elite community where enourmous transaction take place.</p>
+        <p className='p'>Come showcase your listing on the platform where it counts.</p>
 
-        <h4> Join the Wait List and Get Newsletters and mails from us by filling the form below</h4>
+        <h4>REAL ESTATE  AUTOMOBILE  LUXURY SERVICE.</h4>
 
         <div className='btn'>
             <form>
