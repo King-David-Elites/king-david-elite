@@ -45,6 +45,21 @@ h4{
     
 }
 
+.j{
+    width:63%;
+    margin:10px auto;
+    font-size:20px;
+    text-align:center;
+    font-family: 'Poppins';
+    color:white;
+
+}
+
+
+span{
+    color:black;
+}
+
 .message{
     display: flex;
     align-items: center;

@@ -55,11 +55,13 @@ export default function Waitlist() {
             <p>KING DAVID ELITES</p>
         </div>
 
-        <h3>KING DAVID ELITES IS LAUNCHING SOON</h3>
-        <p className='p'>An elite community where enourmous transaction take place.</p>
+        <h3>LAUNCHING SOON...  </h3>
+        <p className='p'>An elite community where enourmous transactions take place.</p>
         <p className='p'>Come showcase your listing on the platform where it counts.</p>
 
         <h4>REAL ESTATE  AUTOMOBILE  LUXURY SERVICE.</h4>
+        <p className='j'>Join the 1000 people that would recieve exclusive updates and gain free access to the platform <span>after we launch.</span></p>
+
 
         <div className='btn'>
             <form>
@@ -74,7 +76,7 @@ export default function Waitlist() {
                 
                 <input type='text' required={true} ref={nameRef} placeholder='Please Input Your name'/>
                 <input type='email' required={true} ref={emailRef} placeholder='Please Input Your Email '/>
-                <button onClick={(e)=> submit(e)}>Submit</button>
+                <button onClick={(e)=> submit(e)}>Request Access</button>
             </form>
         </div>
         
