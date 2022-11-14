@@ -97,7 +97,7 @@ button{
 
     h4{
         font-size: 16px;
-        width: fit-content;
+        width: 90%;
         margin: 0;
     }
 
