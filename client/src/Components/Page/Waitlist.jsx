@@ -28,7 +28,7 @@ export default function Waitlist() {
         })
         .catch(err => {
             setDisplayText('An Error occured, Check your internet Connection')
-            setError(false)
+            setError(true)
             setDisplay(true)
         })
         }

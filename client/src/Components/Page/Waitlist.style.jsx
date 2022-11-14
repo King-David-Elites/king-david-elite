@@ -53,7 +53,7 @@ h4{
     width: 50%;
 }
 .success{
-    background: rgb(20, 255, 100);
+    background: rgb(20, 205, 100);
 }
 
 .error{
@@ -108,6 +108,7 @@ button{
 
     .message, input, button{
         width: 75%;
+        font-size: 14px;
     }
 }
 
