@@ -17,4 +17,4 @@ const setLoggedInUserDetailsFlow =
                     }
                 };
 
-export default setLoggedInUserDetailsFlow;
+export default [setLoggedInUserDetailsFlow];
