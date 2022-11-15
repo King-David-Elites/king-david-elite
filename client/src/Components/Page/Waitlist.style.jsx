@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+color:black;
 display:block;
 box-sizing:border-box;
 
@@ -27,6 +28,8 @@ h3{
 }
 
 h4{
+    color:white;
+    word-spacing:10px;
     font-size:30px;
     width:50%;
     text-align:center;
@@ -40,6 +43,21 @@ h4{
     text-align:center;
     font-family: 'Poppins';
     
+}
+
+.j{
+    width:63%;
+    margin:10px auto;
+    font-size:20px;
+    text-align:center;
+    font-family: 'Poppins';
+    color:white;
+
+}
+
+
+span{
+    color:black;
 }
 
 .message{
@@ -70,7 +88,7 @@ input{
     border:none;
     border-radius: 6px;
     text-align:center;
-    width:50%;
+    width:30%;
     padding: 10px 12px;
     margin:20px auto;
     // height:40px;
@@ -81,7 +99,7 @@ button{
     display:block;
     border:none;
     text-align:center;
-    width:50%;
+    width:30%;
     margin:20px auto;
     height:40px;
     color:white;
