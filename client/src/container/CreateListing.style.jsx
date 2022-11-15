@@ -79,7 +79,10 @@ export const ListingForm = styled.div`
             padding:1em;
             padding-left:1.5em;
             border-radius:0.5em;
-            border:2px solid black;            
+            border:2px solid black;                                
+        }
+        .section > .dashed{
+            border-style:dashed;    
         }
         .section textarea{
             width:100%;

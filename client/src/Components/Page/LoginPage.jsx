@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Page } from './LoginPage.Style'
+import { Container, Page } from './LoginPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';

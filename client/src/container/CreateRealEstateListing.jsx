@@ -167,6 +167,10 @@ const CreateRealEstateListing = () => {
         <div className="section">
           <hr />
         </div>
+        <div className="section">
+            <p>Images</p>
+            <input className="dashed" type="file" />
+        </div>
       </div>
     </>
   );
