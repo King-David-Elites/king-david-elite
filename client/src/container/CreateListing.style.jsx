@@ -1,41 +1,41 @@
 import styled from "styled-components";
 
 export const ListingHead = styled.div`
-    display:flex;
-    justify-content:center;
-    align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .heading{
-        margin-top:6em;
-        flex: 0 1 50em;
-        font-family: 'Poppins';
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        .head1{
-            font-weight: 600;
-            text-align:center;
-        }
-        .head2{            
-            font-weight: 400;  
-            text-align:center;       
-        }
-        select{
-            width:70%;
-            margin:1.5em 1em;
-            padding:12px 16px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            border:2px solid black;
-            border-radius:0.5em;
-            cursor:pointer;
-            font-weight:bolder;  
-            font-size:1rem;                      
-        }
+  .heading {
+    margin-top: 6em;
+    flex: 0 1 50em;
+    font-family: "Poppins";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .head1 {
+      font-weight: 600;
+      text-align: center;
     }
-`
+    .head2 {
+      font-weight: 400;
+      text-align: center;
+    }
+    select {
+      width: 70%;
+      margin: 1.5em 1em;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 2px solid black;
+      border-radius: 0.5em;
+      cursor: pointer;
+      font-weight: bolder;
+      font-size: 1rem;
+    }
+  }
+`;
 export const ListingForm = styled.div`      
     display:flex;
     justify-content:center;
@@ -116,13 +116,16 @@ export const ListingForm = styled.div`
             border-radius:0.5em;
             padding:0.5em 1em;
             background:#DDDFE6;
-        }
+            gap:0.5em;
+            cursor:pointer;
+        }                
         .NumbB{
             display:flex;
             justify-content:flex-start;
             align-items:center;
             gap: 4em;
             flex-wrap:wrap;
+            margin-bottom: 2em;
         }
         .NumbB > .sect{
             flex 0 1 20em;
@@ -140,5 +143,26 @@ export const ListingForm = styled.div`
             border: 2px solid black;
             border-radius: 0.5em;
         }
+        .NumbB > .disable{
+            flex: 0 1 15em;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:0.5em 2em;
+            border-radius:0.5em;            
+            border:2px solid #A6A6A6;
+            color: #A6A6A6;
+        }
+        .NumbB > .enable{
+            flex: 0 1 15em;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:0.5em 2em;
+            border-radius:0.5em;            
+            border:2px solid #A6A6A6;
+            color: #A6A6A6;
+            cursor:pointer;
+        }
     }
-`
+`;
