@@ -35,7 +35,7 @@ const CreateRealEstateListing = () =>{
                     <hr/>
                 </div>                
                 <div className="section" id="section">
-                    <p>Amenities</p>
+                    <p>AMENITIES</p>
                 </div>
                 <div className="section" id="section">                
                     <p>Choose Outdoor Properties</p>
@@ -73,7 +73,7 @@ const CreateRealEstateListing = () =>{
                 <div className="section" id="section">                
                     <p>Choose Indoor Properties</p>
                     <select
-                        name="OutdoorProperties"
+                        name="IndoorProperties"
                         onChange={(e)=>{
                             setInDoorProp([...inDoorProp,{property:e.target.value}])
                         }}
@@ -102,6 +102,42 @@ const CreateRealEstateListing = () =>{
                             })
                         }
                     </div>
+                </div>
+                <div className="section" id="section">                
+                    <p>Choose Views</p>
+                    <select
+                        name="Views"
+                        onChange={(e)=>{
+                            setViewProp([...viewProp,{property:e.target.value}])
+                        }}
+                    >
+                        {
+                            Views.map((view)=>{
+                                return(
+                                    <option>
+                                        {view.property}
+                                    </option>
+                                )
+                            })
+                        }
+                    </select>                    
+                    <div className="OutProp">
+                        {
+                            viewProp.map((items,i)=>{
+                                return(
+                                    <div
+                                        key={i} 
+                                        className="props"
+                                    >
+                                        {items.property}
+                                    </div>
+                                )                                   
+                            })
+                        }
+                    </div>
+                </div>
+                <div className="section">
+                    <hr/>
                 </div>
             </div>
         </>

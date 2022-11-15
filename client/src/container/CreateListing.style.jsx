@@ -110,6 +110,9 @@ export const ListingForm = styled.div`
             flex-wrap:wrap;
         }
         .section > .OutProp > .props{
+            display:flex;
+            justify-content:center;
+            align-items:center;
             border-radius:0.5em;
             padding:0.5em 1em;
             background:#DDDFE6;
