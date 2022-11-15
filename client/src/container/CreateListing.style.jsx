@@ -85,9 +85,10 @@ export const ListingForm = styled.div`
             border:2px solid black;                                
         }
         .section > .dashed{
+            border:1px solid black;  
             border-style:dashed;    
             display:flex;
-            justify-content:center;
+            justify-content:center;            
         }
         .section textarea{
             width:100%;
@@ -151,6 +152,31 @@ export const ListingForm = styled.div`
             border: 2px solid black;
             border-radius: 0.5em;
         }
+        .NumbB > .sect > .price{
+            flex: 0 1 20em;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            border: 2px solid black;
+            border-radius: 0.5em;
+        }
+        .NumbB > .sect > .price input{
+            width:70%;
+            padding:1em;
+            padding-left:1.5em;
+            border: 0px;
+            outline:none;
+            font-weight:600;
+        }
+        .NumbB > .sect > .price select{
+            width:30%%;
+            border-left: 2px solid black;
+            padding:1em;
+            outline:none;
+            border-radius: 0em 0.5em 0.5em 0em;
+            font-weight:600;
+            cursor:pointer;
+        }
         .NumbB > .disable{
             flex: 0 1 15em;
             display:flex;
@@ -168,8 +194,9 @@ export const ListingForm = styled.div`
             align-items:center;
             padding:0.5em 2em;
             border-radius:0.5em;            
-            border:2px solid #A6A6A6;
-            color: #A6A6A6;
+            border:2px solid #2301F3;
+            background:#2301F3;
+            color: white;
             cursor:pointer;
         }
     }

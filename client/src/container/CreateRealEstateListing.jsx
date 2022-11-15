@@ -184,8 +184,20 @@ const CreateRealEstateListing = () => {
         <div className="NumbB">
             <div className="sect">
                 <p>Price</p>
-                
+                <div className="price">
+                    <input type="text" />
+                    <select>
+                        <option>USD</option>
+                        <option>NGN</option>
+                        <option>INR</option>
+                        <option>EU</option>
+                        <option>YEN</option>
+                    </select>
+                </div>
             </div>                        
+        </div>
+        <div className="NumbB">
+          <div className="enable">List</div>
         </div>
       </div>
     </>
