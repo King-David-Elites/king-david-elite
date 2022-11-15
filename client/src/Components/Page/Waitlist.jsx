@@ -58,11 +58,11 @@ export default function Waitlist() {
             <p>KING DAVID ELITES</p>
         </div>
 
-        <h3>LAUNCHING SOON...  </h3>
-        <p className='p'>An elite community where enourmous transactions take place.</p>
+        <h3>ANTICIPATE</h3>
+        <p className='p'>An elite community where enormous transactions take place.</p>
         <p className='p'>Come showcase your listing on the platform where it counts.</p>
 
-        <h4>REAL ESTATE  <span>AUTOMOBILE </span> LUXURY SERVICE.</h4>
+        <h4>REAL ESTATE  <span>AUTOMOBILES </span> LUXURY SERVICES.</h4>
         <p className='j'>Join the 1000 people that would recieve exclusive updates and gain free access to the platform after we launch.</p>
 
 

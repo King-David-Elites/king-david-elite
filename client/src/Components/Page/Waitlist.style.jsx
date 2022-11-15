@@ -28,7 +28,7 @@ h3{
 }
 
 h4{
-    color:white;
+    color:#F2BE5C;
     display:flex;
     justify-content:center;
     align-items:center;
