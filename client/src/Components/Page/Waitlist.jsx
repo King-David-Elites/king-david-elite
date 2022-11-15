@@ -50,7 +50,7 @@ export default function Waitlist() {
                        backgroundImage:`linear-gradient(to bottom, rgb(0,0,0,0.4), rgb(0,0,0,0.4)),url(${building})`,
                        backgroundSize:'cover',
                        backgroundPosition:'center',
-                       height:'660px',
+                    //    height:'660px',
                        backgroundRepeat:'no-repeat'}}>
      
         <div className='logo-div'>

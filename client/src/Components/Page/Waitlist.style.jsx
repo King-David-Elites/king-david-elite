@@ -4,6 +4,7 @@ export const Container = styled.div`
 color:white;
 display:block;
 box-sizing:border-box;
+min-height:100vh ;
 
 .logo-div{
     display:flex;
