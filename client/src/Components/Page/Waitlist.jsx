@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Container} from './Waitlist.style'
 import logo from "../Navbar/Image/kde_whiteBg.png"
-import building from "../RealEstate/Image/real-estate-pics.jpg"
+import building from "../Page/images/w1.jpg"
 import { useRef } from 'react'
 import axios from 'axios'
 
@@ -47,7 +47,7 @@ export default function Waitlist() {
     <Container style={
                       {
                     //    background:'rgba(0,0,0,.4)',
-                       backgroundImage:`linear-gradient(to bottom, rgb(0,0,0,0.5), rgb(0,0,0,0.5)), url(${building})`,
+                       backgroundImage:`linear-gradient(to bottom, rgb(0,0,0,0.2), rgb(0,0,0,0.2)),url(${building})`,
                        backgroundSize:'cover',
                        backgroundPosition:'center',
                        height:'660px',
@@ -62,8 +62,8 @@ export default function Waitlist() {
         <p className='p'>An elite community where enourmous transactions take place.</p>
         <p className='p'>Come showcase your listing on the platform where it counts.</p>
 
-        <h4>REAL ESTATE  AUTOMOBILE  LUXURY SERVICE.</h4>
-        <p className='j'>Join the 1000 people that would recieve exclusive updates and gain free access to the platform <span>after we launch.</span></p>
+        <h4>REAL ESTATE  <span>AUTOMOBILE </span> LUXURY SERVICE.</h4>
+        <p className='j'>Join the 1000 people that would recieve exclusive updates and gain free access to the platform after we launch.</p>
 
 
         <div className='btn'>
