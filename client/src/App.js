@@ -4,11 +4,11 @@ import
   BrowserRouter as Router,
   Routes,
   Route
-} from "react-router-dom"
+} from "react-router-dom";
 import HomePage from './Components/Home/HomePage';
 import RealEstateListing from "./Components/RealEstate/RealEstateListing";
-import Cars from "./Components/Cars/CarsListing"
-import OtherSections from "./Components/OtherSections/OtherSections"
+import Cars from "./Components/Cars/CarsListing";
+import OtherSections from "./Components/OtherSections/OtherSections";
 import Messages from './Components/Dashboard/Messages';
 import Notifications from './Components/Dashboard/Notifications';
 import Profile from './Components/Dashboard/Profile/Profile';
@@ -16,7 +16,7 @@ import Wallet from './Components/Dashboard/Wallet';
 import EachBuilding from './Components/RealEstate/EachBuilding';
 import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
 import EachCars from './Components/Cars/EachCars';
-import EachCarPhotos from './Components/Cars/EachCarPhotos'
+import EachCarPhotos from './Components/Cars/EachCarPhotos';
 import About from './Components/About/About';
 import Help from './Components/About/Help';
 import Earning from './Components/About/Earning';
@@ -25,12 +25,13 @@ import AddCar from './Components/Cars/AddCar';
 import AddRealEstate from './Components/RealEstate/AddRealEstate';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
-import Navbar from './Components/Navbar/Navbar';
 import ProfileContainer from './container/ProfileContainer.jsx';
-import Stat from './Components/Stat/Stat';
 import Verification from './Components/Verification/Verification';
 import ProfileList from './container/ProfileList';
+import CreateListing  from './container/CreateListing';
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
+import ProfileStat from './container/ProfileStat';
+import Waitlist from './Components/Page/Waitlist';
 import SignUpPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
 
@@ -40,11 +41,13 @@ function App() {
       {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<Waitlist/> } />
-        <Route path='/signup' element={<LoginPage/>}/>
-        <Route path='/login' element={<SignupPage/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/' element={<HomePage/> } />
+        <Route path='/signup' element={<SignUpPage/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
         <Route path='/savedpost' element={<Savedpost/>}/>
         <Route path="/real-estate" element={<RealEstateListing />} />
-         <Route path="/real-estate/add" element={<AddRealEstate />} />
+        <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
         <Route path="/cars" element={<Cars />} />
@@ -66,7 +69,8 @@ function App() {
         <Route path="/profile/verification" element={<Verification />} />
         <Route path="/profile/list" element={<ProfileList/>} />
         <Route path="/profile/stat" element={<ProfileStat/>} />
-        <Route path='/profile/edit' element={<EditProfile/>}></Route>
+        <Route path='/profile/edit' element={<EditProfile/>}/>
+        <Route path="/profile/create-listings" element={<CreateListing/>}/>
       </Routes>
     </Router>
   );

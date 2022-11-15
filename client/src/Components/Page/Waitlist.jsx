@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Container} from './Waitlist.style'
 import logo from "../Navbar/Image/kde_whiteBg.png"
+import building from "../Page/images/w1.jpg"
 import { useRef } from 'react'
 import axios from 'axios'
 
@@ -17,7 +18,7 @@ export default function Waitlist() {
         e.preventDefault()
         let name = nameRef.current.value;
         let email = emailRef.current.value;
-        if(name != "" && email != ""){
+        if(name !== "" && email !== ""){
            await axios.post("https://kde-api.herokuapp.com/wait-list", {name, email})
         .then(resp => {
             setDisplayText('Thank you, Successfully Submitted!')
@@ -28,7 +29,7 @@ export default function Waitlist() {
         })
         .catch(err => {
             setDisplayText('An Error occured, Check your internet Connection')
-            setError(false)
+            setError(true)
             setDisplay(true)
         })
         }
@@ -43,15 +44,27 @@ export default function Waitlist() {
 
 
   return (
-    <Container>
+    <Container style={
+                      {
+                    //    background:'rgba(0,0,0,.4)',
+                       backgroundImage:`linear-gradient(to bottom, rgb(0,0,0,0.4), rgb(0,0,0,0.4)),url(${building})`,
+                       backgroundSize:'cover',
+                       backgroundPosition:'center',
+                       height:'660px',
+                       backgroundRepeat:'no-repeat'}}>
      
         <div className='logo-div'>
-            <img src={logo}/>
+            <img src={logo} alt="KDE logo"/>
             <p>KING DAVID ELITES</p>
         </div>
 
-        <h3>A Luxury Market And Networking Platform For All</h3>
-        <p className='p'>Our platform is a luxury market and networking platform that seeks to provide a meeting place for luxury buyers and sellers to carry out their transactions. It is designed such that every verified user involved in the luxury transactions on the platform can earn a substantial amount of income either actively or passively ranging from the luxury realtors to the buyers or the investors.</p>
+        <h3>ANTICIPATE</h3>
+        <p className='p'>An elite community where enormous transactions take place.</p>
+        <p className='p'>Come showcase your listing on the platform where it counts.</p>
+
+        <h4>REAL ESTATE  <span>AUTOMOBILES </span> LUXURY SERVICES.</h4>
+        <p className='j'>Join the 1000 people that would recieve exclusive updates and gain free access to the platform after we launch.</p>
+
 
         <div className='btn'>
             <form>
@@ -66,7 +79,7 @@ export default function Waitlist() {
                 
                 <input type='text' required={true} ref={nameRef} placeholder='Please Input Your name'/>
                 <input type='email' required={true} ref={emailRef} placeholder='Please Input Your Email '/>
-                <button onClick={(e)=> submit(e)}>Submit</button>
+                <button onClick={(e)=> submit(e)}>Request Access</button>
             </form>
         </div>
         

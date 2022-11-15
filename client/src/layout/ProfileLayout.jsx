@@ -10,9 +10,9 @@ import useAuthentication from '../application/hooks/useAuthentication'
 import { useSelector } from 'react-redux'
 import { TopContainer } from '../container/ProfileList.style'
 import { MiddleContainer } from '../container/ProfileStat.style'
-import { FaCamera, FaLongArrowAltUp, FaPen } from 'react-icons/fa'
 import ProfileStat from '../container/ProfileStat'
 import ProfileList from '../container/ProfileList'
+import { FaCamera, FaLongArrowAltUp, FaPen } from 'react-icons/fa'
 
 const ProfileLayout = () => {
     useAuthentication();
@@ -85,7 +85,6 @@ const ProfileLayout = () => {
                 </div>
                 <div className='lines2'></div>
             </MiddleContainer>
-
 
             <div className=" h-full md:h-[90%] overflow-y-auto">
                 {

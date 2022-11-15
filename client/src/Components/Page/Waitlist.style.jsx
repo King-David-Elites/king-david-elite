@@ -1,18 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+color:white;
 display:block;
 box-sizing:border-box;
 
 .logo-div{
     display:flex;
-    padding:30px 40px;
+    padding:30px 0px;
+    align-self: center;
+    justify-content: center;
     align-items:center;
-    margin:0px 50px;
+    margin:0px auto;
     color:#F2BE5C;
 
     p{
-        padding-left:15px;
+        padding-left:30px;
+        font-weight: 600;
     }
 }
 
@@ -23,6 +27,22 @@ h3{
     margin:20px auto;
 }
 
+h4{
+    color:#F2BE5C;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+    width:50%;
+    text-align:center;
+    margin:20px auto 2px;
+}
+
+span{
+    padding-left:20px;
+    padding-right:20px;
+}
+
 .p{
     width:75%;
     margin:10px auto;
@@ -31,6 +51,17 @@ h3{
     font-family: 'Poppins';
     
 }
+
+.j{
+    width:63%;
+    margin:10px auto;
+    font-size:20px;
+    text-align:center;
+    font-family: 'Poppins';
+    color:white;
+
+}
+
 
 .message{
     display: flex;
@@ -43,7 +74,7 @@ h3{
     width: 50%;
 }
 .success{
-    background: rgb(20, 255, 100);
+    background: rgb(20, 205, 100);
 }
 
 .error{
@@ -55,25 +86,63 @@ h3{
 }
 
 input{
-    box-shadow:3px 4px 2px rgba(0,0,0,.1);
+    box-shadow:0px 4px 20px rgba(100,100,100,.2);
     display:block;
     border:none;
+    border-radius: 6px;
     text-align:center;
-    width:50%;
+    width:30%;
+    padding: 10px 12px;
     margin:20px auto;
-    height:40px;
+    // height:40px;
 }
 
 button{
-    box-shadow:3px 4px 2px rgba(0,0,0,.1);
+    box-shadow:0px 4px 20px rgba(0,0,0,.1);
     display:block;
     border:none;
     text-align:center;
-    width:50%;
+    width:30%;
     margin:20px auto;
     height:40px;
     color:white;
     background:#F2BE5C;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+@media only screen and (max-width: 500px){
+    h3{
+        font-size: 20px;
+    }
+
+    h4{
+        font-size:13px;
+        width: 90%;
+        margin: 0 auto;
+        margin-top:15px;
+    }
+
+    .p{
+        font-size: 14px;
+        width: 90%;
+        margin-top:15px;
+    }
+
+    .j{
+        margin-top:15px;
+        font-size:14px;
+    }
+
+    .message, input, button{
+        width: 75%;
+        font-size: 14px;
+    }
+
+    span{
+        padding-left:10px;
+        padding-right:10px;
+    }
 }
 
 `

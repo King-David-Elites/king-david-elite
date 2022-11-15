@@ -14,6 +14,7 @@ export const TopContainer = styled.div`
     background-size:cover;
     background-repeat:no-repeat;
     background-position:center;
+    width: 100vw;
 }
 
 // background slack logo and top texts

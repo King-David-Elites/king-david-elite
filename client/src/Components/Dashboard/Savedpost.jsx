@@ -1,5 +1,4 @@
 import React from 'react'
-import styled, { withTheme } from 'styled-components'
 import Dashboard from './Dashboard'
 import { GenericContainer, Post} from './Savedpost.style'
 import S2 from "../Home/images/S2.jpg"
@@ -16,7 +15,7 @@ const WalletAsElement = ()=>{
           <Post>
 
             <div className='min-post'>
-              <img className='S2' src={S2}/>
+              <img className='S2' src={S2} alt="img"/>
               <p>King David Team</p>
             </div>
 

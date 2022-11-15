@@ -1,5 +1,9 @@
 import styled from "styled-components"
 
+export const List = styled.div`
+margin-top: 30em;
+height:200px;
+`
 
 export const MiddleContainer = styled.div`
 
@@ -114,14 +118,18 @@ export const MiddleContainer = styled.div`
 
 `
 
-
 export const Overview = styled.div`
-position:absolute;
-top:50px;
 display:flex;
-left:160px;
+margin-left: 160px;
+
 
 .account{
+
+    .overview-div{
+        display: flex;
+        gap: 1em;
+        align-items: center;
+    }
 
     p{
 
@@ -134,9 +142,9 @@ left:160px;
     }
 
     .block{
-        position:absolute;
-        top:32px;
-        left:100px;
+       width: 20px;
+       height: 20px;
+       margin-top: 7px;
     }
 
     h3{
@@ -168,17 +176,21 @@ left:160px;
     }
 
     .minus_icon{
-        position:absolute;
-        font-size:10px;
-        top:84px;
-        left:10px;
+        font-size:12px;
+        position: absolute;
+        top: 66em;
+        left:14.5em;
+
+        @media(min-width:768px){
+           
+        }
     }
 
     .down_icon{
-        position:absolute;
-        font-size:10px;
-        top:84px;
-        left:125px;
+        font-size:12px;
+        position: absolute;
+        top: 66em;
+        left:24em;
     }
 
 
@@ -186,7 +198,8 @@ left:160px;
 
 .box{
     display:flex;
-    margin-left:80px;
+    margin-left:15em;
+    position: absolute;
 }
 
 .page{
@@ -377,8 +390,7 @@ left:160px;
 `
 
 export const Post = styled.div`
-
-   margin:330px 120px;
+   margin:25em 120px;
    display:flex;
 
    h3{
@@ -389,7 +401,7 @@ export const Post = styled.div`
     line-height: 36px;
     color: #000000;
     position:absolute;
-    top:250px;
+    top:58em;
     left:150px;
    }
 
@@ -420,14 +432,14 @@ export const Post = styled.div`
 
 
    .Bg{
+       
+        position:absolute;
         margin:0px 20px;
-        background-position:center;
-        background-size:cover;
         width:290px;
         height:160px;
-        position:absolute;
-        top:400px;
         border-radius: 40px 0px;
+        background-position:center;
+        background-size:cover;
         
         .love{
             position: absolute;
@@ -465,6 +477,7 @@ export const Post = styled.div`
             line-height: 24px;
             color: #FFFFFF;
             border:none;
+            cursor: pointer;
         }
    }
 
