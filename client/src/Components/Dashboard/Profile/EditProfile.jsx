@@ -45,7 +45,7 @@ const EditProfile = (props) => {
     }
 
     const setConfig = () => {
-        const authToken = localStorage.getItem("token");
+        const authToken = JSON.stringify(localStorage.getItem("token"));
 
         const config = {
             headers: {
