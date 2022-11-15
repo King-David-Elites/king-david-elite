@@ -117,5 +117,28 @@ export const ListingForm = styled.div`
             padding:0.5em 1em;
             background:#DDDFE6;
         }
+        .NumbB{
+            display:flex;
+            justify-content:flex-start;
+            align-items:center;
+            gap: 4em;
+            flex-wrap:wrap;
+        }
+        .NumbB > .sect{
+            flex 0 1 20em;
+            display:flex;
+            justify-content:flex-start;
+            align-items:center;
+            gap:1em;
+            font-weight:600
+            
+        }
+        .NumbB > .sect input{
+            width:4em;
+            padding:1em;
+            padding-left:1.5em;
+            border: 2px solid black;
+            border-radius: 0.5em;
+        }
     }
 `

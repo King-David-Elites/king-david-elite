@@ -7,6 +7,8 @@ const CreateRealEstateListing = () =>{
     const [outDoorProp, setOutDoorProp] = useState([])    
     const [inDoorProp, setInDoorProp] = useState([])
     const [viewProp, setViewProp] = useState([])
+    const [noOfBedrms, setNoOfBedrms] = useState(0)
+    const [noOfBathrms, setNoOfBathrms] = useState(0)
     return(
         <>
             <div className="form_Content">
@@ -138,6 +140,28 @@ const CreateRealEstateListing = () =>{
                 </div>
                 <div className="section">
                     <hr/>
+                </div>
+                <div className="NumbB">
+                    <div className="sect">
+                        <p>No of Bedrooms</p>
+                        <input 
+                            type="text"
+                            placeholder="0"
+                            onChange={(e)=>{
+                                setNoOfBedrms(e.target.value)
+                            }}
+                        />
+                    </div>
+                    <div className="sect">
+                        <p>No of Bathrooms</p>
+                        <input 
+                            type="text"
+                            placeholder="0"
+                            onChange={(e)=>{
+                                setNoOfBathrms(e.target.value)
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
         </>
