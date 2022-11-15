@@ -6,14 +6,11 @@ import bg from './Image/profilebg.png'
 import check from "../Components/Home/images/check.png"
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-<<<<<<< HEAD
-=======
 import useAuthentication from '../application/hooks/useAuthentication'
 import { useSelector } from 'react-redux'
 import { TopContainer } from '../container/ProfileList.style'
 import { MiddleContainer } from '../container/ProfileStat.style'
 import { FaCamera, FaLongArrowAltUp, FaPen } from 'react-icons/fa'
->>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
 import ProfileStat from '../container/ProfileStat'
 import ProfileList from '../container/ProfileList'
 
@@ -85,24 +82,6 @@ const ProfileLayout = () => {
                 <div className='lines'></div>
                 <div className='middle_btn'>
                     <TopNavigationComponent navOptions={navOptions} activeComponent={activeComponent} setActiveComponent={switchComp} />
-<<<<<<< HEAD
-                    <div className='border2'></div>
-                    <div className="w-full h-full py-5 md:h-[90%] overflow-y-auto">
-                        {
-                            (activeComponent == "stats") && <ProfileStat/>
-                        }
-                        {
-                            (activeComponent == "list") && <ProfileList/>
-                        }
-                        {
-                            (activeComponent == "verification") && <Verification />
-                        }
-                        {
-                            (activeComponent == "account") && <Account />
-                        }
-                    </div>
-=======
->>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
                 </div>
                 <div className='lines2'></div>
             </MiddleContainer>

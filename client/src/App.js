@@ -31,31 +31,20 @@ import Stat from './Components/Stat/Stat';
 import Verification from './Components/Verification/Verification';
 import ProfileList from './container/ProfileList';
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
-<<<<<<< HEAD
-import ProfileStat from './container/ProfileStat';
-import Waitlist from './Components/Page/Waitlist';
-=======
 import SignUpPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
->>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
 
 function App() {
   return (
     <Router>
       {/* <Navbar/> */}
       <Routes>
-<<<<<<< HEAD
         <Route path='/' element={<Waitlist/> } />
         <Route path='/signup' element={<LoginPage/>}/>
         <Route path='/login' element={<SignupPage/>}/>
-=======
-        <Route path='/' element={<HomePage/> } />
-        <Route path='/signup' element={<SignUpPage/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
->>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
         <Route path='/savedpost' element={<Savedpost/>}/>
         <Route path="/real-estate" element={<RealEstateListing />} />
-//         <Route path="/real-estate/add" element={<AddRealEstate />} />
+         <Route path="/real-estate/add" element={<AddRealEstate />} />
         <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
         <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
         <Route path="/cars" element={<Cars />} />

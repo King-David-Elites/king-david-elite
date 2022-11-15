@@ -1,8 +1,5 @@
 import styled from "styled-components"
 
-<<<<<<< HEAD
-export const List = styled.div`
-=======
 
 export const MiddleContainer = styled.div`
 
@@ -115,7 +112,6 @@ export const MiddleContainer = styled.div`
 
 }
 
->>>>>>> be2ed1713d0e943d7b37bd2286079a88ce311f30
 `
 
 
