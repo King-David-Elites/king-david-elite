@@ -120,11 +120,18 @@ button{
         font-size:13px;
         width: 90%;
         margin: 0 auto;
+        margin-top:15px;
     }
 
     .p{
         font-size: 14px;
         width: 90%;
+        margin-top:15px;
+    }
+
+    .j{
+        margin-top:15px;
+        font-size:14px;
     }
 
     .message, input, button{
