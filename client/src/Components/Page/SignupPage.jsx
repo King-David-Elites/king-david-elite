@@ -13,7 +13,7 @@ const SignUpPage = () => {
   const passwordRef = useRef();
   const navigate = useNavigate()
 
-  const signUp = async (e) => {
+  const signUp = async (e) => { 
     e.preventDefault();
 
     const userDetails = {

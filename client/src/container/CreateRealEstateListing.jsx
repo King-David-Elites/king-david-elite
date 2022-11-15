@@ -58,7 +58,7 @@ const CreateRealEstateListing = () => {
                   onClick={() => {
                     setOutDoorProp((outDoorProp) => {
                       return outDoorProp.filter(
-                        (item) => item.property != items.property
+                        (item) => item.property !== items.property
                       );
                     });
                   }}
@@ -91,7 +91,7 @@ const CreateRealEstateListing = () => {
                   onClick={() => {
                     setInDoorProp((inDoorProp) => {
                       return inDoorProp.filter(
-                        (item) => item.property != items.property
+                        (item) => item.property !== items.property
                       );
                     });
                   }}
@@ -124,7 +124,7 @@ const CreateRealEstateListing = () => {
                   onClick={() => {
                     setViewProp((viewProp) => {
                       return viewProp.filter(
-                        (item) => item.property != items.property
+                        (item) => item.property !== items.property
                       );
                     });
                   }}
@@ -170,6 +170,22 @@ const CreateRealEstateListing = () => {
         <div className="section">
             <p>Images</p>
             <input className="dashed" type="file" />
+            <div className="base">
+                mark and upload more than one high-quality images, listings with low quality images may be rejected
+            </div>
+        </div>
+        <div className="section">
+            <p>Video</p>
+            <input className="dashed" type="file" />
+            <div className="base">
+                upload a clear video displaying the views (optional)
+            </div>
+        </div>
+        <div className="NumbB">
+            <div className="sect">
+                <p>Price</p>
+                
+            </div>                        
         </div>
       </div>
     </>

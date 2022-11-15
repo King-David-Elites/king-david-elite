@@ -57,12 +57,15 @@ export const ListingForm = styled.div`
         }
         .section{
             font-family:Inter;
-            display:flex:
+            display:flex;
             flex-direction:column;
             justify-content:center;
-            align-items:center;
+            align-items:flex-start;
             gap:0.5em;                
             margin-bottom:2em;        
+        }
+        .section hr{
+            width:100%;
         }
         #section{
             font-family:Poppins;
@@ -83,6 +86,8 @@ export const ListingForm = styled.div`
         }
         .section > .dashed{
             border-style:dashed;    
+            display:flex;
+            justify-content:center;
         }
         .section textarea{
             width:100%;
@@ -129,14 +134,14 @@ export const ListingForm = styled.div`
             gap: 4em;
             flex-wrap:wrap;
             margin-bottom: 2em;
+            font-weight:600;
         }
         .NumbB > .sect{
             flex 0 1 20em;
             display:flex;
             justify-content:flex-start;
             align-items:center;
-            gap:1em;
-            font-weight:600
+            gap:1em;            
             
         }
         .NumbB > .sect input{
