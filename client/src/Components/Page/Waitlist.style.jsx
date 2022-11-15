@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-color:black;
+color:white;
 display:block;
 box-sizing:border-box;
 
@@ -55,10 +55,6 @@ h4{
 
 }
 
-
-span{
-    color:black;
-}
 
 .message{
     display: flex;
