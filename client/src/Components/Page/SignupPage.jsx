@@ -1,8 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 // import S from './images/.jpg'
-import { Container } from './LoginPage.style'
-import { Page } from './LoginPage.style'
+import { Container, Page } from './LoginPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 
@@ -14,7 +13,7 @@ const SignUpPage = () => {
   const passwordRef = useRef();
   const navigate = useNavigate()
 
-  const signUp = async (e) => {
+  const signUp = async (e) => { 
     e.preventDefault();
 
     const userDetails = {
