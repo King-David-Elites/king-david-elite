@@ -4,6 +4,7 @@ export const Container = styled.div`
 color:white;
 display:block;
 box-sizing:border-box;
+min-height:100vh ;
 
 .logo-div{
     display:flex;
@@ -15,7 +16,7 @@ box-sizing:border-box;
     color:#F2BE5C;
 
     p{
-        // padding-left:15px;
+        padding-left:30px;
         font-weight: 600;
     }
 }
@@ -28,12 +29,19 @@ h3{
 }
 
 h4{
-    color:white;
-    word-spacing:10px;
-    font-size:30px;
+    color:#F2BE5C;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
     width:50%;
     text-align:center;
     margin:20px auto 2px;
+}
+
+span{
+    padding-left:20px;
+    padding-right:20px;
 }
 
 .p{
@@ -110,19 +118,31 @@ button{
     }
 
     h4{
-        font-size: 16px;
+        font-size:13px;
         width: 90%;
         margin: 0 auto;
+        margin-top:15px;
     }
 
     .p{
         font-size: 14px;
         width: 90%;
+        margin-top:15px;
+    }
+
+    .j{
+        margin-top:15px;
+        font-size:14px;
     }
 
     .message, input, button{
         width: 75%;
         font-size: 14px;
+    }
+
+    span{
+        padding-left:10px;
+        padding-right:10px;
     }
 }
 
