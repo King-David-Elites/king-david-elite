@@ -41,9 +41,12 @@ const CreateCarListing = () => {
         </div>
         <p>Car Condition</p>
         <div className="NumbB">
-            <div className="sec">
-              <input type="text"/>
-            </div>
+          <div className="sec">
+            <select name="CarStatus">
+              <option value="New">New</option>
+              <option value="Used">Used</option>
+            </select>
+          </div>            
         </div>
         <p>Engine Type</p>
         <div className="NumbB">

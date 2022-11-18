@@ -151,6 +151,15 @@ export const ListingForm = styled.div`
         .NumbB > .sec{
             flex: 0 1 35em;
         }
+        .NumbB > .sec select{
+            width:100%;
+            padding:12px 16px;
+            border:2px solid black;
+            border-radius:0.5em;
+            cursor:pointer;
+            font-weight:600;  
+            font-size:1rem;  
+        }
         .NumbB > .sec input{
             width:100%;
             padding:1em;
@@ -182,9 +191,9 @@ export const ListingForm = styled.div`
             font-weight:600;
         }
         .NumbB > .sect > .price select{
-            width:30%%;
+            width:30%;
             border-left: 2px solid black;
-            padding:1em;
+            padding:1em 0em 1em 1em;
             outline:none;
             border-radius: 0em 0.5em 0.5em 0em;
             font-weight:600;
