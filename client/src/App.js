@@ -34,6 +34,7 @@ import ProfileStat from './container/ProfileStat';
 import Waitlist from './Components/Page/Waitlist';
 import SignUpPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
+import EmailPage from './Components/Page/EmailPage';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
       {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<Waitlist/> } />
+        <Route path='/email' element={<EmailPage/> } />
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/' element={<HomePage/> } />
         <Route path='/signup' element={<SignUpPage/>}/>
