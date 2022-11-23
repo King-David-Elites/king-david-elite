@@ -4,12 +4,7 @@ import { LocationMarker } from "heroicons-react";
 import { X } from "heroicons-react";
 import { OutProp, InProp, Views } from "./PropertiesContents";
 
-const CreateCarListing = () => {
-  const [outDoorProp, setOutDoorProp] = useState([]);
-  const [inDoorProp, setInDoorProp] = useState([]);
-  const [viewProp, setViewProp] = useState([]);
-  const [noOfBedrms, setNoOfBedrms] = useState(0);
-  const [noOfBathrms, setNoOfBathrms] = useState(0);
+const CreateCarListing = () => {  
   const [valid, setValid] = useState(false);
   return (
     <>
