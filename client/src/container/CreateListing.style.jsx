@@ -62,7 +62,7 @@ export const ListingForm = styled.div`
             font-weight:600;
             color:red;
             font-size:0.8em;            
-            text-align:center;
+            margin-bottom:3em;
         }
         .locate{
             font-family:Inter;

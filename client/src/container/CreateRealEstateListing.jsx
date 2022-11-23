@@ -48,7 +48,8 @@ const CreateRealEstateListing = () => {
       setValid(false);
       setError(true);
     }
-  }, [changing]);
+    setUserListings({...userListings, features:features})
+  }, [changing,features]);
 
   const setConfig = (userListings) => {
     const authToken = localStorage.getItem("token");
@@ -82,7 +83,7 @@ const CreateRealEstateListing = () => {
         console.log(resp.data);
       })
       .catch((err) => {
-        console.log("error", err);
+        console.log(err.data);
       });
   };
 
@@ -127,8 +128,7 @@ const CreateRealEstateListing = () => {
             name="OutdoorProperties"
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
-              setOutDoorProp([...outDoorProp, { property: e.target.value }]);
-              setUserListings({...userListings, features:features});
+              setOutDoorProp([...outDoorProp, { property: e.target.value }]);              
             }}
           >
             {OutProp.map((outDoor) => {
@@ -165,8 +165,7 @@ const CreateRealEstateListing = () => {
             name="IndoorProperties"
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
-              setInDoorProp([...inDoorProp, { property: e.target.value }]);
-              setUserListings({...userListings, features:features});
+              setInDoorProp([...inDoorProp, { property: e.target.value }]);            
             }}
           >
             {InProp.map((inDoor) => {
@@ -203,8 +202,7 @@ const CreateRealEstateListing = () => {
             name="Views"
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
-              setViewProp([...viewProp, { property: e.target.value }]);
-              setUserListings({...userListings, features:features});
+              setViewProp([...viewProp, { property: e.target.value }]);              
             }}
           >
             {Views.map((view) => {
