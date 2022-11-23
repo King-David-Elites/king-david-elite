@@ -86,8 +86,7 @@ const CreateRealEstateListing = () => {
       });
   };
 
-  const handleSubmit = async () => {    
-    setUserListings({...userListings, features:features})
+  const handleSubmit = async () => {
     postUserListings(userListings);
   };
 
@@ -129,6 +128,7 @@ const CreateRealEstateListing = () => {
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
               setOutDoorProp([...outDoorProp, { property: e.target.value }]);
+              setUserListings({...userListings, features:features});
             }}
           >
             {OutProp.map((outDoor) => {
@@ -166,6 +166,7 @@ const CreateRealEstateListing = () => {
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
               setInDoorProp([...inDoorProp, { property: e.target.value }]);
+              setUserListings({...userListings, features:features});
             }}
           >
             {InProp.map((inDoor) => {
@@ -203,6 +204,7 @@ const CreateRealEstateListing = () => {
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
               setViewProp([...viewProp, { property: e.target.value }]);
+              setUserListings({...userListings, features:features});
             }}
           >
             {Views.map((view) => {
