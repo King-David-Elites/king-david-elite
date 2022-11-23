@@ -50,6 +50,20 @@ export const ListingForm = styled.div`
             font-weight:600;
             margin:0.5em 0em;
         }
+        .numbw{
+            width:100%;
+            font-weight:600;
+            color:red;
+            font-size:0.8em;             
+            margin:-1em 0em 2em 0em; 
+        }
+        .error{
+            width:100%;
+            font-weight:600;
+            color:red;
+            font-size:0.8em;            
+            text-align:center;
+        }
         .locate{
             font-family:Inter;
             display:flex;

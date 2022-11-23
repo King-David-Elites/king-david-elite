@@ -10,67 +10,86 @@ const CreateRealEstateListing = () => {
   const [outDoorProp, setOutDoorProp] = useState([]);
   const [inDoorProp, setInDoorProp] = useState([]);
   const [viewProp, setViewProp] = useState([]);
+  const [features, setFeatures] = useState([]);
   const [valid, setValid] = useState(false);
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [changing, setChanging] = useState(false);
+  const [error, setError] = useState(false);
 
-  const [userListings,setUserListings] = useState({
-    title:"",
-    location:"",
-    description:"",
-    images:[],
-    videos:[],
-    price:"",
-    year:"",
-    carCondition:"",
-    engineType:"",
-    colour:"",
+  const [userListings, setUserListings] = useState({
+    title: "",
+    location: "",
+    description: "",
+    images: [],
+    videos: [],
+    price: "",
+    year: new Date().getFullYear(),
+    carCondition: "",
+    engineType: "",
+    colour: "",
     features:[],
-    model:"",
-    noOfBed:"",
-    noOfBathroom:""
-  })
+    model: "",
+    noOfBed: 0,
+    noOfBathroom: 0,
+  });
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {
+    if (
+      userListings["title"] &&
+      userListings["description"] &&
+      userListings["location"] &&
+      userListings["features"] &&
+      userListings["price"]
+    ) {
+      setValid(true);
+      setError(false);
+    } else {
+      setValid(false);
+      setError(true);
+    }
+  }, [changing]);
+
   const setConfig = (userListings) => {
     const authToken = localStorage.getItem("token");
 
     const config = {
-        headers: {
-            Authorization: `Bearer ${authToken}`,
-            ContentType: "application/json",
-        },
-        data:JSON.stringify(userListings),
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        ContentType: "application/json",
+      },
     };
 
     return config;
   };
 
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-    setUserListings({...userListings, [name]:value})
-  }
+    setUserListings({ ...userListings, [name]: value });
+    setChanging(!changing);
+  };
 
-  const saveDetails = () =>{
-    postUserListings(userListings)
-  }
+  const postUserListings = async (userListings) => {
+    console.log(userListings['features'])
+    await axios
+      .post(
+        "https://kde-api.herokuapp.com/listings/upload-list",
+        userListings,
+        setConfig()
+      )
+      .then((resp) => {
+        console.log(resp.data);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
 
-  const postUserListings = async(userListings) =>{
-    await axios.post('listings/upload-list',setConfig(userListings)).then((resp)=>{
-      console.log(resp.message)
-    })
-  }
-
-  const handleSubmit = async ()=>{
-    
-  }
+  const handleSubmit = async () => {    
+    setUserListings({...userListings, features:features})
+    postUserListings(userListings);
+  };
 
   return (
     <>
@@ -81,18 +100,13 @@ const CreateRealEstateListing = () => {
         </div>
         <div className="section">
           <p>Title/Name</p>
-          <input 
-            type="text"
-            name="title"
-            required
-            onChange={handleChange}  
-          />
+          <input type="text" name="title" required onChange={handleChange} />
           <div className="base">Very short headline for your listing</div>
         </div>
         <div className="section">
           <p>Description</p>
-          <textarea 
-            type="text" 
+          <textarea
+            type="text"
             name="description"
             required
             onChange={handleChange}
@@ -100,10 +114,7 @@ const CreateRealEstateListing = () => {
         </div>
         <div className="section">
           <p>Address</p>
-          <input 
-            type="text" 
-            name="address"
-          />
+          <input type="text" name="location" required onChange={handleChange} />
         </div>
         <div className="section">
           <hr />
@@ -116,6 +127,7 @@ const CreateRealEstateListing = () => {
           <select
             name="OutdoorProperties"
             onChange={(e) => {
+              setFeatures([...features, e.target.value]);
               setOutDoorProp([...outDoorProp, { property: e.target.value }]);
             }}
           >
@@ -130,6 +142,9 @@ const CreateRealEstateListing = () => {
                   key={i}
                   className="props"
                   onClick={() => {
+                    setFeatures((features) => {
+                      return features.filter((item) => item !== items.property);
+                    });
                     setOutDoorProp((outDoorProp) => {
                       return outDoorProp.filter(
                         (item) => item.property !== items.property
@@ -149,6 +164,7 @@ const CreateRealEstateListing = () => {
           <select
             name="IndoorProperties"
             onChange={(e) => {
+              setFeatures([...features, e.target.value]);
               setInDoorProp([...inDoorProp, { property: e.target.value }]);
             }}
           >
@@ -163,6 +179,9 @@ const CreateRealEstateListing = () => {
                   key={i}
                   className="props"
                   onClick={() => {
+                    setFeatures((features) => {
+                      return features.filter((item) => item !== items.property);
+                    });
                     setInDoorProp((inDoorProp) => {
                       return inDoorProp.filter(
                         (item) => item.property !== items.property
@@ -182,6 +201,7 @@ const CreateRealEstateListing = () => {
           <select
             name="Views"
             onChange={(e) => {
+              setFeatures([...features, e.target.value]);
               setViewProp([...viewProp, { property: e.target.value }]);
             }}
           >
@@ -196,6 +216,9 @@ const CreateRealEstateListing = () => {
                   key={i}
                   className="props"
                   onClick={() => {
+                    setFeatures((features) => {
+                      return features.filter((item) => item !== items.property);
+                    });
                     setViewProp((viewProp) => {
                       return viewProp.filter(
                         (item) => item.property !== items.property
@@ -233,60 +256,59 @@ const CreateRealEstateListing = () => {
             />
           </div>
         </div>
-        <div className="NumbB">
-          <div 
-            className={valid ? "enable" : "disable"}
-            onClick={valid && saveDetails}
-          >
-            Save & Continue
-          </div>
-        </div>
         <div className="section">
           <hr />
         </div>
         <div className="section">
-            <p>Images</p>
-            <input 
-              className="dashed" 
-              type="file" 
-              onChange={(e)=>{
-                setImages([...images, e.target.value])
-                setUserListings({...userListings, images:images})        
-              }}
-            />
-            <div className="base">
-                mark and upload more than one high-quality images, listings with low quality images may be rejected
-            </div>
+          <p>Images</p>
+          <input
+            className="dashed"
+            type="file"
+            onChange={(e) => {
+              setImages([...images, e.target.value]);
+              setUserListings({ ...userListings, images: images });
+            }}
+          />
+          <div className="base">
+            mark and upload more than one high-quality images, listings with low
+            quality images may be rejected
+          </div>
         </div>
         <div className="section">
-            <p>Video</p>
-            <input className="dashed" type="file" />
-            <div className="base">
-                upload a clear video displaying the views (optional)
+          <p>Video</p>
+          <input className="dashed" type="file" />
+          <div className="base">
+            upload a clear video displaying the views (optional)
+          </div>
+        </div>
+        <div className="NumbB">
+          <div className="sect">
+            <p>Price</p>
+            <div className="price">
+              <input name="price" onChange={handleChange} type="text" />
+              <select>
+                <option>USD</option>
+                <option>NGN</option>
+                <option>INR</option>
+                <option>EU</option>
+                <option>YEN</option>
+              </select>
             </div>
+          </div>
+        </div>
+        <div className="numbw">
+          Price input should be only numbers, avoid the use of ',' '-' '/' or any
+          other intermediaries
         </div>
         <div className="NumbB">
-            <div className="sect">
-                <p>Price</p>
-                <div className="price">
-                    <input 
-                      name="price"
-                      onChange={handleChange}
-                      type="text" 
-                    />
-                    <select>
-                        <option>USD</option>
-                        <option>NGN</option>
-                        <option>INR</option>
-                        <option>EU</option>
-                        <option>YEN</option>
-                    </select>
-                </div>
-            </div>                        
+          <div
+            className={valid ? "enable" : "disable"}
+            onClick={valid && handleSubmit}
+          >
+            List
+          </div>
         </div>
-        <div className="NumbB">
-          <div className="enable">List</div>
-        </div>
+        {error && <p className="error">Please fill in the required fields</p>}
       </div>
     </>
   );
