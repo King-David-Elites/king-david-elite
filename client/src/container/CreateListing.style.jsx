@@ -71,7 +71,8 @@ export const ListingForm = styled.div`
             align-items:center;
             gap:0.5em;
             margin-bottom:2em;
-            font-weight:600
+            font-weight:600;
+            cursor:pointer;
         }
         .section{
             font-family:Inter;
@@ -115,6 +116,7 @@ export const ListingForm = styled.div`
             border-radius:0.5em;
             border:2px solid black;  
             height:8em;          
+            resize:none;
         }
         .section select{
             width:80%;

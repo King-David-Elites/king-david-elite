@@ -5,6 +5,7 @@ import { X } from "heroicons-react";
 import { OutProp, InProp, Views } from "./PropertiesContents";
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateRealEstateListing = () => {
   const [outDoorProp, setOutDoorProp] = useState([]);
@@ -16,6 +17,11 @@ const CreateRealEstateListing = () => {
   const [videos, setVideos] = useState([]);
   const [changing, setChanging] = useState(false);
   const [error, setError] = useState(false);
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [position, setPosition] = useState("");
+
+  const navigate = useNavigate()
 
   const [userListings, setUserListings] = useState({
     title: "",
@@ -28,11 +34,16 @@ const CreateRealEstateListing = () => {
     carCondition: "",
     engineType: "",
     colour: "",
-    features:[],
+    features: [],
     model: "",
     noOfBed: 0,
     noOfBathroom: 0,
   });
+
+  useEffect(()=>{
+    console.log(longitude)
+    console.log(latitude)
+  },[position])
 
   useEffect(() => {
     if (
@@ -48,8 +59,8 @@ const CreateRealEstateListing = () => {
       setValid(false);
       setError(true);
     }
-    setUserListings({...userListings, features:features})
-  }, [changing,features]);
+    setUserListings({ ...userListings, features: features });
+  }, [changing, features]);
 
   const setConfig = (userListings) => {
     const authToken = localStorage.getItem("token");
@@ -64,6 +75,19 @@ const CreateRealEstateListing = () => {
     return config;
   };
 
+  const getPosition = async () => {
+    await navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+        setPosition(true);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
   const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -72,7 +96,6 @@ const CreateRealEstateListing = () => {
   };
 
   const postUserListings = async (userListings) => {
-    console.log(userListings['features'])
     await axios
       .post(
         "https://kde-api.herokuapp.com/listings/upload-list",
@@ -81,6 +104,7 @@ const CreateRealEstateListing = () => {
       )
       .then((resp) => {
         console.log(resp.data);
+        navigate('/profile')
       })
       .catch((err) => {
         console.log(err.data);
@@ -94,7 +118,7 @@ const CreateRealEstateListing = () => {
   return (
     <>
       <div className="form_Content">
-        <div className="locate">
+        <div className="locate" onClick={getPosition}>
           <LocationMarker color="#2301F3" />
           <p>Add location</p>
         </div>
@@ -128,7 +152,7 @@ const CreateRealEstateListing = () => {
             name="OutdoorProperties"
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
-              setOutDoorProp([...outDoorProp, { property: e.target.value }]);              
+              setOutDoorProp([...outDoorProp, { property: e.target.value }]);
             }}
           >
             {OutProp.map((outDoor) => {
@@ -165,7 +189,7 @@ const CreateRealEstateListing = () => {
             name="IndoorProperties"
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
-              setInDoorProp([...inDoorProp, { property: e.target.value }]);            
+              setInDoorProp([...inDoorProp, { property: e.target.value }]);
             }}
           >
             {InProp.map((inDoor) => {
@@ -202,7 +226,7 @@ const CreateRealEstateListing = () => {
             name="Views"
             onChange={(e) => {
               setFeatures([...features, e.target.value]);
-              setViewProp([...viewProp, { property: e.target.value }]);              
+              setViewProp([...viewProp, { property: e.target.value }]);
             }}
           >
             {Views.map((view) => {
@@ -297,8 +321,8 @@ const CreateRealEstateListing = () => {
           </div>
         </div>
         <div className="numbw">
-          Price input should be only numbers, avoid the use of ',' '-' '/' or any
-          other intermediaries
+          Price input should be only numbers, avoid the use of ',' '-' '/' or
+          any other intermediaries
         </div>
         <div className="NumbB">
           <div
