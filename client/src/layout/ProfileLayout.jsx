@@ -4,7 +4,7 @@ import Verification from '../Components/Verification/Verification'
 import Account from '../Components/Account/Account'
 import bg from './Image/profilebg.png'
 import check from "../Components/Home/images/check.png"
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useAuthentication from '../application/hooks/useAuthentication'
 import { useSelector } from 'react-redux'
@@ -14,7 +14,9 @@ import ProfileStat from '../container/ProfileStat'
 import ProfileList from '../container/ProfileList'
 import { FaCamera, FaLongArrowAltUp, FaPen } from 'react-icons/fa'
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const ProfileLayout = () => {
+    const top = useRef(null)
     useAuthentication();
     const navigate = useNavigate();
     const user = useSelector(state => state.user);
@@ -48,9 +50,13 @@ const ProfileLayout = () => {
         setActiveComponent(opt);
     }
 
+    useEffect(()=>{
+        scrollToRef(top)
+    },[])
+
     return (
         <div>
-            <TopContainer>
+            <TopContainer ref={top}>
                 <div className='bg' style={{ backgroundImage: `url(${bg})` }}>
                 </div>
                 <div className='slac'>

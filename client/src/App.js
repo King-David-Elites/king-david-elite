@@ -67,7 +67,7 @@ function App() {
         <Route path="/help" element={<Help />}/>
         <Route path="/help/earning" element={<Earning />}/>
         <Route path="/help/benefits" element={<Benefits />}/>
-        <Route path="/profile/" element={<ProfileContainer />} />
+        <Route path="/profile" element={<ProfileContainer />} />
         <Route path="/profile/verification" element={<Verification />} />
         <Route path="/profile/list" element={<ProfileList/>} />
         <Route path="/profile/stat" element={<ProfileStat/>} />
