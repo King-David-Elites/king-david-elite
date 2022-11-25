@@ -31,12 +31,20 @@ import {
 import { CarAPI } from "./DemoAPI/api"
 import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom'
+import { useRef } from 'react'
+import { useEffect } from 'react'
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const CarsListing = () => {
+  const top = useRef(null)
+
+  useEffect(()=>{
+    scrollToRef(top)
+  },[])
   return (
     <>
       <Navbar active={1} />
-      <Background imageUrl={carpic}>
+      <Background imageUrl={carpic} ref={top}>
         <HeroSection>
           <Text fontSize="2rem">Luxury Cars</Text>
             <SearchSection>

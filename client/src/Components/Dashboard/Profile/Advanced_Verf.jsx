@@ -5,7 +5,9 @@ import liscence from "../Dashboard-Image/liscence.png"
 const Advanced_Verf = (props) =>{
     let {
       stage,
-      setStage
+      setStage,
+      scrollToRef,
+      position
     } = props
   
     return(
@@ -43,6 +45,7 @@ const Advanced_Verf = (props) =>{
             className="button"
             onClick={()=>{
               setStage(stage+1)
+              scrollToRef(position)
             }}
           >
             Continue

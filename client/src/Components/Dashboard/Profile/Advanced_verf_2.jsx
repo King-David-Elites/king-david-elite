@@ -5,7 +5,9 @@ import frontpage from "../Dashboard-Image/frontpage.png";
 const Advanced_Verf_2 = (props) =>{
     let {
       stage,
-      setStage
+      setStage,
+      scrollToRef,
+      position
     } = props
   
     return(
@@ -63,6 +65,7 @@ const Advanced_Verf_2 = (props) =>{
             id="button"
             onClick={()=>{
               setStage(stage+1)
+              scrollToRef(position)
             }}
           >
             Continue
