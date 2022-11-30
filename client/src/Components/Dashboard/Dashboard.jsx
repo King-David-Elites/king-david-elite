@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { navigators } from './contents'
 import { DashboardContainer, LeftContainer, RightContainer } from './Dashboard.Styles'
 import { FaSearch } from "react-icons/fa"
 import { useNavigate } from 'react-router-dom'
 import kde_whiteBg from '../Navbar/Image/kde_whiteBg.png'
 import { LogoText } from '../Navbar/Navbar.Style'
-import { useSelector } from "react-redux";
 import useAuthentication from '../../application/hooks/useAuthentication'
+import { useGetUserDetails } from '../../application/hooks/queryhooks'
 
 const Dashboard = ({element, index}) => {
     useAuthentication();
     const navigate = useNavigate();
-    const user = useSelector(state => state.user);
-    const userFirstName = user.firstName;
-    const userLastName = user.lastName;
-    const userEmail = user.email;
+    const { data } = useGetUserDetails();
+    const [loggedInUser, setLoggedInUser] = useState([]);
+
+    useEffect(() => {
+        setLoggedInUser(data)
+        console.log(data)
+    }, [data])
 
   return (
     <DashboardContainer>
@@ -56,11 +59,11 @@ const Dashboard = ({element, index}) => {
                     <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
 
                     <div className="textContent">
-                        <h6>{userFirstName?.toUpperCase()} {userLastName?.toUpperCase()}</h6>
-                        <p>{userEmail}</p>
+                        <h6>{data?.firstName?.toUpperCase()} {data?.lastName?.toUpperCase()}</h6>
+                        <p>{data?.email}</p>
                     </div>
                 </div>
-            </div>
+            </div>  
 
             <div className="mainContent">
                 {element}
