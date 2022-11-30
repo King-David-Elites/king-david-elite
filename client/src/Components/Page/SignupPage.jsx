@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 // import S from './images/.jpg'
-import { Container, Page } from './LoginPage.style'
+import { Container, Page } from './SignupPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 

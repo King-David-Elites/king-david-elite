@@ -29,7 +29,12 @@ export const UL = styled.ul`
     align-items:center;
     gap:2em;
     font-weight:700;
-    list-style-type:None;       
+    list-style-type:None;      
+    
+    
+    @media(max-width:480px){
+        display:none;
+    }
 `
 
 export const LI = styled.li`    
@@ -121,5 +126,12 @@ export const Brand = styled.div`
     .dashboardIcon{
         display: none;
     }
-    } 
+    }
+    
+    @media(max-width:480px){
+        .login{
+            display:none;
+        }
+
+    }
 `
