@@ -46,6 +46,24 @@ export const ListingForm = styled.div`
         padding:0.5em;       
         margin-top:2em;
         
+        p{
+            font-weight:600;
+            margin:0.5em 0em;
+        }
+        .numbw{
+            width:100%;
+            font-weight:600;
+            color:red;
+            font-size:0.8em;             
+            margin:-1em 0em 2em 0em; 
+        }
+        .error{
+            width:100%;
+            font-weight:600;
+            color:red;
+            font-size:0.8em;            
+            margin-bottom:3em;
+        }
         .locate{
             font-family:Inter;
             display:flex;
@@ -53,7 +71,8 @@ export const ListingForm = styled.div`
             align-items:center;
             gap:0.5em;
             margin-bottom:2em;
-            font-weight:600
+            font-weight:600;
+            cursor:pointer;
         }
         .section{
             font-family:Inter;
@@ -97,6 +116,7 @@ export const ListingForm = styled.div`
             border-radius:0.5em;
             border:2px solid black;  
             height:8em;          
+            resize:none;
         }
         .section select{
             width:80%;
@@ -138,12 +158,30 @@ export const ListingForm = styled.div`
             font-weight:600;
         }
         .NumbB > .sect{
-            flex 0 1 20em;
+            flex: 0 1 20em;
             display:flex;
             justify-content:flex-start;
             align-items:center;
             gap:1em;            
-            
+        }
+        .NumbB > .sec{
+            flex: 0 1 35em;
+        }
+        .NumbB > .sec select{
+            width:100%;
+            padding:12px 16px;
+            border:2px solid black;
+            border-radius:0.5em;
+            cursor:pointer;
+            font-weight:600;  
+            font-size:1rem;  
+        }
+        .NumbB > .sec input{
+            width:100%;
+            padding:1em;
+            padding-left:1.5em;
+            border:2px solid black;
+            border-radius: 0.5em;
         }
         .NumbB > .sect input{
             width:4em;
@@ -169,9 +207,9 @@ export const ListingForm = styled.div`
             font-weight:600;
         }
         .NumbB > .sect > .price select{
-            width:30%%;
+            width:30%;
             border-left: 2px solid black;
-            padding:1em;
+            padding:1em 0em 1em 1em;
             outline:none;
             border-radius: 0em 0.5em 0.5em 0em;
             font-weight:600;

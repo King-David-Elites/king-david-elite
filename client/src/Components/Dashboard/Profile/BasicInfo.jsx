@@ -14,7 +14,9 @@ const BasicInfo = (props) =>{
       setRegistering,
       country,
       stage,
-      setStage
+      setStage,
+      scrollToRef,
+      position
     } = props
   
     return(
@@ -142,6 +144,7 @@ const BasicInfo = (props) =>{
                         onClick={()=>{
                             setStage(0)
                             setRegistering(false)
+                            scrollToRef(position)
                         }}
                     >
                         Back
@@ -151,6 +154,7 @@ const BasicInfo = (props) =>{
                         id={enable ? "continue_enable" : "continue_disable"}
                         onClick={()=>{
                             setStage(stage+1)
+                            scrollToRef(position)
                         }}
                     >
                         Submit & Continue
