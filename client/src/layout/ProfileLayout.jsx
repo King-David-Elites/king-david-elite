@@ -13,6 +13,8 @@ import { MiddleContainer } from '../container/ProfileStat.style'
 import ProfileStat from '../container/ProfileStat'
 import ProfileList from '../container/ProfileList'
 import { FaCamera, FaLongArrowAltUp, FaPen } from 'react-icons/fa'
+import services from '../ioc/services';
+import { useEffect } from "react";
 
 const ProfileLayout = () => {
     useAuthentication();
@@ -22,6 +24,7 @@ const ProfileLayout = () => {
     const userLastName = user.lastName;
     const userProfilePic = user.profilePicture;
     const createdAt = user.createdAt;
+    const [editUserProfile, setEditUserProfile] = useState();
 
     const navOptions = [
         {
@@ -47,6 +50,24 @@ const ProfileLayout = () => {
     const switchComp = (opt) => {
         setActiveComponent(opt);
     }
+
+    useEffect(() => {
+        services.api.userRequests.getSignedInUser().then(res => {
+            const userDetails = {
+                firstName: res?.data?.firstName,
+                lastName: res?.data?.lastName,
+                cover: res?.data?.cover,
+                about: res?.data?.about,
+                websiteURL: res?.data?.websiteURL,
+                facebookURL: res?.data?.facebookURL,
+                instagramURL: res?.data?.instagramURL,
+                address: res?.data?.address,
+                country: res?.data?.country
+            };
+            setEditUserProfile(userDetails);
+        });
+        // console.log(user);
+    }, [])
 
     return (
         <div>
@@ -74,8 +95,8 @@ const ProfileLayout = () => {
                 </div>
 
                 <div className='lorem'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quae ducimus officia adipisci? Obcaecati aperiam, sapiente incidunt omnis mollitia in vel voluptate recusandae ipsam, odit ut similique eius quam doloremque!
-                Porro sint suscipit doloremque praesentium minus ipsum harum sequi voluptatibus quaerat, quibusdam, inventore repellat, eius enim quis quod perferendis animi maiores soluta necessitatibus eos ipsa! Ex temporibus vero cumque dolorum.
-                Ratione sapiente inventore esse doloribus.</div>
+                    Porro sint suscipit doloremque praesentium minus ipsum harum sequi voluptatibus quaerat, quibusdam, inventore repellat, eius enim quis quod perferendis animi maiores soluta necessitatibus eos ipsa! Ex temporibus vero cumque dolorum.
+                    Ratione sapiente inventore esse doloribus.</div>
             </TopContainer>
 
             <MiddleContainer>
@@ -91,7 +112,7 @@ const ProfileLayout = () => {
                     (activeComponent === "stats") && <ProfileStat />
                 }
                 {
-                    (activeComponent === "list") && <ProfileList/>
+                    (activeComponent === "list") && <ProfileList />
                 }
                 {
                     (activeComponent === "verification") && <Verification />

@@ -42,7 +42,7 @@ export const TopContainer = styled.div`
     .check{
         position:absolute;
         top:17px;
-        left:180px;
+        left:200px;
     }
 
     .camera{

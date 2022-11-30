@@ -1,6 +1,5 @@
 import * as userActions from '../actions/user'
 
-
 const initialState = {
     userId: JSON.parse(localStorage.getItem('user'))?._id ?? '',
     email: JSON.parse(localStorage.getItem('user'))?.email ?? '',

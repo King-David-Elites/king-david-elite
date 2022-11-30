@@ -31,8 +31,17 @@ export const getSignedInUser = async () => {
   }
 };
 
+export const updateUserProfile = async (userDetails) => {
+  const res = await axios.patch(
+    `${BASEURL}/users/update`,
+    userDetails,
+    setConfig()
+  );
+  return res;
+};
+
 const setConfig = () => {
-  const authToken = JSON.parse(localStorage.getItem("token"));
+  const authToken = localStorage.getItem("token");
 
   const config = {
     headers: {

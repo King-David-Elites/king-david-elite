@@ -8,20 +8,27 @@ import { Country } from './Profile_Mockdata'
 import DisableButton from "../../buttons/DisabledButton";
 import theme from "../../../application/utils/Theme";
 import { useEffect } from "react";
-import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+import FileBase64 from 'react-file-base64';
+import services from '../../../ioc/services';
 
-const EditProfile = (props) => {
-
+const EditProfile = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const activeOption = location.pathname.split("/")[2];
+    const isEdit = activeOption == 'edit'
+    const [editUserProfile, setEditUserProfile] = useState();
     const fileInputField = useRef(null);
-    const [files, setFiles] = useState({});
+    const [file, setFile] = useState(null);
 
     const [initialValues, setInitialValues] = useState({
-        name: "",
+        firstName: "",
+        lastName: "",
         about: "",
         websiteURL: "",
         facebookURL: "",
         instagramURL: "",
-        cover: null,
+        cover: file,
         address: "",
         country: ""
     });
@@ -41,83 +48,50 @@ const EditProfile = (props) => {
         alternativeEmail: "",
         phone1: "",
         phone2: "",
-        cover: null
+        cover: file || null
     }
 
-    const setConfig = () => {
-        const authToken = localStorage.getItem("token");
 
-        const config = {
-            headers: {
-                Authorization: `Bearer ${authToken}`,
-                ContentType: "application/json",
-            },
-        };
-
-        return config;
-    };
-
-    const getSignedInUserDetails =  async () => {
-        await axios.get("https://kde-api.herokuapp.com/users/me", setConfig).then(resp => {
-            // const user = {
-            //     firstName: resp.firstName,
-            //     lastname: resp.lastName,
-            //     email: resp.email,
-            //     profilePicture: resp.profilePicture
-            // }
-            // setInitialValues(user);
-            console.log("res", resp);
-        })
-            .catch(err => console.log(err))
-    }
-
-    const { label, name, type, options, updateFilesCb, maxFileSizeInBytes, DEFAULT_MAX_FILE_SIZE_IN_BYTES, ...rest } = props;
-
-    const convertNestedObjectToArray = (nestedObj) =>
-        Object.keys(nestedObj).map((key) => nestedObj[key]);
-
-    const addNewFiles = (newFiles) => {
-        for (let file of newFiles) {
-            if (file.size < maxFileSizeInBytes) {
-                if (!rest.multiple) {
-                    return { file };
-                }
-                files[file.name] = file;
-            }
-        }
-        return { ...files };
-    };
-
-
-    const handleUploadBtnClick = () => {
-        fileInputField.current.click();
-    };
-
-    const callUpdateFilesCb = (files) => {
-        const filesAsArray = convertNestedObjectToArray(files);
-        updateFilesCb(filesAsArray);
-    };
-
-    useEffect(() => {
-        getSignedInUserDetails();
-    }, []);
-
-    const handleNewFileUpload = (e) => {
-        const { files: newFiles } = e.target;
-        if (newFiles.length) {
-            let updatedFiles = addNewFiles(newFiles);
-            setFiles(updatedFiles);
-            callUpdateFilesCb(updatedFiles);
-        }
-    };
+    // const getSignedInUserDetails = async () => {
+    //     await axios.get("https://kde-api.herokuapp.com/users/me", setConfig()).then(resp => {
+    //         const user = {
+    //             firstName: resp.firstName,
+    //             lastname: resp.lastName,
+    //             email: resp.email,
+    //             cover: resp.cover
+    //         }
+    //         setInitialValues(user);
+    //     })
+    //         .catch(err => console.log(err))
+    // }
 
     const onCompanySubmit = values => {
         console.log("data", values)
     }
 
-    const onSubmit = values => {
-        console.log("data", values)
+    const onSubmit = async (values) => {
+        values.cover = file
+        const userDetails = {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            cover: values.cover,
+            about: values.about,
+            websiteURL: values.websiteURL,
+            facebookURL: values.facebookURL,
+            instagramURL: values.instagramURL,
+            address: values.address,
+            country: values.country
+        };
+        if (isEdit) {
+            await services.api.userRequests.updateUserProfile(userDetails).then(res => {
+                setEditUserProfile(res.data);
+                navigate("/profile");
+            }).catch(error => {
+                console.log(error)
+            });
+        }
     }
+
 
     const formik = useFormik({
         initialValues,
@@ -129,7 +103,6 @@ const EditProfile = (props) => {
         onCompanySubmit,
     })
 
-
     return (
         <>
             <EditProfileContainer>
@@ -140,8 +113,11 @@ const EditProfile = (props) => {
 
                 <ContentCard background="none">
                     <form onSubmit={formik.handleSubmit}>
-                        <label htmlFor="name">Name</label>
-                        <input type="text" className="input" name="name" value={formik.values.name} onChange={formik.handleChange} />
+                        <label htmlFor="firstName">First Name</label>
+                        <input type="text" className="input" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} />
+
+                        <label htmlFor="lastName">Last Name</label>
+                        <input type="text" className="input" name="lastName" value={formik.values.lastName} onChange={formik.handleChange} />
 
                         <label htmlFor="about">About</label>
                         <textarea type='text' className="textarea" name="about" value={formik.values.about} onChange={formik.handleChange} />
@@ -171,20 +147,15 @@ const EditProfile = (props) => {
 
                         <label htmlFor="cover">Cover</label>
                         <FileUploadContainer>
-                            <UploadFileBtn type="button" onClick={handleUploadBtnClick}>
+                            <UploadFileBtn type="button">
+                                <FileBase64 name="cover" defaultValue={formik.values.cover} onChange={formik.handleChange} multiple={false} onDone={(base64) => {
+                                    setFile(base64.base64);
+                                }} />
                                 <i className="fas fa-file-upload" />
-                                <span> Upload a file</span>
                             </UploadFileBtn>
                             <DragDropText>PNG, JPG, GIF up to 5mb</DragDropText>
-                            <FormField
-                                type="file"
-                                ref={fileInputField}
-                                onChange={handleNewFileUpload}
-                                title=""
-                                value=""
-                            />
-                        </FileUploadContainer>
 
+                        </FileUploadContainer>
                         <MainButton background="blue" border="blue" marginTop='1em' padding="18px 24px" type="submit">Save</MainButton >
                     </form>
 
@@ -530,7 +501,7 @@ const EditProfile = (props) => {
                         <form method="post" onClick={formik.handleSubmit}>
                             <label htmlFor="cover" className="space">Cover</label>
                             <FileUploadContainer>
-                                <UploadFileBtn type="button" onClick={handleUploadBtnClick}>
+                                <UploadFileBtn type="button">
                                     <i className="fas fa-file-upload" />
                                     <span> Upload a file</span>
                                 </UploadFileBtn>
@@ -538,7 +509,6 @@ const EditProfile = (props) => {
                                 <FormField
                                     type="file"
                                     ref={fileInputField}
-                                    onChange={handleNewFileUpload}
                                     title=""
                                     value=""
                                 />
