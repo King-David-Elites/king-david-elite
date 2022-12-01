@@ -16,7 +16,6 @@ const Dashboard = ({element, index}) => {
 
     useEffect(() => {
         setLoggedInUser(data)
-        console.log(data)
     }, [data])
 
   return (
