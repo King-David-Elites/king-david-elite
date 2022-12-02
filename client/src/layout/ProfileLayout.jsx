@@ -69,7 +69,7 @@ const ProfileLayout = () => {
                                 <FaCamera className='cam' />
                             </div>
                             <div className='team'>
-                                <h3>{data?.firstName} {data.lastName}</h3>
+                                <h3>{data?.firstName} {data?.lastName}</h3>
                                 <img className='check' src={check} alt="checkIcon" />
                                 <p>Joined:  {new Date(data?.createdAt).getFullYear().toString()}</p>
                             </div>
