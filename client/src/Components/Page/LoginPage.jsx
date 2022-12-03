@@ -11,6 +11,8 @@ const LoginPage = () => {
   const passwordRef = useRef();
   const navigate = useNavigate()
 
+  console.log(emailRef);
+
   const login = async (e) => {
     e.preventDefault()
     const userDetail = {
@@ -19,8 +21,8 @@ const LoginPage = () => {
     }
 
     await services.api.userRequests.login(userDetail).then(res => {
-      let token = res.token;
-      let user = res.user;
+      let token = res?.token;
+      let user = res?.user;
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       console.log(res.message)

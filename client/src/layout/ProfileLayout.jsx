@@ -49,7 +49,6 @@ const ProfileLayout = () => {
 
     useEffect(() => {
         setEditUserProfile(data)
-        console.log(data)
     }, [data])
 
     useEffect(() => {
@@ -64,14 +63,14 @@ const ProfileLayout = () => {
                         <div className='bg' style={{ backgroundImage: `url(${bg})` }}>
                         </div>
                         <div className='slac'>
-                            <img className='B2' src={data.profilePicture} alt="profilePics" />
+                            <img className='B2' src={data?.profilePicture} alt="profilePics" />
                             <div className='camera'>
                                 <FaCamera className='cam' />
                             </div>
                             <div className='team'>
-                                <h3>{data.firstName} {data.lastName}</h3>
+                                <h3>{data?.firstName} {data?.lastName}</h3>
                                 <img className='check' src={check} alt="checkIcon" />
-                                <p>Joined:  {new Date(data.createdAt).getFullYear().toString()}</p>
+                                <p>Joined:  {new Date(data?.createdAt).getFullYear().toString()}</p>
                             </div>
 
                             <div className='top_btn'>

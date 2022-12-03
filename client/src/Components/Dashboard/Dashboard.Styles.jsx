@@ -1,16 +1,115 @@
 import styled from "styled-components"
+import theme from "../../application/utils/Theme"
 
 export const DashboardContainer = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 5fr;
+    display: none;
 
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+    }  
+`
+
+export const MobileDashboardContainer = styled.div`
+    display: block;
+    height: 100vh;
+    /* width: 100vw; */
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+      display: none;
+    } 
+
+    .upper-sect{
+        height: 15%;
+    }
+    
+    .top-items{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 1em;
+        justify-content: space-between;
+    }
+
+    .top-items > p{
+       font-weight: 600;
+       line-height: 26px;
+    }
+
+    .search-mobile{
+        background-color: #EEF0F1;
+        border-radius: 6px;
+        gap: 5px;
+        backdrop-filter: blur(40px);
+        padding: 0.5em;
+        display: flex;
+        margin: 0em 1em;
+
+        input{
+            background-color: transparent; 
+            border: none;
+            color: #737373;
+            width: 100%;
+        }
+
+        input:focus{
+            outline: none;
+        }
+    }
+
+    .line{
+    
+    }
+
+    .lower-sect{
+        height: 85%;
+        margin: 1em 0.5em;
+
+        .message-wrap{
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            justify-content: space-between;
+            margin-bottom: 1em;
+
+            .box-content{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+
+        .message-wrap > img
+        {
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+        }
+
+
+        .markIconDiv{
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            color: #A6A6A6;
+            margin-top: 0.2em;
+        }
+
+        .markIconDiv > p{
+            white-space: nowrap;
+        }
+
+        .time{
+            margin-top: -1.5em ;
+            color: #A6A6A6;
+        }
+    }
 `
 
 export const LeftContainer = styled.div`
     background-color: white;
     padding: 20px 10px;
     border-right: 1px solid lightgray;
-    /* background-color: red; */
     min-height: 100vh;
 
     .top_logo{
@@ -118,6 +217,11 @@ export const RightContainer = styled.div`
 
 `
 
+export const MobileViewMessageContainer = styled.div`
+    border: 2px solid red;
+    display: block;
+`
+
 export const MessagesContainer = styled.div`
     display: grid;
     grid-template-columns: 1.3fr 3fr;
@@ -128,7 +232,6 @@ export const MessagesContainer = styled.div`
     .listOfMessages{
         border-right: lightgray;
         padding: 10px 20px;
-        /* background-color: red; */
         border-radius: 8px 0 0 8px;
         
         .title{

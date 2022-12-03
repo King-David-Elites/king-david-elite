@@ -21,7 +21,13 @@ export const PropertyType = styled.div`
     justify-content:center;    
     align-items:flex-start;
     gap:0.2em;    
-    margin:1em 0em;
+    margin:0.5em 0em;
+    padding: 1.2em;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+      box-shadow: none;
+    }  
 `
 
 export const SearchSection = styled.div`
