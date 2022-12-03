@@ -52,10 +52,10 @@ export const Text = styled.div`
     font-size:${props => props.fontSize ? props.fontSize : "1.3rem"};
     font-weight:${props => props.fontWeight ? props.fontWeight : "bold"};    
     margin:${props => props.margin ? props.margin : "0em"}; 
-    margin-top:${props => props.marginTop ? props.marginTop : "0em"}; 
-    margin-bottom   :${props => props.marginBottom ? props.marginBottom : "0em"} ;
+    /* margin-top:${props => props.marginTop ? props.marginTop : "0em"};  */
+    /* margin-bottom   :${props => props.marginBottom ? props.marginBottom : "0em"} ; */
     padding:${props => props.padding ? props.padding : "0em"};  
-    text-align: ${({ textAlign }) => textAlign} ;
+    text-align: ${props => props.textAlign ? props.textAlign: "start"} ;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         font-size:${props => props.fontSize ? props.fontSize : "1rem"};
@@ -72,14 +72,10 @@ export const SearchSection = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    flex-direction: column;
-    gap:1em;
+    flex-direction: row;
     padding-top: 2em;  
     width:100%; 
 
-    @media (min-width: ${theme.breakPoint['tablet']}) {
-        flex-direction: row;
-        }
 `
 
 export const SharedSection = styled.div`
@@ -93,7 +89,6 @@ export const SharedSection = styled.div`
 
 
 export const SearchC = styled(SearchSection)`    
-    flex: 0 1 0em;
     padding:0.5em 2em;;
     background:rgb(255,255,255,0.7);
     border-radius: 0.5em;
@@ -101,6 +96,7 @@ export const SearchC = styled(SearchSection)`
     align-items: center;
     flex-direction: row;
     width: 85%;
+    margin: 0em 0.5em 0em 0.5em;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         flex: 0 1 25em;
@@ -113,7 +109,7 @@ export const Input = styled.input`
     outline:None;
     padding:0.5em;    
     border: 2px solid transparent;
-    width: 80%;    
+    width: 100%;    
 `
 
 export const FilterBox = styled(SearchC)`
@@ -134,9 +130,8 @@ export const Body = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    margin:2em;
-    margin-top:4em;    
-    gap:3em;    
+    margin: 4em 2em;    
+    gap:3em; 
 `
 
 export const CarTypes = styled.div`
@@ -144,9 +139,13 @@ export const CarTypes = styled.div`
     justify-content:center;  
     align-items:center;  
     gap:1.5em;
-    padding:0.5em;    
+    padding:0em;    
     flex-wrap:wrap;
-    width:100%;
+    width:100%;  
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+      padding:0 0.5em;
+    }   
 `
 
 export const CarType = styled.div`
@@ -156,7 +155,13 @@ export const CarType = styled.div`
     justify-content:center;    
     align-items:flex-start;
     gap:0.2em;    
-    margin:1em 0em;
+    margin:0.5em 0em;
+    padding: 1.2em;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+      box-shadow: none;
+    }   
 `
 
 export const Dealer = styled(SharedSection)`

@@ -34,10 +34,8 @@ const LoginPage = () => {
         <h1>King David Elite</h1>
         <p className='back'>welcome back</p>
         <form onSubmit={(e) => login(e)}>
-          <p className='mail'>Email</p>
           <input type='email' ref={emailRef} placeholder='Enter your email here' />
-          <p className='password'>Password</p>
-          <input type='password' ref={passwordRef} />
+          <input type='password' ref={passwordRef} placeholder="Password"/>
         </form>
         <p className='forgot'>Forgot password? <span className='red'>Click here</span></p>
 
