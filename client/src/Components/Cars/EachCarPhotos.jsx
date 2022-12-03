@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef, useEffect } from 'react'
 import {ArrowLeft} from 'heroicons-react'
 import { useParams } from 'react-router-dom'
 import Footer from '../Footer/Footer'
@@ -9,7 +9,9 @@ import Banner from "../Banner/Banner";
 import {useNavigate} from 'react-router-dom';
 import MainButton from '../buttons/MainButton'
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachCarPhotos = ({active}) => {
+    const top = useRef(null)
     const {Id} = useParams()    
     const selectedCar = CarAPI.find((items)=> items.id === parseInt(Id));    
     const navigate = useNavigate()
@@ -23,11 +25,14 @@ const EachCarPhotos = ({active}) => {
             media:"Videos"
         }
     ]
+    useEffect(()=>{
+        scrollToRef(top)
+    },[])
   return (
     <Fragment>
-        <Navbar bg="black" sticky="sticky"/>
+        {/* <Navbar bg="black" sticky="sticky"/> */}
 
-        <EachBuildingContainer>
+        <EachBuildingContainer ref={top}>
             <div className="upper">
                 <div 
                     className="upperContent"

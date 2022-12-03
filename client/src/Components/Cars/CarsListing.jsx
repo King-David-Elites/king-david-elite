@@ -31,25 +31,33 @@ import {
 import { CarAPI } from "./DemoAPI/api"
 import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom'
+import { useRef } from 'react'
+import { useEffect } from 'react'
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const CarsListing = () => {
+  const top = useRef(null)
+
+  useEffect(() => {
+    scrollToRef(top)
+  }, [])
   return (
     <>
       <Navbar active={1} />
-      <Background imageUrl={carpic}>
+      <Background imageUrl={carpic} ref={top}>
         <HeroSection>
           <Text fontSize="2rem">Luxury Cars</Text>
-            <SearchSection>
-              <SearchC>
-                <Input placeholder='search makes or model' />
-                <Search width="30px" />
-              </SearchC>
-              <FilterBox>
-                <MainButton width="60px">Filter</MainButton>
-                <Adjustments width="30px" />
-              </FilterBox>
-            </SearchSection>
-          <Text>find new and preowned cars for sale</Text>
+          <SearchSection>
+            <SearchC>
+              <Input placeholder='search makes or model' />
+              <Search width="30px" />
+            </SearchC>
+            <FilterBox>
+              <MainButton width="60px">Filter</MainButton>
+              <Adjustments width="30px" />
+            </FilterBox>
+          </SearchSection>
+          <Text fontSize="0.8em">find new and preowned cars for sale</Text>
         </HeroSection>
       </Background>
 
@@ -67,7 +75,7 @@ const CarsListing = () => {
       </Body>
       <Banner category="Cars" />
       <Text color="black" fontSize="0.8rem" margin="2em">
-        King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
         Quis similique corrupti porro reiciendis dolore ipsa nobis mollitia explicabo, voluptatibus quibusdam illum perferendis libero est iusto ab, maxime quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
         Quasi molestias consequatur earum enim dolorem rem excepturi illo eius ut sint laborum quibusdam, accusamus ullam, voluptatum totam tempora eum! Optio ipsum maiores saepe officiis delectus minus. Alias, voluptas fuga?
         Doloremque quos eum libero deleniti ducimus suscipit mollitia consequatur neque perspiciatis, autem ipsa deserunt facilis numquam veritatis nulla quidem esse officiis inventore rerum adipisci, velit ipsam dolorum saepe? Exercitationem, esse!

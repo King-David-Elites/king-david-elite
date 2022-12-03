@@ -1,5 +1,5 @@
 import { LocationMarker, BadgeCheck } from 'heroicons-react'
-import React, { Fragment } from 'react'
+import React, { Fragment,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
@@ -9,7 +9,9 @@ import Banner from "../Banner/Banner";
 import { useNavigate } from 'react-router-dom';
 import { MorePic, Text, MoreBg } from './Cars.Style'
 import theme from '../../application/utils/Theme';
+import { useRef } from 'react'
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachCars = ({ active }) => {
     const navigate = useNavigate()
     const { title } = useParams()
@@ -24,11 +26,16 @@ const EachCars = ({ active }) => {
             media: "Videos"
         }
     ]
+    const top = useRef(null)
+
+    useEffect(()=>{
+        scrollToRef(top)
+    },[])
     return (
         <Fragment>
             <Navbar bg="black" sticky="sticky" />
 
-            <EachBuildingContainer>
+            <EachBuildingContainer ref={top}>
                 <div className="upper">
                     <p>King David Elites | Luxury Cars</p>
                 </div>

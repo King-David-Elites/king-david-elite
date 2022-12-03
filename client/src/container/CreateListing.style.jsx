@@ -50,6 +50,20 @@ export const ListingForm = styled.div`
             font-weight:600;
             margin:0.5em 0em;
         }
+        .numbw{
+            width:100%;
+            font-weight:600;
+            color:red;
+            font-size:0.8em;             
+            margin:-1em 0em 2em 0em; 
+        }
+        .error{
+            width:100%;
+            font-weight:600;
+            color:red;
+            font-size:0.8em;            
+            margin-bottom:3em;
+        }
         .locate{
             font-family:Inter;
             display:flex;
@@ -57,7 +71,8 @@ export const ListingForm = styled.div`
             align-items:center;
             gap:0.5em;
             margin-bottom:2em;
-            font-weight:600
+            font-weight:600;
+            cursor:pointer;
         }
         .section{
             font-family:Inter;
@@ -101,6 +116,7 @@ export const ListingForm = styled.div`
             border-radius:0.5em;
             border:2px solid black;  
             height:8em;          
+            resize:none;
         }
         .section select{
             width:80%;

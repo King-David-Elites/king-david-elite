@@ -7,7 +7,9 @@ const GetStarted = (props) =>{
       country,
       setCountry,
       stage,
-      setStage
+      setStage,
+      scrollToRef,
+      position
     } = props
   
     return(
@@ -82,6 +84,7 @@ const GetStarted = (props) =>{
             onClick={()=>{
               setRegistering(true)
               setStage(stage+1)
+              scrollToRef(position)
             }}
           >
             Start

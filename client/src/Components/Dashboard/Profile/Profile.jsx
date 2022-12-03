@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { useRef } from 'react'
 import Dashboard from '../Dashboard'
 import { GenericContainer, ProfileContainer, Form} from '../Dashboard.Styles'
 import profileImg from "../Dashboard-Image/profileImg.png"
@@ -9,10 +10,14 @@ import Advanced_Verf from './Advanced_Verf'
 import Advanced_Verf_1 from './Advanced_Verf_1'
 import Advanced_Verf_2 from './Advanced_verf_2'
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
 const ProfileAsElement = ()=>{
   const [stage, setStage] = useState(0);
   const [registering, setRegistering] = useState(false);
   const [country, setCountry] = useState("None");
+
+  const position = useRef(null)
 
     return(
         <GenericContainer>
@@ -25,7 +30,7 @@ const ProfileAsElement = ()=>{
 
             <div className="rightSection">
                           
-              <Form>
+              <Form ref={position}>
                 {
                   registering ? 
                   <div></div>
@@ -36,6 +41,8 @@ const ProfileAsElement = ()=>{
                     stage={stage} 
                     setStage={setStage} 
                     setRegistering={setRegistering} 
+                    scrollToRef={scrollToRef}
+                    position = {position}
                   />
                 }
 
@@ -46,6 +53,8 @@ const ProfileAsElement = ()=>{
                     stage={stage} 
                     setStage={setStage}
                     setRegistering={setRegistering}
+                    scrollToRef={scrollToRef}
+                    position = {position}
                   />
                 }
 
@@ -54,6 +63,8 @@ const ProfileAsElement = ()=>{
                   <Advanced_Verf 
                     stage={stage} 
                     setStage={setStage} 
+                    scrollToRef={scrollToRef}
+                    position = {position}
                   />
                 }
 
@@ -62,6 +73,8 @@ const ProfileAsElement = ()=>{
                   <Advanced_Verf_1 
                     stage={stage} 
                     setStage={setStage}
+                    scrollToRef={scrollToRef}
+                    position = {position}
                   />
                 }
 
@@ -70,6 +83,8 @@ const ProfileAsElement = ()=>{
                   <Advanced_Verf_2 
                     stage={stage} 
                     setStage={setStage} 
+                    scrollToRef={scrollToRef}
+                    position = {position}
                   />
                 }
 
