@@ -1,19 +1,23 @@
 import styled from "styled-components";
+import bg from "../Home/images/c3.jpg"
 
 export const Container = styled.div`
 
 margin:0;
 padding:0;
-background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.jpg);
+background:  linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bg});
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
 position: relative;
 width:auto;
-height:41.05rem;
+height:100vh;
 
 @media(max-width:650px){
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.jpg);
     position: relative;
     width:auto;
-    height:41.05rem;
+    height:100vh;
 }
 
 
@@ -21,8 +25,13 @@ height:41.05rem;
 `
 
 export const Page = styled.div`
+    display:flex;
+    flex-direction:column;
 position:absolute;
-margin:50px 450px;
+    top:0;
+    left:0;
+    right:0;
+margin:50px auto;
 width:30rem;
 height:570px;
 background: #FFFFFF;
