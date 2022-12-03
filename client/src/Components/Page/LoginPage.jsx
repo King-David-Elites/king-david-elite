@@ -1,17 +1,14 @@
 import React from 'react'
-import { Container, Page } from './LoginPage.style'
+import { Container, Page } from './SignupPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';
-
 
 const LoginPage = () => {
 
   const emailRef = useRef();
   const passwordRef = useRef();
-  const navigate = useNavigate()
-
-  console.log(emailRef);
+  const navigate = useNavigate();
 
   const login = async (e) => {
     e.preventDefault()
@@ -21,12 +18,12 @@ const LoginPage = () => {
     }
 
     await services.api.userRequests.login(userDetail).then(res => {
-      let token = res?.token;
-      let user = res?.user;
+      let token = res.token;
+      let user = res.user;
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       console.log(res.message)
-      navigate("/")
+      navigate("/profile")
     }).catch(err => console.log(err));
   }
   
@@ -36,10 +33,8 @@ const LoginPage = () => {
         <h1>King David Elite</h1>
         <p className='back'>welcome back</p>
         <form onSubmit={(e) => login(e)}>
-          <p className='mail'>Email</p>
           <input type='email' ref={emailRef} placeholder='Enter your email here' />
-          <p className='password'>Password</p>
-          <input type='password' ref={passwordRef} />
+          <input type='password' ref={passwordRef} placeholder="Password"/>
         </form>
         <p className='forgot'>Forgot password? <span className='red'>Click here</span></p>
 
@@ -48,8 +43,6 @@ const LoginPage = () => {
         <button className='google' >log in with Google</button>
         <p className='account'>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p>
       </Page>
-
-
     </Container>
   )
 }

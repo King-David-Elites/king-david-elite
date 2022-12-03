@@ -1,25 +1,23 @@
 import styled from "styled-components";
+import bg from "../Home/images/c3.jpg"
 
 export const Container = styled.div`
 
 margin:0;
 padding:0;
-background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.jpg);
+background:  linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bg});
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
 position: relative;
-width:100%;
-height:41.05rem;
-@media(max-width:480px){
+width:auto;
+height:100vh;
 
-    height:auto;
-    background:white;
+@media(max-width:650px){
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.jpg);
+    position: relative;
     width:auto;
-}
-
-@media(max-width:800px){
-    width:auto;
-    height:auto;
-    background:white;
-
+    height:100vh;
 }
 
 
@@ -27,20 +25,25 @@ height:41.05rem;
 `
 
 export const Page = styled.div`
+    display:flex;
+    flex-direction:column;
 position:absolute;
-margin:50px 450px;
+    top:0;
+    left:0;
+    right:0;
+margin:50px auto;
 width:30rem;
-height:550px;
+height:570px;
 background: #FFFFFF;
 border-radius: 6px;
 
 h1{
-padding-top:2.8rem;
+padding-top:30px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight:700;
 font-size: 24px;
-line-height:36px;
+line-height: 36px;
 text-align: center;
 color: #000000;
 }
@@ -58,7 +61,7 @@ color: #000000;
 
 
 input{
-margin:30px auto;
+margin:10px auto;
 box-sizing: border-box;
 display: flex;
 flex-direction: row;
@@ -153,37 +156,36 @@ border-radius:6px;
     
 }
 
-
-@media(max-width:800px){
-margin:40px auto;
-position:absolute;
-width:100%;
-left:0;
-top:0;
-background:white;
-border-radius: 6px;
-
-
-input{
-    margin:30px auto;
-    padding:15px 16px;
-    gap:10px;
-    width:260px;
-    height:45px;
-    border-radius: 4px;
+@media(max-width:830px){
+    margin:0px auto;
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    background:white;
+    border-radius:0;
+    
+    
+    input{
+        margin:30px auto;
+        padding:15px 16px;
+        gap:10px;
+        width:260px;
+        height:45px;
+        border-radius: 4px;
+        }
+    
+    .google{
+        width:260px;
+        height:44px;
+        }
+    
+    .login{
+        width:260px;
     }
-
-.google{
-    width:260px;
-    height:44px;
+    
     }
-
-.login{
-    width:260px;
-}
-
-}
-
 
 
 
