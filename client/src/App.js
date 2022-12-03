@@ -44,7 +44,7 @@ function App() {
       <Router>
         {/* <Navbar/> */}
         <Routes>
-          <Route path='/' element={<Waitlist />} />
+          <Route path='/' element={<HomePage />} />
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Page } from './LoginPage.style'
+import { Container, Page } from './SignupPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';
@@ -19,6 +19,7 @@ const LoginPage = () => {
     }
 
     await services.api.userRequests.login(userDetail).then(res => {
+      console.log(res)
       let token = res.token;
       let user = res.user;
       localStorage.setItem("token", token)

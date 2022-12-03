@@ -24,7 +24,7 @@ const SignUpPage = () => {
       password: passwordRef.current.value,
     }    
 
-     await axios.post("http://192.168.43.168:9099/users/sign-up", userDetails)
+     await axios.post("http://localhost:9099/users/sign-up", userDetails)
       .then(resp => {
         let res=resp.data;
         let token = res.token;
@@ -49,11 +49,12 @@ const SignUpPage = () => {
           <input type='password' ref={passwordRef} placeholder='Password' />
         </form>
         <p className='forgot'>Forgot password? <span className='red'>Click here</span></p>
+        <p className='account'>Already have an account? <Link to="/login"><span>Login</span></Link> </p>
 
         <button className='login' onClick={signUp}>SignUp</button>
-        <p className='or'>- OR -</p>
-        <button className='google'>log in with Google</button>
-        <p className='account'>Already have an account? <Link to="/login"><span>Login</span></Link> </p>
+        {/* <p className='or'>- OR -</p> */}
+        {/* <button className='google'>log in with Google</button> */}
+        
       </Page>
 
 
