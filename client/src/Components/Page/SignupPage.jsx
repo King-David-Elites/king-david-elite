@@ -23,7 +23,7 @@ const SignUpPage = () => {
       password: passwordRef.current.value,
     }
 
-     await axios.post("https://kde-api.herokuapp.com/users/sign-up", userDetails)
+     await axios.post("http://localhost:9099/users/sign-up", userDetails)
       .then(resp => {
         let res=resp.data;
         let token = res.token;
