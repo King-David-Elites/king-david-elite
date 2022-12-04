@@ -25,10 +25,7 @@ const LoginPage = () => {
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       console.log(res.message)
-      if(res.token){
-        navigate("/")
-      }
-      
+      navigate("/profile")
     }).catch(err => console.log(err));
   }
   

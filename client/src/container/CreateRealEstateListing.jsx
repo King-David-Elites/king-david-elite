@@ -98,7 +98,7 @@ const CreateRealEstateListing = () => {
   const postUserListings = async (userListings) => {
     await axios
       .post(
-        "https://kde-api.herokuapp.com/listings/upload-list",
+        "http://192.168.43.168:9099/listings/upload-list",
         userListings,
         setConfig()
       )

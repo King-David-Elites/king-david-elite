@@ -21,7 +21,7 @@ const EachCarPhotos = ({active}) => {
             media:"Photos"
         },
         {
-            link:`/cars/${selectedCar.title}/${Id}videos`,
+            link:`/cars/${selectedCar.title}/${Id}/videos`,
             media:"Videos"
         }
     ]
