@@ -14,7 +14,7 @@ export const Categories = styled.div`
     padding: 94px;
     gap: 50px;
 
-    @media(max-width:650px){
+    @media(max-width:850px){
         margin-left:-70px;
         overflow-x:scroll;
         ::-webkit-scrollbar{
@@ -43,27 +43,33 @@ export const Category = styled.div`
         transform: scale(1.2);
     }
 
-    @media(max-width:650px){
-        width:50%;
-        height:200px;
+    @media(max-width:850px){
+        margin-left:-30px;
+        padding:20%;
+        width:60vw;
+        height:30vh;
                 
     }
 
-  
 `
+
 
 
 
 export const InformationContainer = styled.div`
     display: grid;
     padding: 94px;
+
+    @media(max-width:850px){
+        padding:20px;
+    }
 `
 
 export const Information = styled.div`
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
     gap: 50px;
 
     .image{
@@ -96,105 +102,133 @@ export const Information = styled.div`
         
     }
 
-    @media(max-width:650px){
-        margin-top:-50px;
+    @media(max-width:850px){
+        display:block;
+        grid-template-columns: none;
 
         .image{
-            top:-100px;
-            left:-65px;
+            position: sticky;
+        }
+        
+        .business{
+            width:360px;
+            top:-9rem;
+            right:5rem;
             position: relative;
         }
 
 
         img{
-            width:120%;
+            width:100%;
             height:210px;
             object-fit:contain;
         }
 
         .displace{
-            width:30px;
-            height:55px;
-            left:150px;
-            top:85px;
+            display:none;
+            position:sticky;
         }
 
         .textContent{
-            // display: grid;
-            align-items: center;
-            justify-content: center;
-            align-content: center;
-            padding: 0 30px;
-            gap: 10px;
-            width:100px;
+            padding:0;
+            gap:0;
+            margin:10px auto;
+            text-align:center;
 
             h3{
-                width:200px;
-                position:relative;
-                left:50px;
-                top:-100px;
-                font-size:14px;
+                margin:20px auto;
+                width:80%;
+                font-size:17px;
+                font-family: 'Poppins';
+                font-weight:600;
+
             }
 
             .p{
-                position:relative;
-                text-align:left;
-                left:50px;
-                top:-105px;
+                text-align: center;
+                font-weight:400;
                 font-size:13px;
             }
             .action{
-                position:relative;
-                top:-115px;
+                margin:30px auto;
+                width:98px;
+                height:34px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(90deg, #F2BE5C 23.7%, #000000 286.13%);
+                border-radius: 4px;
                 font-size:12px;
-                left:50px;
             }
 
 
+ 
 
-
-
-            h4{
-                margin-top:80px;
-                position:relative;
-                top:-160px;
-                left:-30px;
-                font-size:14px;
-                width:170px;
-            }
-
-            p{
-                position:relative;
-                font-size:12px;
-                top:-160px;
-                left:-30px;
-            }
-        
         }
 
+
+        
+
         .coffee{ 
-            position: relative;
-            margin-top:-28px;
-            
+            padding: 20px 0;
         }
 
         .img_coffee{
-            margin-left:65px;
-            width:150%;
-            height:115px;
-            object-fit:contain;
+            width:100%;
+            height:auto;
+            object-fit:cover;
+            padding: 10px;
         }
 
+           .Elite{
+
+                h4{
+                    font-size:17px;
+                    text-align: center;
+                    margin:10px auto;
+                }
+
+                p{
+                    font-weight:500;
+                    font-size:12px;
+                    text-align: center;
+                    
+                }
+        
+
+            }
+
+
+        form{
+            margin:50px auto;
+            display: flex;
+        }
+
+
         input{
-            position:relative;
-            top:-155px;
-            left:-30px;
+
+            font-family: 'Poppins';
+            font-size: 12px;
+            padding:15px;
+            background: rgba(166, 166, 166, 0.1);
+            border-radius: 4px;
+            border: none;
+            width:60%;
+            margin-left:10px;
+
         }
 
         .btn{
-            position:relative;
-            top:-150px;
-            left:-30px;
+            margin-right:10px;
+            text-align: center;
+            padding:10px;
+            font-family: 'Poppins';
+            width:30%;
+            font-weight: 400;
+            font-size: 15px;
+            color: #252625;
+            background: linear-gradient(90deg, #F2BE5C 23.7%, #000000 286.13%);
+            border-radius: 4px;
         }
 
         
@@ -218,24 +252,25 @@ export const SubFooter = styled.div`
     justify-content: center;
     background-size: cover;
 
-    @media(max-width:650px){
+    @media(max-width:850px){
         position:relative;
-        top:-100px;
         /* background-size:; */
         background-repeat:no-repeat;
+        background-position: center;
+        background-size:cover;
         padding:0px;
 
        .sub-p1{
-        position:absolute;
-        top:50px;
-        left:20px;
-        font-size:18px;
+        font-family: 'Poppins';
+        text-align: center;
+        font-size:14px;
        }
        .sub-p2{
-        position:absolute;
-        top:120px;
-        left:20px;
-        font-size:15px;
+        font-size:12px;
+        padding-top:10px;
+        text-align: center;
+        font-family: 'Poppins';
+
        }
 
     }
@@ -251,9 +286,7 @@ export const BorderText = styled.div`
     width: fit-content;
     cursor: pointer;
 
-    @media(max-width:650px){
-        position:absolute;
-        top:200px;
-        left:20px;        
+    @media(max-width:850px){
+        margin:20px auto;
     }
 `
