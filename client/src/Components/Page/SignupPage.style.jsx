@@ -14,7 +14,7 @@ width:auto;
 height:100vh;
 
 @media(max-width:650px){
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.jpg);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bg});
     position: relative;
     width:auto;
     height:100vh;
