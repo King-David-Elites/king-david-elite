@@ -5,6 +5,72 @@ export const List = styled.div`
 height:600px;
 `
 
+export const TCont = styled.div`
+    .cover{
+        width: 100%;
+        height: 200px;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .details{
+        padding: 15px;
+        display: grid;
+        grid-template-columns: 2fr 4fr 2fr;
+        justify-content: space-evenly;
+        align-items: center;
+
+        img.profilePicture{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .profileText{
+            font-size: 14px;
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+            justify-items: center;
+            flex-direction: column;
+
+            h3{
+                display: flex;
+                align-items: center;
+                gap:2px;
+            }
+        }
+
+        .btn{
+            background: #BABABB;
+            color: white;
+            display: flex;
+            padding:10px 10px ;
+            gap: 2px;
+            font-size: 12px;
+            width: fit-content;
+        }
+    }
+
+    .bio{
+        padding:10px 20px;
+        text-align: justify;
+    }
+
+    .upgrade{
+        width: 90%;
+        margin: 10px auto;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        border-radius: 6px;
+    }
+`
+
 export const TopContainer = styled.div`
 
 // background image
@@ -156,7 +222,7 @@ export const TopContainer = styled.div`
     position:absolute;
     top:340px;
     font-family: 'Poppins';
-    width:1000px;
+    width:75%;
     font-style: normal;
     font-weight: 400;
     font-size:12px;
@@ -166,10 +232,10 @@ export const TopContainer = styled.div`
     left:200px;
 }
 
-@media(max-width:450px){
+@media(max-width:850px){
 
     .bg{
-        width: 390px;
+        width: 100%;
         height: 140px;
     }
 
@@ -289,7 +355,7 @@ export const TopContainer = styled.div`
 
 
 .lorem{
-    width:340px;
+    width:75%;
     font-family:'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -320,9 +386,9 @@ export const MiddleContainer = styled.div`
 
 .middle_btn{
     display:flex;
-    position:absolute;
+    /* position:absolute;
     top:535px;
-    left:165px;
+    left:165px; */
 
     button{
         padding: 12px 24px;
@@ -371,9 +437,10 @@ export const MiddleContainer = styled.div`
     
     .middle_btn{
         display:flex;
-        position:absolute;
+        /* position:absolute;
         top:460px;
-        left:30px;
+        left:30px; */
+        background-color: red;
     
         button{
             padding: 12px 15px;

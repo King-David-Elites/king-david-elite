@@ -8,20 +8,21 @@ height:200px;
 export const MiddleContainer = styled.div`
 
 .lines{
-    position: absolute;
+    /* position: absolute; */
     width:100%;
     height:0px;
-    left:3px;
-    top:450px;
+    /* left:3px;
+    top:450px; */
     border:4px solid rgba(166, 166, 166, 0.2);
     transform: rotate(-0.26deg);
 }
 
 .middle_btn{
     display:flex;
-    position:absolute;
+    /* position:absolute;
     top:535px;
-    left:165px;
+    left:165px; */
+    padding: 10px 0;
 
     button{
         padding: 12px 24px;
@@ -46,11 +47,11 @@ export const MiddleContainer = styled.div`
 }
 
 .lines2{
-    position: absolute;
+    /* position: absolute; */
     width:1345px;
     height:0px;
-    left:3px;
-    top:650px;
+    /* left:3px;
+    top:650px; */
     border:4px solid rgba(166, 166, 166, 0.2);
     transform: rotate(-0.26deg);
 }
@@ -59,20 +60,20 @@ export const MiddleContainer = styled.div`
 @media(max-width:450px){
 
     .lines{
-        position: absolute;
-        width:385px;
+        /* position: absolute; */
+        width:100%;
         height:0px;
-        left:3px;
-        top:440px;
+        /* left:3px;
+        top:440px; */
         border:2px solid rgba(166, 166, 166, 0.2);
         transform: rotate(-0.26deg);
     }
     
     .middle_btn{
         display:flex;
-        position:absolute;
+        /* position:absolute;
         top:460px;
-        left:30px;
+        left:30px; */
     
         button{
             padding: 12px 15px;
@@ -105,11 +106,11 @@ export const MiddleContainer = styled.div`
     }
     
     .lines2{
-        position: absolute;
-        width:385px;
+        /* position: absolute; */
+        width:100%;
         height:0px;
-        left:3px;
-        top:500px;
+        /* left:3px;
+        top:500px; */
         border:2px solid rgba(166, 166, 166, 0.2);
         transform: rotate(-0.26deg);
     }
@@ -390,7 +391,7 @@ margin-left: 160px;
 `
 
 export const Post = styled.div`
-   margin:25em 120px;
+   margin:15em 120px;
    display:flex;
 
    h3{
