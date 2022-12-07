@@ -1,0 +1,39 @@
+.transfer-wrapper{
+    height: 100vh;
+}
+
+.top-navigation{
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.flex-nav{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.transfer-body{
+    height: 90%;
+    padding: 2em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.transfer-body p{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.transfer-body input{
+    border: 2px solid #FFFFFB;
+    padding: 1em;
+    width: 100%;
+    background-color: #FFFFFB;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    outline: none;
+}

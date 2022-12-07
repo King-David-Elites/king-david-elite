@@ -35,6 +35,7 @@ import SignUpPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
 import EmailPage from './Components/Page/EmailPage';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import Transfer from './Components/Dashboard/Transfer'
 
 function App() {
   const queryClient = new QueryClient();
@@ -66,6 +67,7 @@ function App() {
           <Route path="/dashboard/profile/verification" element={<Profile />} />
           <Route path="/dashboard/" element={<Profile />} />
           <Route path="/dashboard/wallet" element={<Wallet />} />
+          <Route path="/dashboard/wallet/transfer" element={<Transfer />} />
           <Route path="/about" element={<About />} />
           <Route path="/help" element={<Help />} />
           <Route path="/help/earning" element={<Earning />} />

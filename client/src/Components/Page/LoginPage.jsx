@@ -18,8 +18,8 @@ const LoginPage = () => {
     }
 
     await services.api.userRequests.login(userDetail).then(res => {
-      let token = res.token;
-      let user = res.user;
+      const token = res.token;
+      const user = res.user;
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       console.log(res.message)

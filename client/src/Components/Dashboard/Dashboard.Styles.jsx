@@ -13,7 +13,7 @@ export const DashboardContainer = styled.div`
 export const MobileDashboardContainer = styled.div`
     display: block;
     height: 100vh;
-    /* width: 100vw; */
+    width: 100vw;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
       display: none;
@@ -21,8 +21,87 @@ export const MobileDashboardContainer = styled.div`
 
     .upper-sect{
         height: 15%;
+
+        .walletImage-div{
+            margin: 1em;
+            position: relative;
+            
+            .gold-text{
+                color: ${theme.color};
+                font-weight: 500;
+                font-size: 17px;
+            }
+
+            .white-text{
+                color: ${theme.textColor};
+                font-weight: 600;
+                font-size: 23px;
+            }
+
+            .align-bottom
+            {
+                margin-top: 60px;
+                color: ${theme.textColor};
+            }
+        }
+
+        .walletImage-div img{
+            height: 15em;
+            width: 100%;
+        }
+
+        .walletImage-div div{
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
     }
-    
+
+    .transaction{
+        margin-top: 6em;
+        margin-left: 1em;
+    }
+
+    .transaction-content-wrapper{
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+
+        .content1{
+            display: flex;
+            flex-direction: column;
+            gap: 0.3em;
+        }
+
+        .content1 h5{
+            color: ${theme.footerColor};
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .neutral-text{
+            color: ${theme.neutralColor};
+            font-weight: 700; 
+        }
+
+        .green-text{
+        color: #6CD86A;
+    }
+
+    .orange-text{
+        color: #E7907D;
+    }
+    } 
+
+    .border-line{
+       background: rgba(62, 60, 60, 0.1);
+       height: 2px;
+       margin: 0em 1em;
+    }
+
     .top-items{
         display: flex;
         align-items: center;
@@ -69,7 +148,6 @@ export const MobileDashboardContainer = styled.div`
             display: flex;
             align-items: center;
             gap: 1em;
-            justify-content: space-between;
             margin-bottom: 1em;
 
             .box-content{
@@ -103,6 +181,32 @@ export const MobileDashboardContainer = styled.div`
             margin-top: -1.5em ;
             color: #A6A6A6;
         }
+    }
+
+    .menu-list{
+        padding: 0.5em 2em;
+        height: 5%;
+        display: flex;
+        justify-content: space-between;
+        gap: 1em;
+       
+        .grey-bar{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.3em;
+            height: 70px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(166, 166, 166, 0.2);
+        }
+    }
+
+    .transaction{
+      
+       
     }
 `
 
@@ -217,11 +321,6 @@ export const RightContainer = styled.div`
 
 `
 
-export const MobileViewMessageContainer = styled.div`
-    border: 2px solid red;
-    display: block;
-`
-
 export const MessagesContainer = styled.div`
     display: grid;
     grid-template-columns: 1.3fr 3fr;
@@ -269,10 +368,15 @@ export const MessagesContainer = styled.div`
 `
 
 export const NotificationContainer = styled.div`
-    background-color: white;
-    border-radius: 8px;
-    height: 80vh;
-    padding: 20px 0;
+    display: none;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        display: block;
+        background-color: white;
+        border-radius: 8px;
+        height: 80vh;
+        padding: 20px 0;
+    } 
 
     .notification{
         padding: 10px 50px;
@@ -301,10 +405,22 @@ export const NotificationContainer = styled.div`
 `
 
 export const GenericContainer = styled.div`
-    border-radius: 8px;
-    height: 115vh;
-    padding: ${props => props.padding ? props.padding : "0em"};
-    display: ${props => props.display ? props.display : "block"};
+    display: none;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+      display: block;
+      border-radius: 8px;
+      height: 115vh;
+      padding: ${props => props.padding ? props.padding : "0em"};
+    }  
+`
+
+export const MobileGenericContainer = styled.div`
+    display: block;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+      display: none;
+    }  
 `
 
 // Dashboard profile code section
