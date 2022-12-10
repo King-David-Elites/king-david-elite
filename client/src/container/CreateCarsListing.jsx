@@ -1,10 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { LocationMarker } from "heroicons-react";
+import { useFormik } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import FileBase64 from "react-file-base64";
+import {
+  DragDropText,
+  FileUploadContainer,
+  FormField,
+  UploadFileBtn,
+} from "../Components/Cars/Cars.Style";
+import { FaGalacticSenate } from "react-icons/fa";
 
-const CreateCarListing = () => {  
+const CreateCarListing = () => {
   const [valid, setValid] = useState(false);
   const [features, setFeatures] = useState(false);
   const [error, setError] = useState(false);
@@ -12,6 +21,8 @@ const CreateCarListing = () => {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [position, setPosition] = useState("");
+  const [images, setImages] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   const navigate = useNavigate();
 
@@ -19,8 +30,8 @@ const CreateCarListing = () => {
     title: "",
     location: "somewhere",
     description: "",
-    images: [],
-    videos: [],
+    images: images,
+    videos: videos,
     price: "",
     year: new Date().getFullYear(),
     carCondition: "New",
@@ -38,14 +49,20 @@ const CreateCarListing = () => {
   }, [position]);
 
   useEffect(() => {
+    setUserListings({ ...userListings, images: images });
+    setChanging(!changing);
+  }, [images]);
+
+  useEffect(() => {
     if (
-      userListings["title"] &&
-      userListings["description"] &&
-      userListings["model"] &&
-      userListings["price"] &&
-      userListings["carCondition"] &&
-      userListings["engineType"] &&
-      userListings["colour"]
+      userListings["title"]
+      // userListings["description"] &&
+      // userListings["model"] &&
+      // userListings["price"] &&
+      // userListings["carCondition"] &&
+      // userListings["engineType"] &&
+      // userListings["colour"] &&
+      // userListings["images"]
     ) {
       setValid(true);
       setError(false);
@@ -56,7 +73,7 @@ const CreateCarListing = () => {
     setUserListings({ ...userListings, features: features });
   }, [changing, features]);
 
-  const setConfig = (userListings) => {
+  const setConfig = () => {
     const authToken = localStorage.getItem("token");
 
     const config = {
@@ -92,16 +109,18 @@ const CreateCarListing = () => {
   const postUserListings = async (userListings) => {
     await axios
       .post(
-        "https://kde-api.herokuapp.com/listings/upload-list",
+        "http://192.168.43.168:9099/listings/upload-list",
         userListings,
         setConfig()
       )
       .then((resp) => {
         console.log(resp.data);
-        navigate('/profile')
+        console.log(userListings["images"]);
+        // navigate("/profile");
       })
       .catch((err) => {
-        console.log(err.data);
+        // console.log(err.data);
+        console.log(err);
       });
   };
 
@@ -109,6 +128,7 @@ const CreateCarListing = () => {
     postUserListings(userListings);
   };
 
+  const formik = useFormik(userListings, handleChange);
   return (
     <>
       <div className="form_Content">
@@ -136,12 +156,6 @@ const CreateCarListing = () => {
         <div className="section">
           <hr />
         </div>
-        {/* <p>Year</p>
-        <div className="NumbB">
-          <div className="sec">
-            <input type="text" />
-          </div>
-        </div> */}
         <p>Car Condition</p>
         <div className="NumbB">
           <div className="sec">
@@ -184,7 +198,21 @@ const CreateCarListing = () => {
         </div>
         <div className="section">
           <p>Images</p>
-          <input className="dashed" type="file" />
+          <FileUploadContainer>
+            <UploadFileBtn type="button">
+              <FileBase64
+                name="images"
+                defaultValue={userListings.images}
+                multiple={true}
+                onDone={(base64) => {
+                  setImages(base64);
+                  console.log(base64);
+                }}
+              />
+              <i className="fas fa-file-upload" />
+            </UploadFileBtn>
+            <DragDropText>PNG, JPG, GIF up to 5mb</DragDropText>
+          </FileUploadContainer>
           <div className="base">
             mark and upload more than one high-quality images, listings with low
             quality images may be rejected
@@ -192,7 +220,21 @@ const CreateCarListing = () => {
         </div>
         <div className="section">
           <p>Video</p>
-          <input className="dashed" type="file" />
+          <FileUploadContainer>
+            <UploadFileBtn type="button">
+              <FileBase64
+                name="videos"
+                defaultValue={userListings.videos}
+                multiple={true}
+                onDone={(base64) => {
+                  setVideos(base64);
+                  console.log(base64);
+                }}
+              />
+              <i className="fas fa-file-upload" />
+            </UploadFileBtn>
+            <DragDropText>Video should not be more than 50mb</DragDropText>
+          </FileUploadContainer>        
           <div className="base">
             upload a clear video displaying the views (optional)
           </div>

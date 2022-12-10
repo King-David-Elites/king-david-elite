@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Container, Page } from './SignupPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
+import services from '../../ioc/services';
 
 const SignUpPage = () => {
 
@@ -21,9 +22,9 @@ const SignUpPage = () => {
       firstName: fnameRef.current.value,
       lastName: lnameRef.current.value,
       password: passwordRef.current.value,
-    }
+    }    
 
-     await axios.post("https://kde-api.herokuapp.com/users/sign-up", userDetails)
+     await axios.post("http://localhost:9099/users/sign-up", userDetails)
       .then(resp => {
         let res=resp.data;
         let token = res.token;
@@ -31,7 +32,7 @@ const SignUpPage = () => {
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
         console.log(res.message)
-        navigate("/")
+        navigate("/login")
       })
       .catch(err => console.log(err))
   }
@@ -48,11 +49,12 @@ const SignUpPage = () => {
           <input type='password' ref={passwordRef} placeholder='Password' />
         </form>
         <p className='forgot'>Forgot password? <span className='red'>Click here</span></p>
+        <p className='account'>Already have an account? <Link to="/login"><span>Login</span></Link> </p>
 
         <button className='login' onClick={signUp}>SignUp</button>
-        <p className='or'>- OR -</p>
-        <button className='google'>log in with Google</button>
-        <p className='account'>Already have an account? <Link to="/login"><span>Login</span></Link> </p>
+        {/* <p className='or'>- OR -</p> */}
+        {/* <button className='google'>log in with Google</button> */}
+        
       </Page>
 
 

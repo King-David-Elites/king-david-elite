@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASEURL = "https://kde-api.herokuapp.com";
+const BASEURL = "http://kde-api.herokuapp.com";
 
 export const login = async (userDetails) => {
   try {

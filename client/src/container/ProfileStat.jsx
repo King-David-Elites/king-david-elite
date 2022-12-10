@@ -27,7 +27,7 @@ export default function ProfileStat() {
         </div>
 
         <div className='box'>
-          {/* <div className='page'>
+          <div className='page'>
             <h6>Page Views</h6>
             <div>
               <p><span>158</span>from 129</p>
@@ -39,7 +39,7 @@ export default function ProfileStat() {
               </div>
             </div>
 
-          </div> */}
+          </div>
 
           <div className='page'>
             <h6>Listing Saves</h6>

@@ -132,7 +132,7 @@ const RealEstate = (props) => {
           height="3em"
           fontSize="0.8rem"
           marginTop="2em"
-          onClick={()=> navigate(`${propertyName}`)}
+          onClick={()=> navigate("/dashboard/messages")}
         >
           Enquire Now
         </MainButton>

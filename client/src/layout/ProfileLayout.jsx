@@ -50,7 +50,6 @@ const ProfileLayout = () => {
 
     useEffect(() => {
         setEditUserProfile(data)
-        console.log(data)
     }, [data])
 
     useEffect(() => {

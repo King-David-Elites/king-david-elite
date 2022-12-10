@@ -1,15 +1,14 @@
 import React from 'react'
-import { Container, Page } from './LoginPage.style'
+import { Container, Page } from './SignupPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';
-
 
 const LoginPage = () => {
 
   const emailRef = useRef();
   const passwordRef = useRef();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const login = async (e) => {
     e.preventDefault()
@@ -19,12 +18,12 @@ const LoginPage = () => {
     }
 
     await services.api.userRequests.login(userDetail).then(res => {
-      let token = res.token;
-      let user = res.user;
+      const token = res.token;
+      const user = res.user;
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       console.log(res.message)
-      navigate("/")
+      navigate("/profile")
     }).catch(err => console.log(err));
   }
   
@@ -44,8 +43,6 @@ const LoginPage = () => {
         <button className='google' >log in with Google</button>
         <p className='account'>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p>
       </Page>
-
-
     </Container>
   )
 }

@@ -13,6 +13,11 @@ const Footer = () => {
                     <List>Team</List>
                     <List>Contact Us</List>
                     <List>Terms And Conditions</List>
+                    <div className='icon-bigScreen'>
+                        <BsTwitter className='border-circle-bigScreen' size={40} color="white" />
+                        <FaLinkedinIn className='border-circle-bigScreen' size={40} color="white" />
+                        <FaFacebookF className='border-circle-bigScreen' size={40} color="white" />
+                    </div>
                 </Section>
                 <Section>
                     <Head>Categories</Head>

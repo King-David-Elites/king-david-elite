@@ -154,7 +154,7 @@ const Car = (props) => {
           height="3em"
           fontSize="0.8rem"
           marginTop="2em"
-          onClick={() => navigate(`${title}`)}
+          onClick={() => navigate("/dashboard/messages")}
         >
           Enquire Now
         </MainButton>

@@ -70,7 +70,6 @@ const NotificationAsElement = ()=>{
 const Notifications = () => {
   return (
     <Dashboard element={<NotificationAsElement />} index="3" />
-
   )
 }
 

@@ -35,6 +35,7 @@ import SignUpPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
 import EmailPage from './Components/Page/EmailPage';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import Transfer from './Components/Dashboard/Transfer'
 
 function App() {
   const queryClient = new QueryClient();
@@ -44,7 +45,11 @@ function App() {
       <Router>
         {/* <Navbar/> */}
         <Routes>
+<<<<<<< HEAD
           {/* <Route path='/' element={<Waitlist />} /> */}
+=======
+          <Route path='/' element={<HomePage />} />
+>>>>>>> f00547edafa8e5b7a7fd9696cde96a439acf42cb
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />
@@ -66,6 +71,7 @@ function App() {
           <Route path="/dashboard/profile/verification" element={<Profile />} />
           <Route path="/dashboard/" element={<Profile />} />
           <Route path="/dashboard/wallet" element={<Wallet />} />
+          <Route path="/dashboard/wallet/transfer" element={<Transfer />} />
           <Route path="/about" element={<About />} />
           <Route path="/help" element={<Help />} />
           <Route path="/help/earning" element={<Earning />} />
