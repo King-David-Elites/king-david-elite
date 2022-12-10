@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import {
   DragDropText,
-  FileUploadContainer,
-  FormField,
+  FileUploadContainer,  
   UploadFileBtn,
 } from "../Components/Cars/Cars.Style";
 import { FaGalacticSenate } from "react-icons/fa";
@@ -23,6 +22,7 @@ const CreateCarListing = () => {
   const [position, setPosition] = useState("");
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [loaded, setLoaded] = useState(false)
 
   const navigate = useNavigate();
 
@@ -42,27 +42,23 @@ const CreateCarListing = () => {
     noOfBed: 0,
     noOfBathroom: 0,
   });
-
-  useEffect(() => {
-    console.log(longitude);
-    console.log(latitude);
-  }, [position]);
-
-  useEffect(() => {
-    setUserListings({ ...userListings, images: images });
-    setChanging(!changing);
-  }, [images]);
+  
+  useEffect(()=>{
+    userListings['images']=images    
+    userListings['videos']=videos    
+  },[loaded])
 
   useEffect(() => {
     if (
-      userListings["title"]
-      // userListings["description"] &&
-      // userListings["model"] &&
-      // userListings["price"] &&
-      // userListings["carCondition"] &&
-      // userListings["engineType"] &&
-      // userListings["colour"] &&
-      // userListings["images"]
+      userListings["title"] &&
+      userListings["description"] &&
+      userListings["model"] &&
+      userListings["price"] &&
+      userListings["carCondition"] &&
+      userListings["engineType"] &&
+      userListings["colour"] &&
+      userListings["images"].length !== 0 &&
+      userListings["videos"].length !== 0
     ) {
       setValid(true);
       setError(false);
@@ -72,6 +68,17 @@ const CreateCarListing = () => {
     }
     setUserListings({ ...userListings, features: features });
   }, [changing, features]);
+
+  const Load = (base64, type) =>{
+    if(type === "image"){
+      setImages(base64)
+    }    
+    else if(type === "video"){
+      setVideos(base64)
+    }
+    setLoaded(!loaded)
+    setChanging(!changing)            
+  }
 
   const setConfig = () => {
     const authToken = localStorage.getItem("token");
@@ -127,8 +134,7 @@ const CreateCarListing = () => {
   const handleSubmit = async () => {
     postUserListings(userListings);
   };
-
-  const formik = useFormik(userListings, handleChange);
+  
   return (
     <>
       <div className="form_Content">
@@ -205,8 +211,7 @@ const CreateCarListing = () => {
                 defaultValue={userListings.images}
                 multiple={true}
                 onDone={(base64) => {
-                  setImages(base64);
-                  console.log(base64);
+                  Load(base64, "image")
                 }}
               />
               <i className="fas fa-file-upload" />
@@ -227,8 +232,7 @@ const CreateCarListing = () => {
                 defaultValue={userListings.videos}
                 multiple={true}
                 onDone={(base64) => {
-                  setVideos(base64);
-                  console.log(base64);
+                  Load(base64, "video")
                 }}
               />
               <i className="fas fa-file-upload" />
