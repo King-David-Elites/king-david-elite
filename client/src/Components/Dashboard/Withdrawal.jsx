@@ -7,12 +7,6 @@ import { Rightwallet } from './Withdrawal.style'
 import { Bottom } from './Withdrawal.style'
 import Hotel from "./wallet-image/Hotel.jpg"
 
-
-
-
-
-
-
 const WalletAsElement = ()=>{
     return(
         <GenericContainer>

@@ -79,8 +79,6 @@ const WalletAsElement = () => {
 }
 
 const MobileWallet = () => {
-  const [stage, setStage] = useState(0);
-  const position = useRef(null)
   const navigate = useNavigate()
 
   return (
