@@ -1,9 +1,10 @@
 .topnav-container {
     display: flex;
     align-items: center;
-    width: 100vw;
-    gap: 0.5em;
-    overflow-x: auto; 
+    width: 100%;
+    /* gap: 0.5em; */
+    justify-content: space-between;
+    /* overflow-x: auto;  */
 }
 
 .topnav-item {

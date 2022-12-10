@@ -7,12 +7,13 @@ import check from "../Components/Home/images/check.png"
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useAuthentication from '../application/hooks/useAuthentication'
-import { TopContainer } from '../container/ProfileList.style'
+import { TCont, TopContainer } from '../container/ProfileList.style'
 import { MiddleContainer } from '../container/ProfileStat.style'
 import ProfileStat from '../container/ProfileStat'
 import ProfileList from '../container/ProfileList'
 import { FaCamera, FaLongArrowAltUp, FaPen } from 'react-icons/fa'
 import { useGetUserDetails } from '../application/hooks/queryhooks'
+import { CheckCircle } from 'heroicons-react'
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const ProfileLayout = () => {
@@ -59,14 +60,51 @@ const ProfileLayout = () => {
         <div>
             {
                 data !== null && <div>
-                    <TopContainer ref={top}>
+                    <TCont ref={top}>
+                        <div className="cover">
+                            <img src={bg} alt="" />
+                        </div>
+
+                        <div className="details">
+                            <img className='profilePicture' src={bg} alt="profilePics" />
+                            {/* <img className='B2' src={data?.profilePicture} alt="profilePics" /> */}
+
+                            <div className="profileText">
+                                <h3>King David Elite
+                                    <CheckCircle color='blue' width={"14px"}/>
+                                </h3>
+                                <p>
+                                Joined:  {new Date(data?.createdAt).getFullYear().toString()}
+                                </p>
+                            </div>
+
+                            <div className="btn">
+                            <FaPen />
+                            <p>Edit Profile</p>
+                            </div>
+
+                        </div>
+
+                        <div className='bio'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quae ducimus officia adipisci? Obcaecati aperiam, sapiente incidunt omnis mollitia in vel voluptate recusandae ipsam, odit ut similique eius quam doloremque!
+                            Porro sint suscipit doloremque praesentium minus ipsum harum sequi voluptatibus quaerat, quibusdam, inventore repellat, eius enim quis quod perferendis animi maiores soluta necessitatibus eos ipsa! Ex temporibus vero cumque dolorum.
+                            Ratione sapiente inventore esse doloribus.</div>
+
+                        <div className="upgrade">
+                            Upgrade Account
+                        </div>
+                    </TCont>
+
+                    {/* <TopContainer ref={top}>
                         <div className='bg' style={{ backgroundImage: `url(${bg})` }}>
                         </div>
+
                         <div className='slac'>
                             <img className='B2' src={data?.profilePicture} alt="profilePics" />
+
                             <div className='camera'>
                                 <FaCamera className='cam' />
                             </div>
+                            
                             <div className='team'>
                                 <h3>{data?.firstName} {data?.lastName}</h3>
                                 <img className='check' src={check} alt="checkIcon" />
@@ -85,7 +123,7 @@ const ProfileLayout = () => {
                         <div className='lorem'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quae ducimus officia adipisci? Obcaecati aperiam, sapiente incidunt omnis mollitia in vel voluptate recusandae ipsam, odit ut similique eius quam doloremque!
                             Porro sint suscipit doloremque praesentium minus ipsum harum sequi voluptatibus quaerat, quibusdam, inventore repellat, eius enim quis quod perferendis animi maiores soluta necessitatibus eos ipsa! Ex temporibus vero cumque dolorum.
                             Ratione sapiente inventore esse doloribus.</div>
-                    </TopContainer>
+                    </TopContainer> */}
 
                     <MiddleContainer>
                         <div className='lines'></div>
@@ -95,7 +133,7 @@ const ProfileLayout = () => {
                         <div className='lines2'></div>
                     </MiddleContainer>
 
-                    <div className=" h-full md:h-[90%] overflow-y-auto">
+                    <div className="h-full md:h-[90%] overflow-y-auto">
                         {
                             (activeComponent === "stats") && <ProfileStat />
                         }
