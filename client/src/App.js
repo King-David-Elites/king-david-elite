@@ -45,11 +45,7 @@ function App() {
       <Router>
         {/* <Navbar/> */}
         <Routes>
-<<<<<<< HEAD
-          {/* <Route path='/' element={<Waitlist />} /> */}
-=======
           <Route path='/' element={<HomePage />} />
->>>>>>> f00547edafa8e5b7a7fd9696cde96a439acf42cb
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />

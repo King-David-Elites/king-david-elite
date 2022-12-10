@@ -120,6 +120,7 @@ export const MiddleContainer = styled.div`
 `
 
 export const Overview = styled.div`
+margin-top:-310px;
 display:flex;
 margin-left: 160px;
 
@@ -218,7 +219,7 @@ margin-left: 160px;
     border-radius: 8px 0px 0px 8px;
 
     h6{
-        padding:0px;
+        padding:0;
         font-family: 'Poppins';
         font-style: normal;
         font-weight:600;
@@ -229,13 +230,14 @@ margin-left: 160px;
     }
 
     p{
-        margin-top:20px;
+        margin-top:10px;
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 500;
         line-height:20px;
         letter-spacing: 0.005em;
         font-size:14px;
+        width:100%;
     }
 
     span{
