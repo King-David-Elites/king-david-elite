@@ -21,7 +21,9 @@ export default function ProfileStat() {
 
           <div>
             <FaCalendarMinus className='minus_icon' />
-            <input placeholder='Last 30 Days' />
+            <input
+             placeholder='Last 30 Days'
+              />
             <FaChevronDown className='down_icon' />
           </div>
         </div>
@@ -59,7 +61,7 @@ export default function ProfileStat() {
       </Overview>
 
       <Post>
-        <h3>Listings</h3>
+      <h3>Listings</h3>
 
         <div className='posts'>
           <div className='min-post'>

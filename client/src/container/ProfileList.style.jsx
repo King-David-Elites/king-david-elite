@@ -56,7 +56,8 @@ export const TCont = styled.div`
     }
 
     .bio{
-        padding:10px 20px;
+        font-size:17px;
+        padding:20px 30px;
         text-align: justify;
     }
 
@@ -68,6 +69,22 @@ export const TCont = styled.div`
         text-align: center;
         padding: 10px;
         border-radius: 6px;
+    }
+
+    @media (min-width: 500px){
+        .details{
+            grid-template-columns: 1fr 1fr 5fr;
+
+
+            img.profilePicture{
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .details:last-child{
+            
+        }
     }
 `
 

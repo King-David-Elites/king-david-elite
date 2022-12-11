@@ -6,6 +6,12 @@ import { OutProp, InProp, Views } from "./PropertiesContents";
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import FileBase64 from "react-file-base64";
+import {
+  DragDropText,
+  FileUploadContainer,
+  UploadFileBtn,
+} from "../Components/Cars/Cars.Style";
 
 const CreateRealEstateListing = () => {
   const [outDoorProp, setOutDoorProp] = useState([]);
@@ -19,16 +25,18 @@ const CreateRealEstateListing = () => {
   const [error, setError] = useState(false);
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [position, setPosition] = useState("");
+  const [loaded, setLoaded] = useState("");
+  const [position, setPosition] = useState(false);  
+  const [previous, setPrevious] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [userListings, setUserListings] = useState({
     title: "",
-    location: "",
+    location: "somewhere",
     description: "",
-    images: [],
-    videos: [],
+    images: images,
+    videos: videos,
     price: "",
     year: new Date().getFullYear(),
     carCondition: "",
@@ -41,18 +49,23 @@ const CreateRealEstateListing = () => {
   });
 
   useEffect(()=>{
-    console.log(longitude)
-    console.log(latitude)
-  },[position])
+    userListings["images"] = images;
+    userListings["videos"] = videos;
+    userListings["features"] = features;   
+  },[loaded])
 
   useEffect(() => {
     if (
       userListings["title"] &&
       userListings["description"] &&
       userListings["location"] &&
-      userListings["features"] &&
-      userListings["price"]
+      userListings["features"].length !== 0 &&
+      userListings["price"] &&
+      userListings["images"].length !== 0 &&
+      userListings["videos"].length !== 0
     ) {
+      console.log(userListings["features"]);
+      console.log(userListings["images"]);
       setValid(true);
       setError(false);
     } else {
@@ -61,6 +74,16 @@ const CreateRealEstateListing = () => {
     }
     setUserListings({ ...userListings, features: features });
   }, [changing, features]);
+
+  const Load = (base64, type) => {
+    if (type === "image") {
+      setImages(base64);
+    } else if (type === "video") {
+      setVideos(base64);
+    }
+    setLoaded(!loaded);
+    setChanging(!changing);
+  };
 
   const setConfig = (userListings) => {
     const authToken = localStorage.getItem("token");
@@ -104,7 +127,7 @@ const CreateRealEstateListing = () => {
       )
       .then((resp) => {
         console.log(resp.data);
-        navigate('/profile')
+        navigate("/profile");
       })
       .catch((err) => {
         console.log(err.data);
@@ -150,12 +173,16 @@ const CreateRealEstateListing = () => {
           <p>Choose Outdoor Properties</p>
           <select
             name="OutdoorProperties"
-            onChange={(e) => {
-              setFeatures([...features, e.target.value]);
-              setOutDoorProp([...outDoorProp, { property: e.target.value }]);
+            onChange={(e) => {                           
+              if (e.target.value !== "None" && e.target.value !== previous) {                          
+                setFeatures([...features, e.target.value]);
+                setOutDoorProp([...outDoorProp, {property: e.target.value}]);
+                setPrevious(e.target.value)
+                setLoaded(!loaded)            
+              }              
             }}
           >
-            {OutProp.map((outDoor) => {
+            {OutProp.filter((i)=> outDoorProp.findIndex(n => n.property == i.property) === -1  ).map((outDoor) => {            
               return <option>{outDoor.property}</option>;
             })}
           </select>
@@ -188,16 +215,20 @@ const CreateRealEstateListing = () => {
           <select
             name="IndoorProperties"
             onChange={(e) => {
-              setFeatures([...features, e.target.value]);
-              setInDoorProp([...inDoorProp, { property: e.target.value }]);
+              if (e.target.value !== "None" && e.target.value !== previous) {                          
+                setFeatures([...features, e.target.value]);
+                setInDoorProp([...inDoorProp, {property: e.target.value}]);
+                setPrevious(e.target.value)
+                setLoaded(!loaded)            
+              }  
             }}
           >
-            {InProp.map((inDoor) => {
+            {InProp.filter((i)=> inDoorProp.findIndex(n => n.property == i.property) === -1  ).map((inDoor) => {            
               return <option>{inDoor.property}</option>;
             })}
           </select>
-          <div className="OutProp">
-            {inDoorProp.map((items, i) => {
+          <div className="OutProp">            
+          {inDoorProp.map((items, i) => {
               return (
                 <div
                   key={i}
@@ -225,11 +256,15 @@ const CreateRealEstateListing = () => {
           <select
             name="Views"
             onChange={(e) => {
-              setFeatures([...features, e.target.value]);
-              setViewProp([...viewProp, { property: e.target.value }]);
+              if (e.target.value !== "None" && e.target.value !== previous) {                          
+                setFeatures([...features, e.target.value]);
+                setViewProp([...viewProp, {property: e.target.value}]);
+                setPrevious(e.target.value)
+                setLoaded(!loaded)            
+              }
             }}
           >
-            {Views.map((view) => {
+            {Views.filter((i)=> viewProp.findIndex(n => n.property == i.property) === -1  ).map((view) => {            
               return <option>{view.property}</option>;
             })}
           </select>
@@ -285,14 +320,20 @@ const CreateRealEstateListing = () => {
         </div>
         <div className="section">
           <p>Images</p>
-          <input
-            className="dashed"
-            type="file"
-            onChange={(e) => {
-              setImages([...images, e.target.value]);
-              setUserListings({ ...userListings, images: images });
-            }}
-          />
+          <FileUploadContainer>
+            <UploadFileBtn type="button">
+              <FileBase64
+                name="images"
+                defaultValue={userListings.images}
+                multiple={true}
+                onDone={(base64) => {
+                  Load(base64, "image");
+                }}
+              />
+              <i className="fas fa-file-upload" />
+            </UploadFileBtn>
+            <DragDropText>PNG, JPG, GIF up to 5mb</DragDropText>
+          </FileUploadContainer>
           <div className="base">
             mark and upload more than one high-quality images, listings with low
             quality images may be rejected
@@ -300,7 +341,20 @@ const CreateRealEstateListing = () => {
         </div>
         <div className="section">
           <p>Video</p>
-          <input className="dashed" type="file" />
+          <FileUploadContainer>
+            <UploadFileBtn type="button">
+              <FileBase64
+                name="videos"
+                defaultValue={userListings.videos}
+                multiple={true}
+                onDone={(base64) => {
+                  Load(base64, "video");
+                }}
+              />
+              <i className="fas fa-file-upload" />
+            </UploadFileBtn>
+            <DragDropText>PNG, JPG, GIF up to 5mb</DragDropText>
+          </FileUploadContainer>
           <div className="base">
             upload a clear video displaying the views (optional)
           </div>
