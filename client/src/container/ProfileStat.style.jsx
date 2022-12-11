@@ -8,20 +8,21 @@ height:200px;
 export const MiddleContainer = styled.div`
 
 .lines{
-    position: absolute;
+    /* position: absolute; */
     width:100%;
     height:0px;
-    left:3px;
-    top:450px;
+    /* left:3px;
+    top:450px; */
     border:4px solid rgba(166, 166, 166, 0.2);
     transform: rotate(-0.26deg);
 }
 
 .middle_btn{
     display:flex;
-    position:absolute;
+    /* position:absolute;
     top:535px;
-    left:165px;
+    left:165px; */
+    padding: 10px 0;
 
     button{
         padding: 12px 24px;
@@ -46,11 +47,11 @@ export const MiddleContainer = styled.div`
 }
 
 .lines2{
-    position: absolute;
+    /* position: absolute; */
     width:1345px;
     height:0px;
-    left:3px;
-    top:650px;
+    /* left:3px;
+    top:650px; */
     border:4px solid rgba(166, 166, 166, 0.2);
     transform: rotate(-0.26deg);
 }
@@ -59,20 +60,20 @@ export const MiddleContainer = styled.div`
 @media(max-width:450px){
 
     .lines{
-        position: absolute;
-        width:385px;
+        /* position: absolute; */
+        width:100%;
         height:0px;
-        left:3px;
-        top:440px;
+        /* left:3px;
+        top:440px; */
         border:2px solid rgba(166, 166, 166, 0.2);
         transform: rotate(-0.26deg);
     }
     
     .middle_btn{
         display:flex;
-        position:absolute;
+        /* position:absolute;
         top:460px;
-        left:30px;
+        left:30px; */
     
         button{
             padding: 12px 15px;
@@ -105,11 +106,11 @@ export const MiddleContainer = styled.div`
     }
     
     .lines2{
-        position: absolute;
-        width:385px;
+        /* position: absolute; */
+        width:100%;
         height:0px;
-        left:3px;
-        top:500px;
+        /* left:3px;
+        top:500px; */
         border:2px solid rgba(166, 166, 166, 0.2);
         transform: rotate(-0.26deg);
     }
@@ -119,6 +120,7 @@ export const MiddleContainer = styled.div`
 `
 
 export const Overview = styled.div`
+margin-top:-310px;
 display:flex;
 margin-left: 160px;
 
@@ -209,16 +211,15 @@ margin-left: 160px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 24px 32px;
+    padding:24px 25px;
     gap: 28px;
-    width:400px;
+    width:50%;
     height:100px;
     background:rgba(242, 242, 242, 0.5);
     border-radius: 8px 0px 0px 8px;
 
     h6{
-        position:absolute;
-        top:40px;
+        padding:0;
         font-family: 'Poppins';
         font-style: normal;
         font-weight:600;
@@ -229,13 +230,14 @@ margin-left: 160px;
     }
 
     p{
-        margin-top:20px;
+        margin-top:10px;
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 500;
         line-height:20px;
         letter-spacing: 0.005em;
         font-size:14px;
+        width:100%;
     }
 
     span{
@@ -246,7 +248,6 @@ margin-left: 160px;
 
     div{
         display:flex;
-        margin-top:20px; 
     }
 
     .d{
@@ -254,9 +255,9 @@ margin-left: 160px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding: 8px 16px 8px 10px;
+        margin-top:10px;
         gap: 4px;
-        width: 106px;
+        width: 90px;
         height: 36px;
         background: rgba(62, 199, 59, 0.15);
         border-radius: 24px;
@@ -277,11 +278,9 @@ margin-left: 160px;
 }
 
 
-@media(max-width:450px){
-
-    top:530px;
+@media(max-width:850px){
     display:block;
-    left:45px;
+    margin:-450px 50px;
     
     .account{
         margin-left:-20px;
@@ -291,17 +290,17 @@ margin-left: 160px;
         }
 
         input{
+            margin-bottom:10px;
             font-size:13px;
         }
 
         .block{
-            position:absolute;
-            top:12px;
-            left:90px;
+            margin:0vh 10px;
+
         }
     
         h3{
-            margin-top:10px;
+            margin-top:2px;
             font-size:20px;
             line-height: 20px;
             letter-spacing: 0.005em;
@@ -309,13 +308,11 @@ margin-left: 160px;
         }
 
         .minus_icon{
-            top:65px;
-            left:-10px;
+            margin:0vh -140px;
         }
     
         .down_icon{
-            left:110px;
-            top:65px;
+            margin:0% -135px;
         }
     
     
@@ -328,20 +325,20 @@ margin-left: 160px;
     
     .page{
         margin-right:5px;
-        margin-top:30px;
+        margin-top:0px;
         padding: 24px 32px;
         gap: 28px;
         width:180px;
         height:90px;
     
         h6{
-            top:125px;
-            margin-left:-20px;
+            margin-top:5px;
+            margin-bottom:-20px;
         }
     
         p{
-            margin-top:27px;
-            margin-left:-25px;
+            margin-top:10px;
+            margin-left:-20px;
             width:100px;
             font-size:12px;
         }
@@ -354,12 +351,11 @@ margin-left: 160px;
         div{
             box-sizing:border-box;
             display:flex;
-            margin-top:29px; 
-            position:absolute;
+            margin-top:2px; 
         }
     
         .d{
-            margin-left:110px;
+            margin-top:10px;
             flex-direction: row;
             align-items: center;
             padding: 8px 16px 8px 10px;
@@ -368,7 +364,7 @@ margin-left: 160px;
             height:23px;
             background: rgba(62, 199, 59, 0.15);
             border-radius: 24px;
-            margin-left:80px;
+            margin-left:0px;
 
             .arrow{
                 font-size:12px;
@@ -390,7 +386,7 @@ margin-left: 160px;
 `
 
 export const Post = styled.div`
-   margin:25em 120px;
+   margin:15em 120px;
    display:flex;
 
    h3{
@@ -563,25 +559,23 @@ export const Post = styled.div`
 .second{
 }
 
-         // MEDIA QUERRY
+       // MEDIA QUERRY
 
 
-@media(max-width:450px){
+@media(max-width:850px){
+    margin-top:700px;
     display:block;
     height:200px;
-    margin:800px 110px;
 
 
     h3{
+        margin:-80px -120px;
         font-size:18px;
-        top:800px;
-        left:20px;
-       }
+    }   
     
        .min-post{
-        position:absolute;
-        top:870px;
-        left:15px;
+        margin:20px -60px;
+ 
     
             p{
                font-weight:500;

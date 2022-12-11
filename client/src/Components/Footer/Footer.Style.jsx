@@ -15,7 +15,7 @@ export const FooterSection = styled.div`
     @media (min-width: ${theme.breakPoint['tablet']}) {
         flex-direction: row;
         width:100%;
-        padding:3em 3em 10em 3em;
+        padding:3em 4em 10em 4em;
         justify-content:space-between;
         align-items:flex-start;    
         font-weight:light;
@@ -30,6 +30,18 @@ export const FooterSection = styled.div`
         justify-content: center;
         align-items: center;
         flex-direction: column;
+    }
+
+    .icon-bigScreen{
+        margin-top: 0.5em;
+        display: flex;
+        gap: 0.5em;
+    }
+
+    .border-circle-bigScreen{
+        border: 2px solid #A6A6A6;
+        border-radius: 50%;
+        padding: 10px;
     }
     `
 
@@ -50,7 +62,7 @@ export const Head = styled.div`
     font-weight:${props => props.fontWeight ? props.fontWeight : "700"};
     margin-bottom: 0.5em;
 `
-export const List =styled.div`
+export const List = styled.div`
     color:${props => props.color ? props.color : "#A6A6A6"};
     font-size:${props => props.fontSize ? props.fontSize : "0.8rem"};
     font-weight:${props => props.fontWeight ? props.fontWeight : "light"};  
@@ -62,7 +74,6 @@ export const List =styled.div`
     }
   
 `
-
 export const MobileFooter = styled.div`
     background:${theme.blackBackgroundColor};
     display: flex;

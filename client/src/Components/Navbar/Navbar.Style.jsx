@@ -69,7 +69,8 @@ export const LogoText = styled.div`
         }
 
     @media(max-width:650px){
-        font-size:8px;
+        float:right;
+        font-size:1.2rem;
     }
 `
 

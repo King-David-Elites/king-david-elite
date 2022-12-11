@@ -41,12 +41,18 @@ const HomePage = () => {
       <Background imageUrl={bg}>
         <HeroSection>
           <Text fontSize="96px">
-            <h3>Luxury Hub</h3>
+            <h3>Luxury <span>Hub</span></h3>
             
           </Text>
           <Text>
-            Elegance is a state of mind.
+          The Greatest Luxury Is Freedom Of All Forms.
           </Text>
+          <div className='btn'>
+              <button>Explore</button>
+              <button className='btn_app'>Download App</button>
+          </div>
+
+
         </HeroSection>
       </Background>
 
@@ -54,6 +60,7 @@ const HomePage = () => {
         <Text>Categories</Text>
 
         <Categories>
+          
           {
             categories.map((category, index)=> {
               return(
@@ -86,7 +93,12 @@ const HomePage = () => {
       </Information>
 
       <Information>
-        <div className="textContent">
+        
+        <div className="coffee image">
+          <img className='img_coffee' src={coffee} alt="" />
+        </div>
+
+        <div className="Elite">
           <h4>Elite Luxury NewsLetter</h4>
           <p>Let’s keep you updated with what’s trending inLuxury.</p>
 
@@ -96,9 +108,7 @@ const HomePage = () => {
           </form>
         </div>
 
-        <div className="coffee image">
-          <img className='img_coffee' src={coffee} alt="" />
-        </div>
+        
 
       </Information>
       </InformationContainer>
@@ -106,7 +116,7 @@ const HomePage = () => {
       <SubFooter bg={blur}>
         <Text fontSize="24px">
           <p className='sub-p1'>
-          Let's help you make more money by becoming an Affiliate</p>
+          Let's help you make more money by becoming an <span>Affiliate</span></p>
         </Text>
         <Text fontSize="14px">
           <p className='sub-p2'>

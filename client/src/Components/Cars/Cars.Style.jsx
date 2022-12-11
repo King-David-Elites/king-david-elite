@@ -39,6 +39,29 @@ export const HeroSection = styled.div`
     gap:1em;
     width:inherit;
     height:inherit;
+
+
+      .btn{
+        margin:2rem 0rem;
+
+        button{
+          background: #F2BE5C;
+          border-radius: 2px;
+          font-size:1rem;
+          border:none;
+          margin:0rem .5rem;
+          width:9rem;
+          height:3rem;
+        }
+
+        .btn_app{
+          color:#F2BE5C;
+          border:2px solid;
+          background:none;
+        }
+        
+      }
+
 `
 
 export const Seperator = styled.div`
@@ -52,8 +75,6 @@ export const Text = styled.div`
     font-size:${props => props.fontSize ? props.fontSize : "1.3rem"};
     font-weight:${props => props.fontWeight ? props.fontWeight : "bold"};    
     margin:${props => props.margin ? props.margin : "0em"}; 
-    /* margin-top:${props => props.marginTop ? props.marginTop : "0em"};  */
-    /* margin-bottom   :${props => props.marginBottom ? props.marginBottom : "0em"} ; */
     padding:${props => props.padding ? props.padding : "0em"};  
     text-align: ${props => props.textAlign ? props.textAlign: "start"} ;
 
@@ -62,8 +83,15 @@ export const Text = styled.div`
     }
 
     @media(max-width:650px){
+      font-size:20px;
+      text-align:center;
         h3{
-            font-size:70px;
+          text-align:center;
+            font-size:2rem;
+        }
+
+        span{
+          color:#F2BE5C;
         }
     }
 `
@@ -79,7 +107,7 @@ export const SearchSection = styled.div`
 `
 
 export const SharedSection = styled.div`
-     display:flex;
+    display:flex;
     justify-content:center;
     align-items:center;
     gap:1em;
@@ -149,7 +177,7 @@ export const CarTypes = styled.div`
 `
 
 export const CarType = styled.div`
-    flex: 1 1 18em;    
+    flex: 1 1 25em;    
     display:flex;
     flex-direction:column;    
     justify-content:center;    
