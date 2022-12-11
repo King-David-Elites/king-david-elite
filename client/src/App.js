@@ -58,7 +58,7 @@ function App() {
           <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
           <Route path="/cars" element={<Cars />} />
           <Route path="/cars/add" element={<AddCar />} />
-          <Route path="/cars/:title" element={<EachCars active={0} />} />
+          <Route path="/cars/:id" element={<EachCars active={0} />} />
           <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0} />} />
           <Route path="/others" element={<OtherSections />} />
           <Route path="/dashboard" element={<Dashboard />} />

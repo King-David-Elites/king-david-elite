@@ -59,7 +59,7 @@ const RealEstateListing = () => {
         <Text fontSize="1rem" fontWeight="700" color="black">Luxury Properties For Sale</Text>
         <EstateProperties>
           {
-            listing.map((items) => {
+            listing.filter(i => !i.carCondition).map((items) => {
               return (
                 <RealEstate key={items._id} {...items} />
               )

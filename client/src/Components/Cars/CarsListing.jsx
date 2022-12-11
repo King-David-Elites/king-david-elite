@@ -78,9 +78,9 @@ const CarsListing = () => {
         <Text fontSize="1rem" fontWeight="700" color="black">Explore Luxury Cars</Text>
         <CarTypes>
           {
-            CarAPI.map((items) => {
+            listing.filter(i => i.carCondition).map((items) => {
               return (
-                <Car key={items.id} {...items} />
+                <Car key={items._id} {...items} />
               )
             })
           }
@@ -102,28 +102,36 @@ export default CarsListing
 
 const Car = (props) => {
   var {
-    DealerPic,
-    DealerName,
-    CarPic,
+    _id,
     title,
+    location,
+    description,
+    images,
     price,
-    Loved,
-    location
+    year,
+    price,
+    year,
+    carCondition,
+    engineType,
+    colour,
+    features,
+    model,
+    postedBy
   } = props
-  const [love, setLove] = useState(Loved)
+  const [love, setLove] = useState(true)
   const navigate = useNavigate()
   return (
     <>
       <CarType>
         <Dealer>
           <PicDealer
-            src={DealerPic}
-            alt={DealerName}
+            src={postedBy?.profilePicture}
+            alt={postedBy?.firstName}
           />
-          <Text fontSize="0.8rem" color="black">{DealerName}</Text>
+          <Text fontSize="0.8rem" color="black">{postedBy?.firstName + " " + postedBy?.lastName}</Text>
           <BadgeCheck color="blue" width="30px" />
         </Dealer>
-        <PicCar imageUrl={CarPic}>
+        <PicCar imageUrl={images[0]}>
           <div style={{
             width: "100%",
             display: "flex",
@@ -150,7 +158,7 @@ const Car = (props) => {
             <Reaction
               radius="0em"
               padding="1em 3em"
-              onClick={() => navigate(`${title}`)}
+              onClick={() => navigate(`${_id}`)}
             >
               <Text fontSize="0.8em ">ViewMore</Text>
             </Reaction>

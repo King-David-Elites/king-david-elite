@@ -78,7 +78,7 @@ const ProfileLayout = () => {
                                 </p>
                             </div>
 
-                            <div className="btn">
+                            <div className="btn" onClick={() => navigate("/profile/edit")}>
                             <FaPen />
                             <p>Edit Profile</p>
                             </div>
