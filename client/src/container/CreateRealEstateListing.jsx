@@ -26,8 +26,7 @@ const CreateRealEstateListing = () => {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [loaded, setLoaded] = useState("");
-  const [position, setPosition] = useState(false);
-  const [latest, setLatest] = useState("");
+  const [position, setPosition] = useState(false);  
   const [previous, setPrevious] = useState("");
 
   const navigate = useNavigate();
@@ -54,17 +53,6 @@ const CreateRealEstateListing = () => {
     userListings["videos"] = videos;
     userListings["features"] = features;   
   },[loaded])
-
-
-  useEffect(() => {              
-    // if (latest !== "None" && latest !== previous) {    
-    //   console.log("Latest " + latest)         
-    //   setFeatures([...features, latest]);
-    //   setOutDoorProp([...outDoorProp, {property: latest}]);
-    //   setPrevious(latest)
-    //   setLoaded(!loaded)            
-    // }             
-  }, [latest]);
 
   useEffect(() => {
     if (
@@ -235,8 +223,7 @@ const CreateRealEstateListing = () => {
               }  
             }}
           >
-            {InProp.filter((i)=> inDoorProp.findIndex(n => n.property == i.property) === -1  ).map((inDoor) => {
-            // {InProp.map((inDoor) => {
+            {InProp.filter((i)=> inDoorProp.findIndex(n => n.property == i.property) === -1  ).map((inDoor) => {            
               return <option>{inDoor.property}</option>;
             })}
           </select>
@@ -269,12 +256,15 @@ const CreateRealEstateListing = () => {
           <select
             name="Views"
             onChange={(e) => {
-              setFeatures([...features, e.target.value]);
-              setViewProp([...viewProp, { property: e.target.value }]);
-              setLoaded(!loaded);
+              if (e.target.value !== "None" && e.target.value !== previous) {                          
+                setFeatures([...features, e.target.value]);
+                setViewProp([...viewProp, {property: e.target.value}]);
+                setPrevious(e.target.value)
+                setLoaded(!loaded)            
+              }
             }}
           >
-            {Views.map((view) => {
+            {Views.filter((i)=> viewProp.findIndex(n => n.property == i.property) === -1  ).map((view) => {            
               return <option>{view.property}</option>;
             })}
           </select>
