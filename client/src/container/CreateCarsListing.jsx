@@ -109,7 +109,7 @@ const CreateCarListing = () => {
   const postUserListings = async (userListings) => {
     await axios
       .post(
-        "http://192.168.43.168:9099/listings/upload-list",
+        "http://localhost:9099/listings/upload-list",
         userListings,
         setConfig()
       )

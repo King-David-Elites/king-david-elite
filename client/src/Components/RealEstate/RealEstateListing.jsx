@@ -22,8 +22,22 @@ import { MOCK_DATA } from './MOCK_DATA'
 import MainButton from '../buttons/MainButton'
 import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { useEffect } from 'react';
 
 const RealEstateListing = () => {
+
+  const [listing, setListing] = useState([])
+
+  const getListings = ()=>{
+    axios.get("http://localhost:9099/listings/all")
+    .then(resp => setListing(resp.data))
+    .catch(err => console.error(err))
+  }
+
+  useEffect(()=>{
+    getListings()
+  }, [])
   
   return (
     <>
@@ -45,9 +59,9 @@ const RealEstateListing = () => {
         <Text fontSize="1rem" fontWeight="700" color="black">Luxury Properties For Sale</Text>
         <EstateProperties>
           {
-            MOCK_DATA.map((items) => {
+            listing.map((items) => {
               return (
-                <RealEstate key={items.id} {...items} />
+                <RealEstate key={items._id} {...items} />
               )
             })
           }
@@ -67,15 +81,21 @@ export default RealEstateListing
 
 const RealEstate = (props) => {
   var {
-    DealerPic,
-    DealerName,
-    image,
-    propertyName,    
+    _id,
+    title,
+    location,
+    features,
+    description,
+    images,
+    videos,
+    available,
     price,
-    Loved,
-    location
+    year,
+    noOfBed,
+    noOfBathroom,
+    postedBy
   } = props
-  const [love, setLove] = useState(Loved)
+  const [love, setLove] = useState("Loved")
   const navigate = useNavigate()
   
   return (
@@ -83,13 +103,13 @@ const RealEstate = (props) => {
       <PropertyType>
         <Dealer>
           <PicDealer
-            src={DealerPic}
-            alt={DealerName}
+            src={postedBy.profilePicture}
+            alt={postedBy.firstName}
           />
-          <Text fontSize="0.8rem" color="black">{DealerName}</Text>
+          <Text fontSize="0.8rem" color="black">{postedBy.firstName + " " + postedBy.lastName}</Text>
           <BadgeCheck color="blue" width="30px" />
         </Dealer>
-        <PicCar imageUrl={image}>
+        <PicCar imageUrl={images[0]}>
           <div style={{
             width: "100%",
             display: "flex",
@@ -116,14 +136,14 @@ const RealEstate = (props) => {
             <Reaction
               radius="0em"
               padding="1em 3em"
-              onClick={()=> navigate(`${propertyName}`)}
+              onClick={()=> navigate(`${_id}`)}
             >
               <Text fontSize="0.8em ">ViewMore</Text>
             </Reaction>
           </div>
         </PicCar>
         <Text color="black" fontWeight="900" fontSize="0.8rem">{price}</Text>
-        <Text color="black" fontWeight="700">{propertyName}</Text>
+        <Text color="black" fontWeight="700">{title}</Text>
         <Position>
           <Text color="black" fontSize="0.8rem">{location}</Text>
         </Position>

@@ -45,11 +45,7 @@ function App() {
       <Router>
         {/* <Navbar/> */}
         <Routes>
-<<<<<<< HEAD
-          {/* <Route path='/' element={<Waitlist />} /> */}
-=======
           <Route path='/' element={<HomePage />} />
->>>>>>> f00547edafa8e5b7a7fd9696cde96a439acf42cb
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />
@@ -58,7 +54,7 @@ function App() {
           <Route path='/savedpost' element={<Savedpost />} />
           <Route path="/real-estate" element={<RealEstateListing />} />
           <Route path="/real-estate/add" element={<AddRealEstate />} />
-          <Route path="/real-estate/:title" element={<EachBuilding active={0} />} />
+          <Route path="/real-estate/:id" element={<EachBuilding active={0} />} />
           <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
           <Route path="/cars" element={<Cars />} />
           <Route path="/cars/add" element={<AddCar />} />

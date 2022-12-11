@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import {
   Background,
   HeroSection,
@@ -33,10 +33,23 @@ import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import { useEffect } from 'react'
+import axios from 'axios'
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const CarsListing = () => {
   const top = useRef(null)
+
+  const [listing, setListing] = useState([])
+
+  const getListings = ()=>{
+    axios.get("http://localhost:9099/listings/all")
+    .then(resp => setListing(resp.data))
+    .catch(err => console.error(err))
+  }
+
+  useEffect(()=>{
+    getListings()
+  }, [])
 
   useEffect(() => {
     scrollToRef(top)
