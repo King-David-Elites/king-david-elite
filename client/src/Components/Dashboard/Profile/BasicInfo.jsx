@@ -9,7 +9,8 @@ const BasicInfo = (props) =>{
     const [city, setCity] = useState("")
     const [postalCode, setPostalCode] = useState("")
     const [enable, setEnable] = useState(false)
-
+    const [userInfo, setUserInfo] = useState({})
+    
     let {
       setRegistering,
       country,
@@ -18,6 +19,22 @@ const BasicInfo = (props) =>{
       scrollToRef,
       position
     } = props
+
+    userInfo = {
+        firstName:"",
+        lastName:"",
+        dob:"",
+        resAddress:"",
+        city:"",
+        postalCode:"",
+        country: country
+    }
+
+    const handleChange = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+        setUserInfo({...userInfo, [name]:value })
+    }
   
     return(
       <>
@@ -33,11 +50,10 @@ const BasicInfo = (props) =>{
                     </label>
                     <input 
                         type="text" 
-                        value={lastName}
+                        name="lastName"                        
                         onChange={(e)=>{
-                            setLastName(e.target.value)
-                        }} 
-                        name="lastName"
+                            handleChange()                            
+                        }}                         
                         required
                     />
                 </div>
@@ -46,12 +62,11 @@ const BasicInfo = (props) =>{
                         First Name
                     </label>
                     <input 
-                        type="text" 
-                        value={firstName} 
-                        onChange={(e)=>{
-                            setFirstName(e.target.value)
-                        }}
+                        type="text"                          
                         name="firstName"
+                        onChange={(e)=>{
+                            handleChange()
+                        }}                        
                         required
                     />
                 </div>                
@@ -65,10 +80,10 @@ const BasicInfo = (props) =>{
                     <input 
                         type="date" 
                         value={dob} 
-                        onChange={(e)=>{
-                            setDOB(e.target.value)
-                        }}
                         name="dob"
+                        onChange={(e)=>{
+                            handleChange()
+                        }}                        
                         required
                     />
                 </div>
@@ -84,10 +99,10 @@ const BasicInfo = (props) =>{
                         <input                         
                             type="text" 
                             value={resAddress} 
-                            onChange={(e)=>{
-                                setResAddress(e.target.value)
-                            }}
                             name="resAddress"
+                            onChange={(e)=>{
+                                handleChange()
+                            }}                            
                             required
                         />
                     </div>
@@ -100,10 +115,10 @@ const BasicInfo = (props) =>{
                         <input                         
                             type="text" 
                             value={city} 
-                            onChange={(e)=>{
-                                setCity(e.target.value)
-                            }}
                             name="city"
+                            onChange={(e)=>{
+                                handleChange()
+                            }}                            
                             required
                         />
                     </div>
@@ -114,10 +129,10 @@ const BasicInfo = (props) =>{
                         <input                         
                             type="text" 
                             value={postalCode} 
-                            onChange={(e)=>{
-                                setPostalCode(e.target.value)
-                            }}
                             name="postalCode"
+                            onChange={(e)=>{
+                                handleChange()
+                            }}                
                             required
                         />
                     </div>

@@ -1,7 +1,9 @@
 import React from 'react'
+import { useState } from 'react'
 import {Country} from "./Profile_Mockdata"
 
 const GetStarted = (props) =>{
+  const [error, setError] = useState()
     let {
       setRegistering,
       country,
@@ -78,7 +80,10 @@ const GetStarted = (props) =>{
               <li> Take a picture of yourself to verify your identity </li>
             </ul>
           </div>
-  
+              
+          {
+            
+          }
           <div          
             className="button"
             onClick={()=>{
