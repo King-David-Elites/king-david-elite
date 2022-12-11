@@ -201,6 +201,7 @@ export const MobileDashboardContainer = styled.div`
             padding: 10px;
             border-radius: 5px;
             background-color: rgba(166, 166, 166, 0.2);
+            cursor: pointer;
         }
     }
 

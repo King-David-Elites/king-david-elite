@@ -1,8 +1,8 @@
-.transfer-wrapper{
+.transfer-wrapper {
     height: 100vh;
 }
 
-.top-navigation{
+.top-navigation {
     height: 10%;
     display: flex;
     align-items: center;
@@ -10,30 +10,116 @@
     padding: 1em;
 }
 
-.flex-nav{
+.flex-nav {
     display: flex;
     align-items: center;
     gap: 0.5em;
+    cursor: pointer;
 }
 
-.transfer-body{
+.transfer-body {
     height: 90%;
     padding: 2em 1em;
     display: flex;
     flex-direction: column;
     gap: 1em;
+    position: relative;
 }
 
-.transfer-body p{
+.transfer-body h4 {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.transfer-body p {
     font-size: 14px;
     font-weight: 500;
 }
 
-.transfer-body input{
+.center-text {
+    color: #696969;
+    text-align: center;
+}
+
+.transfer-body input {
     border: 2px solid #FFFFFB;
     padding: 1em;
     width: 100%;
     background-color: #FFFFFB;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     outline: none;
+}
+
+input[type="radio"] {
+    appearance: none;
+    background-color: #fff;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid #F2BE5C;
+    border-radius: 50%;
+    position: absolute;
+    left: 24em;
+    top: 11em;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms ease-in-out;
+    background-color:#F2BE5C;
+  }
+
+  input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+
+  .payment-type{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .payment-type button{
+        padding: 10px 50px;
+        cursor: pointer;
+        background: rgba(115, 115, 115, 0.5);
+        border: 2px solid rgba(115, 115, 115, 0.5);
+  }
+
+.check-icon {
+    background: #0D0D0D;
+    border-radius: 6px;
+    padding: 12px;
+    height: 50px;
+    width: 50px;
+}
+
+.successPage-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 7em 0em;
+    height: 100vh;
+}
+
+.successPage-wrapper div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.successPage-wrapper a {
+    color: #1976D2;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
 }

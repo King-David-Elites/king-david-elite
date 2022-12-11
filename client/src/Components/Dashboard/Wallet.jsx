@@ -8,7 +8,6 @@ import { Bottom } from './Dashboard.Styles'
 import { BiDotsVerticalRounded } from 'react-icons/bi'
 import walletImage from "../Dashboard/wallet-image/blackBg.jpeg"
 import { BsFillFileArrowUpFill } from 'react-icons/bs'
-import { useState , useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -102,16 +101,16 @@ const MobileWallet = () => {
           <div className='menu-list'>
             <div className='grey-bar'>
               <BsFillFileArrowUpFill size={30} color="#F2BE5C" onClick={() => navigate("/dashboard/wallet/transfer")} />
-              <p>Transfer</p>
+              <p onClick={() => navigate("/dashboard/wallet/transfer")} >Transfer</p>
             </div>
 
             <div className='grey-bar'>
-              <BsFillFileArrowUpFill size={30} color="#F2BE5C" />
-              <p>Withdrawal</p>
+              <BsFillFileArrowUpFill size={30} color="#F2BE5C" onClick={() => navigate("/dashboard/wallet/withdraw")} />
+              <p onClick={() => navigate("/dashboard/wallet/withdraw")}>Withdrawal</p>
             </div>
 
             <div className='grey-bar'>
-              <BsFillFileArrowUpFill size={30} color="#F2BE5C" />
+              <BsFillFileArrowUpFill size={30} color="#F2BE5C" onClick={() => navigate("/dashboard/wallet/deposit")} />
               <p>Deposit</p>
             </div>
           </div>
