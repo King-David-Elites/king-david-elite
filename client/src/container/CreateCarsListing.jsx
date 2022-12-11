@@ -123,10 +123,9 @@ const CreateCarListing = () => {
       .then((resp) => {
         console.log(resp.data);
         console.log(userListings["images"]);
-        // navigate("/profile");
+        navigate("/profile");
       })
-      .catch((err) => {
-        // console.log(err.data);
+      .catch((err) => {        
         console.log(err);
       });
   };
