@@ -18,6 +18,7 @@ export const MiddleContainer = styled.div`
 }
 
 .middle_btn{
+    margin:10px 100px;
     display:flex;
     /* position:absolute;
     top:535px;
@@ -48,7 +49,7 @@ export const MiddleContainer = styled.div`
 
 .lines2{
     /* position: absolute; */
-    width:1345px;
+    width:100%;
     height:0px;
     /* left:3px;
     top:650px; */
@@ -70,12 +71,14 @@ export const MiddleContainer = styled.div`
     }
     
     .middle_btn{
+        margin:0;
         display:flex;
         /* position:absolute;
         top:460px;
         left:30px; */
     
         button{
+            margin:0;
             padding: 12px 15px;
             width:30px;
             height:0px;
@@ -107,12 +110,12 @@ export const MiddleContainer = styled.div`
     
     .lines2{
         /* position: absolute; */
-        width:100%;
+        /* width:100%; */
         height:0px;
         /* left:3px;
         top:500px; */
         border:2px solid rgba(166, 166, 166, 0.2);
-        transform: rotate(-0.26deg);
+        /* transform: rotate(-0.26deg); */
     }
 
 }
@@ -120,7 +123,7 @@ export const MiddleContainer = styled.div`
 `
 
 export const Overview = styled.div`
-margin-top:-310px;
+margin-top:-365px;
 display:flex;
 margin-left: 160px;
 
@@ -160,6 +163,11 @@ margin-left: 160px;
         color: #000000;
     }
 
+    div{
+        position: relative;
+    }
+
+
     input{
         margin-top:20px;
         width:150px;
@@ -179,9 +187,9 @@ margin-left: 160px;
 
     .minus_icon{
         font-size:12px;
-        position: absolute;
-        top: 66em;
-        left:14.5em;
+        position:absolute;
+        top:30px;
+        left:10px;
 
         @media(min-width:768px){
            
@@ -191,8 +199,10 @@ margin-left: 160px;
     .down_icon{
         font-size:12px;
         position: absolute;
-        top: 66em;
-        left:24em;
+        top:30px;
+        right:10px;
+        
+
     }
 
 
@@ -308,11 +318,10 @@ margin-left: 160px;
         }
 
         .minus_icon{
-            margin:0vh -140px;
         }
     
         .down_icon{
-            margin:0% -135px;
+            right:58%;
         }
     
     
@@ -396,9 +405,9 @@ export const Post = styled.div`
     font-size:20px;
     line-height: 36px;
     color: #000000;
-    position:absolute;
-    top:58em;
-    left:150px;
+    margin:-100px -40px;
+
+  
    }
 
    .min-post{
@@ -563,18 +572,18 @@ export const Post = styled.div`
 
 
 @media(max-width:850px){
-    margin-top:700px;
+    margin-top:650px;
     display:block;
     height:200px;
 
 
     h3{
-        margin:-80px -120px;
         font-size:18px;
+        margin:50px;
     }   
     
        .min-post{
-        margin:20px -60px;
+        margin:25px -60px;
  
     
             p{
