@@ -22,19 +22,17 @@ const Advanced_Verf_1 = (props) => {
   } = props;
 
   const [loaded, setLoaded] = useState(false);
-  const [valid, setValid] = useState(false)
+  const [valid, setValid] = useState(false);
 
-  useEffect(()=>{
-    setFrontImage(frontImage)
-    setBackImage(backImage)   
-    console.log(frontImage.base64)
-    if(frontImage.length !== 0 && backImage.length !==0){
-        setValid(true)
-    } 
-    else{
-        setValid(false)
+  useEffect(() => {
+    setFrontImage(frontImage);
+    setBackImage(backImage);    
+    if (frontImage.length !== 0 && backImage.length !== 0) {
+      setValid(true);
+    } else {
+      setValid(false);
     }
-  },[loaded])
+  }, [loaded]);
 
   const Load = (base64, type) => {
     if (type === "front") {
@@ -42,7 +40,7 @@ const Advanced_Verf_1 = (props) => {
     } else if (type === "back") {
       setBackImage(base64);
     }
-    setLoaded(!loaded);    
+    setLoaded(!loaded);
   };
 
   return (
@@ -83,7 +81,10 @@ const Advanced_Verf_1 = (props) => {
         <div className="upload">
           <div className="uploading">
             <div className="pages">
-              <img src={frontImage.length !== 0 ? frontImage.base64 : frontpage} alt="frontpage" />
+              <img
+                src={frontImage.length !== 0 ? frontImage.base64 : frontpage}
+                alt="frontpage"
+              />
             </div>
             <div className="uploadType">
               <h5>Upload front page</h5>
@@ -96,8 +97,7 @@ const Advanced_Verf_1 = (props) => {
                     defaultValue={frontImage}
                     multiple={false}
                     onDone={(base64) => {
-                      Load(base64, "front");   
-                    //   console.log(base64)                   
+                      Load(base64, "front");
                     }}
                   />
                 </div>
@@ -107,7 +107,10 @@ const Advanced_Verf_1 = (props) => {
           <hr style={{ color: "gray", width: "100%" }} />
           <div className="uploading">
             <div className="pages">
-              <img src={backImage.length !==0 ? backImage.base64 : backpage} alt="backpage" />
+              <img
+                src={backImage.length !== 0 ? backImage.base64 : backpage}
+                alt="backpage"
+              />
             </div>
             <div className="uploadType">
               <h5>Upload back page</h5>

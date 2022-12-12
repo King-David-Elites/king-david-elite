@@ -19,6 +19,7 @@ const ProfileAsElement = () => {
   const [idType, setIdType] = useState("");
   const [frontImage, setFrontImage] = useState([]);
   const [backImage, setBackImage] = useState([]);
+  const [photo, setPhoto] = useState([]);
 
   const position = useRef(null);
 
@@ -88,6 +89,8 @@ const ProfileAsElement = () => {
                 stage={stage}
                 setStage={setStage}
                 scrollToRef={scrollToRef}
+                photo={photo}
+                setPhoto={setPhoto}
                 position={position}
               />
             )}
