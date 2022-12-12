@@ -166,7 +166,7 @@ const CreateCarListing = () => {
           <div className="sec">
             <select name="carCondition" required onChange={handleChange}>
               <option value="New">New</option>
-              <option value="Used">Used</option>
+              <option value="Used">Preowned</option>
             </select>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { BadgeCheck, Heart, HeartOutline, Search } from 'heroicons-react'
-import React from 'react'
+import React, {useRef, useEffect} from 'react'
 import {
   Background,
   HeroSection,
@@ -23,12 +23,17 @@ import MainButton from '../buttons/MainButton'
 import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom'
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const RealEstateListing = () => {
-  
+  const top = useRef(null)
+
+  useEffect(() => {
+    scrollToRef(top)
+  }, [])
   return (
     <>
       <Navbar active={0}/>
-      <Background imageUrl={realEstatePics} >
+      <Background imageUrl={realEstatePics} ref={top} >
         <HeroSection>
           <Text fontSize="2rem">Luxury Real Estate</Text>
           <SearchSection>
