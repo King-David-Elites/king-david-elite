@@ -27,6 +27,7 @@ const Advanced_Verf_1 = (props) => {
   useEffect(()=>{
     setFrontImage(frontImage)
     setBackImage(backImage)   
+    console.log(frontImage.base64)
     if(frontImage.length !== 0 && backImage.length !==0){
         setValid(true)
     } 
@@ -82,7 +83,7 @@ const Advanced_Verf_1 = (props) => {
         <div className="upload">
           <div className="uploading">
             <div className="pages">
-              <img src={frontpage} alt="frontpage" />
+              <img src={frontImage.length !== 0 ? frontImage.base64 : frontpage} alt="frontpage" />
             </div>
             <div className="uploadType">
               <h5>Upload front page</h5>
@@ -95,7 +96,8 @@ const Advanced_Verf_1 = (props) => {
                     defaultValue={frontImage}
                     multiple={false}
                     onDone={(base64) => {
-                      Load(base64, "front");
+                      Load(base64, "front");   
+                    //   console.log(base64)                   
                     }}
                   />
                 </div>
@@ -105,7 +107,7 @@ const Advanced_Verf_1 = (props) => {
           <hr style={{ color: "gray", width: "100%" }} />
           <div className="uploading">
             <div className="pages">
-              <img src={backpage} alt="backpage" />
+              <img src={backImage.length !==0 ? backImage.base64 : backpage} alt="backpage" />
             </div>
             <div className="uploadType">
               <h5>Upload back page</h5>
