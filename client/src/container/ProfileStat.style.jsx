@@ -562,7 +562,7 @@ export const Post = styled.div`
 
 
 .posts{
-    margin-right:100px;
+    // margin-right:100px;
 }
 
 

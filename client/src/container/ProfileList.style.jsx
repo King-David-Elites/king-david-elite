@@ -18,7 +18,7 @@ export const TCont = styled.div`
     }
 
     .details{
-        padding: 15px;
+        padding: 15px 50px;
         display: grid;
         grid-template-columns: 2fr 4fr 2fr;
         justify-content: space-evenly;
@@ -58,13 +58,13 @@ export const TCont = styled.div`
 
     .bio{
         font-size:17px;
-        padding:20px 30px;
+        padding:20px 100px;
         text-align: justify;
     }
 
     .upgrade{
-        width: 90%;
-        margin: 10px auto;
+        width: 30%;
+        margin: 10px 100px;
         background-color: black;
         color: white;
         text-align: center;
