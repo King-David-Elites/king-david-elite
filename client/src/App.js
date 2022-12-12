@@ -36,6 +36,10 @@ import LoginPage from './Components/Page/LoginPage';
 import EmailPage from './Components/Page/EmailPage';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import Transfer from './Components/Dashboard/Transfer'
+import Transfer2 from './Components/Dashboard/Transfer2'
+import SuccessPage from './Components/Page/SuccessPage';
+import Withdrawal from './Components/Dashboard/Withdrawal';
+import Deposit from './Components/Dashboard/Deposit';
 
 function App() {
   const queryClient = new QueryClient();
@@ -68,8 +72,12 @@ function App() {
           <Route path="/dashboard/" element={<Profile />} />
           <Route path="/dashboard/wallet" element={<Wallet />} />
           <Route path="/dashboard/wallet/transfer" element={<Transfer />} />
+          <Route path="/dashboard/wallet/withdraw" element={<Withdrawal />} />
+          <Route path="/dashboard/wallet/deposit" element={<Deposit />} />
+          <Route path='/dashboard/wallet/transfer/confirm' element={<Transfer2/>} />
           <Route path="/about" element={<About />} />
           <Route path="/help" element={<Help />} />
+          <Route path='/success' element={<SuccessPage/>} />
           <Route path="/help/earning" element={<Earning />} />
           <Route path="/help/benefits" element={<Benefits />} />
           <Route path="/profile" element={<ProfileContainer />} />

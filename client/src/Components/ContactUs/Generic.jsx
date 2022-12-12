@@ -10,7 +10,7 @@ const Generic = () => {
             HAVE ANY <span>QUESTIONS</span>?
         </Text>
         <Text>
-            PLEASE SEND US SO WE CAN HELP YOU BETTER.
+            PLEASE REACH OUT TO US SO WE CAN HELP YOU BETTER.
         </Text>
         <MainButton width="30%" marginTop="20px">
             Contact Us
