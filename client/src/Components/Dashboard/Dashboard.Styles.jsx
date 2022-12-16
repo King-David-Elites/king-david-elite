@@ -592,6 +592,41 @@ export const Form = styled.form`
             color:red;
             margin-top:1em;
         }
+        .preF{
+            padding:2em;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background: rgba(217, 217, 217, 0.1);
+            gap:3em;
+            .preCautions{
+                width:100%;
+                display:flex;
+                justify-content: space-around;
+                align-items: center;
+                padding:1em;                                                
+            }
+            .preCautions > .cautCont{
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;                
+                gap:1em;
+                font-weight: bolder;
+            }
+            .preCautions > .cautCont > .cautImg{
+                width:6em;       
+                height:6em;         
+                display:flex;
+                justify-content: center;
+                align-items: center;                                
+            }
+            .preCautions > .cautCont > .cautImg img{
+                width:100%;
+                height: 100%;
+            }
+        }
         .upload{
             padding:1em;
             display:flex;
@@ -745,16 +780,16 @@ export const Form = styled.form`
         flex-direction: row;
         gap: 1em;
 
-        @media (min-width: ${theme.breakPoint['tablet']}) {
+        /* @media (min-width: ${theme.breakPoint['tablet']}) {
         flex-direction: column;
-    }  
+    }   */
     }
 
     .formField > .section > .input{
         display:flex;
         flex-direction:column;
         gap:0.5em;
-        width: 47%;
+        width: 47%;        
         
         @media (min-width: ${theme.breakPoint['tablet']}) {
         width: 100%;
