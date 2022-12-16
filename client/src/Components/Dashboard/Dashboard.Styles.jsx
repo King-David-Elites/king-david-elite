@@ -451,7 +451,7 @@ export const ProfileContainer = styled.div`
         height:100%;
         background:white;
         border-radius:0px 8px 8px 0px;
-        overflow-y:scroll
+        overflow-y:auto;
     }
     .rightSection > .closeField{
         width:100%;
@@ -547,7 +547,7 @@ export const Form = styled.form`
     #button{
         margin-top:1em;
     }
-    .button{
+    .enable{
         display:flex;
         justify-content:center;
         align-items:center;
@@ -561,6 +561,22 @@ export const Form = styled.form`
         border-radius: 8px;
         cursor:pointer
     }
+    .disable{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        margin-top:5em;
+        width:100%;
+        background:white;
+        padding:0.8em;
+        font-size:1rem;
+        font-weight:bolder;
+        border:2px solid gray;
+        border-radius: 8px;
+        cursor:pointer;
+        color:gray;
+        cursor:default
+    }
     .formField{
         padding-top:2em;
         width:100%;
@@ -570,6 +586,11 @@ export const Form = styled.form`
         }
         #id_section_veri{
             gap:0.5em;
+        }
+        .note{
+            font-size:0.8rem;
+            color:red;
+            margin-top:1em;
         }
         .upload{
             padding:1em;
@@ -596,7 +617,7 @@ export const Form = styled.form`
                 height:auto;
             }
             .uploading > .uploadType{
-                width:10em;
+                width:12em;
                 display:flex;
                 flex-direction:column;
                 gap:0.5em;
@@ -604,6 +625,7 @@ export const Form = styled.form`
                 align-items:flex-start;                                
             }
             .uploadType > .load{
+                position:relative;
                 width:100%;
                 padding:0.5em;
                 display:flex;
@@ -613,6 +635,15 @@ export const Form = styled.form`
                 border-radius:0.3em;
                 color:gray;
                 gap:0.5em;
+                cursor:pointer;
+            }
+            .uploadType > .load > .file{
+                position:absolute;
+                padding:0.5em;
+                top:0;
+                left:0;                
+                opacity:0;
+                cursor:pointer;                
             }
             p{
                 color:gray;
@@ -628,6 +659,19 @@ export const Form = styled.form`
         flex-wrap:wrap;
         gap:3em;
 
+        .id_selected{
+            display:flex;
+            justify-content:flex-start;
+            align-items:center;
+            gap:1em;
+            padding:0.5em;
+            padding-left:1em;
+            flex: 0 1 30em;
+            background:#F2BE5C;
+            border-radius:8px;
+            color: #737373;
+            cursor:pointer;
+        }
         .id_type{
             display:flex;
             justify-content:flex-start;

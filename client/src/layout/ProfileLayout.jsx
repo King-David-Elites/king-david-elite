@@ -62,11 +62,11 @@ const ProfileLayout = () => {
                 data !== null && <div>
                     <TCont ref={top}>
                         <div className="cover">
-                            <img src={bg} alt="" />
+                            <img src={data?.cover} alt="" />
                         </div>
 
                         <div className="details">
-                            <img className='profilePicture' src={bg} alt="profilePics" />
+                            <img className='profilePicture' src={data?.profilePicture} alt="profilePics" />
                             {/* <img className='B2' src={data?.profilePicture} alt="profilePics" /> */}
 
                             <div className="profileText">
@@ -78,7 +78,7 @@ const ProfileLayout = () => {
                                 </p>
                             </div>
 
-                            <div className="btn">
+                            <div className="btn" onClick={() => navigate("/profile/edit")}>
                             <FaPen />
                             <p>Edit Profile</p>
                             </div>

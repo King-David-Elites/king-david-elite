@@ -39,8 +39,6 @@ const CreateCarListing = () => {
     colour: "",
     features: [],
     model: "",
-    noOfBed: 0,
-    noOfBathroom: 0,
   });
   
   useEffect(()=>{
@@ -116,7 +114,7 @@ const CreateCarListing = () => {
   const postUserListings = async (userListings) => {
     await axios
       .post(
-        "http://192.168.43.168:9099/listings/upload-list",
+        "http://localhost:9099/listings/upload-list",
         userListings,
         setConfig()
       )
@@ -166,7 +164,7 @@ const CreateCarListing = () => {
           <div className="sec">
             <select name="carCondition" required onChange={handleChange}>
               <option value="New">New</option>
-              <option value="Used">Used</option>
+              <option value="Used">Preowned</option>
             </select>
           </div>
         </div>
