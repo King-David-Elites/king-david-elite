@@ -36,7 +36,7 @@ const VerificationDetails = {
   const postVerificationDetails = async (userListings) => {
     await axios
       .post(
-        "http://localhost:9099/listings/upload-list",
+        "http://192.168.43.168/listings/upload-list",
         userListings,
         setConfig()
       )
