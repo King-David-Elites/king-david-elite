@@ -604,13 +604,20 @@ export const Form = styled.form`
             }
             .uploading > .pages{
                 width:10em;
+                height:10em;
                 display:flex;
                 justify-content:center;
-                align-items:center;
+                align-items:center;                
+            }
+            .uploading #profile img{
+                width:100%;
+                height:100%;
+                object-fit:cover;
+                border-radius: 50%;
             }
             .pages img{
                 width:100%;
-                height:auto;
+                height:100%;                
             }
             .uploading > .uploadType{
                 width:12em;

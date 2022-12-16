@@ -56,7 +56,7 @@ const Advanced_Verf_2 = (props) => {
         <h5>Upload portrait photo Example...</h5>
         <div className="upload">
           <div className="uploading">
-            <div className="pages">
+            <div className="pages" id="profile">
               <img
                 src={photo.length !== 0 ? photo.base64 : Profile}
                 alt="frontpage"
