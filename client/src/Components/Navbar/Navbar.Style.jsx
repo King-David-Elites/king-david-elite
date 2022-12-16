@@ -15,11 +15,57 @@ export const Header = styled.div`
     z-index:3;
     white-space: nowrap;
 
+
     @media (min-width: ${theme.breakPoint['tablet']}) {
         flex-direction:row;
         align-items:center;
         gap:1em;
+
+        .navigation{
+            display: none;
+        }
     }
+
+    .navigation{
+        position: fixed;
+        min-width: 70%;
+        top: 0;
+        right: -100%;
+        height: 100%;
+        background-color: #fff;
+        transition: 1s ease;
+   }
+
+   .navigation.active{
+        top: 1px;
+        right: 0;
+        transition: 1s ease;
+   }
+
+   .closed{
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+   }
+
+   .navigation ul{
+        display: flex;
+        flex-direction: column;
+        margin: 1em;
+   }
+
+   .navigation ul li{
+       margin-block: 0.5em;
+       list-style: none;
+       color: #000;
+   }
+
+   .navigation ul li a{
+        text-decoration: none;
+        font-size: 17px;
+        color: #000;
+   }
 `
 
 export const UL = styled.ul`    
@@ -75,27 +121,22 @@ export const LogoText = styled.div`
 `
 
 export const Brand = styled.div`
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+
     .dashboard{
         display:none;
     }
+ 
+    .menu-icon{
+       cursor: pointer;
+   }
 
-    .dashboardIcon{
-        display: flex;
-        justify-content: center;
-        align-items: center;    
-        flex-direction: column;
-        position: fixed;
-        bottom: 0;
-        right: 40%;
-        z-index: 10;
-        background-color: black;
-        transform: translateY(-25px);
-        border-radius: 100px;
-        color: white;
-        border: 6px solid #EEF0F2;
-        padding: 0.8em;
-        cursor: pointer;
-    }
+   .menu-icon .menu{
+        display: block;
+   }
 
     .text{
         font-size:12px;
@@ -108,12 +149,13 @@ export const Brand = styled.div`
     }
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap:1em;    
-    font-weight:700;
-    cursor: pointer;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        gap:1em;    
+        font-weight:700;
+        cursor: pointer;
+        width: 0;
 
     .dashboard{
         display:flex;
@@ -124,15 +166,24 @@ export const Brand = styled.div`
         cursor: pointer;
     }
 
-    .dashboardIcon{
+    .menu-icon{
         display: none;
     }
+
     }
     
-    @media(max-width:480px){
+    /* @media(max-width:480px){
         .login{
             display:none;
         }
 
+    } */
+`
+
+export const Login = styled.div`
+    display:none;
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        display: block;
     }
 `

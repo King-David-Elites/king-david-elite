@@ -432,7 +432,7 @@ export const ProfileContainer = styled.div`
     display:flex;
     justify-content:center;
     align-items:flex-start;
-
+   
     .leftSection{
         width:40%;
         height:100%;
@@ -471,7 +471,11 @@ export const ProfileContainer = styled.div`
 `
 export const Form = styled.form`
     width:100%;
-    padding:3em 3em 2em 3em;    
+    padding:3em 2em 2em 2em;    
+
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        padding:3em 3em 2em 3em; 
+    }  
     
     .id-v{        
         margin:0.5em;
@@ -735,11 +739,26 @@ export const Form = styled.form`
         }
 
     }
+
+    .formField > .section{
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+        flex-direction: column;
+    }  
+    }
+
     .formField > .section > .input{
         display:flex;
         flex-direction:column;
         gap:0.5em;
-        flex: 1 1 15em;
+        width: 47%;
+        
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+        width: 100%;
+    }  
 
         label{
             font-size:0.8rem;

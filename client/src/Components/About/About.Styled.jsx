@@ -8,12 +8,23 @@ export const Flex = styled.div`
     justify-content: center;
     justify-items: center;
     padding: ${({padding})=> padding || "47px"};
+
+    @media(max-width:850px){
+        display:block;
+        gap: 20px;
+        padding: 20px;
+    }
 `
 
 export const GlobalContainer = styled.div`
     width: ${({width})=> width};
     padding: ${({padding})=> padding};
     margin: ${({margin})=> margin};
+
+    @media (max-width: 850px){
+        width: 100%;
+        margin: 30px 0;
+    }
 `
 
 export const StackedImage = styled.div`
@@ -25,6 +36,7 @@ export const StackedImage = styled.div`
     justify-self: center;
     align-self: center;
     align-content: center;
+
     img{
     width: ${({width})=> width || "100px"};
     height: ${({height})=> height || "180px"};
@@ -32,7 +44,19 @@ export const StackedImage = styled.div`
     
     }
     position: relative;
-`
+
+    @media(max-width: 850px){
+        width: 100%;
+        height: 100%;
+        position: static;
+
+        img{
+            width: 100%;
+            height: 100%;
+            /* margin: 50px 0 0; */
+        }
+    }
+ `
 
 export const AbsoluteImage = styled.div`
     width: ${({width})=> width || "100px"};
@@ -45,4 +69,8 @@ export const AbsoluteImage = styled.div`
     right: ${({right})=> right };
     bottom: ${({bottom})=> bottom };
     z-index: -1;
+
+    @media(max-width: 800px) {
+        display: none;
+    }
 `

@@ -51,8 +51,10 @@ const About = () => {
             from the luxury realtors to the buyers or the investors.
           </Text>
 
-          <MainButton width="282px">Get Started</MainButton>
-        </GlobalContainer>
+                <MainButton width="282px">
+                    Get Started
+                </MainButton> 
+            </GlobalContainer>
 
         <GlobalContainer>
           <StackedImage width="192px" height="282px">
@@ -97,11 +99,11 @@ const About = () => {
             to the aforementioned.
           </Text>
 
-          <MainButton background="black" width="50%" border="black">
-            Read More
-          </MainButton>
-        </GlobalContainer>
-      </Flex>
+                <MainButton background="black" width="50%" border="black">
+                    Read More
+                </MainButton>
+            </GlobalContainer>
+        </Flex>
 
       <Generic />
 
