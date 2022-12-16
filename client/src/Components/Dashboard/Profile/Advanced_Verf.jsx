@@ -1,59 +1,76 @@
-import React from 'react'
-import {Identification, GlobeAlt,} from "heroicons-react"
-import liscence from "../Dashboard-Image/liscence.png"
+import React from "react";
+import { Identification, GlobeAlt } from "heroicons-react";
+import liscence from "../Dashboard-Image/liscence.png";
+import { useState } from "react";
 
-const Advanced_Verf = (props) =>{
-    let {
-      stage,
-      setStage,
-      scrollToRef,
-      position
-    } = props
-  
-    return(
-      <>
-        <h3>Select ID type</h3>
-        <div className="id_info" id="verify">
-            <p>Use a valid government-issued photo ID.</p>
-        </div>
-        
+const Advanced_Verf = (props) => {
+  let { stage, setStage, scrollToRef, idType, setIdType, position } = props;
 
-        <div className="formField">
-            <div className="section" id="id_section">
-                <div className="id_type">
-                    <div>
-                        <GlobeAlt size="30px"/>
-                    </div>                    
-                    <h4>Passport</h4>
-                </div>
-                <div className="id_type">
-                    <div className="lsc">
-                        <img src={liscence} alt="liscence"/>
-                    </div>                    
-                    <h4>Driver's liscence</h4>
-                </div>
-                <div className="id_type">
-                    <div>
-                        <Identification size="30px"/>
-                    </div>                    
-                    <h4>Identity card</h4>
-                </div>
-            </div>
-        </div>
+  const [selected, setSelected] = useState(false);
 
-        <div          
-            className="button"
-            onClick={()=>{
-              setStage(stage+1)
-              scrollToRef(position)
+  return (
+    <>
+      <h3>Select ID type</h3>
+      <div className="id_info" id="verify">
+        <p>Use a valid government-issued photo ID.</p>
+      </div>
+
+      <div className="formField">
+        <div className="section" id="id_section">
+          <div
+            className={idType === "Passport" ? "id_selected" : "id_type"}
+            onClick={() => {
+              setIdType("Passport");
+              setSelected(true);
             }}
           >
-            Continue
+            <div>
+              <GlobeAlt size="30px" />
+            </div>
+            <h4>Passport</h4>
+          </div>
+          <div
+            className={
+              idType === "Driver's liscence" ? "id_selected" : "id_type"
+            }
+            onClick={() => {
+              setIdType("Driver's liscence");
+              setSelected(true);
+            }}
+          >
+            <div className="lsc">
+              <img src={liscence} alt="liscence" />
+            </div>
+            <h4>Driver's liscence</h4>
+          </div>
+          <div
+            className={idType === "Identity card" ? "id_selected" : "id_type"}
+            onClick={() => {
+              setSelected(true);
+              setIdType("Identity card");
+            }}
+          >
+            <div>
+              <Identification size="30px" />
+            </div>
+            <h4>Identity card</h4>
+          </div>
         </div>
-  
-  
-      </>
-    )
-  }
+      </div>
 
-  export default Advanced_Verf
+      <div
+        className={selected ? "enable" : "disable"}
+        onClick={() => {
+          if (selected) {
+            setStage(stage + 1);
+            scrollToRef(position);
+          }
+        }}
+      >
+        Continue
+      </div>
+    </>
+  );
+};
+
+export default Advanced_Verf;

@@ -1,5 +1,5 @@
 import { LocationMarker, BadgeCheck } from 'heroicons-react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { EachBuildingContainer } from './RealEstate.Style';
 import realEstatePics from './Image/real-estate-pics.jpg';
@@ -10,21 +10,36 @@ import { MOCK_DATA } from './MOCK_DATA';
 import { useNavigate } from 'react-router-dom';
 import theme from '../../application/utils/Theme';
 import { MorePic, Text, MoreBg } from '../Cars/Cars.Style';
+import { useCallback, useState } from 'react';
+import axios from 'axios';
+import TimeAgo from "timeago-react";
 
 const EachBuilding = ({ active }) => {
     const navigate = useNavigate();
-    const { title } = useParams()
-    const selectedBuilding = MOCK_DATA.find((items) => items.propertyName === title);
+    const { id } = useParams()
+    const [property, setProperty] = useState({})
+    // const selectedBuilding = MOCK_DATA.find((items) => items.propertyName === title);
     const MediaType = [
         {
-            link: `/real-estate/${selectedBuilding.propertyName}`,
+            link: `/real-estate/${property.title}`,
             media: "Photos"
         },
         {
-            link: `/real-estate/${selectedBuilding.propertyName}/videos`,
+            link: `/real-estate/${property.title}/videos`,
             media: "Videos"
         }
     ]
+
+    const getAList = useCallback(()=>{
+        axios.get(`http://localhost:9099/listings/each/${id}`)
+        .then(resp => setProperty(resp.data))
+        .catch(err => console.error(err));
+    }, [id])
+
+    useEffect(() => {
+        getAList();
+    }, [getAList])
+
     return (
         <>
             <Navbar bg="black" sticky="sticky" />
@@ -35,11 +50,11 @@ const EachBuilding = ({ active }) => {
                 </div>
 
                 <div className="banner">
-                    <h3>{selectedBuilding.propertyName}</h3>
-                    <h5>US {selectedBuilding.price}</h5>
+                    <h3>{property.title}</h3>
+                    <h5>US {property.price}</h5>
                     <div className='locationIcon'>
                         <p className='icon'><LocationMarker size={15} /></p>
-                        <p>{selectedBuilding.location}</p>
+                        <p>{property.location}</p>
                     </div>
                 </div>
 
@@ -62,66 +77,47 @@ const EachBuilding = ({ active }) => {
 
                 <div className="imageGallery">
                     {
-                        selectedBuilding.images.map((image) => {
+                        property.images?.map((image, i) => {
+                            console.log(image)
                             return (
                                 <>
-                                    <div className='imageFlex' id={image.id} {...image} selectedBuilding={selectedBuilding}>
+                                    <div className='imageFlex' id={i} {...image} selectedBuilding={property}>
                                         {
-                                            image.id === 1 ?
-                                                <div className='imgCont'>
-                                                    <img
-                                                        src={image.estateListed}
-                                                        alt="realestate"
-                                                        />
-                                                        
-                                                </div>
-                                                :
-                                                (
-                                                    image.id <= 3 &&
+                                
                                                     <div className="image">
                                                         <img
-                                                            src={image.estateListed}
+                                                            src={image}
                                                             alt="realestate"
                                                         />
                                                     </div>
-                                                )
+                                              
                                         }
-                                        {
-                                            (
-                                                image.id === 4 &&
-                                                <MorePic imageUrl={image.estateListed}>
-                                                    <MoreBg
-                                                        onClick={() => navigate(`${selectedBuilding.id}`)}
-                                                    >
-                                                        <Text>+16</Text>
-                                                    </MoreBg>
-                                                </MorePic>
-                                            )
-                                        }
+                                       
                                     </div>
                                 </>
                             )
                         })
                     }
-                    <p>Listed on {selectedBuilding.dateListed}</p>
                 </div>
 
                 <div className="details">
                     <div className="listDetails">
+                    <p>Listed on <TimeAgo datetime={property.createdAt}/></p>
                         <h4>Amenities</h4>
-                        <p>Swimming Pool</p>
-                        <p>Gymnasium</p>
-                        <p>Garden</p>
-                        <p>Jacuzzi</p>
-                        <p>Fireplace</p>
-                        <p>Air Conditioning</p>
-                        <p className="yearDetail">Year: {selectedBuilding.BuildingDetails['YearBuilt']}</p>
+                        {
+                            property.features?.map((feature, i)=>{
+                                return(
+                                    <p key={i}>{feature}</p>
+                                )
+                            })
+                        }
+                        <p className="yearDetail">Year: {property.year}</p>
                     </div>
                     <div className="posterDetails">
                         <div className="container">
-                            <h4>{selectedBuilding.DealerName} <BadgeCheck color="blue" width="30px" /></h4>
-                            <p>Shaner estate, {selectedBuilding.location}.</p>
-                            <p>Joined: {selectedBuilding.dateJoined}</p>
+                            <h4>{property.postedBy?.firstName + " " + property.postedBy?.lastName} <BadgeCheck color="blue" width="30px" /></h4>
+                            <p>Shaner estate, {property.location}.</p>
+                            <p>Joined: <TimeAgo datetime={property.postedBy?.createdAt}/> </p>
 
                             <div className="options">
                                 <div className="option solid">
@@ -134,7 +130,7 @@ const EachBuilding = ({ active }) => {
                             </div>
                         </div>
 
-                        <img className='buildingImage' src={realEstatePics} alt="" />
+                        {/* {property?.images[0] && <img className='buildingImage' src={property?.images[0]} alt="" />} */}
                     </div>
                 </div>
             </EachBuildingContainer>

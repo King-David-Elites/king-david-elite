@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Transfer = () => {
     const navigate = useNavigate()
-
+    
     return (
         <div className="transfer-wrapper">
             <div className="top-navigation">
@@ -30,7 +30,7 @@ const Transfer = () => {
                     <input type="text" placeholder='000  000  XY' />
                 </div>
 
-            <MainButton width="100%" marginTop="20px" padding="1.5em" color={theme.footerColor}>Continue</MainButton>
+            <MainButton width="100%" marginTop="20px" padding="1.5em" color={theme.footerColor} onClick={() => navigate("/dashboard/wallet/transfer/confirm")}>Continue</MainButton>
             </form>
         </div>
     );

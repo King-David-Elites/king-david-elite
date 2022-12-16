@@ -1,10 +1,18 @@
 import React from 'react'
-import { Header, UL, LI,  LogoText, Brand } from './Navbar.Style'
+import { Header, UL, LI, LogoText, Brand, Login } from './Navbar.Style'
 import kde_whiteBg from './Image/kde_whiteBg.png'
 import { useNavigate } from 'react-router-dom'
 import { MdMenu } from 'react-icons/md';
+import { ImCross } from 'react-icons/im';
+import { useState } from 'react';
 
 const Navbar = ({ bg, sticky, active }) => {
+
+    const [activeNav, setActiveNav] = useState(false);
+
+    const showMenu = () => {
+        setActiveNav(!activeNav);
+    }
 
     const navigate = useNavigate()
 
@@ -32,7 +40,36 @@ const Navbar = ({ bg, sticky, active }) => {
 
     return (
         <>
+
             <Header className='bg-cover' bg={bg} position={sticky}>
+
+                <nav className={activeNav ? 'navigation active' : 'navigation'}>
+                    <ul>
+                        <div className='closed'>
+                            <ImCross className='close' color='#000' onClick={showMenu} />
+                        </div>
+                        {
+                            navOptions.map((nav, i) => {
+                                return (
+                                    <>
+                                        <li
+                                            key={i}
+                                            onClick={() => navigate(nav.link)}
+
+                                        >
+                                            <div className={active === i && "item-active"}>
+                                                {nav.title}
+                                            </div>
+
+                                        </li>
+                                    </>
+
+
+                                )
+                            })
+                        }
+                    </ul>
+                </nav>
                 <Brand onClick={() => navigate("/")}>
                     <div style={{ width: "4em", height: "auto" }}>
                         <img src={kde_whiteBg}
@@ -40,7 +77,12 @@ const Navbar = ({ bg, sticky, active }) => {
                             alt="brandlogo" />
                     </div>
                     <LogoText>KING DAVID ELITES</LogoText>
+
+                    <div className='menu-icon'>
+                        <MdMenu size={50} className='menu' onClick={showMenu} />
+                    </div>
                 </Brand>
+
                 <div>
                     <UL>
                         {
@@ -62,20 +104,15 @@ const Navbar = ({ bg, sticky, active }) => {
                     </UL>
                 </div>
 
-                <Brand>
+                <Login>
                     {
-                        token ? 
-                        <div onClick={() => navigate("/dashboard")} className='dashboard'>DASHBOARD</div>
-                        :
-                        <div className="login" onClick={() => navigate("/signup")}>Login/Sign Up</div>
+                        token ?
+                            <div onClick={() => navigate("/dashboard")} className='dashboard'>DASHBOARD</div>
+                            :
+                            <div className="login" onClick={() => navigate("/signup")}>Login/Sign Up</div>
                     }
-                    <div className="h-[8%] w-[full] z-[10]">
-                        <div className="dashboardIcon">
-                            <MdMenu size={20} />
-                            {/* <span className='text'>DASHBOARD</span> */}
-                        </div>
-                    </div>
-                </Brand>
+
+                </Login>
             </Header>
         </>
     )
