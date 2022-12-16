@@ -44,7 +44,7 @@ const About = () => {
                 or the investors.
                 </Text>
 
-                <MainButton width="282px">
+                <MainButton width="100%">
                     Get Started
                 </MainButton> 
             </GlobalContainer>
@@ -80,7 +80,7 @@ const About = () => {
                 Hence, this platform was created to provide solutions to the aforementioned.
                 </Text>
 
-                <MainButton background="black" width="50%" border="black">
+                <MainButton background="black" width="100%" border="black">
                     Read More
                 </MainButton>
             </GlobalContainer>
