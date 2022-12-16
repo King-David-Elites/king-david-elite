@@ -9,6 +9,7 @@ import BasicInfo from "./BasicInfo";
 import Advanced_Verf from "./Advanced_Verf";
 import Advanced_Verf_1 from "./Advanced_Verf_1";
 import Advanced_Verf_2 from "./Advanced_verf_2";
+import Advanced_Verf_3 from "./Advanced_Verf_3";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -96,7 +97,15 @@ const ProfileAsElement = () => {
             )}
 
             {stage === 5 && (
-              <Advanced_Verf_3 stage={stage} setStage={setStage} />
+              <Advanced_Verf_3
+                stage={stage}
+                scrollToRef={scrollToRef}
+                frontImage={frontImage}
+                backImage={backImage}
+                photo={photo}
+                position={position}
+                setStage={setStage}
+              />
             )}
 
             {stage === 6 && <Verified stage={stage} setStage={setStage} />}
@@ -104,16 +113,6 @@ const ProfileAsElement = () => {
         </div>
       </ProfileContainer>
     </GenericContainer>
-  );
-};
-
-const Advanced_Verf_3 = (props) => {
-  let { stage, setStage } = props;
-
-  return (
-    <>
-      <h1>Stage 5</h1>
-    </>
   );
 };
 

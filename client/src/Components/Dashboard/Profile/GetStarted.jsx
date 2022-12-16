@@ -55,7 +55,7 @@ const GetStarted = (props) => {
       <div className="details">
         <div className="title">
           <div className="tag">1</div>
-          <h4> Basic Iformation </h4>
+          <h4> Basic Information </h4>
         </div>
         <ul>
           <li> First and Last Name </li>
@@ -74,7 +74,7 @@ const GetStarted = (props) => {
           <li> Take a picture of yourself to verify your identity </li>
         </ul>
       </div>
-      
+
       <div
         className={valid ? "enable" : "disable"}
         onClick={() => {
