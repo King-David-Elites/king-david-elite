@@ -20,15 +20,15 @@ const BasicInfo = (props) =>{
       position
     } = props
 
-    userInfo = {
-        firstName:"",
-        lastName:"",
-        dob:"",
-        resAddress:"",
-        city:"",
-        postalCode:"",
-        country: country
-    }
+    // userInfo = {
+    //     firstName:"",
+    //     lastName:"",
+    //     dob:"",
+    //     resAddress:"",
+    //     city:"",
+    //     postalCode:"",
+    //     country: country
+    // }
 
     const handleChange = (e) =>{
         const name = e.target.name;
@@ -152,7 +152,7 @@ const BasicInfo = (props) =>{
                 </div>
             </div>
             <div className="formField">
-                <div className="section" id="section">
+                <div className="" id="section">
                     <div          
                         className="button"
                         id="back"
