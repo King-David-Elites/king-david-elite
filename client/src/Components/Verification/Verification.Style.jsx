@@ -3,15 +3,15 @@ import theme from "../../application/utils/Theme";
 
 export const VerificationContainer = styled.div`
 
- height: 400px;
+ /* height: 400px; */
    
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        height: 1000px;
+        /* height: 1000px; */
         }
 
     .container{
         display: block;
-        margin: 25em 2em;
+        margin: 20px;
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
             display: none;
@@ -21,7 +21,7 @@ export const VerificationContainer = styled.div`
     .verification-wrapper>h3 {
     font-weight: 700;
     font-size: 20px;
-    margin: 1.5em 0em 0em 1.5em;
+    /* margin: 1.5em 0em 0em 1.5em; */
 }
 
 .line {
@@ -43,10 +43,10 @@ export const VerificationContainer = styled.div`
 
 .verification {
     font-size: 16px;
-    line-height: 18px;
+    /* line-height: 18px; */
     display: flex;
     flex-direction: column;
-    margin: 1.4em 0em 0em 4.5em;
+    /* margin: 1.4em 0em 0em 4.5em; */
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         margin:1em 6em;
@@ -86,7 +86,7 @@ export const VerificationContainer = styled.div`
 .verification > p{
     color: #0D0D0D;
     font-weight: 600;
-    line-height: 25px;
+    /* line-height: 25px; */
 }
 
 .verification-wrapper > button{
@@ -97,7 +97,7 @@ export const VerificationContainer = styled.div`
     outline: none;
     border-radius: 4px;
     width: 100px;
-    margin:2em 0em 0em 4em;
+    /* margin:2em 0em 0em 4em; */
     cursor: pointer;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
@@ -112,7 +112,7 @@ export const DesktopContainer = styled.div`
    
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        margin: 33em 10em 0em 10em;
+        /* margin: 33em 10em 0em 10em; */
         display: flex;
         width: auto;
         height: 50em;
@@ -130,6 +130,7 @@ export const DesktopContainer = styled.div`
     .leftSect > img{
         width: 100%;
         height: 100%;
+        object-fit: cover;
     }
 
     .rightSect{

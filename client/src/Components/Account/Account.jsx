@@ -47,6 +47,7 @@ const Account = () => {
             <p className="neutral-text">This information will only be used to validate withdrawal.</p>
 
             <form className="text-wrapper" onSubmit={formik.handleSubmit}>
+
                 <div className="label">
                     <label htmlFor="">Account No:</label>
                     <input type="text" className="form" name="accountNo" value={formik.values.accountNo} onChange={formik.handleChange} />
@@ -64,13 +65,12 @@ const Account = () => {
                     <input type="text" className="form" name="email" value={formik.values.email} onChange={formik.handleChange} />
                 </div>
                 {formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
-
-
-                <button className='create' type="submit">Save</button>
-
             </form>
 
+            <button className='create' type="submit">Save</button>
             <p className="blue-text" onClick={() => navigate("/dashboard/wallet")}>proceed to dashboard</p>
+
+
         </Wrapper >
     );
 }

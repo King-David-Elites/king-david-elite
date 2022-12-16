@@ -1,8 +1,9 @@
 import styled from "styled-components"
 
 export const List = styled.div`
-margin-top: 30em;
-height:200px;
+    width: 80%;
+    margin: 20px auto;
+    
 `
 
 export const MiddleContainer = styled.div`
@@ -57,75 +58,12 @@ export const MiddleContainer = styled.div`
     transform: rotate(-0.26deg);
 }
 
-
-@media(max-width:450px){
-
-    .lines{
-        /* position: absolute; */
-        width:100%;
-        height:0px;
-        /* left:3px;
-        top:440px; */
-        border:2px solid rgba(166, 166, 166, 0.2);
-        transform: rotate(-0.26deg);
-    }
-    
-    .middle_btn{
-        margin:0;
-        display:flex;
-        /* position:absolute;
-        top:460px;
-        left:30px; */
-    
-        button{
-            margin:0;
-            padding: 12px 15px;
-            width:30px;
-            height:0px;
-            background:white;
-            border-radius: 4px;
-            margin-right:40px;   
-            border:none;
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 500;
-            font-size:12px;
-            line-height:0px;
-            color: #696969;
-
-        }
-
-
-        .stat{
-            color:#252625;
-            font-weight:900px;
-        }
-    
-        .list{
-            color:#696969;
-            background:white;
-        }
-    
-    }
-    
-    .lines2{
-        /* position: absolute; */
-        /* width:100%; */
-        height:0px;
-        /* left:3px;
-        top:500px; */
-        border:2px solid rgba(166, 166, 166, 0.2);
-        /* transform: rotate(-0.26deg); */
-    }
-
-}
-
 `
 
 export const Overview = styled.div`
-margin-top:-365px;
+/* margin-top:-365px; */
 display:flex;
-margin-left: 160px;
+/* margin-left: 160px; */
 
 
 .account{
@@ -137,12 +75,9 @@ margin-left: 160px;
     }
 
     p{
-
-        font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
         font-size:14px;
-        line-height: 20px;
         color: #737373;
     }
 
@@ -216,8 +151,8 @@ margin-left: 160px;
 
 .page{
     display: flex;
-    margin-right:5px;
-    margin-top:30px;
+    /* margin-right:5px;
+    margin-top:30px; */
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -396,17 +331,18 @@ margin-left: 160px;
 `
 
 export const Post = styled.div`
-   margin:15em 120px;
+   /* margin:15em 120px; */
    display:flex;
+   margin: 50px 0;
 
    h3{
-    font-family: 'Poppins';
+    /* font-family: 'Poppins'; */
     font-style: normal;
-    font-weight:600;
+    /* font-weight:600; */
     font-size:20px;
-    line-height: 36px;
+    /* line-height: 36px; */
     color: #000000;
-    margin:-100px -40px;
+    /* margin:-100px -40px; */
 
   
    }
@@ -414,7 +350,7 @@ export const Post = styled.div`
    .min-post{
     display:flex;
     width:190px;
-    margin:15px 25px;
+    /* margin:15px 25px; */
 
     p{
         font-family: 'Poppins';
