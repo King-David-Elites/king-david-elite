@@ -90,6 +90,7 @@ function App() {
           <Route path="/profile/create-listings" element={<CreateListing />} />
           <Route path="/profile/me" element={<LoggedUser />} />
           <Route path="/profile/:id" element={<OtherUser />}/>
+          <Route path="/waitList" element={<Waitlist />} />
         </Routes>
       </Router>
     </QueryClientProvider>
