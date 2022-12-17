@@ -19,7 +19,7 @@ export default function Waitlist() {
         let name = nameRef.current.value;
         let email = emailRef.current.value;
         if(name !== "" && email !== ""){
-           await axios.post("https://kde-api.herokuapp.com/wait-list", {name, email})
+           await axios.post("https://kde.cyclic.app//wait-list", {name, email})
         .then(resp => {
             setDisplayText('Thank you, Successfully Submitted!')
             setError(false)

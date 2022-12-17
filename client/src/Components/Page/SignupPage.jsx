@@ -24,7 +24,7 @@ const SignUpPage = () => {
       password: passwordRef.current.value,
     }    
 
-     await axios.post("http://192.168.43.168:9099/users/sign-up", userDetails)
+     await axios.post("https://kde.cyclic.app//users/sign-up", userDetails)
       .then(resp => {
         let res=resp.data;
         let token = res.token;
