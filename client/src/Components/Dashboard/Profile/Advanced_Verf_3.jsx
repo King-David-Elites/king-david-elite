@@ -36,7 +36,7 @@ const VerificationDetails = {
   const postVerificationDetails = async (userListings) => {
     await axios
       .post(
-        "http://192.168.43.168/listings/upload-list",
+        "https://kde.cyclic.app/listings/upload-list",
         userListings,
         setConfig()
       )

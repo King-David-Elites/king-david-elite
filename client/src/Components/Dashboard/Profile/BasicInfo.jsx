@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import axios from "axios";
 
 const BasicInfo = (props) => {
   let { setRegistering, country, stage, setStage, scrollToRef, position } =
@@ -24,6 +25,10 @@ const BasicInfo = (props) => {
     country: country,
   });
 
+  useEffect(()=>{
+    getUserDetails()
+  },[getUserDetails])
+
   useEffect(() => {
     setUserInfo(userInfo);
     console.log(userInfo);
@@ -40,6 +45,33 @@ const BasicInfo = (props) => {
       setValid(false);
     }
   }, [changing]);
+
+  // const setConfig = (userListings) => {
+  //   const authToken = localStorage.getItem("token");
+
+  //   const config = {
+  //     headers: {
+  //       Authorization: `Bearer ${authToken}`,
+  //       ContentType: "application/json",
+  //     },
+  //   };
+
+  //   return config;
+  // };
+
+  const getUserDetails = async (userListings) => {
+    await axios
+      .get(
+        "http://https://kde.cyclic.app/users/me",               
+      )
+      .then((resp) => {
+        console.log(resp.data);        
+      })
+      .catch((err) => {
+        console.log(err.data);
+      });
+  };
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
