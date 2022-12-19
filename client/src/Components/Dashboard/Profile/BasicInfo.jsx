@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import axios from "axios";
 
 const BasicInfo = (props) => {
   let { setRegistering, country, stage, setStage, scrollToRef, position } =
@@ -24,9 +25,36 @@ const BasicInfo = (props) => {
     country: country,
   });
 
+  const setConfig = () => {
+    const authToken = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        ContentType: "application/json",
+      },
+    };
+
+    return config;
+  };
+
+  const getUserDetails = async () => {
+    await axios
+      .get("https://kde.cyclic.app/users/me", setConfig())
+      .then((resp) => {
+        console.log(resp.data);
+      })
+      .catch((err) => {
+        console.log(err.data);
+      });
+  };
+
+  useEffect(() => {
+    getUserDetails();
+  }, []);
+
   useEffect(() => {
     setUserInfo(userInfo);
-    console.log(userInfo);
     if (
       userInfo["firstName"] &&
       userInfo["lastName"] &&
@@ -34,12 +62,13 @@ const BasicInfo = (props) => {
       userInfo["resAddress"] &&
       userInfo["city"] &&
       userInfo["postalCode"]
-    ) {      
+    ) {
       setValid(true);
     } else {
       setValid(false);
     }
   }, [changing]);
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -116,11 +145,9 @@ const BasicInfo = (props) => {
             <input type="text" value={country} name="country" readOnly />
           </div>
         </div>
-        {
-            !valid && <p className="note">* All fields are required</p>
-        }        
+        {!valid && <p className="note">* All fields are required</p>}
       </div>
-      
+
       <div className="formField">
         <div className="section" id="section">
           <div
@@ -133,7 +160,7 @@ const BasicInfo = (props) => {
             }}
           >
             Back
-          </div>          
+          </div>
           <div
             className={valid ? "enable" : "disable"}
             id={valid ? "continue_enable" : "continue_disable"}

@@ -8,17 +8,15 @@ import axios from "axios";
 const Advanced_Verf_2 = (props) => {
   let { stage, setStage, scrollToRef, photo, backImage, frontImage, position } =
     props;
-const VerificationDetails = {
-    
-}
+  const VerificationDetails = {};
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    if (success) {
-      setStage(stage + 1);
-      scrollToRef(position);
-    }
-  }, [success]);
+  // useEffect(() => {
+  //   if (success) {
+  //     setStage(stage + 1);
+  //     scrollToRef(position);
+  //   }
+  // }, [success]);
 
   const setConfig = (userListings) => {
     const authToken = localStorage.getItem("token");
@@ -36,7 +34,7 @@ const VerificationDetails = {
   const postVerificationDetails = async (userListings) => {
     await axios
       .post(
-        "http://192.168.43.168/listings/upload-list",
+        "https://kde.cyclic.app/listings/upload-list",
         userListings,
         setConfig()
       )
@@ -50,7 +48,9 @@ const VerificationDetails = {
   };
 
   const handleSubmit = () => {
-    postVerificationDetails();
+    // postVerificationDetails();
+    setStage(stage + 1);
+    scrollToRef(position);
   };
 
   return (
@@ -114,11 +114,7 @@ const VerificationDetails = {
           </div>
         </div>
       </div>
-      <div
-        className={"enable"}
-        id="button"
-        onClick={handleSubmit}
-      >
+      <div className={"enable"} id="button" onClick={handleSubmit}>
         Begin Verification
       </div>
     </>

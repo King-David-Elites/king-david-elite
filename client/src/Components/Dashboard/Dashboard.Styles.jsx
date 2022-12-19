@@ -447,11 +447,15 @@ export const ProfileContainer = styled.div`
         height:100%
     }
     .rightSection{
-        width:60%;
+        width:100%;
         height:100%;
         background:white;
         border-radius:0px 8px 8px 0px;
         overflow-y:auto;
+
+        @media (min-width: ${theme.breakPoint['tablet']}) {
+            width: 60%;
+        }
     }
     .rightSection > .closeField{
         width:100%;
@@ -478,14 +482,16 @@ export const Form = styled.form`
     }  
     
     .id-v{        
-        margin:0.5em;
+        margin:3em 0.5em;
         display:flex;
         justify-content:center;
         align-items:center;
         gap:0.5em;
+      
         p{
             font-size:0.8rem;
             color:gray;
+           
         }        
     }
     .id_info {
@@ -593,34 +599,66 @@ export const Form = styled.form`
             margin-top:1em;
         }
         .preF{
-            padding:2em;
+            padding:0em;
             display:flex;
             flex-direction:column;
             justify-content:center;
             align-items:center;
             background: rgba(217, 217, 217, 0.1);
             gap:3em;
+
+            @media (min-width: ${theme.breakPoint['tablet']}) {
+                padding:2em;
+            }
+
+            .verifyLogo{
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap:1em;
+                padding-bottom:7em;
+            }
+            .verifyLogo > .logo{
+                width:5em;
+                height:5em;
+                border-radius:5em;
+                display:flex;
+                justify-content: center;
+                align-items:center;
+                background:green;
+            }
+            .verifyLogo > .text{
+                width:100%;
+                text-align:center;
+                font-size:0.8rem;
+            }            
+            
             .preCautions{
                 width:100%;
                 display:flex;
                 justify-content: space-around;
                 align-items: center;
-                padding:1em;                                                
+                padding:1em; 
             }
             .preCautions > .cautCont{
                 display:flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: center;                
+                align-items:center;                
                 gap:1em;
-                font-weight: bolder;
-            }
+                font-weight: bolder;                                
+            }            
             .preCautions > .cautCont > .cautImg{
                 width:6em;       
                 height:6em;         
                 display:flex;
                 justify-content: center;
                 align-items: center;                                
+            }
+            .preCautions > .cautCont > p{
+                white-space: nowrap;
+                font-size: 13px;
             }
             .preCautions > .cautCont > .cautImg img{
                 width:100%;
@@ -639,14 +677,20 @@ export const Form = styled.form`
                 justify-content:center;
                 align-items:center;
                 flex-wrap:wrap;
-                gap:5em;
+                gap:1em;
+
+                @media (min-width: ${theme.breakPoint['tablet']}) {
+                    gap:5em;
+                }
             }
             .uploading > .pages{
-                width:10em;
-                height:10em;
+                width:10em;                
                 display:flex;
                 justify-content:center;
                 align-items:center;                
+            }
+            .uploading #profile{
+                height:10em
             }
             .uploading #profile img{
                 width:100%;
@@ -656,7 +700,7 @@ export const Form = styled.form`
             }
             .pages img{
                 width:100%;
-                height:100%;                
+                height:auto;                
             }
             .uploading > .uploadType{
                 width:12em;
