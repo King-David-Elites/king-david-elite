@@ -56,16 +56,23 @@ export const Header = styled.div`
    }
 
    .navigation.active{
-        top: 1px;
+        top: 0.01px;
         right: 0;
         transition: 1s ease;
+   }
+
+   .navigation p{
+    color: #000;
+    font-weight: 500;
+    font-size: 15px;
    }
 
    .closed{
         cursor: pointer;
         width: 100%;
         display: flex;
-        justify-content: flex-end;
+        align-items: center;
+        justify-content: space-between;
    }
 
    .navigation ul{

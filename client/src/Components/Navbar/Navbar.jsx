@@ -124,12 +124,11 @@ const Navbar = ({ bg, sticky, active }) => {
 
     return (
         <>
-
             <Header className='bg-cover' bg={bg} position={sticky}>
-
                 <nav className={activeNav ? 'navigation active' : 'navigation'}>
                     <ul>
                         <div className='closed'>
+                            <p>Welcome!</p>
                             <ImCross className='close' color='#000' onClick={showMenu} />
                         </div>
                         <div className='line'></div>

@@ -12,43 +12,43 @@ import img3 from './Dashboard-Image/Untitled2.png'
 
 const MessagesAsElement = () => {
     return (
-            <MessagesContainer>
-                <div className="listOfMessages">
-                    <h3 className='title'>Messages</h3>
+        <MessagesContainer>
+            <div className="listOfMessages">
+                <h3 className='title'>Messages</h3>
 
-                    <div className="messages">
-                        <div className="message">
-                            <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
+                <div className="messages">
+                    <div className="message">
+                        <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
 
-                            <div className="textContent">
-                                <h5>
-                                    Lambo Dealer
-                                </h5>
-                                <p>
-                                    How are you doing man?
-                                </p>
-                            </div>
+                        <div className="textContent">
+                            <h5>
+                                Lambo Dealer
+                            </h5>
+                            <p>
+                                How are you doing man?
+                            </p>
                         </div>
+                    </div>
 
-                        <div className="message">
-                            <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
+                    <div className="message">
+                        <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
 
-                            <div className="textContent">
-                                <h5>
-                                    Lambo Dealer
-                                </h5>
-                                <p>
-                                    How are you doing man?
-                                </p>
-                            </div>
+                        <div className="textContent">
+                            <h5>
+                                Lambo Dealer
+                            </h5>
+                            <p>
+                                How are you doing man?
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div className="eachChat">
+            <div className="eachChat">
 
-                </div>
-            </MessagesContainer>
+            </div>
+        </MessagesContainer>
     )
 }
 
