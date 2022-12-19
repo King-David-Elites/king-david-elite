@@ -9,7 +9,7 @@ export default function EmailPage() {
     const [mails, setMails] = useState([])
 
     const email = async () => {
-        await axios.get("https://kde-api.herokuapp.com/wait-list")
+        await axios.get("https://kde.cyclic.app/wait-list")
         .then(resp => {setMails(resp.data); console.log(resp.data)})  
         .catch(err => console.log(err))
     }

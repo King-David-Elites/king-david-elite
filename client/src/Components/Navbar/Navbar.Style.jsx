@@ -15,6 +15,25 @@ export const Header = styled.div`
     z-index:3;
     white-space: nowrap;
 
+    .list-items{
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        font-size: 14px;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    .list-item2{
+        margin-top: 2em;
+    }
+
+    .line{
+        background-color: gray;
+        height: 1px;
+        opacity: 0.5;
+        margin: 0.5em;
+    }
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         flex-direction:row;
@@ -37,16 +56,23 @@ export const Header = styled.div`
    }
 
    .navigation.active{
-        top: 1px;
+        top: 0.01px;
         right: 0;
         transition: 1s ease;
+   }
+
+   .navigation p{
+    color: #000;
+    font-weight: 500;
+    font-size: 15px;
    }
 
    .closed{
         cursor: pointer;
         width: 100%;
         display: flex;
-        justify-content: flex-end;
+        align-items: center;
+        justify-content: space-between;
    }
 
    .navigation ul{
@@ -97,7 +123,6 @@ export const LI = styled.li`
     .item-active{
         color:${theme.color};
     }
-
    
 `
 

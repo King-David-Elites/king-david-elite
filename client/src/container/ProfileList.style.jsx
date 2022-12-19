@@ -506,105 +506,29 @@ export const MiddleContainer = styled.div`
 
 
 export const LastContainer = styled.div`
-height: 1000px;
-
-.folder{
-    display:flex;
-    font-size:60px;
-    position:absolute;
-    top:850px;
-    left:680px;
-}
-
-h3{
-    top:916px;
-    left:669px;
-    position:absolute;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight:700;
-    font-size:17px;
-    line-height: 30px;
-    color: #000000;
-}
-
-p{
-    top:950px;
-    left:585px;
-    position:absolute;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size:15px;
-    line-height: 30px;
-    color: #696969;
-}
-
-button{
-    top:1000px;
-    left:615px;
-    position:absolute;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 10px 32px 10px 24px;
-    gap: 8px;
-    width:200px;
-    border:none;
-    height: 56px;
-    background: #2301F3;
-    border-radius: 4px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size:19px;
-    line-height: 36px;
-    color: #FFFFFF;
-    
-}
-
-
-@media(max-width:450px){
-
+    justify-content: center;
+    margin: 0 0 50px;
 
     .folder{
-        display:flex;
-        font-size:60px;
-        position:absolute;
-        top:630px;
-        left:160px;
+        width: 100px;
+        height: 100px;
+        /* color: white;
+        border: 1px solid black; */
     }
-    
-    h3{
-        top:690px;
-        left:153px;
-        font-size:15px;
-    }
-    
+
     p{
-        top:720px;
-        left:70px;
-        font-size:14px;
+        padding: 10px;
     }
-    
+
     button{
-        top:770px;
-        left:140px;
-        padding:5px;
-        gap: 8px;
-        width:106px;
-        border:none;
-        height:35px;
-        background: #2301F3;
-        border-radius: 4px;
-        font-size:12px;
-        line-height: 36px;
-        color: #FFFFFF;
-        
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 7px 50px;
+        border-radius: 6px;
+        cursor: pointer;
     }
-    
-
-}
-
 `

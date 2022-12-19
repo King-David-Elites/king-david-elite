@@ -121,7 +121,7 @@ const CreateRealEstateListing = () => {
   const postUserListings = async (userListings) => {
     await axios
       .post(
-        "http://https://kde.cyclic.app/listings/upload-list",
+        "https://kde.cyclic.app/listings/upload-list",
         userListings,
         setConfig()
       )
