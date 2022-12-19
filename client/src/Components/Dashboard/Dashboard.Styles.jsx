@@ -610,6 +610,29 @@ export const Form = styled.form`
             @media (min-width: ${theme.breakPoint['tablet']}) {
                 padding:2em;
             }
+
+            .verifyLogo{
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap:1em;
+                padding-bottom:7em;
+            }
+            .verifyLogo > .logo{
+                width:5em;
+                height:5em;
+                border-radius:5em;
+                display:flex;
+                justify-content: center;
+                align-items:center;
+                background:green;
+            }
+            .verifyLogo > .text{
+                width:100%;
+                text-align:center;
+                font-size:0.8rem;
+            }            
             
             .preCautions{
                 width:100%;
@@ -624,8 +647,8 @@ export const Form = styled.form`
                 justify-content: center;
                 align-items:center;                
                 gap:1em;
-                font-weight: bolder;
-            }
+                font-weight: bolder;                                
+            }            
             .preCautions > .cautCont > .cautImg{
                 width:6em;       
                 height:6em;         
@@ -661,11 +684,13 @@ export const Form = styled.form`
                 }
             }
             .uploading > .pages{
-                width:10em;
-                height:10em;
+                width:10em;                
                 display:flex;
                 justify-content:center;
                 align-items:center;                
+            }
+            .uploading #profile{
+                height:10em
             }
             .uploading #profile img{
                 width:100%;
@@ -675,7 +700,7 @@ export const Form = styled.form`
             }
             .pages img{
                 width:100%;
-                height:100%;                
+                height:auto;                
             }
             .uploading > .uploadType{
                 width:12em;
