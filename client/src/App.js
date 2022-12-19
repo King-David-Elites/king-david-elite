@@ -40,6 +40,7 @@ import Transfer2 from './Components/Dashboard/Transfer2'
 import SuccessPage from './Components/Page/SuccessPage';
 import Withdrawal from './Components/Dashboard/Withdrawal';
 import Deposit from './Components/Dashboard/Deposit';
+import Admin from './Components/Admin/Admin';
 
 function App() {
   const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ function App() {
         {/* <Navbar/> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='admin' element={<Admin/>}/>  
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />
