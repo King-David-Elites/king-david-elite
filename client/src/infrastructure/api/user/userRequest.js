@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASEURL = "http://localhost:9099";
+const BASEURL = "https://kde.cyclic.app";
 
 export const login = async (userDetails) => {
   try {

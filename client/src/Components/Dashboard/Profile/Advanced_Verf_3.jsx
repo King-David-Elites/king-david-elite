@@ -1,10 +1,57 @@
 import React, { useState, useEffect } from "react";
-import { CameraOutline, UploadOutline } from "heroicons-react";
-// import Verify from "../Dashboard-Image/verify.png";
-import FileBase64 from "react-file-base64";
+import ver1 from "../Dashboard-Image/ver1.png";
+import ver2 from "../Dashboard-Image/ver2.png";
+import ver3 from "../Dashboard-Image/ver3.png";
+import ver4 from "../Dashboard-Image/ver4.png";
+import axios from "axios";
 
 const Advanced_Verf_2 = (props) => {
-  let { stage, setStage, scrollToRef, photo, backImage, frontImage, position } = props;
+  let { stage, setStage, scrollToRef, photo, backImage, frontImage, position } =
+    props;
+const VerificationDetails = {
+    
+}
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (success) {
+      setStage(stage + 1);
+      scrollToRef(position);
+    }
+  }, [success]);
+
+  const setConfig = (userListings) => {
+    const authToken = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        ContentType: "application/json",
+      },
+    };
+
+    return config;
+  };
+
+  const postVerificationDetails = async (userListings) => {
+    await axios
+      .post(
+        "http://192.168.43.168/listings/upload-list",
+        userListings,
+        setConfig()
+      )
+      .then((resp) => {
+        console.log(resp.data);
+        setSuccess(true);
+      })
+      .catch((err) => {
+        console.log(err.data);
+      });
+  };
+
+  const handleSubmit = () => {
+    postVerificationDetails();
+  };
 
   return (
     <>
@@ -35,11 +82,34 @@ const Advanced_Verf_2 = (props) => {
         </div>
       </div>
 
-      <div className="formField">        
-        <div className="upload">
-          <div className="uploading">
-            <div className="pages">
-              <img src="" alt="frontpage" />
+      <div className="formField">
+        <div className="preF">
+          <div className="preCautions">
+            <div className="cautCont">
+              <div className="cautImg">
+                <img src={ver1} alt="hats" />
+              </div>
+              <p>Avoid wearing hats</p>
+            </div>
+            <div className="cautCont">
+              <div className="cautImg">
+                <img src={ver2} alt="glasses" />
+              </div>
+              <p>Avoid wearing glasses</p>
+            </div>
+          </div>
+          <div className="preCautions">
+            <div className="cautCont">
+              <div className="cautImg">
+                <img src={ver3} alt="filters" />
+              </div>
+              <p>Avoid using filters</p>
+            </div>
+            <div className="cautCont">
+              <div className="cautImg">
+                <img src={ver4} alt="lighting" />
+              </div>
+              <p>Use enough lighting</p>
             </div>
           </div>
         </div>
@@ -47,10 +117,7 @@ const Advanced_Verf_2 = (props) => {
       <div
         className={"enable"}
         id="button"
-        onClick={() => {
-          setStage(stage + 1);
-          scrollToRef(position);
-        }}
+        onClick={handleSubmit}
       >
         Begin Verification
       </div>

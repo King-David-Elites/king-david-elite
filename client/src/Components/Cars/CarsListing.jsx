@@ -42,7 +42,7 @@ const CarsListing = () => {
   const [listing, setListing] = useState([])
 
   const getListings = ()=>{
-    axios.get("http://localhost:9099/listings/all")
+    axios.get("https://kde.cyclic.app/listings/all")
     .then(resp => setListing(resp.data))
     .catch(err => console.error(err))
   }

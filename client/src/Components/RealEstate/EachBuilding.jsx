@@ -31,7 +31,7 @@ const EachBuilding = ({ active }) => {
     ]
 
     const getAList = useCallback(()=>{
-        axios.get(`http://localhost:9099/listings/each/${id}`)
+        axios.get(`https://kde.cyclic.app/listings/each/${id}`)
         .then(resp => setProperty(resp.data))
         .catch(err => console.error(err));
     }, [id])

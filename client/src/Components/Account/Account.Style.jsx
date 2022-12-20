@@ -2,16 +2,18 @@ import styled from "styled-components"
 import theme from "../../application/utils/Theme"
 
 export const Wrapper = styled.div`
-     margin: 25em 2em;
-     height: 100px;
+     margin: 25px auto;
+     width: 80%;
+     padding-bottom: 50px;
+     /* height: 100px; */
    
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        height: 400px;
+        /* height: 400px; */
         }
 
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-      margin: 33em 10em 0em 10em;
+      /* margin: 33em 10em 0em 10em; */
     }  
 
     .bold-text{
@@ -23,8 +25,8 @@ export const Wrapper = styled.div`
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
             font-size: 28px;
-            line-height: 25px;
-            letter-spacing: 0.05em;
+            /* line-height: 25px;
+            letter-spacing: 0.05em; */
         }  
     }
 
@@ -59,14 +61,14 @@ export const Wrapper = styled.div`
         color: ${theme.blueText};
         font-weight: 500;
         font-size: 18px;
-        line-height: 6em;
-        letter-spacing: 0.05em;
+        /* line-height: 6em; */
+        /* letter-spacing: 0.05em; */
         cursor: pointer;
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
-            letter-spacing: 0.02em;
+            /* letter-spacing: 0.02em; */
             font-weight: 700;
-            line-height: 8em;
+            /* line-height: 8em; */
         }  
     }
 
@@ -114,7 +116,8 @@ export const Wrapper = styled.div`
         border: none;
         background: ${theme.blueText};
         color: #fff;
-        margin-top: 4em;
+        /* margin-top: 4em; */
+        margin: 10px 0;
         cursor: pointer;
         width: 5em;
         display: flex;

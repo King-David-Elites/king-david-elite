@@ -40,13 +40,15 @@ import Transfer2 from './Components/Dashboard/Transfer2'
 import SuccessPage from './Components/Page/SuccessPage';
 import Withdrawal from './Components/Dashboard/Withdrawal';
 import Deposit from './Components/Dashboard/Deposit';
-import Admin from './Components/Admin/Admin';
+import LoggedUser from './Components/Profile/LoggedUser';
+import OtherUser from './Components/Profile/OtherUser';
 
 function App() {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient} >
+      
       <Router>
         {/* <Navbar/> */}
         <Routes>
@@ -88,6 +90,9 @@ function App() {
           <Route path="/profile/stat" element={<ProfileStat />} />
           <Route path='/profile/edit' element={<EditProfile />} />
           <Route path="/profile/create-listings" element={<CreateListing />} />
+          <Route path="/profile/me" element={<LoggedUser />} />
+          <Route path="/profile/:id" element={<OtherUser />}/>
+          <Route path="/waitList" element={<Waitlist />} />
         </Routes>
       </Router>
     </QueryClientProvider>
