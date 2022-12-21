@@ -42,6 +42,7 @@ import Withdrawal from './Components/Dashboard/Withdrawal';
 import Deposit from './Components/Dashboard/Deposit';
 import LoggedUser from './Components/Profile/LoggedUser';
 import OtherUser from './Components/Profile/OtherUser';
+import ChatBox from './Components/Dashboard/ChatBox';
 
 function App() {
   const queryClient = new QueryClient();
@@ -60,6 +61,7 @@ function App() {
           <Route path='/savedpost' element={<Savedpost />} />
           <Route path="/real-estate" element={<RealEstateListing />} />
           <Route path="/real-estate/add" element={<AddRealEstate />} />
+          <Route path="/dashboard/messages/chat" element={<ChatBox />} />
           <Route path="/real-estate/:id" element={<EachBuilding active={0} />} />
           <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
           <Route path="/cars" element={<Cars />} />

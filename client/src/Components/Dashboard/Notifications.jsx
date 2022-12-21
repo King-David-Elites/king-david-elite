@@ -1,24 +1,28 @@
 import React from 'react'
 import { FaInbox } from 'react-icons/fa'
 import Dashboard from './Dashboard'
-import { NotificationContainer } from './Dashboard.Styles'
+import { MobileDashboardContainer, NotificationContainer } from './Dashboard.Styles'
+import { BiDotsVerticalRounded } from 'react-icons/bi'
+import { FaSearch, FaCheckCircle } from "react-icons/fa"
+import { useState } from 'react'
+import ReadMoreReadLess from './ReadMoreReadLess'
+import theme from '../../application/utils/Theme'
 
-
-const NotificationAsElement = ()=>{
-    return(
+const NotificationAsElement = ({showLess}) => {
+    return (
         <NotificationContainer>
             <div className="notification">
                 <div className="icon">
-                    <FaInbox size={30}/>
+                    <FaInbox size={30} />
                 </div>
 
                 <div className="content">
-                    <p className="title">
-                    Login  attempted from a new IP
+                    <p  className="title">
+                        Login  attempted from a new IP
                     </p>
-                    <p className="sub">
-                    The system has detected that your account is logged in from an unused IP address.
-                    </p>
+                    <ReadMoreReadLess className="sub">
+                        The system has detected that your account is logged in from an unused IP address.
+                    </ReadMoreReadLess>
                 </div>
 
                 <div className="time">
@@ -28,16 +32,16 @@ const NotificationAsElement = ()=>{
 
             <div className="notification">
                 <div className="icon">
-                    <FaInbox size={30}/>
+                    <FaInbox size={30} />
                 </div>
 
                 <div className="content">
                     <p className="title">
-                    Login  attempted from a new IP
+                        Login  attempted from a new IP
                     </p>
-                    <p className="sub">
-                    The system has detected that your account is logged in from an unused IP address.
-                    </p>
+                    <ReadMoreReadLess className="sub">
+                        The system has detected that your account is logged in from an unused IP address.
+                    </ReadMoreReadLess>
                 </div>
 
                 <div className="time">
@@ -47,16 +51,16 @@ const NotificationAsElement = ()=>{
 
             <div className="notification">
                 <div className="icon">
-                    <FaInbox size={30}/>
+                    <FaInbox size={30} />
                 </div>
 
                 <div className="content">
                     <p className="title">
-                    Login  attempted from a new IP
+                        Login  attempted from a new IP
                     </p>
-                    <p className="sub">
-                    The system has detected that your account is logged in from an unused IP address.
-                    </p>
+                    <ReadMoreReadLess className="sub">
+                        The system has detected that your account is logged in from an unused IP address.
+                    </ReadMoreReadLess>
                 </div>
 
                 <div className="time">
@@ -67,10 +71,79 @@ const NotificationAsElement = ()=>{
     )
 }
 
+const MobileNotification = () => {
+
+
+    return (
+        <MobileDashboardContainer>
+            <div className='upper-sect'>
+                <div className='top-items'>
+                    <p>Notification</p>
+                    <BiDotsVerticalRounded size={25} />
+                </div>
+
+                <div className="search-mobile">
+                    <FaSearch color='#737373' />
+                    <input type="text" placeholder='Search ' />
+                </div>
+            </div>
+
+            <div className='notification-items'>
+                <FaCheckCircle size={30} className='tick' />
+                <div className='lower-sect box-content div1'>
+                    <h4>Verify your account</h4>
+                    <ReadMoreReadLess>
+                        The system has detected that your account is logged in from an unused IP address.
+                    </ReadMoreReadLess>
+
+                </div>
+
+                <div className='lower-sect box-content div2'>
+                    <span>4:43 pm</span>
+                    <p>yesterday</p>
+                </div>
+            </div>
+
+            <div className='notification-items'>
+                <FaCheckCircle size={30} className='tick' />
+                <div className='lower-sect box-content div1'>
+                    <h4>Deposit Successful</h4>
+                    <ReadMoreReadLess>
+                        You have successfully made a deposit of $4,000 to your account at 10 - 06 - 2022. If you don’t recogn...
+                    </ReadMoreReadLess>
+
+                </div>
+
+                <div className='lower-sect box-content div2'>
+                    <span>4:43 pm</span>
+                    <p>19 - july</p>
+                </div>
+            </div>
+
+            <div className='notification-items'>
+                <FaCheckCircle size={30} className='tick' />
+                <div className='lower-sect box-content div1'>
+                    <h4>Login  attempted from a new IP</h4>
+                    <ReadMoreReadLess>
+                        The system has detected that your account is logged in from an unused IP address.
+                    </ReadMoreReadLess>
+
+                </div>
+
+                <div className='lower-sect box-content div2'>
+                    <span>4:43 pm</span>
+                    <p>Today</p>
+                </div>
+            </div>
+        </MobileDashboardContainer>
+    );
+}
+
+
 const Notifications = () => {
-  return (
-    <Dashboard element={<NotificationAsElement />} index="3" />
-  )
+    return (
+        <Dashboard element={<NotificationAsElement />} index="3" mobileElement={<MobileNotification />} />
+    )
 }
 
 export default Notifications

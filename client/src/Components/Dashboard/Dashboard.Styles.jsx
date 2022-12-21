@@ -205,9 +205,28 @@ export const MobileDashboardContainer = styled.div`
         }
     }
 
-    .transaction{
-      
-       
+    .notification-items{
+        display: flex;
+        /* justify-content: space-evenly; */
+        gap: 0.3em;
+        width: 100vw;
+        padding: 0em 1em;
+    }
+
+    .notification-items .tick{
+        margin-top: 1.5em;
+        /* flex: 0 1 10%; */
+    }
+
+    .div1{
+        display: flex;
+        flex-direction: column;
+        gap: 0.3em;
+        flex: 2;
+    }
+
+    .div2{
+        /* flex: 0 0 10%; */
     }
 `
 
@@ -859,6 +878,128 @@ export const Form = styled.form`
     }
 
 
+`
+
+//chatbox section
+export const ChatBoxContainer = styled.div`
+    width: 100%;
+    height: 100vh;
+
+    .header-sect{
+        height: 12%;
+        display: flex;
+        align-items: center;
+        padding: 0.5em;
+
+        .chat-wrap{
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .chat-wrap > img{
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+        }
+
+        .calls{
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+    }
+
+    .chat-body{
+        height: 80%;
+        background-color: #D5DBE3;
+        display: flex;
+        flex-direction: column;
+
+        .date{
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.4em;
+            width: 20%;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            background:#fff;
+            backdrop-filter: blur(20px);
+            border-radius: 2px;
+        }
+
+        .reviever-chat{
+            display: flex;
+            width:fit-content;
+            gap: 1.4em;
+            background: #2E2F2E;
+            border-radius: 2px 2px 2px 0px;
+            color: #fff;
+            margin-bottom: 0.4em;
+            padding: 10px;
+           
+
+            .span2{
+                margin-top: 15px;
+                color: ${theme.neutralColor};
+                font-size: 12px;
+            }
+        }
+
+        .section-end{
+            display: flex;
+            justify-content: end;
+        }
+
+        .sender-chat{
+        display: flex;
+        width:fit-content;
+        gap: 1.4em;
+        background: #F5F5F5;
+        border-radius: 2px 2px 2px 0px;
+        color: #000;
+        margin-bottom: 0.4em;
+        margin-top: 0.5em;
+        padding: 10px;
+
+        .span1{
+                margin-top: 15px;
+                color: ${theme.neutralColor};
+                font-size: 12px;
+            }
+        }
+    }
+
+    .typing-box{
+        height: 9%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 1em;
+
+        .typing-div {
+            flex: 2;
+        }
+
+        .typing-div textarea{
+            width: 100%;
+            height: 3em;
+            border-radius: 24px;
+            background-color: #A6A6A633;
+            color: 
+             #000;
+            border: 2px solid #A6A6A633;
+            outline: none;
+            padding: 5px 10px;
+            overflow: hidden;
+            resize: none;
+        }
+    }
 `
 
 // wallet code section
