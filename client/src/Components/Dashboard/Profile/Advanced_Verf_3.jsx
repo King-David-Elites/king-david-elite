@@ -34,7 +34,7 @@ const Advanced_Verf_2 = (props) => {
   const postVerificationDetails = async (userListings) => {
     await axios
       .post(
-        "https://kde.cyclic.app/listings/upload-list",
+        "http://192.168.43.168:9099/listings/upload-list",
         userListings,
         setConfig()
       )
