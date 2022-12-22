@@ -29,6 +29,7 @@ const CreateRealEstateListing = () => {
   const [position, setPosition] = useState(false);  
   const [previous, setPrevious] = useState("");
   const [allImages, setAllImages] = useState([])
+  const [allVideos, setAllVideos] = useState([])
 
   const navigate = useNavigate();
   const [size, setSize] = useState(0)
@@ -53,11 +54,17 @@ const CreateRealEstateListing = () => {
   useEffect(()=>{
     userListings["images"] = images;
     userListings["videos"] = videos;
-    userListings["features"] = features;       
-    Load(allImages, "image", size)    
+    userListings["features"] = features;
+    if(allImages.length !== 0){
+      Load(allImages, "image", size)
+    }       
+    if(allVideos.length !== 0){      
+      Load(allVideos, "video", size)
+    }     
   },[loaded])
 
-  useEffect(() => {
+  useEffect(() => {    
+    console.log("videos" + videos)    
     if (
       userListings["title"] &&
       userListings["description"] &&
@@ -66,9 +73,7 @@ const CreateRealEstateListing = () => {
       userListings["price"] &&
       userListings["images"].length !== 0 &&
       userListings["videos"].length !== 0
-    ) {
-      console.log(userListings["features"]);
-      console.log(userListings["images"]);
+    ) {      
       setValid(true);
       setError(false);
     } else {
@@ -78,17 +83,18 @@ const CreateRealEstateListing = () => {
     setUserListings({ ...userListings, features: features });
   }, [changing, features]);
 
-  const Load = (base64, type, size) => {    
-    if (type === "image") {      
-      if(size <= 52428800 ){          
-        setImages(base64.filter((items)=> (items.type === "image/jpeg" || items.type === "image/png" || items.type === "image/gif")));  
-        console.log(size)
-        console.log(images)                                                                                           
+  const Load = (base64, type, size) => {      
+    if (type === "image") {            
+      if(size <= 52428800 && size !== 0){          
+        setImages(base64.filter((items)=> (items.type === "image/jpeg" || items.type === "image/png" || items.type === "image/gif")));          
       }      
-    } else if (type === "video") {
-      setVideos(base64);
-    }
-    setLoaded(!loaded);
+    } 
+    if (type === "video") {            
+      if(size <= 52428800 && size !== 0){        
+        setVideos(base64.filter((items)=> (items.type !== "video/mp4")));
+        console.log(videos)
+      }      
+    }    
     setChanging(!changing);
   };
 
@@ -334,6 +340,7 @@ const CreateRealEstateListing = () => {
                 defaultValue={userListings.images}
                 multiple={true}
                 onDone={(base64) => {
+                  setSize(0)
                   base64.forEach((item)=>{
                     setSize(size+item.file['size'])
                     setLoaded(!loaded)                                                                       
@@ -358,8 +365,13 @@ const CreateRealEstateListing = () => {
                 name="videos"
                 defaultValue={userListings.videos}
                 multiple={true}
-                onDone={(base64) => {
-                  Load(base64, "video");
+                onDone={(base64) => {                  
+                  setSize(0)
+                  base64.forEach((item)=>{
+                    setSize(size+item.file['size'])
+                    setLoaded(!loaded)                                                                       
+                  })                        
+                  setAllVideos(base64)                  
                 }}
               />
               <i className="fas fa-file-upload" />
