@@ -28,7 +28,7 @@ const CreateRealEstateListing = () => {
   const [loaded, setLoaded] = useState("");
   const [position, setPosition] = useState(false);  
   const [previous, setPrevious] = useState("");
-  const [validImages, setValidImages] = useState(false)
+  const [allImages, setAllImages] = useState([])
 
   const navigate = useNavigate();
   const [size, setSize] = useState(0)
@@ -53,9 +53,9 @@ const CreateRealEstateListing = () => {
   useEffect(()=>{
     userListings["images"] = images;
     userListings["videos"] = videos;
-    userListings["features"] = features;   
-    setSize(size)
-  },[loaded,size])
+    userListings["features"] = features;       
+    Load(allImages, "image", size)    
+  },[loaded])
 
   useEffect(() => {
     if (
@@ -78,10 +78,13 @@ const CreateRealEstateListing = () => {
     setUserListings({ ...userListings, features: features });
   }, [changing, features]);
 
-  const Load = (base64, type) => {
-    if (type === "image") {
-      setImages(base64);
-      console.log(base64)
+  const Load = (base64, type, size) => {    
+    if (type === "image") {      
+      if(size <= 52428800 ){          
+        setImages(base64.filter((items)=> (items.type === "image/jpeg" || items.type === "image/png" || items.type === "image/gif")));  
+        console.log(size)
+        console.log(images)                                                                                           
+      }      
     } else if (type === "video") {
       setVideos(base64);
     }
@@ -332,17 +335,10 @@ const CreateRealEstateListing = () => {
                 multiple={true}
                 onDone={(base64) => {
                   base64.forEach((item)=>{
-                    setSize(size+item.file['size'])                      
-                    if(item.type === "image/jpeg" || item.type === "image/png" || item.type === "image/gif"){
-                      setValidImages(true)                      
-                    }                               
-                    else{
-                      setValidImages(false)
-                    }       
-                  })
-                  if(size <= 52428800 && validImages){
-                    Load(base64, "image"); 
-                  }                                                     
+                    setSize(size+item.file['size'])
+                    setLoaded(!loaded)                                                                       
+                  })                        
+                  setAllImages(base64)                                                                                                                       
                 }}
               />
               <i className="fas fa-file-upload" />

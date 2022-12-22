@@ -44,15 +44,23 @@ import LoggedUser from './Components/Profile/LoggedUser';
 import OtherUser from './Components/Profile/OtherUser';
 import ChatBox from './Components/Dashboard/ChatBox';
 
+import Admin from './Components/Admin/Admin';
+
+import Loader from './Components/Loader/Loader'
+
+
 function App() {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient} >
+      
       <Router>
         {/* <Navbar/> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='/admin' element={<Admin/>}/>  
+          <Route path='/loader' element={<Loader/>}/>  
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />
