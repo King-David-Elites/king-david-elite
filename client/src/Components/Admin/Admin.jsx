@@ -120,22 +120,7 @@ export default function Admin() {
 
                     <p>View Profile | <span>Block Account</span> </p>
                 </div>
-                <div>
-                    <li>
-                        <img className='profile' src={profile} alt="" />
-                        <h5>Oriogbade Kessington</h5>
-                    </li>
 
-                    <p>View Profile | <span>Block Account</span> </p>
-                </div>
-                    <div>
-                        <li>
-                            <img className='profile' src={profile} alt="" />
-                            <h5>Oriogbade Kessington</h5>
-                        </li>
-
-                        <p>View Profile | <span>Block Account</span> </p>
-                    </div>
             </ReportedAcct>
 
             </TopRightCont>
@@ -153,7 +138,7 @@ export default function Admin() {
                     <div className='footer'>
                         <div className='list'>
                             <FaPlus/>
-                            Make A New Listing
+                            <p>Make A New Listing</p> 
                         </div>
                     </div>
                 </div>

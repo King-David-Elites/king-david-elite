@@ -43,6 +43,9 @@ import Deposit from './Components/Dashboard/Deposit';
 import LoggedUser from './Components/Profile/LoggedUser';
 import OtherUser from './Components/Profile/OtherUser';
 
+import Admin from './Components/Admin/Admin';
+
+
 function App() {
   const queryClient = new QueryClient();
 
@@ -53,7 +56,7 @@ function App() {
         {/* <Navbar/> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='admin' element={<Admin/>}/>  
+          <Route path='/admin' element={<Admin/>}/>  
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />

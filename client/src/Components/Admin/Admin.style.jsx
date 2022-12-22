@@ -7,6 +7,7 @@ background: #D5DBE3;
 
 export const LeftContainer = styled.div`
     font-size:.8rem;
+    position: static;
     background-color:white;
     /* width:15%; */
     min-height:100vh;
@@ -33,13 +34,14 @@ export const LeftContainer = styled.div`
 `
 
 export const TopContainer = styled.div`
+    position: static;
     padding:.5em;
     background-color: white;
     box-sizing: border-box;
     display:flex;
     justify-content:space-between;
     align-items: center;
-    border-bottom:1px solid  #E9ECEF;;
+    border-bottom:1px solid  #E9ECEF;
 
     div{
         display:flex;
@@ -93,7 +95,6 @@ export const TopContainer = styled.div`
 
 export const RightContainer = styled.div`
     margin-top: 20px;
-    border:1px solid yellow;
     /* display: grid; */
     justify-content: center;
     width:auto;
@@ -237,7 +238,6 @@ export const PendingList = styled.div`
     
 `
 export const ReportedAcct = styled.div`
-      border:1px solid red;
       background-color:white;
       width:40%;
 
@@ -302,13 +302,11 @@ export const Grid = styled.div`
 
 export const ButtomRight = styled.div`
     margin-top:1em;
-    min-height: 100vh;
     display:grid;
     grid-template-columns:5.5fr 8fr;
     gap:.7em;
 
     .buttom_right{
-        border:1px solid green;
         background-color:white;
 
 
@@ -376,8 +374,9 @@ export const ButtomRight = styled.div`
     }
 
     .buttom_left{
+        display: grid;
+        gap:2em;
         background-color: white;
-        border: 1px solid purple;
 
         .account{
             h1{
@@ -417,15 +416,24 @@ export const ButtomRight = styled.div`
 
         
             .footer{
-
-                margin: 15em 2em;
+                display: flex;
+                justify-content: center;
+                margin-top:7em;
+                margin-bottom: 5em;
 
                 .list{
-                    width:40%;
+                    display:flex;
+                    text-align: center;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 1em 0;
+                    width:60%;
+                    height:7vh;
                     background-color:#2301F3;
                     color: white;
                 }
-            }
+
+             }
 
         
     }
