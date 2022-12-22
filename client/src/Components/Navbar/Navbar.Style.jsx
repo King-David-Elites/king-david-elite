@@ -208,6 +208,10 @@ export const Brand = styled.div`
 export const Login = styled.div`
     display:none;
 
+    .dashboard{
+        cursor:pointer
+    }
+
     @media (min-width: ${theme.breakPoint['tablet']}) {
         display: block;
     }

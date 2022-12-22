@@ -52,6 +52,7 @@ export const HeroSection = styled.div`
           margin:0rem .5rem;
           width:9rem;
           height:3rem;
+          cursor:pointer
         }
 
         .btn_app{

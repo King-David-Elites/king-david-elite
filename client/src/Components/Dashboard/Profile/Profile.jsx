@@ -10,6 +10,7 @@ import Advanced_Verf from "./Advanced_Verf";
 import Advanced_Verf_1 from "./Advanced_Verf_1";
 import Advanced_Verf_2 from "./Advanced_verf_2";
 import Advanced_Verf_3 from "./Advanced_Verf_3";
+import Verified from "./Verified";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -205,23 +206,18 @@ const MobileProfile = () => {
               />
             )}
 
-            {stage === 6 && <Verified stage={stage} setStage={setStage} />}
+            {stage === 6 && 
+              <Verified stage={stage} 
+              setStage={setStage}
+              scrollToRef={scrollToRef}
+              position={position}
+            />}
           </Form>
         </div>
       </ProfileContainer>
     </MobileGenericContainer>
   )
 }
-
-const Verified = (props) => {
-  let { stage, setStage } = props;
-
-  return (
-    <>
-      <h1>Stage 6</h1>
-    </>
-  );
-};
 
 const Profile = () => {
   return <Dashboard index="4" element={<ProfileAsElement />} mobileElement={<MobileProfile />} />;
