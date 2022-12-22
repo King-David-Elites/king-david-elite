@@ -11,7 +11,7 @@ export default function ProfileStat() {
 
   return (
     <List>
-      <Overview>
+      {/* <Overview>
         <div className='account'>
           <p>Account Type : Free</p>
           <div className='overview-div'>
@@ -58,11 +58,11 @@ export default function ProfileStat() {
           </div>
 
         </div>
-      </Overview>
+      </Overview> */}
 {/* <h3>Listings</h3> */}
 
 
-
+      <p>Over view</p>
     </List>
   )
 }

@@ -17,6 +17,7 @@ const LoginPage = () => {
   const [loader, setLoader] = useState(false)
 
   const login = async (e) => {
+    setLoader(true);
     e.preventDefault()
     const userDetails = {
       email: emailRef.current.value,
@@ -28,22 +29,16 @@ const LoginPage = () => {
       let res=resp.data;
       let token = res.token;
       let user = res.user;
-      localStorage.setItem("token", token)
-      localStorage.setItem("user", JSON.stringify(user))
       console.log(res.message)
-      navigate("/")
-    })
-    .catch(err => console.log(err))
-    await services.api.userRequests.login(userDetails).then(res => {
-      const token = res.token;
-      const user = res.user;
-      setLoader(true)
+
       if(token){
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
-        navigate("/profile")
+        navigate("/")
       }
-    }).catch(err => console.log(err));
+      
+    })
+    .catch(err => console.log(err))
   }
 
   
