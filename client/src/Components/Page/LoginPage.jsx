@@ -3,12 +3,16 @@ import { Container, Page } from './SignupPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';
+import { useState } from 'react';
+import Loader from '../Loader/Loader';
 
 const LoginPage = () => {
 
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+
+  const [loader, setLoader] = useState(false)
 
   const login = async (e) => {
     e.preventDefault()
@@ -20,15 +24,21 @@ const LoginPage = () => {
     await services.api.userRequests.login(userDetail).then(res => {
       const token = res.token;
       const user = res.user;
-      localStorage.setItem("token", token)
-      localStorage.setItem("user", JSON.stringify(user))
-      console.log(res.message)
-      navigate("/profile")
+      setLoader(true)
+      if(token){
+        localStorage.setItem("token", token)
+        localStorage.setItem("user", JSON.stringify(user))
+        navigate("/profile")
+      }
     }).catch(err => console.log(err));
   }
+
   
   return (
     <Container>
+      {
+        loader && <Loader/>
+      }
       <Page>
         <h1>King David Elite</h1>
         <p className='back'>welcome back</p>

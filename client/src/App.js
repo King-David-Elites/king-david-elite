@@ -46,6 +46,8 @@ import ChatBox from './Components/Dashboard/ChatBox';
 
 import Admin from './Components/Admin/Admin';
 
+import Loader from './Components/Loader/Loader'
+
 
 function App() {
   const queryClient = new QueryClient();
@@ -58,6 +60,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/admin' element={<Admin/>}/>  
+          <Route path='/loader' element={<Loader/>}/>  
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />
