@@ -52,18 +52,18 @@ const EditProfile = () => {
     }
 
 
-    // const getSignedInUserDetails = async () => {
-    //     await axios.get("https://kde-api.herokuapp.com/users/me", setConfig()).then(resp => {
-    //         const user = {
-    //             firstName: resp.firstName,
-    //             lastname: resp.lastName,
-    //             email: resp.email,
-    //             cover: resp.cover
-    //         }
-    //         setInitialValues(user);
-    //     })
-    //         .catch(err => console.log(err))
-    // }
+    const getSignedInUserDetails = async () => {
+        await services.api.userRequests.getSignedInUser().then(resp => {
+            const user = {
+                firstName: resp.firstName,
+                lastname: resp.lastName,
+                email: resp.email,
+                cover: resp.cover
+            }
+            setInitialValues(user);
+        })
+            .catch(err => console.log(err))
+    }
 
     const onCompanySubmit = values => {
         console.log("data", values)

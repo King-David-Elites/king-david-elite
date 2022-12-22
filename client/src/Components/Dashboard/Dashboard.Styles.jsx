@@ -218,16 +218,6 @@ export const MobileDashboardContainer = styled.div`
         /* flex: 0 1 10%; */
     }
 
-    .div1{
-        display: flex;
-        flex-direction: column;
-        gap: 0.3em;
-        flex: 2;
-    }
-
-    .div2{
-        /* flex: 0 0 10%; */
-    }
 `
 
 export const LeftContainer = styled.div`
