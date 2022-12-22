@@ -52,6 +52,7 @@ export const HeroSection = styled.div`
           margin:0rem .5rem;
           width:9rem;
           height:3rem;
+          cursor:pointer
         }
 
         .btn_app{
@@ -379,6 +380,10 @@ export const UploadFileBtn = styled.button`
   align-items: center;
   padding-right: 0;
   justify-content: center;
+
+  input{
+    opacity: 0;
+  }
 
   &:after {
     content: "";

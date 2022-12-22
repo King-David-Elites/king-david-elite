@@ -7,23 +7,17 @@ import kde_whiteBg from '../Navbar/Image/kde_whiteBg.png'
 import { LogoText } from '../Navbar/Navbar.Style'
 import useAuthentication from '../../application/hooks/useAuthentication'
 import { useGetUserDetails } from '../../application/hooks/queryhooks'
-import { BiDotsVerticalRounded } from 'react-icons/bi'
-import slackImg from '../../layout/Image/slack.png'
-import { BiCheck } from 'react-icons/bi'
-import { BsImageFill } from 'react-icons/bs'
-import img1 from './Dashboard-Image/profileImg.png'
-import img2 from './Dashboard-Image/Img2.png'
-import img3 from './Dashboard-Image/Untitled2.png'
 
 const Dashboard = ({ element, index, mobileElement }) => {
     useAuthentication();
     const navigate = useNavigate();
-    const { data } = useGetUserDetails();
+    const data = useGetUserDetails();
     const [loggedInUser, setLoggedInUser] = useState([]);
 
-    useEffect(() => {
-        setLoggedInUser(data)
-    }, [data])
+    // useEffect(() => {
+    //     setLoggedInUser(data)
+    //     console.log(data)
+    // }, [data])
 
     return (
         <div>
@@ -63,7 +57,7 @@ const Dashboard = ({ element, index, mobileElement }) => {
                         </div>
 
                         <div className="profile" onClick={() => navigate("/profile")}>
-                            <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
+                            <img src={data.profilePicture} alt="" />
 
                             <div className="textContent">
                                 <h6>{data?.firstName?.toUpperCase()} {data?.lastName?.toUpperCase()}</h6>

@@ -15,7 +15,7 @@ p{
 }
 
  table{
-    border-box:box-sizing;
+    box-sizing: border-box;
     border-collapse:collapse;
     width:100vw;  
     overflow:hidden;

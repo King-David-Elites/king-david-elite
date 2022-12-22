@@ -61,12 +61,15 @@ export const EditProfileContainer = styled.div`
         border: 2px solid #cacbcd;
         margin-bottom: 1em;
         outline: none;
+        padding: ${props => props.padding ? props.padding : "10px"};
     }
 
     .textarea{
+        resize: none;
         height: 6em;
         border-radius: 4px;
         outline: none;
+        padding: ${props => props.padding ? props.padding : "10px"};
     }
 
     .select{

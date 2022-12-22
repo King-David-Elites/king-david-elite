@@ -42,6 +42,7 @@ import Withdrawal from './Components/Dashboard/Withdrawal';
 import Deposit from './Components/Dashboard/Deposit';
 import LoggedUser from './Components/Profile/LoggedUser';
 import OtherUser from './Components/Profile/OtherUser';
+import ChatBox from './Components/Dashboard/ChatBox';
 
 function App() {
   const queryClient = new QueryClient();
@@ -60,6 +61,7 @@ function App() {
           <Route path='/savedpost' element={<Savedpost />} />
           <Route path="/real-estate" element={<RealEstateListing />} />
           <Route path="/real-estate/add" element={<AddRealEstate />} />
+          <Route path="/dashboard/messages/chat" element={<ChatBox />} />
           <Route path="/real-estate/:id" element={<EachBuilding active={0} />} />
           <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
           <Route path="/cars" element={<Cars />} />
@@ -81,14 +83,14 @@ function App() {
           <Route path="/help" element={<Help />} />
           <Route path='/success' element={<SuccessPage/>} />
           <Route path="/help/earning" element={<Earning />} />
-          <Route path="/help/benefits" element={<Benefits />} />
-          <Route path="/profile" element={<ProfileContainer />} />
+          {/* <Route path="/help/benefits" element={<Benefits />} />
+          <Route path="/profile" element={<ProfileContainer />} /> */}
           <Route path="/profile/verification" element={<Verification />} />
           <Route path="/profile/list" element={<ProfileList />} />
           <Route path="/profile/stat" element={<ProfileStat />} />
           <Route path='/profile/edit' element={<EditProfile />} />
           <Route path="/profile/create-listings" element={<CreateListing />} />
-          <Route path="/profile/me" element={<LoggedUser />} />
+          <Route path="/profile" element={<LoggedUser />} />
           <Route path="/profile/:id" element={<OtherUser />}/>
           <Route path="/waitList" element={<Waitlist />} />
         </Routes>

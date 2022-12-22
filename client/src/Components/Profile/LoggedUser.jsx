@@ -6,9 +6,13 @@ import ProfileStat from "../../container/ProfileStat";
 import Verification from "../Verification/Verification";
 import { Bio, Details, Header, Switch, Update } from "./Styled";
 import Account from "../Account/Account";
+import { useGetUserDetails } from "../../application/hooks/queryhooks";
+import { useNavigate } from "react-router-dom";
 
 const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
+  const data = useGetUserDetails()
+  const navigate = useNavigate()
 
   //   const logged = true
   const options = [
@@ -33,7 +37,7 @@ const LoggedUser = ({ logged }) => {
     <Fragment>
       <Header>
         <img
-          src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067__340.png"
+          src={data.cover}
           alt=""
         />
       </Header>
@@ -41,15 +45,15 @@ const LoggedUser = ({ logged }) => {
       <Details>
         <div className="profile">
           <img
-            src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067__340.png"
+            src={data.profilePicture}
             alt=""
           />
 
           <div className="title">
             <h3>
-              King David Elite{" "}
+              {data.firstName + " " + data.lastName}
               <span>
-                <FaCheckCircle />{" "}
+                <FaCheckCircle />
               </span>
             </h3>
             <p>Joined 2011</p>
@@ -59,7 +63,7 @@ const LoggedUser = ({ logged }) => {
         <div className="btns">
           {!logged ? (
             <>
-              <div className="edit">
+              <div className="edit" onClick={()=>{navigate("edit")}}>
                 <FaPen />
                 <p>Edit Profile</p>
               </div>
@@ -80,12 +84,7 @@ const LoggedUser = ({ logged }) => {
       </Details>
 
       <Bio>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, incidunt
-        facilis! Ad rerum ipsam earum ducimus veniam maiores voluptatum repellat
-        pariatur maxime impedit similique ab magni repudiandae quidem, ipsa
-        amet, enim eveniet quae voluptates architecto minus inventore. Quia
-        odio, cupiditate minima, ad culpa incidunt, rem eaque optio animi
-        quaerat magni.
+        {data.about}
       </Bio>
 
       {!logged && <Update>Update Account</Update>}

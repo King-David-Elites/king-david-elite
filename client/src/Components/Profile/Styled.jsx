@@ -36,6 +36,10 @@ export const Details = styled.div`
         display: flex;
         flex-direction: column;
 
+        h3{
+            text-transform: capitalize;
+        }
+
         @media (max-width:600px) {
             h3{
                 font-size: 14px;
