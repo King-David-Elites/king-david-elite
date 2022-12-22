@@ -3,6 +3,8 @@ import { Container, Page } from './SignupPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';
+import globalApi from '../../api';
+import axios from 'axios';
 
 const LoginPage = () => {
 
@@ -12,19 +14,22 @@ const LoginPage = () => {
 
   const login = async (e) => {
     e.preventDefault()
-    const userDetail = {
+    const userDetails = {
       email: emailRef.current.value,
       password: passwordRef.current.value
     }
 
-    await services.api.userRequests.login(userDetail).then(res => {
-      const token = res.token;
-      const user = res.user;
+    await axios.post(`${globalApi}/users/sign-in`, userDetails)
+    .then(resp => {
+      let res=resp.data;
+      let token = res.token;
+      let user = res.user;
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       console.log(res.message)
-      navigate("/profile")
-    }).catch(err => console.log(err));
+      navigate("/")
+    })
+    .catch(err => console.log(err))
   }
   
   return (

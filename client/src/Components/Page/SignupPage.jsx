@@ -5,6 +5,7 @@ import { Container, Page } from './SignupPage.style'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import services from '../../ioc/services';
+import globalApi from '../../api'
 
 const SignUpPage = () => {
 
@@ -23,8 +24,8 @@ const SignUpPage = () => {
       lastName: lnameRef.current.value,
       password: passwordRef.current.value,
     }    
-
-     await axios.post("https://kde.cyclic.app//users/sign-up", userDetails)
+      console.log(globalApi)
+     await axios.post(`${globalApi}/users/sign-up`, userDetails)
       .then(resp => {
         let res=resp.data;
         let token = res.token;
@@ -32,7 +33,7 @@ const SignUpPage = () => {
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
         console.log(res.message)
-        navigate("/login")
+        navigate("/")
       })
       .catch(err => console.log(err))
   }
