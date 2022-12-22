@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import { Background, HeroSection, Text } from '../Cars/Cars.Style'
+import { useNavigate } from 'react-router-dom'
 // import './style.css' 
 import bg from "./images/k1.jpg"
 import c1 from "./images/c1.jpg"
@@ -13,25 +14,30 @@ import business from "./images/business.jpg"
 import coffee from "./images/coffee.jpg"
 import blur from "./images/blur.jpg"
 
-
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const HomePage = () => {
-
+  const navigate = useNavigate()
+  const position = useRef(null)
   const categories = [
     {
       bg: c1,
       title: "Real Estate",
+      link:"/real-estate"
     },
     {
       bg: c2,
       title: "Yatch",
+      link:"/yatch"
     },
     {
       bg: c3,
       title: "Hotels",
+      link:"/hotels"
     },
     {
       bg: c4,
       title: "Cars",
+      link:"/cars"
     },
     
   ]
@@ -48,7 +54,9 @@ const HomePage = () => {
           The Greatest Luxury Is Freedom Of All Forms.
           </Text>
           <div className='btn'>
-              <button>Explore</button>
+              <button onClick={()=>{
+                scrollToRef(position)
+              }}>Explore</button>
               <button className='btn_app'>Download App</button>
           </div>
 
@@ -59,12 +67,14 @@ const HomePage = () => {
       <CategoriesContainer>
         <Text>Categories</Text>
 
-        <Categories>
+        <Categories ref={position}>
           
           {
             categories.map((category, index)=> {
               return(
-                <Category bg={category.bg} key={index}>
+                <Category onClick={()=>{
+                  navigate(category?.link)
+                }} bg={category.bg} key={index}>
                   <Text fontSize="20px" fontWeight="600">{category.title}</Text>
                 </Category>
               )

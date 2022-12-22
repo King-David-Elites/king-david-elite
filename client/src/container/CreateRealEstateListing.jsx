@@ -28,8 +28,10 @@ const CreateRealEstateListing = () => {
   const [loaded, setLoaded] = useState("");
   const [position, setPosition] = useState(false);  
   const [previous, setPrevious] = useState("");
+  const [validImages, setValidImages] = useState(false)
 
   const navigate = useNavigate();
+  const [size, setSize] = useState(0)
 
   const [userListings, setUserListings] = useState({
     title: "",
@@ -52,7 +54,8 @@ const CreateRealEstateListing = () => {
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;   
-  },[loaded])
+    setSize(size)
+  },[loaded,size])
 
   useEffect(() => {
     if (
@@ -78,6 +81,7 @@ const CreateRealEstateListing = () => {
   const Load = (base64, type) => {
     if (type === "image") {
       setImages(base64);
+      console.log(base64)
     } else if (type === "video") {
       setVideos(base64);
     }
@@ -327,7 +331,18 @@ const CreateRealEstateListing = () => {
                 defaultValue={userListings.images}
                 multiple={true}
                 onDone={(base64) => {
-                  Load(base64, "image");
+                  base64.forEach((item)=>{
+                    setSize(size+item.file['size'])                      
+                    if(item.type === "image/jpeg" || item.type === "image/png" || item.type === "image/gif"){
+                      setValidImages(true)                      
+                    }                               
+                    else{
+                      setValidImages(false)
+                    }       
+                  })
+                  if(size <= 52428800 && validImages){
+                    Load(base64, "image"); 
+                  }                                                     
                 }}
               />
               <i className="fas fa-file-upload" />

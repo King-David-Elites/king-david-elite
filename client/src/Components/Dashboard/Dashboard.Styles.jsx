@@ -849,10 +849,10 @@ export const Form = styled.form`
     }
 
     .formField > .section > .input{
+        flex: 10em;
         display:flex;
         flex-direction:column;
-        gap:0.5em;
-        width: 47%;        
+        gap:0.5em;        
         
         @media (min-width: ${theme.breakPoint['tablet']}) {
         width: 100%;
