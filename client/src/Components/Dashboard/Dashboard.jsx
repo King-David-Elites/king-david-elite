@@ -7,13 +7,6 @@ import kde_whiteBg from '../Navbar/Image/kde_whiteBg.png'
 import { LogoText } from '../Navbar/Navbar.Style'
 import useAuthentication from '../../application/hooks/useAuthentication'
 import { useGetUserDetails } from '../../application/hooks/queryhooks'
-import { BiDotsVerticalRounded } from 'react-icons/bi'
-import slackImg from '../../layout/Image/slack.png'
-import { BiCheck } from 'react-icons/bi'
-import { BsImageFill } from 'react-icons/bs'
-import img1 from './Dashboard-Image/profileImg.png'
-import img2 from './Dashboard-Image/Img2.png'
-import img3 from './Dashboard-Image/Untitled2.png'
 
 const Dashboard = ({ element, index, mobileElement }) => {
     useAuthentication();
