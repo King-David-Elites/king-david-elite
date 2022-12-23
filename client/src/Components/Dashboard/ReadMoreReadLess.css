@@ -1,15 +1,13 @@
 .notification-items {
     display: flex;
-    gap: 1em;
-    margin-bottom: 1em;
+    gap: 0.3em;
     width: 100vw;
     padding: 0em 1em;
-    margin-top: 1.4em;
+    margin-top: 1em;
 }
 
-.tick {
-    margin-top: 1em;
-    flex: 0.3;
+.notification-items .tick {
+    margin-top: 0.3em;
 }
 
 .div1 {
@@ -19,14 +17,24 @@
     flex: 2;
 }
 
-@media (min-width: 768px) {
+
+.align-side {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.dot {
+    background-color: #F2BE5C;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+}
+
+@media (min-width: 788px) {
     .notification-items {
-        width: 80vw;
-        padding: 0em;
-        align-items: center;
-    }
-    
-    .div2{
-        flex: 1;
+        padding: 10px 50px;
+        border-bottom: 1px solid gray;
+        width: 100%;
     }
 }

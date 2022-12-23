@@ -99,7 +99,7 @@ export const MobileDashboardContainer = styled.div`
     .border-line{
        background: rgba(62, 60, 60, 0.1);
        height: 2px;
-       margin: 0em 1em;
+       margin: 0.5em 1em;
     }
 
     .top-items{
@@ -136,9 +136,12 @@ export const MobileDashboardContainer = styled.div`
         }
     }
 
-    .line{
-    
-    }
+    /* .dot{
+        background-color: ${theme.color};
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+    } */
 
     .lower-sect{
         height: 85%;
@@ -205,18 +208,30 @@ export const MobileDashboardContainer = styled.div`
         }
     }
 
-    .notification-items{
+    /* .notification-items{
         display: flex;
-        /* justify-content: space-evenly; */
         gap: 0.3em;
         width: 100vw;
         padding: 0em 1em;
+        margin-top: 1em;
+
+        .align-side{
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+        }
     }
 
     .notification-items .tick{
-        margin-top: 1.5em;
-        /* flex: 0 1 10%; */
-    }
+        margin-top: 0.3em;
+    } */
+
+    /* .div1 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3em;
+        flex: 2;
+    } */
 
 `
 
@@ -390,8 +405,8 @@ export const NotificationContainer = styled.div`
 
     .notification{
         padding: 10px 50px;
-        display: grid;
-        grid-template-columns: 1fr 10fr 1fr;
+        display: flex;
+        flex-direction: column;
         border-bottom: 1px solid gray;
     }
 

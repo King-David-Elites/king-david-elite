@@ -11,53 +11,17 @@ import theme from '../../application/utils/Theme'
 const NotificationAsElement = () => {
     return (
         <NotificationContainer>
-            <div className="notification">
-                {/* <div className="icon">
-                    <FaInbox size={30} />
-                </div> */}
+            <ReadMoreReadLess>
+                The system has detected that your account is logged in from an unused IP address.
+            </ReadMoreReadLess>
 
-                <div className="content">
-                    <ReadMoreReadLess className="sub">
-                        The system has detected that your account is logged in from an unused IP address.
-                    </ReadMoreReadLess>
-                </div>
-                {/* 
-                <div className="time">
-                    4:43pm
-                </div> */}
-            </div>
+            <ReadMoreReadLess>
+                The system has detected that your account is logged in from an unused IP address.
+            </ReadMoreReadLess>
 
-            <div className="notification">
-                {/* <div className="icon">
-                    <FaInbox size={30} />
-                </div> */}
-
-                <div className="content">
-                    <ReadMoreReadLess className="sub">
-                        The system has detected that your account is logged in from an unused IP address.
-                    </ReadMoreReadLess>
-                </div>
-                {/* 
-                <div className="time">
-                    4:43pm
-                </div> */}
-            </div>
-
-            <div className="notification">
-                {/* <div className="icon">
-                    <FaInbox size={30} />
-                </div> */}
-
-                <div className="content">
-                    <ReadMoreReadLess className="sub">
-                        The system has detected that your account is logged in from an unused IP address.
-                    </ReadMoreReadLess>
-                </div>
-                {/* 
-                <div className="time">
-                    4:43pm
-                </div> */}
-            </div>
+            <ReadMoreReadLess>
+                The system has detected that your account is logged in from an unused IP address.
+            </ReadMoreReadLess>
         </NotificationContainer>
     )
 }
@@ -75,6 +39,10 @@ const MobileNotification = () => {
                     <FaSearch color='#737373' />
                     <input type="text" placeholder='Search ' />
                 </div>
+            </div>
+
+            <div className='border-line'>
+
             </div>
 
             <ReadMoreReadLess>
