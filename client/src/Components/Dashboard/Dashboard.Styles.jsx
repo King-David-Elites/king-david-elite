@@ -99,7 +99,7 @@ export const MobileDashboardContainer = styled.div`
     .border-line{
        background: rgba(62, 60, 60, 0.1);
        height: 2px;
-       margin: 0.5em 1em;
+       margin: 0em 1em;
     }
 
     .top-items{
