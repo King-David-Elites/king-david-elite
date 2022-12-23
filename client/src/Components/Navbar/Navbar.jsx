@@ -80,7 +80,7 @@ const Navbar = ({ bg, sticky, active }) => {
             no: 7,
             icon: <BsFillBellFill size={20} />,
             title: "Notifications",
-            link: "/dashboard/notification",
+            link: "/dashboard/notifications",
         },
         {
             no: 8,
