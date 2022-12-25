@@ -3,7 +3,7 @@ import theme from "../../application/utils/Theme";
 import { FaCheckCircle } from "react-icons/fa"
 import './ReadMoreReadLess.css'
 
-const ReadMoreReadLess = ({ children }) => {
+const ReadMoreReadLess = ({ title, message, time }) => {
     const [showLess, setShowLess] = useState(true);
     const [step, setStep] = useState(true);
 
@@ -20,16 +20,16 @@ const ReadMoreReadLess = ({ children }) => {
                     {
                         step === true ? <div className="dot"></div> : <p></p>
                     }
-                    <h4>Deposit Successful</h4>
+                    <h4>{title}</h4>
                 </div>
                 <p onClick={toggleText} style={{ color: showLess ? "#000" : theme.neutralColor }}>
-                    {showLess ? children.substr(0, 30).concat("....") : children}   
+                    {showLess ? message?.substr(0, 30).concat("....") : message}   
                 </p>
 
             </div>
             <div className='div2'>
-                <span style={{ color: showLess ? "#000" : theme.neutralColor }}>4:43 pm</span>
-                <p style={{ color: showLess ? "#000" : theme.neutralColor }}>19 - july</p>
+                <span style={{ color: showLess ? "#000" : theme.neutralColor }}>{time}</span>
+                {/* <p style={{ color: showLess ? "#000" : theme.neutralColor }}>19 - july</p> */}
             </div>
         </div>
 

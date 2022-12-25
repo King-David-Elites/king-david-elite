@@ -40,7 +40,7 @@ export const updateUserProfile = async (userDetails) => {
   return res;
 };
 
-const setConfig = () => {
+export const setConfig = () => {
   const authToken = localStorage.getItem("token");
 
   const config = {
@@ -52,3 +52,4 @@ const setConfig = () => {
 
   return config;
 };
+
