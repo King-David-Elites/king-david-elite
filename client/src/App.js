@@ -48,6 +48,7 @@ import Admin from './Components/Admin/Admin';
 
 import Loader from './Components/Loader/Loader'
 
+import ModalCont from './Components/Modal/ModalCont';
 
 function App() {
   const queryClient = new QueryClient();
@@ -59,6 +60,7 @@ function App() {
         {/* <Navbar/> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='/modal' element={<ModalCont/>} />
           <Route path='/admin' element={<Admin/>}/>  
           <Route path='/loader' element={<Loader/>}/>  
           <Route path='/email' element={<EmailPage />} />
