@@ -39,59 +39,8 @@ export const Header = styled.div`
         flex-direction:row;
         align-items:center;
         gap:1em;
-
-        .navigation{
-            display: none;
-        }
     }
-
-    .navigation{
-        position: fixed;
-        min-width: 70%;
-        top: 0;
-        right: -100%;
-        height: 100%;
-        background-color: #fff;
-        transition: 1s ease;
-   }
-
-   .navigation.active{
-        top: 0.01px;
-        right: 0;
-        transition: 1s ease;
-   }
-
-   .navigation p{
-    color: #000;
-    font-weight: 500;
-    font-size: 15px;
-   }
-
-   .closed{
-        cursor: pointer;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-   }
-
-   .navigation ul{
-        display: flex;
-        flex-direction: column;
-        margin: 1em;
-   }
-
-   .navigation ul li{
-       margin-block: 0.5em;
-       list-style: none;
-       color: #000;
-   }
-
-   .navigation ul li a{
-        text-decoration: none;
-        font-size: 17px;
-        color: #000;
-   }
+ 
 `
 
 export const UL = styled.ul`    
