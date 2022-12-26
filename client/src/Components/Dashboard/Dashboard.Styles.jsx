@@ -123,6 +123,7 @@ export const MobileDashboardContainer = styled.div`
         padding: 0.5em;
         display: flex;
         margin: 0em 1em;
+        align-items: center;
 
         input{
             background-color: transparent; 

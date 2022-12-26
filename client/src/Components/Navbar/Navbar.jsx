@@ -9,6 +9,7 @@ import { AiFillHome } from 'react-icons/ai';
 import { MdRealEstateAgent, MdMessage, MdMenu, MdAccountBalanceWallet } from 'react-icons/md';
 import { IoMdCar } from 'react-icons/io';
 import { BsFillBellFill, BsFillHeartFill } from 'react-icons/bs';
+import './Navbar.css'
 
 const Navbar = ({ bg, sticky, active }) => {
 

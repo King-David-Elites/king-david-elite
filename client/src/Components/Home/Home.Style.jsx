@@ -1,54 +1,44 @@
 import styled from 'styled-components'
+import theme from '../../application/utils/Theme'
 
 export const CategoriesContainer = styled.div`
-
+overflow: hidden;
 `
-
-
-
-
 export const Categories = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 94px;
-    gap: 50px;
+    padding: 50px;
+    gap: 1em;
+    width: 100%;
+    overflow-x:auto;
 
-    @media(max-width:850px){
-        margin-left:-70px;
-        overflow-x:scroll;
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        padding: 90px;
         ::-webkit-scrollbar{
             width:0;
         }
     }
-
-    
-
    
 `
 
 export const Category = styled.div`
     background:  linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0, 0, 0, 0)), url(${(prop)=> prop?.bg});
-    width: 100%;
     height: 300px;
     border-radius: 6px;
-    padding: 30px;
-    display: flex;
-    align-items: end;
+    flex: 1 0 40%;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.5s all ease-in-out;
     background-size: cover;
+    
 
     &:hover{
         transform: scale(1.2);
-    }
+    } 
 
-    @media(max-width:850px){
-        margin-left:-30px;
-        padding:20%;
-        width:60vw;
-        height:30vh;
-                
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        flex: 1 0 20%;
+        margin: auto;
     }
 
 `
