@@ -4,11 +4,6 @@ import { X } from "heroicons-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
-import {
-  DragDropText,
-  FileUploadContainer,
-  UploadFileBtn,
-} from "../Components/Cars/Cars.Style";
 import globalApi from "../api";
 
 const CreateCarListing = () => {
@@ -51,6 +46,8 @@ const CreateCarListing = () => {
   }, [loaded]);
 
   useEffect(() => {
+    userListings["images"] = images;
+    userListings["videos"] = videos;
     if (
       userListings["title"] &&
       userListings["description"] &&
@@ -73,11 +70,13 @@ const CreateCarListing = () => {
     if (type === "image") {
       if (size <= 52428800 && size !== 0) {
         setImages(
-          base64.filter(
-            (items) =>
-              items.type === "image/jpeg" ||
-              items.type === "image/png" ||
-              items.type === "image/gif"
+          images.concat(
+            base64.filter(
+              (items) =>
+                items.type === "image/jpeg" ||
+                items.type === "image/png" ||
+                items.type === "image/gif"
+            )
           )
         );
       }
@@ -239,6 +238,7 @@ const CreateCarListing = () => {
                             (item) => item.base64 !== image.base64
                           );
                         });
+                        setChanging(!changing)
                       }}
                     >
                       <X color="black" width="15px" />
@@ -256,6 +256,7 @@ const CreateCarListing = () => {
                   onClick={() => {
                     setImages([]);
                     setAllImages([]);
+                    setChanging(!changing)
                   }}
                 >
                   Clear All
@@ -303,6 +304,7 @@ const CreateCarListing = () => {
                       onClick={() => {
                         setVideos([]);
                         setAllVideos([])
+                        setChanging(!changing)
                       }}
                     >
                       <X color="black" width="15px" />

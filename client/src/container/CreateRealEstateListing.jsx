@@ -22,6 +22,8 @@ const CreateRealEstateListing = () => {
   const [previous, setPrevious] = useState("");
   const [allImages, setAllImages] = useState([]);
   const [allVideos, setAllVideos] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
   const [size, setSize] = useState(0);
@@ -55,7 +57,10 @@ const CreateRealEstateListing = () => {
     }
   }, [loaded]);
 
-  useEffect(() => {    
+  useEffect(() => {
+    userListings["images"] = images;
+    userListings["videos"] = videos;
+    userListings["features"] = features;
     if (
       userListings["title"] &&
       userListings["description"] &&
@@ -77,24 +82,26 @@ const CreateRealEstateListing = () => {
     if (type === "image") {
       if (size <= 52428800 && size !== 0) {
         setImages(
-          base64.filter(
-            (items) =>
-              items.type === "image/jpeg" ||
-              items.type === "image/png" ||
-              items.type === "image/gif"
+          images.concat(
+            base64.filter(
+              (items) =>
+                items.type === "image/jpeg" ||
+                items.type === "image/png" ||
+                items.type === "image/gif"
+            )
           )
-        );        
+        );
       }
     }
     if (type === "video") {
       if (size <= 52428800 && size !== 0) {
         setVideos(base64.filter((items) => items.type === "video/mp4"));
-      }      
+      }
     }
     setChanging(!changing);
   };
 
-  const setConfig = (userListings) => {
+  const setConfig = () => {
     const authToken = localStorage.getItem("token");
 
     const config = {
@@ -128,13 +135,9 @@ const CreateRealEstateListing = () => {
   };
 
   const postUserListings = async (userListings) => {
-    console.log(userListings.images)
+    console.log(userListings.images);
     await axios
-      .post(
-        `${globalApi}/listings/upload-list`,
-        userListings,
-        setConfig()
-      )
+      .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
         console.log(resp.data);
         navigate("/profile");
@@ -367,7 +370,8 @@ const CreateRealEstateListing = () => {
                           return images.filter(
                             (item) => item.base64 !== image.base64
                           );
-                        });                       
+                        });
+                        setChanging(!changing)
                       }}
                     >
                       <X color="black" width="15px" />
@@ -383,8 +387,9 @@ const CreateRealEstateListing = () => {
                 <div
                   className="clear"
                   onClick={() => {
-                    setImages([]);   
-                    setAllImages([])                 
+                    setImages([]);
+                    setAllImages([]);
+                    setChanging(!changing)
                   }}
                 >
                   Clear All
@@ -410,8 +415,8 @@ const CreateRealEstateListing = () => {
                   multiple={false}
                   onDone={(base64) => {
                     setSize(0);
-                    setSize(base64.file['size'])
-                    setLoaded(!loaded)                   
+                    setSize(base64.file["size"]);
+                    setLoaded(!loaded);
                     setAllVideos([base64]);
                   }}
                 />
@@ -424,14 +429,15 @@ const CreateRealEstateListing = () => {
                 <>
                   <div className="videoCont">
                     <video width="300px" height="300px" controls>
-                      <source src={video.base64} type="video/mp4"/>
+                      <source src={video.base64} type="video/mp4" />
                       Your browser does not support the video tag.
-                    </video>                    
+                    </video>
                     <div
                       className="close"
                       onClick={() => {
                         setVideos([]);
-                        setAllVideos([])
+                        setAllVideos([]);
+                        setChanging(!changing)
                       }}
                     >
                       <X color="black" width="15px" />
