@@ -6,7 +6,7 @@ export const Header = styled.div`
     position:${(prop) => prop.sticky || "fixed"};                
     width:100%;
     color:${theme.textColor};
-    background-color: ${(prop) => prop.bg || "rgba(0,0,0,0.2)"};
+    background-color: ${(prop) => prop.bg || "rgba(0,0,0,1)"};
     display:flex;
     justify-content:space-around;
     align-items:center;
