@@ -41,7 +41,7 @@ const SignUpPage = () => {
           localStorage.setItem("user", JSON.stringify(user));
 
           Swal.fire({
-            title: "Login Successfyl!",
+            title: "Login Successful!",
             text: res.message,
             icon: "success",
             timer: 2000,
