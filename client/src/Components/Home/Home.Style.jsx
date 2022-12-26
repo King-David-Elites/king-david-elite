@@ -26,7 +26,7 @@ export const Category = styled.div`
     background:  linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0, 0, 0, 0)), url(${(prop)=> prop?.bg});
     height: 300px;
     border-radius: 6px;
-    flex: 1 0 40%;
+    flex: 1 0 70%;
     cursor: pointer;
     transition: 0.5s all ease-in-out;
     background-size: cover;
