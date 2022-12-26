@@ -1,9 +1,10 @@
 import './App.css';
 import {
-BrowserRouter as Router,
-Routes,
-Route
+  BrowserRouter as Router,
+  Routes,
+  Route
 } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import HomePage from './Components/Home/HomePage';
 import RealEstateListing from "./Components/RealEstate/RealEstateListing";
 import Cars from "./Components/Cars/CarsListing";
@@ -55,14 +56,14 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient} >
-      
+      <ToastContainer />
       <Router>
         {/* <Navbar/> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/modal' element={<ModalCont/>} />
-          <Route path='/admin' element={<Admin/>}/>  
-          <Route path='/loader' element={<Loader/>}/>  
+          <Route path='/modal' element={<ModalCont />} />
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/loader' element={<Loader />} />
           <Route path='/email' element={<EmailPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />
@@ -88,10 +89,10 @@ function App() {
           <Route path="/dashboard/wallet/transfer" element={<Transfer />} />
           <Route path="/dashboard/wallet/withdraw" element={<Withdrawal />} />
           <Route path="/dashboard/wallet/deposit" element={<Deposit />} />
-          <Route path='/dashboard/wallet/transfer/confirm' element={<Transfer2/>} />
+          <Route path='/dashboard/wallet/transfer/confirm' element={<Transfer2 />} />
           <Route path="/about" element={<About />} />
           <Route path="/help" element={<Help />} />
-          <Route path='/success' element={<SuccessPage/>} />
+          <Route path='/success' element={<SuccessPage />} />
           <Route path="/help/earning" element={<Earning />} />
           {/* <Route path="/help/benefits" element={<Benefits />} />
           <Route path="/profile" element={<ProfileContainer />} /> */}
@@ -101,7 +102,7 @@ function App() {
           <Route path='/profile/edit' element={<EditProfile />} />
           <Route path="/profile/create-listings" element={<CreateListing />} />
           <Route path="/profile" element={<LoggedUser />} />
-          <Route path="/profile/:id" element={<OtherUser />}/>
+          <Route path="/profile/:id" element={<OtherUser />} />
           <Route path="/waitList" element={<Waitlist />} />
         </Routes>
       </Router>
