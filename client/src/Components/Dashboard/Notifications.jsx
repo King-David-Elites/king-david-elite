@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaInbox } from 'react-icons/fa'
 import Dashboard from './Dashboard'
 import { MobileDashboardContainer, NotificationContainer } from './Dashboard.Styles'
 import { BiDotsVerticalRounded } from 'react-icons/bi'
@@ -164,7 +163,6 @@ const MobileNotification = () => {
             link: "",
         },
     ]
-
 
     return (
         <MobileDashboardContainer>

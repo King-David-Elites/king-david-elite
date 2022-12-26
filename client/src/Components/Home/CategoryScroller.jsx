@@ -4,7 +4,6 @@ import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri'
 const CategoryScroller = ({ id, children }) => {
     const scrollLength = 500
 
-
     const [isScrollLeftActive, setIsScrollLeftActive] = useState(false)
     const [isScrollRightActive, setIsScrollRightActive] = useState(true)
     const scrollLeft = () => {
