@@ -114,7 +114,7 @@ export const ListingForm = styled.div`
             opacity:0;
         }
         .section > .chosenImages{
-            overflow-x: auto;   
+            overflow-x: scroll;   
             width:100%;
             display:flex;
             justify-content: flex-start;
@@ -129,8 +129,9 @@ export const ListingForm = styled.div`
         }
         .section > .chosenImages > .imgCont{
             position:relative;
-            flex:0 1 10em;            
+            width:10em;            
             height:10em;
+            border-radius: 0.5em;
             display:flex;
             justify-content: center;
             align-items: center;

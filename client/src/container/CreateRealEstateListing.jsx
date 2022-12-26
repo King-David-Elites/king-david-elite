@@ -70,7 +70,7 @@ const CreateRealEstateListing = () => {
       userListings["images"].length !== 0
     ) {
       setValid(true);
-      setError(false);
+      setError(false); 
     } else {
       setValid(false);
       setError(true);
