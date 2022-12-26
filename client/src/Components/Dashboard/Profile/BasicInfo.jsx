@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import globalApi from "../../../api";
 
 const BasicInfo = (props) => {
   let { setRegistering, country, stage, setStage, scrollToRef, position } =
@@ -40,7 +41,7 @@ const BasicInfo = (props) => {
 
   const getUserDetails = async () => {
     await axios
-      .get("https://kde.cyclic.app/users/me", setConfig())
+      .get(`${globalApi}/users/me`, setConfig())
       .then((resp) => {
         console.log(resp.data);
       })
