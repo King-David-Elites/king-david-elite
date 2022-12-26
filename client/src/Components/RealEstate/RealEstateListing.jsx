@@ -11,7 +11,7 @@ import {
   PicCar,
   Reaction,
   Position
-} from '..//Cars/Cars.Style'
+} from '../Cars/Cars.Style'
 import { SearchSection, SearchC  } from './RealEstate.Style';
 import Navbar from '../Navbar/Navbar'
 import realEstatePics from './Image/real-estate-pics.jpg'
@@ -23,6 +23,7 @@ import MainButton from '../buttons/MainButton'
 import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import globalApi from '../../api';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const RealEstateListing = () => {
@@ -30,7 +31,7 @@ const RealEstateListing = () => {
   const [listing, setListing] = useState([])
 
   const getListings = ()=>{
-    axios.get("https://kde.cyclic.app/listings/all")
+    axios.get(`${globalApi}/listings/all`)
     .then(resp => setListing(resp.data))
     .catch(err => console.error(err))
   }
@@ -74,8 +75,8 @@ const RealEstateListing = () => {
         </EstateProperties>        
       </Body>
       <Banner category="Real Estate"/>        
-      <Text color="black" fontSize="0.8rem" margin="2em">
-        King David Elite Luxury Real Estate Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing ornare mattis non pellentesque justo dolor, nunc, pharetra. Nulla arcu dignissim ut sem laoreet eget arcu rhoncus bibendum. Ac, hendrerit purus libero, pretium. Non nulla turpis ligula a nibh. Consectetur mattis lectus eget neque, massa convallis posuere ultrices netus. Sapien imperdiet turpis eget quisque consequat ut id nec, ultrices. Hac sed vitae aenean feugiat etiam aliquam pretium laoreet. Et scelerisque fames aliquam eu volutpat nisl, mi nulla integer. Nec ac ut mauris arcu nunc augue. Malesuada enim, vitae libero pulvinar viverra nulla elementum eros urna. Volutpat pharetra mattis blandit ipsum etiam. Sit tellus ultricies tortor in elementum lectus sed a. Amet nulla risus non gravida faucibus. Commodo venenatis odio at ultrices est feugiat. Pellentesque habitasse velit lectus sociis fames neque. Massa purus ultricies blandit eget hendrerit non viverra blandit ullamcorper. Sem facilisi neque faucibus accumsan hendrerit tempus, dui. Vitae quisque non, ut consectetur risus. Non amet proin ornare egestas commodo purus vitae. Ligula natoque arcu amet, sed facilisis eget id nisl in. Aliquam eu tincidunt blandit tempus turpis urna. Suspendisse elementum egestas sodales vitae morbi sapien molestie. Massa vel morbi sit ullamcorper nam. Ut mi neque ut diam. Amet congue tristique non imperdiet accumsan lectus vitae at. Ultrices neque, nunc ultrices eleifend at nibh id eget tortor. Sit auctor adipiscing ut pellentesque quam est magna tristique mauris. Ut augue nisl vel senectus accumsan velit lacinia orci, ac. Quis feugiat amet, donec sollicitudin fames ultricies etiam odio.
+      <Text color="black" fontSize="16px" margin="5%">
+        King David Elite Luxury Real Estate Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing ornare mattis non pellentesque justo dolor, nunc, pharetra. Nulla arcu dignissim ut sem laoreet eget arcu rhoncus bibendum. Ac, hendrerit purus libero, pretium. 
       </Text>
       <Footer />
     </>
@@ -114,7 +115,7 @@ const RealEstate = (props) => {
           <Text fontSize="0.8rem" color="black">{postedBy.firstName + " " + postedBy.lastName}</Text>
           <BadgeCheck color="blue" width="30px" />
         </Dealer>
-        <PicCar imageUrl={images[0]}>
+        <PicCar imageUrl={images && images[0]}>
           <div style={{
             width: "100%",
             display: "flex",

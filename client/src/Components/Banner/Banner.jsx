@@ -12,9 +12,6 @@ const Banner = ({category}) =>{
             <LuxuryLabel imageUrl={transverse}>
                 <LuxuryBody>
                     <Text
-                        margin="1em auto 0em 3em"
-                        fontSize="1.5rem"
-                        fontWeight="500"
                     >
                         Luxury {category}
                     </Text>

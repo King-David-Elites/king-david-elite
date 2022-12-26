@@ -73,8 +73,8 @@ export const Seperator = styled.div`
 
 export const Text = styled.div`
     color:${props => props.color ? props.color : theme.textColor};
-    font-size:${props => props.fontSize ? props.fontSize : "1.3rem"};
-    font-weight:${props => props.fontWeight ? props.fontWeight : "bold"};    
+    font-size:${props => props.fontSize ? props.fontSize : "20px"};
+    font-weight:${props => props.fontWeight ? props.fontWeight : ""};    
     margin:${props => props.margin ? props.margin : "0em"}; 
     padding:${props => props.padding ? props.padding : "0em"};  
     text-align: ${props => props.textAlign ? props.textAlign: "start"} ;
@@ -84,7 +84,7 @@ export const Text = styled.div`
     }
 
     @media(max-width:650px){
-      font-size:20px;
+      font-size:${props => props.smFontSize ? props.smFontSize : "16px"};
       text-align:center;
         h3{
           text-align:center;
