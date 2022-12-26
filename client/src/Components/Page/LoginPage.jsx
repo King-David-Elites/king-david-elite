@@ -2,12 +2,11 @@ import React from "react";
 import { Container, Page } from "./SignupPage.style";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import services from "../../ioc/services";
 import globalApi from "../../api";
 import axios from "axios";
 import { useState } from "react";
 import Loader from "../Loader/Loader";
-import Swal from "sweetalert2";
+import services from "../../ioc/services"
 
 const LoginPage = () => {
   const emailRef = useRef();
@@ -36,39 +35,21 @@ const LoginPage = () => {
         if (token) {
           localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(user));
-
-          Swal.fire({
-            title: "Login Successful!",
-            text: res.message,
-            icon: "success",
-            timer: 2000,
-            timerProgressBar: true,
-            
-          });
+          services.toast.success(res.message);
 
           setTimeout(() => {
             setLoader(false);
             navigate("/");
           }, 2000);
         } else {
-          Swal.fire({
-            title: "Login Failure!",
-            text: res.message,
-            icon: "error",
-            confirmButtonText: "Try Again",
-          });
+          services.toast.error(res.message)
           setLoader(false);
         }
       })
       .catch((err) => {
         console.log(err)
         setLoader(false)
-        Swal.fire({
-          title: "Login Failure!",
-          text: err.response.data.message,
-          icon: "error",
-          confirmButtonText: "Try Again",
-        })
+        services.toast.error(err)
       });
   };
 

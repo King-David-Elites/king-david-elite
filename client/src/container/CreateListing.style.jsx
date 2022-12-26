@@ -92,6 +92,98 @@ export const ListingForm = styled.div`
         .section p{
             font-weight:600;
         }
+        .section > .sectionHead{
+            width:100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sectionHead > .browseCont{
+            color:white;
+            width:5em;
+            padding: 0.3em;
+            position: relative;
+            background:#2301F3;
+            border-radius:0.5em;
+            display:flex;
+            justify-content: center;
+            align-items: center;            
+        }
+        .sectionHead > .browseCont > .browse{
+            position:absolute;
+            opacity:0;
+        }
+        .section > .chosenImages{
+            overflow-x: auto;   
+            width:100%;
+            display:flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap:1em;            
+        }
+        .section > .chosenImages > .videoCont{
+            position:relative;           
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .section > .chosenImages > .imgCont{
+            position:relative;
+            flex:0 1 10em;            
+            height:10em;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .chosenImages > .imgCont > .close{
+            position: absolute;
+            top:0.5em;
+            right: 0.5em;
+            background:white;
+            border-radius: 0.6em;
+            width:1.2em;
+            height:1.2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .chosenImages > .videoCont > .close{
+            position: absolute;
+            top:0.5em;
+            right: 0.5em;
+            background:white;
+            border-radius: 0.6em;
+            width:1.2em;
+            height:1.2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .chosenImages > .imgCont img{
+            width:10em;
+            height: 10em;
+            border-radius: 0.5em;
+        }
+        .section > .clearCont{
+            width: 100%;
+            display:flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .section > .clearCont > .clear{            
+            padding:0.5em;
+            display:flex;
+            justify-content:center;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: 0.3em;
+            color:gray;
+            font-weight:bolder;
+            font-size:0.8rem;
+            cursor: pointer;
+        }
         .section > .base{
             font-size:0.8rem;
             color:gray;
@@ -184,7 +276,7 @@ export const ListingForm = styled.div`
             border-radius: 0.5em;
         }
         .NumbB > .sect input{
-            width:4em;
+            width:10em;
             padding:1em;
             padding-left:1.5em;
             border: 2px solid black;
