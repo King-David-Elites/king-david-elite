@@ -12,6 +12,7 @@ import {
   FileUploadContainer,
   UploadFileBtn,
 } from "../Components/Cars/Cars.Style";
+import globalApi from "../api";
 
 const CreateRealEstateListing = () => {
   const [outDoorProp, setOutDoorProp] = useState([]);
@@ -70,9 +71,9 @@ const CreateRealEstateListing = () => {
       userListings["description"] &&
       userListings["location"] &&
       userListings["features"].length !== 0 &&
-      userListings["price"] &&
-      userListings["images"].length !== 0 &&
-      userListings["videos"].length !== 0
+      userListings["price"] 
+      // userListings["images"].length !== 0 &&
+      // userListings["videos"].length !== 0
     ) {      
       setValid(true);
       setError(false);
@@ -132,9 +133,10 @@ const CreateRealEstateListing = () => {
   };
 
   const postUserListings = async (userListings) => {
+    console.log(userListings.images)
     await axios
       .post(
-        "http://192.168.43.168:9099/listings/upload-list",
+        `${globalApi}/listings/upload-list`,
         userListings,
         setConfig()
       )
