@@ -171,7 +171,7 @@ border-radius:6px;
         margin:30px auto;
         padding:15px 16px;
         gap:10px;
-        width:260px;
+        width:90%;
         height:45px;
         border-radius: 4px;
         }

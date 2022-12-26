@@ -13,6 +13,7 @@ import { BorderText, Categories, CategoriesContainer, Category, Information, Inf
 import business from "./images/business.jpg"
 import coffee from "./images/coffee.jpg"
 import blur from "./images/blur.jpg"
+import CategoryScroller from './CategoryScroller'
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const HomePage = () => {
@@ -22,42 +23,56 @@ const HomePage = () => {
     {
       bg: c1,
       title: "Real Estate",
-      link:"/real-estate"
+      link: "/real-estate"
     },
     {
       bg: c2,
       title: "Yatch",
-      link:"/yatch"
+      link: "/yatch"
     },
     {
       bg: c3,
       title: "Hotels",
-      link:"/hotels"
+      link: "/hotels"
     },
     {
       bg: c4,
       title: "Cars",
-      link:"/cars"
+      link: "/cars"
     },
-    
+    {
+      bg: c4,
+      title: "Cars",
+      link: "/cars"
+    },
+    {
+      bg: c4,
+      title: "Cars",
+      link: "/cars"
+    },
+    {
+      bg: c4,
+      title: "Cars",
+      link: "/cars"
+    },
   ]
   return (
     <Fragment>
-      <Navbar/>
+      <Navbar />
       <Background imageUrl={bg}>
         <HeroSection>
           <Text fontSize="96px">
             <h3>Luxury <span>Hub</span></h3>
-            
+
           </Text>
           <Text>
-          The Greatest Luxury Is Freedom Of All Forms.
+            The Greatest Luxury Is Freedom Of All Forms.
           </Text>
           <div className='btn'>
-              <button onClick={()=>{
-                scrollToRef(position)
-              }}>Explore</button>
-              <button className='btn_app'>Download App</button>
+            <button onClick={() => {
+              scrollToRef(position)
+            }}>Explore</button>
+            <button className='btn_app'>Download App</button>
           </div>
 
 
@@ -66,80 +81,79 @@ const HomePage = () => {
 
       <CategoriesContainer>
         <Text>Categories</Text>
-
         <Categories ref={position}>
-          
-          {
-            categories.map((category, index)=> {
-              return(
-                <Category onClick={()=>{
-                  navigate(category?.link)
-                }} bg={category.bg} key={index}>
-                  <Text fontSize="20px" fontWeight="600">{category.title}</Text>
-                </Category>
-              )
-            })
-          }
+          <CategoryScroller id="category">
+            {
+              categories.map((category, index) => {
+                return (
+                  <Category onClick={() => {
+                    navigate(category?.link)
+                  }} bg={category.bg} key={index}>
+                    <Text fontSize="20px" fontWeight="600">{category.title}</Text>
+                  </Category>
+                )
+              })
+            }
+          </CategoryScroller>
         </Categories>
       </CategoriesContainer>
 
-
       <InformationContainer>
-           <Information>
-        <div className="image">
-          <img src={business} alt="" />
-          <div className="displace" />
-        </div>
-
-        <div className="textContent">
-          <h3>Get To Know Us</h3>
-          <p className='p'>Every Brand have an interesting story to tell.
-          Find out more about us.</p>
-
-          <div className="action">
-            Read More
+        <Information>
+          <div className="image">
+            <img src={business} alt="" />
+            <div className="displace" />
           </div>
-        </div>
-      </Information>
 
-      <Information>
-        
-        <div className="coffee image">
-          <img className='img_coffee' src={coffee} alt="" />
-        </div>
+          <div className="textContent">
+            <h3>Get To Know Us</h3>
+            <p className='p'>Every Brand have an interesting story to tell.
+              Find out more about us.</p>
 
-        <div className="Elite">
-          <h4>Elite Luxury NewsLetter</h4>
-          <p>Let’s keep you updated with what’s trending inLuxury.</p>
+            <div className="action">
+              Read More
+            </div>
+          </div>
+        </Information>
 
-          <form action="">
-            <input type="email" placeholder='E-mail'/>
-            <div className="btn">Subscribe</div>
-          </form>
-        </div>
+        <Information>
 
-        
+          <div className="coffee image">
+            <img className='img_coffee' src={coffee} alt="" />
+          </div>
 
-      </Information>
+          <div className="Elite">
+            <h4>Elite Luxury NewsLetter</h4>
+            <p>Let’s keep you updated with what’s trending inLuxury.</p>
+
+            <form action="">
+              <input type="email" placeholder='E-mail' />
+              <div className="btn">Subscribe</div>
+            </form>
+          </div>
+
+
+
+        </Information>
       </InformationContainer>
-   
+
       <SubFooter bg={blur}>
         <Text fontSize="24px">
           <p className='sub-p1'>
-          Let's help you make more money by becoming an <span>Affiliate</span></p>
+            Let's help you make more money by becoming an <span>Affiliate</span></p>
         </Text>
         <Text fontSize="14px">
           <p className='sub-p2'>
-          King David Elite work closely with Affiliate Marketer that are compatible in terms of values and synergy.</p>
+            King David Elite work closely with Affiliate Marketer that are compatible in terms of values and synergy.</p>
         </Text>
         <BorderText>
           SIGN UP FOR AN INVITE
         </BorderText>
       </SubFooter>
 
-      <Footer/>
+      <Footer />
     </Fragment>
-    
+
   )
 }
 

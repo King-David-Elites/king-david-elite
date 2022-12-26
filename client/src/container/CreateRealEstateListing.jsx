@@ -128,8 +128,13 @@ const CreateRealEstateListing = () => {
   };
 
   const postUserListings = async (userListings) => {
+    console.log(userListings.images)
     await axios
-      .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
+      .post(
+        `${globalApi}/listings/upload-list`,
+        userListings,
+        setConfig()
+      )
       .then((resp) => {
         console.log(resp.data);
         navigate("/profile");

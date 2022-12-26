@@ -4,6 +4,7 @@
     width: 100vw;
     padding: 0em 1em;
     margin-top: 1em;
+    font-size: 15px;
 }
 
 .notification-items .tick {

@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import services from "../../ioc/services";
 import globalApi from "../../api";
 import Loader from '../Loader/Loader';
+// import Swal from "sweetalert2";
 
 const SignUpPage = () => {
   const emailRef = useRef();
@@ -19,7 +20,7 @@ const SignUpPage = () => {
   const signUp = async (e) => {
     e.preventDefault();
     setLoader(true);
-    
+
     const userDetails = {
       email: emailRef.current.value,
       firstName: fnameRef.current.value,
@@ -38,16 +39,51 @@ const SignUpPage = () => {
         if (token) {
           localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(user));
-          navigate("/");
+          services.toast.success(res.message);
+
+          // Swal.fire({
+          //   title: "Login Successfyl!",
+          //   text: res.message,
+          //   icon: "success",
+          //   timer: 2000,
+          //   timerProgressBar: true,
+
+          // });
+
+          setTimeout(() => {
+            setLoader(false);
+            navigate("/");
+          }, 2000);
+        } else {
+          services.toast.error(res.message)
+          // Swal.fire({
+          //   title: "Login Failure!",
+          //   text: res.message,
+          //   icon: "error",
+          //   confirmButtonText: "Try Again",
+          // });
+
+          setLoader(false);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        setLoader(false)
+        services.toast.error(err);
+        //   Swal.fire({
+        //     title: "Login Failure!",
+        //     text: err.response.data.message,
+        //     icon: "error",
+        //     confirmButtonText: "Try Again",
+        //   })
+        // });
+      })
   };
 
   return (
     <Container>
       {
-        loader && <Loader/>
+        loader && <Loader />
       }
       <Page>
         <h1>King David Elite</h1>
