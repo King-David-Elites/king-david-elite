@@ -24,17 +24,12 @@ const Transfer = () => {
     const navigate = useNavigate()
 
     const mobileNavOptions = [
-        {
-            no: 1,
-            icon: <FaUserCircle size={20} />,
-            title: "Log In",
-            link: "/login",
-        },
+
         {
             no: 2,
             icon: <FaUserCircle size={20} />,
             title: "List with us",
-            link: "/",
+            link: "/signup",
         },
         {
             no: 3,
@@ -56,34 +51,35 @@ const Transfer = () => {
         },
         {
             no: 6,
+            icon: <FaUser size={20} />,
+            title: "Profile",
+            link: "/profile",
+        },
+        {
+            no: 7,
             icon: <MdMessage size={20} />,
             title: "Messages",
             link: "/dashboard/messages",
         },
         {
-            no: 7,
+            no: 8,
             icon: <BsFillBellFill size={20} />,
             title: "Notifications",
             link: "/dashboard/notifications",
         },
         {
-            no: 8,
+            no: 9,
             icon: <BsFillHeartFill size={20} />,
             title: "Saved Listing",
             link: "/",
         },
         {
-            no: 9,
+            no: 10,
             icon: <MdAccountBalanceWallet size={20} />,
             title: "My Account",
             link: "/dashboard/wallet",
         },
-        {
-            no: 10,
-            icon: <FaUser size={20} />,
-            title: "Profile",
-            link: "/profile",
-        },
+
     ]
 
     const otherNav = [
@@ -100,6 +96,12 @@ const Transfer = () => {
             no: 13,
             title: "Contact Us",
             link: "",
+        },
+        {
+            no: 14,
+            icon: <FaUserCircle size={20} />,
+            title: "Log In",
+            link: "/login",
         },
     ]
 

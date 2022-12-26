@@ -7,7 +7,6 @@ import axios from "axios";
 import { useState } from "react";
 import Loader from "../Loader/Loader";
 import services from "../../ioc/services"
-// import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const emailRef = useRef();
@@ -38,34 +37,13 @@ const LoginPage = () => {
           localStorage.setItem("user", JSON.stringify(user));
           services.toast.success(res.message);
 
-          // Swal.fire({
-          //   title: "Login Successfyl!",
-          //   text: res.message,
-          //   icon: "success",
-          //   timer: 2000,
-          //   timerProgressBar: true,
-
-          // });
           setTimeout(() => {
             setLoader(false);
             navigate("/");
           }, 2000);
         } else {
           services.toast.error(res.message)
-          // Swal.fire({
-          //   title: "Login Failure!",
-          //   text: res.message,
-          //   icon: "error",
-          //   confirmButtonText: "Try Again",
-          // });
           setLoader(false);
-          //   Swal.fire({
-          //     title: "Login Failure!",
-          //     text: err.response.data.message,
-          //     icon: "error",
-          //     confirmButtonText: "Try Again",
-          //   })
-          // });
         }
       })
       .catch((err) => {

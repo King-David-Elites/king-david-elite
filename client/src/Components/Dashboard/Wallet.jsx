@@ -95,85 +95,86 @@ const MobileWallet = () => {
   const navigate = useNavigate()
 
   const mobileNavOptions = [
-    {
-      no: 1,
-      icon: <FaUserCircle size={20} />,
-      title: "Log In",
-      link: "/login",
-    },
-    {
-      no: 2,
-      icon: <FaUserCircle size={20} />,
-      title: "List with us",
-      link: "/",
-    },
-    {
-      no: 3,
-      icon: <AiFillHome size={20} />,
-      title: "Home",
-      link: "/",
-    },
-    {
-      no: 4,
-      icon: <MdRealEstateAgent size={20} />,
-      title: "Real Estate",
-      link: "/real-estate"
-    },
-    {
-      no: 5,
-      icon: <IoMdCar size={20} />,
-      title: "Cars",
-      link: "/cars"
-    },
-    {
-      no: 6,
-      icon: <MdMessage size={20} />,
-      title: "Messages",
-      link: "/dashboard/messages",
-    },
-    {
-      no: 7,
-      icon: <BsFillBellFill size={20} />,
-      title: "Notifications",
-      link: "/dashboard/notifications",
-    },
-    {
-      no: 8,
-      icon: <BsFillHeartFill size={20} />,
-      title: "Saved Listing",
-      link: "/",
-    },
-    {
-      no: 9,
-      icon: <MdAccountBalanceWallet size={20} />,
-      title: "My Account",
-      link: "/dashboard/wallet",
-    },
-    {
-      no: 10,
-      icon: <FaUser size={20} />,
-      title: "Profile",
-      link: "/profile",
-    },
-  ]
 
-  const otherNav = [
     {
-      no: 11,
-      title: "Help & FAQs",
+        no: 2,
+        icon: <FaUserCircle size={20} />,
+        title: "List with us",
+        link: "/signup",
     },
     {
-      no: 12,
-      title: "About",
-      link: "/about",
+        no: 3,
+        icon: <AiFillHome size={20} />,
+        title: "Home",
+        link: "/",
     },
     {
-      no: 13,
-      title: "Contact Us",
-      link: "",
+        no: 4,
+        icon: <MdRealEstateAgent size={20} />,
+        title: "Real Estate",
+        link: "/real-estate"
     },
-  ]
+    {
+        no: 5,
+        icon: <IoMdCar size={20} />,
+        title: "Cars",
+        link: "/cars"
+    },
+    {
+        no: 6,
+        icon: <FaUser size={20} />,
+        title: "Profile",
+        link: "/profile",
+    },
+    {
+        no: 7,
+        icon: <MdMessage size={20} />,
+        title: "Messages",
+        link: "/dashboard/messages",
+    },
+    {
+        no: 8,
+        icon: <BsFillBellFill size={20} />,
+        title: "Notifications",
+        link: "/dashboard/notifications",
+    },
+    {
+        no: 9,
+        icon: <BsFillHeartFill size={20} />,
+        title: "Saved Listing",
+        link: "/",
+    },
+    {
+        no: 10,
+        icon: <MdAccountBalanceWallet size={20} />,
+        title: "My Account",
+        link: "/dashboard/wallet",
+    },
 
+]
+
+const otherNav = [
+    {
+        no: 11,
+        title: "Help & FAQs",
+    },
+    {
+        no: 12,
+        title: "About",
+        link: "/about",
+    },
+    {
+        no: 13,
+        title: "Contact Us",
+        link: "",
+    },
+    {
+        no: 14,
+        icon: <FaUserCircle size={20} />,
+        title: "Log In",
+        link: "/login",
+    },
+]
   return (
     <MobileGenericContainer>
       <MobileDashboardContainer>
