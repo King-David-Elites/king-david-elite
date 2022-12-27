@@ -137,7 +137,6 @@ const CreateRealEstateListing = () => {
   };
 
   const postUserListings = async (userListings) => {
-    setLoader(true)
     await axios
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
@@ -151,6 +150,7 @@ const CreateRealEstateListing = () => {
   };
 
   const handleSubmit = async () => {
+    setLoader(true)
     postUserListings(userListings);
   };
 

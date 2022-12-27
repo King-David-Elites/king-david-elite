@@ -10,3 +10,7 @@ body{
     scroll-behavior: smooth;
     scroll-snap-type: proximity;
 }
+
+img, video{
+    object-fit: cover;
+}
