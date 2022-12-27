@@ -16,7 +16,6 @@ import { useRef, useState } from "react";
 import { Country } from "./Profile_Mockdata";
 import DisableButton from "../../buttons/DisabledButton";
 import theme from "../../../application/utils/Theme";
-import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import services from "../../../ioc/services";
@@ -42,6 +41,8 @@ const EditProfile = () => {
     cover: file,
     address: data.address,
     country: data.country,
+    city: data.city,
+    state: data.state,
   });
 
   const comapanyInitialValues = {
@@ -62,43 +63,56 @@ const EditProfile = () => {
     cover: file || null,
   };
 
-  const getSignedInUserDetails = async () => {
-    await services.api.userRequests
-      .getSignedInUser()
-      .then((resp) => {
-        const user = {
-          firstName: resp.firstName,
-          lastname: resp.lastName,
-          email: resp.email,
-          cover: resp.cover,
-        };
-        setInitialValues(user);
-      })
-      .catch((err) => console.log(err));
-  };
+  // const getSignedInUserDetails = async () => {
+  //   await services.api.userRequests
+  //     .getSignedInUser()
+  //     .then((resp) => {
+  //       const user = {
+  //         firstName: resp.firstName,
+  //         lastname: resp.lastName,
+  //         email: resp.email,
+  //         cover: resp.cover,
+  //       };
+  //       setInitialValues(user);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   const onCompanySubmit = (values) => {
     console.log("data", values);
   };
 
+  const validate = values => {
+    let errors = {}
+    if (!values.firstName) errors.firstName = "Required";
+    if (!values.lastName) errors.lastName = "Required";
+    if (!values.email) { errors.email = "Required"; } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) { errors.email = 'Invalid email format' }
+    if (!values.address) errors.address = "Required";
+    if (!values.country) errors.country = "Required";
+    if (!values.city) errors.city = "Required";
+    if (!values.state) errors.state = "Required";
+    return errors;
+  }
+
   const onSubmit = async (values) => {
     values.cover = file;
     const userDetails = {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      cover: values.cover,
+      firstName: values.firstName.trim(),
+      lastName: values.lastName.trim(),
+      cover: values.cover.trim(),
       about: values.about,
-      websiteURL: values.websiteURL,
-      facebookURL: values.facebookURL,
-      instagramURL: values.instagramURL,
+      websiteURL: values.websiteURL.trim(),
+      facebookURL: values.facebookURL.trim(),
+      instagramURL: values.instagramURL.trim(),
       address: values.address,
       country: values.country,
+      city: values.city
     };
     if (isEdit) {
       await services.api.userRequests
         .updateUserProfile(userDetails)
         .then((res) => {
-        localStorage.setItem("user", JSON.stringify(res.data));
+          localStorage.setItem("user", JSON.stringify(res.data));
           setEditUserProfile(res.data);
           navigate("/profile");
         })
@@ -111,12 +125,16 @@ const EditProfile = () => {
   const formik = useFormik({
     initialValues,
     onSubmit,
+    validate
   });
 
   const companyFormik = useFormik({
     comapanyInitialValues,
     onCompanySubmit,
   });
+
+
+  const errorLength = Object.keys(formik.errors).length
 
   return (
     <>
@@ -133,9 +151,10 @@ const EditProfile = () => {
               type="text"
               className="input"
               name="firstName"
-              value={formik.values.firstName}
+              value={formik.values.firstName.trim()}
               onChange={formik.handleChange}
             />
+            {formik.errors.firstName ? <div className=" text-[red] opacity-40">{formik.errors.firstName}</div> : null}
 
             <label htmlFor="lastName">Last Name</label>
             <input
@@ -145,6 +164,7 @@ const EditProfile = () => {
               value={formik.values.lastName}
               onChange={formik.handleChange}
             />
+            {formik.errors.lastName ? <div className=" text-[red] opacity-40">{formik.errors.lastName}</div> : null}
 
             <label htmlFor="about">About</label>
             <textarea
@@ -199,8 +219,8 @@ const EditProfile = () => {
               onChange={formik.handleChange}
             />
 
-            <label htmlFor="cover">Cover</label>
-            <FileUploadContainer>
+            {/* <label htmlFor="cover">Cover</label> */}
+            {/* <FileUploadContainer>
               <UploadFileBtn type="button">
                 <FileBase64
                   name="cover"
@@ -214,16 +234,18 @@ const EditProfile = () => {
                 <i className="fas fa-file-upload" />
               </UploadFileBtn>
               <DragDropText>PNG, JPG, GIF up to 5mb</DragDropText>
-            </FileUploadContainer>
-            <MainButton
-              background="blue"
-              border="blue"
-              marginTop="1em"
-              padding="18px 24px"
-              type="submit"
-            >
-              Save
-            </MainButton>
+            </FileUploadContainer> */}
+
+            {
+              errorLength > 0 && <DisableButton border={theme.backgroundColor} marginTop="1em" padding="18px 24px " type="submit">Save</DisableButton>
+            }
+            {
+              errorLength === 0 && <MainButton background="blue" border="blue" marginTop="1em" padding="18px 24px" type="submit"
+              >
+                Save
+              </MainButton>
+            }
+
           </form>
 
           <div className="border"></div>
@@ -232,7 +254,7 @@ const EditProfile = () => {
             <h3>Address</h3>
             <form onSubmit={formik.handleSubmit}>
               <label htmlFor="address" className="space">
-                Address 1
+                Address
               </label>
               <input
                 type="text"
@@ -241,6 +263,7 @@ const EditProfile = () => {
                 value={formik.values.address}
                 onChange={formik.handleChange}
               />
+              {formik.errors.address ? <div className=" text-[red] opacity-40">{formik.errors.address}</div> : null}
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
@@ -261,6 +284,7 @@ const EditProfile = () => {
                       );
                     })}
                   </select>
+                  {formik.errors.country ? <div className=" text-[red] opacity-40">{formik.errors.country}</div> : null}
                 </div>
                 <div className="sub-dropdown space">
                   <label htmlFor="state">State</label>
@@ -280,6 +304,7 @@ const EditProfile = () => {
                       );
                     })}
                   </select>
+                  {formik.errors.state ? <div className=" text-[red] opacity-40">{formik.errors.state}</div> : null}
                 </div>
               </div>
 
@@ -302,6 +327,7 @@ const EditProfile = () => {
                       );
                     })}
                   </select>
+                  {formik.errors.city ? <div className=" text-[red] opacity-40">{formik.errors.city}</div> : null}
                 </div>
                 <div className="sub-dropdown space">
                   <label htmlFor="postalCode">Zip / Postal Code</label>
@@ -351,6 +377,7 @@ const EditProfile = () => {
                 value={formik.values.email}
                 onChange={formik.handleChange}
               />
+              {formik.errors.email ? <div className=" text-[red] opacity-40">{formik.errors.email}</div> : null}
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
