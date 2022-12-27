@@ -126,8 +126,7 @@ const CreateCarListing = () => {
     await axios
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
-        console.log(resp.data);
-        console.log(userListings["images"]);
+        console.log(resp.data);        
         navigate("/profile");
       })
       .catch((err) => {
