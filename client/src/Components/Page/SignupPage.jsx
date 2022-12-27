@@ -78,6 +78,17 @@ const SignUpPage = () => {
         //   })
         // });
       })
+
+
+        // function(text){
+        //   if(text.length <= 6){
+        //     console.log('password must be greater than 6');
+        //   }
+
+        //   else{
+        //     console.log('continue');
+        //   }
+        // }
   };
 
   return (
