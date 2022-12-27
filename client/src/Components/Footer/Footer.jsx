@@ -18,6 +18,10 @@ const Footer = () => {
     const redirectToInstagram = () => {
         window.location.replace('https://www.instagram.com/kingdavidelites/');
     }
+
+    const redirectToLinkedIn = () => {
+        window.location.replace('http://www.linkedin.com/in/king-david-elites-371804256');
+    }
     return (
         <>
             <FooterSection>
@@ -31,6 +35,7 @@ const Footer = () => {
                         <BsTwitter className='border-circle-bigScreen cursor-pointer' onClick={redirectToTwitter} size={40} color="white" />
                         <FaInstagram onClick={redirectToInstagram} className='border-circle-bigScreen cursor-pointer' size={40} color="white" />
                         <FaFacebookF className='border-circle-bigScreen cursor-pointer' onClick={redirectToFaceebook} size={40} color="white" />
+                        <FaLinkedinIn className='border-circle-bigScreen cursor-pointer' onClick={redirectToLinkedIn} size={40} color="white" />
                     </div>
                 </Section>
                 <Section>
@@ -48,7 +53,7 @@ const Footer = () => {
                     <List onClick={redirectToTwitter}>Facebook</List>
                     <List onClick={redirectToInstagram}>Instagram</List>
                     <List onClick={redirectToTwitter}>Twitter</List>
-                    <List>LinkedIn</List>
+                    <List onClick={redirectToLinkedIn}>LinkedIn</List>
                 </Section>
 
 
@@ -62,6 +67,7 @@ const Footer = () => {
                         <BsTwitter onClick={redirectToTwitter} className='border-circle' size={40} color="white" />
                         <FaInstagram onClick={redirectToInstagram} className='border-circle' size={40} color="white" />
                         <FaFacebookF onClick={redirectToFaceebook} className='border-circle' size={40} color="white" />
+                        <FaLinkedinIn className='border-circle' onClick={redirectToLinkedIn} size={40} color="white" />
                     </div>
                 </div>
 
@@ -80,7 +86,7 @@ const Footer = () => {
                     <List onClick={redirectToTwitter}>FACEBOOK</List>
                     <List onClick={redirectToInstagram}>INSTAGRAM</List>
                     <List onClick={redirectToTwitter}>TWITTER</List>
-                    <List>LINKEDIN</List>
+                    <List onClick={redirectToLinkedIn}>LINKEDIN</List>
                 </Section>
 
                 <div className='copywrite'>
