@@ -42,8 +42,8 @@ const ImagePage = () => {
     });
 
     return (
-        <div className="relative w-[100vw] h-[100vh]">
-            <div className="absolute bg-slate-200 text-black right-2 w-8 h-8 rounded-full flex items-center justify-center">
+        <div className="relative w-[100vw] h-[100vh] border-2 border-[red] flex ">
+            <div className="absolute bg-slate-200 text-black top-1 w-8 h-8 rounded-full flex items-center justify-center">
                 <HiCamera className="cursor-pointer" />
                 <div className="absolute opacity-0">
                     <FileBase64 name="cover"
@@ -59,7 +59,7 @@ const ImagePage = () => {
             <img
                 src={image}
                 alt=""
-                className="object-contain"
+                className="object-cover w-[100%] h-[100%]"
             />
         </div>
     );
