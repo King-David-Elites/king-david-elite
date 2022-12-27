@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import globalApi from "../api";
+import Loader from "../Components/Loader/Loader";
 
 const CreateRealEstateListing = () => {
   const [outDoorProp, setOutDoorProp] = useState([]);
@@ -24,6 +25,7 @@ const CreateRealEstateListing = () => {
   const [allVideos, setAllVideos] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [modal, setModal] = useState(false);
+  const [loader, setLoader] = useState(false)
 
   const navigate = useNavigate();
   const [size, setSize] = useState(0);
@@ -135,11 +137,12 @@ const CreateRealEstateListing = () => {
   };
 
   const postUserListings = async (userListings) => {
-    console.log(userListings.images);
+    setLoader(true)
     await axios
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
         console.log(resp.data);
+        setLoader(false);
         navigate("/profile");
       })
       .catch((err) => {
@@ -153,6 +156,9 @@ const CreateRealEstateListing = () => {
 
   return (
     <>
+    {
+      loader && <Loader />
+    }
       <div className="form_Content">
         <div className="section">
           <p>Title/Name</p>

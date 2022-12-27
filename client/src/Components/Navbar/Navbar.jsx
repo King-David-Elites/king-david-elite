@@ -187,8 +187,8 @@ const Navbar = ({ bg, sticky, active }) => {
 
                     </ul>
                 </nav>
-                <Brand onClick={() => navigate("/")}>
-                    <div style={{ width: "4em", height: "auto" }}>
+                <Brand>
+                    <div style={{ width: "4em", height: "auto" }} onClick={() => navigate("/")}>
                         <img src={kde_whiteBg}
                             className='w-[100%] h-[100%]'
                             alt="brandlogo" />
