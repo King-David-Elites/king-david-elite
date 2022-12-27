@@ -59,7 +59,7 @@ const ImagePage = () => {
             <img
                 src={image}
                 alt=""
-                className="object-contain"
+                className="object-cover w-[100%] h-[100%]"
             />
         
         </Preview>
