@@ -34,6 +34,7 @@ const EditProfile = () => {
   const [initialValues, setInitialValues] = useState({
     firstName: data.firstName,
     lastName: data.lastName,
+    email: data.email,
     about: data.about,
     websiteURL: data.websiteURL,
     facebookURL: data.facebookURL,
@@ -43,6 +44,7 @@ const EditProfile = () => {
     country: data.country,
     city: data.city,
     state: data.state,
+    postalCode: data.postalCode
   });
 
   const comapanyInitialValues = {
@@ -73,10 +75,12 @@ const EditProfile = () => {
   //         email: resp.email,
   //         cover: resp.cover,
   //       };
+  //       console.log("res", resp);
   //       setInitialValues(user);
   //     })
   //     .catch((err) => console.log(err));
   // };
+
 
   const onCompanySubmit = (values) => {
     console.log("data", values);
@@ -106,7 +110,8 @@ const EditProfile = () => {
       instagramURL: values.instagramURL.trim(),
       address: values.address,
       country: values.country,
-      city: values.city
+      city: values.city,
+      postalCode: values.postalCode
     };
     if (isEdit) {
       await services.api.userRequests
@@ -134,7 +139,7 @@ const EditProfile = () => {
   });
 
 
-  const errorLength = Object.keys(formik.errors).length
+  // const errorLength = Object.keys(formik.errors).length
 
   return (
     <>
@@ -235,17 +240,10 @@ const EditProfile = () => {
               </UploadFileBtn>
               <DragDropText>PNG, JPG, GIF up to 5mb</DragDropText>
             </FileUploadContainer> */}
-
-            {
-              errorLength > 0 && <DisableButton border={theme.backgroundColor} marginTop="1em" padding="18px 24px " type="submit">Save</DisableButton>
-            }
-            {
-              errorLength === 0 && <MainButton background="blue" border="blue" marginTop="1em" padding="18px 24px" type="submit"
-              >
-                Save
-              </MainButton>
-            }
-
+            <MainButton background="blue" border="blue" marginTop="1em" padding="18px 24px" type="submit"
+            >
+              Save
+            </MainButton>
           </form>
 
           <div className="border"></div>
@@ -277,7 +275,7 @@ const EditProfile = () => {
                     {Country.map((list, i) => {
                       return (
                         <>
-                          <option key={i} value={list.country}>
+                          <option key={i} value={formik.values.country} selected>
                             {list.country}
                           </option>
                         </>
@@ -293,11 +291,11 @@ const EditProfile = () => {
                     onChange={formik.handleChange}
                     className="select"
                   >
-                    <option value="state"></option>
+                    <option value="state" ></option>
                     {Country.map((list, i) => {
                       return (
                         <>
-                          <option key={i} value={list.country}>
+                          <option key={i} value={formik.values.country} selected>
                             {list.country}
                           </option>
                         </>
@@ -320,7 +318,7 @@ const EditProfile = () => {
                     {Country.map((list, i) => {
                       return (
                         <>
-                          <option key={i} value={list.country}>
+                          <option key={i} value={formik.values.city} selected>
                             {list.country}
                           </option>
                         </>
@@ -331,22 +329,7 @@ const EditProfile = () => {
                 </div>
                 <div className="sub-dropdown space">
                   <label htmlFor="postalCode">Zip / Postal Code</label>
-                  <select
-                    name="postalCode"
-                    onChange={formik.handleChange}
-                    className="select"
-                  >
-                    <option value="postalCode"></option>
-                    {Country.map((list, i) => {
-                      return (
-                        <>
-                          <option key={i} value={list.country}>
-                            {list.country}
-                          </option>
-                        </>
-                      );
-                    })}
-                  </select>
+                  <input type="number" className="input" name="postalCode" id="postalCode" value={formik.values.postalCode} />
                 </div>
               </div>
               <MainButton
