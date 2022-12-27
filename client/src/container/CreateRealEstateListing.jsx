@@ -47,7 +47,7 @@ const CreateRealEstateListing = () => {
     noOfBathroom: 0,
   });
 
-  useEffect(() => {
+  useEffect(() => {    
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;
@@ -62,7 +62,7 @@ const CreateRealEstateListing = () => {
   useEffect(() => {
     userListings["images"] = images;
     userListings["videos"] = videos;
-    userListings["features"] = features;
+    userListings["features"] = features;    
     if (
       userListings["title"] &&
       userListings["description"] &&
@@ -72,7 +72,7 @@ const CreateRealEstateListing = () => {
       userListings["images"].length !== 0
     ) {
       setValid(true);
-      setError(false);
+      setError(false); 
     } else {
       setValid(false);
       setError(true);
@@ -193,7 +193,7 @@ const CreateRealEstateListing = () => {
                 setFeatures([...features, e.target.value]);
                 setOutDoorProp([...outDoorProp, { property: e.target.value }]);
                 setPrevious(e.target.value);
-                setLoaded(!loaded);
+                setChanging(!changing);
               }
             }}
           >
@@ -237,7 +237,7 @@ const CreateRealEstateListing = () => {
                 setFeatures([...features, e.target.value]);
                 setInDoorProp([...inDoorProp, { property: e.target.value }]);
                 setPrevious(e.target.value);
-                setLoaded(!loaded);
+                setChanging(!changing);
               }
             }}
           >
@@ -281,7 +281,7 @@ const CreateRealEstateListing = () => {
                 setFeatures([...features, e.target.value]);
                 setViewProp([...viewProp, { property: e.target.value }]);
                 setPrevious(e.target.value);
-                setLoaded(!loaded);
+                setChanging(!changing);
               }
             }}
           >
