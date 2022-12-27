@@ -35,9 +35,10 @@ export const Container = styled.div`
         color: white;
 
         h2{
-            padding:1em;
             font-weight: 700;
         }
+
+
 
         p{
             font-size:1rem;
@@ -82,24 +83,25 @@ export const Container = styled.div`
 
     button{
         display: grid;
+        border: none;
         width:60%;
         background-color: #F9A826;
         border-radius: 3px;
         color: black;
         text-align: center;
         margin:1em auto;
-        padding:.6em 0;
+        padding:.8em 0;
 
     }
 
-    @media only screen and (max-width:650px){
+    @media only screen and (max-width:850px){
 
             .seller{
                 width:90%;
                 height:30vh;
 
             h2{
-                padding:1em;
+                padding:.5em .8em;
                 font-weight: 700;
             }
 
@@ -121,7 +123,6 @@ export const Container = styled.div`
         .buyer{
                 width:90%;
                 height:30vh;
-                border: 1px solid red;
 
                 h3{
                     font-weight: 700;
