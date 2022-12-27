@@ -103,7 +103,7 @@ export const ListingForm = styled.div`
             width:5em;
             padding: 0.3em;
             position: relative;
-            background:blue;
+            background:#2301F3;
             border-radius:0.5em;
             display:flex;
             justify-content: center;
@@ -129,8 +129,9 @@ export const ListingForm = styled.div`
         }
         .section > .chosenImages > .imgCont{
             position:relative;
-            flex:0 1 10em;            
+            width:10em;            
             height:10em;
+            border-radius: 0.5em;
             display:flex;
             justify-content: center;
             align-items: center;

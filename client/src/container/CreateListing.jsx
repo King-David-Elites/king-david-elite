@@ -27,10 +27,10 @@ const CreateListing = () => {
     <>
       <ListingHead ref={top}>
         <div className="heading">
-          <h1 className="head1">Earn A Decent Commission</h1>
-          <h2 className="head2">
+          <h3 className="head1">Earn A Decent Commission</h3>
+          <p className="head2">
             by showcasing your exclusive listings to our highly-esteemed users
-          </h2>
+          </p>
           <select
             name="listings"
             onChange={(e) => {

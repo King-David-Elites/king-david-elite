@@ -24,6 +24,8 @@ import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import globalApi from '../../api';
+import Listing from '../Listing/Listing';
+import { GridContainer } from '../Listing/Listing.styled';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const RealEstateListing = () => {
@@ -63,16 +65,17 @@ const RealEstateListing = () => {
 
       <Body>
         <Text fontSize="1rem" fontWeight="700" color="black">Luxury Properties For Sale</Text>
-        <EstateProperties>
+        <GridContainer>
           {
             listing.filter(i => !i.carCondition).map((items) => {
               return (
-                <RealEstate key={items._id} {...items} />
+                // <RealEstate key={items._id} {...items} />
+                <Listing key={items._id} list={items}/>
               )
             })
           }
   
-        </EstateProperties>        
+        </GridContainer>        
       </Body>
       <Banner category="Real Estate"/>        
       <Text color="black" fontSize="16px" margin="5%">

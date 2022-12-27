@@ -3,10 +3,14 @@ import styled from "styled-components";
 export const Container = styled.div`
    background-color:rgba(0,0,0,.6);
    color: #d3cece;
-   position: absolute;
+   position: fixed;
    width:100%;
    z-index: 100;
    height: 100vh;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
    display:flex;
    justify-content: center;
    align-items: center;

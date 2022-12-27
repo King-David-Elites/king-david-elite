@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import globalApi from "../api";
+import Loader from "../Components/Loader/Loader";
 
 const CreateRealEstateListing = () => {
   const [outDoorProp, setOutDoorProp] = useState([]);
@@ -22,6 +23,9 @@ const CreateRealEstateListing = () => {
   const [previous, setPrevious] = useState("");
   const [allImages, setAllImages] = useState([]);
   const [allVideos, setAllVideos] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [modal, setModal] = useState(false);
+  const [loader, setLoader] = useState(false)
 
   const navigate = useNavigate();
   const [size, setSize] = useState(0);
@@ -43,7 +47,7 @@ const CreateRealEstateListing = () => {
     noOfBathroom: 0,
   });
 
-  useEffect(() => {
+  useEffect(() => {    
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;
@@ -55,7 +59,10 @@ const CreateRealEstateListing = () => {
     }
   }, [loaded]);
 
-  useEffect(() => {    
+  useEffect(() => {
+    userListings["images"] = images;
+    userListings["videos"] = videos;
+    userListings["features"] = features;    
     if (
       userListings["title"] &&
       userListings["description"] &&
@@ -65,7 +72,7 @@ const CreateRealEstateListing = () => {
       userListings["images"].length !== 0
     ) {
       setValid(true);
-      setError(false);
+      setError(false); 
     } else {
       setValid(false);
       setError(true);
@@ -77,24 +84,26 @@ const CreateRealEstateListing = () => {
     if (type === "image") {
       if (size <= 52428800 && size !== 0) {
         setImages(
-          base64.filter(
-            (items) =>
-              items.type === "image/jpeg" ||
-              items.type === "image/png" ||
-              items.type === "image/gif"
+          images.concat(
+            base64.filter(
+              (items) =>
+                items.type === "image/jpeg" ||
+                items.type === "image/png" ||
+                items.type === "image/gif"
+            )
           )
-        );        
+        );
       }
     }
     if (type === "video") {
       if (size <= 52428800 && size !== 0) {
         setVideos(base64.filter((items) => items.type === "video/mp4"));
-      }      
+      }
     }
     setChanging(!changing);
   };
 
-  const setConfig = (userListings) => {
+  const setConfig = () => {
     const authToken = localStorage.getItem("token");
 
     const config = {
@@ -128,15 +137,11 @@ const CreateRealEstateListing = () => {
   };
 
   const postUserListings = async (userListings) => {
-    console.log(userListings.images)
     await axios
-      .post(
-        `${globalApi}/listings/upload-list`,
-        userListings,
-        setConfig()
-      )
+      .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
         console.log(resp.data);
+        setLoader(false);
         navigate("/profile");
       })
       .catch((err) => {
@@ -145,11 +150,15 @@ const CreateRealEstateListing = () => {
   };
 
   const handleSubmit = async () => {
+    setLoader(true)
     postUserListings(userListings);
   };
 
   return (
     <>
+    {
+      loader && <Loader />
+    }
       <div className="form_Content">
         <div className="section">
           <p>Title/Name</p>
@@ -184,7 +193,7 @@ const CreateRealEstateListing = () => {
                 setFeatures([...features, e.target.value]);
                 setOutDoorProp([...outDoorProp, { property: e.target.value }]);
                 setPrevious(e.target.value);
-                setLoaded(!loaded);
+                setChanging(!changing);
               }
             }}
           >
@@ -228,7 +237,7 @@ const CreateRealEstateListing = () => {
                 setFeatures([...features, e.target.value]);
                 setInDoorProp([...inDoorProp, { property: e.target.value }]);
                 setPrevious(e.target.value);
-                setLoaded(!loaded);
+                setChanging(!changing);
               }
             }}
           >
@@ -272,7 +281,7 @@ const CreateRealEstateListing = () => {
                 setFeatures([...features, e.target.value]);
                 setViewProp([...viewProp, { property: e.target.value }]);
                 setPrevious(e.target.value);
-                setLoaded(!loaded);
+                setChanging(!changing);
               }
             }}
           >
@@ -367,7 +376,8 @@ const CreateRealEstateListing = () => {
                           return images.filter(
                             (item) => item.base64 !== image.base64
                           );
-                        });                       
+                        });
+                        setChanging(!changing)
                       }}
                     >
                       <X color="black" width="15px" />
@@ -383,8 +393,9 @@ const CreateRealEstateListing = () => {
                 <div
                   className="clear"
                   onClick={() => {
-                    setImages([]);   
-                    setAllImages([])                 
+                    setImages([]);
+                    setAllImages([]);
+                    setChanging(!changing)
                   }}
                 >
                   Clear All
@@ -410,8 +421,8 @@ const CreateRealEstateListing = () => {
                   multiple={false}
                   onDone={(base64) => {
                     setSize(0);
-                    setSize(base64.file['size'])
-                    setLoaded(!loaded)                   
+                    setSize(base64.file["size"]);
+                    setLoaded(!loaded);
                     setAllVideos([base64]);
                   }}
                 />
@@ -424,14 +435,15 @@ const CreateRealEstateListing = () => {
                 <>
                   <div className="videoCont">
                     <video width="300px" height="300px" controls>
-                      <source src={video.base64} type="video/mp4"/>
+                      <source src={video.base64} type="video/mp4" />
                       Your browser does not support the video tag.
-                    </video>                    
+                    </video>
                     <div
                       className="close"
                       onClick={() => {
                         setVideos([]);
-                        setAllVideos([])
+                        setAllVideos([]);
+                        setChanging(!changing)
                       }}
                     >
                       <X color="black" width="15px" />
