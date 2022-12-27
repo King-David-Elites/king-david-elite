@@ -167,3 +167,28 @@ export const Switch = styled.div`
         }
     }
 `
+
+export const Preview = styled.div`
+    display: flex;
+    height: 100vh;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    justify-items: center;
+
+    img{
+        margin: auto 0;
+    }
+
+    .icon{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        background-color: rgba(150,150,150);
+        clip-path: circle();
+        padding: 10px;
+    }
+`

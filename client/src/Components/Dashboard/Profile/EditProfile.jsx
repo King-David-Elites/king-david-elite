@@ -19,6 +19,7 @@ import theme from "../../../application/utils/Theme";
 import { useLocation, useNavigate } from "react-router-dom";
 import services from "../../../ioc/services";
 import { useGetUserDetails } from "../../../application/hooks/queryhooks";
+import Loader from "../../Loader/Loader";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -29,15 +30,16 @@ const EditProfile = () => {
   const [editUserProfile, setEditUserProfile] = useState();
   const fileInputField = useRef(null);
   const [file, setFile] = useState(data.cover);
+  const [loader, setLoader] = useState(false)
 
   const [initialValues, setInitialValues] = useState({
     firstName: data.firstName,
     lastName: data.lastName,
     email: data.email,
     about: data.about,
-    websiteURL: data.websiteURL,
-    facebookURL: data.facebookURL,
-    instagramURL: data.facebookURL,
+    websiteURL: data.websiteUrl,
+    facebookURL: data.facebookUrl,
+    instagramURL: data.instagramUrl,
     cover: file,
     address: data.address,
     country: data.country,
@@ -98,26 +100,30 @@ const EditProfile = () => {
   }
 
     const onSubmit = async (values) => {
+      // console.log("hey")
       values.cover = file;
       const userDetails = {
-        firstName: values.firstName.trim(),
-        lastName: values.lastName.trim(),
-        cover: values.cover.trim(),
-        about: values.about,
-        websiteURL: values.websiteURL.trim(),
-        facebookURL: values.facebookURL.trim(),
-        instagramURL: values.instagramURL.trim(),
+        firstName: values.firstName?.trim(),
+        lastName: values.lastName?.trim(),
+        cover: values.cover?.trim(),
+        about: values?.about,
+        websiteUrl: values.websiteURL?.trim(),
+        facebookUrl: values.facebookURL?.trim(),
+        instagramUrl: values.instagramURL?.trim(),
         address: values.address,
         country: values.country,
         city: values.city,
         postalCode: values.postalCode
       };
       if (isEdit) {
+        setLoader(true)
         await services.api.userRequests
           .updateUserProfile(userDetails)
           .then((res) => {
+            console.log(userDetails)
             localStorage.setItem("user", JSON.stringify(res.data));
             setEditUserProfile(res.data);
+            setLoader(false)
             navigate("/profile");
           })
           .catch((error) => {
@@ -142,6 +148,9 @@ const EditProfile = () => {
 
   return (
     <>
+    {
+      loader && <Loader />
+    }
       <EditProfileContainer padding="12px 12px">
         <div className="content-text">
           <h3>Profile</h3>
