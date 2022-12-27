@@ -47,7 +47,7 @@ const CreateRealEstateListing = () => {
     noOfBathroom: 0,
   });
 
-  useEffect(() => {    
+  useEffect(() => {
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;
@@ -62,7 +62,7 @@ const CreateRealEstateListing = () => {
   useEffect(() => {
     userListings["images"] = images;
     userListings["videos"] = videos;
-    userListings["features"] = features;    
+    userListings["features"] = features;
     if (
       userListings["title"] &&
       userListings["description"] &&
@@ -72,7 +72,7 @@ const CreateRealEstateListing = () => {
       userListings["images"].length !== 0
     ) {
       setValid(true);
-      setError(false); 
+      setError(false);
     } else {
       setValid(false);
       setError(true);
@@ -156,9 +156,9 @@ const CreateRealEstateListing = () => {
 
   return (
     <>
-    {
-      loader && <Loader />
-    }
+      {
+        loader && <Loader />
+      }
       <div className="form_Content">
         <div className="section">
           <p>Title/Name</p>

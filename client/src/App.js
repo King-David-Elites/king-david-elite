@@ -50,6 +50,8 @@ import Admin from './Components/Admin/Admin';
 import Loader from './Components/Loader/Loader'
 
 import ModalCont from './Components/Modal/ModalCont';
+import Register from './Components/RegisterPage/Register';
+import ImagePage from './Components/Profile/ImagePage';
 
 function App() {
   const queryClient = new QueryClient();
@@ -60,6 +62,7 @@ function App() {
       <Router>
         {/* <Navbar/> */}
         <Routes>
+          <Route path='/register' element = {<Register/>}/>
           <Route path='/' element={<HomePage />} />
           <Route path='/modal' element={<ModalCont />} />
           <Route path='/admin' element={<Admin />} />
@@ -104,6 +107,7 @@ function App() {
           <Route path="/profile" element={<LoggedUser />} />
           <Route path="/profile/:id" element={<OtherUser />} />
           <Route path="/waitList" element={<Waitlist />} />
+          <Route path='/profile/viewImage' element={<ImagePage/>}/>
         </Routes>
       </Router>
     </QueryClientProvider>
