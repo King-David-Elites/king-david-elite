@@ -17,7 +17,6 @@ import { Country } from "./Profile_Mockdata";
 import DisableButton from "../../buttons/DisabledButton";
 import theme from "../../../application/utils/Theme";
 import { useLocation, useNavigate } from "react-router-dom";
-import FileBase64 from "react-file-base64";
 import services from "../../../ioc/services";
 import { useGetUserDetails } from "../../../application/hooks/queryhooks";
 
@@ -98,34 +97,34 @@ const EditProfile = () => {
     return errors;
   }
 
-  const onSubmit = async (values) => {
-    values.cover = file;
-    const userDetails = {
-      firstName: values.firstName.trim(),
-      lastName: values.lastName.trim(),
-      cover: values.cover.trim(),
-      about: values.about,
-      websiteURL: values.websiteURL.trim(),
-      facebookURL: values.facebookURL.trim(),
-      instagramURL: values.instagramURL.trim(),
-      address: values.address,
-      country: values.country,
-      city: values.city,
-      postalCode: values.postalCode
+    const onSubmit = async (values) => {
+      values.cover = file;
+      const userDetails = {
+        firstName: values.firstName.trim(),
+        lastName: values.lastName.trim(),
+        cover: values.cover.trim(),
+        about: values.about,
+        websiteURL: values.websiteURL.trim(),
+        facebookURL: values.facebookURL.trim(),
+        instagramURL: values.instagramURL.trim(),
+        address: values.address,
+        country: values.country,
+        city: values.city,
+        postalCode: values.postalCode
+      };
+      if (isEdit) {
+        await services.api.userRequests
+          .updateUserProfile(userDetails)
+          .then((res) => {
+            localStorage.setItem("user", JSON.stringify(res.data));
+            setEditUserProfile(res.data);
+            navigate("/profile");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     };
-    if (isEdit) {
-      await services.api.userRequests
-        .updateUserProfile(userDetails)
-        .then((res) => {
-          localStorage.setItem("user", JSON.stringify(res.data));
-          setEditUserProfile(res.data);
-          navigate("/profile");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
 
   const formik = useFormik({
     initialValues,
