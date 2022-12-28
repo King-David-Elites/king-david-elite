@@ -100,7 +100,6 @@ const EditProfile = () => {
   }
 
     const onSubmit = async (values) => {
-      // console.log("hey")
       values.cover = file;
       const userDetails = {
         firstName: values.firstName?.trim(),
@@ -142,9 +141,6 @@ const EditProfile = () => {
     comapanyInitialValues,
     onCompanySubmit,
   });
-
-
-  // const errorLength = Object.keys(formik.errors).length
 
   return (
     <>

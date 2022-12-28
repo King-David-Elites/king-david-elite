@@ -4,7 +4,6 @@ import FileBase64 from "react-file-base64";
 import { useState } from "react";
 import services from "../../ioc/services";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { Preview } from "./Styled";
 
 const ImagePage = () => {
@@ -12,14 +11,12 @@ const ImagePage = () => {
     const [image, setImage] = useState(data.cover);
     const navigate = useNavigate();
 
-    const upload = (image)=>{
+    const upload = (image) => {
         setImage(image)
         data.cover = image;
         const userDetails = {
             cover: data.cover
         }
-        console.log(image)
-
         services.api.userRequests
             .updateUserProfile(userDetails)
             .then((res) => {
@@ -37,23 +34,23 @@ const ImagePage = () => {
 
     return (
         <Preview>
-            
+
             {/* <div className="absolute bg-slate-200 text-black right-2 w-8 h-8 rounded-full flex items-center justify-center">
                 <HiCamera className="cursor-pointer" />
                 
             </div> */}
 
             <div className="icon">
-            <HiCamera color="white"/>
-            
-                    <FileBase64 name="cover"
-                        defaultValue={image}
-                        multiple={false}
-                        onDone={(base64) => {
-                            upload(base64.base64)
-                        }
-                        } />
-                
+                <HiCamera color="white" />
+
+                <FileBase64 name="cover"
+                    defaultValue={image}
+                    multiple={false}
+                    onDone={(base64) => {
+                        upload(base64.base64)
+                    }
+                    } />
+
             </div>
 
             <img
@@ -61,9 +58,9 @@ const ImagePage = () => {
                 alt=""
                 className="object-cover w-[100%] h-[100%]"
             />
-        
+
         </Preview>
-        
+
     );
 }
 
