@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { Fragment } from "react";
 import { FaCheckCircle, FaIcons, FaPen } from "react-icons/fa";
 import ProfileList from "../../container/ProfileList";
@@ -13,6 +13,7 @@ const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
   const data = useGetUserDetails()
   const navigate = useNavigate()
+  const [file, setFile] = useState(data.cover);
 
   //   const logged = true
   const options = [
@@ -33,12 +34,15 @@ const LoggedUser = ({ logged }) => {
       component: <Verification />,
     },
   ];
+
+
   return (
     <Fragment>
-      <Header>
+      <Header className="cursor-pointer" onClick={() => navigate('/profile/viewImage')}>
         <img
           src={data.cover}
           alt=""
+          
         />
       </Header>
 
@@ -63,7 +67,7 @@ const LoggedUser = ({ logged }) => {
         <div className="btns">
           {!logged ? (
             <>
-              <div className="edit" onClick={()=>{navigate("edit")}}>
+              <div className="edit" onClick={() => { navigate("edit") }}>
                 <FaPen />
                 <p>Edit Profile</p>
               </div>
@@ -89,31 +93,33 @@ const LoggedUser = ({ logged }) => {
 
       {!logged && <Update>Update Account</Update>}
 
-      {!logged && (
-        <Switch>
-          <div className="line" />
-          <div className="options">
-            {options.map((option, i) => {
-              const { title, component } = option;
-              return (
-                <div
-                  key={i}
-                  className="option"
-                  onClick={() => {
-                    setActive(component);
-                  }}
-                >
-                  {title}
-                </div>
-              );
-            })}
-          </div>
-          <div className="line" />
-        </Switch>
-      )}
+      {
+        !logged && (
+          <Switch>
+            <div className="line" />
+            <div className="options">
+              {options.map((option, i) => {
+                const { title, component } = option;
+                return (
+                  <div
+                    key={i}
+                    className="option"
+                    onClick={() => {
+                      setActive(component);
+                    }}
+                  >
+                    {title}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="line" />
+          </Switch>
+        )
+      }
 
-       { !logged && active}
-    </Fragment>
+      {!logged && active}
+    </Fragment >
   );
 };
 

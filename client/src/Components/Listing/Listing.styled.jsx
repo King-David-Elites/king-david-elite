@@ -13,6 +13,7 @@ export const Container = styled.div`
 
     @media (max-width: 700px){
         padding: 0;
+        margin:0 0  20px;
 
         &:hover{
         border: none;

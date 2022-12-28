@@ -511,6 +511,7 @@ export const LastContainer = styled.div`
     align-items: center;
     justify-content: center;
     margin: 0 0 50px;
+    padding: 20px;
 
     .folder{
         width: 100px;
