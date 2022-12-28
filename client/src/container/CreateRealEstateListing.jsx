@@ -25,7 +25,8 @@ const CreateRealEstateListing = () => {
   const [allVideos, setAllVideos] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [modal, setModal] = useState(false);
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
+  const [loadImage, setLoadImage] = useState(false);
 
   const navigate = useNavigate();
   const [size, setSize] = useState(0);
@@ -48,18 +49,20 @@ const CreateRealEstateListing = () => {
   });
 
   useEffect(() => {    
+    setLoadImage(loadImage)
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;
-    if (allImages.length !== 0) {
+    if (allImages.length !== 0 && loadImage === true) {
       Load(allImages, "image", size);
     }
-    if (allVideos.length !== 0) {
+    if (allVideos.length !== 0 && loadImage === false) {
       Load(allVideos, "video", size);
     }
-  }, [loaded]);
+  }, [loaded,loadImage]);
 
   useEffect(() => {
+    console.log(videos)
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;    
@@ -96,6 +99,7 @@ const CreateRealEstateListing = () => {
       }
     }
     if (type === "video") {
+      console.log(base64)
       if (size <= 52428800 && size !== 0) {
         setVideos(base64.filter((items) => items.type === "video/mp4"));
       }
@@ -356,8 +360,9 @@ const CreateRealEstateListing = () => {
                     base64.forEach((item) => {
                       setSize(size + item.file["size"]);
                       setLoaded(!loaded);
-                    });
+                    });                    
                     setAllImages(base64);
+                    setLoadImage(true);
                   }}
                 />
               </div>
@@ -421,9 +426,10 @@ const CreateRealEstateListing = () => {
                   multiple={false}
                   onDone={(base64) => {
                     setSize(0);
-                    setSize(base64.file["size"]);
+                    setSize(base64.file["size"]);              
+                    setLoadImage(false);                                            
+                    setAllVideos([base64]);                                       
                     setLoaded(!loaded);
-                    setAllVideos([base64]);
                   }}
                 />
               </div>
@@ -443,7 +449,7 @@ const CreateRealEstateListing = () => {
                       onClick={() => {
                         setVideos([]);
                         setAllVideos([]);
-                        setChanging(!changing)
+                        setChanging(!changing);
                       }}
                     >
                       <X color="black" width="15px" />
