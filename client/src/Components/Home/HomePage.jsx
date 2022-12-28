@@ -118,21 +118,19 @@ const HomePage = () => {
 
         <Information>
 
-          <div className="coffee image">
-            <img className='img_coffee' src={coffee} alt="" />
-          </div>
-
           <div className="Elite">
-            <h4>Elite Luxury NewsLetter</h4>
-            <p>Let’s keep you updated with what’s trending inLuxury.</p>
+              <h4>Elite Luxury NewsLetter</h4>
+              <p>Let’s keep you updated with what’s trending inLuxury.</p>
 
-            <form action="">
-              <input type="email" placeholder='E-mail' />
-              <div className="btn">Subscribe</div>
-            </form>
+              <form action="">
+                <input type="email" placeholder='E-mail' />
+                <div className="btn">Subscribe</div>
+              </form>
           </div>
 
-
+          <div className="coffee image">
+              <img className='img_coffee' src={coffee} alt="" />
+          </div>
 
         </Information>
       </InformationContainer>

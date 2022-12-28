@@ -113,7 +113,7 @@ export const Container = styled.div`
 
 
             img{
-                width:42%;
+                width:40%;
                 object-fit:cover;
             }
 
