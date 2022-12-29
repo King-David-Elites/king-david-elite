@@ -949,7 +949,9 @@ export const ChatBoxContainer = styled.div`
             color: #fff;
             margin-bottom: 0.4em;
             padding: 10px;
-            max-width: 350px;
+            max-width: 300px;
+            border-radius: 4px;
+            margin-left: 1em;
 
             .span2{
                 display: flex;
@@ -975,11 +977,11 @@ export const ChatBoxContainer = styled.div`
         margin-bottom: 1em;
         margin-top: 0.5em;
         padding: 10px;
-        max-width: 350px;
+        max-width: 300px;
+        border-radius: 4px;
+        margin-right: 1em;
 
         .span1{
-                display: flex;
-                align-items: end;
                 color: ${theme.neutralColor};
                 font-size: 12px;
             }

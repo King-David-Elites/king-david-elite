@@ -66,7 +66,7 @@ const ChatBox = ({ setStage }) => {
                         return (
                             <>
                                 <div className="reviever-chat">
-                                    <span>{i.message}</span>
+                                    <span className="text-sm">{i.message}</span>
                                     <span className="span2">{i.createdAt}</span>
                                 </div>
 
@@ -76,7 +76,7 @@ const ChatBox = ({ setStage }) => {
                                             <img className="h-[350px] object-cover" src={img} alt="imageSent" />
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <span>Here's the property front view</span>
+                                            <span className="text-[14px]">Here you go</span>
                                             <div className="flex">
                                                 <span className="span1 whitespace-nowrap"> 9:02 am</span>
                                                 <BiCheckDouble />
