@@ -68,7 +68,7 @@ const MobileNotification = () => {
 
     const getNotifications = () => {
         axios.get(`${globalApi}/notifications/all`, setConfig())
-            .then(resp => setNotifications(resp.data))
+            .then(resp => {setNotifications(resp.data); console.log(resp.data)})
             .catch(err => console.log(err))
     }
 
@@ -251,6 +251,7 @@ const MobileNotification = () => {
                             message={notification.message}
                             title={notification.title}
                             time={notification.createdAt}
+                            link={notification.link}
                         />
 
                     )

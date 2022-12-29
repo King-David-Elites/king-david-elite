@@ -2,10 +2,13 @@ import { useState } from "react";
 import theme from "../../application/utils/Theme";
 import { FaCheckCircle } from "react-icons/fa"
 import './ReadMoreReadLess.css'
+import TimeAgo from "timeago-react";
+import { useNavigate } from "react-router-dom";
 
-const ReadMoreReadLess = ({ title, message, time }) => {
+const ReadMoreReadLess = ({ title, message, time, link }) => {
     const [showLess, setShowLess] = useState(true);
     const [step, setStep] = useState(true);
+    const navigate = useNavigate()
 
     const toggleText = () => {
         setStep(false);
@@ -13,7 +16,7 @@ const ReadMoreReadLess = ({ title, message, time }) => {
     }
 
     return (
-        <div className='notification-items' style={{ color: showLess ? "#000" : theme.neutralColor }}>
+        <div className='notification-items' onClick={()=>{navigate(link)}} style={{ color: showLess ? "#000" : theme.neutralColor }}>
             <FaCheckCircle size={30} className='tick' />
             <div className='div1'>
                 <div className="align-side">
@@ -28,7 +31,9 @@ const ReadMoreReadLess = ({ title, message, time }) => {
 
             </div>
             <div className='div2'>
-                <span style={{ color: showLess ? "#000" : theme.neutralColor }}>{time}</span>
+                <span style={{ color: showLess ? "#000" : theme.neutralColor }}>
+                <TimeAgo datetime={time} />
+                    </span>
             </div>
         </div>
 

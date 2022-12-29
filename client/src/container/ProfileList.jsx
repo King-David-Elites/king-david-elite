@@ -51,7 +51,7 @@ export default function ProfileList() {
         
       <GridContainer>
           {
-            listings.filter(i => !i.carCondition).map((items) => {
+            listings.map((items) => {
               return (
                 // <RealEstate key={items._id} {...items} />
                 <Listing key={items._id} list={items}/>

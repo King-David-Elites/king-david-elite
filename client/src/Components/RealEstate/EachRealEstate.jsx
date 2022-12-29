@@ -4,6 +4,7 @@ import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import TimeAgo from "timeago-react";
 import globalApi from "../../api";
+import { setConfig } from "../../infrastructure/api/user/userRequest";
 import Banner from "../Banner/Banner";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
@@ -21,6 +22,10 @@ const EachRealEstate = ({ active }) => {
         setProperty(resp.data);
       })
       .catch((err) => console.error(err));
+
+    axios.patch(`${globalApi}/listings/view/${id}`,{} ,setConfig())
+    .then(resp => console.log(resp))
+    .catch(err => console.log(err))
   }, [id]);
 
   useEffect(() => {
@@ -98,7 +103,7 @@ const EachRealEstate = ({ active }) => {
                 <div className="btns">
                   <div className="btn filled">Send Message</div>
 
-                  <Link to={`/profile/${property._id}`} className="btn">View Profile</Link>
+                  <Link to={`/profile/${property.postedBy?._id}`} className="btn">View Profile</Link>
                 </div>
               </div>
 

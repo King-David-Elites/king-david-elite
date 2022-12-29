@@ -238,3 +238,12 @@ export const Address = styled.div`
         font-weight: 600;
     }
 `
+
+export const UsersListings = styled.div`
+    width: 80%;
+    margin: 10px auto;
+
+    @media (max-width: 700px){
+        width: 90%;
+    }
+`
