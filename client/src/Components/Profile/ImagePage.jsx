@@ -45,16 +45,9 @@ const ImagePage = () => {
 
             <div className="icon">
             <HiCamera color="white"/>
-            
-                    <FileBase64 name="cover"
-                        defaultValue={image}
-                        multiple={false}
-                        onDone={(base64) => {
-                            upload(base64.base64)
-                        }
-                        } />
-                
             </div>
+
+            
 
             <img
                 src={image}

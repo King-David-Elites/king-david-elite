@@ -52,7 +52,7 @@ const SignUpPage = () => {
       .catch((err) => {
         console.log(err)
         setLoader(false)
-        services.toast.error(err);
+        services.toast.error(err.response.data.message);
       })
 
 
