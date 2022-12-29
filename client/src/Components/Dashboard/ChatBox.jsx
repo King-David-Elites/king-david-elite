@@ -97,7 +97,7 @@ const ChatBox = ({ setStage }) => {
 
                 <div className="typing-div">
                     <textarea
-                        name="" id="" >Type message here,...</textarea>
+                        name="" id="" >Type message here...</textarea>
                 </div>
 
                 <MdKeyboardVoice size={25} />
