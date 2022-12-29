@@ -49,6 +49,8 @@ import Admin from './Components/Admin/Admin';
 
 import Loader from './Components/Loader/Loader'
 
+import Contact from './Contact/Contact';
+
 import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
@@ -65,6 +67,9 @@ function App() {
         <Routes>
           <Route path='/register' element = {<Register/>}/>
           <Route path='/' element={<HomePage />} />
+
+          <Route path ='/contact' element = {<Contact/>}/>
+
           <Route path='/modal' element={<ModalCont />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/loader' element={<Loader />} />
