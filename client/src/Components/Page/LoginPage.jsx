@@ -37,7 +37,7 @@ const LoginPage = () => {
   }
 
   const handleOnBlur = () => {
-    setPasswordRequisite(true);
+    setPasswordRequisite(false);
   }
 
   const handleOnKeyUp = (e) => {
@@ -47,8 +47,6 @@ const LoginPage = () => {
       pwdLengthCheck,
     });
   }
-
-  console.log(checks.pwdLengthCheck)
 
   const login = async (e) => {
     setLoader(true);
@@ -115,7 +113,7 @@ const LoginPage = () => {
           </div>
           {
             passwordRequisite ? <p className={checks.pwdLengthCheck == false ? "text-[red] opacity-50 mt-[-20px] md:mt-2 ml-4 md:ml-16 text-xs md:text-sm font-medium" : "text-[green] opacity-50 mt-[-20px] md:mt-2 ml-4 md:ml-16 text-xs md:text-sm font-medium"}
-            >Must be up to 6 characters</p> : null
+            >Password be up to 6 characters</p> : null
           }
         </form>
         <p className="forgot">

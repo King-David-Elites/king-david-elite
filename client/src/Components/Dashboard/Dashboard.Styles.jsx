@@ -892,10 +892,10 @@ export const ChatBoxContainer = styled.div`
     height: 100vh;
 
     .header-sect{
-        height: 12%;
+        height: 10%;
         display: flex;
         align-items: center;
-        padding: 0.5em;
+        padding: 0.5em 1.3em 0.5em 0.8em;
 
         .chat-wrap{
             display: flex;
@@ -919,10 +919,11 @@ export const ChatBoxContainer = styled.div`
     }
 
     .chat-body{
-        height: 80%;
+        height: 82%;
         background-color: #D5DBE3;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
 
         .date{
             margin-left: auto;
@@ -948,10 +949,13 @@ export const ChatBoxContainer = styled.div`
             color: #fff;
             margin-bottom: 0.4em;
             padding: 10px;
-           
+            max-width: 300px;
+            border-radius: 4px;
+            margin-left: 1em;
 
             .span2{
-                margin-top: 15px;
+                display: flex;
+                align-items: end;
                 color: ${theme.neutralColor};
                 font-size: 12px;
             }
@@ -964,17 +968,20 @@ export const ChatBoxContainer = styled.div`
 
         .sender-chat{
         display: flex;
+        flex-direction: column;
         width:fit-content;
         gap: 1.4em;
         background: #F5F5F5;
         border-radius: 2px 2px 2px 0px;
         color: #000;
-        margin-bottom: 0.4em;
+        margin-bottom: 1em;
         margin-top: 0.5em;
         padding: 10px;
+        max-width: 300px;
+        border-radius: 4px;
+        margin-right: 1em;
 
         .span1{
-                margin-top: 15px;
                 color: ${theme.neutralColor};
                 font-size: 12px;
             }
@@ -987,6 +994,8 @@ export const ChatBoxContainer = styled.div`
         align-items: center;
         justify-content: space-around;
         padding: 1em;
+        position: fixed;
+        width: 100%;
 
         .typing-div {
             flex: 2;
@@ -994,11 +1003,10 @@ export const ChatBoxContainer = styled.div`
 
         .typing-div textarea{
             width: 100%;
-            height: 3em;
+            height: 2.7em;
             border-radius: 24px;
             background-color: #A6A6A633;
-            color: 
-             #000;
+            color:  #000;
             border: 2px solid #A6A6A633;
             outline: none;
             padding: 5px 10px;
