@@ -93,15 +93,15 @@ const LoggedUser = ({ logged }) => {
 
       <Address>
         <p className="address">
-          {data.address}
+          {data?.address}
         </p>
-        <Link className="website" to={data.websiteUrl}>{data.websiteUrl}</Link>
+        <Link className="website" to={data?.websiteUrl}>{data?.websiteUrl}</Link>
         <p className="social">
           Social: 
-          <Link to={data.facebookUrl}>
+          <Link to={data?.facebookUrl}>
             <FaFacebook color="blue"/>
           </Link>
-          <Link to={data.instagramUrl}>
+          <Link to={data?.instagramUrl}>
             <FaInstagram color="#FA5936"/>
           </Link>
         </p>
