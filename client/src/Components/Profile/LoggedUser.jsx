@@ -7,7 +7,8 @@ import Verification from "../Verification/Verification";
 import { Bio, Details, Header, Switch, Update, Address } from "./Styled";
 import Account from "../Account/Account";
 import { useGetUserDetails } from "../../application/hooks/queryhooks";
-import { Link, useNavigate } from "react-router-dom";
+import { a, useNavigate } from "react-router-dom";
+import Return from "../Navbar/Return";
 
 const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
@@ -38,6 +39,7 @@ const LoggedUser = ({ logged }) => {
 
   return (
     <Fragment>
+      <Return transparent={true}/>
       <Header className="cursor-pointer" onClick={() => navigate('/profile/viewImage')}>
         <img
           src={data.cover}
@@ -97,7 +99,7 @@ const LoggedUser = ({ logged }) => {
         </p>
         {
           data.websiteUrl &&
-          <Link className="website" to={data.websiteUrl}>{data.websiteUrl}</Link>
+          <a className="website" href={`https://${data.websiteUrl}`}>{data.websiteUrl}</a>
         }
 
         {
@@ -106,15 +108,15 @@ const LoggedUser = ({ logged }) => {
           Social: 
           {
             data.facebookUrl &&
-            <Link to={data.facebookUrl}>
+            <a href={data.facebookUrl}>
             <FaFacebook color="blue"/>
-          </Link>
+          </a>
           }
           {
             data.instagramUrl &&
-            <Link to={data?.instagramUrl}>
+            <a href={data?.instagramUrl}>
             <FaInstagram color="#FA5936"/>
-          </Link>
+          </a>
           }
           
         </p>

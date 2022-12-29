@@ -52,6 +52,7 @@ import Loader from './Components/Loader/Loader'
 import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
+import EachRealEstate from './Components/RealEstate/EachRealEstate';
 
 function App() {
   const queryClient = new QueryClient();
@@ -76,7 +77,7 @@ function App() {
           <Route path="/real-estate" element={<RealEstateListing />} />
           <Route path="/real-estate/add" element={<AddRealEstate />} />
           <Route path="/dashboard/messages/chat" element={<ChatBox />} />
-          <Route path="/real-estate/:id" element={<EachBuilding active={0} />} />
+          <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
           <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
           <Route path="/cars" element={<Cars />} />
           <Route path="/cars/add" element={<AddCar />} />

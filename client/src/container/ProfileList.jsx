@@ -9,14 +9,16 @@ import { setConfig } from '../infrastructure/api/user/userRequest'
 import { GridContainer } from '../Components/Listing/Listing.styled'
 import Listing from '../Components/Listing/Listing'
 import { useState } from 'react'
+import { useGetUserDetails } from '../application/hooks/queryhooks'
 
 
 export default function ProfileList() {
   const navigate = useNavigate()
   const [listings, setListings] = useState([])
+  const data = useGetUserDetails()
   
   const getListings = ()=>{
-    axios.get(`${globalApi}/listings/user-listing`, setConfig())
+    axios.get(`${globalApi}/listings/user-listing?id=${data._id}`, setConfig())
     .then(resp => setListings(resp.data))
     .catch(err => console.log(err))
   }

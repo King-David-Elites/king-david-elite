@@ -20,6 +20,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import services from "../../../ioc/services";
 import { useGetUserDetails } from "../../../application/hooks/queryhooks";
 import Loader from "../../Loader/Loader";
+import Return from "../../Navbar/Return";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -147,6 +148,7 @@ const EditProfile = () => {
     {
       loader && <Loader />
     }
+    <Return />
       <EditProfileContainer padding="12px 12px">
         <div className="content-text">
           <h3>Profile</h3>
