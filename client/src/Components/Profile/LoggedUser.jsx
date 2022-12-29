@@ -1,13 +1,13 @@
 import React, {useState } from "react";
 import { Fragment } from "react";
-import { FaCheckCircle, FaIcons, FaPen } from "react-icons/fa";
+import { FaCheckCircle, FaFacebook, FaIcons, FaInstagram, FaPen } from "react-icons/fa";
 import ProfileList from "../../container/ProfileList";
 import ProfileStat from "../../container/ProfileStat";
 import Verification from "../Verification/Verification";
-import { Bio, Details, Header, Switch, Update } from "./Styled";
+import { Bio, Details, Header, Switch, Update, Address } from "./Styled";
 import Account from "../Account/Account";
 import { useGetUserDetails } from "../../application/hooks/queryhooks";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
@@ -60,7 +60,7 @@ const LoggedUser = ({ logged }) => {
                 <FaCheckCircle />
               </span>
             </h3>
-            <p>Joined 2011</p>
+            <p>Joined in {( new Date(data.createdAt).getFullYear())}</p>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ const LoggedUser = ({ logged }) => {
             <>
               <div className="edit">Message</div>
 
-              <div className="upgrade">Call</div>
+              <div className="edit">Call</div>
             </>
           )}
           {/* : } */}
@@ -90,6 +90,22 @@ const LoggedUser = ({ logged }) => {
       <Bio>
         {data.about}
       </Bio>
+
+      <Address>
+        <p className="address">
+          {data.address}
+        </p>
+        <Link className="website" to={data.websiteUrl}>{data.websiteUrl}</Link>
+        <p className="social">
+          Social: 
+          <Link to={data.facebookUrl}>
+            <FaFacebook color="blue"/>
+          </Link>
+          <Link to={data.instagramUrl}>
+            <FaInstagram color="#FA5936"/>
+          </Link>
+        </p>
+      </Address>
 
       {!logged && <Update>Update Account</Update>}
 

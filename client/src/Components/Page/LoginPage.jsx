@@ -7,14 +7,48 @@ import axios from "axios";
 import { useState } from "react";
 import Loader from "../Loader/Loader";
 import services from "../../ioc/services"
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 
 const LoginPage = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
-
   const [loader, setLoader] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [state, setState] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordRequisite, setPasswordRequisite] = useState(false);
+  const [checks, setChecks] = useState({
+    capsLetterCheck: false,
+    numberCheck: false,
+    pwdLengthCheck: false,
+    specialCharCheck: false,
+  });
+
+  const toggleBtn = () => {
+    setState(prevState => !prevState);
+  }
+
+  const handleOnChange = (e) => {
+    setPassword(e.target.value)
+  }
+
+  const handleOnFocus = () => {
+    setPasswordRequisite(true);
+  }
+
+  const handleOnBlur = () => {
+    setPasswordRequisite(true);
+  }
+
+  const handleOnKeyUp = (e) => {
+    const { value } = e.target;
+    const pwdLengthCheck = value.length >= 6;
+    setChecks({
+      pwdLengthCheck,
+    });
+  }
+
+  console.log(checks.pwdLengthCheck)
 
   const login = async (e) => {
     setLoader(true);
@@ -24,34 +58,39 @@ const LoginPage = () => {
       password: passwordRef.current.value,
     };
 
-    await axios
-      .post(`${globalApi}/users/sign-in`, userDetails)
-      .then((resp) => {
-        let res = resp.data;
-        let token = res.token;
-        let user = res.user;
-        console.log(res.message);
+    if (checks.pwdLengthCheck == false) {
+      services.toast.error("Password must contain up to 6 characters");
+      setLoader(false);
+    }
+    else {
+      await axios
+        .post(`${globalApi}/users/sign-in`, userDetails)
+        .then((resp) => {
+          let res = resp.data;
+          let token = res.token;
+          let user = res.user;
+          console.log(res.message);
+          if (token) {
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
+            services.toast.success(res.message);
 
-        if (token) {
-          localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(user));
-          services.toast.success(res.message);
-
-          setTimeout(() => {
+            setTimeout(() => {
+              setLoader(false);
+              navigate("/");
+            }, 2000);
+          } else {
+            services.toast.error(res.message)
             setLoader(false);
-            navigate("/");
-          }, 2000);
-        } else {
-          services.toast.error(res.message)
-          setLoader(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-        setLoader(false)
-        services.toast.error(err.message)
-      });
-  };
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+          setLoader(false)
+          services.toast.error(err.message)
+        });
+    };
+  }
 
   return (
     <Container>
@@ -66,15 +105,26 @@ const LoginPage = () => {
             ref={emailRef}
             placeholder="Enter your email here"
           />
-          <input type="password" ref={passwordRef} placeholder="Password" />
+          <div className="relative flex items-center mt-[-2em] md:mt-[0em]">
+            <input type={state ? "text" : "password"} value={password} onChange={handleOnChange} onFocus={handleOnFocus} onBlur={handleOnBlur} onKeyUp={handleOnKeyUp} ref={passwordRef} placeholder="Password" />
+            <span onClick={toggleBtn} className="border-none absolute right-7 md:right-14 mr-3 cursor-pointer outline-none  bg-transparent">
+              {
+                state ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />
+              }
+            </span>
+          </div>
+          {
+            passwordRequisite ? <p className={checks.pwdLengthCheck == false ? "text-[red] opacity-50 mt-[-20px] md:mt-2 ml-4 md:ml-16 text-xs md:text-sm font-medium" : "text-[green] opacity-50 mt-[-20px] md:mt-2 ml-4 md:ml-16 text-xs md:text-sm font-medium"}
+            >Must be up to 6 characters</p> : null
+          }
         </form>
         <p className="forgot">
           Forgot password? <span className="red">Click here</span>
         </p>
-
         <button className="login" onClick={login}>
           login
         </button>
+
         <p className="or">- OR -</p>
         <button className="google">log in with Google</button>
         <p className="account">
