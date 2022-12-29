@@ -1,13 +1,11 @@
 import React from "react";
-import axios from "axios";
-// import S from './images/.jpg'
+import axios from "axios"; import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { Container, Page } from "./SignupPage.style";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import services from "../../ioc/services";
 import globalApi from "../../api";
 import Loader from '../Loader/Loader';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 
 const SignUpPage = () => {
   const emailRef = useRef();
@@ -39,7 +37,7 @@ const SignUpPage = () => {
   }
 
   const handleOnBlur = () => {
-    setPasswordRequisite(true);
+    setPasswordRequisite(false);
   }
 
   const handleOnKeyUp = (e) => {
@@ -53,13 +51,16 @@ const SignUpPage = () => {
   const signUp = async (e) => {
     e.preventDefault();
     setLoader(true);
+
     const userDetails = {
       email: emailRef.current.value,
       firstName: fnameRef.current.value,
       lastName: lnameRef.current.value,
       password: passwordRef.current.value,
     };
+
     console.log(globalApi);
+
     if (checks.pwdLengthCheck == false) {
       services.toast.error("Password must contain up to 6 characters");
       setLoader(false);
@@ -91,19 +92,9 @@ const SignUpPage = () => {
         .catch((err) => {
           console.log(err)
           setLoader(false)
-          services.toast.error(err);
+          services.toast.error(err.response.data.message);
         })
     }
-
-    // function(text){
-    //   if(text.length <= 6){
-    //     console.log('password must be greater than 6');
-    //   }
-
-    //   else{
-    //     console.log('continue');
-    //   }
-    // }
   };
 
   return (
@@ -122,7 +113,7 @@ const SignUpPage = () => {
           />
           <input type="text" ref={fnameRef} placeholder="First name" />
           <input type="text" ref={lnameRef} placeholder="Last name" />
-          <div className="flex items-center mt-[-2em] md:mt-[0em]">
+          <div className="relative flex items-center mt-[-2em] md:mt-[0em]">
             <input type={state ? "text" : "password"} value={password} onChange={handleOnChange} onFocus={handleOnFocus} onBlur={handleOnBlur} onKeyUp={handleOnKeyUp} ref={passwordRef} placeholder="Password" />
             <span onClick={toggleBtn} className="border-none absolute right-7 md:right-14 mr-3 cursor-pointer outline-none  bg-transparent">
               {
@@ -132,7 +123,7 @@ const SignUpPage = () => {
           </div>
           {
             passwordRequisite ? <p className={checks.pwdLengthCheck == false ? "text-[red] opacity-50 mt-[-20px] md:mt-2 ml-4 md:ml-16 text-xs md:text-sm font-medium" : "text-[green] opacity-50 mt-[-20px] md:mt-2 ml-4 md:ml-16 text-xs md:text-sm font-medium"}
-            >Must be up to 6 characters</p> : null
+            >Password be up to 6 characters</p> : null
           }
         </form>
         <p className="forgot">

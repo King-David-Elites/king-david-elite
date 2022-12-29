@@ -13,6 +13,7 @@ import { MorePic, Text, MoreBg } from '../Cars/Cars.Style';
 import { useCallback, useState } from 'react';
 import axios from 'axios';
 import TimeAgo from "timeago-react";
+import globalApi from '../../api';
 
 const EachBuilding = ({ active }) => {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ const EachBuilding = ({ active }) => {
     ]
 
     const getAList = useCallback(()=>{
-        axios.get(`https://kde.cyclic.app/listings/each/${id}`)
+        axios.get(`${globalApi}/listings/each/${id}`)
         .then(resp => setProperty(resp.data))
         .catch(err => console.error(err));
     }, [id])

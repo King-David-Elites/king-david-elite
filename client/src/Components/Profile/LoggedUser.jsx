@@ -1,13 +1,14 @@
 import React, {useState } from "react";
 import { Fragment } from "react";
-import { FaCheckCircle, FaIcons, FaPen } from "react-icons/fa";
+import { FaCheckCircle, FaFacebook, FaIcons, FaInstagram, FaPen } from "react-icons/fa";
 import ProfileList from "../../container/ProfileList";
 import ProfileStat from "../../container/ProfileStat";
 import Verification from "../Verification/Verification";
-import { Bio, Details, Header, Switch, Update } from "./Styled";
+import { Bio, Details, Header, Switch, Update, Address } from "./Styled";
 import Account from "../Account/Account";
 import { useGetUserDetails } from "../../application/hooks/queryhooks";
-import { useNavigate } from "react-router-dom";
+import { a, useNavigate } from "react-router-dom";
+import Return from "../Navbar/Return";
 
 const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
@@ -38,6 +39,7 @@ const LoggedUser = ({ logged }) => {
 
   return (
     <Fragment>
+      <Return transparent={true}/>
       <Header className="cursor-pointer" onClick={() => navigate('/profile/viewImage')}>
         <img
           src={data.cover}
@@ -60,7 +62,7 @@ const LoggedUser = ({ logged }) => {
                 <FaCheckCircle />
               </span>
             </h3>
-            <p>Joined 2011</p>
+            <p>Joined in {( new Date(data.createdAt).getFullYear())}</p>
           </div>
         </div>
 
@@ -80,7 +82,7 @@ const LoggedUser = ({ logged }) => {
             <>
               <div className="edit">Message</div>
 
-              <div className="upgrade">Call</div>
+              <div className="edit">Call</div>
             </>
           )}
           {/* : } */}
@@ -90,6 +92,38 @@ const LoggedUser = ({ logged }) => {
       <Bio>
         {data.about}
       </Bio>
+
+      <Address>
+        <p className="address">
+          {data?.address}
+        </p>
+        {
+          data.websiteUrl &&
+          <a className="website" href={`https://${data.websiteUrl}`}>{data.websiteUrl}</a>
+        }
+
+        {
+          (data.facebookUrl || data.instagramUrl) &&
+          <p className="social">
+          Social: 
+          {
+            data.facebookUrl &&
+            <a href={data.facebookUrl}>
+            <FaFacebook color="blue"/>
+          </a>
+          }
+          {
+            data.instagramUrl &&
+            <a href={data?.instagramUrl}>
+            <FaInstagram color="#FA5936"/>
+          </a>
+          }
+          
+        </p>
+        }
+        
+        
+      </Address>
 
       {!logged && <Update>Update Account</Update>}
 
