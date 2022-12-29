@@ -923,6 +923,7 @@ export const ChatBoxContainer = styled.div`
         background-color: #D5DBE3;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
 
         .date{
             margin-left: auto;
@@ -948,10 +949,11 @@ export const ChatBoxContainer = styled.div`
             color: #fff;
             margin-bottom: 0.4em;
             padding: 10px;
-           
+            max-width: 350px;
 
             .span2{
-                margin-top: 15px;
+                display: flex;
+                align-items: end;
                 color: ${theme.neutralColor};
                 font-size: 12px;
             }
@@ -964,17 +966,21 @@ export const ChatBoxContainer = styled.div`
 
         .sender-chat{
         display: flex;
+        flex-direction: column;
         width:fit-content;
         gap: 1.4em;
         background: #F5F5F5;
         border-radius: 2px 2px 2px 0px;
         color: #000;
-        margin-bottom: 0.4em;
+        margin-bottom: 1em;
         margin-top: 0.5em;
         padding: 10px;
+        max-width: 350px;
 
         .span1{
-                margin-top: 15px;
+                /* margin-top: 15px; */
+                display: flex;
+                align-items: end;
                 color: ${theme.neutralColor};
                 font-size: 12px;
             }

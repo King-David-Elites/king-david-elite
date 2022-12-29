@@ -29,7 +29,6 @@ const ReadMoreReadLess = ({ title, message, time }) => {
             </div>
             <div className='div2'>
                 <span style={{ color: showLess ? "#000" : theme.neutralColor }}>{time}</span>
-                {/* <p style={{ color: showLess ? "#000" : theme.neutralColor }}>19 - july</p> */}
             </div>
         </div>
 

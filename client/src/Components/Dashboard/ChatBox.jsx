@@ -1,13 +1,13 @@
 import { ChatBoxContainer } from "./Dashboard.Styles";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
-import { BiVideo } from 'react-icons/bi'
+import { BiCheckDouble, BiVideo } from 'react-icons/bi'
 import { MdCall, MdKeyboardVoice } from 'react-icons/md'
 import img3 from './Dashboard-Image/Untitled2.png';
 import { BsPaperclip } from 'react-icons/bs';
 import { FaImages } from 'react-icons/fa';
 import theme from "../../application/utils/Theme";
-import MessageBody from "./MessageBody";
-
+import img from '../Home/images/c1.jpg'
+import { useNavigate } from "react-router-dom";
 
 const SenderMessage = [
     {
@@ -41,18 +41,17 @@ const SenderMessage = [
 ]
 
 
-const ChatBox = () => {
+const ChatBox = ({ setStage }) => {
+    const navigate = useNavigate();
     return (
         <ChatBoxContainer>
             <div className="header-sect">
-                <MdOutlineArrowBackIosNew size={25} color={theme.neutralColor} />
+                <MdOutlineArrowBackIosNew size={25} className='cursor-pointer' color={theme.neutralColor} onClick={() => setStage(0)} />
                 <div className='chat-wrap'>
                     <img src={img3} alt="userImg" />
                     <div className='box-content'>
                         <h4>KingDavid Team</h4>
-                        <div className='markIconDiv'>
-
-                        </div>
+                        <div className='markIconDiv'></div>
                     </div>
                 </div>
                 <div className="calls">
@@ -62,11 +61,54 @@ const ChatBox = () => {
             </div>
 
             <div className="chat-body">
-                <MessageBody message={
+                <div className="date">Today</div>
+                {
+                    SenderMessage.map((i) => {
+                        return (
+                            <>
+                                <div className="reviever-chat">
+                                    <span>{i.message}</span>
+                                    <span className="span2">{i.createdAt}</span>
+                                </div>
+
+                                <div className="section-end">
+                                    <div className="sender-chat">
+                                        <div className="w-[100%] h-[100%]">
+                                            <img className="h-[350px] object-cover" src={img} alt="imageSent" />
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <span>Here's the property front view</span>
+                                            <div className="flex">
+                                                <span className="span1 whitespace-nowrap"> 9:02 am</span>
+                                                <BiCheckDouble />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        )
+
+                    })
+                }
+
+
+                {/* <div className="section-end">
+                <div className="sender-chat">
+                    <span>Hi, Good morning
+                    </span>
+                    <div>
+                        <span className="span1"> 9:02 am</span>
+                        <BiCheckDouble />
+                    </div>
+                </div>
+            </div> */}
+                {/* <MessageBody
+                message={
                     SenderMessage.map((i) => {
                         return i.message
-                    })}>
-                </MessageBody>
+                    })}
+                >
+                </MessageBody> */}
             </div>
 
             <div className="typing-box">

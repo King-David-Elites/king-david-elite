@@ -39,7 +39,7 @@ const SignUpPage = () => {
   }
 
   const handleOnBlur = () => {
-    setPasswordRequisite(true);
+    setPasswordRequisite(false);
   }
 
   const handleOnKeyUp = (e) => {
