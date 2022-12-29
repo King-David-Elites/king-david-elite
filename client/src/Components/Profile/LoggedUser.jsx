@@ -95,16 +95,32 @@ const LoggedUser = ({ logged }) => {
         <p className="address">
           {data?.address}
         </p>
-        <Link className="website" to={data?.websiteUrl}>{data?.websiteUrl}</Link>
-        <p className="social">
+        {
+          data.websiteUrl &&
+          <Link className="website" to={data.websiteUrl}>{data.websiteUrl}</Link>
+        }
+
+        {
+          (data.facebookUrl || data.instagramUrl) &&
+          <p className="social">
           Social: 
-          <Link to={data?.facebookUrl}>
+          {
+            data.facebookUrl &&
+            <Link to={data.facebookUrl}>
             <FaFacebook color="blue"/>
           </Link>
-          <Link to={data?.instagramUrl}>
+          }
+          {
+            data.instagramUrl &&
+            <Link to={data?.instagramUrl}>
             <FaInstagram color="#FA5936"/>
           </Link>
+          }
+          
         </p>
+        }
+        
+        
       </Address>
 
       {!logged && <Update>Update Account</Update>}

@@ -188,6 +188,7 @@ export const Preview = styled.div`
 
     img{
         margin: auto 0;
+        max-height: 100vh;
     }
 
     .icon{
@@ -207,7 +208,7 @@ export const Preview = styled.div`
 
         input{
             width: 70%;
-            opacity: 0;
+            /* opacity: 0; */
         }
     }
 `
