@@ -119,7 +119,7 @@ export const Container = styled.div`
           margin:.5em .5em;
 
           h1{
-            margin-top:2em;
+            margin:3em auto;
              margin-bottom:0;
              font-size:1rem;
              font-weight:600;
