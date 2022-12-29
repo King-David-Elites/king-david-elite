@@ -42,21 +42,21 @@ const EachRealEstate = ({ active }) => {
         <div className="images">
           <div className="image1">
             <img
-              src={property.images[0]}
+              src={property?.images[0]}
               alt=""
             />
           </div>
           <div className="grid">
             <img
-              src={property.images[1]}
+              src={property?.images[1]}
               alt=""
             />
             <img
-              src={property.images[2]}
+              src={property?.images[2]}
               alt=""
             />
             <img
-              src={property.images[2]}
+              src={property?.images[2]}
               alt=""
               loading="loading..."
             />
