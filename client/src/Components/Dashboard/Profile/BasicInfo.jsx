@@ -3,56 +3,23 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import globalApi from "../../../api";
+import { useGetUserDetails } from "../../../application/hooks/queryhooks";
 
 const BasicInfo = (props) => {
   let { setRegistering, country, stage, setStage, scrollToRef, position } =
     props;
-
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [dob, setDOB] = useState();
-  const [resAddress, setResAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+  const data = useGetUserDetails();
   const [valid, setValid] = useState(false);
   const [changing, setChanging] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    firstName: "",
-    lastName: "",
+    firstName: data['firstName'],
+    lastName: data['lastName'],
     dob: "",
     resAddress: "",
     city: "",
     postalCode: "",
     country: country,
   });
-
-  const setConfig = () => {
-    const authToken = localStorage.getItem("token");
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-        ContentType: "application/json",
-      },
-    };
-
-    return config;
-  };
-
-  const getUserDetails = async () => {
-    await axios
-      .get(`${globalApi}/users/me`, setConfig())
-      .then((resp) => {
-        console.log(resp.data);
-      })
-      .catch((err) => {
-        console.log(err.data);
-      });
-  };
-
-  useEffect(() => {
-    getUserDetails();
-  }, []);
 
   useEffect(() => {
     setUserInfo(userInfo);
@@ -90,7 +57,9 @@ const BasicInfo = (props) => {
             <input
               type="text"
               name="lastName"
+              value={data ? data["lastName"].toUpperCase() : ""}
               onChange={handleChange}
+              readOnly
               required
             />
           </div>
@@ -99,7 +68,9 @@ const BasicInfo = (props) => {
             <input
               type="text"
               name="firstName"
+              value={data ? data["firstName"].toUpperCase() : ""}
               onChange={handleChange}
+              readOnly
               required
             />
           </div>

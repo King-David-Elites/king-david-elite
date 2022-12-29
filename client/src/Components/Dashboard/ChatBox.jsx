@@ -42,7 +42,6 @@ const SenderMessage = [
 
 
 const ChatBox = ({ setStage }) => {
-    const navigate = useNavigate();
     return (
         <ChatBoxContainer>
             <div className="header-sect">
@@ -90,25 +89,6 @@ const ChatBox = ({ setStage }) => {
 
                     })
                 }
-
-
-                {/* <div className="section-end">
-                <div className="sender-chat">
-                    <span>Hi, Good morning
-                    </span>
-                    <div>
-                        <span className="span1"> 9:02 am</span>
-                        <BiCheckDouble />
-                    </div>
-                </div>
-            </div> */}
-                {/* <MessageBody
-                message={
-                    SenderMessage.map((i) => {
-                        return i.message
-                    })}
-                >
-                </MessageBody> */}
             </div>
 
             <div className="typing-box">

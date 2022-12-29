@@ -895,7 +895,7 @@ export const ChatBoxContainer = styled.div`
         height: 12%;
         display: flex;
         align-items: center;
-        padding: 0.5em;
+        padding: 0.5em 1.3em 0.5em 0.8em;
 
         .chat-wrap{
             display: flex;
@@ -978,7 +978,6 @@ export const ChatBoxContainer = styled.div`
         max-width: 350px;
 
         .span1{
-                /* margin-top: 15px; */
                 display: flex;
                 align-items: end;
                 color: ${theme.neutralColor};

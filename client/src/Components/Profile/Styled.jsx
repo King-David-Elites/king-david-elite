@@ -13,13 +13,15 @@ export  const Header = styled.div`
 `
 
 export const Details = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+    /* grid-template-columns: 1fr 2fr; */
     justify-content: space-between;
     justify-items: center;
+    width: 80%;
+    margin: 10px auto 0;
     
     @media (max-width:600px) {
-        grid-template-columns : 2fr 1fr ;
+        width: 96%;
     }
 
     .profile{
@@ -37,6 +39,9 @@ export const Details = styled.div`
         flex-direction: column;
 
         h3{
+            display: flex;
+            align-items: center;
+            gap: 3px;
             text-transform: capitalize;
         }
 
@@ -100,7 +105,8 @@ export const Details = styled.div`
 
 export const Bio = styled.p`
     width: 80%;
-    margin: 20px auto;
+    margin: 10px auto;
+    text-align: center;
 
     @media (max-width:600px) {
         font-size: 14px;
@@ -112,20 +118,21 @@ export const Update = styled.div`
 
     @media (max-width:600px) {
         display: block ;
-        width: 80%;
+        width: 96%;
         text-align: center;
         margin: 0 auto;
         padding: 7px;
         background-color: #252625;
         color: white;
         border-radius: 6px;
+        font-size: 14px;
     }
 `
 
 export const Switch = styled.div`
     margin: 50px 0;
     .line{
-        width: 100%;
+        /* width: 100%; */
         height: 5px;
         background-color: #e2e2e2;
     }
@@ -181,14 +188,53 @@ export const Preview = styled.div`
 
     img{
         margin: auto 0;
+        max-height: 100vh;
     }
 
     .icon{
         position: absolute;
-        right: 20px;
+        right: 30px;
         top: 20px;
         background-color: rgba(150,150,150);
         clip-path: circle();
         padding: 10px;
+    }
+
+    .input{
+        position: absolute;
+        top: 20px;
+        right: 0px;
+        width: 20%;
+
+        input{
+            width: 70%;
+            /* opacity: 0; */
+        }
+    }
+`
+
+export const Address = styled.div`
+    width: 80%;
+    margin: 10px auto;
+    
+    .address{
+        font-weight: 600;
+    }
+
+    @media (max-width: 700px){
+        width: 96%;
+        font-size: 14px;
+    }
+
+    .social{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .website{
+        color: #FA5936;
+        text-decoration: underline;
+        font-weight: 600;
     }
 `
