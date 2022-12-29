@@ -49,16 +49,12 @@ import Admin from './Components/Admin/Admin';
 
 import Loader from './Components/Loader/Loader'
 
+import Contact from './Contact/Contact';
+
 import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
-<<<<<<< HEAD
-import Contact from './Contact/Contact';
-
-
-=======
 import EachRealEstate from './Components/RealEstate/EachRealEstate';
->>>>>>> 2f34bb8a02d5a2b1292cd5479641d49519fd31d5
 
 function App() {
   const queryClient = new QueryClient();
