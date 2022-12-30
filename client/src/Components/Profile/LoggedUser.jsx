@@ -4,16 +4,60 @@ import { FaCheckCircle, FaFacebook, FaIcons, FaInstagram, FaPen } from "react-ic
 import ProfileList from "../../container/ProfileList";
 import ProfileStat from "../../container/ProfileStat";
 import Verification from "../Verification/Verification";
-import { Bio, Details, Header, Switch, Update, Address } from "./Styled";
+import { Bio, Details, Header, Switch, Update, Address, UsersListings } from "./Styled";
 import Account from "../Account/Account";
 import { useGetUserDetails } from "../../application/hooks/queryhooks";
-import { Link, useNavigate } from "react-router-dom";
+import { a, useNavigate, useParams } from "react-router-dom";
+import Return from "../Navbar/Return";
+import axios from "axios";
+import globalApi from "../../api";
+import { useEffect } from "react";
+import { GridContainer } from "../Listing/Listing.styled";
+import Listing from "../Listing/Listing";
+import { setConfig } from "../../infrastructure/api/user/userRequest";
 
-const LoggedUser = ({ logged }) => {
+const LoggedUser = ({ logged, mainData }) => {
   const [active, setActive] = useState(<ProfileStat />);
-  const data = useGetUserDetails()
+  const [data, setData] = useState({})
   const navigate = useNavigate()
   const [file, setFile] = useState(data.cover);
+  const {id} = useParams()  
+  const [listings, setListings] = useState([])
+
+  const getListings = ()=>{
+    axios.get(`${globalApi}/listings/user-listing?id=${id}`, setConfig())
+    .then(resp => {setListings(resp.data)})
+    .catch(err => console.log(err))
+  }
+
+
+  if(id == mainData.userData._id){
+    navigate("/profile")
+  }
+
+  
+  useEffect(()=>{
+    if(!id){
+        setData(mainData.userData)
+      }
+      else{
+        axios.get(`${globalApi}/users/${id}`)
+        .then(resp => {
+          setData(resp.data)
+          console.log(resp.data)
+        })
+        getListings();
+      }
+
+  }, [id])
+
+  
+  
+  
+
+  useEffect(()=>{
+    getListings()
+  }, [globalApi])
 
   //   const logged = true
   const options = [
@@ -38,9 +82,10 @@ const LoggedUser = ({ logged }) => {
 
   return (
     <Fragment>
+      <Return transparent={true}/>
       <Header className="cursor-pointer" onClick={() => navigate('/profile/viewImage')}>
         <img
-          src={data.cover}
+          src={mainData.userData.cover}
           alt=""
           
         />
@@ -49,13 +94,13 @@ const LoggedUser = ({ logged }) => {
       <Details>
         <div className="profile">
           <img
-            src={data.profilePicture}
+            src={mainData.userData.profilePicture}
             alt=""
           />
 
           <div className="title">
             <h3>
-              {data.firstName + " " + data.lastName}
+              {mainData.userData.firstName + " " + mainData.userData.lastName}
               <span>
                 <FaCheckCircle />
               </span>
@@ -88,7 +133,7 @@ const LoggedUser = ({ logged }) => {
       </Details>
 
       <Bio>
-        {data.about}
+        {mainData.userData.about}
       </Bio>
 
       <Address>
@@ -97,7 +142,7 @@ const LoggedUser = ({ logged }) => {
         </p>
         {
           data.websiteUrl &&
-          <Link className="website" to={data.websiteUrl}>{data.websiteUrl}</Link>
+          <a className="website" href={`https://${data.websiteUrl}`}>{data.websiteUrl}</a>
         }
 
         {
@@ -106,15 +151,15 @@ const LoggedUser = ({ logged }) => {
           Social: 
           {
             data.facebookUrl &&
-            <Link to={data.facebookUrl}>
+            <a href={data.facebookUrl}>
             <FaFacebook color="blue"/>
-          </Link>
+          </a>
           }
           {
             data.instagramUrl &&
-            <Link to={data?.instagramUrl}>
+            <a href={data?.instagramUrl}>
             <FaInstagram color="#FA5936"/>
-          </Link>
+          </a>
           }
           
         </p>
@@ -151,6 +196,24 @@ const LoggedUser = ({ logged }) => {
       }
 
       {!logged && active}
+
+      {
+        logged &&
+        <UsersListings>
+          <h3>{listings.length} Listings for Sale</h3>
+
+          <GridContainer>
+          {
+            listings.map((items) => {
+              return (
+                // <RealEstate key={items._id} {...items} />
+                <Listing key={items._id} list={items}/>
+              )
+            })
+          }
+          </GridContainer>
+        </UsersListings>
+      }
     </Fragment >
   );
 };

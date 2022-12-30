@@ -169,3 +169,28 @@ export const Login = styled.div`
         align-items: center;
     }
 `
+
+export const ReturnContainer = styled.div`
+    width: 100%;
+    /* height: 1cm; */
+    background-color: ${({transparent})=> transparent ? "transparent" : "white"};
+    padding:5px 10px;
+    display: flex;
+    align-items: center;
+    position: ${({transparent})=> transparent ? "fixed" : "static"};
+    top: 0;
+    left: 0;
+    right: 0;
+
+    svg path{
+        stroke-width:1px;
+    }
+
+    .icon{
+        padding: 10px;
+        clip-path: circle();
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+    }
+`

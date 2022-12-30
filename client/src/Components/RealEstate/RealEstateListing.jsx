@@ -21,27 +21,12 @@ import Banner from "../Banner/Banner"
 import { MOCK_DATA } from './MOCK_DATA'
 import MainButton from '../buttons/MainButton'
 import Footer from "../Footer/Footer"
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
-import globalApi from '../../api';
+import { useNavigate } from 'react-router-dom';
 import Listing from '../Listing/Listing';
-import { GridContainer } from '../Listing/Listing.styled';
+import { GridContainer } from '../Listing/Listing.styled'; 
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const RealEstateListing = () => {
-
-  const [listing, setListing] = useState([])
-
-  const getListings = ()=>{
-    axios.get(`${globalApi}/listings/all`)
-    .then(resp => setListing(resp.data))
-    .catch(err => console.error(err))
-  }
-
-  useEffect(()=>{
-    getListings()
-  }, [])
-  
+const RealEstateListing = ({mainData}) => {      
   const top = useRef(null)
 
   useEffect(() => {
@@ -67,7 +52,7 @@ const RealEstateListing = () => {
         <Text fontSize="1rem" fontWeight="700" color="black">Luxury Properties For Sale</Text>
         <GridContainer>
           {
-            listing.filter(i => !i.carCondition).map((items) => {
+            mainData.listing.filter(i => !i.carCondition).map((items) => {
               return (
                 // <RealEstate key={items._id} {...items} />
                 <Listing key={items._id} list={items}/>
