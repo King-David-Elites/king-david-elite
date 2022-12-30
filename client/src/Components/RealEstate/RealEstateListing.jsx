@@ -33,8 +33,8 @@ const RealEstateListing = () => {
   const [listing, setListing] = useState([])
 
   const getListings = ()=>{
-    axios.get(`${globalApi}/listings/all`)
-    .then(resp => setListing(resp.data))
+    axios.get(`${globalApi}/listings/all?page=1`)
+    .then(resp => setListing(resp.data.listings))
     .catch(err => console.error(err))
   }
 

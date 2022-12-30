@@ -463,4 +463,29 @@ export const EachContainer = styled.div`
             }
         }
     }
+
+    .delete{
+        p{
+            color: rgb(100,100,100);
+        }
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-direction: column;
+
+        .actionBtn{
+            background: rgb(200,10,10);
+            border-radius: 10px;
+            display: flex;
+            gap:3px;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            font-size: 14px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
 `

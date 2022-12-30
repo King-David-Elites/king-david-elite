@@ -1,19 +1,22 @@
 import axios from "axios";
-import { LocationMarker } from "heroicons-react";
+import { LocationMarker, Trash } from "heroicons-react";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import TimeAgo from "timeago-react";
 import globalApi from "../../api";
+import { useGetUserDetails } from "../../application/hooks/queryhooks";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 import Banner from "../Banner/Banner";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { EachContainer } from "./RealEstate.Style";
+import Swal from 'sweetalert2'
 
 const EachRealEstate = ({ active }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [property, setProperty] = useState({});
+  const data = useGetUserDetails()
 
   const getAList = useCallback(() => {
     axios
@@ -27,6 +30,30 @@ const EachRealEstate = ({ active }) => {
     .then(resp => console.log(resp))
     .catch(err => console.log(err))
   }, [id]);
+
+  const deleteListings = ()=>{
+    axios.delete(`${globalApi}/listings/delete/${id}`, setConfig())
+    .then(resp => {console.log(resp.data); navigate(-1)})
+    .catch(err => console.log(err))
+  }
+
+  const confirmDelete = ()=>{
+    Swal.fire({
+        title: 'Are you sure you want to delete this Property?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            deleteListings();
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
+        //   Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
+  }
 
   useEffect(() => {
     getAList();
@@ -89,7 +116,10 @@ const EachRealEstate = ({ active }) => {
             </p>
           </div>
 
-          <div className="seller">
+        {
+            property.postedBy?._id !== data._id 
+            ?
+            <div className="seller">
             <h3>Contact Seller</h3>
 
             <div className="container">
@@ -115,6 +145,16 @@ const EachRealEstate = ({ active }) => {
               </div>
             </div>
           </div>
+          :
+          <div className="delete">
+            <h3>Delete Listing</h3>
+            <p>Once you delete a listing, it cannot be reversed</p>
+            <div className="actionBtn" onClick={confirmDelete}>
+                <Trash color="white"/> Delete Listing
+            </div>
+          </div>
+        }
+          
         </div>
       </EachContainer>
       <Banner category="Real Estate" />
