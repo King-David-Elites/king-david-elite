@@ -1,23 +1,8 @@
 import React from 'react'
 import logo from "../Navbar/Image/kde_whiteBg.png"
 import { Container } from './EmailPage.style'
-import axios from 'axios'
-import { useState } from 'react'
-import { useEffect } from 'react'
 
-export default function EmailPage() {
-    const [mails, setMails] = useState([])
-
-    const email = async () => {
-        await axios.get("https://kde.cyclic.app/wait-list")
-        .then(resp => {setMails(resp.data); console.log(resp.data)})  
-        .catch(err => console.log(err))
-    }
-
-    useEffect(()=>{
-        email()
-    }, [])
-
+export default function EmailPage({mainData}) {    
   return (
     <Container>
         <div>
@@ -31,7 +16,7 @@ export default function EmailPage() {
                 <th>Email</th>
             </tr>
             {
-                [...new Set(mails)].map((mail, i)=>{
+                [...new Set(mainData.mails)].map((mail, i)=>{
                     return(
                        <tr>
                     <td>{i+1}</td>

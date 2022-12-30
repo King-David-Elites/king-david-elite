@@ -1,19 +1,22 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import axios from "axios";
-import globalApi from "../../../api";
-import { useGetUserDetails } from "../../../application/hooks/queryhooks";
 
 const BasicInfo = (props) => {
-  let { setRegistering, country, stage, setStage, scrollToRef, position } =
-    props;
-  const data = useGetUserDetails();
+  let {
+    setRegistering,
+    country,
+    stage,
+    setStage,
+    scrollToRef,
+    position,
+    mainData,
+  } = props;
   const [valid, setValid] = useState(false);
   const [changing, setChanging] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    firstName: data['firstName'],
-    lastName: data['lastName'],
+    firstName: mainData.userData.firstName,
+    lastName: mainData.userData.lastName,
     dob: "",
     resAddress: "",
     city: "",
@@ -57,7 +60,11 @@ const BasicInfo = (props) => {
             <input
               type="text"
               name="lastName"
-              value={data ? data["lastName"].toUpperCase() : ""}
+              value={
+                mainData.userData
+                  ? mainData.userData.lastName.toUpperCase()
+                  : ""
+              }
               onChange={handleChange}
               readOnly
               required
@@ -68,7 +75,11 @@ const BasicInfo = (props) => {
             <input
               type="text"
               name="firstName"
-              value={data ? data["firstName"].toUpperCase() : ""}
+              value={
+                mainData.userData
+                  ? mainData.userData.firstName.toUpperCase()
+                  : ""
+              }
               onChange={handleChange}
               readOnly
               required

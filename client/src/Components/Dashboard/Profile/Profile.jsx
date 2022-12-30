@@ -2,7 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import Dashboard from "../Dashboard";
-import { GenericContainer, ProfileContainer, Form, MobileGenericContainer } from "../Dashboard.Styles";
+import {
+  GenericContainer,
+  ProfileContainer,
+  Form,
+  MobileGenericContainer,
+} from "../Dashboard.Styles";
 import profileImg from "../Dashboard-Image/profileImg.png";
 import GetStarted from "./GetStarted";
 import BasicInfo from "./BasicInfo";
@@ -14,7 +19,7 @@ import Verified from "./Verified";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const ProfileAsElement = () => {
+const ProfileAsElement = ({ mainData }) => {
   const [stage, setStage] = useState(0);
   const [registering, setRegistering] = useState(false);
   const [country, setCountry] = useState("None");
@@ -47,6 +52,7 @@ const ProfileAsElement = () => {
                 setRegistering={setRegistering}
                 scrollToRef={scrollToRef}
                 position={position}
+                mainData={mainData}
               />
             )}
 
@@ -58,6 +64,7 @@ const ProfileAsElement = () => {
                 setRegistering={setRegistering}
                 scrollToRef={scrollToRef}
                 position={position}
+                mainData={mainData}
               />
             )}
 
@@ -117,7 +124,7 @@ const ProfileAsElement = () => {
   );
 };
 
-const MobileProfile = () => {
+const MobileProfile = ({ mainData }) => {
   const [stage, setStage] = useState(0);
   const [registering, setRegistering] = useState(false);
   const [country, setCountry] = useState("None");
@@ -144,6 +151,7 @@ const MobileProfile = () => {
                 setRegistering={setRegistering}
                 scrollToRef={scrollToRef}
                 position={position}
+                mainData={mainData}
               />
             )}
 
@@ -155,6 +163,7 @@ const MobileProfile = () => {
                 setRegistering={setRegistering}
                 scrollToRef={scrollToRef}
                 position={position}
+                mainData={mainData}
               />
             )}
 
@@ -206,21 +215,29 @@ const MobileProfile = () => {
               />
             )}
 
-            {stage === 6 && 
-              <Verified stage={stage} 
-              setStage={setStage}
-              scrollToRef={scrollToRef}
-              position={position}
-            />}
+            {stage === 6 && (
+              <Verified
+                stage={stage}
+                setStage={setStage}
+                scrollToRef={scrollToRef}
+                position={position}
+              />
+            )}
           </Form>
         </div>
       </ProfileContainer>
     </MobileGenericContainer>
-  )
-}
+  );
+};
 
-const Profile = () => {
-  return <Dashboard index="4" element={<ProfileAsElement />} mobileElement={<MobileProfile />} />;
+const Profile = ({ mainData }) => {
+  return (
+    <Dashboard
+      index="4"
+      element={<ProfileAsElement mainData={mainData} />}
+      mobileElement={<MobileProfile mainData={mainData} />}
+    />
+  );
 };
 
 export default Profile;

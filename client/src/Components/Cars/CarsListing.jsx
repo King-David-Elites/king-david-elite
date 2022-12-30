@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState, useCallback } from 'react'
+import React from "react";
+import { useState } from "react";
 import {
   Background,
   HeroSection,
@@ -8,17 +8,18 @@ import {
   Input,
   Text,
   FilterBox,
-  Body, CarTypes,
+  Body,
+  CarTypes,
   CarType,
   Dealer,
   PicDealer,
   PicCar,
   Position,
   Reaction,
-} from './Cars.Style'
-import Navbar from '../Navbar/Navbar'
-import carpic from './Image/carpic.jpg'
-import MainButton from "../buttons/MainButton"
+} from "./Cars.Style";
+import Navbar from "../Navbar/Navbar";
+import carpic from "./Image/carpic.jpg";
+import MainButton from "../buttons/MainButton";
 import Banner from "../Banner/Banner";
 import {
   Search,
@@ -26,34 +27,19 @@ import {
   BadgeCheck,
   LocationMarkerOutline,
   HeartOutline,
-  Heart
-} from "heroicons-react"
-import { CarAPI } from "./DemoAPI/api"
-import Footer from "../Footer/Footer"
-import { useNavigate } from 'react-router-dom'
-import { useRef } from 'react'
-import { useEffect } from 'react'
-import axios from 'axios'
+  Heart,
+} from "heroicons-react";
+import Footer from "../Footer/Footer";
+import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const CarsListing = () => {
-  const top = useRef(null)
-
-  const [listing, setListing] = useState([])
-
-  const getListings = ()=>{
-    axios.get("https://kde.cyclic.app/listings/all")
-    .then(resp => setListing(resp.data))
-    .catch(err => console.error(err))
-  }
-
-  useEffect(()=>{
-    getListings()
-  }, [])
-
+const CarsListing = ({mainData}) => {
+  const top = useRef(null);  
   useEffect(() => {
-    scrollToRef(top)
-  }, [])
+    scrollToRef(top);
+  }, []);
   return (
     <>
       <Navbar active={1} />
@@ -62,7 +48,7 @@ const CarsListing = () => {
           <Text fontSize="2rem">Luxury Cars</Text>
           <SearchSection>
             <SearchC>
-              <Input placeholder='search makes or model' />
+              <Input placeholder="search makes or model" />
               <Search width="30px" />
             </SearchC>
             <FilterBox>
@@ -75,30 +61,41 @@ const CarsListing = () => {
       </Background>
 
       <Body>
-        <Text fontSize="1rem" fontWeight="700" color="black">Explore Luxury Cars</Text>
+        <Text fontSize="1rem" fontWeight="700" color="black">
+          Explore Luxury Cars
+        </Text>
         <CarTypes>
-          {
-            listing.filter(i => i.carCondition).map((items) => {
-              return (
-                <Car key={items._id} {...items} />
-              )
-            })
-          }
+          {mainData.listing
+            .filter((i) => i.carCondition)
+            .map((items) => {
+              return <Car key={items._id} {...items} />;
+            })}
         </CarTypes>
       </Body>
       <Banner category="Cars" />
       <Text color="black" fontSize="0.8rem" margin="2em">
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;King David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis quidem accusamus molestiae doloribus? Nulla, error!
-        Quis similique corrupti porro reiciendis dolore ipsa nobis mollitia explicabo, voluptatibus quibusdam illum perferendis libero est iusto ab, maxime quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
-        Quasi molestias consequatur earum enim dolorem rem excepturi illo eius ut sint laborum quibusdam, accusamus ullam, voluptatum totam tempora eum! Optio ipsum maiores saepe officiis delectus minus. Alias, voluptas fuga?
-        Doloremque quos eum libero deleniti ducimus suscipit mollitia consequatur neque perspiciatis, autem ipsa deserunt facilis numquam veritatis nulla quidem esse officiis inventore rerum adipisci, velit ipsam dolorum saepe? Exercitationem, esse!
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;King
+        David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic
+        omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis
+        quidem accusamus molestiae doloribus? Nulla, error! Quis similique
+        corrupti porro reiciendis dolore ipsa nobis mollitia explicabo,
+        voluptatibus quibusdam illum perferendis libero est iusto ab, maxime
+        quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
+        Quasi molestias consequatur earum enim dolorem rem excepturi illo eius
+        ut sint laborum quibusdam, accusamus ullam, voluptatum totam tempora
+        eum! Optio ipsum maiores saepe officiis delectus minus. Alias, voluptas
+        fuga? Doloremque quos eum libero deleniti ducimus suscipit mollitia
+        consequatur neque perspiciatis, autem ipsa deserunt facilis numquam
+        veritatis nulla quidem esse officiis inventore rerum adipisci, velit
+        ipsam dolorum saepe? Exercitationem, esse!
       </Text>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default CarsListing
+export default CarsListing;
 
 const Car = (props) => {
   var {
@@ -116,45 +113,47 @@ const Car = (props) => {
     colour,
     features,
     model,
-    postedBy
-  } = props
-  const [love, setLove] = useState(true)
-  const navigate = useNavigate()
+    postedBy,
+  } = props;
+  const [love, setLove] = useState(true);
+  const navigate = useNavigate();
   return (
     <>
       <CarType>
         <Dealer>
-          <PicDealer
-            src={postedBy?.profilePicture}
-            alt={postedBy?.firstName}
-          />
-          <Text fontSize="0.8rem" color="black">{postedBy?.firstName + " " + postedBy?.lastName}</Text>
+          <PicDealer src={postedBy?.profilePicture} alt={postedBy?.firstName} />
+          <Text fontSize="0.8rem" color="black">
+            {postedBy?.firstName + " " + postedBy?.lastName}
+          </Text>
           <BadgeCheck color="blue" width="30px" />
         </Dealer>
         <PicCar imageUrl={images[0]}>
-          <div style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "flex-start"
-          }}>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-start",
+            }}
+          >
             <Reaction
               onClick={() => {
-                setLove(!love)
+                setLove(!love);
               }}
             >
-              {
-                love ?
-                  <Heart color="#FFDF00" />
-                  :
-                  <HeartOutline color="yellow" />
-              }
+              {love ? (
+                <Heart color="#FFDF00" />
+              ) : (
+                <HeartOutline color="yellow" />
+              )}
             </Reaction>
           </div>
-          <div style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "flex-end"
-          }}>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
             <Reaction
               radius="0em"
               padding="1em 3em"
@@ -164,11 +163,17 @@ const Car = (props) => {
             </Reaction>
           </div>
         </PicCar>
-        <Text color="black" fontWeight="700">{title}</Text>
-        <Text color="black" fontWeight="700" fontSize="0.8rem">{price}</Text>
+        <Text color="black" fontWeight="700">
+          {title}
+        </Text>
+        <Text color="black" fontWeight="700" fontSize="0.8rem">
+          {price}
+        </Text>
         <Position>
           <LocationMarkerOutline width="20px" />
-          <Text color="black" fontSize="0.8rem">{location}</Text>
+          <Text color="black" fontSize="0.8rem">
+            {location}
+          </Text>
         </Position>
         <MainButton
           width="10em"
@@ -181,5 +186,5 @@ const Car = (props) => {
         </MainButton>
       </CarType>
     </>
-  )
-}
+  );
+};

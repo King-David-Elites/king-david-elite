@@ -1,8 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Country } from "./Profile_Mockdata";
+import { useNavigate } from "react-router-dom";
 
-const GetStarted = (props) => {  
+const GetStarted = (props) => {
   const [valid, setValid] = useState();
   let {
     setRegistering,
@@ -12,7 +13,14 @@ const GetStarted = (props) => {
     setStage,
     scrollToRef,
     position,
+    mainData,
   } = props;
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!mainData.userData.firstName) {
+      navigate("/profile/edit");
+    }
+  }, []);
 
   return (
     <>
@@ -36,7 +44,7 @@ const GetStarted = (props) => {
           name="Country"
           onChange={(e) => {
             setCountry(e.target.value);
-            setValid(true)
+            setValid(true);
           }}
         >
           <option value="Country">{country}</option>
