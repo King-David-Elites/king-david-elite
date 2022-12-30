@@ -61,8 +61,7 @@ const CreateRealEstateListing = () => {
     }
   }, [loaded,loadImage]);
 
-  useEffect(() => {
-    console.log(videos)
+  useEffect(() => {    
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;

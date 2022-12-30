@@ -29,6 +29,8 @@ const useContextAPI = () => {
   useEffect(() => {
     email();
     getListings();    
+    console.log(listing);
+    console.log(userData);
   }, []);
 
   return {
