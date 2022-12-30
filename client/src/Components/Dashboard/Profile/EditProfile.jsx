@@ -19,6 +19,7 @@ import theme from "../../../application/utils/Theme";
 import { useLocation, useNavigate } from "react-router-dom";
 import services from "../../../ioc/services";
 import Loader from "../../Loader/Loader";
+import Return from "../../Navbar/Return";
 
 const EditProfile = ({ mainData }) => {
   const navigate = useNavigate();
@@ -147,7 +148,10 @@ const EditProfile = ({ mainData }) => {
 
   return (
     <>
-      {loader && <Loader />}
+    {
+      loader && <Loader />
+    }
+    <Return />
       <EditProfileContainer padding="12px 12px">
         <div className="content-text">
           <h3>Profile</h3>

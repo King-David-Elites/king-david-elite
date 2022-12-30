@@ -49,10 +49,13 @@ import Admin from './Components/Admin/Admin';
 
 import Loader from './Components/Loader/Loader'
 
+import Contact from './Contact/Contact';
+
 import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
 import useContextAPI from './Components/ContextAPI/ContextAPI';
+import EachRealEstate from './Components/RealEstate/EachRealEstate';
 
 function App() {
   const queryClient = new QueryClient();
@@ -66,6 +69,9 @@ function App() {
         <Routes>
           <Route path='/register' element = {<Register/>}/>
           <Route path='/' element={<HomePage />} />
+
+          <Route path ='/contact' element = {<Contact/>}/>
+
           <Route path='/modal' element={<ModalCont />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/loader' element={<Loader />} />
@@ -78,7 +84,7 @@ function App() {
           <Route path="/real-estate" element={<RealEstateListing mainData={mainData} />} />
           <Route path="/real-estate/add" element={<AddRealEstate />} />
           <Route path="/dashboard/messages/chat" element={<ChatBox />} />
-          <Route path="/real-estate/:id" element={<EachBuilding active={0} />} />
+          <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
           <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
           <Route path="/cars" element={<Cars mainData={mainData}/>} />
           <Route path="/cars/add" element={<AddCar />} />

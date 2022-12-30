@@ -279,3 +279,188 @@ export const BottomBanner = styled.div`
     display: grid;
     /* gap: 20px; */
 `
+
+export const EachContainer = styled.div`
+    padding: 100px 0;
+    width: 80%;
+    margin: 0 auto;
+
+    @media (max-width: 700px){
+        width: 90%;
+        padding: 70px 0;
+
+        h3{
+            
+        }
+    }
+
+    h3{
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    h4{
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    p{
+        display: flex;
+        gap:3px;
+        font-size: 14px;
+    }
+
+    .titles{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .images{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 70px 0;
+
+        @media (max-width: 700px){
+            padding: 40px 0;
+        }
+
+        .image1{
+            width: 100%;
+            height: 300px;
+            img{
+                width: 100%;
+                height: 100%;
+
+            }
+
+            @media (max-width: 700px){
+                height: 200px;
+            }
+        }
+
+        .grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 10px;
+            align-items: center;
+            width: 100%;
+            height: 200px;
+
+            img{
+                width: 100%;
+                height: 200px;
+            }
+
+            @media (max-width: 700px){
+                height: 100px;
+                gap: 6px;
+
+                img{
+                    height: 100px;
+                }
+            }
+        }
+
+        .viewMedia{
+            background: linear-gradient(90deg, #F2BE5C 23.7%, #000000 286.13%);
+            border-radius: 4px;
+            padding: 10px 20px;
+            width: fit-content;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    }
+
+    .amenities{
+        p{
+            padding: 5px 0;
+            color: rgb(100,100,100)
+        }
+
+        padding: 50px 0;
+    }
+
+    .description{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+
+        @media (max-width: 700px){
+            grid-template-columns: none;
+            display: block;
+        }
+
+        .details{
+            p{
+                color: #696969;
+                padding: 20px 0;
+            }
+        }
+
+
+        .seller{
+            
+            .first{
+                color: #fff;
+                // display: grid;
+
+                .btns{
+                    display:flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    font-size: 12px;
+                    margin-top: 30px;
+
+                    @media (max-width: 700px){
+                        justify-content: start;
+                        gap: 20px;
+                    }
+
+                    .btn{
+                        padding: 6px;
+                        border: 2px solid;
+                        border-radius: 6px;
+                        // font-weight: 600;
+                        cursor: pointer;
+                    }
+
+                    .filled{
+                        background-color: black;
+                        border: 2px solid black;
+                    }
+                }
+            }
+
+            .container{
+                margin-top: 20px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+                background: #BF7F30;
+                backdrop-filter: blur(20px);
+                border-radius: 4px;
+                padding: 20px;
+
+                @media (max-width: 700px){
+                    display: flex;
+                    flex-direction: column-reverse;
+                }
+
+
+
+                .second{
+                    img{
+                        width: 100%;
+                        height: 150px;
+                        border-radius: 24px 0px;
+                    }
+                }
+            }
+        }
+    }
+`
