@@ -52,9 +52,11 @@ import Loader from './Components/Loader/Loader'
 import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
+import useContextAPI from './Components/ContextAPI/ContextAPI';
 
 function App() {
   const queryClient = new QueryClient();
+  const mainData = useContextAPI()  
 
   return (
     <QueryClientProvider client={queryClient} >
@@ -67,18 +69,18 @@ function App() {
           <Route path='/modal' element={<ModalCont />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/loader' element={<Loader />} />
-          <Route path='/email' element={<EmailPage />} />
+          <Route path='/email' element={<EmailPage mainData={mainData}/>} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/' element={<HomePage />} />
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/savedpost' element={<Savedpost />} />
-          <Route path="/real-estate" element={<RealEstateListing />} />
+          <Route path="/real-estate" element={<RealEstateListing mainData={mainData} />} />
           <Route path="/real-estate/add" element={<AddRealEstate />} />
           <Route path="/dashboard/messages/chat" element={<ChatBox />} />
           <Route path="/real-estate/:id" element={<EachBuilding active={0} />} />
           <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
-          <Route path="/cars" element={<Cars />} />
+          <Route path="/cars" element={<Cars mainData={mainData}/>} />
           <Route path="/cars/add" element={<AddCar />} />
           <Route path="/cars/:id" element={<EachCars active={0} />} />
           <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0} />} />
@@ -86,8 +88,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/messages" element={<Messages />} />
           <Route path="/dashboard/notifications" element={<Notifications />} />
-          <Route path="/dashboard/profile/verification" element={<Profile />} />
-          <Route path="/dashboard/" element={<Profile />} />
+          <Route path="/dashboard/profile/verification" element={<Profile mainData={mainData}/>} />
+          <Route path="/dashboard/" element={<Profile mainData={mainData}/>} />
           <Route path="/dashboard/wallet" element={<Wallet />} />
           <Route path="/dashboard/wallet/transfer" element={<Transfer />} />
           <Route path="/dashboard/wallet/withdraw" element={<Withdrawal />} />
@@ -102,9 +104,9 @@ function App() {
           <Route path="/profile/verification" element={<Verification />} />
           <Route path="/profile/list" element={<ProfileList />} />
           <Route path="/profile/stat" element={<ProfileStat />} />
-          <Route path='/profile/edit' element={<EditProfile />} />
+          <Route path='/profile/edit' element={<EditProfile mainData={mainData}/>} />
           <Route path="/profile/create-listings" element={<CreateListing />} />
-          <Route path="/profile" element={<LoggedUser />} />
+          <Route path="/profile" element={<LoggedUser mainData={mainData}/>} />
           <Route path="/profile/:id" element={<OtherUser />} />
           <Route path="/waitList" element={<Waitlist />} />
           <Route path='/profile/viewImage' element={<ImagePage/>}/>

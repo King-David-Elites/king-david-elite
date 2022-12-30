@@ -7,7 +7,7 @@ import { ListingForm, ListingHead } from "./CreateListing.style";
 import CreateRealEstateListing from "./CreateRealEstateListing";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const CreateListing = () => {
+const CreateListing = () => {  
   const [listing, setListing] = useState("Real Estate");
   const top = useRef(null);
   const categories = [

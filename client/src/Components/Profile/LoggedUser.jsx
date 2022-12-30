@@ -6,14 +6,12 @@ import ProfileStat from "../../container/ProfileStat";
 import Verification from "../Verification/Verification";
 import { Bio, Details, Header, Switch, Update } from "./Styled";
 import Account from "../Account/Account";
-import { useGetUserDetails } from "../../application/hooks/queryhooks";
 import { useNavigate } from "react-router-dom";
 
-const LoggedUser = ({ logged }) => {
-  const [active, setActive] = useState(<ProfileStat />);
-  const data = useGetUserDetails()
+const LoggedUser = ({ logged, mainData }) => {
+  const [active, setActive] = useState(<ProfileStat />);    
   const navigate = useNavigate()
-  const [file, setFile] = useState(data.cover);
+  const [file, setFile] = useState(mainData.userData.cover);
 
   //   const logged = true
   const options = [
@@ -40,7 +38,7 @@ const LoggedUser = ({ logged }) => {
     <Fragment>
       <Header className="cursor-pointer" onClick={() => navigate('/profile/viewImage')}>
         <img
-          src={data.cover}
+          src={mainData.userData.cover}
           alt=""
           
         />
@@ -49,13 +47,13 @@ const LoggedUser = ({ logged }) => {
       <Details>
         <div className="profile">
           <img
-            src={data.profilePicture}
+            src={mainData.userData.profilePicture}
             alt=""
           />
 
           <div className="title">
             <h3>
-              {data.firstName + " " + data.lastName}
+              {mainData.userData.firstName + " " + mainData.userData.lastName}
               <span>
                 <FaCheckCircle />
               </span>
@@ -88,7 +86,7 @@ const LoggedUser = ({ logged }) => {
       </Details>
 
       <Bio>
-        {data.about}
+        {mainData.userData.about}
       </Bio>
 
       {!logged && <Update>Update Account</Update>}
