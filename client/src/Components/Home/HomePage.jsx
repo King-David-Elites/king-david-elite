@@ -19,6 +19,7 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const HomePage = () => {
   const navigate = useNavigate()
   const position = useRef(null)
+  
   const categories = [
     {
       bg: c1,
@@ -40,25 +41,10 @@ const HomePage = () => {
       title: "Cars",
       link: "/cars"
     },
-    {
-      bg: c4,
-      title: "Cars",
-      link: "/cars"
-    },
-    {
-      bg: c4,
-      title: "Cars",
-      link: "/cars"
-    },
-    {
-      bg: c4,
-      title: "Cars",
-      link: "/cars"
-    },
   ]
   return (
     <Fragment>
-      <Navbar />
+      <Navbar active={0} />
       <Background imageUrl={bg}>
         <HeroSection>
           <Text fontSize="96px">

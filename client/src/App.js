@@ -44,11 +44,8 @@ import Deposit from './Components/Dashboard/Deposit';
 import LoggedUser from './Components/Profile/LoggedUser';
 import OtherUser from './Components/Profile/OtherUser';
 import ChatBox from './Components/Dashboard/ChatBox';
-
 import Admin from './Components/Admin/Admin';
-
 import Loader from './Components/Loader/Loader'
-
 import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
