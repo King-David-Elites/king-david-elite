@@ -96,7 +96,6 @@ export const LogoText = styled.div`
 `
 
 export const Brand = styled.div`
-        flex-basis: 25%;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -132,6 +131,7 @@ export const Brand = styled.div`
         font-weight:700;
         cursor: pointer;
         width: 0;
+        flex-basis: 25%;
 
     .dashboard{
         display:flex;
