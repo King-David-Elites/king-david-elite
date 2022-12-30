@@ -11,6 +11,7 @@ const useAuthentication = () => {
 
     const userId = useSelector(state=> state.user.userId);
 
+
     useEffect(() => {
         if (userId == null) {
             dispatch(setLoading(false))

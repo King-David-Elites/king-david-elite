@@ -42,7 +42,7 @@ const CarsListing = ({mainData}) => {
   }, []);
   return (
     <>
-      <Navbar active={1} />
+      <Navbar active={2} />
       <Background imageUrl={carpic} ref={top}>
         <HeroSection>
           <Text fontSize="2rem">Luxury Cars</Text>

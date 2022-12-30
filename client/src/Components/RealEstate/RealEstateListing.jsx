@@ -24,17 +24,34 @@ import Footer from "../Footer/Footer"
 import { useNavigate } from 'react-router-dom';
 import Listing from '../Listing/Listing';
 import { GridContainer } from '../Listing/Listing.styled'; 
+import axios from 'axios';
+import globalApi from '../../api';
+import { useCallback } from 'react';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+  
+  
 const RealEstateListing = ({mainData}) => {      
   const top = useRef(null)
+
+  const [listing, setListing] = useState([])
+
+  const getListings = useCallback(()=>{
+    axios.get(`${globalApi}/listings/all?page=1`)
+    .then(resp => setListing(resp.data.listings))
+    .catch(err => console.error(err))
+  }, [globalApi])
+
+  useEffect(()=>{
+    getListings()
+  }, [getListings])
 
   useEffect(() => {
     scrollToRef(top)
   }, [])
   return (
     <>
-      <Navbar active={0}/>
+      <Navbar active={1}/>
       <Background imageUrl={realEstatePics} ref={top} >
         <HeroSection>
           <Text fontSize="2rem">Luxury Real Estate</Text>

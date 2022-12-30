@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header, UL, LI, LogoText, Brand, Login } from './Navbar.Style'
-import kde_whiteBg from './Image/kde_whiteBg.png'
+import kde_blackBg from './Image/kde_whiteBg.png'
 import { useNavigate } from 'react-router-dom'
 import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
@@ -10,6 +10,7 @@ import { MdRealEstateAgent, MdMessage, MdMenu, MdAccountBalanceWallet } from 're
 import { IoMdCar } from 'react-icons/io';
 import { BsFillBellFill, BsFillHeartFill } from 'react-icons/bs';
 import './Navbar.css'
+import MainButton from '../buttons/MainButton'
 
 const Navbar = ({ bg, sticky, active }) => {
 
@@ -23,6 +24,10 @@ const Navbar = ({ bg, sticky, active }) => {
 
     const navOptions = [
         {
+            title: "HOME",
+            link: "/"
+        },
+        {
             title: "REAL ESTATE",
             link: "/real-estate"
         },
@@ -34,10 +39,6 @@ const Navbar = ({ bg, sticky, active }) => {
             title: "ABOUT",
             link: "/about",
         },
-        {
-            title: "AFFILIATE",
-            link: "/affiliate"
-        }
     ]
 
     const mobileNavOptions = [
@@ -188,12 +189,12 @@ const Navbar = ({ bg, sticky, active }) => {
                     </ul>
                 </nav>
                 <Brand>
-                    <div style={{ width: "4em", height: "auto" }} onClick={() => navigate("/")}>
-                        <img src={kde_whiteBg}
-                            className='w-[100%] h-[100%]'
+                    <div className='w-[40px] h-[auto]' onClick={() => navigate("/")}>
+                        <img src={kde_blackBg}
+                            className='w-[100%] h-[100%] cursor-pointer'
                             alt="brandlogo" />
                     </div>
-                    <LogoText>KING DAVID ELITES</LogoText>
+                    <LogoText onClick={() => navigate("/")}>KING DAVID ELITES</LogoText>
 
                     <div className='menu-icon'>
                         <MdMenu size={30} className='menu' onClick={showMenu} />
@@ -222,14 +223,17 @@ const Navbar = ({ bg, sticky, active }) => {
                 </div>
 
                 <Login>
+                    <div className='cursor-pointer text-sm' onClick={() => navigate("/signup")}>LIST WITH US</div>
                     {
                         token ?
                             <div onClick={() => navigate("/dashboard")} className='dashboard'>DASHBOARD</div>
                             :
-                            <div className="login" onClick={() => navigate("/signup")}>Login/Sign Up</div>
+                            <MainButton color='#000' className="login" onClick={() => navigate("/login")}>LOG IN</MainButton>
                     }
 
+                    <MdMenu size={30} className='menu cursor-pointer' onClick={showMenu} />
                 </Login>
+
             </Header>
         </>
     )

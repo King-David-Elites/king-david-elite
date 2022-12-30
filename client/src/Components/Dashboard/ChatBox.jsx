@@ -7,7 +7,6 @@ import { BsPaperclip } from 'react-icons/bs';
 import { FaImages } from 'react-icons/fa';
 import theme from "../../application/utils/Theme";
 import img from '../Home/images/c1.jpg'
-import { useNavigate } from "react-router-dom";
 
 const SenderMessage = [
     {
@@ -39,7 +38,6 @@ const SenderMessage = [
         isSent: false
     },
 ]
-
 
 const ChatBox = ({ setStage }) => {
     return (
