@@ -137,13 +137,6 @@ export const MobileDashboardContainer = styled.div`
         }
     }
 
-    /* .dot{
-        background-color: ${theme.color};
-        height: 8px;
-        width: 8px;
-        border-radius: 50%;
-    } */
-
     .lower-sect{
         height: 85%;
         margin: 1em 0.5em;
@@ -348,16 +341,18 @@ export const RightContainer = styled.div`
 `
 
 export const MessagesContainer = styled.div`
-    display: grid;
-    grid-template-columns: 1.3fr 3fr;
+    /* display: grid;
+    grid-template-columns: 1.3fr 3fr; */
+    display: flex;
     background-color: white;
     border-radius: 8px;
     height: 80vh;
 
     .listOfMessages{
-        border-right: lightgray;
+        border-right: 2px solid lightgray;
         padding: 10px 20px;
         border-radius: 8px 0 0 8px;
+        flex: 1 0 25%;
         
         .title{
             padding: 10px 20px;
@@ -390,6 +385,11 @@ export const MessagesContainer = styled.div`
                 color: #737373;
             }
         }
+    }
+
+    .eachChat{
+        flex: 2 0 75%;
+        width: auto;
     }
 `
 
@@ -848,10 +848,6 @@ export const Form = styled.form`
         display: flex;
         flex-direction: row;
         gap: 1em;
-
-        /* @media (min-width: ${theme.breakPoint['tablet']}) {
-        flex-direction: column;
-    }   */
     }
 
     .formField > .section > .input{
@@ -889,13 +885,17 @@ export const Form = styled.form`
 //chatbox section
 export const ChatBoxContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 95%;
 
     .header-sect{
         height: 10%;
         display: flex;
         align-items: center;
         padding: 0.5em 1.3em 0.5em 0.8em;
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        background-color: #fff;
 
         .chat-wrap{
             display: flex;
@@ -919,11 +919,12 @@ export const ChatBoxContainer = styled.div`
     }
 
     .chat-body{
-        height: 82%;
+        height: 85%;
         background-color: #D5DBE3;
         display: flex;
         flex-direction: column;
         overflow-y: auto;
+        padding: 5em 1em 0em 1em;
 
         .date{
             margin-left: auto;
@@ -951,7 +952,6 @@ export const ChatBoxContainer = styled.div`
             padding: 10px;
             max-width: 300px;
             border-radius: 4px;
-            margin-left: 1em;
 
             .span2{
                 display: flex;
@@ -979,7 +979,6 @@ export const ChatBoxContainer = styled.div`
         padding: 10px;
         max-width: 300px;
         border-radius: 4px;
-        margin-right: 1em;
 
         .span1{
                 color: ${theme.neutralColor};
@@ -989,13 +988,14 @@ export const ChatBoxContainer = styled.div`
     }
 
     .typing-box{
-        height: 9%;
         display: flex;
         align-items: center;
         justify-content: space-around;
         padding: 1em;
         position: fixed;
         width: 100%;
+        background-color: #fff;
+        height: 10%;
 
         .typing-div {
             flex: 2;
@@ -1010,7 +1010,6 @@ export const ChatBoxContainer = styled.div`
             border: 2px solid #A6A6A633;
             outline: none;
             padding: 5px 10px;
-            overflow: hidden;
             resize: none;
         }
     }

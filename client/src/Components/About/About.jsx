@@ -24,7 +24,7 @@ const About = () => {
   }, []);
   return (
     <Fragment>
-      <Navbar active={2}/>
+      <Navbar active={3}/>
       <Background imageUrl={bg} ref={top}>
         <HeroSection>
           <Text fontSize="96px">About</Text>

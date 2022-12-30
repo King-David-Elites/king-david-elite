@@ -37,29 +37,24 @@ const ImagePage = () => {
 
   return (
     <Preview>
-        {
-            loader && 
-            <Loader />
-        }
-      {/* <div className="absolute bg-slate-200 text-black right-2 w-8 h-8 rounded-full flex items-center justify-center">
-                <HiCamera className="cursor-pointer" />
-                
-            </div> */}
-
+      {
+        loader &&
+        <Loader />
+      }
       <div className="icon">
         <HiCamera color="white" />
       </div>
-      
+
 
       <div className="input">
         <FileBase64
-        name="cover"
-        defaultValue={image}
-        multiple={false}
-        onDone={(base64) => {
-          upload(base64.base64);
-        }}
-      />
+          name="cover"
+          defaultValue={image}
+          multiple={false}
+          onDone={(base64) => {
+            upload(base64.base64);
+          }}
+        />
       </div>
 
       <img src={image} alt="" />

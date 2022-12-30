@@ -11,13 +11,12 @@ import { useGetUserDetails } from '../../application/hooks/queryhooks'
 const Dashboard = ({ element, index, mobileElement }) => {
     useAuthentication();
     const navigate = useNavigate();
-    const data = useGetUserDetails();
+    const { data } = useGetUserDetails();
     const [loggedInUser, setLoggedInUser] = useState([]);
 
-    // useEffect(() => {
-    //     setLoggedInUser(data)
-    //     console.log(data)
-    // }, [data])
+    useEffect(() => {
+        setLoggedInUser(data)
+    }, [data])
 
     return (
         <div>
@@ -57,7 +56,7 @@ const Dashboard = ({ element, index, mobileElement }) => {
                         </div>
 
                         <div className="profile" onClick={() => navigate("/profile")}>
-                            <img src={data.profilePicture} alt="" />
+                            <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
 
                             <div className="textContent">
                                 <h6>{data?.firstName?.toUpperCase()} {data?.lastName?.toUpperCase()}</h6>

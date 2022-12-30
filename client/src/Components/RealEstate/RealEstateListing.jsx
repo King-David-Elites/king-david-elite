@@ -51,7 +51,7 @@ const RealEstateListing = ({mainData}) => {
   }, [])
   return (
     <>
-      <Navbar active={0}/>
+      <Navbar active={1}/>
       <Background imageUrl={realEstatePics} ref={top} >
         <HeroSection>
           <Text fontSize="2rem">Luxury Real Estate</Text>

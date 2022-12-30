@@ -71,6 +71,7 @@ export const LI = styled.li`
 
     .item-active{
         color:${theme.color};
+        border-bottom: 2px solid ${theme.color};
     }
    
 `
@@ -130,6 +131,7 @@ export const Brand = styled.div`
         font-weight:700;
         cursor: pointer;
         width: 0;
+        flex-basis: 25%;
 
     .dashboard{
         display:flex;
@@ -162,7 +164,9 @@ export const Login = styled.div`
     }
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        display: block;
+        display: flex;
+        gap: 2em;
+        align-items: center;
     }
 `
 
