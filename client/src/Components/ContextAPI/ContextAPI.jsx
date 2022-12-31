@@ -3,19 +3,25 @@ import axios from "axios";
 import globalApi from "../../api";
 
 const useContextAPI = () => {
-  const [estateListing, setEstateListing] = useState({});
-  const [carsListing, setCarsListing] = useState({});
-  const [mails, setMails] = useState([]);
-  const [fetched, setFetched] = useState(false);
+  const [listing, setListing] = useState([]);
+  const [cars, setCars] = useState([]);
+  const [mails, setMails] = useState([]);  
   const userData = JSON.parse(localStorage.getItem("user"));  
 
-  const getEstates = async () => {
+  const getListings = async () => {
     await axios
       .get(`${globalApi}/listings/all?page=1&type=0`)
       .then((resp) => {
-        setEstateListing(resp.data);
-        setFetched(!fetched);
-        console.log(resp.data);
+        setListing(resp.data.listings);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const getCarsListings = async () => {
+    await axios
+      .get(`${globalApi}/listings/all?page=1&type=1`)
+      .then((resp) => {
+        setCars(resp.data.listings);
       })
       .catch((err) => console.error(err));
   };
@@ -24,35 +30,24 @@ const useContextAPI = () => {
     await axios
       .get(`${globalApi}/wait-list`)
       .then((resp) => {
-        setMails(resp.data);
-        setFetched(!fetched);
-        console.log(resp.data);
+        setMails(resp.data);                
       })
       .catch((err) => console.log(err));
   };
 
-  const getCars = async () => {
-    await axios
-      .get(`${globalApi}/listings/all?page=1&type=1`)
-      .then((resp) => {
-        setCarsListing(resp.data);
-        setFetched(!fetched);
-        console.log(resp.data);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  useEffect(() => {    
-    getCars();
-    getEstates();
-    email();        
+  useEffect(() => {
+    email();
+    getListings();  
+    getCarsListings();  
   }, []);
 
   return {
     userData: userData,
-    estateListing: estateListing,
-    carsListing: carsListing,
+    setListing: setListing,
+    listing: listing,
     mails: mails,
+    cars: cars,
+    setCars: setCars
   };
 };
 

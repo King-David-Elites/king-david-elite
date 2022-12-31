@@ -27,12 +27,27 @@ import { GridContainer } from '../Listing/Listing.styled';
 import axios from 'axios';
 import globalApi from '../../api';
 import { useCallback } from 'react';
+import useContextAPI from '../ContextAPI/ContextAPI';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
   
   
-const RealEstateListing = ({mainData}) => {     
+const RealEstateListing = () => {      
   const top = useRef(null)
+  const {listing, setListing}= useContextAPI()
+  
+  // const [listing, setListing] = useState([])
+
+  const getListings = useCallback(()=>{
+    axios.get(`${globalApi}/listings/all?page=1`)
+    .then(resp => setListing(resp.data.listings))
+    .catch(err => console.error(err))
+  }, [globalApi])
+
+  // useEffect(()=>{
+  //   getListings()
+  //   console.log(listing)
+  // }, [getListings])
 
   useEffect(() => {
     scrollToRef(top)
@@ -57,7 +72,7 @@ const RealEstateListing = ({mainData}) => {
         <Text fontSize="1rem" fontWeight="700" color="black">Luxury Properties For Sale</Text>
         <GridContainer>
           {
-            mainData.estateListing["listings"].map((items) => {
+            listing.map((items) => {
               return (
                 // <RealEstate key={items._id} {...items} />
                 <Listing key={items._id} list={items}/>

@@ -33,13 +33,18 @@ import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useEffect } from "react";
+import useContextAPI from "../ContextAPI/ContextAPI";
+import { GridContainer } from "../Listing/Listing.styled";
+import Listing from "../Listing/Listing";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const CarsListing = ({mainData}) => {  
-  const top = useRef(null);  
+const CarsListing = ({ mainData }) => {
+  const top = useRef(null);
   useEffect(() => {
     scrollToRef(top);
   }, []);
+
+  const { setCars, cars } = useContextAPI();
   return (
     <>
       <Navbar active={2} />
@@ -64,12 +69,20 @@ const CarsListing = ({mainData}) => {
         <Text fontSize="1rem" fontWeight="700" color="black">
           Explore Luxury Cars
         </Text>
-        <CarTypes>
-          {mainData.carsListing["listings"]
-            .map((items) => {
+        {/* <CarTypes>
+          {cars.map((items) => {
               return <Car key={items._id} {...items} />;
             })}
-        </CarTypes>
+        </CarTypes> */}
+
+        <GridContainer>
+          {cars.map((items) => {
+            return (
+              // <RealEstate key={items._id} {...items} />
+              <Listing key={items._id} list={items} />
+            );
+          })}
+        </GridContainer>
       </Body>
       <Banner category="Cars" />
       <Text color="black" fontSize="0.8rem" margin="2em">
