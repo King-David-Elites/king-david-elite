@@ -2,35 +2,39 @@ import styled from 'styled-components'
 import theme from '../../application/utils/Theme'
 
 export const CategoriesContainer = styled.div`
-overflow: hidden;
-`
+    overflow: hidden;
+    `
 export const Categories = styled.div`
+    height: auto;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 50px;
-    gap: 1em;
-    width: 100%;
-    overflow-x:auto;
+    justify-content: space-between;
+    gap: 2em;
+    overflow-x: auto;
+    margin: 0 auto;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        padding: 90px;
+        overflow: hidden;
+        padding: 40px 90px;
         ::-webkit-scrollbar{
             width:0;
         }
+        gap: 2.3em;
     }
    
 `
 
 export const Category = styled.div`
-    background:  linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0, 0, 0, 0)), url(${(prop)=> prop?.bg});
+    background:  linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0, 0, 0, 0)), url(${(prop) => prop?.bg});
+    width: 100%;
     height: 300px;
     border-radius: 6px;
     flex: 1 0 70%;
     cursor: pointer;
-    transition: 0.5s all ease-in-out;
+    transition: transform 2s;
     background-size: cover;
-    
 
     &:hover{
         transform: scale(1.2);
@@ -38,12 +42,10 @@ export const Category = styled.div`
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         flex: 1 0 20%;
-        margin: auto;
+        height: 400px;
     }
 
 `
-
-
 
 
 export const InformationContainer = styled.div`
@@ -303,7 +305,7 @@ export const Information = styled.div`
 `
 
 export const SubFooter = styled.div`
-    background:linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0, 0, 0, 0)), url(${(prop)=> prop.bg});
+    background:linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0, 0, 0, 0)), url(${(prop) => prop.bg});
     width:100%;
     height: 300px;
     background-position: center;
@@ -342,8 +344,8 @@ export const SubFooter = styled.div`
 `
 
 export const BorderText = styled.div`
-    color: ${(prop)=> prop.color || "white"};
-    font-size: ${(prop)=> prop.fontSize || "14px"};
+    color: ${(prop) => prop.color || "white"};
+    font-size: ${(prop) => prop.fontSize || "14px"};
     padding: 10px;
     border: 2px solid;
     display: inline-flex;

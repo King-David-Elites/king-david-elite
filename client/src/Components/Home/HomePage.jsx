@@ -3,7 +3,6 @@ import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import { Background, HeroSection, Text } from '../Cars/Cars.Style'
 import { useNavigate } from 'react-router-dom'
-// import './style.css' 
 import bg from "./images/k1.jpg"
 import c1 from "./images/c1.jpg"
 import c2 from "./images/c2.jpg"
@@ -13,13 +12,16 @@ import { BorderText, Categories, CategoriesContainer, Category, Information, Inf
 import business from "./images/business.jpg"
 import coffee from "./images/coffee.jpg"
 import blur from "./images/blur.jpg"
-import CategoryScroller from './CategoryScroller'
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
+const scrollToRef = (ref) => {
+  window.scrollTo(0, ref.current.offsetTop)
+}
+
 const HomePage = () => {
   const navigate = useNavigate()
   const position = useRef(null)
-  
+
   const categories = [
     {
       bg: c1,
@@ -27,19 +29,19 @@ const HomePage = () => {
       link: "/real-estate"
     },
     {
-      bg: c2,
-      title: "Yatch",
-      link: "/yatch"
+      bg: c4,
+      title: "Automobiles",
+      link: "/cars"
     },
     {
       bg: c3,
-      title: "Hotels",
-      link: "/hotels"
+      title: "Luxury Services",
+      isComingSoon: true
     },
     {
-      bg: c4,
-      title: "Cars",
-      link: "/cars"
+      bg: c2,
+      title: "Collectibles",
+      isComingSoon: true
     },
   ]
   return (
@@ -48,7 +50,7 @@ const HomePage = () => {
       <Background imageUrl={bg}>
         <HeroSection>
           <Text fontSize="96px">
-            <h3>Luxury <span>Hub</span></h3>
+            <h3 className='font-bold'>LUXURY <span className='text-[#F2BE5C] font-bold'>REDEFINED</span></h3>
 
           </Text>
           <Text>
@@ -56,7 +58,9 @@ const HomePage = () => {
           </Text>
           <div className='btn'>
             <button onClick={() => {
-              scrollToRef(position)
+              setTimeout(() => {
+                scrollToRef(position)
+              }, 1000);
             }}>Explore</button>
             <button className='btn_app'>Download App</button>
           </div>
@@ -66,23 +70,28 @@ const HomePage = () => {
       </Background>
 
       <CategoriesContainer>
-        <Text>Categories</Text>
+        <div className='mt-16 mx-11 text-md font-semibold md:mx-24 md:text-lg'>Categories</div>
         <Categories ref={position}>
-          <CategoryScroller id="category">
-            {
-              categories.map((category, index) => {
-                return (
-                  <Category onClick={() => {
-                    navigate(category?.link)
-                  }} bg={category.bg} key={index}>
-                    <Text fontSize="20px" fontWeight="600">{category.title}</Text>
-                  </Category>
-                )
-              })
-            }
-          </CategoryScroller>
+          {
+            categories.map((category, index) => {
+              return (
+                <Category onClick={() => {
+                  navigate(category?.link)
+                }} bg={category.bg} key={index}>
+                  <div className='text-white flex flex-col mt-60 ml-5 md:mt-[18em] md:ml-7 font-semibold md:text-lg text-sm'>{category.title.toUpperCase()}  {
+                    category.isComingSoon == true && <p className='italic text-sm text-[#A6A6A6]'>Coming Soon</p>
+                  }</div>
+
+                </Category>
+              )
+            })
+          }
         </Categories>
       </CategoriesContainer>
+
+      {/* <div className='h-[auto] w-[20%] overflow-hidden'>
+        <img className='w-[100%] block duration-150	hover:scale-125' src={c3} alt="not found" />
+      </div> */}
 
       <InformationContainer>
         <Information>
@@ -105,17 +114,17 @@ const HomePage = () => {
         <Information>
 
           <div className="Elite">
-              <h4>Elite Luxury NewsLetter</h4>
-              <p>Let’s keep you updated with what’s trending inLuxury.</p>
+            <h4 className='md:font-bold md:text-lg font-semibold text-base'>The Elite NewsLetter</h4>
+            <p>Let’s keep you updated with what’s trending inLuxury.</p>
 
-              <form action="">
-                <input type="email" placeholder='E-mail' />
-                <div className="btn">Subscribe</div>
-              </form>
+            <form action="">
+              <input type="email" placeholder='E-mail' />
+              <div className="btn">Subscribe</div>
+            </form>
           </div>
 
           <div className="coffee image">
-              <img className='img_coffee' src={coffee} alt="" />
+            <img className='img_coffee' src={coffee} alt="" />
           </div>
 
         </Information>
@@ -124,14 +133,14 @@ const HomePage = () => {
       <SubFooter bg={blur}>
         <Text fontSize="24px">
           <p className='sub-p1'>
-            Let's help you make more money by becoming an <span>Affiliate</span></p>
+            Take your brand to the next level as a <span className='text-[#F2BE5C] font-bold'>Luxury Affiliate Vendor</span></p>
         </Text>
         <Text fontSize="14px">
           <p className='sub-p2'>
-            King David Elite work closely with Affiliate Marketer that are compatible in terms of values and synergy.</p>
+            Make extra earnings today by gaining access to the most exclusive list of real estate properties and automobiles within the country and beyond sourced by the King David Elites team.</p>
         </Text>
         <BorderText>
-          SIGN UP FOR AN INVITE
+          COMING SOON....
         </BorderText>
       </SubFooter>
 
