@@ -16,6 +16,7 @@ import Advanced_Verf_1 from "./Advanced_Verf_1";
 import Advanced_Verf_2 from "./Advanced_verf_2";
 import Advanced_Verf_3 from "./Advanced_Verf_3";
 import Verified from "./Verified";
+import Loader from "../../Loader/Loader";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -23,15 +24,17 @@ const ProfileAsElement = ({ mainData }) => {
   const [stage, setStage] = useState(0);
   const [registering, setRegistering] = useState(false);
   const [country, setCountry] = useState("None");
-  const [idType, setIdType] = useState("");
+  const [idType, setIdType] = useState({digit:0, text:""});
   const [frontImage, setFrontImage] = useState([]);
   const [backImage, setBackImage] = useState([]);
   const [photo, setPhoto] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const position = useRef(null);
 
   return (
     <GenericContainer>
+      {loading && <Loader />}
       <ProfileContainer>
         <div className="leftSection">
           <div className="domiProfile">
@@ -111,8 +114,11 @@ const ProfileAsElement = ({ mainData }) => {
                 frontImage={frontImage}
                 backImage={backImage}
                 photo={photo}
+                idType={idType}
+                country={country}
                 position={position}
                 setStage={setStage}
+                setLoading={setLoading}
               />
             )}
 
@@ -132,11 +138,13 @@ const MobileProfile = ({ mainData }) => {
   const [frontImage, setFrontImage] = useState([]);
   const [backImage, setBackImage] = useState([]);
   const [photo, setPhoto] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const position = useRef(null);
 
   return (
     <MobileGenericContainer>
+      {loading && <Loader />}
       <ProfileContainer>
         <div className="rightSection">
           <Form ref={position}>
@@ -210,19 +218,15 @@ const MobileProfile = ({ mainData }) => {
                 frontImage={frontImage}
                 backImage={backImage}
                 photo={photo}
+                idType={idType}
+                country={country}
                 position={position}
                 setStage={setStage}
+                setLoading={setLoading}
               />
             )}
 
-            {stage === 6 && (
-              <Verified
-                stage={stage}
-                setStage={setStage}
-                scrollToRef={scrollToRef}
-                position={position}
-              />
-            )}
+            {stage === 6 && <Verified stage={stage} setStage={setStage} />}
           </Form>
         </div>
       </ProfileContainer>

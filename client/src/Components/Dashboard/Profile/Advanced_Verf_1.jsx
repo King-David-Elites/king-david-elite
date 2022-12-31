@@ -77,7 +77,7 @@ const Advanced_Verf_1 = (props) => {
       </div>
 
       <div className="formField">
-        <h5>Upload {idType}</h5>
+        <h5>Upload {idType.text}</h5>
         <div className="upload">
           <div className="uploading">
             <div className="pages">

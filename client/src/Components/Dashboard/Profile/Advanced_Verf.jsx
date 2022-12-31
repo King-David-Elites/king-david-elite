@@ -18,9 +18,9 @@ const Advanced_Verf = (props) => {
       <div className="formField">
         <div className="section" id="id_section">
           <div
-            className={idType === "Passport" ? "id_selected" : "id_type"}
+            className={idType.text === "Passport" ? "id_selected" : "id_type"}
             onClick={() => {
-              setIdType("Passport");
+              setIdType({ digit: 0, text: "Passport" });
               setSelected(true);
             }}
           >
@@ -30,11 +30,9 @@ const Advanced_Verf = (props) => {
             <h4>Passport</h4>
           </div>
           <div
-            className={
-              idType === "Driver's liscence" ? "id_selected" : "id_type"
-            }
+            className={idType.text === "Driver's liscence" ? "id_selected" : "id_type"}
             onClick={() => {
-              setIdType("Driver's liscence");
+              setIdType({ digit: 1, text: "Driver's liscence" });
               setSelected(true);
             }}
           >
@@ -44,10 +42,10 @@ const Advanced_Verf = (props) => {
             <h4>Driver's liscence</h4>
           </div>
           <div
-            className={idType === "Identity card" ? "id_selected" : "id_type"}
+            className={idType.text === "Identity card" ? "id_selected" : "id_type"}
             onClick={() => {
+              setIdType({ digit: 2, text: "Identity card" });
               setSelected(true);
-              setIdType("Identity card");
             }}
           >
             <div>

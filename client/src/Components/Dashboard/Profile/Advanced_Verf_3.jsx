@@ -4,21 +4,31 @@ import ver2 from "../Dashboard-Image/ver2.png";
 import ver3 from "../Dashboard-Image/ver3.png";
 import ver4 from "../Dashboard-Image/ver4.png";
 import axios from "axios";
+import globalApi from "../../../api";
+import { setLoading } from "../../../application/store/actions/ui";
 
-const Advanced_Verf_2 = (props) => {
-  let { stage, setStage, scrollToRef, photo, backImage, frontImage, position } =
+const Advanced_Verf_3 = (props) => {
+  let { stage, setStage, scrollToRef, photo, backImage, frontImage, idType, country, position, setLoading } =
     props;
-  const VerificationDetails = {};
+  const verificationData = {
+    verificationId : {
+      front: frontImage,
+      back: backImage
+    },
+    nationality: country,
+    verificationProfilePicture: photo,
+    verifcationType : idType.digit
+  };
   const [success, setSuccess] = useState(false);
 
-  // useEffect(() => {
-  //   if (success) {
-  //     setStage(stage + 1);
-  //     scrollToRef(position);
-  //   }
-  // }, [success]);
+  useEffect(() => {
+    if (success) {
+      setStage(stage + 1);
+      scrollToRef(position);
+    }
+  }, [success]);
 
-  const setConfig = (userListings) => {
+  const setConfig = () => {
     const authToken = localStorage.getItem("token");
 
     const config = {
@@ -31,26 +41,27 @@ const Advanced_Verf_2 = (props) => {
     return config;
   };
 
-  const postVerificationDetails = async (userListings) => {
+  const postVerificationDetails = async (verificationData) => {
     await axios
-      .post(
-        "http://192.168.43.168:9099/listings/upload-list",
-        userListings,
+      .patch(
+        `${globalApi}/users/verify-user`,
+        verificationData,
         setConfig()
       )
       .then((resp) => {
         console.log(resp.data);
+        setLoading(false)
         setSuccess(true);
       })
       .catch((err) => {
-        console.log(err.data);
+        console.log(err);
       });
   };
 
   const handleSubmit = () => {
-    // postVerificationDetails();
-    setStage(stage + 1);
-    scrollToRef(position);
+    postVerificationDetails(verificationData);
+    setLoading(true)
+    console.log(verificationData)    
   };
 
   return (
@@ -121,4 +132,4 @@ const Advanced_Verf_2 = (props) => {
   );
 };
 
-export default Advanced_Verf_2;
+export default Advanced_Verf_3;

@@ -11,7 +11,9 @@ const Advanced_Verf_2 = (props) => {
 
   useEffect(() => {
     setPhoto(photo);
-    setValid(true);
+    if(photo.length !== 0){
+      setValid(true);
+    }    
   }, [loaded]);
 
   const Load = (base64, type) => {
@@ -85,8 +87,10 @@ const Advanced_Verf_2 = (props) => {
         className={valid ? "enable" : "disable"}
         id="button"
         onClick={() => {
-          setStage(stage + 1);
-          scrollToRef(position);
+          if (valid === true) {
+            setStage(stage + 1);
+            scrollToRef(position);            
+          }
         }}
       >
         Continue
