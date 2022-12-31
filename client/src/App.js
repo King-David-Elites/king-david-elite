@@ -77,14 +77,14 @@ function App() {
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/savedpost' element={<Savedpost />} />
-          <Route path="/real-estate" element={<RealEstateListing mainData={mainData} />} />
+          <Route path="/real-estate" element={<RealEstateListing />} />
           <Route path="/real-estate/add" element={<AddRealEstate />} />
           <Route path="/dashboard/messages/chat" element={<ChatBox />} />
           <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
           <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
           <Route path="/cars" element={<Cars mainData={mainData}/>} />
           <Route path="/cars/add" element={<AddCar />} />
-          <Route path="/cars/:id" element={<EachCars active={0} />} />
+          <Route path="/cars/:id" element={<EachRealEstate active={0} />} />
           <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0} />} />
           <Route path="/others" element={<OtherSections />} />
           <Route path="/dashboard" element={<Dashboard />} />

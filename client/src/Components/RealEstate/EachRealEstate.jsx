@@ -88,7 +88,7 @@ const EachRealEstate = ({ active }) => {
               alt=""
             />
             <img
-              src={property?.images && property.images[2]}
+              src={property?.images && property.images[3]}
               alt=""
               loading="loading..."
             />
