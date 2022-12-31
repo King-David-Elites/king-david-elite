@@ -49,9 +49,8 @@ const HomePage = () => {
       <Navbar active={0} />
       <Background imageUrl={bg}>
         <HeroSection>
-          <Text fontSize="96px">
+          <Text fontSize="75px">
             <h3 className='font-bold'>LUXURY <span className='text-[#F2BE5C] font-bold'>REDEFINED</span></h3>
-
           </Text>
           <Text>
             The Greatest Luxury Is Freedom Of All Forms.
@@ -60,7 +59,7 @@ const HomePage = () => {
             <button onClick={() => {
               setTimeout(() => {
                 scrollToRef(position)
-              }, 1000);
+              }, 2000);
             }}>Explore</button>
             <button className='btn_app'>Download App</button>
           </div>
