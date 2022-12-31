@@ -48,8 +48,8 @@ const CreateRealEstateListing = () => {
     noOfBathroom: 0,
   });
 
-  useEffect(() => {    
-    setLoadImage(loadImage)
+  useEffect(() => {
+    setLoadImage(loadImage);
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;
@@ -59,9 +59,9 @@ const CreateRealEstateListing = () => {
     if (allVideos.length !== 0 && loadImage === false) {
       Load(allVideos, "video", size);
     }
-  }, [loaded,loadImage]);
+  }, [loaded, loadImage]);
 
-  useEffect(() => {    
+  useEffect(() => {
     userListings["images"] = images;
     userListings["videos"] = videos;
     userListings["features"] = features;
@@ -71,7 +71,7 @@ const CreateRealEstateListing = () => {
       userListings["location"] &&
       userListings["features"].length !== 0 &&
       userListings["price"] &&
-      userListings["images"].length !== 0
+      userListings["images"].length >= 4
     ) {
       setValid(true);
       setError(false);
@@ -98,7 +98,7 @@ const CreateRealEstateListing = () => {
       }
     }
     if (type === "video") {
-      console.log(base64)
+      console.log(base64);
       if (size <= 52428800 && size !== 0) {
         setVideos(base64.filter((items) => items.type === "video/mp4"));
       }
@@ -153,15 +153,13 @@ const CreateRealEstateListing = () => {
   };
 
   const handleSubmit = async () => {
-    setLoader(true)
+    setLoader(true);
     postUserListings(userListings);
   };
 
   return (
     <>
-      {
-        loader && <Loader />
-      }
+      {loader && <Loader />}
       <div className="form_Content">
         <div className="section">
           <p>Title/Name</p>
@@ -359,7 +357,7 @@ const CreateRealEstateListing = () => {
                     base64.forEach((item) => {
                       setSize(size + item.file["size"]);
                       setLoaded(!loaded);
-                    });                    
+                    });
                     setAllImages(base64);
                     setLoadImage(true);
                   }}
@@ -381,7 +379,7 @@ const CreateRealEstateListing = () => {
                             (item) => item.base64 !== image.base64
                           );
                         });
-                        setChanging(!changing)
+                        setChanging(!changing);
                       }}
                     >
                       <X color="black" width="15px" />
@@ -399,7 +397,7 @@ const CreateRealEstateListing = () => {
                   onClick={() => {
                     setImages([]);
                     setAllImages([]);
-                    setChanging(!changing)
+                    setChanging(!changing);
                   }}
                 >
                   Clear All
@@ -409,8 +407,8 @@ const CreateRealEstateListing = () => {
           )}
           <div className="base">PNG, JPEG, GIF. Not more than 50mb.</div>
           <div className="base">
-            mark and upload more than one high-quality images, listings with low
-            quality images may be rejected.
+            mark and upload more than one high-quality images (At least 4).
+            Listings with low quality images may be rejected.
           </div>
         </div>
         <div className="section">
@@ -425,9 +423,9 @@ const CreateRealEstateListing = () => {
                   multiple={false}
                   onDone={(base64) => {
                     setSize(0);
-                    setSize(base64.file["size"]);              
-                    setLoadImage(false);                                            
-                    setAllVideos([base64]);                                       
+                    setSize(base64.file["size"]);
+                    setLoadImage(false);
+                    setAllVideos([base64]);
                     setLoaded(!loaded);
                   }}
                 />
@@ -486,7 +484,7 @@ const CreateRealEstateListing = () => {
             List
           </div>
         </div>
-        {error && <p className="error">Please fill in the required fields</p>}
+        {error && <p className="error">Please fill in the required fields. Selected Images must be more than 4 (four)</p>}        
       </div>
     </>
   );

@@ -47,7 +47,7 @@ const CreateCarListing = () => {
 
   useEffect(() => {
     userListings["images"] = images;
-    userListings["videos"] = videos;
+    userListings["videos"] = videos;    
     if (
       userListings["title"] &&
       userListings["description"] &&
@@ -56,7 +56,7 @@ const CreateCarListing = () => {
       userListings["carCondition"] &&
       userListings["engineType"] &&
       userListings["colour"] &&
-      userListings["images"].length !== 0
+      userListings["images"].length >= 4
     ) {
       setValid(true);
       setError(false);
@@ -126,7 +126,7 @@ const CreateCarListing = () => {
     await axios
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
-        console.log(resp.data);        
+        console.log(resp.data);
         navigate("/profile");
       })
       .catch((err) => {
@@ -237,7 +237,7 @@ const CreateCarListing = () => {
                             (item) => item.base64 !== image.base64
                           );
                         });
-                        setChanging(!changing)
+                        setChanging(!changing);
                       }}
                     >
                       <X color="black" width="15px" />
@@ -255,7 +255,7 @@ const CreateCarListing = () => {
                   onClick={() => {
                     setImages([]);
                     setAllImages([]);
-                    setChanging(!changing)
+                    setChanging(!changing);
                   }}
                 >
                   Clear All
@@ -265,8 +265,8 @@ const CreateCarListing = () => {
           )}
           <div className="base">PNG, JPEG, GIF. Not more than 50mb.</div>
           <div className="base">
-            mark and upload more than one high-quality images, listings with low
-            quality images may be rejected.
+            mark and upload more than one high-quality images (At least 4)
+            Listings with low quality images may be rejected.
           </div>
         </div>
         <div className="section">
@@ -290,20 +290,20 @@ const CreateCarListing = () => {
             </div>
           </div>
           <div className="chosenImages">
-          {videos.map((video) => {
+            {videos.map((video) => {
               return (
                 <>
                   <div className="videoCont">
                     <video width="300px" height="300px" controls>
-                      <source src={video.base64} type="video/mp4"/>
+                      <source src={video.base64} type="video/mp4" />
                       Your browser does not support the video tag.
-                    </video>                    
+                    </video>
                     <div
                       className="close"
                       onClick={() => {
                         setVideos([]);
-                        setAllVideos([])
-                        setChanging(!changing)
+                        setAllVideos([]);
+                        setChanging(!changing);
                       }}
                     >
                       <X color="black" width="15px" />
@@ -311,7 +311,7 @@ const CreateCarListing = () => {
                   </div>
                 </>
               );
-            })}            
+            })}
           </div>
           <div className="base">MP4. Not more than 50mb</div>
           <div className="base">
@@ -346,7 +346,7 @@ const CreateCarListing = () => {
             List
           </div>
         </div>
-        {error && <p className="error">Please fill in the required fields</p>}
+        {error && <p className="error">Please fill in the required fields. Selected Images must be more than 4 (four)</p>}        
       </div>
     </>
   );

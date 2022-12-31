@@ -35,7 +35,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const CarsListing = ({mainData}) => {
+const CarsListing = ({mainData}) => {  
   const top = useRef(null);  
   useEffect(() => {
     scrollToRef(top);
@@ -65,8 +65,7 @@ const CarsListing = ({mainData}) => {
           Explore Luxury Cars
         </Text>
         <CarTypes>
-          {mainData.listing
-            .filter((i) => i.carCondition)
+          {mainData.carsListing["listings"]
             .map((items) => {
               return <Car key={items._id} {...items} />;
             })}

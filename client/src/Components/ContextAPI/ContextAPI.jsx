@@ -3,14 +3,18 @@ import axios from "axios";
 import globalApi from "../../api";
 
 const useContextAPI = () => {
-  const [listing, setListing] = useState([]);
+  const [estateListing, setEstateListing] = useState({});
+  const [carsListing, setCarsListing] = useState({});
   const [mails, setMails] = useState([]);
+  const [fetched, setFetched] = useState(false);
   const userData = JSON.parse(localStorage.getItem("user"));  
-  const getListings = async () => {
+
+  const getEstates = async () => {
     await axios
-      .get(`${globalApi}/listings/all`)
+      .get(`${globalApi}/listings/all?page=1&type=0`)
       .then((resp) => {
-        setListing(resp.data);
+        setEstateListing(resp.data);
+        setFetched(!fetched);
         console.log(resp.data);
       })
       .catch((err) => console.error(err));
@@ -21,22 +25,34 @@ const useContextAPI = () => {
       .get(`${globalApi}/wait-list`)
       .then((resp) => {
         setMails(resp.data);
+        setFetched(!fetched);
         console.log(resp.data);
       })
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    email();
-    getListings();    
-    console.log(listing);
-    console.log(userData);
+  const getCars = async () => {
+    await axios
+      .get(`${globalApi}/listings/all?page=1&type=1`)
+      .then((resp) => {
+        setCarsListing(resp.data);
+        setFetched(!fetched);
+        console.log(resp.data);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {    
+    getCars();
+    getEstates();
+    email();        
   }, []);
 
   return {
     userData: userData,
-    listing: listing,
-    mails: mails
+    estateListing: estateListing,
+    carsListing: carsListing,
+    mails: mails,
   };
 };
 
