@@ -5,8 +5,8 @@ import { Background, HeroSection, Text } from '../Cars/Cars.Style'
 import { useNavigate } from 'react-router-dom'
 import bg from "./images/k1.jpg"
 import c1 from "./images/c1.jpg"
-import c2 from "./images/c2.jpg"
-import c3 from "./images/c3.jpg"
+import c2 from "./images/colletibles.jpg"
+import c3 from "./images/luxury.jpg"
 import c4 from "./images/c4.jpg"
 import { BorderText, Categories, CategoriesContainer, Category, Information, InformationContainer, SubFooter } from './Home.Style'
 import business from "./images/business.jpg"
