@@ -5,7 +5,7 @@ const production_url = process.env.PRODUCTION_URL
 
 let globalApi = "https://kde.cyclic.app";
 
-//""
+//"""http://localhost:9099"
 // if(debug == "false"){
 //     globalApi = production_url;
 // }
