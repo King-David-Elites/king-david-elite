@@ -16,12 +16,13 @@ import { GridContainer } from "../Listing/Listing.styled";
 import Listing from "../Listing/Listing";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 
-const LoggedUser = ({ logged, mainData }) => {
+const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
   const [data, setData] = useState({})
   const navigate = useNavigate()
   const [file, setFile] = useState(data.cover);
-  const {id} = useParams()  
+  const {id} = useParams()
+  let user = useGetUserDetails()
   const [listings, setListings] = useState([])
 
   const getListings = ()=>{
@@ -31,14 +32,14 @@ const LoggedUser = ({ logged, mainData }) => {
   }
 
 
-  if(id == mainData.userData._id){
+  if(id == user._id){
     navigate("/profile")
   }
 
   
   useEffect(()=>{
     if(!id){
-        setData(mainData.userData)
+        setData(user)
       }
       else{
         axios.get(`${globalApi}/users/${id}`)
@@ -85,7 +86,7 @@ const LoggedUser = ({ logged, mainData }) => {
       <Return transparent={true}/>
       <Header className="cursor-pointer" onClick={() => navigate('/profile/viewImage')}>
         <img
-          src={mainData.userData.cover}
+          src={data.cover}
           alt=""
           
         />
@@ -94,13 +95,13 @@ const LoggedUser = ({ logged, mainData }) => {
       <Details>
         <div className="profile">
           <img
-            src={mainData.userData.profilePicture}
+            src={data.profilePicture}
             alt=""
           />
 
           <div className="title">
             <h3>
-              {mainData.userData.firstName + " " + mainData.userData.lastName}
+              {data.firstName + " " + data.lastName}
               <span>
                 <FaCheckCircle />
               </span>
@@ -133,7 +134,7 @@ const LoggedUser = ({ logged, mainData }) => {
       </Details>
 
       <Bio>
-        {mainData.userData.about}
+        {data.about}
       </Bio>
 
       <Address>
