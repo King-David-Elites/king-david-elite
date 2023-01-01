@@ -78,7 +78,7 @@ const HomePage = () => {
               onClick={() => {
                 setTimeout(() => {
                   scrollToRef(position);
-                }, 2000);
+                }, 3000);
               }}
             >
               Explore
