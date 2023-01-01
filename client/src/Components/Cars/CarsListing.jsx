@@ -18,7 +18,6 @@ import {
   Reaction,
 } from "./Cars.Style";
 import Navbar from "../Navbar/Navbar";
-import carpic from "./Image/carpic.jpg";
 import MainButton from "../buttons/MainButton";
 import Banner from "../Banner/Banner";
 import {
@@ -36,6 +35,8 @@ import { useEffect } from "react";
 import useContextAPI from "../ContextAPI/ContextAPI";
 import { GridContainer } from "../Listing/Listing.styled";
 import Listing from "../Listing/Listing";
+import { CarAnimation, graduallyAppear, graduallyDisAppear } from "./AnimationOrder";
+import { motion } from "framer-motion";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const CarsListing = ({ mainData }) => {
@@ -45,10 +46,52 @@ const CarsListing = ({ mainData }) => {
   }, []);
 
   const { setCars, cars } = useContextAPI();
+  const [carId, setCarId] = useState(1);
+  const [animation, setAnimation] = useState(graduallyAppear)
+
+  useEffect(()=>{
+    var timer1
+    var timer2
+    timer1 = setTimeout(()=>{      
+      if(carId < CarAnimation.length){ 
+        clearTimeout(timer2)       
+        clearTimeout(timer1)
+        setAnimation(graduallyDisAppear)        
+        timer2 = setTimeout(()=>{
+          setAnimation(graduallyAppear)
+          setCarId(carId+1)
+        },[1000])        
+      }
+      else if(carId === CarAnimation.length){
+        clearTimeout(timer2)       
+        clearTimeout(timer1)
+        setAnimation(graduallyDisAppear)
+        timer2 = setTimeout(()=>{
+          setAnimation(graduallyAppear)
+          setCarId(1)
+        },[1000])      
+      }
+    },[15000])
+  },[carId])  
+
   return (
     <>
-      <Navbar active={2} />
-      <Background imageUrl={carpic} ref={top}>
+      <Navbar active={2} />      
+      <Background ref={top}>
+        {CarAnimation.map((item) => {
+          if (item.id === carId) {
+            return (
+              <motion.div
+                className="bgImage"
+                variants={animation}
+                initial="hidden"
+                animate="visible"
+              >
+                <img src={item.img} alt="cars" />
+              </motion.div>
+            );
+          }
+        })}
         <HeroSection>
           <Text fontSize="2rem">Luxury Cars</Text>
           <SearchSection>
@@ -68,12 +111,7 @@ const CarsListing = ({ mainData }) => {
       <Body>
         <Text fontSize="1rem" fontWeight="700" color="black">
           Explore Luxury Cars
-        </Text>
-        {/* <CarTypes>
-          {cars.map((items) => {
-              return <Car key={items._id} {...items} />;
-            })}
-        </CarTypes> */}
+        </Text>        
 
         <GridContainer>
           {cars.map((items) => {

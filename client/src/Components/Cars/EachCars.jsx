@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { EachBuildingContainer } from "../RealEstate/RealEstate.Style";
-import { CarAPI } from "./DemoAPI/api";
+import { CarAPI } from "./MockAPI/api";
 import Banner from "../Banner/Banner";
 import { useNavigate } from "react-router-dom";
 import { MorePic, Text, MoreBg } from "./Cars.Style";

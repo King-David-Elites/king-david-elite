@@ -1,90 +1,116 @@
-import React, { Fragment, useRef } from 'react'
-import Navbar from '../Navbar/Navbar'
-import Footer from '../Footer/Footer'
-import { Background, HeroSection, Text } from '../Cars/Cars.Style'
-import { useNavigate } from 'react-router-dom'
-import bg from "./images/k1.jpg"
-import c1 from "./images/c1.jpg"
-import c2 from "./images/colletibles.jpg"
-import c3 from "./images/luxury.jpg"
-import c4 from "./images/c4.jpg"
-import { BorderText, Categories, CategoriesContainer, Category, Information, InformationContainer, SubFooter } from './Home.Style'
-import business from "./images/business.jpg"
-import coffee from "./images/coffee.jpg"
-import blur from "./images/blur.jpg"
-
+import React, { Fragment, useRef } from "react";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import { Background, HeroSection, Text } from "../Cars/Cars.Style";
+import { useNavigate } from "react-router-dom";
+import bg from "./images/k1.jpg";
+import c1 from "./images/c1.jpg";
+import c2 from "./images/colletibles.jpg";
+import c3 from "./images/luxury.jpg";
+import c4 from "./images/c4.jpg";
+import {
+  BorderText,
+  Categories,
+  CategoriesContainer,
+  Category,
+  Information,
+  InformationContainer,
+  SubFooter,
+} from "./Home.Style";
+import business from "./images/business.jpg";
+import coffee from "./images/coffee.jpg";
+import blur from "./images/blur.jpg";
+import home from "../Cars/Img/home.jpg";
+import { graduallyAppear } from "../Cars/AnimationOrder";
+import { motion } from "framer-motion";
 
 const scrollToRef = (ref) => {
-  window.scrollTo(0, ref.current.offsetTop)
-}
+  window.scrollTo(0, ref.current.offsetTop);
+};
 
 const HomePage = () => {
-  const navigate = useNavigate()
-  const position = useRef(null)
+  const navigate = useNavigate();
+  const position = useRef(null);
 
   const categories = [
     {
       bg: c1,
       title: "Real Estate",
-      link: "/real-estate"
+      link: "/real-estate",
     },
     {
       bg: c4,
       title: "Automobiles",
-      link: "/cars"
+      link: "/cars",
     },
     {
       bg: c3,
       title: "Luxury Services",
-      isComingSoon: true
+      isComingSoon: true,
     },
     {
       bg: c2,
       title: "Collectibles",
-      isComingSoon: true
+      isComingSoon: true,
     },
-  ]
+  ];
   return (
     <Fragment>
       <Navbar active={0} />
-      <Background imageUrl={bg}>
+      <Background>
+        <motion.div
+          className="bgImage"
+          variants={graduallyAppear}
+          initial="hidden"
+          animate="visible"
+        >
+          <img src={home} alt="luxury homes" />
+        </motion.div>
         <HeroSection>
           <Text fontSize="75px">
-            <h3 className='font-bold'>LUXURY <span className='text-[#F2BE5C] font-bold'>REDEFINED</span></h3>
+            <h3 className="font-bold">
+              LUXURY <span className="text-[#F2BE5C] font-bold">REDEFINED</span>
+            </h3>
           </Text>
-          <Text>
-            The Greatest Luxury Is Freedom Of All Forms.
-          </Text>
-          <div className='btn'>
-            <button onClick={() => {
-              setTimeout(() => {
-                scrollToRef(position)
-              }, 2000);
-            }}>Explore</button>
-            <button className='btn_app'>Download App</button>
+          <Text>The Greatest Luxury Is Freedom Of All Forms.</Text>
+          <div className="btn">
+            <button
+              onClick={() => {
+                setTimeout(() => {
+                  scrollToRef(position);
+                }, 2000);
+              }}
+            >
+              Explore
+            </button>
+            <button className="btn_app">Download App</button>
           </div>
-
-
         </HeroSection>
       </Background>
 
       <CategoriesContainer>
-        <div className='mt-16 mx-11 text-md font-semibold md:mx-24 md:text-lg'>Categories</div>
+        <div className="mt-16 mx-11 text-md font-semibold md:mx-24 md:text-lg">
+          Categories
+        </div>
         <Categories ref={position}>
-          {
-            categories.map((category, index) => {
-              return (
-                <Category onClick={() => {
-                  navigate(category?.link)
-                }} bg={category.bg} key={index}>
-                  <div className='text-white flex flex-col mt-60 ml-5 md:mt-[18em] md:ml-7 font-semibold md:text-lg text-sm'>{category.title.toUpperCase()}  {
-                    category.isComingSoon == true && <p className='italic text-sm text-[#A6A6A6]'>Coming Soon</p>
-                  }</div>
-
-                </Category>
-              )
-            })
-          }
+          {categories.map((category, index) => {
+            return (
+              <Category
+                onClick={() => {
+                  navigate(category?.link);
+                }}
+                bg={category.bg}
+                key={index}
+              >
+                <div className="text-white flex flex-col mt-60 ml-5 md:mt-[18em] md:ml-7 font-semibold md:text-lg text-sm">
+                  {category.title.toUpperCase()}{" "}
+                  {category.isComingSoon == true && (
+                    <p className="italic text-sm text-[#A6A6A6]">Coming Soon</p>
+                  )}
+                </div>
+              </Category>
+            );
+          })}
         </Categories>
       </CategoriesContainer>
 
@@ -101,52 +127,56 @@ const HomePage = () => {
 
           <div className="textContent">
             <h3>Get To Know Us</h3>
-            <p className='p'>Every Brand have an interesting story to tell.
-              Find out more about us.</p>
+            <p className="p">
+              Every Brand have an interesting story to tell. Find out more about
+              us.
+            </p>
 
-            <div className="action">
-              Read More
-            </div>
+            <div className="action">Read More</div>
           </div>
         </Information>
 
         <Information>
-
           <div className="Elite">
-            <h4 className='md:font-bold md:text-lg font-semibold text-base'>The Elite NewsLetter</h4>
+            <h4 className="md:font-bold md:text-lg font-semibold text-base">
+              The Elite NewsLetter
+            </h4>
             <p>Let’s keep you updated with what’s trending inLuxury.</p>
 
             <form action="">
-              <input type="email" placeholder='E-mail' />
+              <input type="email" placeholder="E-mail" />
               <div className="btn">Subscribe</div>
             </form>
           </div>
 
           <div className="coffee image">
-            <img className='img_coffee' src={coffee} alt="" />
+            <img className="img_coffee" src={coffee} alt="" />
           </div>
-
         </Information>
       </InformationContainer>
 
       <SubFooter bg={blur}>
         <Text fontSize="24px">
-          <p className='sub-p1'>
-            Take your brand to the next level as a <span className='text-[#F2BE5C] font-bold'>Luxury Affiliate Vendor</span></p>
+          <p className="sub-p1">
+            Take your brand to the next level as a{" "}
+            <span className="text-[#F2BE5C] font-bold">
+              Luxury Affiliate Vendor
+            </span>
+          </p>
         </Text>
         <Text fontSize="14px">
-          <p className='sub-p2'>
-            Make extra earnings today by gaining access to the most exclusive list of real estate properties and automobiles within the country and beyond sourced by the King David Elites team.</p>
+          <p className="sub-p2">
+            Make extra earnings today by gaining access to the most exclusive
+            list of real estate properties and automobiles within the country
+            and beyond sourced by the King David Elites team.
+          </p>
         </Text>
-        <BorderText>
-          COMING SOON....
-        </BorderText>
+        <BorderText>COMING SOON....</BorderText>
       </SubFooter>
 
       <Footer />
     </Fragment>
+  );
+};
 
-  )
-}
-
-export default HomePage
+export default HomePage;

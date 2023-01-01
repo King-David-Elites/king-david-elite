@@ -14,6 +14,8 @@ import {
 import bg from "./assets/bg.jpg";
 import frame from "./assets/frame.jpg";
 import frame2 from "./assets/frame2.jpg";
+import { motion } from "framer-motion";
+import { graduallyAppear } from "../Cars/AnimationOrder";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const About = () => {
@@ -24,8 +26,16 @@ const About = () => {
   }, []);
   return (
     <Fragment>
-      <Navbar active={3}/>
-      <Background imageUrl={bg} ref={top}>
+      <Navbar active={3} />
+      <Background ref={top}>
+        <motion.div
+          className="bgImage"
+          variants={graduallyAppear}
+          initial="hidden"
+          animate="visible"
+        >
+          <img src={bg} alt="luxury homes" />
+        </motion.div>
         <HeroSection>
           <Text fontSize="96px">About</Text>
           <Text>Home/About</Text>
@@ -51,10 +61,8 @@ const About = () => {
             from the luxury realtors to the buyers or the investors.
           </Text>
 
-                <MainButton width="282px">
-                    Get Started
-                </MainButton> 
-            </GlobalContainer>
+          <MainButton width="282px">Get Started</MainButton>
+        </GlobalContainer>
 
         <GlobalContainer>
           <StackedImage width="192px" height="282px">
@@ -99,11 +107,11 @@ const About = () => {
             to the aforementioned.
           </Text>
 
-                <MainButton background="black" width="50%" border="black">
-                    Read More
-                </MainButton>
-            </GlobalContainer>
-        </Flex>
+          <MainButton background="black" width="50%" border="black">
+            Read More
+          </MainButton>
+        </GlobalContainer>
+      </Flex>
 
       <Generic />
 

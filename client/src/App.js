@@ -52,6 +52,7 @@ import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
 import useContextAPI from './Components/ContextAPI/ContextAPI';
 import EachRealEstate from './Components/RealEstate/EachRealEstate';
+import {AnimatePresence} from 'framer-motion';
 
 function App() {
   const queryClient = new QueryClient();
@@ -61,6 +62,7 @@ function App() {
     <QueryClientProvider client={queryClient} >
       <ToastContainer />
       <Router>
+      <AnimatePresence exitBeforeEnter>
         {/* <Navbar/> */}
         <Routes>
           <Route path='/register' element = {<Register/>}/>
@@ -113,6 +115,7 @@ function App() {
           <Route path="/waitList" element={<Waitlist />} />
           <Route path='/profile/viewImage' element={<ImagePage/>}/>
         </Routes>
+        </AnimatePresence>
       </Router>
     </QueryClientProvider>
   );

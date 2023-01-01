@@ -2,12 +2,24 @@ import styled from "styled-components"
 import theme from '../../application/utils/Theme';
 
 export const Background = styled.div`       
-    background-image:url(${props => props.imageUrl});
+    position:relative;
+    /* background-image:url(${props => props.imageUrl});
     background-position:center;
     background-size:cover;
-    background-repeat:no-repeat;    
+    background-repeat:no-repeat;     */    
     width:100%;
     height:40em;
+    background:rgba(20,20,20);
+
+    .bgImage{
+      width:100%;
+      height:100%;            
+
+      img{
+        width:100%;
+        height:100%;
+      }
+    }    
 `
 
 export const MorePic = styled(Background)`  
@@ -30,6 +42,8 @@ export const MoreBg = styled.div`
 `
 
 export const HeroSection = styled.div`
+    position:absolute;    
+    top:0;
     background:rgba(0,0,0,0.4);
     font-family:${theme.fontFamily};
     display:flex;
@@ -38,7 +52,7 @@ export const HeroSection = styled.div`
     align-items:center;
     gap:1em;
     width:inherit;
-    height:inherit;
+    height:inherit;    
 
 
       .btn{
