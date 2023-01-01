@@ -53,12 +53,8 @@ const About = () => {
           </Text>
 
           <Text color="rgb(145,145,145)" padding="20px 0">
-            Our platform is a luxury market and networking platform that seeks
-            to provide a meeting place for luxury buyers and sellers to carry
-            out their transactions. It is designed such that every verified user
-            involved in the luxury transactions on the platform can earn a
-            substantial amount of income either actively or passively ranging
-            from the luxury realtors to the buyers or the investors.
+            The King David Elites marketplace is where you find only the most exclusive and highest quality real estate, automobiles, luxury services, and collectibles. Our mission is to provide an unparalleled shopping experience for discerning customers seeking the very best in life.
+            Our curated selection of offerings is carefully chosen by our team of experts, ensuring that only the most luxurious and desirable items are made available to our valued customers. From stunning properties and rare collectibles, to lavish experiences and the finest automobiles, we have something for every discerning taste. Thank you for choosing us as your go-to destination for all things luxury.
           </Text>
 
           <MainButton width="282px">Get Started</MainButton>
@@ -99,12 +95,8 @@ const About = () => {
           </Text>
 
           <Text color="rgb(145,145,145)" padding="10px 0">
-            For a very long time, there has not been a platform that has been
-            specially dedicated to the luxury market as most of the earlier
-            created platforms have been generalized. This has hindered smooth
-            networking and ease of transactions between the luxury buyers and
-            their sellers. Hence, this platform was created to provide solutions
-            to the aforementioned.
+            We established our luxury multivendor online marketplace with the belief that life's most precious moments deserve only the very best. Whether it's finding the perfect home to create lasting memories, indulging in the finer things in life, or treating yourself to a once-in-a-lifetime experience, we are dedicated to helping you elevate your every day.
+            Thank you for entrusting us with your luxury needs and allowing us to be a part of your journey.
           </Text>
 
           <MainButton background="black" width="50%" border="black">

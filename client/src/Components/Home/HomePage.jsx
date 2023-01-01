@@ -4,7 +4,7 @@ import Footer from "../Footer/Footer";
 import { Background, HeroSection, Text } from "../Cars/Cars.Style";
 import { useNavigate } from "react-router-dom";
 import bg from "./images/k1.jpg";
-import c1 from "./images/c1.jpg";
+import c1 from "./images/zac-gudakov-ztWpwTEx728-unsplash.jpg";
 import c2 from "./images/colletibles.jpg";
 import c3 from "./images/luxury.jpg";
 import c4 from "./images/c4.jpg";
