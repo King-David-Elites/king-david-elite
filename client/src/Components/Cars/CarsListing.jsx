@@ -60,7 +60,7 @@ const CarsListing = ({ mainData }) => {
         timer2 = setTimeout(()=>{
           setAnimation(graduallyAppear)
           setCarId(carId+1)
-        },[1000])        
+        },[500])        
       }
       else if(carId === CarAnimation.length){
         clearTimeout(timer2)       
@@ -69,7 +69,7 @@ const CarsListing = ({ mainData }) => {
         timer2 = setTimeout(()=>{
           setAnimation(graduallyAppear)
           setCarId(1)
-        },[1000])      
+        },[500])      
       }
     },[15000])
   },[carId])  

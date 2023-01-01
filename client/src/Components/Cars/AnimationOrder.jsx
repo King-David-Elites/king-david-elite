@@ -27,7 +27,7 @@ export const graduallyAppear = {
     visible: {
       opacity: 0,
       transition: {
-        duration: 1,
+        duration: 0.5,
       },
     },
   };

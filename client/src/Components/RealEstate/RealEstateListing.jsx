@@ -52,7 +52,7 @@ const RealEstateListing = () => {
         timer2 = setTimeout(() => {
           setAnimation(graduallyAppear);
           setEstateId(estateId + 1);
-        }, [1000]);
+        }, [500]);
       } else if (estateId === EstateAnimation.length) {
         clearTimeout(timer2);
         clearTimeout(timer1);
@@ -60,7 +60,7 @@ const RealEstateListing = () => {
         timer2 = setTimeout(() => {
           setAnimation(graduallyAppear);
           setEstateId(1);
-        }, [1000]);
+        }, [500]);
       }
     }, [15000]);
   }, [estateId]);
