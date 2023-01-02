@@ -24,6 +24,10 @@ import about2 from "./Img/about2.jpg";
 import about3 from "./Img/about3.jpg";
 import about4 from "./Img/about4.jpg";
 import about5 from "./Img/about5.jpg";
+import about6 from "./Img/about6.jpg";
+import about7 from "./Img/about7.jpg";
+import about8 from "./Img/about8.jpg";
+import about9 from "./Img/about9.jpg";
 
 export const graduallyAppear = {
   hidden: {
@@ -82,4 +86,8 @@ export const AboutAnimation = [
   { id: 3, img: about3 },
   { id: 4, img: about4 },
   { id: 5, img: about5 },
+  { id: 6, img: about6 },
+  { id: 7, img: about7 },
+  { id: 8, img: about8 },
+  { id: 9, img: about9 },
 ];
