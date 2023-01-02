@@ -53,7 +53,7 @@ const About = () => {
           setAboutId(1);
         }, [500]);
       }
-    }, [12000]);
+    }, [8000]);
   }, [aboutId]);
   return (
     <Fragment>

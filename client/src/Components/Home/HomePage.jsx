@@ -81,7 +81,7 @@ const HomePage = () => {
           setHomeId(1);
         }, [500]);
       }
-    }, [12000]);
+    }, [8000]);
   }, [homeId]);
   return (
     <Fragment>

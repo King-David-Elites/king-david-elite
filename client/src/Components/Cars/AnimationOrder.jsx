@@ -10,6 +10,7 @@ import estate1 from "./Img/estate1.jpg";
 import estate2 from "./Img/estate2.jpg";
 import estate3 from "./Img/estate3.jpg";
 import estate4 from "./Img/estate4.jpg";
+import estate5 from "./Img/estate5.jpg";
 
 import home1 from "./Img/home1.jpg";
 import home2 from "./Img/home2.jpg";
@@ -63,6 +64,7 @@ export const EstateAnimation = [
   { id: 2, img: estate2 },
   { id: 3, img: estate3 },
   { id: 4, img: estate4 },
+  { id: 5, img: estate5 },
 ];
 
 export const HomeAnimation = [

@@ -60,7 +60,7 @@ const RealEstateListing = () => {
           setEstateId(1);
         }, [500]);
       }
-    }, [12000]);
+    }, [8000]);
   }, [estateId]);
   return (
     <>
