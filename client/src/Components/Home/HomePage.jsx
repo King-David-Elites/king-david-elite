@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useRef, useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { Background, HeroSection, Text } from "../Cars/Cars.Style";
@@ -20,8 +20,11 @@ import {
 import business from "./images/business.jpg";
 import coffee from "./images/coffee.jpg";
 import blur from "./images/blur.jpg";
-import home from "../Cars/Img/home.jpg";
-import { graduallyAppear } from "../Cars/AnimationOrder";
+import {
+  graduallyAppear,
+  graduallyDisAppear,
+  HomeAnimation,
+} from "../Cars/AnimationOrder";
 import { motion } from "framer-motion";
 
 const scrollToRef = (ref) => {
@@ -31,6 +34,8 @@ const scrollToRef = (ref) => {
 const HomePage = () => {
   const navigate = useNavigate();
   const position = useRef(null);
+  const [homeId, setHomeId] = useState(1);
+  const [animation, setAnimation] = useState(graduallyAppear);
 
   const categories = [
     {
@@ -54,18 +59,48 @@ const HomePage = () => {
       isComingSoon: true,
     },
   ];
+
+  useEffect(() => {
+    var timer1;
+    var timer2;
+    timer1 = setTimeout(() => {
+      if (homeId < HomeAnimation.length) {
+        clearTimeout(timer2);
+        clearTimeout(timer1);
+        setAnimation(graduallyDisAppear);
+        timer2 = setTimeout(() => {
+          setAnimation(graduallyAppear);
+          setHomeId(homeId + 1);
+        }, [500]);
+      } else if (homeId === HomeAnimation.length) {
+        clearTimeout(timer2);
+        clearTimeout(timer1);
+        setAnimation(graduallyDisAppear);
+        timer2 = setTimeout(() => {
+          setAnimation(graduallyAppear);
+          setHomeId(1);
+        }, [500]);
+      }
+    }, [12000]);
+  }, [homeId]);
   return (
     <Fragment>
       <Navbar active={0} />
       <Background>
-        <motion.div
-          className="bgImage"
-          variants={graduallyAppear}
-          initial="hidden"
-          animate="visible"
-        >
-          <img src={home} alt="luxury homes" />
-        </motion.div>
+        {HomeAnimation.map((item) => {
+          if (item.id === homeId) {
+            return (
+              <motion.div
+                className="bgImage"
+                variants={animation}
+                initial="hidden"
+                animate="visible"
+              >
+                <img src={item.img} alt="cars" />
+              </motion.div>
+            );
+          }
+        })}        
         <HeroSection>
           <Text fontSize="75px">
             <h3 className="font-bold">

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Fragment } from "react";
 import MainButton from "../buttons/MainButton";
 import { Background, HeroSection, Text } from "../Cars/Cars.Style";
@@ -15,7 +15,11 @@ import bg from "./assets/bg.jpg";
 import frame from "./assets/frame.jpg";
 import frame2 from "./assets/frame2.jpg";
 import { motion } from "framer-motion";
-import { graduallyAppear } from "../Cars/AnimationOrder";
+import {
+  graduallyAppear,
+  graduallyDisAppear,
+  AboutAnimation,
+} from "../Cars/AnimationOrder";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const About = () => {
@@ -24,18 +28,51 @@ const About = () => {
   useEffect(() => {
     scrollToRef(top);
   }, []);
+
+  const [aboutId, setAboutId] = useState(1);
+  const [animation, setAnimation] = useState(graduallyAppear);
+
+  useEffect(() => {
+    var timer1;
+    var timer2;
+    timer1 = setTimeout(() => {
+      if (aboutId < AboutAnimation.length) {
+        clearTimeout(timer2);
+        clearTimeout(timer1);
+        setAnimation(graduallyDisAppear);
+        timer2 = setTimeout(() => {
+          setAnimation(graduallyAppear);
+          setAboutId(aboutId + 1);
+        }, [500]);
+      } else if (aboutId === AboutAnimation.length) {
+        clearTimeout(timer2);
+        clearTimeout(timer1);
+        setAnimation(graduallyDisAppear);
+        timer2 = setTimeout(() => {
+          setAnimation(graduallyAppear);
+          setAboutId(1);
+        }, [500]);
+      }
+    }, [12000]);
+  }, [aboutId]);
   return (
     <Fragment>
       <Navbar active={3} />
       <Background ref={top}>
-        <motion.div
-          className="bgImage"
-          variants={graduallyAppear}
-          initial="hidden"
-          animate="visible"
-        >
-          <img src={bg} alt="luxury homes" />
-        </motion.div>
+        {AboutAnimation.map((item) => {
+          if (item.id === aboutId) {
+            return (
+              <motion.div
+                className="bgImage"
+                variants={animation}
+                initial="hidden"
+                animate="visible"
+              >
+                <img src={item.img} alt="cars" />
+              </motion.div>
+            );
+          }
+        })}        
         <HeroSection>
           <Text fontSize="96px">About</Text>
           <Text>Home/About</Text>

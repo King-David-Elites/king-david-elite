@@ -11,8 +11,7 @@ const Banner = ({category}) =>{
         <>
             <LuxuryLabel imageUrl={transverse}>
                 <LuxuryBody>
-                    <Text
-                    >
+                    <Text>
                         Luxury {category}
                     </Text>
                     <Text

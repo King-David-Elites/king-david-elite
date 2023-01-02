@@ -71,7 +71,7 @@ const CarsListing = ({ mainData }) => {
           setCarId(1)
         },[500])      
       }
-    },[15000])
+    },[12000])
   },[carId])  
 
   return (
