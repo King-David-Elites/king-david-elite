@@ -97,12 +97,13 @@ const RealEstateListing = () => {
           Luxury Properties For Sale
         </Text>
         <GridContainer>
-          {listing.map((items) => {
+          {listing.length > 0 ? listing.map((items) => {
             return (
               // <RealEstate key={items._id} {...items} />
               <Listing key={items._id} list={items} />
             );
-          })}
+          }) : <p>No Real Estate Listing available</p>
+         }
         </GridContainer>
       </Body>
       <Banner category="Real Estate" />
