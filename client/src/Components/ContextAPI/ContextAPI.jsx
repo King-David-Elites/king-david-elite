@@ -13,6 +13,7 @@ const useContextAPI = () => {
       .get(`${globalApi}/listings/all?page=1&type=0`)
       .then((resp) => {
         setListing(resp.data.listings);
+        console.log(resp.data)
       })
       .catch((err) => console.error(err));
   };
