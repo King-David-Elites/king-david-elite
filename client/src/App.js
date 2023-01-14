@@ -66,7 +66,7 @@ function App() {
         {/* <Navbar/> */}
         <Routes>
           <Route path='/register' element = {<Register/>}/>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<Waitlist />} />
 
           <Route path ='/contact' element = {<Contact/>}/>
 
