@@ -95,6 +95,7 @@ input{
     width:30%;
     padding: 10px 12px;
     margin:20px auto;
+    color: black;
     // height:40px;
 }
 
