@@ -96,6 +96,7 @@ input{
     padding: 10px 12px;
     margin:20px auto;
     // height:40px;
+color: black;
 }
 
 button{
