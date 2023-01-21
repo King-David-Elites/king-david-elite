@@ -32,7 +32,7 @@ const Navbar = ({ bg, sticky, active }) => {
             link: "/real-estate"
         },
         {
-            title: "CARS",
+            title: "AUTOMOBILES",
             link: "/cars"
         },
         {

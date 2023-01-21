@@ -9,19 +9,17 @@ import bg from "./assets/bg.jpg";
 
 const Earning = () => {
     const content = [
-        `1. The individual agents/realtors: This group benefits from the platform by listing properties
-        independently sourced or the properties sourced by KDE (although, affiliate registration would be required
-        ) and making sales of these properties to earn a commission from the developers. This package goes for a $20 monthly subscription fee.`,
+        `1. It is important to know that earning from the KDE platform is easy after you attain membership 
 
-        `2. The corporate bodies/registered companies (could be sole proprietorship or a real
-        estate/automobile brokerage) : This group benefits from the platform in two ways. They can list andmake sales of their properties on the platform whether they happen to be a developer or realty firm. Secondly, they also have the privilege of forwarding their listings to KDE(if they happen to be
-        developers) and these listings would be made available to our affiliate realtors who would in turn market these properties to their audience/customer base. They would in turn earn a commission
-            from the developers who would also have accumulated profits from the marginal increase in sales. This package goes for a $100 monthly subscription fee`,
-
-            `3. The buyers/investors : Since properties on the KDE platform are to be listed in dollar equivalents, this group benefits from the platform by buying properties listed on the platform at any point in time, holding the property till the value of the dollar or the value of the property is perceived to have
-            increased and then selling off the property to make a sizeable profit margin or converting the
-            property to such that generates passive income e.g renting out of real estate property or car rentals. This type of investment shields the buyer/investor from inflation/deflation, provides capital
-            appreciation and is definitely much more secure than keeping huge sums of money in the bank whereseveral charges keep being deducted for inexplicable reasons. This package is only chargeable when buyers/investors request for KDE assistance with virtual tours, property inspection and evaluation or deal closing by our legal teams.`
+        2. To become a vendor, you are required to provide necessary details about yourself with valid documents to authenticate your identity on the KDE platform. As a corporate entity, you are required to provide valid documents pertaining to your business registration (certificates and operational licenses) as may be required by your line of practice. 
+        
+        3. You are required to pay a subscription fee only after successfully completing the verification process. You thereafter proceed to submit your listings for proper scrutiny. At KDE, we ensure that all listed items meet certain standard. 
+        
+        4. Vendors should endeavor to make themselves available after receiving message notifications from the KDE platform. 
+        
+        5. KDE employs escrow mode of payment. This implies that we serve as middleman on all transactions on our pnatform as a means to foster efficient delivery of services and security of funds between parties involved. This mode of payment also helps us identify earnest buyers and set them apart from window shoppers. Intending buyers can be required to make an intoual deposit of 10% of the property cost into the KDE account as commitment fee to indicate readiness for transaction. This payment is refundable if the transaction does not eventually fall through. 
+        
+        6. KDE reserves the right to negotiate and deduct inspection fees from intending buyers for vendors on certain occasions.`
     ]
   return (
     <Fragment>

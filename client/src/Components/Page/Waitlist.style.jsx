@@ -97,6 +97,7 @@ input{
     margin:20px auto;
     color: black;
     // height:40px;
+color: black;
 }
 
 button{

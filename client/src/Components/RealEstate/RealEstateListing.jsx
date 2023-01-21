@@ -14,11 +14,9 @@ import {
 } from "../Cars/Cars.Style";
 import { SearchSection, SearchC } from "./RealEstate.Style";
 import Navbar from "../Navbar/Navbar";
-import realEstatePics from "./Image/real-estate-pics.jpg";
 import { EstateProperties, PropertyType } from "./RealEstate.Style";
 import { useState } from "react";
 import Banner from "../Banner/Banner";
-import { MOCK_DATA } from "./MOCK_DATA";
 import MainButton from "../buttons/MainButton";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +60,7 @@ const RealEstateListing = () => {
           setEstateId(1);
         }, [500]);
       }
-    }, [15000]);
+    }, [8000]);
   }, [estateId]);
   return (
     <>
@@ -99,12 +97,13 @@ const RealEstateListing = () => {
           Luxury Properties For Sale
         </Text>
         <GridContainer>
-          {listing.map((items) => {
+          {listing.length > 0 ? listing.map((items) => {
             return (
               // <RealEstate key={items._id} {...items} />
               <Listing key={items._id} list={items} />
             );
-          })}
+          }) : <p>No Real Estate Listing available</p>
+         }
         </GridContainer>
       </Body>
       <Banner category="Real Estate" />

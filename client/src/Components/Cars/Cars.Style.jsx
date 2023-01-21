@@ -2,14 +2,10 @@ import styled from "styled-components"
 import theme from '../../application/utils/Theme';
 
 export const Background = styled.div`       
-    position:relative;
-    /* background-image:url(${props => props.imageUrl});
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;     */    
+    position:relative;        
     width:100%;
     height:40em;
-    background:rgba(20,20,20);
+    background:rgba(20,20,20);    
 
     .bgImage{
       width:100%;
@@ -261,14 +257,19 @@ export const Reaction = styled.div`
 
 export const LuxuryLabel = styled(Background)`    
     height:10em;
+    background-image:url(${props => props.imageUrl});
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat; 
 `
 
 export const LuxuryBody = styled(HeroSection)`
-    background:rgba(0,0,0,0.7);
+    background:rgba(0,0,0,0.7);       
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
     align-items:flex-start;
+    padding:2em 2em;
 `
 
 export const Heading = styled.div`

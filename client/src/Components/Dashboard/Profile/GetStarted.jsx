@@ -17,7 +17,7 @@ const GetStarted = (props) => {
   } = props;
   const navigate = useNavigate();
   useEffect(() => {
-    if (!mainData.userData.firstName) {
+    if (!mainData.userData.address) {
       navigate("/profile/edit");
     }
   }, []);

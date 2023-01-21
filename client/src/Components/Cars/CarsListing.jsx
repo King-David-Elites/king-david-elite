@@ -49,34 +49,34 @@ const CarsListing = ({ mainData }) => {
   const [carId, setCarId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear)
 
-  useEffect(()=>{
+  useEffect(() => {
     var timer1
     var timer2
-    timer1 = setTimeout(()=>{      
-      if(carId < CarAnimation.length){ 
-        clearTimeout(timer2)       
-        clearTimeout(timer1)
-        setAnimation(graduallyDisAppear)        
-        timer2 = setTimeout(()=>{
-          setAnimation(graduallyAppear)
-          setCarId(carId+1)
-        },[500])        
-      }
-      else if(carId === CarAnimation.length){
-        clearTimeout(timer2)       
+    timer1 = setTimeout(() => {
+      if (carId < CarAnimation.length) {
+        clearTimeout(timer2)
         clearTimeout(timer1)
         setAnimation(graduallyDisAppear)
-        timer2 = setTimeout(()=>{
+        timer2 = setTimeout(() => {
+          setAnimation(graduallyAppear)
+          setCarId(carId + 1)
+        }, [500])
+      }
+      else if (carId === CarAnimation.length) {
+        clearTimeout(timer2)
+        clearTimeout(timer1)
+        setAnimation(graduallyDisAppear)
+        timer2 = setTimeout(() => {
           setAnimation(graduallyAppear)
           setCarId(1)
-        },[500])      
+        }, [500])
       }
-    },[15000])
+    },[8000])
   },[carId])  
 
   return (
     <>
-      <Navbar active={2} />      
+      <Navbar active={2} />
       <Background ref={top}>
         {CarAnimation.map((item) => {
           if (item.id === carId) {
@@ -93,7 +93,7 @@ const CarsListing = ({ mainData }) => {
           }
         })}
         <HeroSection>
-          <Text fontSize="2rem">Luxury Cars</Text>
+          <Text fontSize="2rem">Luxury Automobiles</Text>
           <SearchSection>
             <SearchC>
               <Input placeholder="search makes or model" />
@@ -110,16 +110,21 @@ const CarsListing = ({ mainData }) => {
 
       <Body>
         <Text fontSize="1rem" fontWeight="700" color="black">
-          Explore Luxury Cars
-        </Text>        
+          Explore Luxury Automobiles
+        </Text>
 
         <GridContainer>
-          {cars.map((items) => {
-            return (
-              // <RealEstate key={items._id} {...items} />
-              <Listing key={items._id} list={items} />
-            );
-          })}
+          {
+            cars.length > 0 ?
+              cars.map((items) => {
+                return (
+                  // <RealEstate key={items._id} {...items} />
+                  <Listing key={items._id} list={items} />
+                );
+              })
+              : <h4 className="md:text-lg text-sm font-semibold italic">No Automobile listing available</h4>
+          }
+
         </GridContainer>
       </Body>
       <Banner category="Cars" />
