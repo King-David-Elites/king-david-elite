@@ -89,6 +89,7 @@ span{
 input{
     box-shadow:0px 4px 20px rgba(100,100,100,.2);
     display:block;
+    color: black;
     border:none;
     border-radius: 6px;
     text-align:center;
