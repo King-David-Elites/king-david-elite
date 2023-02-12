@@ -10,7 +10,7 @@ import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
 import { FaUserCircle, FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
-import { MdRealEstateAgent, MdMessage, MdAccountBalanceWallet, MdCall, MdKeyboardVoice } from 'react-icons/md';
+import { MdRealEstateAgent, MdMessage, MdAccountBalanceWallet, MdCall, MdKeyboardVoice, MdSend } from 'react-icons/md';
 import { IoMdCar } from 'react-icons/io';
 import { BsFillBellFill, BsFillHeartFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom'
@@ -51,6 +51,12 @@ const SenderMessage = [
 ]
 
 const MessagesAsElement = () => {
+    const [state, setState] = useState('');
+
+    const handleOnChange = (e) => {
+        setState(e.target.value)
+    }
+
     return (
         <MessagesContainer>
             <div className="listOfMessages">
@@ -137,11 +143,13 @@ const MessagesAsElement = () => {
                     </div>
 
                     <div className="basis-full flex items-center">
-                        <textarea className='h-8 w-[100%] bg-[#A6A6A6] bg-opacity-20 outline-none border-none resize-none py-1 px-3 rounded-full text-[#696969]' name="" id="" >Type message here...</textarea>
+                        <textarea className='h-8 w-[100%] bg-[#A6A6A6] bg-opacity-20 outline-none border-none resize-none py-1 px-3 rounded-full text-[#696969]' name="" id="" onChange={handleOnChange}>Type message here...</textarea>
                     </div>
 
                     <div className="basis-1/4 flex justify-end">
-                        <MdKeyboardVoice size={25} />
+                        {
+                            state ? <MdSend size={25} /> : <MdKeyboardVoice size={25} />
+                        }
                     </div>
                 </div>
             </div>

@@ -107,7 +107,7 @@ const LoginPage = () => {
             <input type={state ? "text" : "password"} value={password} onChange={handleOnChange} onFocus={handleOnFocus} onBlur={handleOnBlur} onKeyUp={handleOnKeyUp} ref={passwordRef} placeholder="Password" />
             <span onClick={toggleBtn} className="border-none absolute right-7 md:right-14 mr-3 cursor-pointer outline-none  bg-transparent">
               {
-                state ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />
+                state ? <AiOutlineEye size={20} /> : <AiOutlineEyeInvisible size={20} />
               }
             </span>
           </div>

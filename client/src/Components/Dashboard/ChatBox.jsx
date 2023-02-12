@@ -1,12 +1,13 @@
 import { ChatBoxContainer } from "./Dashboard.Styles";
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import { BiCheckDouble, BiVideo } from 'react-icons/bi'
-import { MdCall, MdKeyboardVoice } from 'react-icons/md'
+import { MdCall, MdKeyboardVoice, MdSend } from 'react-icons/md'
 import img3 from './Dashboard-Image/Untitled2.png';
 import { BsPaperclip } from 'react-icons/bs';
 import { FaImages } from 'react-icons/fa';
 import theme from "../../application/utils/Theme";
 import img from '../Home/images/c1.jpg'
+import { useState } from "react";
 
 const SenderMessage = [
     {
@@ -40,6 +41,12 @@ const SenderMessage = [
 ]
 
 const ChatBox = ({ setStage }) => {
+    const [state, setState] = useState('');
+
+    const handleOnChange = (e) => {
+        setState(e.target.value)
+    }
+
     return (
         <ChatBoxContainer>
             <div className="header-sect">
@@ -95,10 +102,13 @@ const ChatBox = ({ setStage }) => {
 
                 <div className="typing-div">
                     <textarea
-                        name="" id="" >Type message here...</textarea>
+                        name="" id="" onChange={handleOnChange}>Type message here...</textarea>
                 </div>
 
-                <MdKeyboardVoice size={25} />
+                {
+                    state ? <MdSend size={25} /> : <MdKeyboardVoice size={25} /> 
+                }
+
             </div>
         </ChatBoxContainer>
     );
