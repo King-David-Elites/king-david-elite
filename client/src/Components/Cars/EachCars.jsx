@@ -1,48 +1,70 @@
-import { LocationMarker, BadgeCheck } from "heroicons-react";
+import { LocationMarker, BadgeCheck, Trash } from "heroicons-react";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { EachBuildingContainer } from "../RealEstate/RealEstate.Style";
-import { CarAPI } from "./MockAPI/api";
+import globalApi from "../../api";
+import { EachContainer } from "../RealEstate/RealEstate.Style";
+import { setConfig } from "../../infrastructure/api/user/userRequest";
 import Banner from "../Banner/Banner";
 import { useNavigate } from "react-router-dom";
-import { MorePic, Text, MoreBg } from "./Cars.Style";
-import theme from "../../application/utils/Theme";
 import { useRef } from "react";
 import axios from "axios";
 import TimeAgo from "timeago-react";
+import { useGetUserDetails } from "../../application/hooks/queryhooks";
+import Swal from 'sweetalert2'
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachCars = ({ active }) => {
+  const top = useRef(null);
   const navigate = useNavigate();
   const { id } = useParams();
   const [property, setProperty] = useState({});
-  // const selectedCar = CarAPI.find((items) => items.title === title);
-  const MediaType = [
-    {
-      link: `/cars/${property.title}`,
-      media: "Photos",
-    },
-    {
-      link: `/cars/${property.title}/videos`,
-      media: "Videos",
-    },
-  ];
-  const top = useRef(null);
+  const data = useGetUserDetails()
 
   useEffect(() => {
     scrollToRef(top);
   }, []);
-
-  
 
   const getAList = useCallback(() => {
     axios
       .get(`https://kde.cyclic.app/listings/each/${id}`)
       .then((resp) => setProperty(resp.data))
       .catch((err) => console.error(err));
+
+    axios
+      .patch(`${globalApi}/listings/view/${id}`, {}, setConfig())
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
   }, [id]);
+
+  const deleteListings = () => {
+    axios
+      .delete(`${globalApi}/listings/delete/${id}`, setConfig())
+      .then((resp) => {
+        console.log(resp.data);
+        navigate(-1);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const confirmDelete = ()=>{
+    Swal.fire({
+        title: 'Are you sure you want to delete this Property?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            deleteListings();
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
+        //   Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
+  }
 
   useEffect(() => {
     getAList();
@@ -50,134 +72,103 @@ const EachCars = ({ active }) => {
 
   return (
     <Fragment>
-      <Navbar bg="black" sticky="sticky" />
+      <Navbar active={2} />
 
-      <EachBuildingContainer ref={top}>
-        <div className="upper">
-          <p>King David Elites | Luxury Cars</p>
-        </div>
-
-        <div className="banner">
+      <EachContainer ref={top}>    
+      <div className="titles">
           <h3>{property.title}</h3>
-          <h5>US {property.price}</h5>
+          <h4>US ${property.price}</h4>
           <p>
-            <LocationMarker width={15} /> {property.location}.
+            <LocationMarker /> {property.location}
           </p>
         </div>
 
-        <div className="mediaType">
-          {MediaType.map((mediatype, i) => {
-            return (
-              <Text
-                style={{ cursor: "pointer" }}
-                key={i}
-                color={active === i ? theme.color : "black"}
-                onClick={() => navigate(mediatype.link)}
-              >
-                {mediatype.media}
-              </Text>
-            );
-          })}
+        <div className="images">
+          <div className="image1">
+            <img
+              src={property?.images && property.images[0]}
+              alt=""
+            />
+          </div>
+          <div className="grid">
+            <img
+              src={property?.images && property.images[1]}
+              alt=""
+            />
+            <img
+              src={property?.images && property.images[2]}
+              alt=""
+            />
+            <img
+              src={property?.images && property.images[3]}
+              alt=""
+              loading="loading..."
+            />
+          </div>
+          <p>
+            Listed <TimeAgo datetime={property.createdAt} />
+          </p>
+          <div className="viewMedia">View Images & Videos</div>
         </div>
 
-        {/* <div className="imageGallery">
-                    {
-                        selectedCar.images.map((image) => {
-                            return (
-                                <>
-                                    <div className='imageFlex' id={image.id} {...image} selectedCar={selectedCar}>
-                                        {
-                                            image.id === 1 ?
-                                                <div className='imgCont'>
-                                                    <img
-                                                        src={selectedCar.CarPic}
-                                                        alt="car"
-                                                    />
-                                                </div>
-                                                :
-                                                (
-                                                    image.id <= 3 &&
-                                                    <div className="image">
-                                                        <img
-                                                            src={image.carListed}
-                                                            alt="car"
-                                                        />
-                                                    </div>
-                                                )
-                                        }
-                                        {
-                                            (
-                                                image.id === 4 &&
-                                                <MorePic imageUrl={image.carListed}>
-                                                    <MoreBg
-                                                        onClick={() => navigate(`${selectedCar.id}`)}
-                                                    >
-                                                        <Text>+16</Text>
-                                                    </MoreBg>
-                                                </MorePic>
-                                            )
-                                        }
-                                    </div>
-                                </>
-                            )
-                        })
-                    }
-                    <p>Listed on {selectedCar.dateListed}</p>
-                </div> */}
-
-        <div className="imageGallery">
-          {property.images?.map((image, i) => {
-            console.log(image);
-            return (
-              <>
-                <div
-                  className="imageFlex"
-                  id={i}
-                  {...image}
-                  selectedBuilding={property}
-                >
-                  {
-                    <div className="image">
-                      <img src={image} alt="realestate" />
-                    </div>
-                  }
-                </div>
-              </>
-            );
-          })}
+        <div className="amenities">
+          <div className="details">
+            <h3>Amenities</h3>
+            {property.features?.map((feature, i) => {
+              return <p key={i}>{feature}</p>;
+            })}
+          </div>
         </div>
 
-        <div className="details">
-          <div className="listDetails">
-            <h4>Car Details and Specs</h4>
-            <p>Year: {property.year}</p>
-            <p>Address: {property.location}</p>
-            <p>Condition: {property.carConditionb}</p>
-            <p>Brand Name: {property.title}</p>
-            <p>Engine: {property.engineType}</p>
-            <p>Colour: {property.colour}</p>
+        <div className="description">
+          <div className="details">
+            <h3>Description</h3>
+            <p>
+              {property.description}
+            </p>
           </div>
 
-          <div className="posterDetails">
+        {
+            property.postedBy?._id !== data._id 
+            ?
+            <div className="seller">
+            <h3>Contact Seller</h3>
+
             <div className="container">
-              <h4>
-              {property.postedBy?.firstName + " " + property.postedBy?.lastName}
-                <BadgeCheck color="blue" width="30px" />
-              </h4>
-              <p>Shaner estate, {property.location}.</p>
-              <p>Joined:<TimeAgo datetime={property.postedBy?.createdAt}/></p>
+              <div className="first">
+                <div>
+                  <h3>{property.postedBy?.firstName + " " + property.postedBy?.lastName}</h3>
+                  <p className="small">{property.postedBy?.address}</p>
+                  <p className="small">Joined {new Date(property.postedBy?.createdAt).getFullYear()}</p>
+                </div>
 
-              <div className="options">
-                <div className="option solid">Send Message</div>
+                <div className="btns">
+                  <div className="btn filled">Send Message</div>
 
-                <div className="option">View Profile</div>
+                  <Link to={`/profile/${property.postedBy?._id}`} className="btn">View Profile</Link>
+                </div>
+              </div>
+
+              <div className="second">
+                <img
+                  src={property.postedBy?.profilePicture}
+                  alt={property.postedBy?.firstName}
+                />
               </div>
             </div>
-
-            <img src={property.postedBy?.profilePicture} alt="dealer pic" />
           </div>
+          :
+          <div className="delete">
+            <h3>Delete Listing</h3>
+            <p>Once you delete a listing, it cannot be reversed</p>
+            <div className="actionBtn" onClick={confirmDelete}>
+                <Trash color="white"/> Delete Listing
+            </div>
+          </div>
+        }
+          
         </div>
-      </EachBuildingContainer>
+      </EachContainer>
       <Banner category="Cars" />
       <Footer />
     </Fragment>
