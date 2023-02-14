@@ -39,6 +39,7 @@ const RealEstateListing = () => {
 
   const [estateId, setEstateId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear);
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     var timer1;
@@ -88,14 +89,22 @@ const RealEstateListing = () => {
               <Input placeholder="search desired locations" />
               <Search width="30px" />
             </SearchC>
-            <FilterBox>
-              <MainButton width="60px">Filter</MainButton>
+            <FilterBox onClick={() => setFilter('real-estate')} className="flex flex-col bg-white px-2 py-5 border-r-[1px] items-center border-[#000000] hover:cursor-pointer">
+              <MainButton className='flex' width="60px">Filter</MainButton>
               <Adjustments width="30px" />
             </FilterBox>
+            {
+              filter == 'real-estate' && <ul className='relative top-1 shadow-md shadow-gray-300 rounded-md overflow-hidden bg-white cursor-pointer w-[30%] max-h-[180px] overflow-y-auto md:w-[20%]'>
+                <p>Testing</p>
+                <p>Well</p>
+                <p>Okay</p>
+              </ul>
+            }
           </SearchSection>
           <Text>One search is all it takes</Text>
         </HeroSection>
       </Background>
+
 
       <Body>
         <Text fontSize="1rem" fontWeight="700" color="black">
@@ -108,7 +117,7 @@ const RealEstateListing = () => {
               <Listing key={items._id} list={items} />
             );
           }) : <p>No Real Estate Listing available</p>
-         }
+          }
         </GridContainer>
       </Body>
       <Banner category="Real Estate" />

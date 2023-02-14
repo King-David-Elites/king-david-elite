@@ -52,60 +52,24 @@ import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
 import useContextAPI from './Components/ContextAPI/ContextAPI';
 import EachRealEstate from './Components/RealEstate/EachRealEstate';
-import { AnimatePresence } from 'framer-motion';
+import {AnimatePresence} from 'framer-motion';
 
 function App() {
   const queryClient = new QueryClient();
-  const mainData = useContextAPI()
+  const mainData = useContextAPI()  
 
   return (
     <QueryClientProvider client={queryClient} >
       <ToastContainer />
       <Router>
-        <AnimatePresence exitBeforeEnter>
-          {/* <Navbar/> */}
-          <Routes>
-            <Route path='/register' element={<Register />} />
-            <Route path='/' element={<HomePage />} />
+      <AnimatePresence exitBeforeEnter>
+        {/* <Navbar/> */}
+        <Routes>
+          <Route path='/register' element = {<Register/>}/>
+          <Route path='/' element={<HomePage />} />
 
-            <Route path='/contact' element={<Contact />} />
+          <Route path ='/contact' element = {<Contact/>}/>
 
-<<<<<<< HEAD
-            <Route path='/modal' element={<ModalCont />} />
-            <Route path='/admin' element={<Admin />} />
-            <Route path='/loader' element={<Loader />} />
-            <Route path='/email' element={<EmailPage mainData={mainData} />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/' element={<HomePage />} />
-            <Route path='/signup' element={<SignUpPage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/savedpost' element={<Savedpost />} />
-            <Route path="/real-estate" element={<RealEstateListing />} />
-            <Route path="/real-estate/add" element={<AddRealEstate />} />
-            <Route path="/dashboard/messages/chat" element={<ChatBox />} />
-            <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
-            <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
-            <Route path="/cars" element={<Cars mainData={mainData} />} />
-            <Route path="/cars/add" element={<AddCar />} />
-            <Route path="/cars/:id" element={<EachRealEstate active={0} />} />
-            <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0} />} />
-            <Route path="/others" element={<OtherSections />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/messages" element={<Messages />} />
-            <Route path="/dashboard/notifications" element={<Notifications />} />
-            <Route path="/dashboard/profile/verification" element={<Profile mainData={mainData} />} />
-            <Route path="/dashboard/" element={<Profile mainData={mainData} />} />
-            <Route path="/dashboard/wallet" element={<Wallet />} />
-            <Route path="/dashboard/wallet/transfer" element={<Transfer />} />
-            <Route path="/dashboard/wallet/withdraw" element={<Withdrawal />} />
-            <Route path="/dashboard/wallet/deposit" element={<Deposit />} />
-            <Route path='/dashboard/wallet/transfer/confirm' element={<Transfer2 />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/help" element={<Help />} />
-            <Route path='/success' element={<SuccessPage />} />
-            <Route path="/help/earning" element={<Earning />} />
-            {/* <Route path="/help/benefits" element={<Benefits />} />
-=======
           <Route path='/modal' element={<ModalCont />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/loader' element={<Loader />} />
@@ -140,18 +104,17 @@ function App() {
           <Route path='/success' element={<SuccessPage />} />
           <Route path="/help/earning" element={<Earning />} />
           {/* <Route path="/help/benefits" element={<Benefits />} />
->>>>>>> dc556fe8cd1b5fdf52f3cf228ca3478b1a868d33
           <Route path="/profile" element={<ProfileContainer />} /> */}
-            <Route path="/profile/verification" element={<Verification />} />
-            <Route path="/profile/list" element={<ProfileList />} />
-            <Route path="/profile/stat" element={<ProfileStat />} />
-            <Route path='/profile/edit' element={<EditProfile mainData={mainData} />} />
-            <Route path="/profile/create-listings" element={<CreateListing />} />
-            <Route path="/profile" element={<LoggedUser mainData={mainData} />} />
-            <Route path="/profile/:id" element={<OtherUser />} />
-            <Route path="/waitList" element={<Waitlist />} />
-            <Route path='/profile/viewImage' element={<ImagePage />} />
-          </Routes>
+          <Route path="/profile/verification" element={<Verification />} />
+          <Route path="/profile/list" element={<ProfileList />} />
+          <Route path="/profile/stat" element={<ProfileStat />} />
+          <Route path='/profile/edit' element={<EditProfile mainData={mainData}/>} />
+          <Route path="/profile/create-listings" element={<CreateListing />} />
+          <Route path="/profile" element={<LoggedUser mainData={mainData}/>} />
+          <Route path="/profile/:id" element={<OtherUser />} />
+          <Route path="/waitList" element={<Waitlist />} />
+          <Route path='/profile/viewImage' element={<ImagePage/>}/>
+        </Routes>
         </AnimatePresence>
       </Router>
     </QueryClientProvider>
