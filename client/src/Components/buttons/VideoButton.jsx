@@ -16,7 +16,6 @@ const VideoButton = styled.button`
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    font-family: ${theme.fontFamily};
     border: 2px solid ${props => props.color ? props.color : "rgba(166, 166, 166, 0.2)"};
 
     @media (min-width: ${theme.breakPoint['tablet']}) {

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
    background: #f0f2f5;
    min-height:100vh;
-   font-family:'poppins';
 
    .bg_contact{
        text-align: center;

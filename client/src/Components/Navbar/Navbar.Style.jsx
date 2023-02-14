@@ -11,7 +11,6 @@ export const Header = styled.div`
     justify-content:space-around;
     align-items:center;
     gap:0.2em;
-    font-family: ${theme.fontFamily}; 
     z-index:3;
     white-space: nowrap;
 

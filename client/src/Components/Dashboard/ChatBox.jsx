@@ -106,7 +106,7 @@ const ChatBox = ({ setStage }) => {
                 </div>
 
                 {
-                    state ? <MdSend size={25} /> : <MdKeyboardVoice size={25} /> 
+                    state ? <div className="rounded-full p-2 bg-[#128C7E]"><MdSend className="text-white" size={25} /> </div> : <div className="rounded-full p-2 bg-[#252625]"><MdKeyboardVoice className="text-[#F2BE5C]" size={25} /></div>
                 }
 
             </div>

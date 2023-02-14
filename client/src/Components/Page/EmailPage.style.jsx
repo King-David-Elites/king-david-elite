@@ -23,7 +23,6 @@ p{
 
 td{
     padding:7px 4px;
-    font-family: 'Inter';
     font-style: normal;
     font-size: 12px;
     line-height: 22px;

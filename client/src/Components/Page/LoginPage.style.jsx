@@ -36,7 +36,7 @@ border-radius: 6px;
 
 h1{
 padding-top:2.8rem;
-font-family: 'Poppins';
+
 font-style: normal;
 font-weight:700;
 font-size: 24px;
@@ -46,7 +46,7 @@ color: #000000;
 }
 
 .back{
-font-family: 'Poppins';
+
 font-style: normal;
 font-weight:500;
 font-size: 16px;
@@ -76,7 +76,7 @@ border-radius: 4px;
 .forgot{
 margin-top:8px;
 height: 21px;
-font-family: 'Poppins';
+
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
@@ -102,7 +102,7 @@ color: #000000;
     margin:25px auto;
     background: linear-gradient(90deg, #FFDF00 23.7%, #000000 286.13%);
     border-radius: 4px;
-    font-family: 'Poppins';
+    
     font-style: normal;
     font-weight:500;
     font-size: 16px;
@@ -116,7 +116,7 @@ color: #000000;
 .or{
 height: 30px;
 margin-top:15px;
-font-family: 'Poppins';
+
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
@@ -142,7 +142,7 @@ border-radius:6px;
 
 .account{
     margin-top:20px;
-    font-family: 'Poppins';
+    
     font-style: normal;
     font-weight: 400;
     font-size: 10px;

@@ -15,7 +15,6 @@ const PhotoButton = styled.button`
     border-radius: 8px;
     white-space: nowrap;
     font-weight: 700;
-    font-family: ${theme.fontFamily};
     border: 2px solid ${props => props.color ? props.color : theme.footerColor};
 
     @media (min-width: ${theme.breakPoint['tablet']}) {

@@ -4,8 +4,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'poppins';
-
 
     .cont{
         width:100%;

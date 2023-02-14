@@ -49,7 +49,6 @@ span{
     margin:10px auto;
     font-size:20px;
     text-align:center;
-    font-family: 'Poppins';
     
 }
 
@@ -58,7 +57,6 @@ span{
     margin:10px auto;
     font-size:20px;
     text-align:center;
-    font-family: 'Poppins';
     color:white;
 
 }

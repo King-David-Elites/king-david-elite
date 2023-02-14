@@ -41,7 +41,6 @@ export const HeroSection = styled.div`
     position:absolute;    
     top:0;
     background:rgba(0,0,0,0.4);
-    font-family:${theme.fontFamily};
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -389,7 +388,6 @@ export const UploadFileBtn = styled.button`
   overflow: hidden;
   z-index: 1;
   transition: color 250ms ease-in-out;
-  font-family: "Open Sans", sans-serif;
   width: 45%;
   display: flex;
   align-items: center;

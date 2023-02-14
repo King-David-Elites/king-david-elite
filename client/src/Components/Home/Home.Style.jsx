@@ -138,8 +138,6 @@ export const Information = styled.div`
 
 
         input{
-
-            font-family: 'Poppins';
             font-size: 12px;
             padding:15px;
             background: rgba(166, 166, 166, 0.1);
@@ -154,7 +152,6 @@ export const Information = styled.div`
             margin-right:10px;
             text-align: center;
             padding:10px;
-            font-family: 'Poppins';
             width:30%;
             font-weight: 400;
             font-size: 15px;
@@ -205,7 +202,6 @@ export const Information = styled.div`
                 margin:20px auto;
                 width:80%;
                 font-size:17px;
-                font-family: 'Poppins';
                 font-weight:600;
 
             }
@@ -272,8 +268,6 @@ export const Information = styled.div`
 
 
         input{
-
-            font-family: 'Poppins';
             font-size: 12px;
             padding:15px;
             background: rgba(166, 166, 166, 0.1);
@@ -288,7 +282,6 @@ export const Information = styled.div`
             margin-right:10px;
             text-align: center;
             padding:10px;
-            font-family: 'Poppins';
             width:30%;
             font-weight: 400;
             font-size: 15px;
@@ -327,7 +320,6 @@ export const SubFooter = styled.div`
         padding:0px;
 
        .sub-p1{
-        font-family: 'Poppins';
         text-align: center;
         font-size:14px;
        }
@@ -335,7 +327,6 @@ export const SubFooter = styled.div`
         font-size:12px;
         padding-top:10px;
         text-align: center;
-        font-family: 'Poppins';
 
        }
 

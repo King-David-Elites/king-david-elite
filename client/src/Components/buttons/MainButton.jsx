@@ -17,7 +17,6 @@ const MainButton = styled.button`
     justify-content: center;
     align-items: center;
     padding: ${props => props.padding ? props.padding : "16px"} ;
-    font-family: ${theme.fontFamily};
     margin-top:${props => props.marginTop ? props.marginTop : "0em"};   
     cursor:pointer;    
 
