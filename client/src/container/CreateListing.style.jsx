@@ -8,7 +8,7 @@ export const ListingHead = styled.div`
   .heading {
     margin-top: 6em;
     flex: 0 1 50em;
-    font-family: "Poppins";
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,7 +67,6 @@ export const ListingForm = styled.div`
             margin-bottom:3em;
         }
         .locate{
-            font-family:Inter;
             display:flex;
             justify-content:flex-start;
             align-items:center;
@@ -77,7 +76,6 @@ export const ListingForm = styled.div`
             cursor:pointer;
         }
         .section{
-            font-family:Inter;
             display:flex;
             flex-direction:column;
             justify-content:center;
@@ -89,7 +87,6 @@ export const ListingForm = styled.div`
             width:100%;
         }
         #section{
-            font-family:Poppins;
         }
         .section p{
             font-weight:600;

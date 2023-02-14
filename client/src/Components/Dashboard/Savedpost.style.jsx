@@ -11,7 +11,6 @@ background: #FFFFFF;
 border-radius: 6px;
 
 h1{
-    font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     font-size:24px;
@@ -36,7 +35,6 @@ export const Post = styled.div`
     margin:15px 10px;
 
     p{
-        font-family: 'Poppins';
         font-style: normal;
         font-weight:600;
         font-size: 16px;
@@ -94,7 +92,6 @@ export const Post = styled.div`
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 0px 0px 48px 0px;
-            font-family: 'Poppins';
             font-style: normal;
             font-weight: 500;
             font-size:14px;
@@ -104,7 +101,6 @@ export const Post = styled.div`
    }
 
    h4{
-    font-family: 'Poppins';
     font-style: normal;
     font-weight:600;
     font-size:15px;
@@ -114,7 +110,6 @@ export const Post = styled.div`
    }
 
    h5{
-    font-family: 'Poppins';
     font-style: normal;
     font-weight:600;
     font-size:13px;
@@ -135,7 +130,6 @@ export const Post = styled.div`
         position:absolute;
         top:-7px;
         left:25px;
-        font-family: 'Poppins';
         font-style: normal;
         font-weight: 300;
         font-size:11px;
@@ -161,7 +155,6 @@ export const Post = styled.div`
     position:absolute;
     top:450px;
     left:70px;
-    font-family: 'Poppins';
     font-style: normal;
     font-weight:500;
     font-size:11px;

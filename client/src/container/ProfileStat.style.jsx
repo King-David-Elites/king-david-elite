@@ -33,7 +33,6 @@ export const MiddleContainer = styled.div`
         border-radius: 4px;
         margin-right:40px;   
         border:none;
-        font-family: 'Poppins';
         font-style: normal;
         font-weight: 500;
         font-size:13px;
@@ -89,7 +88,6 @@ display:flex;
 
     h3{
         margin-top:10px;
-        font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
         font-size:20px;
@@ -109,7 +107,6 @@ display:flex;
         height:38px;
         border:1px solid gray;
         border-radius:3px;
-        font-family: 'Poppins';
         font-style: normal;
         font-weight: 400;
         font-size:12px;
@@ -165,7 +162,6 @@ display:flex;
 
     h6{
         padding:0;
-        font-family: 'Poppins';
         font-style: normal;
         font-weight:600;
         font-size:12px;
@@ -176,7 +172,6 @@ display:flex;
 
     p{
         margin-top:10px;
-        font-family: 'Poppins';
         font-style: normal;
         font-weight: 500;
         line-height:20px;
@@ -210,7 +205,6 @@ display:flex;
 
         p{
             margin:0px;
-            font-family: 'Poppins';
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
@@ -336,7 +330,6 @@ export const Post = styled.div`
    margin: 50px 0;
 
    h3{
-    /* font-family: 'Poppins'; */
     font-style: normal;
     /* font-weight:600; */
     font-size:20px;
@@ -353,7 +346,6 @@ export const Post = styled.div`
     /* margin:15px 25px; */
 
     p{
-        font-family: 'Poppins';
         font-style: normal;
         font-weight:600;
         font-size: 16px;
@@ -412,7 +404,6 @@ export const Post = styled.div`
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 0px 0px 48px 0px;
-            font-family: 'Poppins';
             font-style: normal;
             font-weight: 500;
             font-size:14px;
@@ -424,7 +415,6 @@ export const Post = styled.div`
    }
 
    h4{
-    font-family: 'Poppins';
     font-style: normal;
     font-weight:600;
     font-size:15px;
@@ -434,7 +424,6 @@ export const Post = styled.div`
    }
 
    h5{
-    font-family: 'Poppins';
     font-style: normal;
     font-weight:500;
     font-size:13px;
@@ -451,7 +440,6 @@ export const Post = styled.div`
     p{
         left:25px;
         margin-top:-7px;
-        font-family: 'Poppins';
         font-style: normal;
         font-weight: 300;
         font-size:11px;
@@ -484,7 +472,6 @@ export const Post = styled.div`
         height:50px;
         background: #F2F2F2;
         border-radius: 4px;
-        font-family: 'Poppins';
         font-style: normal;
         font-weight:600;
         font-size:14px;

@@ -5,7 +5,6 @@ export const Container = styled.div`
     padding:0;
     display: flex;
     justify-content: center;
-    font-family: 'poppins';
     align-items: center;
     height:100vh;
     width: 100%;

@@ -1,4 +1,4 @@
-import { BadgeCheck, Heart, HeartOutline, Search } from "heroicons-react";
+import { Adjustments, BadgeCheck, Heart, HeartOutline, Search } from "heroicons-react";
 import React, { useRef, useEffect } from "react";
 import {
   Background,
@@ -11,6 +11,7 @@ import {
   PicCar,
   Reaction,
   Position,
+  FilterBox,
 } from "../Cars/Cars.Style";
 import { SearchSection, SearchC } from "./RealEstate.Style";
 import Navbar from "../Navbar/Navbar";
@@ -87,6 +88,10 @@ const RealEstateListing = () => {
               <Input placeholder="search desired locations" />
               <Search width="30px" />
             </SearchC>
+            <FilterBox>
+              <MainButton width="60px">Filter</MainButton>
+              <Adjustments width="30px" />
+            </FilterBox>
           </SearchSection>
           <Text>One search is all it takes</Text>
         </HeroSection>

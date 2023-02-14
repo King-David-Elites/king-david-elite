@@ -15,7 +15,6 @@ border-radius: 8px;
 h4{
     width: 117px;
     height: 17px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -31,7 +30,6 @@ h2{
     margin-left:38px;
     width: 141px;
     height: 29px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
@@ -69,7 +67,6 @@ div{
 p{
     width: 175px;
     height: 19px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400px;
     font-size: 16px;
@@ -102,7 +99,6 @@ margin-top:32px;
 margin-left:8px;
 width: 261px;
 height: 19px;
-font-family: 'Poppins';
 font-style: normal;
 font-size: 16px;
 line-height: 24px;
@@ -142,7 +138,6 @@ width: 128px;
 margin-left:17px;
 height: 19px;
 margin-top:23px;
-font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
@@ -173,7 +168,6 @@ p{
 
 height: 30px;
 margin-top:-8px;
-font-family: 'Poppins';
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
@@ -208,7 +202,6 @@ border-radius:8px;
 
 td{
     padding:12px 44px;
-    font-family: 'Inter';
     font-style: normal;
     font-size: 14px;
     line-height: 22px;

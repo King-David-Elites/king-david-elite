@@ -15,7 +15,6 @@
 // h4{
 //     width: 117px;
 //     height: 17px;
-//     font-family: 'Inter';
 //     font-style: normal;
 //     font-weight: 500;
 //     font-size: 14px;
@@ -31,7 +30,6 @@
 //     margin-left:38px;
 //     width: 141px;
 //     height: 29px;
-//     font-family: 'Inter';
 //     font-style: normal;
 //     font-weight: 900;
 //     font-size: 24px;
@@ -69,7 +67,6 @@
 // p{
 //     width: 175px;
 //     height: 19px;
-//     font-family: 'Inter';
 //     font-style: normal;
 //     font-weight: 400px;
 //     font-size: 16px;

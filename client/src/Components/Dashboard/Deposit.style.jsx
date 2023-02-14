@@ -15,7 +15,6 @@ border-radius: 8px;
 h4{
     width: 117px;
     height: 17px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -31,7 +30,6 @@ h2{
     margin-left:38px;
     width: 141px;
     height: 29px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
@@ -69,7 +67,6 @@ div{
 p{
     width: 175px;
     height: 19px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400px;
     font-size: 16px;
@@ -108,8 +105,7 @@ div{
         margin-left:30px;
         font-style: normal;
         font-size:20px;
-        color:black;
-        font-family: 'Poppins';        
+        color:black;       
         justify-content: center;
         align-items: center;
         padding: 12px 16px;
@@ -122,8 +118,7 @@ div{
     }
 
     .flutterwave{
-        font-style: normal;
-        font-family: 'Poppins';        
+        font-style: normal;       
         color:white;
         border:none;
         font-size:20px;
@@ -170,7 +165,6 @@ margin-left:25px;
 margin-bottom:10px;
 height: 19px;
 margin-top:120px;
-font-family:'Poppins';
 font-style:normal;
 font-weight:500;
 font-size: 16px;

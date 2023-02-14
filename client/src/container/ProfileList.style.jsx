@@ -157,7 +157,7 @@ export const TopContainer = styled.div`
 
         h3{
             width: 267px;
-            font-family: 'Poppins';
+            
             font-style: normal;
             font-weight: 600;
             font-size:20px;
@@ -167,7 +167,7 @@ export const TopContainer = styled.div`
 
         p{
             margin-top:-10px;
-            font-family: 'Poppins';
+            
             font-style: normal;
             font-weight:500;
             font-size:12px;
@@ -187,7 +187,7 @@ export const TopContainer = styled.div`
         left:750px;
 
         button{
-            font-family: 'Poppins';
+            
             font-style: normal;
             font-weight: 400;
             font-size: 13px;
@@ -219,7 +219,7 @@ export const TopContainer = styled.div`
             height:48px;
             background: #252625;
             border-radius: 4px;
-            font-family: 'Poppins';
+            
             font-style: normal;
             font-weight: 400;
             font-size:13px;
@@ -239,7 +239,7 @@ export const TopContainer = styled.div`
 .lorem{
     position:absolute;
     top:340px;
-    font-family: 'Poppins';
+    
     width:75%;
     font-style: normal;
     font-weight: 400;
@@ -337,7 +337,7 @@ export const TopContainer = styled.div`
                 border-radius: 2px;
                 font-size:10px;
                 position:absolute;
-                font-family: 'Poppins';
+                
                 color:white;
                 left:260px;
                 top:15px;
@@ -374,7 +374,6 @@ export const TopContainer = styled.div`
 
 .lorem{
     width:75%;
-    font-family:'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size:11px;
@@ -416,7 +415,7 @@ export const MiddleContainer = styled.div`
         border-radius: 4px;
         margin-right:40px;   
         border:none;
-        font-family: 'Poppins';
+        
         font-style: normal;
         font-weight: 500;
         font-size:13px;
@@ -468,7 +467,7 @@ export const MiddleContainer = styled.div`
             border-radius: 4px;
             margin-right:40px;   
             border:none;
-            font-family: 'Poppins';
+            
             font-style: normal;
             font-weight: 500;
             font-size:12px;

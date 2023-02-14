@@ -118,7 +118,6 @@ export const PendingList = styled.div`
      }
      
      h1{
-        font-family: 'poppins';
         margin:1em;
         font-size:1.6rem;
      }
@@ -180,7 +179,7 @@ export const PendingList = styled.div`
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 0px 0px 48px 0px;
-            font-family: 'Poppins';
+
             font-size:12px;
             color: #FFFFFF;
             border:none;
@@ -193,12 +192,11 @@ export const PendingList = styled.div`
     h2{
         margin:.2em auto;
         font-size:1.05rem;
-        font-family:'poppins';
+        
     }
     h4{
         margin:.1em auto;
         font-size:.8rem;
-        font-family: 'poppins';
     }
 
     p{
@@ -224,7 +222,6 @@ export const PendingList = styled.div`
         height:40px;
         background: #F2F2F2;
         border-radius: 4px;
-        font-family: 'Poppins';
         font-size:14px;
         text-align: center;
         background: linear-gradient(90deg, #F2BE5C 23.7%, #000000 286.13%);
@@ -244,7 +241,6 @@ export const ReportedAcct = styled.div`
 
       h1{
         color: #FA5936;
-        font-family: 'poppins';
         margin:1.8em;
         font-size:1.6rem;
       }
@@ -270,13 +266,12 @@ export const ReportedAcct = styled.div`
 
       h5{
         font-size:.8rem;
-        font-family:'poppins';
+        
         margin-left:.2em;
       }
 
       p{
         font-size:.8rem;
-        font-family: 'poppins';
         color: blue;
       }
 
@@ -315,14 +310,14 @@ export const ButtomRight = styled.div`
             display: flex;
             justify-content: space-around;
             font-size:.8rem;
-            font-family:'poppins';
+            
             background-color:#F5F6FA;
             color:#8A92A6;
         }
 
         .cont{
             font-size:.8rem;
-            font-family:'poppins';
+            
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -381,7 +376,7 @@ export const ButtomRight = styled.div`
         .account{
             h1{
                 font-size:1.6rem;
-                font-family:'poppins';
+                
                 margin:1.4em;
             }
 
@@ -400,7 +395,7 @@ export const ButtomRight = styled.div`
                 color: white;
                 background: #252625;
                 border-radius: 6px;
-                font-family:'poppins';
+                
                 font-size:.8rem;
 
             }
@@ -409,7 +404,7 @@ export const ButtomRight = styled.div`
                 font-size:1.3rem;
                 margin-top:2em;
                 color: rgba(255, 255, 255, 0.2);
-                font-family: 'poppins';
+    
             }
 
         }
