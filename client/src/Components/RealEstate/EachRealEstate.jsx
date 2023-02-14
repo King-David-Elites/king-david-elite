@@ -61,7 +61,7 @@ const EachRealEstate = ({ active }) => {
 
   return (
     <Fragment>
-      <Navbar />
+      <Navbar active={1}/>
       <EachContainer>
         <div className="titles">
           <h3>{property.title}</h3>
