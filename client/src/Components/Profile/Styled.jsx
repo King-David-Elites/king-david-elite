@@ -19,8 +19,8 @@ export const DisplayImage = styled.div`
         justify-content: center;
         align-items: center;
         background: black;        
-        width:100%;
-        height:100%;
+        width:100vw;
+        height:100vh;
         z-index: 999;
 
         .close{
@@ -32,8 +32,8 @@ export const DisplayImage = styled.div`
             width:2em;
             height:2em;
             border-radius: 1em;
-            top: 2em;
-            right: 2em;
+            top: 1em;
+            right: 1em;
             cursor:pointer;
         }
 

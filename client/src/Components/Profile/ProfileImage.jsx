@@ -40,12 +40,13 @@ const ProfileImage = ({ data, id, setShowImage }) => {
       <DisplayImage>
         {loader && <Loader />}
         <div className="background">
-          <div className="close">
-            <X
-              onClick={() => {
-                setShowImage(false);
-              }}
-            />
+          <div
+            className="close"
+            onClick={() => {
+              setShowImage(false);
+            }}
+          >
+            <X />
           </div>
           <div className="imageCont">
             <div className="profileName">
