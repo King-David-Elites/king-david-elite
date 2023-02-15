@@ -1,6 +1,6 @@
 import React from 'react'
 import { Fragment } from 'react'
-import { Background, HeroSection, Text } from '../Cars/Cars.Style';
+import { Background, HeroSection, Text } from '../Categories/Cars/Cars.Style';
 import Generic from '../ContactUs/Generic';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';

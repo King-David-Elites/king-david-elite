@@ -47,7 +47,7 @@ const ProfileImage = ({ data, id, setShowImage }) => {
               setShowImage(false);
             }}
           >
-            <X />
+            <X width="20px"/>
           </div>
           <div className="imageCont">
             <div className="profileName">

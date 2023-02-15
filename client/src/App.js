@@ -6,23 +6,18 @@ import {
 } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import HomePage from './Components/Home/HomePage';
-import RealEstateListing from "./Components/RealEstate/RealEstateListing";
-import Cars from "./Components/Cars/CarsListing";
+import RealEstateListing from "./Components/Categories/RealEstate/RealEstateListing";
+import Cars from "./Components/Categories/Cars/CarsListing";
 import OtherSections from "./Components/OtherSections/OtherSections";
 import Messages from './Components/Dashboard/Messages';
 import Notifications from './Components/Dashboard/Notifications';
 import Profile from './Components/Dashboard/Profile/Profile';
 import Wallet from './Components/Dashboard/Wallet';
-import EachBuilding from './Components/RealEstate/EachBuilding';
-import EachBuildingPhotos from './Components/RealEstate/EachBuildingPhotos';
-import EachCars from './Components/Cars/EachCars';
-import EachCarPhotos from './Components/Cars/EachCarPhotos';
+import EachCars from './Components/Categories/Cars/EachCars';
 import About from './Components/About/About';
 import Help from './Components/About/Help';
 import Earning from './Components/About/Earning';
 import Benefits from './Components/About/Benefits';
-import AddCar from './Components/Cars/AddCar';
-import AddRealEstate from './Components/RealEstate/AddRealEstate';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
 import ProfileContainer from './container/ProfileContainer.jsx';
@@ -51,8 +46,9 @@ import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
 import ImagePage from './Components/Profile/ImagePage';
 import useContextAPI from './Components/ContextAPI/ContextAPI';
-import EachRealEstate from './Components/RealEstate/EachRealEstate';
+import EachRealEstate from './Components/Categories/RealEstate/EachRealEstate';
 import {AnimatePresence} from 'framer-motion';
+import MediaView from './Components/Categories/MediaView/MediavView';
 
 function App() {
   const queryClient = new QueryClient();
@@ -80,14 +76,12 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/savedpost' element={<Savedpost />} />
           <Route path="/real-estate" element={<RealEstateListing />} />
-          <Route path="/real-estate/add" element={<AddRealEstate />} />
           <Route path="/dashboard/messages/chat" element={<ChatBox />} />
           <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
-          <Route path="/real-estate/:title/:Id" element={<EachBuildingPhotos active={0} />} />
-          <Route path="/cars" element={<Cars mainData={mainData}/>} />
-          <Route path="/cars/add" element={<AddCar />} />
+          <Route path="/real-estate/:id/media" element={<MediaView active={0}/>} />   
+          <Route path="/cars" element={<Cars mainData={mainData}/>} />          
           <Route path="/cars/:id" element={<EachCars active={0} />} />
-          <Route path="/cars/:title/:Id" element={<EachCarPhotos active={0} />} />
+          <Route path="/cars/:id/media" element={<MediaView active={0}/>} />
           <Route path="/others" element={<OtherSections />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/messages" element={<Messages />} />

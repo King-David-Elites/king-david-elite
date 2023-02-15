@@ -1,19 +1,19 @@
 import { LocationMarker, BadgeCheck } from 'heroicons-react';
 import React, { useEffect } from 'react';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../../Navbar/Navbar';
 import { EachBuildingContainer } from './RealEstate.Style';
 import realEstatePics from './Image/real-estate-pics.jpg';
-import Banner from "../Banner/Banner";
-import Footer from '../Footer/Footer';
+import Banner from "../../Banner/Banner";
+import Footer from '../../Footer/Footer';
 import { useParams } from 'react-router-dom';
 import { MOCK_DATA } from './MOCK_DATA';
 import { useNavigate } from 'react-router-dom';
-import theme from '../../application/utils/Theme';
+import theme from '../../../application/utils/Theme';
 import { MorePic, Text, MoreBg } from '../Cars/Cars.Style';
 import { useCallback, useState } from 'react';
 import axios from 'axios';
 import TimeAgo from "timeago-react";
-import globalApi from "../../api";
+import globalApi from "../../../api";
 
 const EachBuilding = ({ active }) => {
     const navigate = useNavigate();

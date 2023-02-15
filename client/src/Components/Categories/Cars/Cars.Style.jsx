@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import theme from '../../application/utils/Theme';
+import theme from '../../../application/utils/Theme';
 
 export const Background = styled.div`       
     position:relative;        

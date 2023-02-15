@@ -19,8 +19,8 @@ export const DisplayImage = styled.div`
         justify-content: center;
         align-items: center;
         background: black;        
-        width:100vw;
-        height:100vh;
+        width:100%;
+        height:100%;
         z-index: 99;
 
         .close{
@@ -29,11 +29,11 @@ export const DisplayImage = styled.div`
             justify-content: center;
             align-items: center;
             background: white;
-            width:2em;
-            height:2em;
+            width:1.5em;
+            height:1.5em;
             border-radius: 1em;
-            top: 1em;
-            right: 1em;
+            top: 2em;
+            right: 2em;
             cursor:pointer;
         }
 
@@ -56,7 +56,7 @@ export const DisplayImage = styled.div`
         .imageCont > .image{
             width:100%;
             height: 100%;    
-            height:70vh;        
+            height:80vh;        
         }
         .imageCont > .editProfile{
             position:relative;

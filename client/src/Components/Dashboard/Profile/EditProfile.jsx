@@ -11,7 +11,7 @@ import {
   FileUploadContainer,
   FormField,
   UploadFileBtn,
-} from "../../Cars/Cars.Style";
+} from "../../Categories/Cars/Cars.Style";
 import { useRef, useState } from "react";
 import { Country } from "./Profile_Mockdata";
 import DisableButton from "../../buttons/DisabledButton";
