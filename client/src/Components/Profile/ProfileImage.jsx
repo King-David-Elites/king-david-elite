@@ -14,6 +14,7 @@ const ProfileImage = ({ data, id, setShowImage }) => {
 
   const upload = (image) => {
     setLoader(true);
+    console.log("updating")
     if (!id) {
       data.profilePicture = image;
     }

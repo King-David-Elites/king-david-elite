@@ -14,14 +14,14 @@ export  const Header = styled.div`
 
 export const DisplayImage = styled.div`
     .background{
-        position: absolute;
+        position: fixed;
         display:flex;
         justify-content: center;
         align-items: center;
         background: black;        
         width:100vw;
         height:100vh;
-        z-index: 999;
+        z-index: 99;
 
         .close{
             position:absolute;
