@@ -1,6 +1,6 @@
 import axios from "axios";
 import { LocationMarker, Trash } from "heroicons-react";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import TimeAgo from "timeago-react";
 import globalApi from "../../../api";
@@ -12,7 +12,9 @@ import Navbar from "../../Navbar/Navbar";
 import { EachContainer } from "./RealEstate.Style";
 import Swal from "sweetalert2";
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachRealEstate = ({ active }) => {
+  const top = useRef(null);
   const navigate = useNavigate();
   const { id } = useParams();
   const [property, setProperty] = useState({});
@@ -62,12 +64,13 @@ const EachRealEstate = ({ active }) => {
 
   useEffect(() => {
     getAList();
+    scrollToRef(top);
   }, [getAList]);
 
   return (
     <Fragment>
-      <Navbar active={1} />
-      <EachContainer>
+      <Navbar active={1}/>
+      <EachContainer ref={top}>
         <div className="titles">
           <h3>{property.title}</h3>
           <h4>US ${property.price}</h4>

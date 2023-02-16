@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const EachCarPhotos = () => {
+const MediaView = () => {
   const navigate = useNavigate();
   const top = useRef(null);
   const { id } = useParams();
@@ -130,4 +130,4 @@ const EachCarPhotos = () => {
   );
 };
 
-export default EachCarPhotos;
+export default MediaView;

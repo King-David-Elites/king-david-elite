@@ -134,7 +134,7 @@ export const EachBuildingContainer = styled.div`
 
     .imageGallery > .image{        
         flex: 0 1 8em;
-        height: auto;
+        height: 10em;
         box-shadow:0px 4px 8px rgba(0,0,0,0.4);
         border-radius: 10px;
         cursor:pointer;
@@ -142,7 +142,7 @@ export const EachBuildingContainer = styled.div`
 
     .imageGallery > .loadingImages{
         flex: 0 1 8em;
-        height: 15em;
+        height: 10em;
         box-shadow:0px 4px 8px rgba(0,0,0,0.4);
         border-radius: 10px;
         background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%)
