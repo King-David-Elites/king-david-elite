@@ -12,6 +12,80 @@ export  const Header = styled.div`
     }
 `
 
+export const DisplayImage = styled.div`
+    .background{
+        position: fixed;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background: black;        
+        width:100%;
+        height:100%;
+        z-index: 99;
+
+        .close{
+            position:absolute;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            width:1.5em;
+            height:1.5em;
+            border-radius: 1em;
+            top: 2em;
+            right: 2em;
+            cursor:pointer;
+        }
+
+        .imageCont{
+            flex: 0 1 30em;                               
+            margin:0em 1em;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:2em;
+            color:white;
+        }
+        .imageCont > .profileName{
+            width:100%;
+            text-align: center;
+            font-weight: bolder;  
+            font-size:1.2rem;
+        }
+        .imageCont > .image{
+            width:100%;
+            height: 100%;    
+            height:80vh;        
+        }
+        .imageCont > .editProfile{
+            position:relative;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            gap:1em;
+            padding:0.5em 1em;
+            background:white;
+            color:black;
+            font-weight:bolder;
+            cursor:pointer;
+            border-radius: 10px;
+        }
+        .imageCont > .editProfile input{
+            position:absolute;
+            top:0.3em;
+            left:0;
+            opacity:0;
+            cursor:pointer;
+        }
+        .imageCont > .image img{
+            width:100%;
+            height:100%;
+            border-radius: 20px;
+        }
+    }
+`
+
 export const Details = styled.div`
     display: flex;
     /* grid-template-columns: 1fr 2fr; */
@@ -28,6 +102,7 @@ export const Details = styled.div`
         display: flex;
         gap: 20px;
         align-items: center;
+        cursor:pointer;
 
         @media (max-width:600px) {
             gap :5px ;

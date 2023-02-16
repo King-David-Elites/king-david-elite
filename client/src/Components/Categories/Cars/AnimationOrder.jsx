@@ -31,7 +31,7 @@ import about9 from "./Img/about9.jpg";
 
 export const graduallyAppear = {
   hidden: {
-    opacity: 0,
+    opacity: 0.3,
   },
   visible: {
     opacity: 1,
@@ -46,7 +46,7 @@ export const graduallyDisAppear = {
     opacity: 1,
   },
   visible: {
-    opacity: 0,
+    opacity: 0.3,
     transition: {
       duration: 0.5,
     },

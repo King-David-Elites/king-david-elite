@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Fragment } from "react";
 import MainButton from "../buttons/MainButton";
-import { Background, HeroSection, Text } from "../Cars/Cars.Style";
+import { Background, HeroSection, Text } from "../Categories/Cars/Cars.Style";
 import Generic from "../ContactUs/Generic";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
@@ -19,7 +19,7 @@ import {
   graduallyAppear,
   graduallyDisAppear,
   AboutAnimation,
-} from "../Cars/AnimationOrder";
+} from "../Categories/Cars/AnimationOrder";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const About = () => {

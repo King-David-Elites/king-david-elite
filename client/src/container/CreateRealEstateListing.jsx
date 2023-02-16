@@ -22,9 +22,7 @@ const CreateRealEstateListing = () => {
   const [loaded, setLoaded] = useState("");
   const [previous, setPrevious] = useState("");
   const [allImages, setAllImages] = useState([]);
-  const [allVideos, setAllVideos] = useState([]);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [modal, setModal] = useState(false);
+  const [allVideos, setAllVideos] = useState([]);  
   const [loader, setLoader] = useState(false);
   const [loadImage, setLoadImage] = useState(false);
 

@@ -1,10 +1,10 @@
 import React from "react"
-import transverse from '../Cars/Image/transverse.jfif'
+import transverse from '../Categories/Cars/Image/transverse.jfif'
 import {    
     Text,
     LuxuryLabel,
     LuxuryBody
-} from '../Cars/Cars.Style';
+} from '../Categories/Cars/Cars.Style';
 
 const Banner = ({category}) =>{
     return(

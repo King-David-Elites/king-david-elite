@@ -14,17 +14,17 @@ import {
   FilterBox,
 } from "../Cars/Cars.Style";
 import { SearchSection, SearchC } from "./RealEstate.Style";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Navbar/Navbar";
 import { EstateProperties, PropertyType } from "./RealEstate.Style";
 import { useState } from "react";
-import Banner from "../Banner/Banner";
-import MainButton from "../buttons/MainButton";
-import Footer from "../Footer/Footer";
+import Banner from "../../Banner/Banner";
+import MainButton from "../../buttons/MainButton";
+import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import Listing from "../Listing/Listing";
-import { GridContainer } from "../Listing/Listing.styled";
+import Listing from "../../Listing/Listing";
+import { GridContainer } from "../../Listing/Listing.styled";
 import { EstateAnimation, graduallyAppear, graduallyDisAppear } from "../Cars/AnimationOrder";
-import useContextAPI from "../ContextAPI/ContextAPI";
+import useContextAPI from "../../ContextAPI/ContextAPI";
 import { motion } from "framer-motion";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);

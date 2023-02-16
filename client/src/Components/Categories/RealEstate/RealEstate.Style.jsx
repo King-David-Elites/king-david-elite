@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import theme from "../../application/utils/Theme";
+import theme from "../../../application/utils/Theme";
 
 export const EstateProperties = styled.div`
     display:flex;
@@ -54,24 +54,16 @@ export const SearchC = styled(SearchSection)`
 
 export const EachBuildingContainer = styled.div`    
     .upper{
+        width:100%;
         display:flex;
         align-items:center;
-        background: rgba(20, 18, 0, 0.05);
+        background: rgba(20, 18, 0, 0.05);        
         backdrop-filter: blur(20px);
-        padding: 16px 0px;
-        justify-content: center;
+        padding: 1em 1em;
+        justify-content: space-between;
         font-style: normal;
         font-weight: 600;
-        font-size: 18px;  
-        white-space  : nowrap;
-        gap:30vw;
-        
-        @media (min-width: ${theme.breakPoint['tablet']}) {
-            padding: 16px 64px;
-            font-weight: 300;
-            font-size: 14px; 
-            justify-content   :start ;
-        }
+        font-size: 18px;                  
     }
 
     .locationIcon{
@@ -130,20 +122,36 @@ export const EachBuildingContainer = styled.div`
     }
 
     .imageGallery{
-        width:100%;
+        width:100%;        
         display:flex;
         flex-wrap:wrap;
-        justify-content:center;
-        align-items:center;                
-        // display: grid;
-        // grid-template-columns: 1fr 1fr;        
-        gap: 7px;
-        padding: 4px 0px;
+        justify-content:flex-start;
+        align-items:center;                      
+        gap: 2em;
+        padding: 2em 2em;       
+        flex-wrap:wrap;
+    }
 
-        @media (min-width: ${theme.breakPoint['tablet']}) {
-            gap: 5px;
-            padding: 16px 30px;
-        }  
+    .imageGallery > .image{        
+        flex: 0 1 8em;
+        height: 10em;
+        box-shadow:0px 4px 8px rgba(0,0,0,0.4);
+        border-radius: 10px;
+        cursor:pointer;
+    }
+
+    .imageGallery > .loadingImages{
+        flex: 0 1 8em;
+        height: 10em;
+        box-shadow:0px 4px 8px rgba(0,0,0,0.4);
+        border-radius: 10px;
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%)
+    }
+
+    .imageGallery > .image img{
+        width:100%;
+        height:100%;
+        border-radius: 10px;
     }
 
     .imgCont{
@@ -162,7 +170,7 @@ export const EachBuildingContainer = styled.div`
         object-fit: cover;
     }
 
-    .image{ 
+    /* .image{ 
         width  : 100%;
         height: 100px; 
         
@@ -176,7 +184,7 @@ export const EachBuildingContainer = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
+    } */
 
     .imageFlex{
         display: flex;

@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { FaCheckCircle, FaFacebook, FaIcons, FaInstagram, FaPen } from "react-icons/fa";
 import ProfileList from "../../container/ProfileList";
 import ProfileStat from "../../container/ProfileStat";
+import ProfileImage from "./ProfileImage";
 import Verification from "../Verification/Verification";
 import { Bio, Details, Header, Switch, Update, Address, UsersListings } from "./Styled";
 import Account from "../Account/Account";
@@ -18,6 +19,7 @@ import { setConfig } from "../../infrastructure/api/user/userRequest";
 
 const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
+  const [showImage, setShowImage] = useState(false);
   const [data, setData] = useState({})
   const navigate = useNavigate()
   const [file, setFile] = useState(data.cover);
@@ -30,7 +32,6 @@ const LoggedUser = ({ logged }) => {
     .then(resp => {setListings(resp.data)})
     .catch(err => console.log(err))
   }
-
 
   if(id == user._id){
     navigate("/profile")
@@ -83,6 +84,7 @@ const LoggedUser = ({ logged }) => {
 
   return (
     <Fragment>
+      {showImage && <ProfileImage data={data} id={id} setShowImage={setShowImage}/>}
       <Return transparent={true}/>
       <Header className="cursor-pointer" onClick={() => navigate('/profile/viewImage')}>
         <img
@@ -93,7 +95,9 @@ const LoggedUser = ({ logged }) => {
       </Header>
 
       <Details>
-        <div className="profile">
+        <div className="profile" onClick={()=>{
+          setShowImage(true);
+        }}>
           <img
             src={data.profilePicture}
             alt=""

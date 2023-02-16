@@ -17,9 +17,9 @@ import {
   Position,
   Reaction,
 } from "./Cars.Style";
-import Navbar from "../Navbar/Navbar";
-import MainButton from "../buttons/MainButton";
-import Banner from "../Banner/Banner";
+import Navbar from "../../Navbar/Navbar";
+import MainButton from "../../buttons/MainButton";
+import Banner from "../../Banner/Banner";
 import {
   Search,
   Adjustments,
@@ -28,13 +28,13 @@ import {
   HeartOutline,
   Heart,
 } from "heroicons-react";
-import Footer from "../Footer/Footer";
+import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useEffect } from "react";
-import useContextAPI from "../ContextAPI/ContextAPI";
-import { GridContainer } from "../Listing/Listing.styled";
-import Listing from "../Listing/Listing";
+import useContextAPI from "../../ContextAPI/ContextAPI";
+import { GridContainer } from "../../Listing/Listing.styled";
+import Listing from "../../Listing/Listing";
 import { CarAnimation, graduallyAppear, graduallyDisAppear } from "./AnimationOrder";
 import { motion } from "framer-motion";
 

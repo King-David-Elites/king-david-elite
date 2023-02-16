@@ -1,6 +1,6 @@
 import React from 'react'
 import MainButton from '../buttons/MainButton'
-import { Text } from '../Cars/Cars.Style'
+import { Text } from '../Categories/Cars/Cars.Style'
 import { GenericContactUsContainer } from '../Globals/Styled'
 
 const Generic = () => {

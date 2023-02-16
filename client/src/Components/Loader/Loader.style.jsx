@@ -5,7 +5,7 @@ export const Container = styled.div`
    color: #d3cece;
    position: fixed;
    width:100%;
-   z-index: 100;
+   z-index: 10000;
    height: 100vh;
    top: 0;
    left: 0;

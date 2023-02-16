@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import globalApi from "../api";
+import Loader from "../Components/Loader/Loader";
+
 
 const CreateCarListing = () => {
   const [valid, setValid] = useState(false);
@@ -16,6 +18,7 @@ const CreateCarListing = () => {
   const [allImages, setAllImages] = useState([]);
   const [allVideos, setAllVideos] = useState([]);
   const [size, setSize] = useState(0);
+  const [loader, setLoader] = useState(false);
 
   const navigate = useNavigate();
 
@@ -47,7 +50,7 @@ const CreateCarListing = () => {
 
   useEffect(() => {
     userListings["images"] = images;
-    userListings["videos"] = videos;    
+    userListings["videos"] = videos;
     if (
       userListings["title"] &&
       userListings["description"] &&
@@ -115,7 +118,7 @@ const CreateCarListing = () => {
   //   );
   // };
 
-  const handleChange = (e) => {
+  const handleChange = (e) => {    
     let name = e.target.name;
     let value = e.target.value;
     setUserListings({ ...userListings, [name]: value });
@@ -126,6 +129,7 @@ const CreateCarListing = () => {
     await axios
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
+        setLoader(false);
         console.log(resp.data);
         navigate("/profile");
       })
@@ -135,11 +139,14 @@ const CreateCarListing = () => {
   };
 
   const handleSubmit = async () => {
+    console.log("fetching data")
+    setLoader(true);
     postUserListings(userListings);
   };
 
   return (
     <>
+      {loader && <Loader />}
       <div className="form_Content">
         <div className="section">
           <p>Brand Name</p>
@@ -265,7 +272,7 @@ const CreateCarListing = () => {
           )}
           <div className="base">PNG, JPEG, GIF. Not more than 50mb.</div>
           <div className="base">
-            mark and upload more than one high-quality images (At least 4)
+            mark and upload more than one high-quality images (At least 4).
             Listings with low quality images may be rejected.
           </div>
         </div>
@@ -346,7 +353,12 @@ const CreateCarListing = () => {
             List
           </div>
         </div>
-        {error && <p className="error">Please fill in the required fields. Selected Images must be more than 4 (four)</p>}        
+        {error && (
+          <p className="error">
+            Please fill in the required fields. Selected Images must be more
+            than 4 (four)
+          </p>
+        )}
       </div>
     </>
   );
