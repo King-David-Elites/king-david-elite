@@ -272,7 +272,7 @@ const CreateCarListing = () => {
           )}
           <div className="base">PNG, JPEG, GIF. Not more than 50mb.</div>
           <div className="base">
-            mark and upload more than one high-quality images (At least 4)
+            mark and upload more than one high-quality images (At least 4).
             Listings with low quality images may be rejected.
           </div>
         </div>
