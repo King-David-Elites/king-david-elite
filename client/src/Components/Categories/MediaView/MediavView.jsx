@@ -17,12 +17,14 @@ const EachCarPhotos = () => {
   const { id } = useParams();
   const [property, setProperty] = useState({});
   const [active, setActive] = useState(0);
+  const [loading, setLoading] = useState(true);
   const getAList = useCallback(() => {
     console.log("fetching");
     axios
       .get(`${globalApi}/listings/each/${id}`)
       .then((resp) => {
         setProperty(resp.data);
+        setLoading(false);
         console.log(resp.data);
       })
       .catch((err) => console.error(err));
@@ -63,39 +65,62 @@ const EachCarPhotos = () => {
                 setActive(1);
               }}
             >
-              Videos
+              Video
             </MainButton>
           </div>
         </div>
         {active == 0 && (
           <div className="imageGallery">
-            {property.images.map((image) => {
-              return (
-                <>
-                  <div className="image">
-                    <img src={image} alt="media photos" />
-                  </div>
-                </>
-              );
-            })}
+            {loading ? (
+              <>
+                <div className="loadingImages" />
+                <div className="loadingImages" />
+                <div className="loadingImages" />
+                <div className="loadingImages" />                
+                <div className="loadingImages" />
+                <div className="loadingImages" />
+                <div className="loadingImages" />
+                <div className="loadingImages" />  
+              </>
+            ) : (
+              <>
+                {property.images.map((image) => {
+                  return (
+                    <>
+                      <div className="image">
+                        <img src={image} alt="media photos" />
+                      </div>
+                    </>
+                  );
+                })}
+              </>
+            )}
           </div>
         )}
         {active == 1 && (
           <div className="imageGallery">
-            {property.videos.map((video) => {
-              return (
-                <>
-                  <div>
-                    <div className="image">
-                      <video width="300px" height="300px" controls>
-                        <source src={video} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  </div>
-                </>
-              );
-            })}
+            {loading ? (
+              <>
+                <div className="loadingImages" />                
+              </>
+            ) : (
+              <>
+                {property.videos.map((video) => {
+                  return (
+                    <>
+                      <div>
+                        <div className="image">
+                          <video width="300px" height="300px" controls>
+                            <source src={video} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
+              </>
+            )}
           </div>
         )}
       </EachBuildingContainer>

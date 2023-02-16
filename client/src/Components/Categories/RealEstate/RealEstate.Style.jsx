@@ -128,15 +128,24 @@ export const EachBuildingContainer = styled.div`
         justify-content:flex-start;
         align-items:center;                      
         gap: 2em;
-        padding: 2em 3em;       
+        padding: 2em 2em;       
         flex-wrap:wrap;
     }
 
     .imageGallery > .image{        
-        flex: 0 1 20em;
-        height: 15em;
-        border:1px solid gray;
+        flex: 0 1 8em;
+        height: auto;
+        box-shadow:0px 4px 8px rgba(0,0,0,0.4);
         border-radius: 10px;
+        cursor:pointer;
+    }
+
+    .imageGallery > .loadingImages{
+        flex: 0 1 8em;
+        height: 15em;
+        box-shadow:0px 4px 8px rgba(0,0,0,0.4);
+        border-radius: 10px;
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%)
     }
 
     .imageGallery > .image img{

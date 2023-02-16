@@ -99,9 +99,9 @@ const EachCars = ({ active }) => {
           <p>
             Listed <TimeAgo datetime={property.createdAt} />
           </p>
-          <div className="viewMedia">
-            <Link to={`/cars/${id}/media`}>View Images & Videos</Link>
-          </div>
+          <Link to={`/cars/${id}/media`}>
+            <div className="viewMedia">View Images & Videos</div>
+          </Link>
         </div>
 
         <div className="amenities">

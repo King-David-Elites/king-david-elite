@@ -91,10 +91,10 @@ const EachRealEstate = ({ active }) => {
           </div>
           <p>
             Listed <TimeAgo datetime={property.createdAt} />
-          </p>
-          <div className="viewMedia">
-            <Link to={`/real-estate/${id}/media`}>View Images & Videos</Link>
-          </div>          
+          </p>               
+          <Link to={`/real-estate/${id}/media`}>
+            <div className="viewMedia">View Images & Videos</div>
+          </Link>    
         </div>
 
         <div className="amenities">
