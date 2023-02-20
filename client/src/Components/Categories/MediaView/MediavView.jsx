@@ -9,6 +9,7 @@ import globalApi from "../../../api";
 import Banner from "../../Banner/Banner";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
+import ImageDisplay from "./ImageDisplay";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const MediaView = () => {
@@ -18,6 +19,7 @@ const MediaView = () => {
   const [property, setProperty] = useState({});
   const [active, setActive] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [displayImg, setDisplayImg] = useState(false);
   const getAList = useCallback(() => {
     console.log("fetching");
     axios
@@ -43,6 +45,7 @@ const MediaView = () => {
   return (
     <>
       <EachBuildingContainer ref={top}>
+        {displayImg && <ImageDisplay property={property} setDisplayImg={setDisplayImg}/>}        
         <div className="upper">
           <div
             className="upperContent"
@@ -78,16 +81,16 @@ const MediaView = () => {
                 <div className="loadingImages" />
                 <div className="loadingImages" />                
                 <div className="loadingImages" />
-                <div className="loadingImages" />
-                <div className="loadingImages" />
-                <div className="loadingImages" />  
+                <div className="loadingImages" />              
               </>
             ) : (
               <>
                 {property.images.map((image) => {
                   return (
                     <>
-                      <div className="image">
+                      <div className="image" onClick={()=>{
+                          setDisplayImg(true);
+                      }}>
                         <img src={image} alt="media photos" />
                       </div>
                     </>
