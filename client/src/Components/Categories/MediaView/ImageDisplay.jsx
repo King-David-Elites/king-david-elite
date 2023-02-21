@@ -3,7 +3,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { X } from "heroicons-react";
 
-const ImageDisplay = ({ property, setDisplayImg }) => {
+const ImageDisplay = ({ property, setDisplayImg, currentIndex }) => {
+    console.log(currentIndex)
   return (
     <>
       <div className="ImgContainer">
@@ -17,11 +18,11 @@ const ImageDisplay = ({ property, setDisplayImg }) => {
             <X />
           </div>
         </div>
-        <Carousel>
-          {property.images.map((image) => {
+        <Carousel showThumbs={false} showStatus={false} selectedItem={property.images[0]}>
+          {property.images.map((image,i) => {
             return (
               <>
-                <div className="contImg">
+                <div key={i} className="contImg">
                   <img src={image} alt="display-image" />
                 </div>
               </>

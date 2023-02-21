@@ -20,6 +20,7 @@ const MediaView = () => {
   const [active, setActive] = useState(0);
   const [loading, setLoading] = useState(true);
   const [displayImg, setDisplayImg] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const getAList = useCallback(() => {
     console.log("fetching");
     axios
@@ -45,7 +46,9 @@ const MediaView = () => {
   return (
     <>
       <EachBuildingContainer ref={top}>
-        {displayImg && <ImageDisplay property={property} setDisplayImg={setDisplayImg}/>}        
+        {displayImg && (
+          <ImageDisplay property={property} setDisplayImg={setDisplayImg} currentIndex={currentIndex}/>
+        )}
         <div className="upper">
           <div
             className="upperContent"
@@ -79,18 +82,23 @@ const MediaView = () => {
                 <div className="loadingImages" />
                 <div className="loadingImages" />
                 <div className="loadingImages" />
-                <div className="loadingImages" />                
                 <div className="loadingImages" />
-                <div className="loadingImages" />              
+                <div className="loadingImages" />
+                <div className="loadingImages" />
               </>
             ) : (
               <>
-                {property.images.map((image) => {
+                {property.images.map((image, i) => {
                   return (
                     <>
-                      <div className="image" onClick={()=>{
+                      <div
+                        key={i}
+                        className="image"
+                        onClick={() => {
+                          setCurrentIndex(i);                          
                           setDisplayImg(true);
-                      }}>
+                        }}
+                      >
                         <img src={image} alt="media photos" />
                       </div>
                     </>
@@ -104,7 +112,7 @@ const MediaView = () => {
           <div className="imageGallery">
             {loading ? (
               <>
-                <div className="loadingImages" />                
+                <div className="loadingImages" />
               </>
             ) : (
               <>
