@@ -8,8 +8,9 @@ import { useState } from "react";
 import Loader from "../Loader/Loader";
 import services from "../../ioc/services"
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import ForgottenPasswordPage from "./ForgottenPasswordPage";
 
-const LoginPage = () => {
+const LoginPage = ({ stage, setStage }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -93,9 +94,9 @@ const LoginPage = () => {
   return (
     <Container>
       {loader && <Loader />}
-
       <Page>
         <h1>King David Elite</h1>
+
         <p className="back">welcome back</p>
         <form onSubmit={(e) => login(e)}>
           <input
@@ -117,12 +118,14 @@ const LoginPage = () => {
           }
         </form>
         <p className="forgot">
-          Forgot password? <span className="red">Click here</span>
+          Forgot password?
+          <Link to="/forgot-password">
+            <span className="red">Click here</span>
+          </Link>
         </p>
         <button className="login" onClick={login}>
           login
         </button>
-
         <p className="or">- OR -</p>
         <button className="google">log in with Google</button>
         <p className="account">
@@ -132,7 +135,7 @@ const LoginPage = () => {
           </Link>
         </p>
       </Page>
-    </Container>
+    </Container >
   );
 };
 

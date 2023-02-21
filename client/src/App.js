@@ -49,6 +49,7 @@ import useContextAPI from './Components/ContextAPI/ContextAPI';
 import EachRealEstate from './Components/Categories/RealEstate/EachRealEstate';
 import {AnimatePresence} from 'framer-motion';
 import MediaView from './Components/Categories/MediaView/MediavView';
+import ForgottenPasswordPage from './Components/Page/ForgottenPasswordPage';
 
 function App() {
   const queryClient = new QueryClient();
@@ -71,6 +72,7 @@ function App() {
           <Route path='/loader' element={<Loader />} />
           <Route path='/email' element={<EmailPage mainData={mainData}/>} />
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/forgot-password' element={<ForgottenPasswordPage />} />
           <Route path='/' element={<HomePage />} />
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/login' element={<LoginPage />} />

@@ -39,7 +39,7 @@ const useContextAPI = () => {
   useEffect(() => {
     email();
     getListings();  
-    getCarsListings();  
+    getCarsListings(); 
   }, []);
 
   return {

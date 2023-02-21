@@ -14,18 +14,21 @@ import {
   FilterBox,
 } from "../Cars/Cars.Style";
 import { SearchSection, SearchC } from "./RealEstate.Style";
+import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
 import { EstateProperties, PropertyType } from "./RealEstate.Style";
 import { useState } from "react";
 import Banner from "../../Banner/Banner";
 import MainButton from "../../buttons/MainButton";
 import Footer from "../../Footer/Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Listing from "../../Listing/Listing";
 import { GridContainer } from "../../Listing/Listing.styled";
 import { EstateAnimation, graduallyAppear, graduallyDisAppear } from "../Cars/AnimationOrder";
 import useContextAPI from "../../ContextAPI/ContextAPI";
 import { motion } from "framer-motion";
+import { setConfig } from "../../../infrastructure/api/user/userRequest";
+import globalApi from "../../../api";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -40,6 +43,17 @@ const RealEstateListing = () => {
   const [estateId, setEstateId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear);
   const [filter, setFilter] = useState(false);
+  const [title, setTitle] = useState('');
+
+  const searchListingByTitle = () => {
+    axios.get(`${globalApi}/listings/user-listing?id=${title}`, setConfig())
+      .then(resp => { console.log(resp) })
+      .catch(err => console.log(err))
+  }
+
+  // useEffect(()=>{
+  //   searchListingByTitle()
+  // }, [globalApi])
 
   useEffect(() => {
     var timer1;
@@ -86,20 +100,26 @@ const RealEstateListing = () => {
           <Text fontSize="2rem">Luxury Real Estate</Text>
           <SearchSection>
             <SearchC>
-              <Input placeholder="search desired locations" />
-              <Search width="30px" />
+              <Input placeholder="search desired locations" onChange={(e) => setTitle(e.target.value)} />
+              <Search width="30px" onClick={(e) => searchListingByTitle(title)} />
             </SearchC>
-            <FilterBox onClick={() => setFilter(!filter)} className="flex flex-col bg-white px-2 py-5 border-r-[1px] items-center border-[#000000] hover:cursor-pointer">
-              <MainButton className='flex' width="60px">Filter</MainButton>
-              <Adjustments width="30px" />
-            </FilterBox>
-            {
-              filter == true && <ul className='relative top-1 shadow-md shadow-gray-300 rounded-md overflow-hidden bg-white cursor-pointer w-[30%] max-h-[180px] overflow-y-auto md:w-[20%]'>
-                <p>Testing</p>
-                <p>Well</p>
-                <p>Okay</p>
-              </ul>
-            }
+            <div className="flex flex-col justify-center items-center">
+              <FilterBox onClick={() => setFilter(!filter)}>
+                <MainButton width="60px">Filter</MainButton>
+                <Adjustments width="30px" />
+              </FilterBox>
+              {
+                filter == true &&
+                <ul className='mt-[2px] shadow-md shadow-gray-300 rounded-md p-1 md:p-2 overflow-hidden bg-white cursor-pointer max-h-[180px] overflow-y-auto w-[100%]'>
+                  <p>No of Bathroom</p>
+                  <hr />
+                  <p>No of toilets</p>
+                  <hr />
+                  <p>Most recent</p>
+                </ul>
+              }
+            </div>
+
           </SearchSection>
           <Text>One search is all it takes</Text>
         </HeroSection>
