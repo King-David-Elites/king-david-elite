@@ -8,7 +8,6 @@ import OTPPage from "./OTPPage";
 
 const ForgottenPasswordPage = () => {
     const emailRef = useRef();
-    const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
     const [state, setState] = useState(0);
 
