@@ -37,17 +37,8 @@ const ForgottenPasswordPage = () => {
                         </form>
 
                         <button className="login" onClick={() => setState(1)}>
-                            Continue with Email
+                            Continue
                         </button>
-
-                        <p className="or">- OR -</p>
-                        <button className="google">log in with Google</button>
-                        <p className="account">
-                            Don't have an account?{" "}
-                            <Link to="/signup">
-                                <span>Sign up</span>
-                            </Link>
-                        </p>
                     </Page>
 
                 </Container>
