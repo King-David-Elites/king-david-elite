@@ -28,12 +28,13 @@ export const DisplayImage = styled.div`
             display:flex;
             justify-content: center;
             align-items: center;
-            background: white;
+            background: black;
             width:1.5em;
             height:1.5em;
             border-radius: 1em;
             top: 2em;
             right: 2em;
+            color:white;
             cursor:pointer;
         }
 
