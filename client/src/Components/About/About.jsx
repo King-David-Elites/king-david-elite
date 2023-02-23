@@ -75,7 +75,7 @@ const About = () => {
         })}        
         <HeroSection>
           <Text fontSize="96px">About</Text>
-          <Text>Home/About</Text>
+          <Text>Discover a world of unrivaled luxury where every offer and purchase is an experience to savor.</Text>
         </HeroSection>
       </Background>
 
