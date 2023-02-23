@@ -530,5 +530,9 @@ export const LastContainer = styled.div`
         padding: 7px 50px;
         border-radius: 6px;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 `
