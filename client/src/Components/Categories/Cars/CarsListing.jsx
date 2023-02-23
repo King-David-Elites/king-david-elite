@@ -129,21 +129,9 @@ const CarsListing = ({ mainData }) => {
       </Body>
       <Banner category="Cars" />
       <Text color="black" fontSize="0.8rem" margin="2em">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;King
-        David Elites Luxury Cars Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Ratione recusandae numquam, nam cum repudiandae hic
-        omnis, nostrum, quae eius provident reiciendis cumque nemo veritatis
-        quidem accusamus molestiae doloribus? Nulla, error! Quis similique
-        corrupti porro reiciendis dolore ipsa nobis mollitia explicabo,
-        voluptatibus quibusdam illum perferendis libero est iusto ab, maxime
-        quam natus nihil qui itaque harum? Magni harum itaque labore! Optio.
-        Quasi molestias consequatur earum enim dolorem rem excepturi illo eius
-        ut sint laborum quibusdam, accusamus ullam, voluptatum totam tempora
-        eum! Optio ipsum maiores saepe officiis delectus minus. Alias, voluptas
-        fuga? Doloremque quos eum libero deleniti ducimus suscipit mollitia
-        consequatur neque perspiciatis, autem ipsa deserunt facilis numquam
-        veritatis nulla quidem esse officiis inventore rerum adipisci, velit
-        ipsam dolorum saepe? Exercitationem, esse!
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Discover the epitome of luxury automobile with King David Elites. Our Platform offers a collection of exclusive high-end vehicles, including sleek sport cars and powerful SUVs, taliored to the society's elite. Our easy and secure payment system allows for direct transfer to verified vendors or though our 1% transaction fee escrow account, which comes with professional check-ups and luxurious inspection services by our expert technicians. Make a lasting statement whereveryou go with our unparalleled selection. At King David Elites, our standard of class is unmatched, and our dedication to luxury is unparalleled. 
+
       </Text>
       <Footer />
     </>
