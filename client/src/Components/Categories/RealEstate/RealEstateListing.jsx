@@ -70,7 +70,7 @@ const RealEstateListing = () => {
     }
   ]
 
-  const searchListingByLocation = () => {
+  const searchListing = () => {
     setQuery(query);
     setTitle(title);
     setLoader(true);
@@ -78,7 +78,6 @@ const RealEstateListing = () => {
       .then(resp => {
         setList(resp.data)
         setLoader(false)
-        console.log(resp)
       })
       .catch(err => console.log(err))
   }
@@ -129,7 +128,7 @@ const RealEstateListing = () => {
           <SearchSection>
             <SearchC>
               <Input placeholder="search desired locations" onChange={(e) => setTitle(e.target.value)} />
-              <Search width="30px" onClick={(e) => searchListingByLocation(title)} className="cursor-pointer" />
+              <Search width="30px" onClick={(e) => searchListing(title)} className="cursor-pointer" />
             </SearchC>
             <div className="flex flex-col justify-center items-center">
               <FilterBox onClick={() => setFilter(!filter)}>
@@ -168,16 +167,18 @@ const RealEstateListing = () => {
         }
         <GridContainer>
           {
-            !loader && title && list.length > 0 && list.map((items) => {
+            (!loader && title && list.length > 0) && list.map((items) => {
               return (
                 // <RealEstate key={items._id} {...items} />
                 <Listing key={items._id} list={items} />
               );
             })
           }
-
           {
-            !loader &&  !title && listing.length > 0 && listing.map((items) => {
+            !loader && title && list.length == 0 && <p className="font-bold text-base md:text-xl">No list found</p>
+          }
+          {
+            !loader && !title && listing.length > 0 && listing.map((items) => {
               return (
                 // <RealEstate key={items._id} {...items} />
                 <Listing key={items._id} list={items} />
