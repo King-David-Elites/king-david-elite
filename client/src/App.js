@@ -50,6 +50,7 @@ import EachRealEstate from './Components/Categories/RealEstate/EachRealEstate';
 import {AnimatePresence} from 'framer-motion';
 import MediaView from './Components/Categories/MediaView/MediavView';
 import ForgottenPasswordPage from './Components/Page/ForgottenPasswordPage';
+import Terms from './Components/TermsPage/Terms';
 
 function App() {
   const queryClient = new QueryClient();
@@ -62,6 +63,7 @@ function App() {
       <AnimatePresence exitBeforeEnter>
         {/* <Navbar/> */}
         <Routes>
+          <Route path='/terms' element={<Terms/>}/>
           <Route path='/register' element = {<Register/>}/>
           <Route path='/' element={<HomePage />} />
 
