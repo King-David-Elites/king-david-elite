@@ -32,17 +32,14 @@ export const Option = styled.option`
 const DropdownInput = (props) => {
     const { label, name, type, options, ...rest } = props;
     return (
-        
         <InputLayout label={label} name={name} >
             <Field name={name} >
                 {({ field }) =>
-
                     <Dropdown {...field} {...rest} >
                         {options.map((option) => (
-                            <Option key={option.value}  value={option.value}> {option.key}</Option>
+                            <Option key={option.value} value={option.value}> {option.key}</Option>
                         ))}
                     </Dropdown>
-
                 }
             </Field>
             <ErrorMessage name={name} component={TextError} />

@@ -32,6 +32,8 @@ import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
 import Loader from "../../Loader/Loader";
 import theme from "../../../application/utils/Theme";
+import { ImCross } from "react-icons/im";
+import DropdownInput from "../../inputs/DropdownInput";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -50,6 +52,11 @@ const RealEstateListing = () => {
   const [title, setTitle] = useState('');
   const [list, setList] = useState([]);
   const [query, setQuery] = useState("title");
+  const [activePage, setActivePage] = useState(false);
+
+  const showPage = () => {
+    setActivePage(!activePage);
+  }
 
   const options = [
     {
@@ -68,6 +75,63 @@ const RealEstateListing = () => {
       id: 3,
       title: "location"
     }
+  ]
+
+  const views = [
+    {
+      Id: 0,
+      title: "Garden"
+    },
+    {
+      id: 1,
+      title: "Porch"
+    },
+    {
+      id: 2,
+      title: "Swimming Pool"
+    },
+    {
+      id: 3,
+      title: "Balcony"
+    },
+    {
+      id: 4,
+      title: "Terrace"
+    },
+    {
+      id: 5,
+      title: "Balcony"
+    }
+  ]
+
+  const noOfBedrooms = [
+    {
+      Id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+    {
+      id: 5,
+    },
+    {
+      id: 6,
+    },
+    {
+      id: 7,
+    },
+    {
+      id: 8,
+    },
+    {
+      id: 9,
+    },
   ]
 
   const searchListing = () => {
@@ -108,6 +172,53 @@ const RealEstateListing = () => {
   return (
     <>
       <Navbar active={1} />
+      <div className={activePage ? 'p-2 fixed w-[100vw] top-0 bottom-0 h-[100%] bg-white transition-[1s] z-10' : 'hidden'}>
+        <div className='closed p-4'>
+          <div className="relative w-full lg:max-w-sm flex flex-col gap-6">
+            <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
+              <option>Location</option>
+              <option>Laravel 9 with React</option>
+              <option>React with Tailwind CSS</option>
+              <option>React With Headless UI</option>
+            </select>
+
+            <h3 className="font-bold">Views</h3>
+            <div className="flex gap-3 flex-wrap">
+              {
+                views.map((v, i) => {
+                  return (
+                    <span className="bg-gray-300 font-medium text-[15px] whitespace-nowrap h-full flex justify-center rounded-3xl p-3" key={i}>{v.title}</span>
+                  )
+                })
+              }
+            </div>
+
+            <h3 className="font-bold">Bedrooms</h3>
+            <div className="flex gap-3 flex-wrap">
+              {
+                noOfBedrooms.map((n, i) => {
+                  return (
+                    <span className="bg-gray-300 font-medium text-[15px] whitespace-nowrap h-full flex justify-center rounded-full w-[50px] p-3" key={i}>{i++}</span>
+                  )
+                })
+              }
+            </div>
+
+            <h3 className="font-bold">Bathrooms</h3>
+            <div className="flex gap-3 flex-wrap">
+              {
+                noOfBedrooms.map((n, i) => {
+                  return (
+                    <span className="bg-gray-300 font-medium text-[15px] whitespace-nowrap h-full flex justify-center rounded-full w-[50px] p-3" key={i}>{i++}</span>
+                  )
+                })
+              }
+            </div>
+            <MainButton width='100%' padding='24px 12px'>Apply Filter</MainButton>
+          </div>
+          {/* <ImCross className='close' color='#000' onClick={showPage} /> */}
+        </div>
+      </div >
       <Background ref={top}>
         {EstateAnimation.map((item) => {
           if (item.id === estateId) {
@@ -125,7 +236,7 @@ const RealEstateListing = () => {
         })}
         <HeroSection>
           <Text fontSize="2rem">Luxury Real Estate</Text>
-          <SearchSection>
+          {/* <SearchSection>
             <SearchC>
               <Input placeholder="search desired locations" onChange={(e) => setTitle(e.target.value)} />
               <Search width="30px" onClick={(e) => searchListing(title)} className="cursor-pointer" />
@@ -152,10 +263,21 @@ const RealEstateListing = () => {
               }
             </div>
 
+          </SearchSection> */}
+          <SearchSection>
+            <SearchC>
+              <Input placeholder="search desired location" />
+              <Search width="30px" />
+            </SearchC>
+            <FilterBox>
+              <MainButton width="60px" onClick={showPage}>Filter</MainButton>
+              <Adjustments width="30px" />
+            </FilterBox>
           </SearchSection>
           <Text>One search is all it takes</Text>
         </HeroSection>
       </Background>
+
 
       <Body>
         <Text fontSize="1rem" fontWeight="700" color="black">
