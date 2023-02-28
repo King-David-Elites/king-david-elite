@@ -1,5 +1,6 @@
 import { Adjustments, BadgeCheck, Heart, HeartOutline, Search } from "heroicons-react";
 import React, { useRef, useEffect } from "react";
+import MultiRangeSlider from "multi-range-slider-react";
 import {
   Background,
   HeroSection,
@@ -53,6 +54,12 @@ const RealEstateListing = () => {
   const [list, setList] = useState([]);
   const [query, setQuery] = useState("title");
   const [activePage, setActivePage] = useState(false);
+  const [minValue, set_minValue] = useState(25);
+  const [maxValue, set_maxValue] = useState(75);
+  const handleInput = (e) => {
+    set_minValue(e.minValue);
+    set_maxValue(e.maxValue);
+  };
 
   const showPage = () => {
     setActivePage(!activePage);
@@ -175,12 +182,14 @@ const RealEstateListing = () => {
       <div className={activePage ? 'p-2 fixed w-[100vw] top-0 bottom-0 h-[100%] bg-white transition-[1s] z-10' : 'hidden'}>
         <div className='closed p-4'>
           <div className="relative w-full lg:max-w-sm flex flex-col gap-6">
-            <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
+            {/* <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
               <option>Location</option>
               <option>Laravel 9 with React</option>
               <option>React with Tailwind CSS</option>
               <option>React With Headless UI</option>
-            </select>
+            </select> */}
+            <h3 className="font-bold">Location</h3>
+            <input type="text" className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" />
 
             <h3 className="font-bold">Views</h3>
             <div className="flex gap-3 flex-wrap">
@@ -194,28 +203,36 @@ const RealEstateListing = () => {
             </div>
 
             <h3 className="font-bold">Bedrooms</h3>
-            <div className="flex gap-3 flex-wrap">
-              {
-                noOfBedrooms.map((n, i) => {
-                  return (
-                    <span className="bg-gray-300 font-medium text-[15px] whitespace-nowrap h-full flex justify-center rounded-full w-[50px] p-3" key={i}>{i++}</span>
-                  )
-                })
-              }
-            </div>
+            <div className="rounded-md"><input className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" type="number" min={0} /></div>
 
             <h3 className="font-bold">Bathrooms</h3>
-            <div className="flex gap-3 flex-wrap">
-              {
-                noOfBedrooms.map((n, i) => {
-                  return (
-                    <span className="bg-gray-300 font-medium text-[15px] whitespace-nowrap h-full flex justify-center rounded-full w-[50px] p-3" key={i}>{i++}</span>
-                  )
-                })
-              }
-            </div>
+            <div className="rounded-md"><input className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" type="number" min={0} /></div>
+
+
+            <h3 className="font-bold">Price</h3>
+            <MultiRangeSlider
+              min={0}
+              max={10000}
+              step={5}
+              minValue={minValue}
+              maxValue={maxValue}
+              onInput={(e) => {
+                handleInput(e);
+              }}
+              label={false}
+              ruler={false}
+              style={{ border: "none", boxShadow: "none", padding: "15px 10px" }}
+              barLeftColor={theme.color}
+              barInnerColor={theme.color}
+              barRightColor={theme.color}
+              thumbLeftColor="lime"
+              thumbRightColor="lime"
+            />
+
             <MainButton width='100%' padding='24px 12px'>Apply Filter</MainButton>
           </div>
+
+
           {/* <ImCross className='close' color='#000' onClick={showPage} /> */}
         </div>
       </div >
