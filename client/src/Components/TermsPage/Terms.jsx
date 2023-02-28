@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from './Terms.style'
 import kde from '../Navbar/Image/kde_whiteBg.png'
-import terms from '../Home/images/S1.jpg'
+
 
 export default function Terms() {
   return (
@@ -16,7 +16,7 @@ export default function Terms() {
       </div>
 
               <div className='cont'>
-                <h2>TERMS AND CONDITION</h2>
+                <h2>TERMS AND CONDITIONS</h2>
 
                 <p>
                     Welcome to King David Elites, the first luxury multivendor online marketplace that offers exclusive access to high-end real estate, automobiles and luxury services across the world. These terms and conditions govern your use of our marketplace, so we advice that you read them carefully before proceding.

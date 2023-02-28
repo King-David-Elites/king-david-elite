@@ -51,6 +51,7 @@ import {AnimatePresence} from 'framer-motion';
 import MediaView from './Components/Categories/MediaView/MediavView';
 import ForgottenPasswordPage from './Components/Page/ForgottenPasswordPage';
 import Terms from './Components/TermsPage/Terms';
+import Privacy from './Components/PrivacyPage/Privacy';
 
 function App() {
   const queryClient = new QueryClient();
@@ -64,6 +65,7 @@ function App() {
         {/* <Navbar/> */}
         <Routes>
           <Route path='/terms' element={<Terms/>}/>
+          <Route path='/privacy' element={<Privacy/>}/>
           <Route path='/register' element = {<Register/>}/>
           <Route path='/' element={<HomePage />} />
 
