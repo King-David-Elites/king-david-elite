@@ -17,6 +17,7 @@ import {
 import { SearchSection, SearchC } from "./RealEstate.Style";
 import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
+import '../../Navbar/Navbar.css'
 import { SpinnerCircular } from 'spinners-react';
 import { PropertyType } from "./RealEstate.Style";
 import { useState } from "react";
@@ -58,16 +59,23 @@ const RealEstateListing = () => {
   const [maxValue, set_maxValue] = useState(75);
   const [view, setView] = useState('Porch');
   const [stage, setStage] = useState(0);
+  const [activeNav, setActiveNav] = useState(false);
 
   const handleInput = (e) => {
     set_minValue(e.minValue);
     set_maxValue(e.maxValue);
-    setQuery("price");
   };
 
   const showPage = () => {
-    setStage(1);
-    setActivePage(!activePage);
+    if (window.innerWidth > 900) {
+      setStage(0);
+      setActiveNav(!activeNav);
+    } else {
+      setStage(1);
+      setActivePage(!activePage);
+      setActiveNav(activeNav);
+    }
+
   }
 
 
@@ -107,6 +115,8 @@ const RealEstateListing = () => {
       .catch(err => console.log(err))
   }
 
+
+
   useEffect(() => {
     var timer1;
     var timer2;
@@ -133,11 +143,11 @@ const RealEstateListing = () => {
   return (
     <>
       {
-        stage == 1 && <div className='p-2 fixed w-[100vw] top-0 bottom-0 h-[100%] bg-white transition-[1s] z-20'>
+        stage == 1 && <div className='p-2 w-[100vw] md:hidden top-0 bottom-0 h-[100%] bg-white transition-[1s] z-20'>
           <div className='p-4'>
             <div className="relative w-full lg:max-w-sm flex flex-col gap-6">
               <div className="h-[40px] flex items-center gap-4">
-                <BiArrowBack size={30} className="opacity-[0.5]" onClick={() => setStage(0)} />
+                <BiArrowBack size={30} className="opacity-[0.5] cursor-pointer" onClick={() => setStage(0)} />
                 <p className="font-bold text-[20px]">Filters</p>
               </div>
               {/* <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
@@ -157,7 +167,7 @@ const RealEstateListing = () => {
                 {
                   views.map((v, i) => {
                     return (
-                      <span className={`bg-gray-300 font-medium text-[15px] whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[10%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
+                      <span className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[10%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
                     )
                   })
                 }
@@ -173,14 +183,14 @@ const RealEstateListing = () => {
               <h3 className="font-bold">Price</h3>
               <MultiRangeSlider
                 min={0}
-                max={10000}
+                max={1000}
                 step={5}
                 minValue={minValue}
                 maxValue={maxValue}
                 onInput={(e) => {
                   handleInput(e);
                 }}
-                onChange={() => setTitle(maxValue - minValue)}
+                // onChange={() => setTitle(maxValue - minValue)}
                 label={false}
                 ruler={false}
                 style={{ border: "none", boxShadow: "none", padding: "15px 10px" }}
@@ -205,9 +215,86 @@ const RealEstateListing = () => {
           </div>
         </div >
       }
+
       {
         stage == 0 && <>
           <Navbar active={1} />
+          <nav className={activeNav ? 'navigation active overflow-y-auto top-0' : 'navigation hidden'}>
+            <ul>
+              <div className='closed'>
+
+                <div className='p-4'>
+                  <div className="relative w-full lg:max-w-sm flex flex-col gap-6">
+                    <div className="h-[40px] flex items-center gap-4">
+                      <BiArrowBack size={30} className="opacity-[0.5]" onClick={() => setActiveNav(!activeNav)} />
+                      <p className="font-bold text-[20px]">Filters</p>
+                    </div>
+                    {/* <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
+              <option>Location</option>
+              <option>Laravel 9 with React</option>
+              <option>React with Tailwind CSS</option>
+              <option>React With Headless UI</option>
+            </select> */}
+                    <h3 className="font-bold">Location</h3>
+                    <input type="text" className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" onClick={() => setQuery("location")} onChange={(e) => setTitle(e.target.value)} />
+
+                    <h3 className="font-bold">Title</h3>
+                    <input type="text" className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" onClick={() => setQuery("title")} onChange={(e) => setTitle(e.target.value)} />
+
+                    <h3 className="font-bold">Views</h3>
+                    <div className="flex gap-3 flex-wrap">
+                      {
+                        views.map((v, i) => {
+                          return (
+                            <span className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[10%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
+                          )
+                        })
+                      }
+                    </div>
+
+                    <h3 className="font-bold">Bedrooms</h3>
+                    <div className="rounded-md"><input className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" type="number" min={0} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBed")} /></div>
+
+                    <h3 className="font-bold">Bathrooms</h3>
+                    <div className="rounded-md"><input className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" type="number" min={0} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} /></div>
+
+
+                    <h3 className="font-bold">Price</h3>
+                    <MultiRangeSlider
+                      min={0}
+                      max={1000}
+                      step={5}
+                      minValue={minValue}
+                      maxValue={maxValue}
+                      onInput={(e) => {
+                        handleInput(e);
+                      }}
+                      // onChange={() => setTitle(maxValue - minValue)}
+                      label={false}
+                      ruler={false}
+                      style={{ border: "none", boxShadow: "none", padding: "15px 10px" }}
+                      barLeftColor={theme.backgroundColor}
+                      barInnerColor={theme.color}
+                      barRightColor={theme.backgroundColor}
+                      thumbLeftColor={theme.color}
+                      thumbRightColor={theme.color}
+                    />
+
+                    <div className="flex gap-5 w-full mb-5 items-center">
+                      <input type="number" className="border-2 p-2 w-[50%]" placeholder={minValue} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} />
+                      <span className="font-bold text-[15px]">-</span>
+                      <input type="number" className="border-2 p-2 w-[50%]" onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} placeholder={maxValue} />
+                    </div>
+
+                    <MainButton width='100%' padding='24px 12px' onClick={() => { searchListing(); }}>Apply Filter {
+                      loader && <SpinnerCircular color="white" className="mr-4" secondaryColor={theme.color} size={50} thickness={150} />
+                    }</MainButton>
+                  </div>
+
+                </div>
+              </div>
+            </ul>
+          </nav>
           <Background ref={top}>
             {EstateAnimation.map((item) => {
               if (item.id === estateId) {
