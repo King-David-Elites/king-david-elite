@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "multi-range-slider-react": "^2.0.2",
     "react-chartjs-2": "^5.2.0",
     "spinners-react": "^1.0.7"
   }

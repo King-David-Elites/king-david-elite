@@ -86,7 +86,35 @@ font-size: 14px;
 line-height: 21px;
 text-align: center;
 color: #000000;
+
 }
+
+.cont{
+    display:flex;
+    align-items: center;
+
+
+    .term{
+        height: 21px;
+        padding-right:4rem;
+        font-size:14px;
+
+    span{
+        color: #FFDF00;
+    }
+
+
+}
+.check{
+    width:15px;
+    margin-left:3em;
+    }
+}
+
+
+
+
+
 
 .red{
     color: #FA5936;
@@ -144,8 +172,7 @@ border-radius:6px;
 }
 
 .account{
-    margin-top:20px;
-    
+    margin-top:1em;
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
