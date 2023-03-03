@@ -1,14 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Upgrade } from "./UpgradeProfile.Style";
 import { ChevronLeft } from "heroicons-react";
 import { useNavigate } from "react-router-dom";
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
 const UpgradeProfile = () => {
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
+  const top = useRef(null);
+
+  useEffect(()=>{
+    scrollToRef(top)
+  },[])
   return (
     <>
-      <Upgrade>
+      <Upgrade ref={top}>
         <div className="bck">
           <div className="cont" onClick={() => navigate(-1)}>
             <ChevronLeft size="25px" />
@@ -105,7 +112,7 @@ const UpgradeProfile = () => {
         </div>
         <div className="base">
           your account will not be charged until you’re verified.{" "}
-          <span>T&Cs apply.</span>
+          <span onClick={() => navigate("/terms")}>T&Cs apply.</span>
         </div>
       </Upgrade>
     </>
