@@ -13,7 +13,6 @@ import { useGetUserDetails } from '../application/hooks/queryhooks'
 export default function ProfileStat() {
 
   const [user, setUser] = useState(useGetUserDetails())
-  
 
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -43,7 +42,7 @@ export default function ProfileStat() {
         <div className="info">
           <p className='top'>Page Views</p>
           <div className="value">
-            <h2>{user.pageViews.value}</h2><p>from {user.pageViews.users.length} users</p>
+            <h2>{user.pageViews.value}</h2><p>from {user.pageViews.users.length} users</p> 
           </div>
         </div>
 

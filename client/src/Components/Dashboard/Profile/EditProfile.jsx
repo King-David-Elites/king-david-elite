@@ -148,10 +148,8 @@ const EditProfile = ({ mainData }) => {
 
   return (
     <>
-    {
-      loader && <Loader />
-    }
-    <Return />
+      {loader && <Loader />}
+      <Return />
       <EditProfileContainer padding="12px 12px">
         <div className="content-text">
           <h3>Profile</h3>
@@ -212,7 +210,11 @@ const EditProfile = ({ mainData }) => {
             />
             <div className="btn-flex">
               <p>website url not available in your account</p>
-              <button className="upg-btn" type="submit">
+              <button
+                className="upg-btn"
+                type="submit"
+                onClick={() => navigate("/profile/upgrade")}
+              >
                 Upgrade
               </button>
             </div>
@@ -456,7 +458,9 @@ const EditProfile = ({ mainData }) => {
 
       <MidSection padding="3em">
         <p>This section is not available in your account</p>
-        <button type="submit">Upgrade</button>
+        <button type="submit" onClick={() => navigate("/profile/upgrade")}>
+          Upgrade
+        </button>
       </MidSection>
 
       <EditProfileContainer padding="12px 12px">

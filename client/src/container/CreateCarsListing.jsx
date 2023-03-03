@@ -19,6 +19,7 @@ const CreateCarListing = () => {
   const [allVideos, setAllVideos] = useState([]);
   const [size, setSize] = useState(0);
   const [loader, setLoader] = useState(false);
+  const [loadImage, setLoadImage] = useState(false);
 
   const navigate = useNavigate();
 
@@ -38,15 +39,16 @@ const CreateCarListing = () => {
   });
 
   useEffect(() => {
+    setLoadImage(loadImage);
     userListings["images"] = images;
     userListings["videos"] = videos;
-    if (allImages.length !== 0) {
+    if (allImages.length !== 0 && loadImage === true) {
       Load(allImages, "image", size);
     }
-    if (allVideos.length !== 0) {
+    if (allVideos.length !== 0 && loadImage === false) {
       Load(allVideos, "video", size);
     }
-  }, [loaded]);
+  }, [loaded, loadImage]);
 
   useEffect(() => {
     userListings["images"] = images;
@@ -61,6 +63,7 @@ const CreateCarListing = () => {
       userListings["colour"] &&
       userListings["images"].length >= 4
     ) {
+      console.log("filled")
       setValid(true);
       setError(false);
     } else {
@@ -138,8 +141,7 @@ const CreateCarListing = () => {
       });
   };
 
-  const handleSubmit = async () => {
-    console.log("fetching data")
+  const handleSubmit = async () => {    
     setLoader(true);
     postUserListings(userListings);
   };
@@ -225,6 +227,7 @@ const CreateCarListing = () => {
                       setLoaded(!loaded);
                     });
                     setAllImages(base64);
+                    setLoadImage(true);
                   }}
                 />
               </div>
@@ -291,6 +294,7 @@ const CreateCarListing = () => {
                     setSize(base64.file["size"]);
                     setLoaded(!loaded);
                     setAllVideos([base64]);
+                    setLoadImage(false);
                   }}
                 />
               </div>

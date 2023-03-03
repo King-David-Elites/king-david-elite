@@ -126,6 +126,13 @@ const SignUpPage = () => {
             >Password be up to 6 characters</p> : null
           }
         </form>
+
+        <div className="cont">
+          <input type="checkbox" className="check"/>
+          <p className="term">I have read and agreed to the <Link to="/terms"><span>Terms and Condition</span></Link></p>
+
+        </div>
+
         <p className="forgot">
           Forgot password? <span className="red">Click here</span>
         </p>

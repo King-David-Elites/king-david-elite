@@ -25,6 +25,7 @@ import Verification from './Components/Verification/Verification';
 import ProfileList from './container/ProfileList';
 import CreateListing from './container/CreateListing';
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
+import UpgradeProfile from './Components/Dashboard/Profile/UpgradeProfile';
 import ProfileStat from './container/ProfileStat';
 import Waitlist from './Components/Page/Waitlist';
 import SignUpPage from './Components/Page/SignupPage';
@@ -44,12 +45,13 @@ import Loader from './Components/Loader/Loader'
 import Contact from './Contact/Contact';
 import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
-import ImagePage from './Components/Profile/ImagePage';
 import useContextAPI from './Components/ContextAPI/ContextAPI';
 import EachRealEstate from './Components/Categories/RealEstate/EachRealEstate';
 import {AnimatePresence} from 'framer-motion';
 import MediaView from './Components/Categories/MediaView/MediavView';
 import ForgottenPasswordPage from './Components/Page/ForgottenPasswordPage';
+import Terms from './Components/TermsPage/Terms';
+import Privacy from './Components/PrivacyPage/Privacy';
 
 function App() {
   const queryClient = new QueryClient();
@@ -62,6 +64,8 @@ function App() {
       <AnimatePresence exitBeforeEnter>
         {/* <Navbar/> */}
         <Routes>
+          <Route path='/terms' element={<Terms/>}/>
+          <Route path='/privacy' element={<Privacy/>}/>
           <Route path='/register' element = {<Register/>}/>
           <Route path='/' element={<HomePage />} />
 
@@ -105,11 +109,11 @@ function App() {
           <Route path="/profile/list" element={<ProfileList />} />
           <Route path="/profile/stat" element={<ProfileStat />} />
           <Route path='/profile/edit' element={<EditProfile mainData={mainData}/>} />
+          <Route path='/profile/upgrade' element={<UpgradeProfile mainData={mainData}/>} />
           <Route path="/profile/create-listings" element={<CreateListing />} />
           <Route path="/profile" element={<LoggedUser mainData={mainData}/>} />
           <Route path="/profile/:id" element={<OtherUser />} />
-          <Route path="/waitList" element={<Waitlist />} />
-          <Route path='/profile/viewImage' element={<ImagePage/>}/>
+          <Route path="/waitList" element={<Waitlist />} />          
         </Routes>
         </AnimatePresence>
       </Router>
