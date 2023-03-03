@@ -11,7 +11,7 @@ const UpgradeProfile = () => {
       <Upgrade>
         <div className="bck">
           <div className="cont" onClick={() => navigate(-1)}>
-            <ChevronLeft size="30px" />
+            <ChevronLeft size="25px" />
           </div>
         </div>
         <div className="head">

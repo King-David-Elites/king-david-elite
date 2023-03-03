@@ -20,7 +20,7 @@ export const Upgrade = styled.div`
       width: 2.7em;
       height: 2.7em;
       border-radius: 1.35em;
-      background: rgba(197, 197, 198, 0.5);
+      background: transparent;
       box-shadow: 16px 16px 32px rgba(176, 176, 176, 0.26),
         -16px -16px 32px #ffffff;
       cursor: pointer;
@@ -65,6 +65,7 @@ export const Upgrade = styled.div`
     background: rgba(197, 197, 198, 0.5);
     border-radius: 4px;
     padding: 2px;
+    margin: 0em 1em;
     color: #737373;
     font-weight: 700;
     letter-spacing: 0.0015em;

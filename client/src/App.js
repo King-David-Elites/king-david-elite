@@ -45,7 +45,6 @@ import Loader from './Components/Loader/Loader'
 import Contact from './Contact/Contact';
 import ModalCont from './Components/Modal/ModalCont';
 import Register from './Components/RegisterPage/Register';
-import ImagePage from './Components/Profile/ImagePage';
 import useContextAPI from './Components/ContextAPI/ContextAPI';
 import EachRealEstate from './Components/Categories/RealEstate/EachRealEstate';
 import {AnimatePresence} from 'framer-motion';
@@ -114,8 +113,7 @@ function App() {
           <Route path="/profile/create-listings" element={<CreateListing />} />
           <Route path="/profile" element={<LoggedUser mainData={mainData}/>} />
           <Route path="/profile/:id" element={<OtherUser />} />
-          <Route path="/waitList" element={<Waitlist />} />
-          <Route path='/profile/viewImage' element={<ImagePage/>}/>
+          <Route path="/waitList" element={<Waitlist />} />          
         </Routes>
         </AnimatePresence>
       </Router>
