@@ -34,6 +34,7 @@ import { setConfig } from "../../infrastructure/api/user/userRequest";
 const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
   const [showImage, setShowImage] = useState(false);
+  const [showCover, setShowCover] = useState(false);
   const [data, setData] = useState({});
   const navigate = useNavigate();
   const [file, setFile] = useState(data.cover);
@@ -93,12 +94,18 @@ const LoggedUser = ({ logged }) => {
   return (
     <Fragment>
       {showImage && (
-        <ProfileImage data={data} id={id} setShowImage={setShowImage} />
+        <ProfileImage data={data} id={id} type="profile" setShowImage={setShowImage} />
+      )}
+      {showCover && (
+        <ProfileImage data={data} id={id} type="cover" setShowCover={setShowCover} />
       )}
       <Return transparent={true} />
       <Header
         className="cursor-pointer"
-        onClick={() => navigate("/profile/viewImage")}
+        // onClick={() => navigate("/profile/viewImage")}
+        onClick={() => {
+          setShowCover(true);
+        }}
       >
         <img src={data.cover} alt="" />
       </Header>

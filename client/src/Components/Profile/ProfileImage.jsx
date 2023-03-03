@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGetUserDetails } from "../../application/hooks/queryhooks";
 import { FaPen } from "react-icons/fa";
 import { X } from "heroicons-react";
@@ -7,26 +7,35 @@ import FileBase64 from "react-file-base64";
 import Loader from "../Loader/Loader";
 import services from "../../ioc/services";
 
-const ProfileImage = ({ data, id, setShowImage }) => {
+const ProfileImage = ({ data, id, type, setShowImage, setShowCover }) => {
   const user = useGetUserDetails();
   const [loader, setLoader] = useState(false);
-  const [image, setImage] = useState(data.profilePicture);
+  const [imagep, setImageP] = useState(data.profilePicture);
+  const [imagec, setImageC] = useState(data.cover);
 
-  const upload = (image) => {
+  const upload = (image, type) => {
     setLoader(true);
-    console.log("updating")
-    if (!id) {
-      data.profilePicture = image;
+    console.log("updating");
+    if (type === "profile") {
+      if (!id) {
+        data.profilePicture = image;
+      }
+    } else if (type === "cover") {
+      if (!id) {
+        data.cover = image;
+      }
     }
-    const userDetails = {
-      profilePicture: image,
-    };
+    const userDetails =
+      type === "profile" ? { profilePicture: image } : { cover: image };
     services.api.userRequests
       .updateUserProfile(userDetails)
       .then((res) => {
         setLoader(false);
-        setImage(image);
-        console.log("res", res);
+        if (type == "profile") {
+          setImageP(image);
+        } else if (type === "cover") {
+          setImageC(image);
+        }
         localStorage.setItem("user", JSON.stringify(res.data));
         services.toast.success("Uploaded Successfully");
       })
@@ -44,21 +53,26 @@ const ProfileImage = ({ data, id, setShowImage }) => {
           <div
             className="close"
             onClick={() => {
-              setShowImage(false);
+              type === "profile" ? setShowImage(false) : setShowCover(false);
             }}
           >
-            <X width="20px"/>
+            <X width="20px" />
           </div>
           <div className="imageCont">
-            <div className="profileName">
-              <h1>
-                {data.firstName.toUpperCase() +
-                  " " +
-                  data.lastName.toUpperCase()}
-              </h1>
-            </div>
+            {type === "profile" && (
+              <div className="profileName">
+                <h1>
+                  {data.firstName.toUpperCase() +
+                    " " +
+                    data.lastName.toUpperCase()}
+                </h1>
+              </div>
+            )}
             <div className="image">
-              <img src={data.profilePicture} alt="profile picture" />
+              <img
+                src={type === "profile" ? data.profilePicture : data.cover}
+                alt={type === "profile" ? "profile picture" : "cover picture"}
+              />
             </div>
             {user._id == data._id && (
               <div className="editProfile">
@@ -67,10 +81,10 @@ const ProfileImage = ({ data, id, setShowImage }) => {
                 <div className="input">
                   <FileBase64
                     name="cover"
-                    defaultValue={image}
+                    defaultValue={type === "profile" ? imagep : imagec}
                     multiple={false}
                     onDone={(base64) => {
-                      upload(base64.base64);
+                      upload(base64.base64, type);
                     }}
                   />
                 </div>
