@@ -52,6 +52,7 @@ import MediaView from './Components/Categories/MediaView/MediavView';
 import ForgottenPasswordPage from './Components/Page/ForgottenPasswordPage';
 import Terms from './Components/TermsPage/Terms';
 import Privacy from './Components/PrivacyPage/Privacy';
+import LuxuryServiceListing from './Components/Categories/LuxuryService/LuxuryServiceListing';
 
 function App() {
   const queryClient = new QueryClient();
@@ -68,9 +69,7 @@ function App() {
           <Route path='/privacy' element={<Privacy/>}/>
           <Route path='/register' element = {<Register/>}/>
           <Route path='/' element={<HomePage />} />
-
           <Route path ='/contact' element = {<Contact/>}/>
-
           <Route path='/modal' element={<ModalCont />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/loader' element={<Loader />} />
@@ -82,6 +81,7 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/savedpost' element={<Savedpost />} />
           <Route path="/real-estate" element={<RealEstateListing />} />
+          <Route path="/luxury-service" element={<LuxuryServiceListing />} />
           <Route path="/dashboard/messages/chat/:id" element={<ChatBox />} />
           <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
           <Route path="/real-estate/:id/media" element={<MediaView active={0}/>} />   

@@ -51,7 +51,7 @@ const HomePage = () => {
     {
       bg: c3,
       title: "Luxury Services",
-      isComingSoon: true,
+      link: "/luxury-service",
     },
     {
       bg: c2,
