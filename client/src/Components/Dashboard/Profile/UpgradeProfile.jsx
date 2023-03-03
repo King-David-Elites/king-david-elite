@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { Upgrade } from "./UpgradeProfile.Style";
+import { ChevronLeft } from "heroicons-react";
+import { useNavigate } from "react-router-dom";
 
 const UpgradeProfile = () => {
   const [active, setActive] = useState(0);
+  const navigate = useNavigate();
   return (
     <>
       <Upgrade>
+        <div className="bck">
+          <div className="cont" onClick={() => navigate(-1)}>
+            <ChevronLeft size="30px" />
+          </div>
+        </div>
         <div className="head">
           <p className="h1">Pricing Plans</p>
           <p className="h2">

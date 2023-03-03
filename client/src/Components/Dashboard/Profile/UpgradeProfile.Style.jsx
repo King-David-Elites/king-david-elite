@@ -7,8 +7,25 @@ export const Upgrade = styled.div`
   align-items: center;
   flex-direction: column;
   background: #f6f6f6;
-  padding: 4em 0em;
+  padding: 1em 0em 4em 0em;
   gap: 2em;
+
+  .bck {
+    width: 100%;
+    padding: 0em 1em;
+    .cont {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.7em;
+      height: 2.7em;
+      border-radius: 1.35em;
+      background: rgba(197, 197, 198, 0.5);
+      box-shadow: 16px 16px 32px rgba(176, 176, 176, 0.26),
+        -16px -16px 32px #ffffff;
+      cursor: pointer;
+    }
+  }
 
   .head {
     text-align: center;
@@ -29,7 +46,7 @@ export const Upgrade = styled.div`
     @media (max-width: 550px) {
       .h1 {
         font-weight: 700;
-        font-size: 35px;
+        font-size: 32px;
         color: #000000;
       }
       .h2 {
