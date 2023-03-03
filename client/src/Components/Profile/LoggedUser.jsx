@@ -33,8 +33,17 @@ const LoggedUser = ({ logged }) => {
     .catch(err => console.log(err))
   }
 
-  if(id == user._id){
+  if(id == user?._id){
     navigate("/profile")
+  }
+
+  const createConversation = ()=>{
+    axios.post(`http://localhost:9099/conversations/new-conversation/${id}`, {}, setConfig())
+    .then(resp => {
+      console.log(resp.data)
+      navigate(`/dashboard/messages/chat/${resp.data._id}`)
+    })
+    .catch(err => console.log(err))
   }
 
   
@@ -128,7 +137,7 @@ const LoggedUser = ({ logged }) => {
             </>
           ) : (
             <>
-              <div className="edit">Message</div>
+              <div className="edit" onClick={createConversation}>Message</div>
 
               <div className="edit">Call</div>
             </>

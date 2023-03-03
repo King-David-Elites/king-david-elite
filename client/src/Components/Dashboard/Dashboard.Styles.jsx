@@ -919,12 +919,13 @@ export const ChatBoxContainer = styled.div`
     }
 
     .chat-body{
-        height: 85%;
+        height: 100vh;
+        
         background-color: #D5DBE3;
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        padding: 5em 1em 0em 1em;
+        padding: 5em 1em 20vh 1em;
 
         .date{
             margin-left: auto;
@@ -993,6 +994,7 @@ export const ChatBoxContainer = styled.div`
         justify-content: space-around;
         padding: 1em;
         position: fixed;
+        bottom: 0;
         width: 100%;
         background-color: #fff;
         height: 10%;

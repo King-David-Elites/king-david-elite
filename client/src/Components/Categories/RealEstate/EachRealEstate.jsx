@@ -115,7 +115,7 @@ const EachRealEstate = ({ active }) => {
             <p>{property.description}</p>
           </div>
 
-          {property.postedBy?._id !== data._id ? (
+          {property.postedBy?._id !== data?._id ? (
             <div className="seller">
               <h3>Contact Seller</h3>
 

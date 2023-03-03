@@ -78,7 +78,7 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/savedpost' element={<Savedpost />} />
           <Route path="/real-estate" element={<RealEstateListing />} />
-          <Route path="/dashboard/messages/chat" element={<ChatBox />} />
+          <Route path="/dashboard/messages/chat/:id" element={<ChatBox />} />
           <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
           <Route path="/real-estate/:id/media" element={<MediaView active={0}/>} />   
           <Route path="/cars" element={<Cars mainData={mainData}/>} />          
