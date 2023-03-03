@@ -95,8 +95,7 @@ const CreateRealEstateListing = () => {
         );
       }
     }
-    if (type === "video") {
-      console.log(base64);
+    if (type === "video") {      
       if (size <= 52428800 && size !== 0) {
         setVideos(base64.filter((items) => items.type === "video/mp4"));
       }

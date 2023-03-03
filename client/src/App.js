@@ -25,6 +25,7 @@ import Verification from './Components/Verification/Verification';
 import ProfileList from './container/ProfileList';
 import CreateListing from './container/CreateListing';
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
+import UpgradeProfile from './Components/Dashboard/Profile/UpgradeProfile';
 import ProfileStat from './container/ProfileStat';
 import Waitlist from './Components/Page/Waitlist';
 import SignUpPage from './Components/Page/SignupPage';
@@ -109,6 +110,7 @@ function App() {
           <Route path="/profile/list" element={<ProfileList />} />
           <Route path="/profile/stat" element={<ProfileStat />} />
           <Route path='/profile/edit' element={<EditProfile mainData={mainData}/>} />
+          <Route path='/profile/upgrade' element={<UpgradeProfile mainData={mainData}/>} />
           <Route path="/profile/create-listings" element={<CreateListing />} />
           <Route path="/profile" element={<LoggedUser mainData={mainData}/>} />
           <Route path="/profile/:id" element={<OtherUser />} />

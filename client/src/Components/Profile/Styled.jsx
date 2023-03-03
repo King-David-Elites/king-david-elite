@@ -54,10 +54,10 @@ export const DisplayImage = styled.div`
             font-weight: bolder;  
             font-size:1.2rem;
         }
-        .imageCont > .image{
+        .imageCont > .image{            
             width:100%;
             height: 100%;    
-            height:80vh;        
+            height:70vh;        
         }
         .imageCont > .editProfile{
             position:relative;
@@ -79,10 +79,10 @@ export const DisplayImage = styled.div`
             opacity:0;
             cursor:pointer;
         }
-        .imageCont > .image img{
+        .imageCont > .image img{            
+            object-fit: contain;
             width:100%;
-            height:100%;
-            border-radius: 20px;
+            height:100%;            
         }
     }
 `
