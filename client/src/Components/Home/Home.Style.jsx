@@ -11,9 +11,10 @@ export const Categories = styled.div`
     align-items: center;
     padding: 50px;
     justify-content: space-between;
+    flex-wrap: ${props => props.flexWrap ? props.flexWrap : "no-wrap"} ;
     gap: 2em;
     overflow-x: auto;
-    margin: 0 auto;
+    margin: ${props => props.margin ? props.margin : "0 auto"} ;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         overflow: hidden;
@@ -21,7 +22,8 @@ export const Categories = styled.div`
         ::-webkit-scrollbar{
             width:0;
         }
-        gap: 2.3em;
+        gap: ${props => props.gap ? props.gap : "2.3em"};
+        z-index: ${props => props.z ? props.z : "0"};
     }
    
 `
@@ -35,6 +37,7 @@ export const Category = styled.div`
     cursor: pointer;
     transition: transform 2s;
     background-size: cover;
+    transform: scale(1.);
 
     &:hover{
         transform: scale(1.2);

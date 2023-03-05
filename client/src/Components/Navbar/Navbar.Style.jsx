@@ -2,16 +2,17 @@ import styled from 'styled-components'
 import theme from '../../application/utils/Theme';
 
 export const Header = styled.div`    
-    padding-top: 0.5em;    
-    position:${(prop) => prop.sticky || "fixed"};                
+    padding-top:${props => props.paddingTop ? props.paddingTop : "0.5em"};    
+    position:${prop => prop.sticky ? prop.sticky : "fixed"};                
     width:100%;
+    height:  ${props => props.height ? props.height : "4em"};
     color:${theme.textColor};
     background-color: ${(prop) => prop.bg || "rgba(0,0,0,1)"};
     display:flex;
-    justify-content:space-around;
-    align-items:center;
+    justify-content: ${props => props.justifyContent ? props.justifyContent : "space-around"};
+    align-items: ${props => props.alignItems ? props.alignItems : "center"};
     gap:0.2em;
-    z-index:3;
+    z-index: ${props => props.z ? props.z : "3"};
     white-space: nowrap;
 
     .list-items{
@@ -36,8 +37,9 @@ export const Header = styled.div`
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         flex-direction:row;
-        align-items:center;
+        align-items:${props => props.alignItems ? props.alignItems : "center"};
         gap:1em;
+        margin-top: ${props => props.marginTop ? props.marginTop : "0em"};
     }
  
 `
@@ -49,7 +51,8 @@ export const UL = styled.ul`
     align-items:center;
     gap:2em;
     font-weight:700;
-    list-style-type:None;      
+    list-style-type:None;  
+    margin-top: ${props => props.marginTop ? props.marginTop : "0em"};    
     
     
     @media(max-width:480px){
@@ -77,13 +80,13 @@ export const LI = styled.li`
 
 export const LogoText = styled.div`
     color: ${theme.color};
-    font-size:0.6rem;   
+    font-size: ${props => props.fontSize ? props.fontSize : "0.6rem"}; ;   
     font-weight:500;    
     cursor:pointer;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         color: ${theme.color};
-        font-size:1rem;   
+        font-size: ${props => props.fontSize ? props.fontSize : "1rem"}; ;     
         font-weight:700;    
         cursor:pointer;
         }
@@ -131,6 +134,7 @@ export const Brand = styled.div`
         cursor: pointer;
         width: 0;
         flex-basis: 25%;
+        margin-top: ${props => props.marginTop ? props.marginTop : "0em"};
 
     .dashboard{
         display:flex;
@@ -172,11 +176,11 @@ export const Login = styled.div`
 export const ReturnContainer = styled.div`
     width: 100%;
     /* height: 1cm; */
-    background-color: ${({transparent})=> transparent ? "transparent" : "white"};
-    padding:5px 10px;
+    background-color: ${({ transparent }) => transparent ? "transparent" : "white"};
+    /* padding:5px 10px; */
     display: flex;
     align-items: center;
-    position: ${({transparent})=> transparent ? "fixed" : "static"};
+    position: ${({ transparent }) => transparent ? "fixed" : "static"};
     top: 0;
     left: 0;
     right: 0;
