@@ -8,6 +8,7 @@ import ResetPage from "./ResetPage";
 import globalApi from "../../api";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 import axios from "axios";
+import services from "../../ioc/services";
 
 const ForgottenPasswordPage = () => {
     const [loader, setLoader] = useState(false);
@@ -30,11 +31,12 @@ const ForgottenPasswordPage = () => {
         let userEmail = {
             email: email,
         };
+        services.toast.success()
         axios.post(`${globalApi}/users/forgotten-password`, JSON.stringify(userEmail), setConfig())
             .then(resp => {
-                console.log("resp", resp);
+                services.toast.success(resp.data.message);
             })
-            .catch(err => console.log(err))
+            .catch(err => services.toast.error(err.message))
         // navigate(`/reset/${token}`)
     }
 

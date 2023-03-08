@@ -3,6 +3,7 @@ import theme from "../../application/utils/Theme";
 
 export const CategoriesContainer = styled.div`
   overflow: hidden;
+  
 `;
 
 export const Categories = styled.div`
@@ -10,12 +11,14 @@ export const Categories = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
+    position: ${props => props.position ? props.position : "static"} ;
     padding: 50px;
     justify-content: space-between;
     flex-wrap: ${props => props.flexWrap ? props.flexWrap : "no-wrap"} ;
     gap: 2em;
     overflow-x: auto;
     margin: ${props => props.margin ? props.margin : "0 auto"} ;
+    z-index: ${props => props.z ? props.z : "0"};
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         overflow: hidden;
@@ -24,26 +27,25 @@ export const Categories = styled.div`
             width:0;
         }
         gap: ${props => props.gap ? props.gap : "2.3em"};
-        z-index: ${props => props.z ? props.z : "0"};
+       
       }`
 
 export const Category = styled.div`
 background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)), url(${(prop) => prop?.bg});
-width: 100%;
+width: ${props => props.width ? props.width : "100%"};
 height: 300px;
 border-radius: 6px;
-flex: 1 0 70%;
+flex:  1 0 70%;
 cursor: pointer;
-transition: transform 2s;
+transition: transform 2s; 
 background-size: cover;
-transform: scale(1.);
-
+padding: 1em;
   &:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 @media(min-width: ${theme.breakPoint["tablet"]}) {
-  flex: 1 0 20%;
+  flex: ${props => props.flex ? props.flex : "1 0 20%"} ;
   height: 400px;
 }
 `

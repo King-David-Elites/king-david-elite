@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from "formik";
 import { TextError } from "./MainInput"
 import InputLayout from "./InputLayout";
 import { useRef, useState } from "react";
-import { DragDropText, FileMetaData, FilePreviewContainer, FileUploadContainer, FormField, ImagePreview, PreviewContainer, PreviewList, RemoveFileIcon, UploadFileBtn } from "../Cars/Cars.Style.jsx";
+import { DragDropText, FileMetaData, FilePreviewContainer, FileUploadContainer, FormField, ImagePreview, PreviewContainer, PreviewList, RemoveFileIcon, UploadFileBtn } from "../Categories/Cars/Cars.Style";
 
 export const Image = styled.image`
         min-width: 300px;

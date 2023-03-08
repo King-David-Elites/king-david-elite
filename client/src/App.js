@@ -54,6 +54,8 @@ import Terms from './Components/TermsPage/Terms';
 import Privacy from './Components/PrivacyPage/Privacy';
 import LuxuryServiceListing from './Components/Categories/LuxuryService/LuxuryServiceListing';
 import ResetPage from './Components/Page/ResetPage';
+import ExclusiveEventPage from './Components/Page/ExclusiveEventPage';
+import WeekendEscapePage from './Components/Page/WeekendEscapePage';
 
 function App() {
   const queryClient = new QueryClient();
@@ -117,6 +119,8 @@ function App() {
             <Route path="/profile" element={<LoggedUser mainData={mainData} />} />
             <Route path="/profile/:id" element={<OtherUser />} />
             <Route path="/waitList" element={<Waitlist />} />
+            <Route path="/luxury-service/exclusive-event" element={<ExclusiveEventPage />} />
+            <Route path="/luxury-service/weekend-escape" element={<WeekendEscapePage />} />
           </Routes>
         </AnimatePresence>
       </Router>

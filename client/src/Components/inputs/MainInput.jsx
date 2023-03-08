@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from "formik";
 import InputLayout from "./InputLayout";
 
 const InputField = styled.input`
-        margin-top: 0.5em;
+       margin: ${prop => prop.margin ? prop.margin : '0.5em 0em 1em 0em'};
         background-color: white;
         min-width: 300px;
         height: 40px;
@@ -15,7 +15,6 @@ const InputField = styled.input`
         padding: 0 0.5em;
         letter-spacing: 0.1em;
         border: 2px solid gray;
-        margin-bottom: 1em;
         
         @media (min-width: ${theme.breakPoint['tablet']}) {
             width: ${props => props.width ? props.width : "100%"};
@@ -34,6 +33,7 @@ const InputLabel = styled.label`
       
         @media (min-width: ${theme.breakPoint['tablet']}) {
            font-size: 15px;
+           font-weight: 700;
         }
     `;
 
@@ -41,7 +41,7 @@ const TextError = styled.span`
         color: red;
         font-weight: 500;
         opacity: 60%;
-        font-size: 10px;
+        font-size: 9px;
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
             font-weight: 600;
