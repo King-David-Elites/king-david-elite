@@ -26,13 +26,13 @@ const InputField = styled.input`
 
 const InputLabel = styled.label`
         color: black;
-        font-size: 15px;
+        font-size: 11px;
         font-weight: 500;
         letter-spacing: 0.05em;
         white-space: nowrap;
       
         @media (min-width: ${theme.breakPoint['tablet']}) {
-           font-size: 15px;
+           font-size: 13px;
            font-weight: 700;
         }
     `;

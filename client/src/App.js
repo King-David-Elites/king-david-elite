@@ -56,6 +56,10 @@ import LuxuryServiceListing from './Components/Categories/LuxuryService/LuxurySe
 import ResetPage from './Components/Page/ResetPage';
 import ExclusiveEventPage from './Components/Page/ExclusiveEventPage';
 import WeekendEscapePage from './Components/Page/WeekendEscapePage';
+import HelicopterRidePage from './Components/Page/HelicopterRidePage';
+import ConceirgeVacationPage from './Components/Page/ConceirgeVacationPage';
+import BoatCruisePage from './Components/Page/BoatCruisePage';
+import ChaffeurPage from './Components/Page/ChauffeurPage';
 
 function App() {
   const queryClient = new QueryClient();
@@ -121,6 +125,10 @@ function App() {
             <Route path="/waitList" element={<Waitlist />} />
             <Route path="/luxury-service/exclusive-event" element={<ExclusiveEventPage />} />
             <Route path="/luxury-service/weekend-escape" element={<WeekendEscapePage />} />
+            <Route path="/luxury-service/helicopter-ride" element={<HelicopterRidePage />} />
+            <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage />} />
+            <Route path="/luxury-service/boat-cruise" element={<BoatCruisePage />} />
+            <Route path="/luxury-service/chauffeur" element={<ChaffeurPage />} />
           </Routes>
         </AnimatePresence>
       </Router>
