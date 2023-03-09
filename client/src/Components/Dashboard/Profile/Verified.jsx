@@ -32,10 +32,10 @@ const Verified = (props) => {
         className={"enable"}
         id="button"
         onClick={() => {            
-          navigate("/profile");
+          navigate("/");
         }}
       >
-        Close
+        Go back to Home
       </div>
     </>
   );

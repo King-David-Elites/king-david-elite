@@ -12,13 +12,14 @@ const Advanced_Verf_3 = (props) => {
     props;
   const verificationData = {
     verificationId : {
-      front: frontImage,
-      back: backImage
+      front: frontImage.base64,
+      back: backImage.base64
     },
     nationality: country,
-    verificationProfilePicture: photo,
-    verifcationType : idType.digit
+    verifiedProfilePicture: photo.base64,
+    verificationType : idType.digit
   };
+  console.log(verificationData)
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const Advanced_Verf_3 = (props) => {
   const postVerificationDetails = async (verificationData) => {
     await axios
       .patch(
-        `${globalApi}/users/verify-user`,
+        `${globalApi}/users/verify`,
         verificationData,
         setConfig()
       )

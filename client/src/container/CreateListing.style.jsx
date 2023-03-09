@@ -86,7 +86,13 @@ export const ListingForm = styled.div`
         .section hr{
             width:100%;
         }
-        #section{
+        #location{
+            width:fit-content;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;      
+            color: #2301F3;
+            cursor: pointer;
         }
         .section p{
             font-weight:600;
