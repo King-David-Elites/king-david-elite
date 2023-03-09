@@ -3,15 +3,23 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@500;600;700;800;900&display=swap');
 
-*{
+* {
     font-family: 'Open Sans', sans-serif;
 }
 
-body{
+body {
     scroll-behavior: smooth;
     scroll-snap-type: proximity;
 }
 
-img, video{
+img, video {
     object-fit: cover;
+}
+
+input:checked+div {
+    @apply border-theme-color;
+}
+
+input:checked+div svg {
+    @apply block;
 }

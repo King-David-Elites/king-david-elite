@@ -42,9 +42,9 @@ background-size: cover;
 padding: 1em;
   &:hover {
   transform: scale(1.1);
-  background: rgba(233, 140, 0, 0.7);
-  width: 200px;
-  color: #000;
+  /* background: rgba(233, 140, 0, 0.7);
+  width:  200px;
+  color: #000; */
 }
 
 @media(min-width: ${theme.breakPoint["tablet"]}) {
