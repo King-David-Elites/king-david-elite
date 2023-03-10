@@ -29,7 +29,7 @@ const ChatBox = ({ setStage }) => {
         setToChat(resp.data)
     })
     .catch(err => console.log(err))
-  }, [id])
+  }, [])
 
 
   const handleOnChange = (e) => {
@@ -53,7 +53,7 @@ const ChatBox = ({ setStage }) => {
     })
     .catch(err => console.log(err))
 
-  }, [id])
+  }, [id, getUser, user])
 
   useEffect(()=>{
    getAllMessages()

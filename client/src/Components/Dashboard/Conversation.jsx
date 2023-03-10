@@ -34,7 +34,7 @@ const Conversation = ({conversationId}) => {
        })
        .catch(err => console.log(err))
    
-     }, [conversationId])
+     }, [conversationId, getUser, user])
 
      useEffect(()=>{
         getAllMessages()
