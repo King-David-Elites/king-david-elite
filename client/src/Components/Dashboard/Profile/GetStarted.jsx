@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const GetStarted = (props) => {
   const [valid, setValid] = useState();
+  // const [countryData, setCountryData] = useState([]);
   let {
     setRegistering,
     country,
@@ -16,11 +17,34 @@ const GetStarted = (props) => {
     mainData,
   } = props;
   const navigate = useNavigate();
+
+  // const getPosition = async () => {
+  //   var headers = new Headers();
+  //   headers.append(
+  //     "X-CSCAPI-KEY",
+  //     "bWxLejVmcWtRSTg1ekRyaXlKZ3l1YjN2MHI1OFBwUWVDYkVCbWNNVw=="
+  //   );
+
+  //   var requestOptions = {
+  //     method: "GET",
+  //     headers: headers,
+  //     redirect: "follow",
+  //   };
+
+  //   fetch("https://api.countrystatecity.in/v1/countries", requestOptions)
+  //     .then((response) => response.text())
+  //     .then((result) => {
+  //       setCountryData(JSON.parse(result));
+  //       console.log(JSON.parse(result));
+  //     })
+  //     .catch((error) => console.log("error", error));
+  // };
+
   useEffect(() => {
     if (!mainData.userData.address) {
-      navigate("/profile/edit");
-    }
-  }, []);
+    // navigate("/profile/edit");
+    }   
+  }, []); 
 
   return (
     <>
@@ -48,11 +72,11 @@ const GetStarted = (props) => {
           }}
         >
           <option value="Country">{country}</option>
-          {Country.map((list, i) => {
+          {mainData.countryData.map((country) => {
             return (
               <>
-                <option key={i} value={list.country}>
-                  {list.country}
+                <option key={country.id} value={country.name}>
+                  {country.name}
                 </option>
               </>
             );

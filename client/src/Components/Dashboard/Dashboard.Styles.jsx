@@ -651,7 +651,7 @@ export const Form = styled.form`
                 display:flex;
                 justify-content: center;
                 align-items:center;
-                background:green;
+                background:rgba(100,225,100);
             }
             .verifyLogo > .text{
                 width:100%;
