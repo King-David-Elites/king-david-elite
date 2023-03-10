@@ -61,7 +61,7 @@ const LoggedUser = ({ logged }) => {
   }
 
   const createConversation = ()=>{
-    axios.post(`http://localhost:9099/conversations/new-conversation/${id}`, {}, setConfig())
+    axios.post(`${globalApi}/conversations/new-conversation/${id}`, {}, setConfig())
     .then(resp => {
       console.log(resp.data)
       navigate(`/dashboard/messages/chat/${resp.data._id}`)

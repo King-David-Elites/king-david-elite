@@ -51,14 +51,6 @@ const NotificationAsElement = () => {
                 message=" The system has detected that your account is logged in from an unused IP address."
                 time="4:30pm"
             />
-
-            {/* 
-            <ReadMoreReadLess>
-                The system has detected that your account is logged in from an unused IP address.
-            </ReadMoreReadLess>
-            <ReadMoreReadLess>
-                The system has detected that your account is logged in from an unused IP address.
-            </ReadMoreReadLess> */}
         </NotificationContainer>
     )
 }
@@ -68,7 +60,7 @@ const MobileNotification = () => {
 
     const getNotifications = () => {
         axios.get(`${globalApi}/notifications/all`, setConfig())
-            .then(resp => {setNotifications(resp.data); console.log(resp.data)})
+            .then(resp => { setNotifications(resp.data); console.log(resp.data) })
             .catch(err => console.log(err))
     }
 
@@ -243,9 +235,11 @@ const MobileNotification = () => {
             <div className='border-line'>
 
             </div>
-
             {
-                notifications.map((notification, i) => {
+                notifications.length == 0 && <div className="font-bold justify-center h-[70vh] flex items-center text-base md:text-xl">No Notification</div>
+            }
+            {
+                notifications.length > 0 && notifications.map((notification, i) => {
                     return (
                         <ReadMoreReadLess key={i}
                             message={notification.message}
@@ -257,11 +251,11 @@ const MobileNotification = () => {
                     )
                 })
             }
-            <ReadMoreReadLess
+            {/* <ReadMoreReadLess
                 title="Deposit Successful"
                 message=" The system has detected that your account is logged in from an unused IP address."
                 time="4:30pm"
-            />
+            /> */}
 
 
         </MobileDashboardContainer>

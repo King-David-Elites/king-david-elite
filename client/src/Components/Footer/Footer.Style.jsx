@@ -19,8 +19,8 @@ export const FooterSection = styled.div`
         justify-content:space-between;
         align-items:flex-start;    
         font-weight:light;
-        margin-top:2em;
         gap: 1em;
+        margin-top: ${props => props.marginTop ? props.marginTop : '2em'};
         display: ${props => props.display ? props.display : "flex"};
     }
     

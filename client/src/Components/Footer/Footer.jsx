@@ -24,7 +24,7 @@ const Footer = () => {
     }
     return (
         <>
-            <FooterSection>
+            <FooterSection >
                 <Section>
                     <Head>King David Elites</Head>
                     <List onClick={() => navigate('/about')}>About</List>

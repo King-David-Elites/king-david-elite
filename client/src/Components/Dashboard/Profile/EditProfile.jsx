@@ -158,7 +158,7 @@ const EditProfile = ({ mainData }) => {
 
         <ContentCard background="none">
           <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">First Name <span className=" text-[red]">*</span></label>
             <input
               type="text"
               className="input"
@@ -172,7 +172,7 @@ const EditProfile = ({ mainData }) => {
               </div>
             ) : null}
 
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name <span className="text-[red]">*</span></label>
             <input
               type="text"
               className="input"
@@ -181,7 +181,7 @@ const EditProfile = ({ mainData }) => {
               onChange={formik.handleChange}
             />
             {formik.errors.lastName ? (
-              <div className=" text-[red] opacity-40">
+              <div className="text-[red] opacity-40">
                 {formik.errors.lastName}
               </div>
             ) : null}
@@ -276,7 +276,7 @@ const EditProfile = ({ mainData }) => {
             <h3>Address</h3>
             <form onSubmit={formik.handleSubmit}>
               <label htmlFor="address" className="space">
-                Address
+                Address<span className=" text-[red]">*</span>
               </label>
               <input
                 type="text"
@@ -293,7 +293,7 @@ const EditProfile = ({ mainData }) => {
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
-                  <label htmlFor="country">Country</label>
+                  <label htmlFor="country">Country <span className=" text-[red]">*</span></label>
                   <select
                     name="country"
                     onChange={formik.handleChange}
@@ -321,7 +321,7 @@ const EditProfile = ({ mainData }) => {
                   ) : null}
                 </div>
                 <div className="sub-dropdown space">
-                  <label htmlFor="state">State</label>
+                  <label htmlFor="state">State <span className="text-[red]">*</span></label>
                   <select
                     name="state"
                     onChange={formik.handleChange}
@@ -352,7 +352,7 @@ const EditProfile = ({ mainData }) => {
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
-                  <label htmlFor="city">City</label>
+                  <label htmlFor="city">City <span className=" text-[red]">*</span></label>
                   <select
                     name="city"
                     onChange={formik.handleChange}
@@ -456,7 +456,7 @@ const EditProfile = ({ mainData }) => {
         </ContentCard>
       </EditProfileContainer>
 
-      <MidSection padding="3em">
+      <MidSection>
         <p>This section is not available in your account</p>
         <button type="submit" onClick={() => navigate("/profile/upgrade")}>
           Upgrade

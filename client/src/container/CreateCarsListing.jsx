@@ -1,12 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { X } from "heroicons-react";
+import { X, LocationMarker } from "heroicons-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import globalApi from "../api";
 import Loader from "../Components/Loader/Loader";
-
 
 const CreateCarListing = () => {
   const [valid, setValid] = useState(false);
@@ -63,7 +62,7 @@ const CreateCarListing = () => {
       userListings["colour"] &&
       userListings["images"].length >= 4
     ) {
-      console.log("filled")
+      console.log("filled");
       setValid(true);
       setError(false);
     } else {
@@ -108,20 +107,20 @@ const CreateCarListing = () => {
     return config;
   };
 
-  // const getPosition = async () => {
-  //   await navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       setLatitude(position.coords.latitude);
-  //       setLongitude(position.coords.longitude);
-  //       setPosition(true);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // };
+  const getPosition = async () => {
+    // await navigator.geolocation.getCurrentPosition(
+    //   (position) => {
+    //     setLatitude(position.coords.latitude);
+    //     setLongitude(position.coords.longitude);
+    //     setPosition(true);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
+  };
 
-  const handleChange = (e) => {    
+  const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
     setUserListings({ ...userListings, [name]: value });
@@ -141,7 +140,7 @@ const CreateCarListing = () => {
       });
   };
 
-  const handleSubmit = async () => {    
+  const handleSubmit = async () => {
     setLoader(true);
     postUserListings(userListings);
   };
@@ -150,6 +149,10 @@ const CreateCarListing = () => {
     <>
       {loader && <Loader />}
       <div className="form_Content">
+        <div className="section" id="location">
+          <LocationMarker />
+          <p>Add Location</p>
+        </div>
         <div className="section">
           <p>Brand Name</p>
           <input type="text" name="title" required onChange={handleChange} />

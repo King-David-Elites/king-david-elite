@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useState } from "react";
-import { X } from "heroicons-react";
+import { X, LocationMarker } from "heroicons-react";
 import { OutProp, InProp, Views } from "./PropertiesContents";
 import axios from "axios";
 import { useEffect } from "react";
@@ -22,7 +22,7 @@ const CreateRealEstateListing = () => {
   const [loaded, setLoaded] = useState("");
   const [previous, setPrevious] = useState("");
   const [allImages, setAllImages] = useState([]);
-  const [allVideos, setAllVideos] = useState([]);  
+  const [allVideos, setAllVideos] = useState([]);
   const [loader, setLoader] = useState(false);
   const [loadImage, setLoadImage] = useState(false);
 
@@ -63,7 +63,7 @@ const CreateRealEstateListing = () => {
         );
       }
     }
-    if (type === "video") {      
+    if (type === "video") {
       if (size <= 52428800 && size !== 0) {
         setVideos(base64.filter((items) => items.type === "video/mp4"));
       }
@@ -129,18 +129,24 @@ const CreateRealEstateListing = () => {
     return config;
   };
 
-  // const getPosition = async () => {
-  //   await navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       setLatitude(position.coords.latitude);
-  //       setLongitude(position.coords.longitude);
-  //       setPosition(true);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // };
+  const getPosition = async () => {
+    var headers = new Headers();
+    headers.append(
+      "X-CSCAPI-KEY",
+      "bWxLejVmcWtRSTg1ekRyaXlKZ3l1YjN2MHI1OFBwUWVDYkVCbWNNVw=="
+    );
+
+    var requestOptions = {
+      method: "GET",
+      headers: headers,
+      redirect: "follow",
+    };
+
+    fetch("https://api.countrystatecity.in/v1/countries", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));    
+  };
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -171,6 +177,16 @@ const CreateRealEstateListing = () => {
     <>
       {loader && <Loader />}
       <div className="form_Content">
+        <div
+          className="section"
+          id="location"
+          onClick={() => {
+            getPosition();
+          }}
+        >
+          <LocationMarker />
+          <p>Add Location</p>
+        </div>
         <div className="section">
           <p>Title/Name</p>
           <input type="text" name="title" required onChange={handleChange} />
@@ -494,7 +510,12 @@ const CreateRealEstateListing = () => {
             List
           </div>
         </div>
-        {error && <p className="error">Please fill in the required fields. Selected Images must be more than 4 (four)</p>}        
+        {error && (
+          <p className="error">
+            Please fill in the required fields. Selected Images must be more
+            than 4 (four)
+          </p>
+        )}
       </div>
     </>
   );

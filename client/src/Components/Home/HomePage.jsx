@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { Background, HeroSection, Text } from "../Categories/Cars/Cars.Style";
 import { useNavigate } from "react-router-dom";
-import bg from "./images/k1.jpg";
+import { ImArrowUpRight2 } from "react-icons/im";
 import c1 from "./images/zac-gudakov-ztWpwTEx728-unsplash.jpg";
 import c2 from "./images/colletibles.jpg";
 import c3 from "./images/luxury.jpg";
@@ -16,6 +16,8 @@ import {
   Information,
   InformationContainer,
   SubFooter,
+  BlogContainer,
+  Blog,
 } from "./Home.Style";
 import business from "./images/business.jpg";
 import coffee from "./images/coffee.jpg";
@@ -26,6 +28,7 @@ import {
   HomeAnimation,
 } from "../Categories/Cars/AnimationOrder";
 import { motion } from "framer-motion";
+import { BlogContent } from "./BlogContent";
 
 const scrollToRef = (ref) => {
   window.scrollTo(0, ref.current.offsetTop);
@@ -51,7 +54,7 @@ const HomePage = () => {
     {
       bg: c3,
       title: "Luxury Services",
-      isComingSoon: true,
+      link: "/luxury-service",
     },
     {
       bg: c2,
@@ -100,7 +103,7 @@ const HomePage = () => {
               </motion.div>
             );
           }
-        })}        
+        })}
         <HeroSection>
           <Text fontSize="75px">
             <h3 className="font-bold">
@@ -189,6 +192,32 @@ const HomePage = () => {
           </div>
         </Information>
       </InformationContainer>
+
+      <BlogContainer>
+        <div className="lt">Latest Blogs</div>
+        <div className="blogrw">
+          {
+            BlogContent.map((blog, i)=>{
+              return(
+                <>
+                  <Blog key={i}>
+                    <div className="image">
+                      <img src={blog.img} alt="blog" />
+                    </div>
+                    <div className="topic">
+                      <p>{blog.topic}</p>
+                    </div>
+                    <div className="more">
+                      <p>Learn more</p>
+                      <ImArrowUpRight2 size="15px" color="#F2BE5C"/>
+                    </div>
+                  </Blog>
+                </>
+              )
+            })
+          }
+        </div>
+      </BlogContainer>
 
       <SubFooter bg={blur}>
         <Text fontSize="24px">

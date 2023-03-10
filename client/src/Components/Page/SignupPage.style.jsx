@@ -2,22 +2,21 @@ import styled from "styled-components";
 import bg from "../Home/images/c3.jpg"
 
 export const Container = styled.div`
-
-margin:0;
-padding:0;
 background:  linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bg});
 background-position: center;
 background-size: cover;
 background-repeat: no-repeat;
-position: relative;
-width:auto;
+display: flex;
+    justify-content: center;
+    align-items: center;
+/* position: relative; */
+/* width:auto; */
 height:100vh;
+
 
 @media(max-width:650px){
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bg});
-    position: relative;
-    width:auto;
-    height:100vh;
+    
 }
 
 
@@ -27,15 +26,11 @@ height:100vh;
 export const Page = styled.div`
     display:flex;
     flex-direction:column;
-position:absolute;
-    top:0;
-    left:0;
-    right:0;
-margin:50px auto;
-width:30rem;
-height:570px;
-background: #FFFFFF;
-border-radius: 6px;
+    margin:50px auto;
+    width:30rem;
+    height:570px;
+    background: #FFFFFF;
+    border-radius: 6px;
 
 h1{
 padding-top:30px;
