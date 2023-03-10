@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
 import { Brand, Header, LI, LogoText, UL } from "../../Navbar/Navbar.Style";
 
-const Pricing = ({ active }) => {
+const Pricing = ({ active = 6 }) => {
 
     const [activeNav, setActiveNav] = useState(false);
+    const weeekendEscapePosition = useRef(null);
+    const chauffeurPosition = useRef(null);
+    const boatRidePosition = useRef(null);
 
     const showMenu = () => {
         setActiveNav(!activeNav);
@@ -17,27 +20,27 @@ const Pricing = ({ active }) => {
     const navOptions = [
         {
             title: "All",
-            // link: "/"
+            link: "/luxury-service"
         },
         {
             title: "Concierge Weekends",
-            // link: "/"
+            link: "/luxury-service/concierge-vacation"
         },
         {
             title: "Chauffeur Services",
-            // link: "/real-estate"
+            link: "/luxury-service/pricing"
         },
         {
             title: "Boat Cruises",
-            // link: "/cars"
+            link: "/luxury-service/pricing"
         },
         {
             title: "Concierge Vacations",
-            // link: "/about",
+            link: "/luxury-service/pricing",
         },
         {
             title: "Helicopter Rides",
-            // link: "/about",
+            link: "/luxury-service/helicopter-ride",
         },
         {
             title: "Pricing",
@@ -549,7 +552,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] rounded-md md:py-10">
@@ -565,7 +568,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] rounded-md md:py-10">
@@ -581,7 +584,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
                     </div>
                 </div>
             </div>
@@ -622,7 +625,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/chauffeur')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/chauffeur')}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] rounded-md md:py-10">
@@ -638,7 +641,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/chauffeur')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/chauffeur')}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] rounded-md md:py-10">
@@ -654,7 +657,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/chauffeur')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/chauffeur')}>Get Started</MainButton>
                     </div>
                 </div>
             </div>
@@ -695,7 +698,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] rounded-md md:py-10">
@@ -711,7 +714,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] rounded-md md:py-10">
@@ -727,7 +730,7 @@ const Pricing = ({ active }) => {
                             }
                         </ul>
 
-                        <MainButton padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
                     </div>
                 </div>
             </div>

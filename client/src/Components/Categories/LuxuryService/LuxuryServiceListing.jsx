@@ -50,10 +50,12 @@ const categories = [
     },
 ];
 
+const scrollToWeekendEscapeRef = (ref) => {
+    window.scrollTo(0, ref.current.offsetTop);
+};
 
 const LuxuryServiceListing = () => {
     const navigate = useNavigate();
-    const position = useRef(null);
     const [showLess, setShowLess] = useState(true);
     const [step, setStep] = useState(false);
 
@@ -64,13 +66,13 @@ const LuxuryServiceListing = () => {
 
     return (
         <>
-            <LuxuryServiceNavbar />
-            <Categories ref={position} margin='-8em 0em 3em 0em' gap='1em' flexWrap='wrap' z='100'>
+            <LuxuryServiceNavbar active={0} />
+            <Categories margin='-8em 0em 3em 0em' gap='1em' flexWrap='wrap' z='100'>
                 {categories.map((category, index) => {
                     return (
                         <Category
                             onClick={() => {
-                                // navigate(category?.link);
+                                navigate(category?.link);
                             }}
                             bg={category.bg}
                             key={index}
