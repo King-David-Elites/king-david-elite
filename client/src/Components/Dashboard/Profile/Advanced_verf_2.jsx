@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { CameraOutline, UploadOutline } from "heroicons-react";
 import Profile from "../Dashboard-Image/photo.png";
 import FileBase64 from "react-file-base64";
@@ -9,12 +9,16 @@ const Advanced_Verf_2 = (props) => {
   const [valid, setValid] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
+  const setCallBack = useCallback(()=>{
     setPhoto(photo);
     if(photo.length !== 0){
       setValid(true);
-    }    
-  }, [loaded]);
+    }   
+  }, [ photo, setPhoto])
+
+  useEffect(() => {
+     setCallBack()
+  }, [setCallBack]);
 
   const Load = (base64, type) => {
     if (type === "photo") {

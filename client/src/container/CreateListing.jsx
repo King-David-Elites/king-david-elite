@@ -22,7 +22,7 @@ const CreateListing = () => {
 
   useEffect(()=>{
     scrollToRef(top)
-  },[])
+  },[top])
 
   return (
     <>

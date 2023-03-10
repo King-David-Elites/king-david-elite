@@ -42,14 +42,15 @@ const LoggedUser = ({ logged }) => {
   let user = useGetUserDetails();
   const [listings, setListings] = useState([]);
 
-  const getListings = () => {
+  const getListings = (() => {
     axios
       .get(`${globalApi}/listings/user-listing?id=${id}`, setConfig())
       .then((resp) => {
         setListings(resp.data);
       })
       .catch((err) => console.log(err));
-  };
+  }, [id])
+  
 
   if (id == user._id) {
     navigate("/profile");
@@ -82,15 +83,8 @@ const LoggedUser = ({ logged }) => {
         getListings();
       }
 
-  }, [id])
+  }, [id, user, getListings])
 
-  
-  
-  
-
-  useEffect(()=>{
-    getListings()
-  }, [globalApi])
 
   //   const logged = true
   const options = [

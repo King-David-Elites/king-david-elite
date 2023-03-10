@@ -20,7 +20,7 @@ const GetStarted = (props) => {
     if (!mainData.userData.address) {
       navigate("/profile/edit");
     }
-  }, []);
+  }, [mainData, navigate]);
 
   return (
     <>

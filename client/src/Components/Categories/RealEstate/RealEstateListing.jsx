@@ -1,5 +1,5 @@
 import { Adjustments, BadgeCheck, Heart, HeartOutline, Search } from "heroicons-react";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import {
   Background,
@@ -115,9 +115,7 @@ const RealEstateListing = () => {
       .catch(err => console.log(err))
   }
 
-
-
-  useEffect(() => {
+  const animate = useCallback(() => {
     var timer1;
     var timer2;
     timer1 = setTimeout(() => {
@@ -139,7 +137,11 @@ const RealEstateListing = () => {
         }, [500]);
       }
     }, [8000]);
-  }, [estateId]);
+  },[estateId])
+
+  useEffect(() => {
+    animate()
+  }, [animate]);
   return (
     <>
       {

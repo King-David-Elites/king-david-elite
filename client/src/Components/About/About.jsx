@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { Fragment } from "react";
 import MainButton from "../buttons/MainButton";
 import { Background, HeroSection, Text } from "../Categories/Cars/Cars.Style";
@@ -32,7 +32,7 @@ const About = () => {
   const [aboutId, setAboutId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear);
 
-  useEffect(() => {
+  const animate = useCallback(()=>{
     var timer1;
     var timer2;
     timer1 = setTimeout(() => {
@@ -53,8 +53,14 @@ const About = () => {
           setAboutId(1);
         }, [500]);
       }
-    }, [8000]);
-  }, [aboutId]);
+    }, [8000])
+  }, [aboutId])
+
+  useEffect(() => {
+    animate()
+  }, [animate]);
+
+
   return (
     <Fragment>
       <Navbar active={3} />

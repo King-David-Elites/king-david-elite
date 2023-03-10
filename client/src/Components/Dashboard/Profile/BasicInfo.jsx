@@ -38,7 +38,7 @@ const BasicInfo = (props) => {
     } else {
       setValid(false);
     }
-  }, [changing]);
+  }, [changing, userInfo]);
 
   const handleChange = (e) => {
     const name = e.target.name;
