@@ -2,12 +2,9 @@ import React from 'react'
 import { Header, UL, LI, LogoText, Brand, Login } from './Navbar.Style'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
-import { FaUserCircle, FaUser } from 'react-icons/fa';
-import { AiFillHome } from 'react-icons/ai';
-import { MdRealEstateAgent, MdMessage, MdMenu, MdAccountBalanceWallet } from 'react-icons/md';
-import { IoMdCar } from 'react-icons/io';
-import { BsFillBellFill, BsFillHeartFill } from 'react-icons/bs';
 import './Navbar.css'
+import { MdMenu } from 'react-icons/md';
+import { ImCross } from 'react-icons/im';
 
 const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
 
@@ -21,122 +18,72 @@ const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
 
     const navOptions = [
         {
+            no: 1,
             title: "All",
-            // link: "/"
+            link: "/luxury-service"
         },
-        {
-            title: "Concierge Weekends",
-            // link: "/"
-        },
-        {
-            title: "Chauffeur Services",
-            // link: "/real-estate"
-        },
-        {
-            title: "Boat Cruises",
-            // link: "/cars"
-        },
-        {
-            title: "Concierge Vacations",
-            // link: "/about",
-        },
-        {
-            title: "Helicopter Rides",
-            // link: "/about",
-        },
-        {
-            title: "Pricing",
-            // link: "/about",
-        },
-    ]
-
-    const mobileNavOptions = [
-
         {
             no: 2,
-            icon: <FaUserCircle size={20} />,
-            title: "List with us",
-            link: "/signup",
+            title: "Concierge Weekends",
+            link: "/luxury-service/concierge-vacation"
         },
         {
             no: 3,
-            icon: <AiFillHome size={20} />,
-            title: "Home",
-            link: "/",
+            title: "Chauffeur Services",
+            link: "/luxury-service/pricing"
         },
         {
             no: 4,
-            icon: <MdRealEstateAgent size={20} />,
-            title: "Real Estate",
-            link: "/real-estate"
+            title: "Boat Cruises",
+            link: "/luxury-service/pricing"
         },
         {
             no: 5,
-            icon: <IoMdCar size={20} />,
-            title: "Cars",
-            link: "/cars"
+            title: "Concierge Vacations",
+            link: "/luxury-service/pricing",
         },
         {
             no: 6,
-            icon: <FaUser size={20} />,
-            title: "Profile",
-            link: "/profile",
+            title: "Helicopter Rides",
+            link: "/luxury-service/helicopter-ride",
         },
         {
             no: 7,
-            icon: <MdMessage size={20} />,
-            title: "Messages",
-            link: "/dashboard/messages",
-        },
-        {
-            no: 8,
-            icon: <BsFillBellFill size={20} />,
-            title: "Notifications",
-            link: "/dashboard/notifications",
-        },
-        {
-            no: 9,
-            icon: <BsFillHeartFill size={20} />,
-            title: "Saved Listing",
-            link: "/",
-        },
-        {
-            no: 10,
-            icon: <MdAccountBalanceWallet size={20} />,
-            title: "My Account",
-            link: "/dashboard/wallet",
-        },
-
-    ]
-
-    const otherNav = [
-        {
-            no: 11,
-            title: "Help & FAQs",
-        },
-        {
-            no: 12,
-            title: "About",
-            link: "/about",
-        },
-        {
-            no: 13,
-            title: "Contact Us",
-            link: "",
-        },
-        {
-            no: 14,
-            icon: <FaUserCircle size={20} />,
-            title: "Log In",
-            link: "/login",
+            title: "Pricing",
+            link: "/luxury-service/pricing",
         },
     ]
-
 
     return (
         <>
             <Header justifyContent="space-around" z="0" paddingTop='1.5em' className='bg-cover' alignItems='flex-start' height="13em" bg={bg} sticky="static">
-
+                <nav className={activeNav ? "navigation active" : "navigation"}>
+                    <ul>
+                        <div className="closed">
+                            <p>Welcome!</p>
+                            <ImCross className="close" color="#000" onClick={showMenu} />
+                        </div>
+                        <div className="line"></div>
+                        {navOptions.map((nav, i) => {
+                            return (
+                                <>
+                                    <li key={i} onClick={() => navigate(nav?.link)}>
+                                        <div className="list-items">
+                                            {nav?.icon}
+                                            {nav.title}
+                                        </div>
+                                    </li>
+                                    {nav.no === 1 && <div className="line"></div>}
+                                    {nav.no === 2 && <div className="line"></div>}
+                                    {nav.no === 3 && <div className="line"></div>}
+                                    {nav.no === 4 && <div className="line"></div>}
+                                    {nav.no === 5 && <div className="line"></div>}
+                                    {nav.no === 6 && <div className="line"></div>}
+                                </>
+                            );
+                        })}
+                    </ul>
+                </nav>
                 <Brand>
                     <LogoText fontSize="1.5rem" onClick={() => navigate("/luxury-service")}>Luxury Services</LogoText>
 
@@ -150,11 +97,7 @@ const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
                         {
                             navOptions.map((nav, i) => {
                                 return (
-                                    <LI
-                                        key={i}
-                                        onClick={() => navigate(nav.link)}
-
-                                    >
+                                    <LI key={i} onClick={() => navigate(nav.link)}>
                                         <div className={active === i && "item-active"}>
                                             {nav.title}
                                         </div>

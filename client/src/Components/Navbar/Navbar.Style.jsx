@@ -6,7 +6,7 @@ export const Header = styled.div`
     position:${prop => prop.sticky ? prop.sticky : "fixed"};                
     width:100%;
     height:  ${props => props.height ? props.height : "4em"};
-    color:${theme.textColor};
+    color:${prop => prop.color ? prop.color : theme.textColor};
     background-color: ${(prop) => prop.bg || "rgba(0,0,0,1)"};
     display:flex;
     justify-content: ${props => props.justifyContent ? props.justifyContent : "space-around"};
@@ -85,7 +85,7 @@ export const LogoText = styled.div`
     cursor:pointer;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        color: ${theme.color};
+        color:${prop => prop.color ? prop.color : theme.textColor};
         font-size: ${props => props.fontSize ? props.fontSize : "1rem"}; ;     
         font-weight:700;    
         cursor:pointer;

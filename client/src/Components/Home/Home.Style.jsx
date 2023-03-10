@@ -12,7 +12,7 @@ export const Categories = styled.div`
     display: flex;
     align-items: center;
     position: ${props => props.position ? props.position : "static"} ;
-    padding: 50px;
+    padding: ${props => props.padding ? props.padding : "50px"} ;
     justify-content: space-between;
     flex-wrap: ${props => props.flexWrap ? props.flexWrap : "no-wrap"} ;
     gap: 2em;
@@ -27,7 +27,6 @@ export const Categories = styled.div`
             width:0;
         }
         gap: ${props => props.gap ? props.gap : "2.3em"};
-       
       }`
 
 export const Category = styled.div`

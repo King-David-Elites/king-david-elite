@@ -14,7 +14,7 @@ const MainButton = styled.button`
     white-space: nowrap;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: ${props => props.justifyContent ? props.justifyContent : "center"} ;
     align-items: center;
     padding: ${props => props.padding ? props.padding : "16px"} ;
     margin-top:${props => props.marginTop ? props.marginTop : "0em"};   
