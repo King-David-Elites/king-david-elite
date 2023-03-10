@@ -1,4 +1,4 @@
-import { Categories, CategoriesContainer, Category } from "../../Home/Home.Style";
+import { Categories, Category } from "../../Home/Home.Style";
 import LuxuryServiceNavbar from "../../Navbar/LuxuryServiceNavbar";
 import c1 from "../LuxuryService/images/alexandre-chambon-aapSemzfsOk-unsplash.jpg";
 import c2 from "../LuxuryService/images/greg-wilson-ro-GJ-Hlz-s-unsplash.jpg";
@@ -22,7 +22,7 @@ const categories = [
         bg: c4,
         title: "Weekend Escapes",
         other: "Get the ultimate VIP experience with our Concierge Weekends service. Whether you’re looking to relax or explore",
-        link: "/luxury-service/weekend-escape",
+        link: "/luxury-service/pricing"
     },
     {
         bg: c2,
@@ -40,13 +40,13 @@ const categories = [
         bg: c6,
         title: "Boat Cruises",
         other: "Set sail on an unforgettable adventure with our Boat Cruises. Whether you,re looking for a romantic getaw",
-        link: "/luxury-service/boat-cruise"
+        link: "/luxury-service/pricing"
     },
     {
         bg: c3,
         title: "Chauffeur-Driven Services",
         other: "Get the ultimate VIP experience with our Concierge Weekends service. Whether you’re looking to relax or explore",
-        link: "/luxury-service/chauffeur"
+        link: "/luxury-service/pricing"
     },
 ];
 

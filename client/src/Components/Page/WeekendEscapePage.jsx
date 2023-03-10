@@ -18,7 +18,6 @@ const ExclusiveEventPage = () => {
         departureDate: '',
         numberOfGuest: '',
         contact: '',
-        departureDate: '',
         arrivalDate: '',
         emergencyNumber: '',
         accomodationPreference: '',
@@ -26,7 +25,7 @@ const ExclusiveEventPage = () => {
     }
 
     const accomodationPreferences = [
-        { key: "Accomodation Preferenve", value: '' },
+        { key: "Accomodation Preference", value: '' },
         { key: "5 Star", value: "5 Star" },
         { key: "Mainland", value: "Mainland" },
     ];
@@ -49,7 +48,7 @@ const ExclusiveEventPage = () => {
         if (!values.contact) errors.contact = "Required";
         if (!values.departureDate) errors.departureDate = "Required";
         if (!values.arrivalDate) errors.arrivalDate = "Required";
-        if (!values.emergencyNumber) errors.emergencyNumber = "Required";
+        if (!values.emergencyContact) errors.emergencyContact = "Required";
         if (!values.accomodationPreference) errors.accomodationPreference = "Required";
         return errors;
     };
@@ -63,7 +62,7 @@ const ExclusiveEventPage = () => {
 
 
     return (
-        <div className=" w-full h-[100vh] bg-white md:py-8 px-24 relative">
+        <div className="w-full h-[100vh] bg-white md:py-8 md:px-24 py-3 px-5 relative">
             <div className='h-[95%]'>
                 <div className="w-[70px] h-[auto] flex flex-col">
                     <img src={kde_blackBg}
@@ -72,8 +71,8 @@ const ExclusiveEventPage = () => {
                     <p className='text-[10px] whitespace-nowrap font-semibold ml-1 text-[#d4d72eea] bg-gradient-to-r from-[#fcf8bd]-500 to-[#b9a362]-500'>Kind David Logo</p>
                 </div>
 
-                <div className='flex md:gap-5 mt-5 items-center'>
-                    <p className='font-semibold text-2xl'>Weekend Escapes</p>
+                <div className='flex gap-2 md:gap-5 mt-5 items-center'>
+                    <p className='font-semibold text-lg md:text-2xl'>Weekend Escapes</p>
                     <div className='flex gap-1'>
                         <FaRegStar size={20} className='text-theme-color cursor-pointer' />
                         <FaRegStar size={20} className='text-theme-color cursor-pointer' />
@@ -83,7 +82,7 @@ const ExclusiveEventPage = () => {
                     </div>
                 </div>
 
-                <div className='mt-3 w-[60%] text-[12px] font-medium tracking-wide text-neutral-color'>
+                <div className='mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color'>
 
                     <p>
                         <span className='text-black text-[13px] mr-1 font-bold'>
@@ -132,19 +131,19 @@ const ExclusiveEventPage = () => {
                         ) : null}
                     </InputLayout>
 
-                    <div className='flex w-[50%] justify-between'>
+                    <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
                         <InputLayout label='Email address Of Guest(s)' name='guestEmail'>
-                            <InputField width='100px' />{formik.errors.guestName ? (
+                            <InputField width='50%' />{formik.errors.guestName ? (
                                 <div className=" text-[red] opacity-40">
                                     {formik.errors.guestName}
                                 </div>
                             ) : null}
                         </InputLayout>
 
-                        <InputLayout label='Names of Guest(s)' name='guestName'>
-                            <InputField width='20px' placeholder='0' />{formik.errors.guestName ? (
+                        <InputLayout label='No of Guest(s)' name='numberOfGuest'>
+                            <InputField width='20px' type='number' placeholder='0' />{formik.errors.numberOfGuest ? (
                                 <div className=" text-[red] opacity-40">
-                                    {formik.errors.guestName}
+                                    {formik.errors.numberOfGuest}
                                 </div>
                             ) : null}
                         </InputLayout>
@@ -158,7 +157,7 @@ const ExclusiveEventPage = () => {
                         ) : null}
                     </InputLayout>
 
-                    <div className='flex w-[50%] justify-between'>
+                    <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
                         <InputLayout label='Departure Date' name='departureDate'>
                             <InputField type='date' />{formik.errors.departureDate ? (
                                 <div className=" text-[red] opacity-40">
@@ -206,9 +205,9 @@ const ExclusiveEventPage = () => {
                         ) : null}
                     </InputLayout>
                    
-                    <div className="flex md:gap-4 font-semibold mt-6">
+                    <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
                         <input type="checkbox" className="check cursor-pointer" />
-                        <p className="term">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
+                        <p className="term text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
 
                     </div>
 
@@ -218,7 +217,7 @@ const ExclusiveEventPage = () => {
                 </form>
 
 
-                <div className='w-[300px] h-[100vh] fixed top-0 right-36 bottom-0'>
+                <div className='w-[300px] h-[100vh] fixed top-0 right-36 bottom-0 md:block hidden'>
                     <img src={weekendEscape}
                         className='w-[100%] h-[100%] rounded-md'
                         alt="exclusiveEventLogo" />

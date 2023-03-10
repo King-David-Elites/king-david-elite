@@ -60,6 +60,7 @@ import HelicopterRidePage from './Components/Page/HelicopterRidePage';
 import ConceirgeVacationPage from './Components/Page/ConceirgeVacationPage';
 import BoatCruisePage from './Components/Page/BoatCruisePage';
 import ChaffeurPage from './Components/Page/ChauffeurPage';
+import Pricing from './Components/Categories/LuxuryService/Pricing';
 
 function App() {
   const queryClient = new QueryClient();
@@ -129,6 +130,7 @@ function App() {
             <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage />} />
             <Route path="/luxury-service/boat-cruise" element={<BoatCruisePage />} />
             <Route path="/luxury-service/chauffeur" element={<ChaffeurPage />} />
+            <Route path="luxury-service/pricing" element={<Pricing />} />
           </Routes>
         </AnimatePresence>
       </Router>
