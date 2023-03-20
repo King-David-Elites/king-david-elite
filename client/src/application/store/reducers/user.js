@@ -7,10 +7,11 @@ const initialState = {
     lastName: JSON.parse(localStorage.getItem('user'))?.lastName ?? '',
     isAdmin: JSON.parse(localStorage.getItem('user'))?.isAdmin ?? false,
     profilePicture: JSON.parse(localStorage.getItem('user'))?.profilePicture ?? null,
-    createdAt: JSON.parse(localStorage.getItem('user'))?.createdAt ?? ' '
+    createdAt: JSON.parse(localStorage.getItem('user'))?.createdAt ?? ' ',
+    status: 'silver'
 }
 
-export default  (state = initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
         case (userActions.SET_USER_ROLE):
             return { ...state, userRole: action.payload };
@@ -25,6 +26,8 @@ export default  (state = initialState, action) => {
                 profilePicture: action.payload.profilePicture,
                 createdAt: action.payload.createdAt
             };
+        case (userActions.SET_PACKAGE_PLAN):
+            return { ...state, status: action.payload }
         default:
             return state;
     }

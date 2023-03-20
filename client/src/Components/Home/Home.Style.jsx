@@ -6,6 +6,24 @@ export const CategoriesContainer = styled.div`
   
 `;
 
+export const Buttons = styled.div`
+  button{
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(255, 255, 255, 0.100);
+    cursor: pointer;
+    color: #01be96;
+    border: none;
+    position: absolute;
+    top: 45%;
+    right: -1rem;
+  }
+
+  .back{
+    left: -1rem;
+  }
+`
+
 export const Categories = styled.div`
     height: auto;
     width: 100%;
@@ -300,24 +318,26 @@ export const BlogContainer = styled.div`
   flex-direction: column;
   gap: 1em;
   padding: 0em 3em;
+
   .lt {
     font-weight: 700;
     font-size: 20px;
     color: #000000;
   }
+
   .blogrw {
-    width: 100%;    
+    width: 100%; 
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 1.5em;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     padding: 1em 0em;
+    position: relative;
   }
 `;
 
 export const Blog = styled.div`
-  flex: 0 1 18em;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -325,12 +345,13 @@ export const Blog = styled.div`
   gap: 0.5em;
   text-align: start;
   cursor:pointer;
+
   :hover > .topic{
     color: #F2BE5C;
     transition: .3s;
   }
   .image {
-    width: 100%;
+    width: 18em;
     height: 15em;
     border-radius: 8px 8px 0px 0px;
     img {

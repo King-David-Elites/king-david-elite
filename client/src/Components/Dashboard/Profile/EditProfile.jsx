@@ -243,22 +243,6 @@ const EditProfile = ({ mainData }) => {
               onChange={formik.handleChange}
             />
 
-            {/* <label htmlFor="cover">Cover</label> */}
-            {/* <FileUploadContainer>
-              <UploadFileBtn type="button">
-                <FileBase64
-                  name="cover"
-                  defaultValue={formik.values.cover}
-                  onChange={formik.handleChange}
-                  multiple={false}
-                  onDone={(base64) => {
-                    setFile(base64.base64);
-                  }}
-                />
-                <i className="fas fa-file-upload" />
-              </UploadFileBtn>
-              <DragDropText>PNG, JPG, GIF up to 5mb</DragDropText>
-            </FileUploadContainer> */}
             <MainButton
               background="blue"
               border="blue"

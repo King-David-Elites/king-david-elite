@@ -20,7 +20,7 @@ const categories = [
     },
     {
         bg: c4,
-        title: "Weekend Escapes",
+        title: "Daycation",
         other: "Get the ultimate VIP experience with our Concierge Weekends service. Whether you’re looking to relax or explore",
         link: "/luxury-service/pricing"
     },
@@ -50,9 +50,7 @@ const categories = [
     },
 ];
 
-const scrollToWeekendEscapeRef = (ref) => {
-    window.scrollTo(0, ref.current.offsetTop);
-};
+
 
 const LuxuryServiceListing = () => {
     const navigate = useNavigate();

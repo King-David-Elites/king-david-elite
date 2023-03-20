@@ -29,6 +29,7 @@ import {
 } from "../Categories/Cars/AnimationOrder";
 import { motion } from "framer-motion";
 import { BlogContent } from "./BlogContent";
+import Scroller from "./Scroller";
 
 const scrollToRef = (ref) => {
   window.scrollTo(0, ref.current.offsetTop);
@@ -62,7 +63,7 @@ const HomePage = () => {
       isComingSoon: true,
     },
   ];
-
+ 
   useEffect(() => {
     var timer1;
     var timer2;
@@ -196,26 +197,28 @@ const HomePage = () => {
       <BlogContainer>
         <div className="lt">Latest Blogs</div>
         <div className="blogrw">
-          {
-            BlogContent.map((blog, i)=>{
-              return(
-                <>
-                  <Blog key={i}>
-                    <div className="image">
-                      <img src={blog.img} alt="blog" />
-                    </div>
-                    <div className="topic">
-                      <p>{blog.topic}</p>
-                    </div>
-                    <div className="more">
-                      <p>Learn more</p>
-                      <ImArrowUpRight2 size="15px" color="#F2BE5C"/>
-                    </div>
-                  </Blog>
-                </>
-              )
-            })
-          }
+          <Scroller id='blog'>
+            {
+              BlogContent.map((blog, i) => {
+                return (
+                  <>
+                    <Blog key={i}>
+                      <div className="image">
+                        <img src={blog.img} alt="blog" />
+                      </div>
+                      <div className="topic">
+                        <p>{blog.topic}</p>
+                      </div>
+                      <div className="more">
+                        <p>Learn more</p>
+                        <ImArrowUpRight2 size="15px" color="#F2BE5C" />
+                      </div>
+                    </Blog>
+                  </>
+                )
+              })
+            }
+          </Scroller>
         </div>
       </BlogContainer>
 

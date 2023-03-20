@@ -1,6 +1,4 @@
-import { Form, Formik } from 'formik';
 import { FaRegStar } from 'react-icons/fa';
-import FormikControl from '../formik/FormikControl';
 import kde_blackBg from '../Navbar/Image/kde_whiteBg.png'
 import { useFormik } from "formik";
 import MainButton from '../buttons/MainButton';
@@ -8,27 +6,26 @@ import { Link } from 'react-router-dom';
 import conceirgeVacation from '../Categories/LuxuryService/images/pics4.png'
 import InputLayout from '../inputs/InputLayout';
 import { InputField } from '../inputs/MainInput';
-import { Dropdown, Option } from '../inputs/DropdownInput';
 import { TextArea } from '../inputs/TextareaInput'
+import { useState } from 'react';
+import { MdOutlineRemoveCircle } from 'react-icons/md';
+
 
 const ConceirgeVacationPage = () => {
-
+    const [guestsName, setGuestsName] = useState('');
+    const [guestsEmail, setGuestEmail] = useState('');
+    const [items, setItems] = useState([]);
+    const [validationError, setValidationError] = useState('');
     const initialValues = {
         message: '',
-        emergencyContact: '',
+        emergencyContactName: '',
+        emergencyNumber: '',
         numberOfGuest: '',
         guestName: '',
         mobileNumber: '',
         email: '',
         fullName: '',
-        accomodationPreference: '',
     }
-
-    const accomodationPreferences = [
-        { key: "Accomodation Preference", value: '' },
-        { key: "5 Star", value: "5 Star" },
-        { key: "Mainland", value: "Mainland" },
-    ];
 
     const createEvent = () => {
 
@@ -36,7 +33,8 @@ const ConceirgeVacationPage = () => {
 
     const validate = (values) => {
         let errors = {};
-        if (!values.emergencyContact) errors.emergencyContact = "Required";
+        if (!values.emergencyContactName) errors.emergencyContactName = "Required";
+        if (!values.emergencyNumber) errors.emergencyNumber = "Required";
         if (!values.numberOfGuest) errors.numberOfGuest = "Required";
         if (!values.email) {
             errors.email = "Required";
@@ -49,16 +47,31 @@ const ConceirgeVacationPage = () => {
         if (!values.mobileNumber) errors.mobileNumber = "Required";
         if (!values.fullName) errors.fullName = "Required";
         if (!values.message) errors.message = "Required";
-        if (!values.accomodationPreference) errors.accomodationPreference = "Required";
         return errors;
     };
+
+    const handleRemove = (index) => {
+        const list = [...items]
+        list.splice(index, 1);
+        setItems(list)
+    }
+
+    const onSubmit = () => {
+        if (guestsName.trim() === '' || guestsEmail.trim() === '') {
+            setValidationError('Both are required');
+        } else {
+            setValidationError('');
+            setItems([...items, { guestsName, guestsEmail }]);
+            setGuestsName('');
+            setGuestEmail('');
+        }
+    }
 
     const formik = useFormik({
         initialValues,
         createEvent,
         validate,
     });
-
 
 
     return (
@@ -115,7 +128,7 @@ const ConceirgeVacationPage = () => {
 
                 <form onSubmit={formik.handleSubmit} className='mt-6'>
                     <InputLayout label='Full Name' name='fullName'>
-                        <InputField width='50%' placeholder='e.g Emma Olaosebikan, Williams Ade, Shola Anikulapo' />{formik.errors.fullName ? (
+                        <InputField width='50%' placeholder='e.g Emma Olaosebikan' />{formik.errors.fullName ? (
                             <div className=" text-[red] opacity-40">
                                 {formik.errors.fullName}
                             </div>
@@ -138,53 +151,65 @@ const ConceirgeVacationPage = () => {
                         ) : null}
                     </InputLayout>
 
+                    <form onSubmit={formik.handleSubmit} className='mt-1 mb-4' >
+                        <div>
+                            {items.map((item, index) => (
+                                <div>
+                                    {
+                                        item.guestsName && item.guestsEmail != '' && <div className='flex gap-5 items-center' key={index}>
+                                            <p>{item.guestsName} | {item.guestsEmail}</p>
+                                            <button type='button' className='cursor-pointer' onClick={() => handleRemove(index)}><MdOutlineRemoveCircle color='red' /></button>
+                                        </div>
+                                    }
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
+                            <InputLayout label='Names of Passenger(s)' name='guestsName'>
+                                <InputField name='guestsName' type='text' onChange={(e) => {
+                                    if (e.target.name === 'guestsName') {
+                                        setGuestsName(e.target.value);
+                                    }
+                                }} width='50%' placeholder='Enter fullName' />
+                                <div className=" text-[red] opacity-40">
+                                    {
+                                        validationError && <p>{validationError}</p>
+                                    }
+                                </div>
+                            </InputLayout>
+
+                            <InputLayout label='Email Address Of Passengers(s)' name='guestsEmail'>
+                                <InputField name='guestsEmail' type='text' onChange={(e) => {
+                                    if (e.target.name === 'guestsEmail') {
+                                        setGuestEmail(e.target.value);
+                                    }
+                                }} width='100px' />
+                            </InputLayout>
+                        </div>
+                        <MainButton className='cursor-pointer' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
+                    </form>
 
                     <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-                        <InputLayout label='Names Of Guest(s)' name='guestName'>
-                            <InputField placeholder='e.g Emma Olaosebikan, Williams Ade, Shola Anikulapo' />{formik.errors.guestName ? (
+                        <InputLayout label='Emergency Contact Phone Number' name='emergencyNumber'>
+                            <InputField width='20px' placeholder='+(234)' />{formik.errors.emergencyNumber ? (
                                 <div className=" text-[red] opacity-40">
-                                    {formik.errors.guestName}
+                                    {formik.errors.emergencyNumber}
                                 </div>
                             ) : null}
                         </InputLayout>
 
-                        <InputLayout label='Number Of Guests' name='numberOfGuest'>
-                            <InputField type='number' placeholder='0' />{formik.errors.numberOfGuest ? (
+                        <InputLayout label='Emergency Contact Name' name='emergencyContactName'>
+                            <InputField width='20px' placeholder='e.g Adeoye Marvellous' />{formik.errors.emergencyContactName ? (
                                 <div className=" text-[red] opacity-40">
-                                    {formik.errors.numberOfGuest}
+                                    {formik.errors.emergencyContactName}
                                 </div>
                             ) : null}
                         </InputLayout>
                     </div>
 
-                    <InputLayout label='Accommodation Preference' name='accomodationPreference'>
-                        <Dropdown margin='0.5em 0em'>
-                            {accomodationPreferences.map((a) => (
-                                <Option key={a.value} value={a.value}> {a.key}</Option>
-                            ))}
-                        </Dropdown>
-                        {formik.errors.accomodationPreference ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.accomodationPreference}
-                            </div>
-                        ) : null}
-                    </InputLayout>
-
-                    <InputLayout label='Emergency Contact Information' name='emergencyContact'>
-                        <InputField width='20px' placeholder='+(234)' />{formik.errors.emergencyContact ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.emergencyContact}
-                            </div>
-                        ) : null}
-                    </InputLayout>
-
                     <InputLayout label='Message' name='message'>
                         <TextArea placeholder='kindly explicitly describe your expectations and intended activities and destinations' width='50%' />
-                        {formik.errors.message ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.message}
-                            </div>
-                        ) : null}
                     </InputLayout>
 
                     <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
