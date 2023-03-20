@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useState } from "react";
 import {
   Background,
@@ -49,7 +49,7 @@ const CarsListing = ({ mainData }) => {
   const [carId, setCarId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear)
 
-  useEffect(() => {
+  const animate = useCallback(()=>{
     var timer1
     var timer2
     timer1 = setTimeout(() => {
@@ -72,7 +72,11 @@ const CarsListing = ({ mainData }) => {
         }, [500])
       }
     },[8000])
-  },[carId])  
+  },[carId])
+
+  useEffect(() => {
+    animate()
+  },[animate])  
 
   return (
     <>

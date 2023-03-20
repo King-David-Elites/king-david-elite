@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   CameraOutline,
   UploadOutline,
@@ -24,7 +24,7 @@ const Advanced_Verf_1 = (props) => {
   const [loaded, setLoaded] = useState(false);
   const [valid, setValid] = useState(false);
 
-  useEffect(() => {
+  const setCallBack = useCallback(()=>{
     setFrontImage(frontImage);
     setBackImage(backImage);    
     if (frontImage.length !== 0 && backImage.length !== 0) {
@@ -32,7 +32,11 @@ const Advanced_Verf_1 = (props) => {
     } else {
       setValid(false);
     }
-  }, [loaded]);
+  }, [ frontImage, backImage, setFrontImage, setBackImage])
+
+  useEffect(() => {
+    setCallBack()
+  }, [setCallBack]);
 
   const Load = (base64, type) => {
     if (type === "front") {

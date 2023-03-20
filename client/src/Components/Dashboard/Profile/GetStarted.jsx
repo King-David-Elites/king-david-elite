@@ -42,9 +42,9 @@ const GetStarted = (props) => {
 
   useEffect(() => {
     if (!mainData.userData.address) {
-    // navigate("/profile/edit");
-    }   
-  }, []); 
+      navigate("/profile/edit");
+    }
+  }, [mainData, navigate]);
 
   return (
     <>

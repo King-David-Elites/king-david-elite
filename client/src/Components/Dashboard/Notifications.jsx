@@ -31,7 +31,7 @@ const NotificationAsElement = () => {
 
     useEffect(() => {
         getNotifications()
-    }, [globalApi])
+    }, [])
     return (
         <NotificationContainer>
             {
@@ -66,7 +66,7 @@ const MobileNotification = () => {
 
     useEffect(() => {
         getNotifications()
-    }, [globalApi])
+    }, [])
 
     const [activeNav, setActiveNav] = useState(false);
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { LastContainer} from "./ProfileList.style"
 import { FaFolderPlus } from 'react-icons/fa'
 import { FaPlus } from 'react-icons/fa'
@@ -17,15 +17,15 @@ export default function ProfileList() {
   const [listings, setListings] = useState([])
   const data = useGetUserDetails()
   
-  const getListings = ()=>{
+  const getListings = useCallback(()=>{
     axios.get(`${globalApi}/listings/user-listing?id=${data._id}`, setConfig())
     .then(resp => setListings(resp.data))
     .catch(err => console.log(err))
-  }
+  }, [data])
 
   useEffect(()=>{
     getListings()
-  }, [globalApi])
+  }, [ getListings])
 
   return (
     <LastContainer>

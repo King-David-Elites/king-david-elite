@@ -12,7 +12,7 @@ const UpgradeProfile = () => {
 
   useEffect(()=>{
     scrollToRef(top)
-  },[])
+  },[top])
   return (
     <>
       <Upgrade ref={top}>

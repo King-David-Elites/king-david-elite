@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ver1 from "../Dashboard-Image/ver1.png";
 import ver2 from "../Dashboard-Image/ver2.png";
 import ver3 from "../Dashboard-Image/ver3.png";
@@ -22,12 +22,16 @@ const Advanced_Verf_3 = (props) => {
   console.log(verificationData)
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
+  const checkSuccess = useCallback(()=>{
     if (success) {
       setStage(stage + 1);
       scrollToRef(position);
     }
-  }, [success]);
+  }, [success, stage, position, scrollToRef, setStage])
+
+  useEffect(() => {
+    checkSuccess()
+  }, [checkSuccess]);
 
   const setConfig = () => {
     const authToken = localStorage.getItem("token");

@@ -54,7 +54,7 @@ const ProfileLayout = () => {
 
     useEffect(() => {
         scrollToRef(top)
-    }, [])
+    }, [top])
 
     return (
         <div>

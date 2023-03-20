@@ -47,7 +47,7 @@ const CreateCarListing = () => {
     if (allVideos.length !== 0 && loadImage === false) {
       Load(allVideos, "video", size);
     }
-  }, [loaded, loadImage]);
+  }, [loaded,Load, loadImage, userListings, allImages, images, videos, size, allVideos]);
 
   useEffect(() => {
     userListings["images"] = images;
@@ -69,7 +69,7 @@ const CreateCarListing = () => {
       setValid(false);
       setError(true);
     }
-  }, [changing]);
+  }, [changing, userListings, images, videos]);
 
   const Load = (base64, type, size) => {
     if (type === "image") {

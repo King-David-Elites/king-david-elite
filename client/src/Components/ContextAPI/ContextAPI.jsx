@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import globalApi from "../../api";
 
@@ -11,7 +11,7 @@ const useContextAPI = () => {
 
   const getListings = async () => {
     await axios
-      .get(`${globalApi}/listings/all?page=1&type=0`)
+      .get(`${globalApi}/listings/all?page=1&category=real-estate`)
       .then((resp) => {
         setListing(resp.data.listings);        
       })
@@ -20,7 +20,7 @@ const useContextAPI = () => {
 
   const getCarsListings = async () => {
     await axios
-      .get(`${globalApi}/listings/all?page=1&type=1`)
+      .get(`${globalApi}/listings/all?page=1&category=cars`)
       .then((resp) => {
         setCars(resp.data.listings);
       })
@@ -58,12 +58,17 @@ const useContextAPI = () => {
       .catch((err) => console.log(err));
   };
 
+  const allCallBacks = useCallback(()=>{
+      email();
+      getListings();  
+      getCarsListings()
+      getCountry();
+  }, [])
+
   useEffect(() => {
-    email();
-    getListings();
-    getCarsListings();
-    getCountry();
-  }, []);
+     allCallBacks()
+  }, [allCallBacks]);
+  
 
   return {
     userData: userData,
