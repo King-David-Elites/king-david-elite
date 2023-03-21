@@ -1,4 +1,4 @@
-import { Adjustments, BadgeCheck, Heart, HeartOutline, Search } from "heroicons-react";
+import { Adjustments, Search } from "heroicons-react";
 import React, { useRef, useEffect, useCallback } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import {
@@ -7,11 +7,6 @@ import {
   Input,
   Text,
   Body,
-  Dealer,
-  PicDealer,
-  PicCar,
-  Reaction,
-  Position,
   FilterBox,
 } from "../Cars/Cars.Style";
 import { SearchSection, SearchC } from "./RealEstate.Style";
@@ -19,12 +14,10 @@ import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
 import '../../Navbar/Navbar.css'
 import { SpinnerCircular } from 'spinners-react';
-import { PropertyType } from "./RealEstate.Style";
 import { useState } from "react";
 import Banner from "../../Banner/Banner";
 import MainButton from "../../buttons/MainButton";
 import Footer from "../../Footer/Footer";
-import { useNavigate, useParams } from "react-router-dom";
 import Listing from "../../Listing/Listing";
 import { GridContainer } from "../../Listing/Listing.styled";
 import { EstateAnimation, graduallyAppear, graduallyDisAppear } from "../Cars/AnimationOrder";
@@ -32,10 +25,7 @@ import useContextAPI from "../../ContextAPI/ContextAPI";
 import { motion } from "framer-motion";
 import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
-import Loader from "../../Loader/Loader";
 import theme from "../../../application/utils/Theme";
-import { ImCross } from "react-icons/im";
-import DropdownInput from "../../inputs/DropdownInput";
 import { BiArrowBack } from "react-icons/bi";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
@@ -57,7 +47,7 @@ const RealEstateListing = () => {
   const [activePage, setActivePage] = useState(false);
   const [minValue, set_minValue] = useState(25);
   const [maxValue, set_maxValue] = useState(75);
-  const [view, setView] = useState('Porch');
+  const [view, setView] = useState('Swimming Pool');
   const [stage, setStage] = useState(0);
   const [activeNav, setActiveNav] = useState(false);
 
@@ -137,7 +127,7 @@ const RealEstateListing = () => {
         }, [500]);
       }
     }, [8000]);
-  },[estateId])
+  }, [estateId])
 
   useEffect(() => {
     animate()
@@ -169,7 +159,7 @@ const RealEstateListing = () => {
                 {
                   views.map((v, i) => {
                     return (
-                      <span className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[10%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
+                      <span className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
                     )
                   })
                 }
@@ -248,7 +238,7 @@ const RealEstateListing = () => {
                       {
                         views.map((v, i) => {
                           return (
-                            <span className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[10%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
+                            <span className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
                           )
                         })
                       }

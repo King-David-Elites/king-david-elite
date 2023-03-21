@@ -39,7 +39,7 @@ export const Categories = styled.div`
     z-index: ${props => props.z ? props.z : "0"};
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        overflow: hidden;
+        /* overflow: hidden; */
         padding: 40px 90px;
         ::-webkit-scrollbar{
             width:0;
@@ -57,16 +57,18 @@ cursor: pointer;
 transition: transform 2s; 
 background-size: cover;
 padding: 1em;
+
   &:hover {
   transform: scale(1.1);
+  overflow-y: hidden;
   /* background: rgba(233, 140, 0, 0.7);
   width:  200px;
   color: #000; */
 }
 
 @media(min-width: ${theme.breakPoint["tablet"]}) {
-  flex: ${props => props.flex ? props.flex : "1 0 20%"} ;
-  height: 400px;
+  flex: ${props => props.flex ? props.flex : "1 0 40%"} ;
+  height: 500px;
 }
 `
 
@@ -111,7 +113,7 @@ gap: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(90deg, #f2be5c 23.7%, #000000 286.13%);
+  background:  #f2be5c 23.7%;
   border-radius: 4px;
   font-size: 1rem;
 }
@@ -120,12 +122,15 @@ gap: 50px;
     display: grid;
     align-items: center;
     justify-content: center;
-    margin-left: 5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
     align-content: center;
     padding: 0 30px;
     gap: 10px;
     .p {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
+      color: ${theme.neutralColor};
+      font-weight: 500;
     }
   }
   .Elite {
@@ -138,6 +143,7 @@ gap: 50px;
       font-weight: 500;
       font-size: 0.8rem;
       text-align: center;
+      color: ${theme.neutralColor};
     }
   }
   form {
@@ -189,18 +195,16 @@ gap: 50px;
       position: sticky;
     }
     .textContent {
-      padding: 0;
-      gap: 0;
-      margin: 10px auto;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
       h3 {
-        margin: 20px auto;
-        width: 80%;
         font-size: 17px;
         font-weight: 600;
       }
       .p {
-        text-align: center;
         font-weight: 400;
         font-size: 13px;
       }
@@ -211,7 +215,7 @@ gap: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(90deg, #f2be5c 23.7%, #000000 286.13%);
+        background:  #f2be5c;
         border-radius: 4px;
         font-size: 12px;
       }

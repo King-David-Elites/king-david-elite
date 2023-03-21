@@ -15,7 +15,6 @@ const Banner = ({category}) =>{
                         Luxury {category}
                     </Text>
                     <Text
-                        margin="0em auto auto 6em"
                     >
                         King David Elites
                     </Text>

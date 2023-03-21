@@ -82,7 +82,7 @@ export const Container = styled.div`
        }
 
        button{
-            background: linear-gradient(90deg, #F2BE5C 23.7%, #000000 286.13%);
+            background:  #F2BE5C;
             border-radius: 4px;
             padding:1em;
             margin-top:3em;

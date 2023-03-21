@@ -30,10 +30,7 @@ import {
 import { motion } from "framer-motion";
 import { BlogContent } from "./BlogContent";
 import Scroller from "./Scroller";
-
-const scrollToRef = (ref) => {
-  window.scrollTo(0, ref.current.offsetTop);
-};
+import MainButton from "../buttons/MainButton";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -72,7 +69,7 @@ const HomePage = () => {
     },
   };
 
-  const handleClick = () => {
+  const handleExploreButtonClick = () => {
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
 
@@ -126,7 +123,7 @@ const HomePage = () => {
           </Text>
           <Text>The Greatest Luxury Is Freedom Of All Forms.</Text>
           <div className="btn">
-            <motion.button onClick={handleClick} animate={exploreAnimation}>
+            <motion.button onClick={handleExploreButtonClick} animate={exploreAnimation}>
               Explore
             </motion.button>
             <button className="btn_app">Download App</button>
@@ -135,28 +132,31 @@ const HomePage = () => {
       </Background>
 
       <CategoriesContainer>
-        <div className="mt-16 mx-11 text-md font-semibold md:mx-24 md:text-lg">
+        <div className="mt-16 mx-11 text-base font-medium md:mx-24 md:text-lg">
           Categories
         </div>
+
         <Categories ref={position}>
-          {categories.map((category, index) => {
-            return (
-              <Category
-                onClick={() => {
-                  navigate(category?.link);
-                }}
-                bg={category.bg}
-                key={index}
-              >
-                <div className="text-white flex flex-col mt-60 ml-5 md:mt-[18em] md:ml-7 font-semibold md:text-lg text-sm">
-                  {category.title.toUpperCase()}{" "}
-                  {category.isComingSoon == true && (
-                    <p className="italic text-sm text-[#A6A6A6]">Coming Soon</p>
-                  )}
-                </div>
-              </Category>
-            );
-          })}
+          <Scroller id='categories'>
+            {categories.map((category, index) => {
+              return (
+                <Category
+                  onClick={() => {
+                    navigate(category?.link);
+                  }}
+                  bg={category.bg}
+                  key={index}
+                >
+                  <div className="text-white flex flex-col h-full ml-5 justify-end md:ml-7 font-semibold md:text-lg text-sm">
+                    {category.title.toUpperCase()}{" "}
+                    {category.isComingSoon == true && (
+                      <p className="italic text-sm text-[#A6A6A6]">Coming Soon</p>
+                    )}
+                  </div>
+                </Category>
+              );
+            })}
+          </Scroller>
         </Categories>
       </CategoriesContainer>
 
@@ -172,30 +172,35 @@ const HomePage = () => {
           </div>
 
           <div className="textContent">
-            <h3>Get To Know Us</h3>
+            <h3 className="md:font-bold md:text-lg font-semibold text-base">Get To Know Us</h3>
             <p className="p">
-              Every Brand have an interesting story to tell. Find out more about
-              us.
+              Every Brand have an interesting story to tell.
             </p>
+            <p className="p mt-[-0.7em]">Find out more about
+              us.</p>
 
-            <div className="action">Read More</div>
+            <MainButton color="black" width='120px' padding='24px 12px'>READ MORE</MainButton>
+          </div>
+
+          <div className="coffee image md:hidden block">
+            <img className="img_coffee" src={coffee} alt="" />
           </div>
         </Information>
 
         <Information>
           <div className="Elite">
-            <h4 className="md:font-bold md:text-lg font-semibold text-base">
+            <h3 className="md:font-bold md:text-lg font-semibold text-center text-base">
               The Elite NewsLetter
-            </h4>
+            </h3>
             <p>Let’s keep you updated with what’s trending inLuxury.</p>
 
             <form action="">
-              <input type="email" placeholder="E-mail" />
-              <div className="btn">Subscribe</div>
+              <input type="email" placeholder="E-mail" className="mr-4 focus:outline-theme-color" />
+              <MainButton width='132px' color="black" padding='24px 12px'>SUBSCRIBE</MainButton>
             </form>
           </div>
 
-          <div className="coffee image">
+          <div className="coffee image md:block hidden">
             <img className="img_coffee" src={coffee} alt="" />
           </div>
         </Information>
