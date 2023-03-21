@@ -87,11 +87,16 @@ color: #000000;
 .cont{
     display:flex;
     align-items: center;
+    margin:0 auto;
+
+
+    .check{
+        width:12px;
+    }
 
 
     .term{
-        height: 21px;
-        padding-right:4rem;
+        padding-left:.5rem;
         font-size:14px;
 
     span{
@@ -100,10 +105,7 @@ color: #000000;
 
 
 }
-.check{
-    width:15px;
-    margin-left:3em;
-    }
+
 }
 
 
@@ -170,7 +172,7 @@ border-radius:6px;
     margin-top:1em;
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 15px;
     text-align: center;
     color: #000000;
@@ -206,6 +208,7 @@ border-radius:6px;
     .login{
         width:260px;
     }
+
     
     }
 

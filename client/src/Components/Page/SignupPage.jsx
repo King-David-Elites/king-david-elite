@@ -133,9 +133,9 @@ const SignUpPage = () => {
 
         </div>
 
-        <p className="forgot">
+        {/* <p className="forgot">
           Forgot password? <span className="red">Click here</span>
-        </p>
+        </p> */}
         <p className="account">
           Already have an account?{" "}
           <Link to="/login">
@@ -144,7 +144,7 @@ const SignUpPage = () => {
         </p>
 
         <button className="login" onClick={signUp}>
-          SignUp
+          Sign Up
         </button>
         {/* <p className='or'>- OR -</p> */}
         {/* <button className='google'>log in with Google</button> */}

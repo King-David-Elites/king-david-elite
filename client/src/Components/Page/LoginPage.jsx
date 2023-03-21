@@ -6,6 +6,7 @@ import globalApi from "../../api";
 import axios from "axios";
 import { useState } from "react";
 import Loader from "../Loader/Loader";
+import { FaGoogle } from "react-icons/fa";
 import services from "../../ioc/services"
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import ForgottenPasswordPage from "./ForgottenPasswordPage";
@@ -120,7 +121,7 @@ const LoginPage = ({ stage, setStage }) => {
         <p className="forgot">
           Forgot password?
           <Link to="/forgot-password">
-            <span className="red">Click here</span>
+            <span className="red"> Click here</span>
           </Link>
         </p>
         <button className="login" onClick={login}>
@@ -131,7 +132,7 @@ const LoginPage = ({ stage, setStage }) => {
         <p className="account">
           Don't have an account?{" "}
           <Link to="/signup">
-            <span>Sign up</span>
+            <span className="blue"> Sign up</span>
           </Link>
         </p>
       </Page>

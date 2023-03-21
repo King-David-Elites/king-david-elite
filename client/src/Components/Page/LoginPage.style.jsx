@@ -128,10 +128,7 @@ color: #000000;
 
 .google{
 display:flex;
-margin:17px auto;
-padding:.8rem;
-justify-content:center;
-text-align:center; 
+align-items: center;
 width:360px;
 height:44px;
 background: #FFFFFF;
@@ -142,15 +139,12 @@ border-radius:6px;
 
 .account{
     margin-top:20px;
-    
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 15px;
     text-align: center;
-    color: #000000;
-    
-    
+
 }
 
 

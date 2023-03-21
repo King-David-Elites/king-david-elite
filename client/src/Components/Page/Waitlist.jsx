@@ -1,11 +1,16 @@
+import { useEffect } from 'react'
 import React, { useState } from 'react'
 import { Container} from './Waitlist.style'
 import logo from "../Navbar/Image/kde_whiteBg.png"
 import building from "../Page/images/w1.jpg"
 import { useRef } from 'react'
-import axios from 'axios'
+import axios, { Axios } from 'axios'
 
 export default function Waitlist() {
+
+    useEffect(() => {
+        Axios.get('/waitList')
+    },[])
 
     const [display, setDisplay] = useState(false);
     const [error, setError] = useState(false);
