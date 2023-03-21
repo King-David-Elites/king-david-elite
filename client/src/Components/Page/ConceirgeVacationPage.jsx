@@ -187,7 +187,7 @@ const ConceirgeVacationPage = () => {
                                 }} width='100px' />
                             </InputLayout>
                         </div>
-                        <MainButton className='cursor-pointer' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
+                        <MainButton width='100px' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
                     </form>
 
                     <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>

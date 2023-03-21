@@ -7,7 +7,7 @@ import c4 from "../LuxuryService/images/pics4.png";
 import c5 from "../LuxuryService/images/ishan-seefromthesky-EOAnV_C1a4w-unsplash.jpg"
 import c6 from '../LuxuryService/images/pics5.jpg'
 import { useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Footer from "../../Footer/Footer";
 import { IoMdArrowForward } from "react-icons/io";
 
@@ -77,13 +77,13 @@ const LuxuryServiceListing = () => {
                             className='hover:text-black hover:bg-[#E98C00]'
                             flex='1 0 30%'
                         >
-                            <div className="text-white flex flex-col mt-50 ml-5 md:mt-[15em] md:ml-7 font-semibold md:text-lg text-sm mb-4">
-                                <div className="flex items-center justify-between">
+                            <div className="text-white flex flex-col p-2 md:px-5 font-semibold md:text-lg text-sm mb-4 h-full justify-center md:justify-end">
+                                <div className="flex items-center text-[15px] justify-between">
                                     {category.title}{" "}
                                     <IoMdArrowForward size={30} color='black' className="bg-theme-color rounded-full p-2 w-8 h-8" onClick={() => navigate(category.link)} />
                                 </div>
 
-                                <p onClick={toggleText} style={{ color: "#A6A6A6", fontSize: '14px' }}>
+                                <p onClick={toggleText} className="md:text-[#A6A6A6] text-white md:text-[14px] text-[14px]">
                                     {showLess ? category.other.substring(0, 80).concat("....", "ReadMore") : category.other}
                                 </p>
                             </div>

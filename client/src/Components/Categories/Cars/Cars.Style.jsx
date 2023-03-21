@@ -4,7 +4,7 @@ import theme from '../../../application/utils/Theme';
 export const Background = styled.div`       
     position:relative;        
     width:100%;
-    height:40em;
+    height:100vh;
     background:rgba(20,20,20);    
 
     .bgImage{

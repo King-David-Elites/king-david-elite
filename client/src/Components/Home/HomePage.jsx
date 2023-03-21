@@ -63,7 +63,19 @@ const HomePage = () => {
       isComingSoon: true,
     },
   ];
- 
+
+  const exploreAnimation = {
+    opacity: [0, 1],
+    y: [-50, 0],
+    transition: {
+      duration: 0.5,
+    },
+  };
+
+  const handleClick = () => {
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+  };
+
   useEffect(() => {
     var timer1;
     var timer2;
@@ -87,6 +99,7 @@ const HomePage = () => {
       }
     }, [8000]);
   }, [homeId]);
+
   return (
     <Fragment>
       <Navbar active={0} />
@@ -113,15 +126,9 @@ const HomePage = () => {
           </Text>
           <Text>The Greatest Luxury Is Freedom Of All Forms.</Text>
           <div className="btn">
-            <button
-              onClick={() => {
-                setTimeout(() => {
-                  scrollToRef(position);
-                }, 3000);
-              }}
-            >
+            <motion.button onClick={handleClick} animate={exploreAnimation}>
               Explore
-            </button>
+            </motion.button>
             <button className="btn_app">Download App</button>
           </div>
         </HeroSection>

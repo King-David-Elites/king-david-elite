@@ -192,7 +192,7 @@ const ExclusiveEventPage = () => {
                             }} width='100px' />
                         </InputLayout>
                     </div>
-                    <MainButton className='cursor-pointer' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
+                    <MainButton width='100px' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
                 </form>
 
                 <form onSubmit={formik.handleSubmit} className='mt-6'>
