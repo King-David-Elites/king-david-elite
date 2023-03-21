@@ -347,6 +347,8 @@ export const MessagesContainer = styled.div`
     background-color: white;
     border-radius: 8px;
     height: 80vh;
+    width: auto;
+    border: 2px solid red;
 
     .listOfMessages{
         border-right: 2px solid lightgray;
@@ -437,7 +439,7 @@ export const GenericContainer = styled.div`
       display: block;
       border-radius: 8px;
       height: 115vh;
-      padding: ${props => props.padding ? props.padding : "0em"};
+      padding: ${props => props.padding ? props.padding : "1em"};
     }  
 `
 
@@ -454,6 +456,7 @@ export const MobileGenericContainer = styled.div`
 export const ProfileContainer = styled.div`
     border-radius: 8px;
     height: 100%;
+    width: 100%;
     display:flex;
     justify-content:center;
     align-items:flex-start;
@@ -480,6 +483,7 @@ export const ProfileContainer = styled.div`
 
         @media (min-width: ${theme.breakPoint['tablet']}) {
             width: 60%;
+        border: 2px solid red;
         }
     }
     .rightSection > .closeField{
@@ -1020,12 +1024,11 @@ export const ChatBoxContainer = styled.div`
 // wallet code section
 
 export const Leftwallet = styled.div`
-
-position: absolute;
-width: 520px;
+/* position: absolute; */
+width: 50%;
 height: 369px;
-left: 277px;
-top: 110px;
+/* left: 277px;
+top: 110px; */
 background: linear-gradient(180deg, #0D0D0D 0%, #0D0D0D 100%);
 backdrop-filter: blur(40px);
 border-radius: 8px;
@@ -1041,6 +1044,7 @@ h4{
     color: #F2BE5C;
     margin-top:42px;
     margin-left:43px;
+    white-space: nowrap;
 }
 
 h2{
@@ -1150,38 +1154,31 @@ p{
     margin-top:12px;
     margin-left:33px;
 }
-
-
 }
 
 `
 
 export const Rightwallet = styled.div`
-position: absolute;
-width: 500px;
+/* position: absolute; */
+width: 50%;
 height: 369px;
-left: 824px;
-top: 110px;
+/* left: 824px;
+top: 110px; */
 background: #FFFFFF;
 border-radius: 8px;
-
-
-
-
 `
-
-
 
 export const Bottom = styled.div`
 
-position: absolute;
-width: 1045px;
-height: 310px;
-left: 277px;
-top: 522px;
+/* position: absolute; */
+width: 100%;
+height: auto;
+margin-top: 2em;
+padding: 1em 0em;
+/* left: 277px;
+top: 522px; */
 background: #FFFFFF;
 border-radius:8px;
-
  table{
     border-collapse:collapse;
     width:100%;  

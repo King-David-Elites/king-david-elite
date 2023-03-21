@@ -48,7 +48,7 @@ export const HeroSection = styled.div`
     gap:1em;
     width:inherit;
     height:inherit;    
-
+    padding: 1em;
 
       .btn{
         margin:2rem 0rem;

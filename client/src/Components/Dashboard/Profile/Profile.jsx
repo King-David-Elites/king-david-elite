@@ -237,7 +237,7 @@ const MobileProfile = ({ mainData }) => {
 const Profile = ({ mainData }) => {
   return (
     <Dashboard
-      index="4"
+      index={4}
       element={<ProfileAsElement mainData={mainData} />}
       mobileElement={<MobileProfile mainData={mainData} />}
     />

@@ -7,16 +7,34 @@ import kde_whiteBg from '../Navbar/Image/kde_whiteBg.png'
 import { LogoText } from '../Navbar/Navbar.Style'
 import useAuthentication from '../../application/hooks/useAuthentication'
 import { useGetUserDetails } from '../../application/hooks/queryhooks'
+import { useDispatch, useSelector } from 'react-redux'
+import { MdArrowDropDown } from 'react-icons/md'
+import { setLoggedInUserDetails } from '../../application/store/actions/user'
+import { setLoading } from '../../application/store/actions/ui'
+
 
 const Dashboard = ({ element, index, mobileElement }) => {
     useAuthentication();
     const navigate = useNavigate();
     const { data } = useGetUserDetails();
     const [loggedInUser, setLoggedInUser] = useState([]);
+    const userProfilePics = useSelector(state => state.user.profilePicture);
+    const userfirstName = useSelector(state => state.user?.firstName);
+    const userLastName = useSelector(state => state.user?.lastName);
+    const dispatch = useDispatch();
+
+    const logOut = () => {
+        // dispatch(setLoggedInUserDetails({ userId: '', }));
+        // localStorage.removeItem('user');
+        // localStorage.removeItem('token');
+        // dispatch(setLoading(false));
+        navigate('/');
+    }
 
     useEffect(() => {
         setLoggedInUser(data)
     }, [data])
+
 
     return (
         <div>
@@ -37,7 +55,7 @@ const Dashboard = ({ element, index, mobileElement }) => {
                         {
                             navigators.map((nav, i) => {
                                 return (
-                                    <div key={i} className={index === i + 1 ? "item active" : "item"} onClick={() => navigate(`/dashboard/${nav.link}`)}>
+                                    <div key={i} className={index === i + 1 ? " whitespace-nowrap bg-[#0D0D0D] text-white rounded-md h-[full] flex gap-2 items-center px-4 py-2 text-[15px]" : "item"} onClick={() => navigate(`/dashboard/${nav.link}`)}>
                                         <p>{nav.icon}</p>
                                         <p>{nav.title}</p>
                                     </div>
@@ -56,14 +74,18 @@ const Dashboard = ({ element, index, mobileElement }) => {
                         </div>
 
                         <div className="profile" onClick={() => navigate("/profile")}>
-                            <img src="https://th.bing.com/th/id/R.b304c7b0e1751794c05ca44d94cea47a?rik=s5ONNlybUyekZg&pid=ImgRaw&r=0" alt="" />
+                            <img src={userProfilePics} alt="" />
 
                             <div className="textContent">
-                                <h6>{data?.firstName?.toUpperCase()} {data?.lastName?.toUpperCase()}</h6>
+                                <h6>{userfirstName?.toUpperCase()} {userLastName?.toUpperCase()}</h6>
                                 <p>{data?.email}</p>
                             </div>
+
+                            <MdArrowDropDown size={20} onClick={logOut} />
                         </div>
                     </div>
+
+
 
                     <div className="mainContent">
                         {element}

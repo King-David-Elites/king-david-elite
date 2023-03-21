@@ -265,7 +265,7 @@ const MobileNotification = () => {
 
 const Notifications = () => {
     return (
-        <Dashboard element={<NotificationAsElement />} index="3" mobileElement={<MobileNotification />} />
+        <Dashboard element={<NotificationAsElement />} index={3} mobileElement={<MobileNotification />} />
     )
 }
 
