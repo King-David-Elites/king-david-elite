@@ -9,7 +9,7 @@ const Return = ({transparent}) => {
 
   return (
     <ReturnContainer transparent={transparent}>
-        <div className="icon" onClick={()=> navigate(-1)}>
+        <div className="icon" onClick={()=> window.history.back()}>
             <ChevronLeft width={20} color={"black"}/>
         </div>
     </ReturnContainer>

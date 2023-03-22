@@ -47,14 +47,14 @@ const CategoryScroller = ({ id, children }) => {
 
                     {
                         isScrollLeftActive &&
-                        <div onClick={() => scrollLeft()} className="flex items-center cursor-pointer" >
+                        <div onClick={() => scrollLeft()} className="md:flex items-center cursor-pointer hidden" >
                             <RiArrowDropLeftLine size={25} className="text-black" />
-                            <span className='text-black font-medium'>Previous</span>
+                            <span className='md:text-black md:font-medium '>Previous</span>
                         </div>
                     }
                     {
                         isScrollRightActive &&
-                        <div onClick={() => scrollRight()} className="flex cursor-pointer ">
+                        <div onClick={() => scrollRight()} className="md:flex cursor-pointer hidden">
                             <span className='text-black font-medium'>Next</span>
                             <RiArrowDropRightLine size={25} className="text-black" />
                         </div>
