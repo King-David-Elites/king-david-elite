@@ -39,7 +39,7 @@ export const Categories = styled.div`
     z-index: ${props => props.z ? props.z : "0"};
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
-        /* overflow: hidden; */
+        overflow: hidden;
         padding: 40px 90px;
         ::-webkit-scrollbar{
             width:0;
@@ -57,7 +57,6 @@ cursor: pointer;
 transition: transform 2s; 
 background-size: cover;
 padding: 1em;
-
   &:hover {
   transform: scale(1.1);
   overflow-y: hidden;
@@ -67,8 +66,8 @@ padding: 1em;
 }
 
 @media(min-width: ${theme.breakPoint["tablet"]}) {
-  flex: ${props => props.flex ? props.flex : "1 0 40%"} ;
-  height: 500px;
+  flex: ${props => props.flex ? props.flex : "1 0 20%"} ;
+  height: 350px;
 }
 `
 

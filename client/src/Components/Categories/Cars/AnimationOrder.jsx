@@ -71,6 +71,14 @@ export const EstateAnimation = [
   { id: 5, img: estate5 },
 ];
 
+export const CollectibleAnimation = [
+  { id: 1, img: estate1 },
+  { id: 2, img: estate2 },
+  { id: 3, img: estate3 },
+  { id: 4, img: estate4 },
+  { id: 5, img: estate5 },
+];
+
 export const HomeAnimation = [
   { id: 1, img: home },
   { id: 2, img: home1 },
