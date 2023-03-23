@@ -176,7 +176,7 @@ const Navbar = ({ bg, sticky, active }) => {
                 <>
                   {token ? (
                     <>
-                      {mainData.userData.accountType === 1 ? (
+                      {mainData.user.accountType === 1 ? (
                         <>
                           {nav.no !== 0 && (
                             <>
@@ -329,7 +329,7 @@ const Navbar = ({ bg, sticky, active }) => {
         <Login>
           {token ? (
             <>
-              {mainData.userData.accountType === 1 ? (
+              {mainData.user.accountType === 1 ? (
                 <div onClick={() => navigate("/profile")} className="dashboard">
                   DASHBOARD
                 </div>

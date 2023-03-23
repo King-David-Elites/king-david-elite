@@ -34,7 +34,7 @@ const Advanced_Verf_3 = (props) => {
     verificationType: idType.digit,
   };
   const [success, setSuccess] = useState(false);
-  const [updated, setUpdated] = useState(false);
+  const [verified, setVerified] = useState(false);
 
   const checkSuccess = useCallback(() => {
     if (success) {
@@ -46,6 +46,14 @@ const Advanced_Verf_3 = (props) => {
   useEffect(() => {
     checkSuccess();
   }, [checkSuccess]);
+
+  useEffect(() => {
+    if (verified) {
+      console.log("yes")
+      updateUserDetails(userInfo);
+      setVerified(false);
+    }
+  }, [verified]);
 
   const setConfig = () => {
     const authToken = localStorage.getItem("token");
@@ -61,39 +69,37 @@ const Advanced_Verf_3 = (props) => {
   };
 
   const postVerificationDetails = async (verificationData) => {
-    console.log("verification started ...")
+    console.log("verification started ...");
     await axios
       .patch(`${globalApi}/users/verify`, verificationData, setConfig())
       .then((resp) => {
-        console.log(resp.data);
-        setLoading(false);
-        setSuccess(true);
+        console.log(resp.data);      
+        setVerified(true);  
       })
       .catch((err) => {
         console.log(err);
+        postVerificationDetails(verificationData)
       });
   };
 
   const updateUserDetails = async (userInfo) => {
-    console.log("updating user details ...")
+    console.log("updating user details ...");
     await axios
       .patch(`${globalApi}/users/update`, userInfo, setConfig())
       .then((resp) => {
         console.log(resp.data);
-        setUpdated(true);
+        setLoading(false);
+        setSuccess(true);        
       })
       .catch((err) => {
         console.log(err);
+        updateUserDetails(userInfo)
       });
   };
 
   const handleSubmit = () => {
-    updateUserDetails(userInfo);
+    postVerificationDetails(verificationData)    
     setLoading(true);
-    if (updated) {
-      postVerificationDetails(verificationData);
-      setUpdated(false);
-    }
   };
 
   return (
