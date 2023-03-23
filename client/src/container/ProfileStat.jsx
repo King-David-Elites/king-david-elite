@@ -9,10 +9,11 @@ import { FaHeart } from 'react-icons/fa'
 import styled from "styled-components"
 import { Line } from 'react-chartjs-2';
 import { useGetUserDetails } from '../application/hooks/queryhooks'
+import useContextAPI from '../Components/ContextAPI/ContextAPI'
 
 export default function ProfileStat() {
 
-  const [user, setUser] = useState(useGetUserDetails())
+  const mainData = useContextAPI()
 
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -42,14 +43,14 @@ export default function ProfileStat() {
         <div className="info">
           <p className='top'>Page Views</p>
           <div className="value">
-            <h2>{user.pageViews.value}</h2><p>from {user.pageViews.users.length} users</p> 
+            <h2>{mainData.userData.pageViews.value}</h2><p>from {mainData.userData.pageViews.users.length} users</p> 
           </div>
         </div>
 
         <div className="info">
           <p className='top'>Listing Saves</p>
           <div className="value">
-            <h2>{user.totalSaved.value}</h2><p>from {user.totalSaved.users.length} users</p>
+            <h2>{mainData.userData.totalSaved.value}</h2><p>from {mainData.userData.totalSaved.users.length} users</p>
           </div>
         </div>        
       </div>
