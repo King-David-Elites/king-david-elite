@@ -21,9 +21,7 @@ export const Upgrade = styled.div`
       width: 2.7em;
       height: 2.7em;
       border-radius: 1.35em;
-      background: transparent;
-      box-shadow: 16px 16px 32px rgba(176, 176, 176, 0.26),
-        -16px -16px 32px #ffffff;
+      background: transparent;      
       cursor: pointer;
     }
   }
@@ -79,7 +77,7 @@ export const Upgrade = styled.div`
       background: ${theme.color};
       border-radius: 4px;
       color: #000000;
-      font-weight: 700;
+      font-weight: 600;
       cursor: pointer;
     }
     .selectBtn2 {

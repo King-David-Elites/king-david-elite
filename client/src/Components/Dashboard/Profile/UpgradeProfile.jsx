@@ -2,22 +2,25 @@ import { useEffect, useState, useRef } from "react";
 import { Upgrade } from "./UpgradeProfile.Style";
 import { ChevronLeft } from "heroicons-react";
 import { useNavigate } from "react-router-dom";
-
+import useContextAPI from "../../ContextAPI/ContextAPI";
+import { useSelector, useDispatch } from "react-redux";
+import { setListWithUs } from "../../../application/store/actions/user";
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const UpgradeProfile = () => {
+  const dispatch = useDispatch();
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
+  const listWithUs = useSelector((state) => state.user.listWithUs);
   const top = useRef(null);
-
   useEffect(() => {
     scrollToRef(top);
   }, [top]);
 
   const PaymentTypeData = [
     {
-      background:"#f2f2f2",
-      textColor:"black",
+      background: "#f2f2f2",
+      textColor: "black",
       priceValue: "Silver",
       amount: ["50,000", "550,000"],
       description: [
@@ -28,8 +31,8 @@ const UpgradeProfile = () => {
       ],
     },
     {
-      background:"#ffecec",
-      textColor:"black",
+      background: "#ffecec",
+      textColor: "black",
       priceValue: "Diamond",
       amount: ["75,000", "750,000"],
       description: [
@@ -40,8 +43,8 @@ const UpgradeProfile = () => {
       ],
     },
     {
-      background:"#333433",
-      textColor:"white",
+      background: "#333433",
+      textColor: "white",
       priceValue: "Platinum",
       amount: ["100,000", "1,000,000"],
       description: [
@@ -62,9 +65,7 @@ const UpgradeProfile = () => {
         </div>
         <div className="head">
           <p className="h1">Real Estate Or Automobiles?</p>
-          <p className="h2">
-           Don't worry, you can list both.
-          </p>
+          <p className="h2">Don't worry, you can list both.</p>
         </div>
         <div className="typeBtn">
           <div
@@ -91,19 +92,46 @@ const UpgradeProfile = () => {
               {PaymentTypeData.map((item) => {
                 return (
                   <>
-                    <div className="package" style={{background:`${item.background}`}}>
-                      <div className="top" style={{color:`${item.textColor}`}}>{item.priceValue}</div>
-                      <div className="descr" style={{color:`${item.textColor}`}}>
+                    <div
+                      className="package"
+                      style={{ background: `${item.background}` }}
+                    >
+                      <div
+                        className="top"
+                        style={{ color: `${item.textColor}` }}
+                      >
+                        {item.priceValue}
+                      </div>
+                      <div
+                        className="descr"
+                        style={{ color: `${item.textColor}` }}
+                      >
                         {item.description.map((des) => {
                           return <p>{des}</p>;
                         })}
                       </div>
                       <div className="pricing">
                         <p>
-                          <span style={{color:`${item.textColor}`}}>N {item.amount[0]}</span>/mo
+                          <span style={{ color: `${item.textColor}` }}>
+                            N {item.amount[0]}
+                          </span>
+                          /mo
                         </p>
                       </div>
-                      <div className="btn"> Get Started </div>
+                      <div
+                        className="btn"
+                        onClick={() => {
+                          if (listWithUs) {
+                            dispatch(setListWithUs(false));
+                            navigate("/dashboard/profile/verification");
+                          } else {
+                            navigate("/dashboard/wallet");
+                          }
+                        }}
+                      >
+                        {" "}
+                        Get Started{" "}
+                      </div>
                     </div>
                   </>
                 );
@@ -116,19 +144,46 @@ const UpgradeProfile = () => {
               {PaymentTypeData.map((item) => {
                 return (
                   <>
-                    <div className="package" style={{background:`${item.background}`}}>
-                      <div className="top" style={{color:`${item.textColor}`}}>{item.priceValue}</div>
-                      <div className="descr" style={{color:`${item.textColor}`}}>
+                    <div
+                      className="package"
+                      style={{ background: `${item.background}` }}
+                    >
+                      <div
+                        className="top"
+                        style={{ color: `${item.textColor}` }}
+                      >
+                        {item.priceValue}
+                      </div>
+                      <div
+                        className="descr"
+                        style={{ color: `${item.textColor}` }}
+                      >
                         {item.description.map((des) => {
                           return <p>{des}</p>;
                         })}
                       </div>
                       <div className="pricing">
                         <p>
-                          <span style={{color:`${item.textColor}`}}>N {item.amount[1]}</span>/yr
+                          <span style={{ color: `${item.textColor}` }}>
+                            N {item.amount[1]}
+                          </span>
+                          /yr
                         </p>
                       </div>
-                      <div className="btn"> Get Started </div>
+                      <div
+                        className="btn"
+                        onClick={() => {
+                          if (listWithUs) {
+                            dispatch(setListWithUs(false));
+                            navigate("/dashboard/profile/verification");
+                          } else {
+                            navigate("/dashboard/wallet");
+                          }
+                        }}
+                      >
+                        {" "}
+                        Get Started{" "}
+                      </div>
                     </div>
                   </>
                 );
@@ -136,10 +191,12 @@ const UpgradeProfile = () => {
             </>
           )}
         </div>
-        <div className="base">
-          your account will not be charged until you’re verified.{" "}
-          <span onClick={() => navigate("/terms")}>T&Cs apply.</span>
-        </div>
+        {listWithUs && (
+          <div className="base">
+            your account will not be charged until you’re verified.{" "}
+            <span onClick={() => navigate("/terms")}>T&Cs apply.</span>
+          </div>
+        )}
       </Upgrade>
     </>
   );

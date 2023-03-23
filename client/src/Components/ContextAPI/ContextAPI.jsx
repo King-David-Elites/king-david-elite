@@ -8,7 +8,7 @@ const useContextAPI = () => {
   const [cars, setCars] = useState([]);
   const [mails, setMails] = useState([]);
   const [countryData, setCountryData] = useState([]);
-  const userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user"));  
   const [user, setUser] = useState({});
 
   const getUser = async () => {
@@ -88,7 +88,7 @@ const useContextAPI = () => {
     mails: mails,
     cars: cars,
     setCars: setCars,
-    countryData: countryData,
+    countryData: countryData,   
   };
 };
 

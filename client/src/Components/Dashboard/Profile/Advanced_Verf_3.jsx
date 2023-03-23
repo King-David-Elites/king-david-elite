@@ -9,6 +9,8 @@ import { setLoading } from "../../../application/store/actions/ui";
 
 const Advanced_Verf_3 = (props) => {
   let {
+    userInfo,
+    setUserInfo,
     stage,
     setStage,
     scrollToRef,
@@ -30,8 +32,9 @@ const Advanced_Verf_3 = (props) => {
     nationality: country,
     verifiedProfilePicture: photo.base64,
     verificationType: idType.digit,
-  };  
+  };
   const [success, setSuccess] = useState(false);
+  const [updated, setUpdated] = useState(false);
 
   const checkSuccess = useCallback(() => {
     if (success) {
@@ -58,6 +61,7 @@ const Advanced_Verf_3 = (props) => {
   };
 
   const postVerificationDetails = async (verificationData) => {
+    console.log("verification started ...")
     await axios
       .patch(`${globalApi}/users/verify`, verificationData, setConfig())
       .then((resp) => {
@@ -70,10 +74,26 @@ const Advanced_Verf_3 = (props) => {
       });
   };
 
+  const updateUserDetails = async (userInfo) => {
+    console.log("updating user details ...")
+    await axios
+      .patch(`${globalApi}/users/update`, userInfo, setConfig())
+      .then((resp) => {
+        console.log(resp.data);
+        setUpdated(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleSubmit = () => {
-    postVerificationDetails(verificationData);
+    updateUserDetails(userInfo);
     setLoading(true);
-    console.log(verificationData);
+    if (updated) {
+      postVerificationDetails(verificationData);
+      setUpdated(false);
+    }
   };
 
   return (

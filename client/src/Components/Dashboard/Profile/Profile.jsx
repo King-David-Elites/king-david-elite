@@ -20,7 +20,7 @@ import Loader from "../../Loader/Loader";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const ProfileAsElement = ({ mainData }) => {
+const ProfileAsElement = ({ mainData }) => {  
   const [stage, setStage] = useState(0);
   const [registering, setRegistering] = useState(false);
   const [country, setCountry] = useState("");

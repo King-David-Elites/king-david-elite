@@ -64,7 +64,7 @@ import Pricing from './Components/Categories/LuxuryService/Pricing';
 
 function App() {
   const queryClient = new QueryClient();
-  const mainData = useContextAPI()
+  const mainData = useContextAPI()  
   const token = localStorage.getItem("token")
 
   return (

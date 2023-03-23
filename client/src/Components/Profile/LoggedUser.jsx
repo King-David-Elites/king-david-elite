@@ -94,11 +94,7 @@ const LoggedUser = ({ logged }) => {
     {
       title: "Account",
       component: <Account />,
-    },
-    {
-      title: "Verification",
-      component: <Verification />,
-    },
+    },    
   ];
 
   return (
