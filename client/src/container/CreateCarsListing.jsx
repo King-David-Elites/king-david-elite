@@ -107,19 +107,6 @@ const CreateCarListing = () => {
     return config;
   };
 
-  const getPosition = async () => {
-    // await navigator.geolocation.getCurrentPosition(
-    //   (position) => {
-    //     setLatitude(position.coords.latitude);
-    //     setLongitude(position.coords.longitude);
-    //     setPosition(true);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
-  };
-
   const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
