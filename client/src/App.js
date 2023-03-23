@@ -66,7 +66,7 @@ import Cart from './Components/Categories/Collectibles/Cart';
 
 function App() {
   const queryClient = new QueryClient();
-  const mainData = useContextAPI()
+  const mainData = useContextAPI()  
   const token = localStorage.getItem("token")
 
   return (

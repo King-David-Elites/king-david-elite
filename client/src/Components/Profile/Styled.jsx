@@ -214,8 +214,11 @@ export const Switch = styled.div`
     }
 
     .options{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        /* display: grid;
+        grid-template-columns: repeat(3, 1fr); */
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
         width: 80%;
         margin: 10px auto;
         font-size: 14px;

@@ -24,7 +24,7 @@ const EachCollectible = ({ active }) => {
             <EachContainer ref={top}>
                 <div className="titles">
                     <h3>{data.name}</h3>
-                    <h4>US ${data.price}</h4>
+                    <h4>US {data.price}</h4>
                 </div>
 
                 <div className="images">
@@ -89,7 +89,7 @@ const EachCollectible = ({ active }) => {
                 <div className="border-b-2 mt-10 md:mt-20"></div>
 
                 <div className="flex gap-12 mt-10 md:mt-20">
-                    <MainButton background='#737373' border='#737373' width='50%' padding='20px' onClick={() => services.toast.success('Added')}>Add to Cart</MainButton>
+                    <MainButton background='#737373' border='#737373' width='50%' padding='20px' onClick={() => services.toast.success('Added successfully')}>Add to Cart</MainButton>
                     <MainButton width='50%' padding='20px' color="black">Buy Now</MainButton>
                 </div>
 
