@@ -18,7 +18,6 @@ import "./Navbar.css";
 import MainButton from "../buttons/MainButton";
 import useContextAPI from "../ContextAPI/ContextAPI";
 
-
 const Navbar = ({ bg, sticky, active }) => {
   const mainData = useContextAPI();
   const [activeNav, setActiveNav] = useState(false);
@@ -78,7 +77,7 @@ const Navbar = ({ bg, sticky, active }) => {
     {
       no: 3,
       icon: <IoMdCar size={20} />,
-      title: "Cars",
+      title: "Automobiles",
       link: "/cars",
     },
     {
@@ -168,48 +167,61 @@ const Navbar = ({ bg, sticky, active }) => {
                       {mainData.userData.accountType === 1 &&
                       mainData.userData.isVerified ? (
                         <>
-                          {nav.no !== 2 && (
+                          {nav.no !== 0 && (
                             <>
                               <li key={i} onClick={() => navigate(nav?.link)}>
                                 <div className="list-items">
                                   {nav?.icon}
                                   {nav.title}
                                 </div>
-                              </li>
-                              {nav.no === 2 && <div className="line"></div>}
+                              </li>                              
                               {nav.no === 5 && <div className="line"></div>}
+                              {nav.no === 10 && <div className="line"></div>}
                             </>
                           )}
                         </>
                       ) : (
                         <>
-                          {nav.no !== 6 && (
+                          {
                             <>
                               <li key={i} onClick={() => navigate(nav?.link)}>
                                 <div className="list-items">
                                   {nav?.icon}
                                   {nav.title}
                                 </div>
-                              </li>
-                              {nav.no === 2 && <div className="line"></div>}
+                              </li>                              
                               {nav.no === 5 && <div className="line"></div>}
+                              {nav.no === 10 && <div className="line"></div>}
                             </>
-                          )}
+                          }
                         </>
                       )}
                     </>
                   ) : (
                     <>
-                      {(nav.no === 3 || nav.no === 4 || nav.no === 5) && (
+                      {nav.no === 2 ||
+                      nav.no === 3 ||
+                      nav.no === 4 ||
+                      nav.no === 5 ? (
                         <>
-                          <li key={i} onClick={() => navigate(nav?.link)}>
+                          <li key={i} onClick={() => navigate("/login")}>
                             <div className="list-items">
                               {nav?.icon}
                               {nav.title}
                             </div>
                           </li>
-                          {nav.no === 2 && <div className="line"></div>}
                           {nav.no === 5 && <div className="line"></div>}
+                        </>
+                      ) : (
+                        <>
+                          {nav.no === 1 && (
+                            <li key={i} onClick={() => navigate(nav.link)}>
+                              <div className="list-items">
+                                {nav?.icon}
+                                {nav.title}
+                              </div>
+                            </li>
+                          )}
                         </>
                       )}
                     </>
@@ -264,11 +276,31 @@ const Navbar = ({ bg, sticky, active }) => {
           <UL>
             {navOptions.map((nav, i) => {
               return (
-                <LI key={i} onClick={() => navigate(nav.link)}>
-                  <div className={active === i && "item-active"}>
-                    {nav.title}
-                  </div>
-                </LI>
+                <>
+                  {token ? (
+                    <LI key={i} onClick={() => navigate(nav.link)}>
+                      <div className={active === i && "item-active"}>
+                        {nav.title}
+                      </div>
+                    </LI>
+                  ) : (
+                    <>
+                      {nav.title !== "ABOUT" && nav.title !== "HOME" ? (
+                        <LI key={i} onClick={() => navigate("/login")}>
+                          <div className={active === i && "item-active"}>
+                            {nav.title}
+                          </div>
+                        </LI>
+                      ) : (
+                        <LI key={i} onClick={() => navigate(nav.link)}>
+                          <div className={active === i && "item-active"}>
+                            {nav.title}
+                          </div>
+                        </LI>
+                      )}
+                    </>
+                  )}
+                </>
               );
             })}
           </UL>

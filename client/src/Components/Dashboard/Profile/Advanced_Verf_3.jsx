@@ -8,29 +8,40 @@ import globalApi from "../../../api";
 import { setLoading } from "../../../application/store/actions/ui";
 
 const Advanced_Verf_3 = (props) => {
-  let { stage, setStage, scrollToRef, photo, backImage, frontImage, idType, country, position, setLoading } =
-    props;
+  let {
+    stage,
+    setStage,
+    scrollToRef,
+    photo,
+    backImage,
+    frontImage,
+    idType,
+    country,
+    position,
+    setLoading,
+    isos,
+    setIsos,
+  } = props;
   const verificationData = {
-    verificationId : {
+    verificationId: {
       front: frontImage.base64,
-      back: backImage.base64
+      back: backImage.base64,
     },
     nationality: country,
     verifiedProfilePicture: photo.base64,
-    verificationType : idType.digit
-  };
-  console.log(verificationData)
+    verificationType: idType.digit,
+  };  
   const [success, setSuccess] = useState(false);
 
-  const checkSuccess = useCallback(()=>{
+  const checkSuccess = useCallback(() => {
     if (success) {
       setStage(stage + 1);
       scrollToRef(position);
     }
-  }, [success, stage, position, scrollToRef, setStage])
+  }, [success, stage, position, scrollToRef, setStage]);
 
   useEffect(() => {
-    checkSuccess()
+    checkSuccess();
   }, [checkSuccess]);
 
   const setConfig = () => {
@@ -48,14 +59,10 @@ const Advanced_Verf_3 = (props) => {
 
   const postVerificationDetails = async (verificationData) => {
     await axios
-      .patch(
-        `${globalApi}/users/verify`,
-        verificationData,
-        setConfig()
-      )
+      .patch(`${globalApi}/users/verify`, verificationData, setConfig())
       .then((resp) => {
         console.log(resp.data);
-        setLoading(false)
+        setLoading(false);
         setSuccess(true);
       })
       .catch((err) => {
@@ -65,8 +72,8 @@ const Advanced_Verf_3 = (props) => {
 
   const handleSubmit = () => {
     postVerificationDetails(verificationData);
-    setLoading(true)
-    console.log(verificationData)    
+    setLoading(true);
+    console.log(verificationData);
   };
 
   return (

@@ -10,9 +10,48 @@ const UpgradeProfile = () => {
   const navigate = useNavigate();
   const top = useRef(null);
 
-  useEffect(()=>{
-    scrollToRef(top)
-  },[top])
+  useEffect(() => {
+    scrollToRef(top);
+  }, [top]);
+
+  const PaymentTypeData = [
+    {
+      background:"#f2f2f2",
+      textColor:"black",
+      priceValue: "Silver",
+      amount: ["50,000", "550,000"],
+      description: [
+        "Number Of Listings: 12 Listings Maximum (including rental properties)",
+        "Availability Of Plan: Available to individual vendors only",
+        "Special Feature: None",
+        "Prestige Tag: None",
+      ],
+    },
+    {
+      background:"#ffecec",
+      textColor:"black",
+      priceValue: "Diamond",
+      amount: ["75,000", "750,000"],
+      description: [
+        "Number Of Listings: 25 Listings Maximum (including rental properties)",
+        "Availability Of Plan: Available to individual vendors only",
+        "Special Feature: None",
+        "Prestige Tag: KDE Prestige Tag (White)",
+      ],
+    },
+    {
+      background:"#333433",
+      textColor:"white",
+      priceValue: "Platinum",
+      amount: ["100,000", "1,000,000"],
+      description: [
+        "Number Of Listings: 40 Listings Maximum (including rental properties)",
+        "Availability Of Plan: Exclusive to corporate vendors / business entities",
+        "Special Feature: Feature on our homepage and caategory page display screen for more visibility and profile visits",
+        "Prestige Tag: KDE Prestige Tag (Gold)",
+      ],
+    },
+  ];
   return (
     <>
       <Upgrade ref={top}>
@@ -22,10 +61,9 @@ const UpgradeProfile = () => {
           </div>
         </div>
         <div className="head">
-          <p className="h1">Pricing Plans</p>
+          <p className="h1">Real Estate Or Automobiles?</p>
           <p className="h2">
-            Get acess to unlimited listings and other features as you showcase
-            your exclusive listings to our high-esteemed users.
+           Don't worry, you can list both.
           </p>
         </div>
         <div className="typeBtn">
@@ -35,7 +73,7 @@ const UpgradeProfile = () => {
               setActive(0);
             }}
           >
-            Monthly billing
+            Monthly
           </div>
           <div
             className={active === 1 ? "selectBtn1" : "selectBtn2"}
@@ -43,70 +81,58 @@ const UpgradeProfile = () => {
               setActive(1);
             }}
           >
-            Yearly billing
+            Yearly
           </div>
         </div>
 
         <div className="packages">
           {active === 0 && (
             <>
-              <div className="package">
-                <div className="top">Individual Package</div>
-                <div className="descr">
-                  Showcase your listings to the most elite community of magnates
-                  around the world
-                </div>
-                <div className="pricing">
-                  <p>
-                    <span>$50</span>/mo
-                  </p>
-                </div>
-                <div className="btn"> Get Started </div>
-              </div>
-              <div className="package">
-                <div className="top">Corporate Package</div>
-                <div className="descr">
-                  Increase your commission pipeline by getting our team of
-                  experts to make sales on your behalf
-                </div>
-                <div className="pricing">
-                  <p>
-                    <span>$200</span>/mo
-                  </p>
-                </div>
-                <div className="btn"> Get Started </div>
-              </div>
+              {PaymentTypeData.map((item) => {
+                return (
+                  <>
+                    <div className="package" style={{background:`${item.background}`}}>
+                      <div className="top" style={{color:`${item.textColor}`}}>{item.priceValue}</div>
+                      <div className="descr" style={{color:`${item.textColor}`}}>
+                        {item.description.map((des) => {
+                          return <p>{des}</p>;
+                        })}
+                      </div>
+                      <div className="pricing">
+                        <p>
+                          <span style={{color:`${item.textColor}`}}>N {item.amount[0]}</span>/mo
+                        </p>
+                      </div>
+                      <div className="btn"> Get Started </div>
+                    </div>
+                  </>
+                );
+              })}
             </>
           )}
 
           {active === 1 && (
             <>
-              <div className="package">
-                <div className="top">Individual Package</div>
-                <div className="descr">
-                  Showcase your listings to the most elite community of magnates
-                  around the world
-                </div>
-                <div className="pricing">
-                  <p>
-                    <span>$500</span>/yr
-                  </p>
-                </div>
-                <div className="btn"> Get Started </div>
-              </div>
-              <div className="package">
-                <div className="top">Corporate Package</div>
-                <div className="descr">
-                  Increase your commission pipeline by getting our team of
-                  experts to make sales on your behalf
-                </div>
-                <div className="pricing">
-                  <p>
-                    <span>$2000</span>/yr
-                  </p>
-                </div>
-                <div className="btn"> Get Started </div>
-              </div>
+              {PaymentTypeData.map((item) => {
+                return (
+                  <>
+                    <div className="package" style={{background:`${item.background}`}}>
+                      <div className="top" style={{color:`${item.textColor}`}}>{item.priceValue}</div>
+                      <div className="descr" style={{color:`${item.textColor}`}}>
+                        {item.description.map((des) => {
+                          return <p>{des}</p>;
+                        })}
+                      </div>
+                      <div className="pricing">
+                        <p>
+                          <span style={{color:`${item.textColor}`}}>N {item.amount[1]}</span>/yr
+                        </p>
+                      </div>
+                      <div className="btn"> Get Started </div>
+                    </div>
+                  </>
+                );
+              })}
             </>
           )}
         </div>

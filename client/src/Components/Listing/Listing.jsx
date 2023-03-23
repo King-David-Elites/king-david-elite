@@ -19,10 +19,12 @@ const Listing = ({ list, type }) => {
 
   const saveListing = async () => {
     setId(id);
+    console.log("yes")
     await axios.patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then(resp => {
         if (resp.data.status == 1) {
           services.toast.success("You liked this post");
+          console.log(resp)
         }
        
       })
@@ -30,10 +32,12 @@ const Listing = ({ list, type }) => {
   }
 
   const unSaveListing = async () => {
-    await axios.patch(`${globalApi}/listings/unsave/${id}`, id, setConfig())
+    console.log("no")
+    await axios.patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then(resp => {
         if (resp.data.status == 0) {
           services.toast.success("You unlike this post");
+          console.log(resp)
         }
       })
       .catch(err => console.log(err))
@@ -82,8 +86,8 @@ const Listing = ({ list, type }) => {
           }
 
         </div>
-        <div className="view" onClick={() => { redirect(list._id) }}>
-          Read More
+        <div className="view" onClick={() => { redirect(`${id}/media`) }}>
+          View More
         </div>
       </div>
 
@@ -103,7 +107,7 @@ const Listing = ({ list, type }) => {
         <LocationMarker /> {list.location}
       </p>
 
-      <div className="enquireNow">
+      <div className="enquireNow" onClick={() => { redirect(id) }}> 
         Enquire Now
       </div>
     </Container>

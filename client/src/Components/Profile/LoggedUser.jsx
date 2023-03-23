@@ -52,10 +52,6 @@ const LoggedUser = ({ logged }) => {
   }, [id])
   
 
-  // if (id == user._id) {
-  //   navigate("/profile");
-  // }
-
   if(id == user?._id){
     navigate("/profile")
   }
@@ -115,8 +111,7 @@ const LoggedUser = ({ logged }) => {
       )}
       <Return transparent={true} />
       <Header
-        className="cursor-pointer"
-        // onClick={() => navigate("/profile/viewImage")}
+        className="cursor-pointer"        
         onClick={() => {
           setShowCover(true);
         }}
