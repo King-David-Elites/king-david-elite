@@ -11,6 +11,7 @@ import { TextArea } from '../inputs/TextareaInput'
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { MdOutlineRemoveCircle } from 'react-icons/md';
+import Return from '../Navbar/Return';
 
 const ChauffeurPage = ({ id }) => {
     const status = useSelector(state => state.user.status);
@@ -148,6 +149,8 @@ const ChauffeurPage = ({ id }) => {
     });
 
     return (
+        <>
+        <Return />
         <div className="w-full h-[100vh] bg-white md:py-8 md:px-24 py-3 px-5 relative">
             <div className='h-[95%]'>
                 <div className="w-[70px] h-[auto] flex flex-col">
@@ -458,6 +461,8 @@ const ChauffeurPage = ({ id }) => {
                 </div>
             </div>
         </div >
+        </>
+       
     );
 }
 

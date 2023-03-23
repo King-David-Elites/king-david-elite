@@ -9,6 +9,7 @@ import { InputField } from '../inputs/MainInput';
 import { TextArea } from '../inputs/TextareaInput'
 import { useState } from 'react';
 import { MdOutlineRemoveCircle } from 'react-icons/md';
+import Return from '../Navbar/Return';
 
 
 const ConceirgeVacationPage = () => {
@@ -75,6 +76,8 @@ const ConceirgeVacationPage = () => {
 
 
     return (
+        <>
+        <Return/>
         <div className="w-full h-[100vh] bg-white md:py-8 md:px-24 py-3 px-5 relative">
             <div className='h-[95%]'>
                 <div className="w-[70px] h-[auto] flex flex-col">
@@ -230,6 +233,8 @@ const ConceirgeVacationPage = () => {
                 </div>
             </div>
         </div >
+        </>
+       
     );
 }
 

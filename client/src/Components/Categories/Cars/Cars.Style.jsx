@@ -87,6 +87,7 @@ export const Text = styled.div`
     margin:${props => props.margin ? props.margin : "0em"}; 
     padding:${props => props.padding ? props.padding : "0em"};  
     text-align: ${props => props.textAlign ? props.textAlign: "start"} ;
+    width:${props => props.width ? props.width : ""};
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         font-size:${props => props.fontSize ? props.fontSize : "1rem"};

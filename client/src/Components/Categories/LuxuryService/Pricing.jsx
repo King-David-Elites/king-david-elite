@@ -6,10 +6,11 @@ import MainButton from "../../buttons/MainButton";
 import { Brand, Header, LI, LogoText, UL } from "../../Navbar/Navbar.Style";
 import { useDispatch } from 'react-redux';
 import { setPackagePlan } from '../../../application/store/actions/user';
+import '../../Navbar/Navbar.css'
+import { ImCross } from "react-icons/im";
 
 const Pricing = ({ active = 6 }) => {
     const [activeNav, setActiveNav] = useState(false);
-    const [id, setId] = useState();
     const dispatch = useDispatch();
 
     const showMenu = () => {
@@ -361,7 +362,33 @@ const Pricing = ({ active = 6 }) => {
     return (
         <>
             <Header justifyContent="space-around" z="0" paddingTop='1.5em' className='bg-cover' bg='white' sticky="static" color='black'>
-
+                <nav className={activeNav ? "navigation active" : "navigation"}>
+                    <ul>
+                        <div className="closed">
+                            <p>Welcome!</p>
+                            <ImCross className="close" color="#000" onClick={showMenu} />
+                        </div>
+                        <div className="line"></div>
+                        {navOptions.map((nav, i) => {
+                            return (
+                                <>
+                                    <li key={i} onClick={() => navigate(nav?.link)}>
+                                        <div className="list-items">
+                                            {nav?.icon}
+                                            {nav.title}
+                                        </div>
+                                    </li>
+                                    {nav.no === 1 && <div className="line"></div>}
+                                    {nav.no === 2 && <div className="line"></div>}
+                                    {nav.no === 3 && <div className="line"></div>}
+                                    {nav.no === 4 && <div className="line"></div>}
+                                    {nav.no === 5 && <div className="line"></div>}
+                                    {nav.no === 6 && <div className="line"></div>}
+                                </>
+                            );
+                        })}
+                    </ul>
+                </nav>
                 <Brand>
                     <LogoText color="black" fontSize="1.5rem" onClick={() => navigate("/luxury-service")}>Luxury Services</LogoText>
 
