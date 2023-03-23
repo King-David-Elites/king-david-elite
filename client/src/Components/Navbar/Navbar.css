@@ -13,6 +13,7 @@
     top: 0.01px;
     right: 0;
     transition: 1s ease;
+    overflow-y: scroll;    
 }
 
 .navigation p {

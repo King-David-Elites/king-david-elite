@@ -36,8 +36,8 @@ const ProfileAsElement = ({ mainData }) => {
     cityId: "",
   });
   const [userInfo, setUserInfo] = useState({
-    firstName: mainData.user.firstName,
-    lastName: mainData.user.lastName,
+    firstName: mainData.userData.firstName,
+    lastName: mainData.userData.lastName,
     dob: "",
     address: "",
     zipCode: "",
@@ -178,8 +178,8 @@ const MobileProfile = ({ mainData }) => {
     cityId: "",
   });
   const [userInfo, setUserInfo] = useState({
-    firstName: mainData.user.firstName,
-    lastName: mainData.user.lastName,
+    firstName: mainData.userData.firstName,
+    lastName: mainData.userData.lastName,
     dob: "",
     address: "",
     zipCode: "",

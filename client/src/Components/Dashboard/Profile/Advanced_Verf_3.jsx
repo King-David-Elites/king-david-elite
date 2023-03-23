@@ -72,8 +72,7 @@ const Advanced_Verf_3 = (props) => {
     console.log("verification started ...");
     await axios
       .patch(`${globalApi}/users/verify`, verificationData, setConfig())
-      .then((resp) => {
-        console.log(resp.data);      
+      .then((resp) => {        
         setVerified(true);  
       })
       .catch((err) => {
@@ -88,6 +87,7 @@ const Advanced_Verf_3 = (props) => {
       .patch(`${globalApi}/users/update`, userInfo, setConfig())
       .then((resp) => {
         console.log(resp.data);
+        localStorage.setItem("user",JSON.stringify(resp.data))
         setLoading(false);
         setSuccess(true);        
       })

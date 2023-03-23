@@ -2,8 +2,8 @@ import React from "react";
 import { Header, UL, LI, LogoText, Brand, Login } from "./Navbar.Style";
 import kde_blackBg from "./Image/kde_whiteBg.png";
 import { useNavigate } from "react-router-dom";
-import { ImCross } from "react-icons/im";
-import { useState, useEffect } from "react";
+import { X } from "heroicons-react";
+import { useState } from "react";
 import { FaUserCircle, FaUser } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import {
@@ -157,6 +157,12 @@ const Navbar = ({ bg, sticky, active }) => {
       title: "Log In",
       link: "/login",
     },
+    {
+      no: 15,
+      icon: <FaUserCircle size={20} />,
+      title: "Log Out",
+      link: "/",
+    },
   ];
 
   const token = localStorage.getItem("token");
@@ -168,7 +174,7 @@ const Navbar = ({ bg, sticky, active }) => {
           <ul>
             <div className="closed">
               <p>Welcome!</p>
-              <ImCross className="close" color="#000" onClick={showMenu} />
+              <X className="close" size="20px" color="#000" onClick={showMenu} />
             </div>
             <div className="line"></div>
             {mobileNavOptions.map((nav, i) => {
@@ -176,7 +182,7 @@ const Navbar = ({ bg, sticky, active }) => {
                 <>
                   {token ? (
                     <>
-                      {mainData.user.accountType === 1 ? (
+                      {mainData.userData?.accountType === 1 ? (
                         <>
                           {nav.no !== 0 && (
                             <>
@@ -250,31 +256,52 @@ const Navbar = ({ bg, sticky, active }) => {
               );
             })}
 
-            <div className="list-item2">
-              {otherNav.map((navigation, i) => {
-                return (
-                  <>
-                    <li key={i} onClick={() => navigate(navigation?.link)}>
-                      {token ? (
-                        <>
-                          {navigation.title !== "Log In" && (
+            {otherNav.map((navigation, i) => {
+              return (
+                <>
+                  <li key={i} onClick={() => {
+                    if(navigation.title === "Log Out"){
+                      localStorage.clear()
+                      showMenu()
+                      navigate(navigation?.link)                      
+                    }
+                    else{
+                      navigate(navigation?.link)
+                    }
+                  }}>
+                    {token ? (
+                      <>
+                        {navigation.title !== "Log In" && (
+                          <>
                             <div className="list-items">
                               {navigation?.icon}
                               {navigation.title}
                             </div>
-                          )}
-                        </>
-                      ) : (
-                        <div className="list-items">
-                          {navigation?.icon}
-                          {navigation.title}
-                        </div>
-                      )}
-                    </li>
-                  </>
-                );
-              })}
-            </div>
+                            {navigation.no === 13 && (
+                              <div className="line"></div>
+                            )}
+                          </>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        {navigation.title !== "Log Out" && (
+                          <>
+                            <div className="list-items">
+                              {navigation?.icon}
+                              {navigation.title}
+                            </div>
+                            {navigation.no === 13 && (
+                              <div className="line"></div>
+                            )}
+                          </>
+                        )}
+                      </>
+                    )}
+                  </li>
+                </>
+              );
+            })}
           </ul>
         </nav>
         <Brand>
@@ -329,7 +356,7 @@ const Navbar = ({ bg, sticky, active }) => {
         <Login>
           {token ? (
             <>
-              {mainData.user.accountType === 1 ? (
+              {mainData.userData?.accountType === 1 ? (
                 <div onClick={() => navigate("/profile")} className="dashboard">
                   DASHBOARD
                 </div>
