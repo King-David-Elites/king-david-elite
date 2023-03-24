@@ -59,7 +59,7 @@ const Navbar = ({ bg, sticky, active }) => {
     },
     {
       title: "COLLECTIBLES",
-      // link: "/collectible",
+      link: "/collectible",
     },
     {
       title: "ABOUT",

@@ -41,7 +41,6 @@ export default function ProfileList() {
           <p>Create a List</p>
         }
         
-    
         <button
           onClick={()=>{
             navigate('/profile/create-listings')

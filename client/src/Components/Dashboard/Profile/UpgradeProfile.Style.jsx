@@ -32,12 +32,12 @@ export const Upgrade = styled.div`
 
     .h1 {
       font-weight: 700;
-      font-size: 38px;
+      font-size: 26px;
       color: #000000;
     }
     .h2 {
       font-weight: 400;
-      font-size: 17px;
+      font-size: 15px;
       letter-spacing: 0.0015em;
       color: #696969;
     }
@@ -68,7 +68,7 @@ export const Upgrade = styled.div`
     color: #737373;
     font-weight: 400;
     letter-spacing: 0.0015em;
-
+  
     .selectBtn1 {
       display: flex;
       justify-content: center;
@@ -93,7 +93,7 @@ export const Upgrade = styled.div`
   .packages {
     width: 100%;
     display: flex;
-    justify-content:flex-start;
+    justify-content:center;
     align-items: center;
     padding-top: 2em;
     flex-wrap: wrap;
@@ -125,11 +125,11 @@ export const Upgrade = styled.div`
     .package > .up > .descr {
       display:flex;
       justify-content: center;
-      align-items: flex-start;
       flex-direction: column;
       gap:0.5em;
-      font-weight: 300;
-      font-size: 16px;      
+      font-weight: 400;
+      font-size: 13px;   
+      height: 220px;
     }
     .package > .up > .pricing {
       font-weight: 400;

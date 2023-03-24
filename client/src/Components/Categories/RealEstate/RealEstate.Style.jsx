@@ -394,14 +394,14 @@ export const EachContainer = styled.div`
     }
 
     .description{
-        display: grid;
+        display: ${props => props.display ? props.display  : 'grid'};
         grid-template-columns: 1fr 1fr;
         gap: 50px;
 
         @media (max-width: 700px){
             grid-template-columns: none;
             display: block;
-        }
+        }   
 
         .details{
             p{
