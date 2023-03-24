@@ -98,13 +98,12 @@ export const Upgrade = styled.div`
     padding-top: 2em;
     flex-wrap: wrap;
 
-    .package {
+    .package {      
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: flex-start;
       flex-direction: column;
-      align-self: stretch;
-      gap: 0.5em;
+      align-self: stretch;      
       flex: 0 1 25em;
       padding: 1em 1.5em;
       margin: 1.5em;      
@@ -112,11 +111,18 @@ export const Upgrade = styled.div`
         -16px -16px 32px #ffffff;
       border-radius: 8px;
     }
-    .package > .top {
+    .package > .up{      
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;      
+      gap: 0.5em;            
+    }
+    .package > .up > .top {
       font-weight: 600;
       font-size: 20px;      
     }
-    .package > .descr {
+    .package > .up > .descr {
       display:flex;
       justify-content: center;
       align-items: flex-start;
@@ -125,13 +131,13 @@ export const Upgrade = styled.div`
       font-weight: 300;
       font-size: 16px;      
     }
-    .package > .pricing {
+    .package > .up > .pricing {
       font-weight: 400;
       font-size: 16px;
       color: #696969;
       padding: 1em 0em;
     }
-    .package > .pricing span {
+    .package > .up > .pricing span {
       font-weight: 600;
       font-size: 35px;      
     }

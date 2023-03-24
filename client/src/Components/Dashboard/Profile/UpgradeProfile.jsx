@@ -96,27 +96,29 @@ const UpgradeProfile = () => {
                       className="package"
                       style={{ background: `${item.background}` }}
                     >
-                      <div
-                        className="top"
-                        style={{ color: `${item.textColor}` }}
-                      >
-                        {item.priceValue}
-                      </div>
-                      <div
-                        className="descr"
-                        style={{ color: `${item.textColor}` }}
-                      >
-                        {item.description.map((des) => {
-                          return <p>{des}</p>;
-                        })}
-                      </div>
-                      <div className="pricing">
-                        <p>
-                          <span style={{ color: `${item.textColor}` }}>
-                            N {item.amount[0]}
-                          </span>
-                          /mo
-                        </p>
+                      <div className="up">
+                        <div
+                          className="top"
+                          style={{ color: `${item.textColor}` }}
+                        >
+                          {item.priceValue}
+                        </div>
+                        <div
+                          className="descr"
+                          style={{ color: `${item.textColor}` }}
+                        >
+                          {item.description.map((des) => {
+                            return <p>{des}</p>;
+                          })}
+                        </div>
+                        <div className="pricing">
+                          <p>
+                            <span style={{ color: `${item.textColor}` }}>
+                              N {item.amount[0]}
+                            </span>
+                            /mo
+                          </p>
+                        </div>
                       </div>
                       <div
                         className="btn"
@@ -148,27 +150,29 @@ const UpgradeProfile = () => {
                       className="package"
                       style={{ background: `${item.background}` }}
                     >
-                      <div
-                        className="top"
-                        style={{ color: `${item.textColor}` }}
-                      >
-                        {item.priceValue}
-                      </div>
-                      <div
-                        className="descr"
-                        style={{ color: `${item.textColor}` }}
-                      >
-                        {item.description.map((des) => {
-                          return <p>{des}</p>;
-                        })}
-                      </div>
-                      <div className="pricing">
-                        <p>
-                          <span style={{ color: `${item.textColor}` }}>
-                            N {item.amount[1]}
-                          </span>
-                          /yr
-                        </p>
+                      <div className="up">
+                        <div
+                          className="top"
+                          style={{ color: `${item.textColor}` }}
+                        >
+                          {item.priceValue}
+                        </div>
+                        <div
+                          className="descr"
+                          style={{ color: `${item.textColor}` }}
+                        >
+                          {item.description.map((des) => {
+                            return <p>{des}</p>;
+                          })}
+                        </div>
+                        <div className="pricing">
+                          <p>
+                            <span style={{ color: `${item.textColor}` }}>
+                              N {item.amount[1]}
+                            </span>
+                            /yr
+                          </p>
+                        </div>
                       </div>
                       <div
                         className="btn"
