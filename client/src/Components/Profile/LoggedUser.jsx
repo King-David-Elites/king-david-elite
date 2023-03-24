@@ -80,12 +80,12 @@ const LoggedUser = ({ logged }) => {
       axios.get(`${globalApi}/users/${id}`).then((resp) => {
         setData(resp.data);
         console.log(resp.data);
-      });
-      getListings();
+        getListings();
+      });     
     }
-  }, [id, mainData.userData, getListings]);
+  }, [id]);
 
-  //   const logged = true
+    // const logged = true
   const options = [
     {
       title: "Stats",
