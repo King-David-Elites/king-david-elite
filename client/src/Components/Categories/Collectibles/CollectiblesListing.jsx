@@ -16,7 +16,6 @@ import { Container, GridContainer } from "../../Listing/Listing.styled";
 import Footer from "../../Footer/Footer";
 import { useRef } from "react";
 import { useEffect } from "react";
-import { CollectibleAnimation, graduallyAppear, graduallyDisAppear } from "../Cars/AnimationOrder";
 import { useState } from "react";
 import Navbar from "../../Navbar/Navbar";
 import img1 from "../Cars/Img/brooke-campbell-Rw2-Y0nSIKQ-unsplash.jpg";
@@ -24,6 +23,11 @@ import img2 from "../Cars/Img/christian-mackie-SxBca4GcC9k-unsplash.jpg";
 import img3 from "../Cars/Img/daniel-gaffey-EbH-7ReNuA0-unsplash.jpg";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import {
+    CollectibleAnimation,
+    graduallyAppear,
+    graduallyDisAppear,
+  } from "../Cars/AnimationOrder";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 

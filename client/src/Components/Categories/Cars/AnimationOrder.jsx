@@ -71,14 +71,6 @@ export const EstateAnimation = [
   { id: 5, img: estate5 },
 ];
 
-export const CollectibleAnimation = [
-  { id: 1, img: estate1 },
-  { id: 2, img: estate2 },
-  { id: 3, img: estate3 },
-  { id: 4, img: estate4 },
-  { id: 5, img: estate5 },
-];
-
 export const HomeAnimation = [
   { id: 1, img: home },
   { id: 2, img: home1 },
@@ -89,6 +81,18 @@ export const HomeAnimation = [
 ];
 
 export const AboutAnimation = [
+  { id: 1, img: about1 },
+  { id: 2, img: about2 },
+  { id: 3, img: about3 },
+  { id: 4, img: about4 },
+  { id: 5, img: about5 },
+  { id: 6, img: about6 },
+  { id: 7, img: about7 },
+  { id: 8, img: about8 },
+  { id: 9, img: about9 },
+];
+
+export const CollectibleAnimation = [
   { id: 1, img: about1 },
   { id: 2, img: about2 },
   { id: 3, img: about3 },
