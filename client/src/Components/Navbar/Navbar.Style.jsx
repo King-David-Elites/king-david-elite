@@ -13,7 +13,7 @@ export const Header = styled.div`
     align-items: ${props => props.alignItems ? props.alignItems : "center"};
     gap:0.2em;
     z-index: ${props => props.z ? props.z : "3"};
-    white-space: nowrap;
+    white-space: nowrap;    
 
     .list-items{
         display: flex;

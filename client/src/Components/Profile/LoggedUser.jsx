@@ -30,6 +30,7 @@ import { useEffect } from "react";
 import { GridContainer } from "../Listing/Listing.styled";
 import Listing from "../Listing/Listing";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
+import useContextAPI from "../ContextAPI/ContextAPI";
 
 const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
@@ -39,49 +40,52 @@ const LoggedUser = ({ logged }) => {
   const navigate = useNavigate();
   const [file, setFile] = useState(data.cover);
   const { id } = useParams();
-  let user = useGetUserDetails();
+  // let user = useGetUserDetails();
   const [listings, setListings] = useState([]);
+  const mainData = useContextAPI();
 
-  const getListings = (() => {
+  const getListings =
+    (() => {
+      axios
+        .get(`${globalApi}/listings/user-listing?id=${id}`, setConfig())
+        .then((resp) => {
+          setListings(resp.data);
+        })
+        .catch((err) => console.log(err));
+    },
+    [id]);
+
+  if (id == mainData.userData?._id) {
+    navigate("/profile");
+  }
+
+  const createConversation = () => {
     axios
-      .get(`${globalApi}/listings/user-listing?id=${id}`, setConfig())
+      .post(
+        `${globalApi}/conversations/new-conversation/${id}`,
+        {},
+        setConfig()
+      )
       .then((resp) => {
-        setListings(resp.data);
+        console.log(resp.data);
+        navigate(`/dashboard/messages/chat/${resp.data._id}`);
       })
       .catch((err) => console.log(err));
-  }, [id])
-  
+  };
 
-  if(id == user?._id){
-    navigate("/profile")
-  }
-
-  const createConversation = ()=>{
-    axios.post(`${globalApi}/conversations/new-conversation/${id}`, {}, setConfig())
-    .then(resp => {
-      console.log(resp.data)
-      navigate(`/dashboard/messages/chat/${resp.data._id}`)
-    })
-    .catch(err => console.log(err))
-  }
-
-  
-  useEffect(()=>{
-    if(!id){
-        setData(user)
-      }
-      else{
-        axios.get(`${globalApi}/users/${id}`)
-        .then(resp => {
-          setData(resp.data)
-          console.log(resp.data)
-        })
+  useEffect(() => {
+    if (!id) {
+      setData(mainData.userData);
+    } else {
+      axios.get(`${globalApi}/users/${id}`).then((resp) => {
+        setData(resp.data);
+        console.log(resp.data);
         getListings();
-      }
+      });     
+    }
+  }, [id]);
 
-  }, [id, user, getListings])
-
-  //   const logged = true
+    // const logged = true
   const options = [
     {
       title: "Stats",
@@ -94,20 +98,30 @@ const LoggedUser = ({ logged }) => {
     {
       title: "Account",
       component: <Account />,
-    },    
+    },
   ];
 
   return (
     <Fragment>
       {showImage && (
-        <ProfileImage data={data} id={id} type="profile" setShowImage={setShowImage} />
+        <ProfileImage
+          data={data}
+          id={id}
+          type="profile"
+          setShowImage={setShowImage}
+        />
       )}
       {showCover && (
-        <ProfileImage data={data} id={id} type="cover" setShowCover={setShowCover} />
+        <ProfileImage
+          data={data}
+          id={id}
+          type="cover"
+          setShowCover={setShowCover}
+        />
       )}
       <Return transparent={true} />
       <Header
-        className="cursor-pointer"        
+        className="cursor-pointer"
         onClick={() => {
           setShowCover(true);
         }}
@@ -157,7 +171,9 @@ const LoggedUser = ({ logged }) => {
             </>
           ) : (
             <>
-              <div className="edit" onClick={createConversation}>Message</div>
+              <div className="edit" onClick={createConversation}>
+                Message
+              </div>
 
               <div className="edit">Call</div>
             </>

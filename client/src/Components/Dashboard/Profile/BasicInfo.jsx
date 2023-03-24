@@ -87,7 +87,7 @@ const BasicInfo = (props) => {
               value={
                 userInfo["lastName"]
                   ? userInfo["lastName"]
-                  : mainData.user.lastName
+                  : mainData.userData.lastName
               }
               onChange={handleChange}
               readOnly
@@ -102,7 +102,7 @@ const BasicInfo = (props) => {
               value={
                 userInfo["firstName"]
                   ? userInfo["firstName"]
-                  : mainData.user.firstName
+                  : mainData.userData.firstName
               }
               onChange={handleChange}
               readOnly

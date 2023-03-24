@@ -69,11 +69,11 @@ const Advanced_Verf_3 = (props) => {
   };
 
   const postVerificationDetails = async (verificationData) => {
+    console.log(verificationData)
     console.log("verification started ...");
     await axios
       .patch(`${globalApi}/users/verify`, verificationData, setConfig())
-      .then((resp) => {
-        console.log(resp.data);      
+      .then((resp) => {        
         setVerified(true);  
       })
       .catch((err) => {
@@ -83,11 +83,13 @@ const Advanced_Verf_3 = (props) => {
   };
 
   const updateUserDetails = async (userInfo) => {
+    console.log(userInfo)
     console.log("updating user details ...");
     await axios
       .patch(`${globalApi}/users/update`, userInfo, setConfig())
       .then((resp) => {
         console.log(resp.data);
+        localStorage.setItem("user",JSON.stringify(resp.data))
         setLoading(false);
         setSuccess(true);        
       })
