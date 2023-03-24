@@ -32,6 +32,7 @@ export default function ProfileStat() {
   };
 
   useEffect(() => {
+    console.log("testing");
     console.log(mainData.userData);
     console.log(mainData.userData.pageViews.value);
     console.log(mainData.userData.pageViews.users.length);
