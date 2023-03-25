@@ -1,6 +1,12 @@
 import axios from "axios";
 import { LocationMarker, Trash } from "heroicons-react";
-import React, { Fragment, useCallback, useEffect, useState, useRef } from "react";
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+} from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import TimeAgo from "timeago-react";
 import globalApi from "../../../api";
@@ -62,6 +68,12 @@ const EachRealEstate = ({ active }) => {
     });
   };
 
+  const formatLocation = (location) => {
+    let list = location.split("#");
+    list = list.join(", ");
+    return list;
+  };
+
   useEffect(() => {
     getAList();
     scrollToRef(top);
@@ -69,13 +81,13 @@ const EachRealEstate = ({ active }) => {
 
   return (
     <Fragment>
-      <Navbar active={1}/>
+      <Navbar active={1} />
       <EachContainer ref={top}>
         <div className="titles">
           <h3>{property.title}</h3>
-          <h4>US ${property.price}</h4>
+          <h4>&#x20A6; {property.price}</h4>
           <p>
-            <LocationMarker /> {property.location}
+            <LocationMarker size="16px"/> {formatLocation(property.location)}
           </p>
         </div>
 
@@ -94,10 +106,10 @@ const EachRealEstate = ({ active }) => {
           </div>
           <p>
             Listed <TimeAgo datetime={property.createdAt} />
-          </p>               
+          </p>
           <Link to={`/real-estate/${id}/media`}>
             <div className="viewMedia">View Images & Videos</div>
-          </Link>    
+          </Link>
         </div>
 
         <div className="amenities">

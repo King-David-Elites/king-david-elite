@@ -18,7 +18,7 @@ const ImageDisplay = ({ property, setDisplayImg, currentIndex }) => {
             <X />
           </div>
         </div>
-        <Carousel showThumbs={false} showStatus={false} selectedItem={property.images[0]}>
+        <Carousel showThumbs={false} showStatus={false} selectedItem={currentIndex}>
           {property.images.map((image,i) => {
             return (
               <>

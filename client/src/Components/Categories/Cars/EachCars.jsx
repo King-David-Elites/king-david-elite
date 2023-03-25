@@ -66,6 +66,12 @@ const EachCars = ({ active }) => {
     });
   };
 
+  const formatLocation = (location) => {
+    let list = location.split("#");
+    list = list.join(", ");
+    return list;
+  };
+
   useEffect(() => {
     getAList();
   }, [getAList]);
@@ -77,9 +83,9 @@ const EachCars = ({ active }) => {
       <EachContainer ref={top}>
         <div className="titles">
           <h3>{property.title}</h3>
-          <h4>US ${property.price}</h4>
+          <h4>&#x20A6; {property.price}</h4>
           <p>
-            <LocationMarker /> {property.location}
+            <LocationMarker size="16px"/> {formatLocation(property.location)}
           </p>
         </div>
 

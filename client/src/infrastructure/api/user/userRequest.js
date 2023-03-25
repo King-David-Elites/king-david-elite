@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import globalApi from "../../../api";
 
 const BASEURL = "https://kde.cyclic.app";
 
@@ -74,13 +74,13 @@ export const getStates = async (countryIso, setStateData) => {
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => {      
+    .then((result) => {
       setStateData(JSON.parse(result));
     })
     .catch((error) => console.log("error", error));
 };
 
-export const getCities = async (countryIso, stateIso, setCityData) => {    
+export const getCities = async (countryIso, stateIso, setCityData) => {
   var headers = new Headers();
   headers.append(
     "X-CSCAPI-KEY",
@@ -98,8 +98,22 @@ export const getCities = async (countryIso, stateIso, setCityData) => {
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => {      
+    .then((result) => {
       setCityData(JSON.parse(result));
     })
     .catch((error) => console.log("error", error));
 };
+
+export const getListings = async (page, category, setListing, setLoading) => {
+  let response;
+  await axios
+    .get(`${globalApi}/listings/all?page=${page}&category=${category}`)
+    .then((resp) => {      
+      setListing(resp.data.listings);  
+      setLoading(false);
+      response = resp.data.noOfListings       
+    })
+    .catch((err) => console.error(err));
+    return response
+};
+

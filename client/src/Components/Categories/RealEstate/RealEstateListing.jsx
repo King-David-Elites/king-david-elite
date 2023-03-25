@@ -1,4 +1,11 @@
-import { Adjustments, Search } from "heroicons-react";
+import {
+  Adjustments,
+  Search,
+  ChevronLeft,
+  ChevronDoubleLeft,
+  ChevronRight,
+  ChevronDoubleRight,
+} from "heroicons-react";
 import React, { useRef, useEffect, useCallback } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import {
@@ -9,7 +16,7 @@ import {
   Body,
   FilterBox,
 } from "../Cars/Cars.Style";
-import { SearchSection, SearchC } from "./RealEstate.Style";
+import { SearchSection, SearchC, PaginationButtons } from "./RealEstate.Style";
 import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
 import "../../Navbar/Navbar.css";
@@ -25,7 +32,7 @@ import {
   graduallyAppear,
   graduallyDisAppear,
 } from "../Cars/AnimationOrder";
-import useContextAPI from "../../ContextAPI/ContextAPI";
+import { getListings } from "../../../infrastructure/api/user/userRequest";
 import { motion } from "framer-motion";
 import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
@@ -36,11 +43,15 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const RealEstateListing = () => {
   const top = useRef(null);
-  const { listing, setListing } = useContextAPI();
-
-  useEffect(() => {
-    scrollToRef(top);
-  }, []);
+  const [listing, setListing] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
+  let totalListing = 0;
+  const [buttonRange, setButtonRange] = useState([1, 2, 3]);
+  const PAGINATION = 3;
+  const [flipRight, setFlipRight] = useState(false);
+  const [flipLeft, setFlipLeft] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [loader, setLoader] = useState(false);
   const [estateId, setEstateId] = useState(1);
@@ -54,6 +65,10 @@ const RealEstateListing = () => {
   const [view, setView] = useState("Swimming Pool");
   const [stage, setStage] = useState(0);
   const [activeNav, setActiveNav] = useState(false);
+  const [start, setStart] = useState(false);
+  const [end, setEnd] = useState(false);
+  const [previous, setPrevious] = useState(false);
+  const [next, setNext] = useState(false);
 
   const handleInput = (e) => {
     set_minValue(e.minValue);
@@ -70,6 +85,11 @@ const RealEstateListing = () => {
       setActiveNav(activeNav);
     }
   };
+
+  useEffect(() => {
+    scrollToRef(top);
+    resetPage(page);
+  }, []);
 
   const views = [
     {
@@ -107,6 +127,80 @@ const RealEstateListing = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    setButtonRange(resetButtonRange(buttonRange));
+  }, [flipRight, flipLeft]);
+
+  const resetButtonRange = (buttonRange) => {
+    let mockButtonRange = buttonRange;
+    for (var i = 0; i < buttonRange.length; i++) {
+      if (flipRight) {
+        mockButtonRange = [
+          buttonRange[0] + 1,
+          buttonRange[1] + 1,
+          buttonRange[2] + 1,
+        ];
+        setFlipRight(false);
+        break;
+      } else if (flipLeft) {
+        mockButtonRange = [
+          buttonRange[0] - 1,
+          buttonRange[1] - 1,
+          buttonRange[2] - 1,
+        ];
+        setFlipLeft(false);
+        break;
+      }
+    }
+    return mockButtonRange;
+  };
+
+  const resetPage = async (page) => {
+    setLoading(true);
+    setPage(page);
+    totalListing = await getListings(
+      page,
+      "real-estate",
+      setListing,
+      setLoading
+    );
+    let pageValue = 0;
+
+    if (totalListing !== 0) {
+      if (totalListing % PAGINATION > 0) {
+        pageValue = Math.floor(totalListing / PAGINATION) + 1;
+      } else if (totalListing % PAGINATION === 0) {
+        pageValue = totalListing / PAGINATION;
+      }
+    } else {
+      pageValue = totalListing;
+    }
+    setTotalPage(pageValue);
+  };
+
+  useEffect(() => {
+    if (page > 1 && page < buttonRange.length) {
+      console.log(totalPage);
+      setPrevious(true);
+    } else if (page === 1) {
+      setPrevious(false);
+    }
+    if (page === 1 || page <= buttonRange.length) {
+      setStart(false);
+    } else if (page > buttonRange.length && page <= totalPage) {
+      setStart(true);
+      setPrevious(true);
+    }
+    if (totalPage > buttonRange.length) {
+      setNext(true);
+      setEnd(true);
+    }
+    if (page === totalPage) {
+      setNext(false);
+      setEnd(false);
+    }
+  }, [page, totalPage]);
 
   const animate = useCallback(() => {
     var timer1;
@@ -176,10 +270,11 @@ const RealEstateListing = () => {
                 {views.map((v, i) => {
                   return (
                     <span
-                      className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title
+                      className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${
+                        view == v.title
                           ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center`
                           : ""
-                        }`}
+                      }`}
                       key={i}
                       onChange={(e) => setTitle(e.target.value)}
                       onClick={() => {
@@ -330,10 +425,11 @@ const RealEstateListing = () => {
                       {views.map((v, i) => {
                         return (
                           <span
-                            className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title
+                            className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${
+                              view == v.title
                                 ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center`
                                 : ""
-                              }`}
+                            }`}
                             key={i}
                             onChange={(e) => setTitle(e.target.value)}
                             onClick={() => {
@@ -486,28 +582,127 @@ const RealEstateListing = () => {
                 thickness={150}
               />
             )}
-            <GridContainer>
-              {!loader &&
-                title &&
-                list.length > 0 &&
-                list.map((items) => {
-                  return <Listing key={items._id} list={items} />;
-                })}
-              {!loader && title && list.length == 0 && (
-                <p className="font-bold text-base md:text-xl">No list found</p>
-              )}
-              {!loader &&
-                !title &&
-                listing.length > 0 &&
-                listing.map((items) => {
-                  return <Listing key={items._id} list={items} />;
-                })}
-            </GridContainer>
+            {loading ? (
+              <>
+                <SpinnerCircular
+                  color="white"
+                  className="flex justify-center"
+                  secondaryColor={theme.color}
+                  size={50}
+                  thickness={150}
+                />
+              </>
+            ) : (
+              <GridContainer>
+                {!loader &&
+                  title &&
+                  list.length > 0 &&
+                  list.map((items) => {
+                    return (
+                      <>
+                        <Listing key={items._id} list={items} />
+                      </>
+                    );
+                  })}
+                {!loader && title && list.length == 0 && (
+                  <p className="font-bold text-base md:text-xl">
+                    No list found
+                  </p>
+                )}
+                {!loader &&
+                  !title &&
+                  listing.length > 0 &&
+                  listing.map((items) => {
+                    return (
+                      <>
+                        <Listing key={items._id} list={items} />
+                      </>
+                    );
+                  })}
+              </GridContainer>
+            )}
+
+            <PaginationButtons>
+              {/* <div
+                className={start ? "button" : "disable"}
+                onClick={() => {
+                  if (start) {
+                    resetPage(1);
+                    setButtonRange([1,2,3])
+                  }
+                }}
+              >
+                <ChevronDoubleLeft />
+              </div> */}
+              <div
+                className={previous ? "button" : "disable"}
+                onClick={() => {
+                  if (page === buttonRange[0] && previous) {
+                    setFlipLeft(true);
+                  }
+                  if (previous) {
+                    resetPage(page - 1);
+                  }
+                }}
+              >
+                <ChevronLeft />
+              </div>
+              {buttonRange.map((item, i) => {
+                return (
+                  <>
+                    <div
+                      className={
+                        page === buttonRange[i] ? "button" : "unselect"
+                      }
+                      onClick={() => {
+                        resetPage(buttonRange[i]);
+                      }}
+                    >
+                      {item}
+                    </div>
+                  </>
+                );
+              })}
+              <div
+                className={next ? "button" : "disable"}
+                onClick={() => {
+                  if (page === buttonRange[buttonRange.length - 1] && next) {
+                    setFlipRight(true);
+                  }
+                  if (next) {
+                    resetPage(page + 1);
+                  }
+                }}
+              >
+                <ChevronRight />
+              </div>
+              {/* <div
+                className={end ? "button" : "disable"}
+                onClick={() => {
+                  if (end) {
+                    resetPage(totalPage);
+                    setButtonRange([totalPage-2,totalPage-1,totalPage])
+                  }
+                }}
+              >
+                <ChevronDoubleRight />
+              </div> */}
+            </PaginationButtons>
           </Body>
           <Banner category="Real Estate" />
           <Text color="black" fontSize="0.8rem" margin="2em">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Indulge in opulence with King David Elites. Our online marketplace boast a collection of exquiste, high-end properties that exude luxury living.From stunning homes to sprawling estates and opulent apartment,our offering cater to all your residential,investment and for-profit needs. Our secure payment system ensures hassle-free transactions, with the option to transfer funds directly to verifies vendors or through our 1% transaction fee escrow account which further secures your funds and grants you access to our team of experts who provide professional advisory services and arranges luxurious property inspection, setting a new standardof class and sophistication.
+            Indulge in opulence with King David Elites. Our online marketplace
+            boast a collection of exquiste, high-end properties that exude
+            luxury living.From stunning homes to sprawling estates and opulent
+            apartment,our offering cater to all your residential,investment and
+            for-profit needs. Our secure payment system ensures hassle-free
+            transactions, with the option to transfer funds directly to verifies
+            vendors or through our 1% transaction fee escrow account which
+            further secures your funds and grants you access to our team of
+            experts who provide professional advisory services and arranges
+            luxurious property inspection, setting a new standardof class and
+            sophistication.
           </Text>
           <Footer />
         </>
