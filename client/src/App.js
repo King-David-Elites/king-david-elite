@@ -92,7 +92,7 @@ function App() {
             <Route path={`/reset/${token}`} element={<ResetPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/savedpost' element={<Savedpost />} />
-            <Route path="/real-estate" element={<RealEstateListing />} />
+            <Route path="/real-estate" element={<RealEstateListing mainData={mainData} />} />
             <Route path="/luxury-service" element={<LuxuryServiceListing />} />
             <Route path="/dashboard/messages/chat/:id" element={<ChatBox />} />
             <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />

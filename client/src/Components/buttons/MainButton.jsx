@@ -12,7 +12,7 @@ const MainButton = styled.button`
     border: 2px solid ${props => props.border ? props.border : theme.color};
     border-radius: 6px;
     white-space: nowrap;
-    display: flex;
+    display: ${props => props.display ? props.display : "flex"};
     flex-direction: row;
     justify-content: ${props => props.justifyContent ? props.justifyContent : "center"} ;
     align-items: center;
