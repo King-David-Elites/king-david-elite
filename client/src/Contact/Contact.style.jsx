@@ -70,8 +70,8 @@ export const Container = styled.div`
         width: 18vw;
       }
 
-      .comment {         
-         width: 100%;
+      .comment {
+        width: 100%;
         p {
           font-size: 0.75rem;
         }
@@ -96,37 +96,43 @@ export const Container = styled.div`
 
   @media (max-width: 850px) {
     .cont {
-      display: grid;
-      justify-content: space-evenly;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 1em;
 
       .LCont {
-        h1 {
-          margin: 2em auto;
-          margin-bottom: 0;
-          font-size: 1.5rem;
-          width: 60%;
-          font-weight: 600;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
 
-        p {
-          margin: 0 auto;
-          font-size: 0.8rem;
-          width: 60%;
+        h1 {
+          text-align: center;
+          width: 100%;
+          margin: 2em auto;
+          font-size: 1.5rem;
+          font-weight: 600;
         }
       }
 
       .RCont {
-        width: 40%;
-        margin: 0.5em 0.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
 
         h1 {
-          margin: 3em auto;
+          margin: 2em auto;
           margin-bottom: 0;
           font-size: 1rem;
           font-weight: 600;
         }
 
         .minCont {
+          width: 100%;
           display: block;
           margin-bottom: 0.5em;
           justify-content: space-between;
@@ -145,22 +151,26 @@ export const Container = styled.div`
         }
 
         .comment {
+          width: 100%;
           p {
             font-size: 0.75rem;
           }
 
-          input {
+          textarea {
+            /* padding: 0.5em; */
             width: 90vw;
+            resize: none;
+            border-radius: 4px;
             height: 25vh;
           }
         }
-      }
 
-      button {
-        background: linear-gradient(90deg, #f2be5c 23.7%, #000000 286.13%);
-        border-radius: 4px;
-        padding: 1em;
-        margin-top: 3em;
+        button {
+          background: linear-gradient(90deg, #f2be5c 23.7%, #000000 286.13%);
+          border-radius: 4px;
+          padding: 1em;
+          margin-top: 3em;
+        }
       }
     }
   }
