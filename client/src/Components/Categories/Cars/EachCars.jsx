@@ -67,8 +67,12 @@ const EachCars = ({ active }) => {
   };
 
   const formatLocation = (location) => {
-    let list = location.split("#");
-    list = list.join(", ");
+    let list=null
+    if(location){
+      list = location.split("#");
+      list = list.join(", ");
+    }
+    
     return list;
   };
 

@@ -26,8 +26,8 @@ const EachRealEstate = ({ active }) => {
   const [property, setProperty] = useState({});
   const data = useGetUserDetails();
 
-  const getAList = useCallback(() => {
-    axios
+  const getAList = useCallback(async () => {
+    await axios
       .get(`${globalApi}/listings/each/${id}`)
       .then((resp) => {
         setProperty(resp.data);
@@ -69,8 +69,12 @@ const EachRealEstate = ({ active }) => {
   };
 
   const formatLocation = (location) => {
-    let list = location.split("#");
-    list = list.join(", ");
+    let list=null
+    if(location){
+      list = location.split("#");
+      list = list.join(", ");
+    }
+    
     return list;
   };
 
@@ -87,7 +91,7 @@ const EachRealEstate = ({ active }) => {
           <h3>{property.title}</h3>
           <h4>&#x20A6; {property.price}</h4>
           <p>
-            <LocationMarker size="16px"/> {formatLocation(property.location)}
+            <LocationMarker size="16px" /> {formatLocation(property.location)}
           </p>
         </div>
 
