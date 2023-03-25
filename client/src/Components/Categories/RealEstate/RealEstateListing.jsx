@@ -398,12 +398,6 @@ const RealEstateListing = () => {
                       />
                       <p className="font-bold text-[20px]">Filters</p>
                     </div>
-                    {/* <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
-              <option>Location</option>
-              <option>Laravel 9 with React</option>
-              <option>React with Tailwind CSS</option>
-              <option>React With Headless UI</option>
-            </select> */}
                     <h3 className="font-bold">Location</h3>
                     <input
                       type="text"

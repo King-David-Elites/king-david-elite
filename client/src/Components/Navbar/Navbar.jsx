@@ -13,20 +13,19 @@ import {
   MdAccountBalanceWallet,
 } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
-import { BsFillBellFill, BsFillHeartFill, BsCollection } from "react-icons/bs";
+import { BsFillBellFill, BsFillHeartFill, BsCollection, BsCart3 } from "react-icons/bs";
 import "./Navbar.css";
 import MainButton from "../buttons/MainButton";
 import useContextAPI from "../ContextAPI/ContextAPI";
 import { useDispatch } from "react-redux";
 import {
   setListWithUs,
-  SET_LIST_WITH_US,
 } from "../../application/store/actions/user";
+import theme from "../../application/utils/Theme";
 
 const Navbar = ({ bg, sticky, active }) => {
   const mainData = useContextAPI();
   const [activeNav, setActiveNav] = useState(false);
-  const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
 
   const toRun = () => {
@@ -64,6 +63,10 @@ const Navbar = ({ bg, sticky, active }) => {
     {
       title: "ABOUT",
       link: "/about",
+    },
+    {
+      title: <BsCart3 size={18} color={theme.color} className='cursor-pointer'/>,
+      link: "/cart",
     },
   ];
 
@@ -133,6 +136,12 @@ const Navbar = ({ bg, sticky, active }) => {
       icon: <MdAccountBalanceWallet size={20} />,
       title: "My Account",
       link: "/dashboard/wallet",
+    },
+    {
+      no: 11,
+      icon: <BsCart3 size={20} />,
+      title: "Cart",
+      link: "/cart",
     },
   ];
 

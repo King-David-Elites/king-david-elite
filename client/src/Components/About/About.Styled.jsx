@@ -20,11 +20,11 @@ export const Flex = styled.div`
 export const GlobalContainer = styled.div`
     width: ${({width})=> width};
     padding: ${({padding})=> padding};
-    margin: ${({margin})=> margin};
+    margin: ${props => props.margin ? props.margin : "0em"};
 
     @media (max-width: 850px){
         width: 100%;
-        margin: 30px 0;
+        margin: ${props => props.margin ? props.margin : "30px 0"};
     }
 `
 

@@ -85,7 +85,7 @@ const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
                     </ul>
                 </nav>
                 <Brand>
-                    <LogoText fontSize="1.5rem" onClick={() => navigate("/luxury-service")}>Luxury Services</LogoText>
+                    <LogoText fontSize="1.5rem" onClick={() => navigate("/")}>Luxury Services</LogoText>
 
                     <div className='menu-icon'>
                         <MdMenu size={30} className='menu' onClick={showMenu} />
