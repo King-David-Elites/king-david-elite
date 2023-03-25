@@ -2,18 +2,20 @@ import React from 'react'
 import Footer from '../Components/Footer/Footer'
 import { Container } from './Contact.style'
 import contact from "./images/contact.jpg"
+import Navbar from '../Components/Navbar/Navbar'
 
 export default function Contact() {
 
   return (
     <Container>
+        <Navbar />
         <div 
             className='bg_contact'
             style={{
                 backgroundImage:`url(${contact})`,
                 backgroundSize:'cover',
                 backgroundPosition:'center',
-                height:'90vh',
+                height:'100vh',
                 backgroundRepeat:'no-repeat'
             }}
             >
@@ -28,8 +30,7 @@ export default function Contact() {
             <div className='LCont'>
                 <h1>
                     Have Anything In Mind? Let's talk.
-                </h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut!</p>
+                </h1>              
             </div>
 
             <div className='RCont'>
@@ -63,7 +64,7 @@ export default function Contact() {
 
                 <div className='comment'>
                     <p>Comments</p>
-                    <input type="text" />
+                    <textarea type="text"/>
                 </div>
 
                 <button>Send Message</button>
