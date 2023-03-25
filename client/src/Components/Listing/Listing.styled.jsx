@@ -22,7 +22,7 @@ export const Container = styled.div`
 
     .profile{
         display: flex;
-        gap: 5px;
+        gap: 1em;
         align-items: center;
 
         img{
@@ -83,7 +83,7 @@ export const Container = styled.div`
     }
 
     .enquireNow{
-        background: linear-gradient(98.99deg, #F2BE5C 6.69%, #592A0F 100%);
+        background:  #F2BE5C;
         border-radius: 4px;
         padding: 10px 20px;
         color: white;

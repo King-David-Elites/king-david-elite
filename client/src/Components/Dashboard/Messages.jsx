@@ -119,7 +119,7 @@ const MessagesAsElement = () => {
             </div>
 
             <div className="eachChat"> */}
-        <div className="bg-[#fff] fixed flex shadow-md w-[60%] z-20 h-[8%] justify-center items-center gap-6">
+        <div className="bg-[#fff] flex fixed shadow-md w-[60%] z-10 h-[8%] justify-center items-center gap-6">
           <div className="chat-wrap">
             <div className="box-content">
               <h4 className=" font-semibold">KingDavid Team</h4>
@@ -171,7 +171,7 @@ const MessagesAsElement = () => {
           })}
         </div>
 
-        <div className="h-[6%] bg-[#F5F5F5] fixed w-[60%] flex items-center px-[2em]">
+        <div className="h-[6%] bg-[#F5F5F5] fixed w-[60%] bottom-[4.5em] flex  items-center px-[2em]">
           <div className="flex items-center basis-1/4 gap-2">
             <FaImages size={25} />
             <BsPaperclip size={25} />
@@ -505,7 +505,7 @@ const Messages = () => {
   return (
     <Dashboard
       element={<MessagesAsElement />}
-      index="1"
+      index={1}
       mobileElement={<MobileMessage />}
     />
   );

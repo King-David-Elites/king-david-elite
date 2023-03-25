@@ -42,6 +42,8 @@ const Footer = () => {
                     <Head>Categories</Head>
                     <List onClick={() => navigate('/real-estate')}>Real Estates</List>
                     <List onClick={() => navigate('/cars')}>Cars</List>
+                    <List onClick={() => navigate('/luxury-service')}>Luxury Service</List>
+                    <List onClick={() => navigate('/collectibles')}>Collectibles</List>
                 </Section>
                 <Section>
                     <Head>Business</Head>
@@ -50,7 +52,7 @@ const Footer = () => {
                 </Section>
                 <Section>
                     <Head>Social Media</Head>
-                    <List onClick={redirectToTwitter}>Facebook</List>
+                    <List onClick={redirectToFaceebook}>Facebook</List>
                     <List onClick={redirectToInstagram}>Instagram</List>
                     <List onClick={redirectToTwitter}>Twitter</List>
                     <List onClick={redirectToLinkedIn}>LinkedIn</List>
@@ -62,12 +64,12 @@ const Footer = () => {
             <MobileFooter>
                 <div className='footer-wrapper'>
                     <h3>KING DAVID ELITES</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                    <p className='text-theme-color'>Write your name in gold</p>
                     <div className='icons'>
-                        <BsTwitter onClick={redirectToTwitter} className='border-circle' size={40} color="white" />
-                        <FaInstagram onClick={redirectToInstagram} className='border-circle' size={40} color="white" />
-                        <FaFacebookF onClick={redirectToFaceebook} className='border-circle' size={40} color="white" />
-                        <FaLinkedinIn className='border-circle' onClick={redirectToLinkedIn} size={40} color="white" />
+                        <BsTwitter onClick={redirectToTwitter} className='border-circle cursor-pointer' size={40} color="white" />
+                        <FaInstagram onClick={redirectToInstagram} className='border-circle cursor-pointer' size={40} color="white" />
+                        <FaFacebookF onClick={redirectToFaceebook} className='border-circle cursor-pointer' size={40} color="white" />
+                        <FaLinkedinIn className='border-circle cursor-pointer' onClick={redirectToLinkedIn} size={40} color="white" />
                     </div>
                 </div>
 
@@ -75,6 +77,8 @@ const Footer = () => {
                     <Head>CATEGORIES</Head>
                     <List onClick={() => navigate('/real-estate')}>REAL ESTATES</List>
                     <List onClick={() => navigate('/cars')}>CARS</List>
+                    <List onClick={() => navigate('/luxury-service')}>LUXURY SERVICES</List>
+                    <List onClick={() => navigate('/collectibles')}>COLLECTIBLES</List>
                 </Section>
                 <Section>
                     <Head>BUSINESS</Head>
@@ -83,14 +87,14 @@ const Footer = () => {
                 </Section>
                 <Section>
                     <Head>SOCIAL MEDIA</Head>
-                    <List onClick={redirectToTwitter}>FACEBOOK</List>
+                    <List onClick={redirectToFaceebook}>FACEBOOK</List>
                     <List onClick={redirectToInstagram}>INSTAGRAM</List>
                     <List onClick={redirectToTwitter}>TWITTER</List>
                     <List onClick={redirectToLinkedIn}>LINKEDIN</List>
                 </Section>
 
                 <div className='copywrite'>
-                    <p>&copy; 2022 King David Elite. All rights reserved</p>
+                    <p className='text-[15px]'>&copy; {new Date().getFullYear()} King David Elite. All rights reserved</p>
                 </div>
             </MobileFooter>
         </>

@@ -128,7 +128,7 @@ const SignUpPage = () => {
         </form>
 
         <div className="cont">
-          <input type="checkbox" className="check"/>
+          <input type="checkbox" className="check checkbox-input"/>
           <p className="term">I have read and agreed to the <Link to="/terms"><span>Terms and Condition</span></Link></p>
 
         </div>
@@ -139,15 +139,13 @@ const SignUpPage = () => {
         <p className="account">
           Already have an account?{" "}
           <Link to="/login">
-            <span>Login</span>
+            <span className="text-blue-600">Login</span>
           </Link>{" "}
         </p>
 
         <button className="login" onClick={signUp}>
           Sign Up
         </button>
-        {/* <p className='or'>- OR -</p> */}
-        {/* <button className='google'>log in with Google</button> */}
       </Page>
     </Container>
   );

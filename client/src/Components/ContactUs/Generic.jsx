@@ -12,7 +12,7 @@ const Generic = () => {
         <Text>
             PLEASE REACH OUT TO US SO WE CAN HELP YOU BETTER.
         </Text>
-        <MainButton width="30%" marginTop="20px">
+        <MainButton width="180px" height='50px' padding='24px 12px' marginTop="20px">
             Contact Us
         </MainButton>
     </GenericContactUsContainer>

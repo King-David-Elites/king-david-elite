@@ -20,6 +20,8 @@ import {
   graduallyDisAppear,
   AboutAnimation,
 } from "../Categories/Cars/AnimationOrder";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const About = () => {
@@ -63,7 +65,7 @@ const About = () => {
 
   return (
     <Fragment>
-      <Navbar active={3} />
+      <Navbar active={5} />
       <Background ref={top}>
         {AboutAnimation.map((item) => {
           if (item.id === aboutId) {
@@ -80,12 +82,12 @@ const About = () => {
           }
         })}        
         <HeroSection>
-          <Text fontSize="96px">About</Text>
-          <Text>Discover a world of unrivaled luxury where every offer and purchase is an experience to savor.</Text>
+          <div className="md:font-extrabold font-normal md:text-[6em] text-[48px] text-[#FFFF]">ABOUT</div>
+          <Text color="#F2BE5C" fontSize="16px">Discover a world of unrivaled luxury where every offer and purchase is an experience to savor.</Text>
         </HeroSection>
       </Background>
 
-      <Flex padding="100px 47px">
+      <Flex padding="5em">
         <GlobalContainer>
           <Text color="black" padding="5px 0">
             About KDE Platform
@@ -100,34 +102,35 @@ const About = () => {
             Our curated selection of offerings is carefully chosen by our team of experts, ensuring that only the most luxurious and desirable items are made available to our valued customers. From stunning properties and rare collectibles, to lavish experiences and the finest automobiles, we have something for every discerning taste. Thank you for choosing us as your go-to destination for all things luxury.
           </Text>
 
-          <MainButton width="282px">Get Started</MainButton>
+          <MainButton width="180px" height='50px' padding='24px 12px'>Get Started<HiOutlineArrowNarrowRight className="ml-3" size={20}/></MainButton>
         </GlobalContainer>
 
         <GlobalContainer>
-          <StackedImage width="192px" height="282px">
+          <StackedImage width="32em" height="27.5em">
             <img src={frame} alt="" />
             <AbsoluteImage
-              color="yellow"
-              top="-20px"
-              right="20px"
-              width="192px"
-              height="282px"
+              color="#F2BE5C"
+              top="-2.5em"
+              right="-3em"
+              width="21em"
+              height="30em"
+              radius='6px'
             />
           </StackedImage>
         </GlobalContainer>
       </Flex>
 
-      <Flex padding="100px 47px">
+      <Flex padding="5em">
         <GlobalContainer>
-          <StackedImage width="192px" height="282px">
+          <StackedImage  width="32em"  height="27.5em">
             <img src={frame2} alt="" />
             <AbsoluteImage
               color="rgb(100,100,100)"
-              top="20px"
-              bottom="20px"
-              right="-20px"
-              width="192px"
-              height="202px"
+              top="2.5em"
+              right="-3em"
+              width="21em"
+              height="30em"
+              radius='6px'
             />
           </StackedImage>
         </GlobalContainer>
@@ -142,7 +145,7 @@ const About = () => {
             Thank you for entrusting us with your luxury needs and allowing us to be a part of your journey.
           </Text>
 
-          <MainButton background="black" width="50%" border="black">
+          <MainButton background="black" width="180px" height='50px' padding='24px 12px' border="black">
             Read More
           </MainButton>
         </GlobalContainer>

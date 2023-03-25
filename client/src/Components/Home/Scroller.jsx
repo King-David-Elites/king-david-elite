@@ -43,7 +43,6 @@ const CategoryScroller = ({ id, children }) => {
     return (
         <div className='w-[80vw] md:w-[90vw]'>
             <div className='flex justify-between items-center'>
-                <h4 className='text-black font-medium'>Categories</h4>
                 <div className="w-full flex justify-end gap-4 items-center">
 
                     {

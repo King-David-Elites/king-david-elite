@@ -37,11 +37,11 @@ export const StackedImage = styled.div`
     align-self: center;
     align-content: center;
 
+
     img{
     width: ${({width})=> width || "100px"};
     height: ${({height})=> height || "180px"};
-    border-radius: ${({radius})=> radius};
-    
+    border-radius: ${props => props.radius ? props.radius : "6px"};
     }
     position: relative;
 
@@ -69,8 +69,10 @@ export const AbsoluteImage = styled.div`
     right: ${({right})=> right };
     bottom: ${({bottom})=> bottom };
     z-index: -1;
+   
 
     @media(max-width: 800px) {
         display: none;
+        border-radius: 6px;
     }
 `

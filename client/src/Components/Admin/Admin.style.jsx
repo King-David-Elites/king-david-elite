@@ -224,7 +224,7 @@ export const PendingList = styled.div`
         border-radius: 4px;
         font-size:14px;
         text-align: center;
-        background: linear-gradient(90deg, #F2BE5C 23.7%, #000000 286.13%);
+        background:  #F2BE5C 23.7%;
         border-radius: 4px;
         border:none;
     

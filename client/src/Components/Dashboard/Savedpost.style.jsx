@@ -150,7 +150,7 @@ export const Post = styled.div`
     width: 100px;
     height:35px;
     border:none;
-    background: linear-gradient(90deg, #FFDF00 23.7%, #000000 286.13%);
+    background: #FFDF00 23.7%;
     border-radius: 4px;
     position:absolute;
     top:450px;

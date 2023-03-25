@@ -52,9 +52,9 @@ const LoggedUser = ({ logged }) => {
   }, [id])
   
 
-  if (id == user._id) {
-    navigate("/profile");
-  }
+  // if (id == user._id) {
+  //   navigate("/profile");
+  // }
 
   if(id == user?._id){
     navigate("/profile")
@@ -84,7 +84,6 @@ const LoggedUser = ({ logged }) => {
       }
 
   }, [id, user, getListings])
-
 
   //   const logged = true
   const options = [

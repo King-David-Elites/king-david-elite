@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import theme from "../../application/utils/Theme";
 
 export const Container = styled.div`
-
 margin:0;
 padding:0;
 background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(.jpg);
@@ -22,8 +22,6 @@ height:41.05rem;
 
 }
 
-
-
 `
 
 export const Page = styled.div`
@@ -36,7 +34,6 @@ border-radius: 6px;
 
 h1{
 padding-top:2.8rem;
-
 font-style: normal;
 font-weight:700;
 font-size: 24px;
@@ -46,7 +43,6 @@ color: #000000;
 }
 
 .back{
-
 font-style: normal;
 font-weight:500;
 font-size: 16px;
@@ -54,8 +50,6 @@ line-height: 24px;
 text-align: center;
 color: #000000;
 }
-
-
 
 input{
 margin:30px auto;
@@ -72,11 +66,9 @@ border: 1px solid #737373;
 border-radius: 4px;
 }
 
-
 .forgot{
 margin-top:8px;
 height: 21px;
-
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
@@ -100,23 +92,20 @@ color: #000000;
     width:360px;
     height: 44px;
     margin:25px auto;
-    background: linear-gradient(90deg, #FFDF00 23.7%, #000000 286.13%);
+    background: ${theme.color};
     border-radius: 4px;
-    
     font-style: normal;
     font-weight:500;
     font-size: 16px;
     line-height: 24px;
     text-align: center;
     color: #000000;
-    
 }
 
 
 .or{
 height: 30px;
 margin-top:15px;
-
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
@@ -177,8 +166,5 @@ input{
 }
 
 }
-
-
-
 
 `

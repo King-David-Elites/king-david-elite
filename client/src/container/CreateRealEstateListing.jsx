@@ -255,6 +255,8 @@ const CreateRealEstateListing = () => {
             })}
           </div>
         </div>
+
+        
         <div className="section" id="section">
           <p>Choose Indoor Properties</p>
           <select

@@ -6,38 +6,42 @@ import { Link } from 'react-router-dom';
 import helicopterRide from '../Categories/LuxuryService/images/greg-wilson-ro-GJ-Hlz-s-unsplash.jpg'
 import InputLayout from '../inputs/InputLayout';
 import { InputField } from '../inputs/MainInput';
+import { useState } from 'react';
+import { MdOutlineRemoveCircle } from 'react-icons/md';
 
 const HelicopterRidePage = () => {
 
-    const initialValues = {
-        passengerName: '',
-        passengerNationality: '',
-        passsengerEmail: '',
-        passengerNumber: '',
-        contact: '',
-        pickUpLocation: '',
-        dropOffLocation: '',
-        flightDate: '',
-        time: '',
-        emergencyContact: ''
-    }
+    const [guestsName, setGuestsName] = useState('');
+    const [guestsEmail, setGuestEmail] = useState('');
+    const [items, setItems] = useState([]);
+    const [validationError, setValidationError] = useState('');
 
 
-    const createHelicopterRide = () => {
-
+    const handleRemove = (index) => {
+        const list = [...items]
+        list.splice(index, 1);
+        setItems(list)
     }
 
     const validate = (values) => {
         let errors = {};
-        if (!values.passengerName) errors.passengerName = "Required";
+        if (!values.guestsName) errors.guestsName = "Required";
+        if (!values.guestsEmail) {
+            errors.guestsEmail = "Required";
+        } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.guestsEmail)
+        ) {
+            errors.guestsEmail = "Invalid email format";
+        }
+        if (!values.guestsName) errors.guestsName = "Required";
         if (!values.passengerNationality) errors.passengerNationality = "Required";
         if (!values.passengerNumber) errors.passengerNumber = "Required";
-        if (!values.passsengerEmail) {
-            errors.passsengerEmail = "Required";
+        if (!values.guestsEmail) {
+            errors.guestsEmail = "Required";
         } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.passsengerEmail)
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.guestsEmail)
         ) {
-            errors.passsengerEmail = "Invalid email format";
+            errors.guestsEmail = "Invalid email format";
         }
         if (!values.contact) errors.contact = "Required";
         if (!values.pickUpLocation) errors.pickUpLocation = "Required";
@@ -48,12 +52,40 @@ const HelicopterRidePage = () => {
         return errors;
     };
 
+    const onSubmit = () => {
+        if (guestsName.trim() === '' || guestsEmail.trim() === '') {
+            setValidationError('Both are required');
+        } else {
+            setValidationError('');
+            setItems([...items, { guestsName, guestsEmail }]);
+            setGuestsName('');
+            setGuestEmail('');
+        }
+    }
+
+    const initialValues = {
+        guestsEmail: '',
+        guestsName: '',
+        passengerNationality: '',
+        passengerNumber: '',
+        contact: '',
+        pickUpLocation: '',
+        dropOffLocation: '',
+        flightDate: '',
+        time: '',
+        emergencyContact: ''
+    }
+
+    const createHelicopterRide = () => {
+
+    }
+
+
     const formik = useFormik({
         initialValues,
         createHelicopterRide,
         validate,
     });
-
 
 
     return (
@@ -77,28 +109,51 @@ const HelicopterRidePage = () => {
                     </div>
                 </div>
 
-                <form onSubmit={formik.handleSubmit} className='mt-6'>
-                    <InputLayout label='Names of Passenger(s)' name='passengerName'>
-                        <InputField width='50%' placeholder='e.g Emma Olaosebikan, Williams Ade, Shola Anikulapo' />{formik.errors.passengerName ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.passengerName}
+                <form onSubmit={formik.handleSubmit} className='mt-6' >
+                    <div>
+                        {items.map((item, index) => (
+                            <div>
+                                {
+                                    item.guestsName && item.guestsEmail != '' && <div className='flex gap-5 items-center' key={index}>
+                                        <p>{item.guestsName} | {item.guestsEmail}</p>
+                                        <button type='button' className='cursor-pointer' onClick={() => handleRemove(index)}><MdOutlineRemoveCircle color='red' /></button>
+                                    </div>
+                                }
                             </div>
-                        ) : null}
-                    </InputLayout>
-
-                    <InputLayout label='Nationality of Passenger(s)' name='passengerNationality'>
-                        <InputField width='50%' placeholder='+(234)' />{formik.errors.passengerNationality ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.passengerNationality}
-                            </div>
-                        ) : null}
-                    </InputLayout>
+                        ))}
+                    </div>
 
                     <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-                        <InputLayout label='Email Address Of Passengers(s)' name='passsengerEmail'>
-                            <InputField width='100px' />{formik.errors.passsengerEmail ? (
+                        <InputLayout label='Names of Passenger(s)' name='guestsName'>
+                            <InputField name='guestsName' type='text' onChange={(e) => {
+                                if (e.target.name === 'guestsName') {
+                                    setGuestsName(e.target.value);
+                                }
+                            }} width='50%' placeholder='e.g Emma Olaosebikan, Williams Ade, Shola Anikulapo' />
+                            <div className=" text-[red] opacity-40">
+                                {
+                                    validationError && <p>{validationError}</p>
+                                }
+                            </div>
+                        </InputLayout>
+
+                        <InputLayout label='Email Address Of Passengers(s)' name='guestsEmail'>
+                            <InputField name='guestsEmail' type='text' onChange={(e) => {
+                                if (e.target.name === 'guestsEmail') {
+                                    setGuestEmail(e.target.value);
+                                }
+                            }} width='100px' />
+                        </InputLayout>
+                    </div>
+                    <MainButton width='100px' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
+                </form>
+
+                <form onSubmit={formik.handleSubmit} className='mt-6'>
+                    <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
+                        <InputLayout label='Nationality of Passenger(s)' name='passengerNationality'>
+                            <InputField width='50%' placeholder='+(234)' />{formik.errors.passengerNationality ? (
                                 <div className=" text-[red] opacity-40">
-                                    {formik.errors.passsengerEmail}
+                                    {formik.errors.passengerNationality}
                                 </div>
                             ) : null}
                         </InputLayout>
@@ -166,11 +221,11 @@ const HelicopterRidePage = () => {
 
                     <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
                         <input type="checkbox" className="check cursor-pointer" />
-                        <p className="term mt-3 text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
+                        <p className="term text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
                     </div>
 
                     <div className="flex my-[30px] gap-[10px]">
-                        <MainButton>Submit</MainButton>
+                        <MainButton type='submit'>Submit</MainButton>
                     </div>
                 </form>
 

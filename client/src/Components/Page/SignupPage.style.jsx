@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../../application/utils/Theme";
 import bg from "../Home/images/c3.jpg"
 
 export const Container = styled.div`
@@ -18,8 +19,6 @@ height:100vh;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bg});
     
 }
-
-
 
 `
 
@@ -44,7 +43,6 @@ color: #000000;
 }
 
 .back{
-
 font-style: normal;
 font-weight:500;
 font-size: 16px;
@@ -52,8 +50,6 @@ line-height: 24px;
 text-align: center;
 color: #000000;
 }
-
-
 
 input{
 margin:10px auto;
@@ -72,14 +68,12 @@ border-radius: 4px;
 
 
 .forgot{
-margin-top:8px;
+    margin:10px 4em;
 height: 21px;
-
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 21px;
-text-align: center;
 color: #000000;
 
 }
@@ -87,13 +81,7 @@ color: #000000;
 .cont{
     display:flex;
     align-items: center;
-    margin:0 auto;
-
-
-    .check{
-        width:12px;
-    }
-
+    margin:2px 10px;
 
     .term{
         padding-left:.5rem;
@@ -107,11 +95,6 @@ color: #000000;
 }
 
 }
-
-
-
-
-
 
 .red{
     color: #FA5936;
@@ -128,9 +111,8 @@ color: #000000;
     width:360px;
     height: 44px;
     margin:25px auto;
-    background: linear-gradient(90deg, #FFDF00 23.7%, #000000 286.13%);
+    background: ${theme.color};
     border-radius: 4px;
-    
     font-style: normal;
     font-weight:500;
     font-size: 16px;
@@ -169,14 +151,13 @@ border-radius:6px;
 }
 
 .account{
-    margin-top:1em;
+    margin-top:1.5em;
+    margin-left: 1.8em;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 15px;
-    text-align: center;
     color: #000000;
-    
     
 }
 
@@ -189,7 +170,14 @@ border-radius:6px;
     top:0;
     background:white;
     border-radius:0;
-    
+
+    .cont{
+        margin:0px;
+
+        .check{
+        margin-left:1.4em;
+        }
+    }
     
     input{
         margin:30px auto;
@@ -206,12 +194,22 @@ border-radius:6px;
         }
     
     .login{
-        width:260px;
+        width:90%;
+        height: 50px;
     }
 
-    
+    .forgot{
+    margin: 0.3em 1.5em;
     }
 
-
+    .checkbox-input{
+        margin:0px auto;
+        padding:15px 16px;
+        gap:10px;
+        width:90%;
+        height:45px;
+        border-radius: 4px;
+    }
+}
 
 `

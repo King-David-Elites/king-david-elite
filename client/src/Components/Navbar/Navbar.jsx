@@ -13,10 +13,11 @@ import {
   MdAccountBalanceWallet,
 } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
-import { BsFillBellFill, BsFillHeartFill } from "react-icons/bs";
+import { BsFillBellFill, BsFillHeartFill, BsCollection } from "react-icons/bs";
 import "./Navbar.css";
 import MainButton from "../buttons/MainButton";
 import useContextAPI from "../ContextAPI/ContextAPI";
+
 
 const Navbar = ({ bg, sticky, active }) => {
   const mainData = useContextAPI();
@@ -42,6 +43,14 @@ const Navbar = ({ bg, sticky, active }) => {
       link: "/cars",
     },
     {
+      title: "LUXURY SERVICES",
+      link: "/luxury-service",
+    },
+    {
+      title: "COLLECTIBLES",
+      // link: "/collectible",
+    },
+    {
       title: "ABOUT",
       link: "/about",
     },
@@ -49,28 +58,40 @@ const Navbar = ({ bg, sticky, active }) => {
 
   const mobileNavOptions = [
     {
-      no: 2,
+      no: 0,
       icon: <FaUserCircle size={20} />,
       title: "List with us",
       link: "/dashboard/profile/verification",
     },
     {
-      no: 3,
+      no: 1,
       icon: <AiFillHome size={20} />,
       title: "Home",
       link: "/",
     },
     {
-      no: 4,
+      no: 2,
       icon: <MdRealEstateAgent size={20} />,
       title: "Real Estate",
       link: "/real-estate",
     },
     {
-      no: 5,
+      no: 3,
       icon: <IoMdCar size={20} />,
       title: "Cars",
       link: "/cars",
+    },
+    {
+      no: 4,
+      icon: <FaUser size={20} />,
+      title: "Luxury Services",
+      link: "/luxury-service",
+    },
+    {
+      no: 5,
+      icon: <BsCollection size={20} />,
+      title: "Collectibles",
+      link: "/collectible",
     },
     {
       no: 6,

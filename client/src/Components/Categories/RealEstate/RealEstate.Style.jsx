@@ -374,7 +374,7 @@ export const EachContainer = styled.div`
         }
 
         .viewMedia{
-            background: linear-gradient(90deg, #F2BE5C 23.7%, #000000 286.13%);
+            background:  #F2BE5C 23.7%;
             border-radius: 4px;
             padding: 10px 20px;
             width: fit-content;

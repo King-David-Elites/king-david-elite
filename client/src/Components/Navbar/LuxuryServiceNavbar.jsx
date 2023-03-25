@@ -56,7 +56,7 @@ const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
 
     return (
         <>
-            <Header justifyContent="space-around" z="0" paddingTop='1.5em' className='bg-cover' alignItems='flex-start' height="13em" bg={bg} sticky="static">
+            <Header justifyContent="space-around" z="0" paddingTop='1.5em' className='bg-cover' alignItems='flex-start' height="12em" bg={bg} sticky="static">
                 <nav className={activeNav ? "navigation active" : "navigation"}>
                     <ul>
                         <div className="closed">

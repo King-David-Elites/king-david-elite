@@ -16,4 +16,13 @@ export const BlogContent = [
     {
         img:blog4, topic:"Discover the Secret to Investing in the Best Luxury Properties"
     },
+    {
+        img:blog4, topic:"Discover the Secret to Investing in the Best Luxury Properties"
+    },
+    {
+        img:blog4, topic:"Discover the Secret to Investing in the Best Luxury Properties"
+    },
+    {
+        img:blog4, topic:"Discover the Secret to Investing in the Best Luxury Properties"
+    },
 ]
