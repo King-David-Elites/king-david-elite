@@ -1,50 +1,29 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Country } from "./Profile_Mockdata";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const GetStarted = (props) => {
   const [valid, setValid] = useState();
-  // const [countryData, setCountryData] = useState([]);
+
   let {
+    userInfo,
+    setUserInfo,
     setRegistering,
-    country,
     setCountry,
     stage,
     setStage,
     scrollToRef,
     position,
     mainData,
+    isos,
+    setIsos,
   } = props;
-  const navigate = useNavigate();
 
-  // const getPosition = async () => {
-  //   var headers = new Headers();
-  //   headers.append(
-  //     "X-CSCAPI-KEY",
-  //     "bWxLejVmcWtRSTg1ekRyaXlKZ3l1YjN2MHI1OFBwUWVDYkVCbWNNVw=="
-  //   );
-
-  //   var requestOptions = {
-  //     method: "GET",
-  //     headers: headers,
-  //     redirect: "follow",
-  //   };
-
-  //   fetch("https://api.countrystatecity.in/v1/countries", requestOptions)
-  //     .then((response) => response.text())
-  //     .then((result) => {
-  //       setCountryData(JSON.parse(result));
-  //       console.log(JSON.parse(result));
-  //     })
-  //     .catch((error) => console.log("error", error));
-  // };
-
-  useEffect(() => {
-    if (!mainData.userData.address) {
-      navigate("/profile/edit");
-    }
-  }, [mainData, navigate]);
+  const getCountryIso = (name) => {
+    var countryObject = mainData.countryData.find(
+      (country) => country.name === name
+    );
+    setIsos({ ...isos, countryIso: countryObject["iso2"] });
+  };  
 
   return (
     <>
@@ -68,10 +47,12 @@ const GetStarted = (props) => {
           name="Country"
           onChange={(e) => {
             setCountry(e.target.value);
+            setUserInfo({ ...userInfo, country: e.target.value });
+            getCountryIso(e.target.value);
             setValid(true);
           }}
         >
-          <option value="Country">{country}</option>
+          <option value="Country">None</option>
           {mainData.countryData.map((country) => {
             return (
               <>

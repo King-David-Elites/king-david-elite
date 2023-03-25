@@ -1,28 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import globalApi from "../../api";
+import { setConfig } from "../../infrastructure/api/user/userRequest";
 
-const useContextAPI = () => {
-  const [listing, setListing] = useState([]);
-  const [cars, setCars] = useState([]);
+const useContextAPI = () => {  
   const [mails, setMails] = useState([]);
   const [countryData, setCountryData] = useState([]);
-  const userData = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user"));  
+  const [user, setUser] = useState({});
 
-  const getListings = async () => {
+  const getUser = async () => {
     await axios
-      .get(`${globalApi}/listings/all?page=1&category=real-estate`)
-      .then((resp) => {
-        setListing(resp.data.listings);        
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const getCarsListings = async () => {
-    await axios
-      .get(`${globalApi}/listings/all?page=1&category=cars`)
-      .then((resp) => {
-        setCars(resp.data.listings);
+      .get(`${globalApi}/users/me`, setConfig())
+      .then((resp) => {        
+        setUser(resp.data);        
       })
       .catch((err) => console.error(err));
   };
@@ -44,7 +35,6 @@ const useContextAPI = () => {
       .then((response) => response.text())
       .then((result) => {
         setCountryData(JSON.parse(result));
-        console.log(JSON.parse(result));
       })
       .catch((error) => console.log("error", error));
   };
@@ -58,26 +48,21 @@ const useContextAPI = () => {
       .catch((err) => console.log(err));
   };
 
-  const allCallBacks = useCallback(()=>{
-      email();
-      getListings();  
-      getCarsListings()
-      getCountry();
-  }, [])
+  const allCallBacks = useCallback(() => {
+    email();
+    getUser();   
+    getCountry();
+  }, []);
 
   useEffect(() => {
-     allCallBacks()
+    allCallBacks();
   }, [allCallBacks]);
-  
 
   return {
-    userData: userData,
-    setListing: setListing,
-    listing: listing,
-    mails: mails,
-    cars: cars,
-    setCars: setCars,
-    countryData: countryData
+    user: user,
+    userData: userData,    
+    mails: mails,    
+    countryData: countryData,   
   };
 };
 

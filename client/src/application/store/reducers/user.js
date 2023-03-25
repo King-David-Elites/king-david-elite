@@ -8,7 +8,8 @@ const initialState = {
     isAdmin: JSON.parse(localStorage.getItem('user'))?.isAdmin ?? false,
     profilePicture: JSON.parse(localStorage.getItem('user'))?.profilePicture ?? null,
     createdAt: JSON.parse(localStorage.getItem('user'))?.createdAt ?? ' ',
-    status: 'silver'
+    status: 'silver',
+    listWithUs: false
 }
 
 export default (state = initialState, action) => {
@@ -28,6 +29,8 @@ export default (state = initialState, action) => {
             };
         case (userActions.SET_PACKAGE_PLAN):
             return { ...state, status: action.payload }
+        case (userActions.SET_LIST_WITH_US):
+            return {...state, listWithUs: action.payload}
         default:
             return state;
     }

@@ -8,30 +8,52 @@ import globalApi from "../../../api";
 import { setLoading } from "../../../application/store/actions/ui";
 
 const Advanced_Verf_3 = (props) => {
-  let { stage, setStage, scrollToRef, photo, backImage, frontImage, idType, country, position, setLoading } =
-    props;
+  let {
+    userInfo,
+    setUserInfo,
+    stage,
+    setStage,
+    scrollToRef,
+    photo,
+    backImage,
+    frontImage,
+    idType,
+    country,
+    position,
+    setLoading,
+    isos,
+    setIsos,
+  } = props;
   const verificationData = {
-    verificationId : {
+    verificationId: {
       front: frontImage.base64,
-      back: backImage.base64
+      back: backImage.base64,
     },
     nationality: country,
     verifiedProfilePicture: photo.base64,
-    verificationType : idType.digit
+    verificationType: idType.digit,
   };
-  console.log(verificationData)
   const [success, setSuccess] = useState(false);
+  const [verified, setVerified] = useState(false);
 
-  const checkSuccess = useCallback(()=>{
+  const checkSuccess = useCallback(() => {
     if (success) {
       setStage(stage + 1);
       scrollToRef(position);
     }
-  }, [success, stage, position, scrollToRef, setStage])
+  }, [success, stage, position, scrollToRef, setStage]);
 
   useEffect(() => {
-    checkSuccess()
+    checkSuccess();
   }, [checkSuccess]);
+
+  useEffect(() => {
+    if (verified) {
+      console.log("yes")
+      updateUserDetails(userInfo);
+      setVerified(false);
+    }
+  }, [verified]);
 
   const setConfig = () => {
     const authToken = localStorage.getItem("token");
@@ -47,26 +69,39 @@ const Advanced_Verf_3 = (props) => {
   };
 
   const postVerificationDetails = async (verificationData) => {
+    console.log(verificationData)
+    console.log("verification started ...");
     await axios
-      .patch(
-        `${globalApi}/users/verify`,
-        verificationData,
-        setConfig()
-      )
-      .then((resp) => {
-        console.log(resp.data);
-        setLoading(false)
-        setSuccess(true);
+      .patch(`${globalApi}/users/verify`, verificationData, setConfig())
+      .then((resp) => {        
+        setVerified(true);  
       })
       .catch((err) => {
         console.log(err);
+        postVerificationDetails(verificationData)
+      });
+  };
+
+  const updateUserDetails = async (userInfo) => {
+    console.log(userInfo)
+    console.log("updating user details ...");
+    await axios
+      .patch(`${globalApi}/users/update`, userInfo, setConfig())
+      .then((resp) => {
+        console.log(resp.data);
+        localStorage.setItem("user",JSON.stringify(resp.data))
+        setLoading(false);
+        setSuccess(true);        
+      })
+      .catch((err) => {
+        console.log(err);
+        updateUserDetails(userInfo)
       });
   };
 
   const handleSubmit = () => {
-    postVerificationDetails(verificationData);
-    setLoading(true)
-    console.log(verificationData)    
+    postVerificationDetails(verificationData)    
+    setLoading(true);
   };
 
   return (

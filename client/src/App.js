@@ -17,7 +17,6 @@ import EachCars from './Components/Categories/Cars/EachCars';
 import About from './Components/About/About';
 import Help from './Components/About/Help';
 import Earning from './Components/About/Earning';
-import Benefits from './Components/About/Benefits';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
 import ProfileContainer from './container/ProfileContainer.jsx';
@@ -61,10 +60,13 @@ import ConceirgeVacationPage from './Components/Page/ConceirgeVacationPage';
 import BoatCruisePage from './Components/Page/BoatCruisePage';
 import ChaffeurPage from './Components/Page/ChauffeurPage';
 import Pricing from './Components/Categories/LuxuryService/Pricing';
+import CollectiblesListing from './Components/Categories/Collectibles/CollectiblesListing';
+import EachCollectible from './Components/Categories/Collectibles/EachCollectible';
+import Cart from './Components/Categories/Collectibles/Cart';
 
 function App() {
   const queryClient = new QueryClient();
-  const mainData = useContextAPI()
+  const mainData = useContextAPI()  
   const token = localStorage.getItem("token")
 
   return (
@@ -90,12 +92,15 @@ function App() {
             <Route path={`/reset/${token}`} element={<ResetPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/savedpost' element={<Savedpost />} />
-            <Route path="/real-estate" element={<RealEstateListing />} />
+            <Route path="/real-estate" element={<RealEstateListing mainData={mainData} />} />
             <Route path="/luxury-service" element={<LuxuryServiceListing />} />
             <Route path="/dashboard/messages/chat/:id" element={<ChatBox />} />
             <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
             <Route path="/real-estate/:id/media" element={<MediaView active={0} />} />
             <Route path="/cars" element={<Cars mainData={mainData} />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/collectible/:id" element={<EachCollectible />} />
+            <Route path="/collectible" element={<CollectiblesListing active={4} />} />
             <Route path="/cars/:id" element={<EachCars active={0} />} />
             <Route path="/cars/:id/media" element={<MediaView active={0} />} />
             <Route path="/others" element={<OtherSections />} />

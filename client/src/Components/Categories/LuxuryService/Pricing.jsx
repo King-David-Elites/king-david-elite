@@ -6,10 +6,11 @@ import MainButton from "../../buttons/MainButton";
 import { Brand, Header, LI, LogoText, UL } from "../../Navbar/Navbar.Style";
 import { useDispatch } from 'react-redux';
 import { setPackagePlan } from '../../../application/store/actions/user';
+import '../../Navbar/Navbar.css'
+import { ImCross } from "react-icons/im";
 
 const Pricing = ({ active = 6 }) => {
     const [activeNav, setActiveNav] = useState(false);
-    const [id, setId] = useState();
     const dispatch = useDispatch();
 
     const showMenu = () => {
@@ -361,7 +362,33 @@ const Pricing = ({ active = 6 }) => {
     return (
         <>
             <Header justifyContent="space-around" z="0" paddingTop='1.5em' className='bg-cover' bg='white' sticky="static" color='black'>
-
+                <nav className={activeNav ? "navigation active" : "navigation"}>
+                    <ul>
+                        <div className="closed">
+                            <p>Welcome!</p>
+                            <ImCross className="close" color="#000" onClick={showMenu} />
+                        </div>
+                        <div className="line"></div>
+                        {navOptions.map((nav, i) => {
+                            return (
+                                <>
+                                    <li key={i} onClick={() => navigate(nav?.link)}>
+                                        <div className="list-items">
+                                            {nav?.icon}
+                                            {nav.title}
+                                        </div>
+                                    </li>
+                                    {nav.no === 1 && <div className="line"></div>}
+                                    {nav.no === 2 && <div className="line"></div>}
+                                    {nav.no === 3 && <div className="line"></div>}
+                                    {nav.no === 4 && <div className="line"></div>}
+                                    {nav.no === 5 && <div className="line"></div>}
+                                    {nav.no === 6 && <div className="line"></div>}
+                                </>
+                            );
+                        })}
+                    </ul>
+                </nav>
                 <Brand>
                     <LogoText color="black" fontSize="1.5rem" onClick={() => navigate("/luxury-service")}>Luxury Services</LogoText>
 
@@ -420,7 +447,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
+                         onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
@@ -440,7 +467,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
+                         onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
@@ -460,7 +487,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
+                         onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
                 </div>
 
 
@@ -479,7 +506,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
+                         onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
@@ -496,7 +523,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
+                         onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
@@ -513,7 +540,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
+                         onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
                 </div>
 
                 <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide">Boat Cruises ( The Aqua Way)</h3>
@@ -533,7 +560,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
+                         onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
@@ -552,7 +579,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
+                         onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
@@ -571,7 +598,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                        justifyContent='end' onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
+                         onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</MainButton>
                 </div>
             </div>
 
@@ -585,8 +612,8 @@ const Pricing = ({ active = 6 }) => {
                 </div>
 
                 <div className="flex gap-3 w-[100%] h-auto mt-6">
-                    <div className="w-1/4 flex flex-col mb-[-2em] mt-[-6em] justify-center bg-white rounded-md p-4">
-                        <ul className="text-[12px]">
+                    <div className="w-1/4 flex flex-col md:mb-[-1em] lg:mb-[-2em] mt-[-6em] justify-center bg-white rounded-md p-4">
+                        <ul className="text-[12px] h-[300px]">
                             {
                                 dayCationPricingOption.map((p, i) => {
                                     return (
@@ -600,7 +627,7 @@ const Pricing = ({ active = 6 }) => {
                     <div className="w-1/4 flex flex-col items-center rounded-md md:px-3 bg-[#F2F2F2] md:py-10">
                         <p className="font-bold text-[25px]">#500,000</p>
                         <p className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center  h-[300px]">
                             {
                                 dayCationSilverplanOption.map((p, i) => {
                                     return (
@@ -618,7 +645,7 @@ const Pricing = ({ active = 6 }) => {
                     <div className="w-1/4 flex flex-col items-center md:px-3 bg-[#FFECEC] rounded-md md:py-10">
                         <p className="font-bold text-[25px]">#700,000</p>
                         <p className="text-[#2301F3] text-[16px] cursor-pointer mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/weekend-escape') }}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center  h-[300px]">
                             {
                                 dayCationDaimondplanOption.map((p, i) => {
                                     return (
@@ -634,7 +661,7 @@ const Pricing = ({ active = 6 }) => {
                     <div className="w-1/4 flex flex-col items-center md:px-3 text-white bg-[#333433] rounded-md md:py-10">
                         <p className="font-bold text-[25px]">#900,000</p>
                         <p className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12" onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/weekend-escape') }}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center h-[300px]">
                             {
                                 dayCationPlatinimplanOption.map((p, i) => {
                                     return (
@@ -660,8 +687,8 @@ const Pricing = ({ active = 6 }) => {
                 </div>
 
                 <div className="flex gap-3 w-[100%] h-auto mt-6">
-                    <div className="w-1/4 flex flex-col gap-[12em] mt-[-6em] mb-[-2em] md:px-3 justify-center bg-white rounded-md p-4">
-                        <ul className="text-[12px]">
+                    <div className="w-1/4 flex flex-col gap-[12em] lg:mt-[-7em] lg:mb-[-2em] md:px-3 justify-center bg-white rounded-md p-4">
+                        <ul className="text-[12px] h-[150px]">
                             {
                                 chauffeurRidePricingOption.map((p, i) => {
                                     return (
@@ -672,10 +699,10 @@ const Pricing = ({ active = 6 }) => {
                         </ul>
                     </div>
 
-                    <div className="w-1/4 flex flex-col items-center rounded-md md:px-3 bg-[#F2F2F2] md:py-10">
-                        <p className="font-bold text-[25px]">#100,000 - #300,000</p>
+                    <div className="w-1/4 flex flex-col items-center rounded-md md:px-5 bg-[#F2F2F2] md:py-10">
+                        <p className="font-bold text-[25px] whitespace-nowrap">100K-300K</p>
                         <p className="text-[#2301F3] text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/chauffeur') }}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center h-[150px]">
                             {
                                 chauffeurRideSilverplanOption.map((p, i) => {
                                     return (
@@ -689,9 +716,9 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] md:px-3 rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">#300,000 - #500,000</p>
+                        <p className="font-bold text-[25px]">300K-500K</p>
                         <p className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/chauffeur') }}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center h-[150px]">
                             {
                                 chauffeurRideDiamondplanOption.map((p, i) => {
                                     return (
@@ -705,9 +732,9 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] md:px-3 rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">#500,000 Upwards</p>
+                        <p className="font-bold text-[25px]">500K Upwards</p>
                         <p className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12" onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/chauffeur') }}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center h-[150px]">
                             {
                                 chauffeurRidePlatinumplanOption.map((p, i) => {
                                     return (
@@ -733,8 +760,8 @@ const Pricing = ({ active = 6 }) => {
                 </div>
 
                 <div className="flex gap-3 w-[100%] h-auto mt-6">
-                    <div className="w-1/4 flex flex-col gap-[12em] mb-[-2em] mt-[-6em] justify-center bg-white rounded-md p-4">
-                        <ul className="text-[12px]">
+                    <div className="w-1/4 flex flex-col gap-[12em] mb-[-2em] mt-[-7em] justify-center bg-white rounded-md p-4">
+                        <ul className="text-[12px] h-[250px]">
                             {
                                 boatCruisePricingOption.map((p, i) => {
                                     return (
@@ -748,7 +775,7 @@ const Pricing = ({ active = 6 }) => {
                     <div className="w-1/4 flex flex-col items-center rounded-md md:px-3 bg-[#F2F2F2] md:py-10">
                         <p className="font-bold text-[25px]">#500,000</p>
                         <p className="text-[#2301F3] text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center h-[250px]">
                             {
                                 boatCruiseSilverOption.map((p, i) => {
                                     return (
@@ -764,7 +791,7 @@ const Pricing = ({ active = 6 }) => {
                     <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] md:px-3 rounded-md md:py-10">
                         <p className="font-bold text-[25px]">#850, 000</p>
                         <p className="text-[#2301F3] text-[16px] mt-8 font-bold cursor-pointer border-b-2 border-[#2301F3] mb-12" onClick={() => navigate('/luxury-service/boat-cruise')}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center h-[250px]">
                             {
                                 boatCruiseDiamondOption.map((p, i) => {
                                     return (
@@ -780,7 +807,7 @@ const Pricing = ({ active = 6 }) => {
                     <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] md:px-3 rounded-md md:py-10">
                         <p className="font-bold text-[25px]">#1.2M</p>
                         <p className="text-white text-[16px] mt-8 font-bold border-b-2 border-white mb-12" onClick={() => navigate('/luxury-service/boat-cruise cursor-pointer')}>Get Started</p>
-                        <ul className="text-[12px] text-center">
+                        <ul className="text-[12px] text-center h-[250px]">
                             {
                                 boatCruisePlatinumOption.map((p, i) => {
                                     return (

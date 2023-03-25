@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useState } from "react";
 import { X, LocationMarker } from "heroicons-react";
 import { OutProp, InProp, Views } from "./PropertiesContents";
@@ -29,11 +29,11 @@ const CreateRealEstateListing = () => {
   const navigate = useNavigate();
   const [size, setSize] = useState(0);
 
-  
-
   const [userListings, setUserListings] = useState({
     title: "",
-    location: "somewhere",
+    location: "Abeokuta#Ogun#Nigeria",
+    locationISO: "76746#OG#NG",
+    category: "real-estate",    
     description: "",
     images: images,
     videos: videos,
@@ -48,7 +48,41 @@ const CreateRealEstateListing = () => {
     noOfBathroom: 0,
   });
 
-  const Load = useCallback((base64, type, size) => {
+  useEffect(() => {
+    setLoadImage(loadImage);
+    userListings["images"] = images;
+    userListings["videos"] = videos;
+    userListings["features"] = features;
+    if (allImages.length !== 0 && loadImage === true) {
+      Load(allImages, "image", size);
+    }
+    if (allVideos.length !== 0 && loadImage === false) {
+      Load(allVideos, "video", size);
+    }
+  }, [loaded, loadImage]);
+
+  useEffect(() => {
+    userListings["images"] = images;
+    userListings["videos"] = videos;
+    userListings["features"] = features;
+    if (
+      userListings["title"] &&
+      userListings["description"] &&
+      userListings["location"] &&
+      userListings["features"].length !== 0 &&
+      userListings["price"] &&
+      userListings["images"].length >= 4
+    ) {
+      setValid(true);
+      setError(false);
+    } else {
+      setValid(false);
+      setError(true);
+    }
+    setUserListings({ ...userListings, features: features });
+  }, [changing, features]);
+
+  const Load = (base64, type, size) => {
     if (type === "image") {
       if (size <= 52428800 && size !== 0) {
         setImages(
@@ -69,52 +103,7 @@ const CreateRealEstateListing = () => {
       }
     }
     setChanging(!changing);
-  }, [changing, images]) 
-  
-
-  const loadImageCB = useCallback(()=>{
-    setLoadImage(loadImage);
-    userListings["images"] = images;
-    userListings["videos"] = videos;
-    userListings["features"] = features;
-    if (allImages.length !== 0 && loadImage === true) {
-      Load(allImages, "image", size);
-    }
-    if (allVideos.length !== 0 && loadImage === false) {
-      Load(allVideos, "video", size);
-    }
-  }, [ Load, size, loadImage, userListings, images, videos, features, allImages, allVideos])
-
-  useEffect(() => {
-    loadImageCB()
-  },[loadImageCB] );
-
-  const updateUserListings = useCallback(()=>{
-    userListings["images"] = images;
-    userListings["videos"] = videos;
-    userListings["features"] = features;
-    if (
-      userListings["title"] &&
-      userListings["description"] &&
-      userListings["location"] &&
-      userListings["features"].length !== 0 &&
-      userListings["price"] &&
-      userListings["images"].length >= 4
-    ) {
-      setValid(true);
-      setError(false);
-    } else {
-      setValid(false);
-      setError(true);
-    }
-    setUserListings({ ...userListings, features: features });
-  }, [features, images, videos, userListings] )
-
-  useEffect(() => {
-    updateUserListings()
-  }, [updateUserListings]);
-
-
+  };
 
   const setConfig = () => {
     const authToken = localStorage.getItem("token");
@@ -255,8 +244,6 @@ const CreateRealEstateListing = () => {
             })}
           </div>
         </div>
-
-        
         <div className="section" id="section">
           <p>Choose Indoor Properties</p>
           <select

@@ -1,16 +1,18 @@
-import React from 'react'
-import { Container } from './Loader.style'
+import React from "react";
+import { Container } from "./Loader.style";
 
-
-export default function Loader() {
+const Loader = () => {
+ 
   return (
     <Container>
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </Container>
-  )
+  );
 }
+
+export default Loader;

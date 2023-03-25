@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../../../application/utils/Theme";
 
 export const Upgrade = styled.div`
   width: 100%;
@@ -20,9 +21,7 @@ export const Upgrade = styled.div`
       width: 2.7em;
       height: 2.7em;
       border-radius: 1.35em;
-      background: transparent;
-      box-shadow: 16px 16px 32px rgba(176, 176, 176, 0.26),
-        -16px -16px 32px #ffffff;
+      background: transparent;      
       cursor: pointer;
     }
   }
@@ -33,12 +32,12 @@ export const Upgrade = styled.div`
 
     .h1 {
       font-weight: 700;
-      font-size: 38px;
+      font-size: 26px;
       color: #000000;
     }
     .h2 {
       font-weight: 400;
-      font-size: 17px;
+      font-size: 15px;
       letter-spacing: 0.0015em;
       color: #696969;
     }
@@ -67,17 +66,18 @@ export const Upgrade = styled.div`
     padding: 2px;
     margin: 0em 1em;
     color: #737373;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.0015em;
-
+  
     .selectBtn1 {
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 12px 32px;
-      background: #ffffff;
+      background: ${theme.color};
       border-radius: 4px;
       color: #000000;
+      font-weight: 600;
       cursor: pointer;
     }
     .selectBtn2 {
@@ -93,46 +93,53 @@ export const Upgrade = styled.div`
   .packages {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
     padding-top: 2em;
     flex-wrap: wrap;
 
-    .package {
+    .package {      
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: flex-start;
       flex-direction: column;
-      align-self: stretch;
-      gap: 0.5em;
-      flex: 0 1 20em;
+      align-self: stretch;      
+      flex: 0 1 25em;
       padding: 1em 1.5em;
-      margin: 1.5em;
-      background: #f6f6f6;
+      margin: 1.5em;      
       box-shadow: 16px 16px 32px rgba(176, 176, 176, 0.26),
         -16px -16px 32px #ffffff;
       border-radius: 8px;
     }
-    .package > .top {
+    .package > .up{      
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;      
+      gap: 0.5em;            
+    }
+    .package > .up > .top {
       font-weight: 600;
-      font-size: 20px;
-      color: #000000;
+      font-size: 20px;      
     }
-    .package > .descr {
+    .package > .up > .descr {
+      display:flex;
+      justify-content: center;
+      flex-direction: column;
+      gap:0.5em;
       font-weight: 400;
-      font-size: 16px;
-      color: #696969;
+      font-size: 13px;   
+      height: 220px;
     }
-    .package > .pricing {
+    .package > .up > .pricing {
       font-weight: 400;
       font-size: 16px;
       color: #696969;
       padding: 1em 0em;
     }
-    .package > .pricing span {
+    .package > .up > .pricing span {
       font-weight: 600;
-      font-size: 35px;
-      color: #7b0dd1;
+      font-size: 35px;      
     }
     .package > .btn {
       width: 100%;
@@ -140,11 +147,11 @@ export const Upgrade = styled.div`
       justify-content: center;
       align-items: center;
       padding: 12px 16px;
-      background: #7b0dd1;
+      background: ${theme.color};
       border-radius: 4px;
       font-weight: 600;
       font-size: 14px;
-      color: #ffffff;
+      color: black;
       cursor: pointer;
     }
   }
@@ -158,7 +165,7 @@ export const Upgrade = styled.div`
     padding: 2em 1em;
 
     span {
-      color: #7b0dd1;
+      color: ${theme.color};
       font-weight: 600;
       cursor: pointer;
     }

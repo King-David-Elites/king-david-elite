@@ -57,7 +57,7 @@ const HomePage = () => {
     {
       bg: c2,
       title: "Collectibles",
-      isComingSoon: true,
+      link: "/collectible",
     },
   ];
 
@@ -137,26 +137,24 @@ const HomePage = () => {
         </div>
 
         <Categories ref={position}>
-          <Scroller id='categories'>
-            {categories.map((category, index) => {
-              return (
-                <Category
-                  onClick={() => {
-                    navigate(category?.link);
-                  }}
-                  bg={category.bg}
-                  key={index}
-                >
-                  <div className="text-white flex flex-col h-full ml-5 justify-end md:ml-7 font-semibold md:text-lg text-sm">
-                    {category.title.toUpperCase()}{" "}
-                    {category.isComingSoon == true && (
-                      <p className="italic text-sm text-[#A6A6A6]">Coming Soon</p>
-                    )}
-                  </div>
-                </Category>
-              );
-            })}
-          </Scroller>
+          {categories.map((category, index) => {
+            return (
+              <Category
+                onClick={() => {
+                  navigate(category?.link);
+                }}
+                bg={category.bg}
+                key={index}
+              >
+                <div className="text-white flex flex-col h-full ml-5 justify-end md:ml-7 font-semibold md:text-lg text-sm">
+                  {category.title.toUpperCase()}{" "}
+                  {category.isComingSoon === true && (
+                    <p className="italic text-sm text-[#A6A6A6]">Coming Soon</p>
+                  )}
+                </div>
+              </Category>
+            );
+          })}
         </Categories>
       </CategoriesContainer>
 

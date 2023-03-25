@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {
-  CameraOutline,
   UploadOutline,
   ShieldCheckOutline,
 } from "heroicons-react";

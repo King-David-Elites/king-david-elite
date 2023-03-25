@@ -6,10 +6,11 @@ import Footer from "../../Footer/Footer";
 import { EachBuildingContainer } from "../RealEstate/RealEstate.Style";
 import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
-import Banner from "../../Banner/Banner";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
 import ImageDisplay from "./ImageDisplay";
+import notFound from "./notFound.png";
+import Loader from "../../Loader/Loader";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const MediaView = () => {
@@ -47,7 +48,11 @@ const MediaView = () => {
     <>
       <EachBuildingContainer ref={top}>
         {displayImg && (
-          <ImageDisplay property={property} setDisplayImg={setDisplayImg} currentIndex={currentIndex}/>
+          <ImageDisplay
+            property={property}
+            setDisplayImg={setDisplayImg}
+            currentIndex={currentIndex}
+          />
         )}
         <div className="upper">
           <div
@@ -60,6 +65,10 @@ const MediaView = () => {
           </div>
           <div className="medias">
             <MainButton
+              fontWeight="300"
+              background="transparent"
+              border="transparent"
+              color="#F2BE5C"
               onClick={() => {
                 setActive(0);
               }}
@@ -67,6 +76,10 @@ const MediaView = () => {
               Photos
             </MainButton>
             <MainButton
+              fontWeight="300"
+              background="transparent"
+              border="transparent"
+              color="#F2BE5C"
               onClick={() => {
                 setActive(1);
               }}
@@ -79,12 +92,7 @@ const MediaView = () => {
           <div className="imageGallery">
             {loading ? (
               <>
-                <div className="loadingImages" />
-                <div className="loadingImages" />
-                <div className="loadingImages" />
-                <div className="loadingImages" />
-                <div className="loadingImages" />
-                <div className="loadingImages" />
+                <Loader height="100%" absolute=""/>
               </>
             ) : (
               <>
@@ -95,7 +103,7 @@ const MediaView = () => {
                         key={i}
                         className="image"
                         onClick={() => {
-                          setCurrentIndex(i);                          
+                          setCurrentIndex(i);
                           setDisplayImg(true);
                         }}
                       >
@@ -116,26 +124,36 @@ const MediaView = () => {
               </>
             ) : (
               <>
-                {property.videos.map((video) => {
-                  return (
-                    <>
-                      <div>
-                        <div className="image">
-                          <video width="300px" height="300px" controls>
-                            <source src={video} type="video/mp4" />
-                            Your browser does not support the video tag.
-                          </video>
-                        </div>
-                      </div>
-                    </>
-                  );
-                })}
+                {property.videos.length > 0 ? (
+                  <>                    
+                    {property.videos.map((video) => {
+                      return (
+                        <>
+                          <div>
+                            <div className="image">
+                              <video width="300px" height="300px" controls>
+                                <source src={video} type="video/mp4" />
+                                Your browser does not support the video tag.
+                              </video>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    <div className="notFound">
+                      <img src={notFound} alt="notFound" />
+                      <p>No Video Available!!</p>
+                    </div>
+                  </>
+                )}
               </>
             )}
           </div>
         )}
       </EachBuildingContainer>
-      <Banner category="Real Estate" />
       <Footer />
     </>
   );
