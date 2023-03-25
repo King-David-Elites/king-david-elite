@@ -51,7 +51,7 @@ export const Container = styled.div`
 
         p{
             font-size:1rem;
-            padding: .5em 3em;
+            padding: .5em 1em;
         }
 
     }
