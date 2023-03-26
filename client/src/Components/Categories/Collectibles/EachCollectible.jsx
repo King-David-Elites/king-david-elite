@@ -21,7 +21,7 @@ import { EachContainer } from "../RealEstate/RealEstate.Style";
 import { SpinnerCircular } from "spinners-react";
 import theme from "../../../application/utils/Theme";
 
-// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachCollectible = ({ active }) => {
   const top = useRef(null);
   const navigate = useNavigate();
@@ -31,12 +31,10 @@ const EachCollectible = ({ active }) => {
   const [loading, setLoading] = useState(true);
   const data = useGetUserDetails();
 
-  const getAList = useCallback(async () => {
-    console.log("do...");
+  const getAList = useCallback(async () => {    
     await axios
       .get(`${globalApi}/listings/each/${id}`)
-      .then((resp) => {
-        console.log(resp.data);
+      .then((resp) => {        
         setLoading(false);
         setProperty(resp.data);
       })
@@ -50,7 +48,7 @@ const EachCollectible = ({ active }) => {
 
   useEffect(() => {
     getAList();
-    // scrollToRef(top);
+    scrollToRef(top);
   }, [getAList]);
 
   return (

@@ -3,15 +3,13 @@ import { Heart, HeartOutline, LocationMarker } from "heroicons-react";
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { FaCheckCircle } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import globalApi from "../../api";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 import { Container } from "./Listing.styled";
 import services from "../../ioc/services";
 
-const Listing = ({ list, type }) => {
-  console.log(list);
+const Listing = ({ list, type }) => {  
   const [loved, setLoved] = useState(false);
   const [id, setId] = useState(list._id);
   const postedBy = list.postedBy?.email;
@@ -25,8 +23,7 @@ const Listing = ({ list, type }) => {
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
         if (resp.data.status == 1) {
-          services.toast.success("You liked this post");
-          console.log(resp);
+          services.toast.success("You liked this post");          
         }
       })
       .catch((err) => services.toast.error(err));
@@ -38,8 +35,7 @@ const Listing = ({ list, type }) => {
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
         if (resp.data.status == 0) {
-          services.toast.success("You unlike this post");
-          console.log(resp);
+          services.toast.success("You unlike this post");          
         }
       })
       .catch((err) => console.log(err));

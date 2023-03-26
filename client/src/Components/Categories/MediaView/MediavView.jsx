@@ -29,8 +29,7 @@ const MediaView = () => {
       .get(`${globalApi}/listings/each/${id}`)
       .then((resp) => {
         setProperty(resp.data);
-        setLoading(false);
-        console.log(resp.data);
+        setLoading(false);        
       })
       .catch((err) => console.error(err));
 

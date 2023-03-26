@@ -40,9 +40,7 @@ const PaginationButtons = ({
   }, []);
 
   useEffect(() => {
-    setButtonRange(resetButtonRange(buttonRange, totalPage));
-    console.log(buttonRange);
-    console.log(totalPage);
+    setButtonRange(resetButtonRange(buttonRange, totalPage));    
   }, [flipRight, flipLeft, totalPage]);
 
   const resetPage = async (page) => {
