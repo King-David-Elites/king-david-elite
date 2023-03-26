@@ -125,7 +125,7 @@ const CollectiblesListing = () => {
     scrollToRef(top);
   }, []);
 
-  const getTotalListing = async (page) => {
+  const getTotalData = async (page) => {
     scrollToRef(up);
     let totalListing = await getListings(
       page,
@@ -204,7 +204,8 @@ const CollectiblesListing = () => {
           setPage={setPage}
           loading={loading}
           setLoading={setLoading}
-          getTotalListing={getTotalListing}
+          getTotalData={getTotalData}
+          background={theme.color}
         />
         {/* <GridContainer>
           {collectibleData.map((c, index) => {

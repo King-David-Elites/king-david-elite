@@ -5,7 +5,6 @@ import {
   ChevronDoubleRight,
 } from "heroicons-react";
 import { useState, useEffect } from "react";
-import theme from "../../application/utils/Theme";
 import styled from "styled-components";
 
 const PaginationButtons = ({
@@ -14,12 +13,13 @@ const PaginationButtons = ({
   page,
   setPage,
   setLoading,
-  getTotalListing,
+  getTotalData,
   width,
   height,
   color,
   background,
   fontSize,
+  borderRadius
 }) => {
   const [totalPage, setTotalPage] = useState(0);
   const [buttonRange, setButtonRange] = useState(range);
@@ -46,7 +46,7 @@ const PaginationButtons = ({
   const resetPage = async (page) => {
     setLoading(true);
     setPage(page);
-    let totalListing = await getTotalListing(page);
+    let totalListing = await getTotalData(page);
 
     if (totalListing !== 0) {
       if (totalListing % PAGINATION > 0) {
@@ -121,20 +121,21 @@ const PaginationButtons = ({
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5em;
+    font-size: ${fontSize ? fontSize : ""};
 
     .button {
-      border-radius: 5px;
+      border-radius: ${borderRadius ? borderRadius : "5px"};
       display: flex;
       justify-content: center;
       align-items: center;
-      background: ${background ? background : theme.color};
+      background: ${background};
       color: ${color ? color : "white"};
       width: ${width ? width : "2em"};
       height: ${height ? height : "2em"};
       cursor: pointer;
     }
     .disable {
-      border-radius: 5px;
+      border-radius: ${borderRadius ? borderRadius : "5px"};
       display: flex;
       justify-content: center;
       align-items: center;
@@ -145,7 +146,7 @@ const PaginationButtons = ({
       cursor: not-allowed;
     }
     .unselect {
-      border-radius: 5px;
+      border-radius: ${borderRadius ? borderRadius : "5px"};
       display: flex;
       justify-content: center;
       align-items: center;
@@ -155,7 +156,7 @@ const PaginationButtons = ({
       transition: 0.3s;
     }
     .unselect:hover {
-      background: ${background ? background : theme.color};
+      background: ${background};
       color: ${color ? color : "white"};
     }
   `;

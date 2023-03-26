@@ -68,7 +68,7 @@ const CarsListing = () => {
     scrollToRef(top);
   }, []);
 
-  const getTotalListing = async (page) => {
+  const getTotalData = async (page) => {
     scrollToRef(up);
     let totalListing = await getListings(page, "cars", setListing, setLoading);
 
@@ -149,7 +149,8 @@ const CarsListing = () => {
           setPage={setPage}
           loading={loading}
           setLoading={setLoading}
-          getTotalListing={getTotalListing}
+          getTotalData={getTotalData}
+          background={theme.color}
         />
       </Body>
       <Banner category="Cars" />

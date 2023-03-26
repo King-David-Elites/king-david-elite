@@ -115,7 +115,7 @@ const RealEstateListing = () => {
       .catch((err) => console.log(err));
   };
 
-  const getTotalListing = async (page) => {
+  const getTotalData = async (page) => {
     scrollToRef(up);
     let totalListing = await getListings(
       page,
@@ -547,7 +547,8 @@ const RealEstateListing = () => {
               setPage={setPage}
               loading={loading}
               setLoading={setLoading}
-              getTotalListing={getTotalListing}
+              getTotalData={getTotalData}
+              background={theme.color}
             />
           </Body>
           <Banner category="Real Estate" />
