@@ -8,17 +8,11 @@ import {
   FilterBox,
   SearchSection,
 } from "../Cars/Cars.Style";
-import {
-  Adjustments,
-  Heart,
-  HeartOutline,
-  LocationMarker,
-  Search,
-} from "heroicons-react";
+import { Adjustments, Search } from "heroicons-react";
 import MainButton from "../../buttons/MainButton";
 import { SearchC } from "../RealEstate/RealEstate.Style";
 import Banner from "../../Banner/Banner";
-import { Container, GridContainer } from "../../Listing/Listing.styled";
+import { GridContainer } from "../../Listing/Listing.styled";
 import Footer from "../../Footer/Footer";
 import { useRef } from "react";
 import { useEffect } from "react";
@@ -29,6 +23,11 @@ import img2 from "../Cars/Img/christian-mackie-SxBca4GcC9k-unsplash.jpg";
 import img3 from "../Cars/Img/daniel-gaffey-EbH-7ReNuA0-unsplash.jpg";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import Listing from "../../Listing/Listing";
+import { SpinnerCircular } from "spinners-react";
+import theme from "../../../application/utils/Theme";
+import { getListings } from "../../../infrastructure/api/user/userRequest";
+import PaginationButtons from "../../PaginationButtons/PaginationButtons";
 import {
   CollectibleAnimation,
   graduallyAppear,
@@ -39,8 +38,12 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const CollectiblesListing = () => {
   const top = useRef(null);
+  const up = useRef(null);
   const [collectibleId, setCollectibleId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear);
+  const [listing, setListing] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
   const collectibleData = [
@@ -121,6 +124,19 @@ const CollectiblesListing = () => {
   useEffect(() => {
     scrollToRef(top);
   }, []);
+
+  const getTotalListing = async (page) => {
+    scrollToRef(up);
+    let totalListing = await getListings(
+      page,
+      "collectibles",
+      setListing,
+      setLoading
+    );
+
+    return totalListing;
+  };
+
   return (
     <>
       <Navbar active={4} />
@@ -154,11 +170,43 @@ const CollectiblesListing = () => {
         </HeroSection>
       </Background>
 
-      <Body>
+      <Body ref={up}>
         <Text fontSize="1rem" fontWeight="700" color="black">
           Explore Collectibles
         </Text>
-        <GridContainer>
+        {loading ? (
+          <>
+            <SpinnerCircular
+              color="white"
+              className="flex justify-center"
+              secondaryColor={theme.color}
+              size={50}
+              thickness={150}
+            />
+          </>
+        ) : (
+          <GridContainer>
+            {listing.length > 0 ? (
+              listing.map((items) => {
+                return <Listing key={items._id} list={items} />;
+              })
+            ) : (
+              <h4 className="md:text-lg text-sm font-semibold italic">
+                No Collectibles available
+              </h4>
+            )}
+          </GridContainer>
+        )}
+        <PaginationButtons
+          range={[1, 2, 3]}
+          pagination={3}
+          page={page}
+          setPage={setPage}
+          loading={loading}
+          setLoading={setLoading}
+          getTotalListing={getTotalListing}
+        />
+        {/* <GridContainer>
           {collectibleData.map((c, index) => {
             return (
               <Container key={index}>
@@ -173,7 +221,7 @@ const CollectiblesListing = () => {
               </Container>
             );
           })}
-        </GridContainer>
+        </GridContainer> */}
       </Body>
       <Banner category="Collectibles" />
       <Text color="black" fontSize="0.8rem" margin="2em">

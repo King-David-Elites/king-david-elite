@@ -126,7 +126,7 @@ export const EachBuildingContainer = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 0.5em;
     padding: 2em 2em;
@@ -297,7 +297,7 @@ export const BottomBanner = styled.div`
 
 export const EachContainer = styled.div`
   padding: 100px 0;
-  width: 80%;
+  width: 80%;  
   margin: 0 auto;
 
   @media (max-width: 700px) {
@@ -306,6 +306,13 @@ export const EachContainer = styled.div`
 
     h3 {
     }
+  }
+
+  .loader{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
 
   h3 {
@@ -504,7 +511,7 @@ export const PaginationButtons = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   gap: 0.5em;
 
   .button {
@@ -523,24 +530,24 @@ export const PaginationButtons = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(180,180,180);
-    color:white;
+    background: rgb(180, 180, 180);
+    color: white;
     width: 2em;
     height: 2em;
     cursor: not-allowed;
   }
-  .unselect{
+  .unselect {
     border-radius: 5px;
     display: flex;
     justify-content: center;
-    align-items: center;        
+    align-items: center;
     width: 2em;
     height: 2em;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
   }
-  .unselect:hover{
-    background: ${theme.color};   
-    color:white;    
+  .unselect:hover {
+    background: ${theme.color};
+    color: white;
   }
 `;

@@ -4,13 +4,14 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { FaCheckCircle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import globalApi from "../../api";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 import { Container } from "./Listing.styled";
 import services from "../../ioc/services";
 
 const Listing = ({ list, type }) => {
+  console.log(list);
   const [loved, setLoved] = useState(false);
   const [id, setId] = useState(list._id);
   const postedBy = list.postedBy?.email;
@@ -54,12 +55,12 @@ const Listing = ({ list, type }) => {
   };
 
   const formatLocation = (location) => {
-    let list=null
-    if(location){
+    let list = null;
+    if (location) {
       list = location.split("#");
       list = list.join(", ");
     }
-    
+
     return list;
   };
 
@@ -71,10 +72,21 @@ const Listing = ({ list, type }) => {
   };
   return (
     <Container>
-      <div className="profile">
-        <img src={list.postedBy.profilePicture} alt="" />
-        <h4>{truncate(fullName, 25)}</h4>
-      </div>
+      {list.category.title !== "Collectibles" && (
+        <Link
+          to={
+            postedBy !== userEmail
+              ? `/profile/${list.postedBy?._id}`
+              : "/profile"
+          }
+          className="btn"
+        >
+          <div className="profile">
+            <img src={list.postedBy.profilePicture} alt="" />
+            <h4>{truncate(fullName, 25)}</h4>
+          </div>
+        </Link>
+      )}
       <div className="image">
         <img src={list.images[0]} alt="" className="relative" />
         <div

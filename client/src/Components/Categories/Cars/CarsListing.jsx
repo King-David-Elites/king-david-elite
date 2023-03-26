@@ -131,8 +131,7 @@ const CarsListing = () => {
           <GridContainer>
             {listing.length > 0 ? (
               listing.map((items) => {
-                return (
-                  // <RealEstate key={items._id} {...items} />
+                return (                  
                   <Listing key={items._id} list={items} />
                 );
               })

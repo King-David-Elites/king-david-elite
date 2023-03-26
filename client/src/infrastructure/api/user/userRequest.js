@@ -117,3 +117,16 @@ export const getListings = async (page, category, setListing, setLoading) => {
     return response
 };
 
+// export const getCollectibles = async (page, category, setListing, setLoading) => {
+//   let response;
+//   await axios
+//     .get(`${globalApi}/listings/all?page=${page}&category=${category}`)
+//     .then((resp) => {      
+//       setListing(resp.data.listings);  
+//       setLoading(false);
+//       response = resp.data.noOfListings       
+//     })
+//     .catch((err) => console.error(err));
+//     return response
+// };
+

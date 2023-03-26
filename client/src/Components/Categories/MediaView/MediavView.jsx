@@ -10,7 +10,8 @@ import { useNavigate } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
 import ImageDisplay from "./ImageDisplay";
 import notFound from "./notFound.png";
-import Loader from "../../Loader/Loader";
+import theme from "../../../application/utils/Theme";
+import { SpinnerCircular } from "spinners-react";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const MediaView = () => {
@@ -92,7 +93,13 @@ const MediaView = () => {
           <div className="imageGallery">
             {loading ? (
               <>
-                <Loader height="100%" absolute=""/>
+                <SpinnerCircular
+                  color="white"
+                  className="flex justify-center"
+                  secondaryColor={theme.color}
+                  size={50}
+                  thickness={150}
+                />
               </>
             ) : (
               <>
@@ -125,7 +132,7 @@ const MediaView = () => {
             ) : (
               <>
                 {property.videos.length > 0 ? (
-                  <>                    
+                  <>
                     {property.videos.map((video) => {
                       return (
                         <>
