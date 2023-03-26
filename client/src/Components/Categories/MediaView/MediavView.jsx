@@ -23,8 +23,7 @@ const MediaView = () => {
   const [loading, setLoading] = useState(true);
   const [displayImg, setDisplayImg] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const getAList = useCallback(() => {
-    console.log("fetching");
+  const getAList = useCallback(() => {    
     axios
       .get(`${globalApi}/listings/each/${id}`)
       .then((resp) => {
