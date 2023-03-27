@@ -6,16 +6,24 @@ import Navbar from "../../Navbar/Navbar";
 import { Text } from "../Cars/Cars.Style";
 import img from "../Cars/Img/estate4.jpg";
 import { useState, useEffect } from "react";
-import { getCartItems } from "../../../infrastructure/api/user/userRequest";
+import {
+  getCartItems,
+  requestCartItems,
+} from "../../../infrastructure/api/user/userRequest";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(requestCartItems());
 
-  useEffect(()=>{
-    if(cartItems.length === 0){
-        getCartItems(setCartItems)
+  useEffect(() => {
+    getCart();
+  }, [cartItems]);
+
+  const getCart = async () => {
+    if (cartItems === []) {
+      await getCartItems();
+      setCartItems(requestCartItems())
     }
-  },[])
+  };
   return (
     <div className="bg-[#f5f5f5] h-[100vh]">
       <Navbar active={6} />

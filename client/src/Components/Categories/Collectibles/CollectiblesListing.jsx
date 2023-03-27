@@ -85,13 +85,13 @@ const CollectiblesListing = () => {
     },
   ];
 
-  const redirect = (id) => {
-    localStorage.setItem(
-      "collectible",
-      JSON.stringify(collectibleData[id - 1])
-    );
-    navigate(`/collectible/${id}`);
-  };
+  // const redirect = (id) => {
+  //   localStorage.setItem(
+  //     "collectible",
+  //     JSON.stringify(collectibleData[id - 1])
+  //   );
+  //   navigate(`/collectible/${id}`);
+  // };
 
   const animate = useCallback(() => {
     var timer1;

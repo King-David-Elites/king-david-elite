@@ -22,11 +22,12 @@ import { EachContainer } from "../RealEstate/RealEstate.Style";
 import { SpinnerCircular } from "spinners-react";
 import theme from "../../../application/utils/Theme";
 import {
-  addToCartItems,
   getCartItems,
+  addToCartItems,
   removeCartItems,
 } from "../../../infrastructure/api/user/userRequest";
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachCollectible = ({ active }) => {
   const top = useRef(null);
   const navigate = useNavigate();
@@ -37,11 +38,7 @@ const EachCollectible = ({ active }) => {
   const [cartItems, setCartItems] = useState(requestCartItems());
   let quantity = 0;
   const [numb, setNumb] = useState(0);
-  const [cartItem, setCartItem] = useState({});
   const data = useGetUserDetails();
-
-  const scrollToRef = (ref) =>
-    property && window.scrollTo(0, ref.current.offsetTop);
 
   const getAList = useCallback(async () => {
     await axios
@@ -51,7 +48,10 @@ const EachCollectible = ({ active }) => {
         setProperty(resp.data);
         scrollToRef(top);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        getAList()
+        console.error(err);
+      });
 
     axios
       .patch(`${globalApi}/listings/view/${id}`, {}, setConfig())
@@ -59,21 +59,26 @@ const EachCollectible = ({ active }) => {
       .catch((err) => console.log(err));
   }, [id]);
 
-  useEffect(async () => {
+  useEffect(() => {
     getAList();
   }, [getAList]);
 
   useEffect(() => {
-    getCartItem();
+    getCarts();
   }, [cartItems]);
 
-  const getCartItem = () => {
-    if (cartItems.find((item) => String(item.itemData) === id) !== undefined) {
-      quantity = cartItems.find((item) => String(item.itemData) === id);
-      console.log(numb)
-      console.log(quantity.quantity)
-      if (numb !== quantity.quantity) {
-        setNumb(quantity.quantity);
+  const getCarts = async () => {
+    if (cartItems === []) {
+      await getCartItems();
+      setCartItems(requestCartItems());
+    } else {
+      if (
+        cartItems.find((item) => String(item.itemData) === id) !== undefined
+      ) {
+        quantity = cartItems.find((item) => String(item.itemData) === id);
+        if (numb !== quantity.quantity) {
+          setNumb(quantity.quantity);
+        }
       }
     }
   };
@@ -84,7 +89,7 @@ const EachCollectible = ({ active }) => {
     setCartItems(requestCartItems());
   };
 
-  const removeFromCart = async () => {    
+  const removeFromCart = async () => {
     if (numb > 0) {
       setNumb(numb - 1);
     }
