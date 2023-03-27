@@ -41,7 +41,7 @@ export const Container = styled.div`
 
 }
 
-@media only screen and (max-width:500px){   
+@media only screen and (max-width:80r0px){   
 
     .cont{
     
