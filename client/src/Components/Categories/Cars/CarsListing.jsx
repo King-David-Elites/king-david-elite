@@ -9,74 +9,75 @@ import {
   Text,
   FilterBox,
   Body,
-  CarTypes,
-  CarType,
-  Dealer,
-  PicDealer,
-  PicCar,
-  Position,
-  Reaction,
 } from "./Cars.Style";
 import Navbar from "../../Navbar/Navbar";
 import MainButton from "../../buttons/MainButton";
 import Banner from "../../Banner/Banner";
-import {
-  Search,
-  Adjustments,
-  BadgeCheck,
-  LocationMarkerOutline,
-  HeartOutline,
-  Heart,
-} from "heroicons-react";
+import { Search, Adjustments } from "heroicons-react";
 import Footer from "../../Footer/Footer";
-import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useEffect } from "react";
-import useContextAPI from "../../ContextAPI/ContextAPI";
+import { getListings } from "../../../infrastructure/api/user/userRequest";
 import { GridContainer } from "../../Listing/Listing.styled";
+import PaginationButtons from "../../PaginationButtons/PaginationButtons";
 import Listing from "../../Listing/Listing";
-import { CarAnimation, graduallyAppear, graduallyDisAppear } from "./AnimationOrder";
+import { SpinnerCircular } from "spinners-react";
+import theme from "../../../application/utils/Theme";
+import {
+  CarAnimation,
+  graduallyAppear,
+  graduallyDisAppear,
+} from "./AnimationOrder";
 import { motion } from "framer-motion";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const CarsListing = ({ mainData }) => {
+const CarsListing = () => {
   const top = useRef(null);
+  const up = useRef(null);
+  const [carId, setCarId] = useState(1);
+  const [animation, setAnimation] = useState(graduallyAppear);
+  const [listing, setListing] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+
+  const animate = useCallback(() => {
+    var timer1;
+    var timer2;
+    timer1 = setTimeout(() => {
+      if (carId < CarAnimation.length) {
+        clearTimeout(timer2);
+        clearTimeout(timer1);
+        setAnimation(graduallyDisAppear);
+        timer2 = setTimeout(() => {
+          setAnimation(graduallyAppear);
+          setCarId(carId + 1);
+        }, [500]);
+      } else if (carId === CarAnimation.length) {
+        clearTimeout(timer2);
+        clearTimeout(timer1);
+        setAnimation(graduallyDisAppear);
+        timer2 = setTimeout(() => {
+          setAnimation(graduallyAppear);
+          setCarId(1);
+        }, [500]);
+      }
+    }, [8000]);
+  }, [carId]);
+
   useEffect(() => {
     scrollToRef(top);
   }, []);
 
-  const { setCars, cars } = useContextAPI();
-  const [carId, setCarId] = useState(1);
-  const [animation, setAnimation] = useState(graduallyAppear)
+  const getTotalData = async (page) => {
+    scrollToRef(up);
+    let totalListing = await getListings(page, "cars", setListing, setLoading);
 
-  const animate = useCallback(()=>{
-    var timer1
-    var timer2
-    timer1 = setTimeout(() => {
-      if (carId < CarAnimation.length) {
-        clearTimeout(timer2)
-        clearTimeout(timer1)
-        setAnimation(graduallyDisAppear)
-        timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear)
-          setCarId(carId + 1)
-        }, [500])
-      }
-      else if (carId === CarAnimation.length) {
-        clearTimeout(timer2)
-        clearTimeout(timer1)
-        setAnimation(graduallyDisAppear)
-        timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear)
-          setCarId(1)
-        }, [500])
-      }
-    },[8000])
-  },[carId])
+    return totalListing;
+  };
 
   useEffect(() => {
-    animate()
-  },[animate])  
+    animate();
+  }, [animate]);
 
   return (
     <>
@@ -112,29 +113,58 @@ const CarsListing = ({ mainData }) => {
         </HeroSection>
       </Background>
 
-      <Body>
+      <Body ref={up}>
         <Text fontSize="1rem" fontWeight="700" color="black">
           Explore Luxury Automobiles
         </Text>
-
-        <GridContainer>
-          {
-            cars.length > 0 ?
-              cars.map((items) => {
-                return (
-                  // <RealEstate key={items._id} {...items} />
+        {loading ? (
+          <>
+            <SpinnerCircular
+              color="white"
+              className="flex justify-center"
+              secondaryColor={theme.color}
+              size={50}
+              thickness={150}
+            />
+          </>
+        ) : (
+          <GridContainer>
+            {listing.length > 0 ? (
+              listing.map((items) => {
+                return (                  
                   <Listing key={items._id} list={items} />
                 );
               })
-              : <h4 className="md:text-lg text-sm font-semibold italic">No Automobile listing available</h4>
-          }
-
-        </GridContainer>
+            ) : (
+              <h4 className="md:text-lg text-sm font-semibold italic">
+                No Automobile listing available
+              </h4>
+            )}
+          </GridContainer>
+        )}
+        <PaginationButtons
+          range={[1, 2, 3]}
+          pagination={3}
+          page={page}
+          setPage={setPage}
+          loading={loading}
+          setLoading={setLoading}
+          getTotalData={getTotalData}
+          background={theme.color}
+        />
       </Body>
       <Banner category="Cars" />
       <Text color="black" fontSize="0.8rem" margin="2em">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Discover the epitome of luxury automobile with King David Elites. Our Platform offers a collection of exclusive high-end vehicles, including sleek sport cars and powerful SUVs, taliored to the society's elite. Our easy and secure payment system allows for direct transfer to verified vendors or though our 1% transaction fee escrow account, which comes with professional check-ups and luxurious inspection services by our expert technicians. Make a lasting statement whereveryou go with our unparalleled selection. At King David Elites, our standard of class is unmatched, and our dedication to luxury is unparalleled. 
+        Discover the epitome of luxury automobile with King David Elites. Our
+        Platform offers a collection of exclusive high-end vehicles, including
+        sleek sport cars and powerful SUVs, taliored to the society's elite. Our
+        easy and secure payment system allows for direct transfer to verified
+        vendors or though our 1% transaction fee escrow account, which comes
+        with professional check-ups and luxurious inspection services by our
+        expert technicians. Make a lasting statement whereveryou go with our
+        unparalleled selection. At King David Elites, our standard of class is
+        unmatched, and our dedication to luxury is unparalleled.
       </Text>
       <Footer />
     </>
@@ -142,95 +172,3 @@ const CarsListing = ({ mainData }) => {
 };
 
 export default CarsListing;
-
-const Car = (props) => {
-  var {
-    _id,
-    title,
-    location,
-    description,
-    images,
-    price,
-    year,
-    price,
-    year,
-    carCondition,
-    engineType,
-    colour,
-    features,
-    model,
-    postedBy,
-  } = props;
-  const [love, setLove] = useState(true);
-  const navigate = useNavigate();
-  return (
-    <>
-      <CarType>
-        <Dealer>
-          <PicDealer src={postedBy?.profilePicture} alt={postedBy?.firstName} />
-          <Text fontSize="0.8rem" color="black">
-            {postedBy?.firstName + " " + postedBy?.lastName}
-          </Text>
-          <BadgeCheck color="blue" width="30px" />
-        </Dealer>
-        <PicCar imageUrl={images[0]}>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "flex-start",
-            }}
-          >
-            <Reaction
-              onClick={() => {
-                setLove(!love);
-              }}
-            >
-              {love ? (
-                <Heart color="#FFDF00" />
-              ) : (
-                <HeartOutline color="yellow" />
-              )}
-            </Reaction>
-          </div>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Reaction
-              radius="0em"
-              padding="1em 3em"
-              onClick={() => navigate(`${_id}`)}
-            >
-              <Text fontSize="0.8em ">ViewMore</Text>
-            </Reaction>
-          </div>
-        </PicCar>
-        <Text color="black" fontWeight="700">
-          {title}
-        </Text>
-        <Text color="black" fontWeight="700" fontSize="0.8rem">
-          {price}
-        </Text>
-        <Position>
-          <LocationMarkerOutline width="20px" />
-          <Text color="black" fontSize="0.8rem">
-            {location}
-          </Text>
-        </Position>
-        <MainButton
-          width="10em"
-          height="3em"
-          fontSize="0.8rem"
-          marginTop="2em"
-          onClick={() => navigate("/dashboard/messages")}
-        >
-          Enquire Now
-        </MainButton>
-      </CarType>
-    </>
-  );
-};

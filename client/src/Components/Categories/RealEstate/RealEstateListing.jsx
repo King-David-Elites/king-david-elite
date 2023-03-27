@@ -1,4 +1,7 @@
-import { Adjustments, Search } from "heroicons-react";
+import {
+  Adjustments,
+  Search,  
+} from "heroicons-react";
 import React, { useRef, useEffect, useCallback } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import {
@@ -25,22 +28,22 @@ import {
   graduallyAppear,
   graduallyDisAppear,
 } from "../Cars/AnimationOrder";
-import useContextAPI from "../../ContextAPI/ContextAPI";
+import { getListings } from "../../../infrastructure/api/user/userRequest";
 import { motion } from "framer-motion";
 import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
 import theme from "../../../application/utils/Theme";
 import { BiArrowBack } from "react-icons/bi";
+import PaginationButtons from "../../PaginationButtons/PaginationButtons";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const RealEstateListing = () => {
   const top = useRef(null);
-  const { listing, setListing } = useContextAPI();
-
-  useEffect(() => {
-    scrollToRef(top);
-  }, []);
+  const up = useRef(null);
+  const [listing, setListing] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const [loader, setLoader] = useState(false);
   const [estateId, setEstateId] = useState(1);
@@ -70,6 +73,10 @@ const RealEstateListing = () => {
       setActiveNav(activeNav);
     }
   };
+
+  useEffect(() => {
+    scrollToRef(top);
+  }, []);
 
   const views = [
     {
@@ -106,6 +113,18 @@ const RealEstateListing = () => {
         setStage(0);
       })
       .catch((err) => console.log(err));
+  };
+
+  const getTotalData = async (page) => {
+    scrollToRef(up);
+    let totalListing = await getListings(
+      page,
+      "real-estate",
+      setListing,
+      setLoading
+    );
+
+    return totalListing;
   };
 
   const animate = useCallback(() => {
@@ -176,10 +195,11 @@ const RealEstateListing = () => {
                 {views.map((v, i) => {
                   return (
                     <span
-                      className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title
+                      className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${
+                        view == v.title
                           ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center`
                           : ""
-                        }`}
+                      }`}
                       key={i}
                       onChange={(e) => setTitle(e.target.value)}
                       onClick={() => {
@@ -324,10 +344,11 @@ const RealEstateListing = () => {
                       {views.map((v, i) => {
                         return (
                           <span
-                            className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title
+                            className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${
+                              view == v.title
                                 ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center`
                                 : ""
-                              }`}
+                            }`}
                             key={i}
                             onChange={(e) => setTitle(e.target.value)}
                             onClick={() => {
@@ -467,7 +488,7 @@ const RealEstateListing = () => {
             </HeroSection>
           </Background>
 
-          <Body>
+          <Body ref={up}>
             <Text fontSize="1rem" fontWeight="700" color="black">
               Luxury Properties For Sale
             </Text>
@@ -480,28 +501,70 @@ const RealEstateListing = () => {
                 thickness={150}
               />
             )}
-            <GridContainer>
-              {!loader &&
-                title &&
-                list.length > 0 &&
-                list.map((items) => {
-                  return <Listing key={items._id} list={items} />;
-                })}
-              {!loader && title && list.length == 0 && (
-                <p className="font-bold text-base md:text-xl">No list found</p>
-              )}
-              {!loader &&
-                !title &&
-                listing.length > 0 &&
-                listing.map((items) => {
-                  return <Listing key={items._id} list={items} />;
-                })}
-            </GridContainer>
+            {loading ? (
+              <>
+                <SpinnerCircular
+                  color="white"
+                  className="flex justify-center"
+                  secondaryColor={theme.color}
+                  size={50}
+                  thickness={150}
+                />
+              </>
+            ) : (
+              <GridContainer>
+                {!loader &&
+                  title &&
+                  list.length > 0 &&
+                  list.map((items) => {
+                    return (
+                      <>
+                        <Listing key={items._id} list={items} />
+                      </>
+                    );
+                  })}
+                {!loader && title && list.length == 0 && (
+                  <p className="font-bold text-base md:text-xl">
+                    No list found
+                  </p>
+                )}
+                {!loader &&
+                  !title &&
+                  listing.length > 0 &&
+                  listing.map((items) => {
+                    return (
+                      <>
+                        <Listing key={items._id} list={items} />
+                      </>
+                    );
+                  })}
+              </GridContainer>
+            )}
+            <PaginationButtons
+              range={[1, 2, 3]}
+              pagination={3}
+              page={page}
+              setPage={setPage}
+              loading={loading}
+              setLoading={setLoading}
+              getTotalData={getTotalData}
+              background={theme.color}
+            />
           </Body>
           <Banner category="Real Estate" />
           <Text color="black" fontSize="0.8rem" margin="2em">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Indulge in opulence with King David Elites. Our online marketplace boast a collection of exquiste, high-end properties that exude luxury living.From stunning homes to sprawling estates and opulent apartment,our offering cater to all your residential,investment and for-profit needs. Our secure payment system ensures hassle-free transactions, with the option to transfer funds directly to verifies vendors or through our 1% transaction fee escrow account which further secures your funds and grants you access to our team of experts who provide professional advisory services and arranges luxurious property inspection, setting a new standardof class and sophistication.
+            Indulge in opulence with King David Elites. Our online marketplace
+            boast a collection of exquiste, high-end properties that exude
+            luxury living.From stunning homes to sprawling estates and opulent
+            apartment, our offering cater to all your residential,investment and
+            for-profit needs. Our secure payment system ensures hassle-free
+            transactions, with the option to transfer funds directly to verified
+            vendors or through our 1% transaction fee escrow account which
+            further secures your funds and grants you access to our team of
+            experts who provide professional advisory services and arranges
+            luxurious property inspection, setting a new standardof class and
+            sophistication.
           </Text>
           <Footer />
         </>

@@ -114,7 +114,7 @@ const UpgradeProfile = () => {
                         <div className="pricing">
                           <p>
                             <span style={{ color: `${item.textColor}` }}>
-                              N {item.amount[0]}
+                              &#x20A6; {item.amount[0]}
                             </span>
                             /mo
                           </p>
@@ -168,7 +168,7 @@ const UpgradeProfile = () => {
                         <div className="pricing">
                           <p>
                             <span style={{ color: `${item.textColor}` }}>
-                              N {item.amount[1]}
+                              &#x20A6; {item.amount[1]}
                             </span>
                             /yr
                           </p>

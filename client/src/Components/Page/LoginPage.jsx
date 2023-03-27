@@ -6,6 +6,7 @@ import globalApi from "../../api";
 import axios from "axios";
 import { useState } from "react";
 import Loader from "../Loader/Loader";
+import { FaGoogle } from "react-icons/fa";
 import services from "../../ioc/services"
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 

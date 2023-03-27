@@ -31,7 +31,9 @@ const CreateRealEstateListing = () => {
 
   const [userListings, setUserListings] = useState({
     title: "",
-    location: "somewhere",
+    location: "Abeokuta#Ogun#Nigeria",
+    locationISO: "76746#OG#NG",
+    category: "real-estate",    
     description: "",
     images: images,
     videos: videos,

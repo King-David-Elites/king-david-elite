@@ -3,9 +3,7 @@ import axios from "axios";
 import globalApi from "../../api";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 
-const useContextAPI = () => {
-  const [listing, setListing] = useState([]);
-  const [cars, setCars] = useState([]);
+const useContextAPI = () => {  
   const [mails, setMails] = useState([]);
   const [countryData, setCountryData] = useState([]);
   const userData = JSON.parse(localStorage.getItem("user"));  
@@ -16,24 +14,6 @@ const useContextAPI = () => {
       .get(`${globalApi}/users/me`, setConfig())
       .then((resp) => {        
         setUser(resp.data);        
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const getListings = async () => {
-    await axios
-      .get(`${globalApi}/listings/all?page=1&category=real-estate`)
-      .then((resp) => {
-        setListing(resp.data.listings);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const getCarsListings = async () => {
-    await axios
-      .get(`${globalApi}/listings/all?page=1&category=cars`)
-      .then((resp) => {
-        setCars(resp.data.listings);
       })
       .catch((err) => console.error(err));
   };
@@ -70,9 +50,7 @@ const useContextAPI = () => {
 
   const allCallBacks = useCallback(() => {
     email();
-    getUser();
-    getListings();
-    getCarsListings();
+    getUser();   
     getCountry();
   }, []);
 
@@ -82,12 +60,8 @@ const useContextAPI = () => {
 
   return {
     user: user,
-    userData: userData,
-    setListing: setListing,
-    listing: listing,
-    mails: mails,
-    cars: cars,
-    setCars: setCars,
+    userData: userData,    
+    mails: mails,    
     countryData: countryData,   
   };
 };

@@ -1,117 +1,142 @@
-import axios from 'axios'
-import { Heart, HeartOutline, LocationMarker } from 'heroicons-react'
-import React from 'react'
-import { useState } from 'react'
+import axios from "axios";
+import { Heart, HeartOutline, LocationMarker } from "heroicons-react";
+import React from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { FaCheckCircle } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
-import globalApi from '../../api'
-import { setConfig } from '../../infrastructure/api/user/userRequest'
-import { Container } from './Listing.styled'
-import services from '../../ioc/services';
+import { useNavigate, Link } from "react-router-dom";
+import globalApi from "../../api";
+import { setConfig } from "../../infrastructure/api/user/userRequest";
+import { Container } from "./Listing.styled";
+import services from "../../ioc/services";
 
-const Listing = ({ list, type }) => {
+const Listing = ({ list, type }) => {  
   const [loved, setLoved] = useState(false);
   const [id, setId] = useState(list._id);
   const postedBy = list.postedBy?.email;
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
   const userEmail = user.email;
 
   const saveListing = async () => {
     setId(id);
-    console.log("yes")
-    await axios.patch(`${globalApi}/listings/save/${id}`, id, setConfig())
-      .then(resp => {
+    console.log("yes");
+    await axios
+      .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
+      .then((resp) => {
         if (resp.data.status == 1) {
-          services.toast.success("You liked this post");
-          console.log(resp)
+          services.toast.success("You liked this post");          
         }
-       
       })
-      .catch(err => services.toast.error(err))
-  }
+      .catch((err) => services.toast.error(err));
+  };
 
   const unSaveListing = async () => {
-    console.log("no")
-    await axios.patch(`${globalApi}/listings/save/${id}`, id, setConfig())
-      .then(resp => {
+    console.log("no");
+    await axios
+      .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
+      .then((resp) => {
         if (resp.data.status == 0) {
-          services.toast.success("You unlike this post");
-          console.log(resp)
+          services.toast.success("You unlike this post");          
         }
       })
-      .catch(err => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   const truncate = (text, txtLimit) => {
-    let limit = txtLimit || 30
+    let limit = txtLimit || 30;
     if (text.length > limit) {
-      return text.substring(0, limit) + "..."
+      return text.substring(0, limit) + "...";
+    } else {
+      return text;
     }
-    else {
-      return text
-    }
-  }
+  };
 
-  const navigate = useNavigate()
+  const formatLocation = (location) => {
+    let list = null;
+    if (location) {
+      list = location.split("#");
+      list = list.join(", ");
+    }
+
+    return list;
+  };
+
+  const navigate = useNavigate();
+  const fullName = list.postedBy.firstName + " " + list.postedBy.lastName;
 
   const redirect = (id) => {
-    navigate(id)
-  }
+    navigate(id);
+  };
   return (
     <Container>
-      <div className="profile">
-        <img src={list.postedBy.profilePicture} alt="" />
-        <h4>{list.postedBy.firstName + " " + list.postedBy.lastName}</h4>
-        <FaCheckCircle />
-      </div>
+      {list.category.title !== "Collectibles" && (
+        <Link
+          to={
+            postedBy !== userEmail
+              ? `/profile/${list.postedBy?._id}`
+              : "/profile"
+          }
+          className="btn"
+        >
+          <div className="profile">
+            <img src={list.postedBy.profilePicture} alt="" />
+            <h4>{truncate(fullName, 25)}</h4>
+          </div>
+        </Link>
+      )}
       <div className="image">
-        <img src={list.images[0]} alt="" className='relative' />
+        <img src={list.images[0]} alt="" className="relative" />
         <div
           onClick={() => {
             setLoved(!loved);
           }}
-          className='absolute top-3 left-3 bg-[#ffffff28] rounded-full p-2'
+          className="absolute top-3 left-3 bg-[#ffffff28] rounded-full p-2"
         >
-          {
-            postedBy !== userEmail &&
+          {postedBy !== userEmail && (
             <>
-              {
-                loved ? (
-                  <Heart color="#FFDF00" className='cursor-pointer' onClick={unSaveListing} />
-                ) : (
-                  <HeartOutline color="#FFFF" className='cursor-pointer' onClick={() => saveListing()} />
-                )}
+              {loved ? (
+                <Heart
+                  color="#FFDF00"
+                  className="cursor-pointer"
+                  onClick={unSaveListing}
+                />
+              ) : (
+                <HeartOutline
+                  color="#FFFF"
+                  className="cursor-pointer"
+                  onClick={() => saveListing()}
+                />
+              )}
             </>
-          }
-
+          )}
         </div>
-        <div className="view" onClick={() => { redirect(`${id}/media`) }}>
+        <div
+          className="view"
+          onClick={() => {
+            redirect(`${id}/media`);
+          }}
+        >
           View More
         </div>
       </div>
 
-      <p className="title">
-        {
-          list.title
-        }
-      </p>
-      <p className="price">
-        ${list.price}
-      </p>
+      <p className="title">{list.title}</p>
+      <p className="price">&#x20A6; {list.price}</p>
 
       <p className="description">
-        {/* {
-          truncate(list.description, 50)
-        } */}
-        <LocationMarker /> {list.location}
+        <LocationMarker size="16px" />{" "}
+        {truncate(formatLocation(list.location), 40)}
       </p>
 
-      <div className="enquireNow" onClick={() => { redirect(id) }}> 
+      <div
+        className="enquireNow"
+        onClick={() => {
+          redirect(id);
+        }}
+      >
         Enquire Now
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default Listing
+export default Listing;

@@ -5,19 +5,17 @@ export const Container = styled.div`
     width: 100%;
     padding: 20px;
     border: 1px solid white;
-    border-radius: 10px;
+    border-radius: 10px;    
     
     &:hover{
         border: 1px solid rgb(200,200,200);
     }
 
     @media (max-width: 700px){
-        padding: 0;
+        border: 1px solid rgb(200,200,200);
+        padding: 1em;
         margin:0 0  20px;
-
-        &:hover{
-        border: none;
-    }
+       
     }
 
     .profile{
@@ -34,7 +32,7 @@ export const Container = styled.div`
 
         h4{
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 500;
         }
     }
 

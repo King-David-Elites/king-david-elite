@@ -149,6 +149,7 @@ const Navbar = ({ bg, sticky, active }) => {
     {
       no: 11,
       title: "Help & FAQs",
+      link: "/help"
     },
     {
       no: 12,
@@ -158,7 +159,7 @@ const Navbar = ({ bg, sticky, active }) => {
     {
       no: 13,
       title: "Contact Us",
-      link: "",
+      link: "/contact",
     },
     {
       no: 14,
@@ -170,7 +171,7 @@ const Navbar = ({ bg, sticky, active }) => {
       no: 15,
       icon: <FaUserCircle size={20} />,
       title: "Log Out",
-      link: "/",
+      link: "/login",
     },
   ];
 

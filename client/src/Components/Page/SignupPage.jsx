@@ -133,6 +133,9 @@ const SignUpPage = () => {
 
         </div>
 
+        {/* <p className="forgot">
+          Forgot password? <span className="red">Click here</span>
+        </p> */}
         <p className="account">
           Already have an account?{" "}
           <Link to="/login">

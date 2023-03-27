@@ -84,8 +84,7 @@ color: #000000;
     margin:2px 10px;
 
     .term{
-        height: 21px;
-        padding-right:4rem;
+        padding-left:.5rem;
         font-size:14px;
 
     span{
@@ -94,10 +93,7 @@ color: #000000;
 
 
 }
-.check{
-    width:15px;
-    margin-left:3em;
-    }
+
 }
 
 .red{
