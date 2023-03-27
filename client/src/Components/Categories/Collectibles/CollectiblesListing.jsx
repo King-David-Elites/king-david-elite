@@ -206,23 +206,7 @@ const CollectiblesListing = () => {
           setLoading={setLoading}
           getTotalData={getTotalData}
           background={theme.color}
-        />
-        {/* <GridContainer>
-          {collectibleData.map((c, index) => {
-            return (
-              <Container key={index}>
-                <div className="image">
-                  <img src={c.img} alt="" className="relative" />
-                  <div className="view" onClick={() => redirect(c.id)}>
-                    View More
-                  </div>
-                </div>
-                <p className="price">&#x20A6; {c.price}</p>
-                <p className="description">{c.name}</p>
-              </Container>
-            );
-          })}
-        </GridContainer> */}
+        />       
       </Body>
       <Banner category="Collectibles" />
       <Text color="black" fontSize="0.8rem" margin="2em">
