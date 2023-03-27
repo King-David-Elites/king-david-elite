@@ -9,7 +9,10 @@ const initialState = {
     profilePicture: JSON.parse(localStorage.getItem('user'))?.profilePicture ?? null,
     createdAt: JSON.parse(localStorage.getItem('user'))?.createdAt ?? ' ',
     status: 'silver',
-    listWithUs: false
+    listWithUs: false,
+    luxuryServiceType: '',
+    exclusiveEvent: {},
+    daycation: {}
 }
 
 export default (state = initialState, action) => {
@@ -25,12 +28,17 @@ export default (state = initialState, action) => {
                 lastName: action.payload.lastName,
                 email: action.payload.email,
                 profilePicture: action.payload.profilePicture,
-                createdAt: action.payload.createdAt
+                createdAt: action.payload.createdAt,
+
             };
         case (userActions.SET_PACKAGE_PLAN):
             return { ...state, status: action.payload }
         case (userActions.SET_LIST_WITH_US):
-            return {...state, listWithUs: action.payload}
+            return { ...state, listWithUs: action.payload }
+        case (userActions.SET_EXCLUSIVE_EVENT):
+            return { ...state, exclusiveEvent: action.payload }
+        case (userActions.SET_LUXURY_SERVICE_TYPE):
+            return { ...state, luxuryServiceType: action.payload }
         default:
             return state;
     }

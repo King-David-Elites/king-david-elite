@@ -18,7 +18,7 @@ export const Dropdown = styled.select`
         border-radius: 0.2em;
         
         @media (min-width: ${theme.breakPoint['tablet']}) {
-            margin:${props => props.margin ? props.margin : "1.5em 0em"};
+            margin:${props => props.margin ? props.margin : "0em"};
             width:${props => props.width ? props.width : "300px"}; 
             height: 40px;
             font-size:17px;
