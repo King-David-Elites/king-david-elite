@@ -25,6 +25,7 @@ import {
   getCartItems,
   addToCartItems,
   removeCartItems,
+  clearCartItems,
 } from "../../../infrastructure/api/user/userRequest";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
@@ -49,7 +50,7 @@ const EachCollectible = ({ active }) => {
         scrollToRef(top);
       })
       .catch((err) => {
-        getAList()
+        getAList();
         console.error(err);
       });
 
@@ -68,14 +69,43 @@ const EachCollectible = ({ active }) => {
   }, [cartItems]);
 
   const getCarts = async () => {
-    if (cartItems === []) {
+    // DELETES CART ITEMS FROM DATABASE IF ALL CART ITEM QUANITIY = 0
+    if (cartItems.length > 0) {
+      let count = 0;
+      cartItems.forEach((item) => {
+        count += item.quantity;
+      });
+      if (count === 0) {
+        await clearCartItems();
+      }
+    }
+
+    if (cartItems.length === 0) {
+      let mockCart;
       await getCartItems();
-      setCartItems(requestCartItems());
+      mockCart = requestCartItems();
+      console.log(mockCart);
+      if (mockCart.length > 0) {
+        setCartItems(mockCart);
+      }
+      if (
+        mockCart.find((item) => String(item.itemData._id) === id) !== undefined
+      ) {
+        quantity = mockCart.find((item) => String(item.itemData._id) === id);
+        if (numb !== quantity.quantity) {
+          setNumb(quantity.quantity);
+        }
+      }
     } else {
       if (
         cartItems.find((item) => String(item.itemData) === id) !== undefined
       ) {
         quantity = cartItems.find((item) => String(item.itemData) === id);
+        if (numb !== quantity.quantity) {
+          setNumb(quantity.quantity);
+        }
+      } else {
+        quantity = cartItems.find((item) => String(item.itemData._id) === id);
         if (numb !== quantity.quantity) {
           setNumb(quantity.quantity);
         }

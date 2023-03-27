@@ -118,15 +118,13 @@ export const getListings = async (page, category, setListing, setLoading) => {
   return response;
 };
 
-export const getCartItems = async (body) => {
-  let response;
+export const getCartItems = async () => {    
   await axios
     .get(`${globalApi}/carts/`,setConfig())
-    .then((resp) => {      
+    .then((resp) => {            
       localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles))     
     })
-    .catch((err) => console.error(err));
-  return response;
+    .catch((err) => console.error(err));  
 };
 
 export const addToCartItems = async (body) => {  
@@ -145,6 +143,15 @@ export const removeCartItems = async (body) => {
     .then((resp) => {
       services.toast.success("Removed successfully");     
       localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles)) 
+    })
+    .catch((err) => console.error(err));  
+};
+
+export const clearCartItems = async () => {    
+  await axios
+    .patch(`${globalApi}/carts/clear`,{},setConfig())
+    .then((resp) => {            
+      console.log(resp.data)           
     })
     .catch((err) => console.error(err));  
 };
