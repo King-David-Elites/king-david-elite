@@ -70,6 +70,8 @@ const EachCollectible = ({ active }) => {
   const getCartItem = () => {
     if (cartItems.find((item) => String(item.itemData) === id) !== undefined) {
       quantity = cartItems.find((item) => String(item.itemData) === id);
+      console.log(numb)
+      console.log(quantity.quantity)
       if (numb !== quantity.quantity) {
         setNumb(quantity.quantity);
       }
@@ -82,11 +84,12 @@ const EachCollectible = ({ active }) => {
     setCartItems(requestCartItems());
   };
 
-  const removeFromCart = async () => {
-    removeCartItems({ collectibleId: id });
+  const removeFromCart = async () => {    
     if (numb > 0) {
       setNumb(numb - 1);
     }
+    await removeCartItems({ collectibleId: id });
+    setCartItems(requestCartItems());
   };
 
   return (
@@ -174,7 +177,7 @@ const EachCollectible = ({ active }) => {
             <div className="border-b-2 mt-10 md:mt-20"></div>
 
             <div className="flex gap-12 mt-10 md:mt-20">
-              {quantity.quantity === 0 ? (
+              {numb === 0 ? (
                 <>
                   <MainButton
                     background="#737373"
