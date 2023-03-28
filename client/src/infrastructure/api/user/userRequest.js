@@ -58,6 +58,7 @@ export const setConfig = () => {
 };
 
 export const getStates = async (countryIso, setStateData) => {
+  console.log("fetching...")
   var headers = new Headers();
   headers.append(
     "X-CSCAPI-KEY",
@@ -82,6 +83,9 @@ export const getStates = async (countryIso, setStateData) => {
 };
 
 export const getCities = async (countryIso, stateIso, setCityData) => {
+  console.log("Fetching cities...")
+  console.log(stateIso);
+  console.log(countryIso);
   var headers = new Headers();
   headers.append(
     "X-CSCAPI-KEY",
@@ -100,6 +104,8 @@ export const getCities = async (countryIso, stateIso, setCityData) => {
   )
     .then((response) => response.text())
     .then((result) => {
+      console.log(result)      
+      console.log("loaded!")
       setCityData(JSON.parse(result));
     })
     .catch((error) => console.log("error", error));

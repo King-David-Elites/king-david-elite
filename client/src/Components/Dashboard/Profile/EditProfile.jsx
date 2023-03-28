@@ -123,7 +123,6 @@ const EditProfile = ({ mainData }) => {
       await services.api.userRequests
         .updateUserProfile(userDetails)
         .then((res) => {
-          console.log(userDetails);
           localStorage.setItem("user", JSON.stringify(res.data));
           setEditUserProfile(res.data);
           setLoader(false);

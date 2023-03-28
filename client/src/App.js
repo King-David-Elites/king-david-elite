@@ -63,10 +63,11 @@ import Pricing from './Components/Categories/LuxuryService/Pricing';
 import CollectiblesListing from './Components/Categories/Collectibles/CollectiblesListing';
 import EachCollectible from './Components/Categories/Collectibles/EachCollectible';
 import Cart from './Components/Categories/Collectibles/Cart';
+import CheckoutPage from './Components/Page/CheckoutPage';
 
 function App() {
   const queryClient = new QueryClient();
-  const mainData = useContextAPI()  
+  const mainData = useContextAPI()
   const token = localStorage.getItem("token")
 
   return (
@@ -116,6 +117,7 @@ function App() {
             <Route path="/dashboard/wallet/deposit" element={<Deposit />} />
             <Route path='/dashboard/wallet/transfer/confirm' element={<Transfer2 />} />
             <Route path="/about" element={<About />} />
+            <Route path="/luxury-service/checkout" element={<CheckoutPage />} />
             <Route path="/help" element={<Help />} />
             <Route path='/success' element={<SuccessPage />} />
             <Route path="/help/earning" element={<Earning />} />

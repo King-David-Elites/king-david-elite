@@ -4,6 +4,7 @@ import TextareaInput from "../inputs/TextareaInput";
 import ImageInput from "../inputs/ImageInput";
 import VideoInput from "../inputs/VideoInput";
 import PriceDropdownInput from "../inputs/PriceDropdownInput";
+import RadioInput from "../inputs/RadioInput";
 
 const FormikControl = ({ control, ...rest }) => {
     switch (control) {
@@ -27,6 +28,8 @@ const FormikControl = ({ control, ...rest }) => {
             return <VideoInput margin="0em 0em 1.5em 0em" {...rest} />;
         case "price":
             return <PriceDropdownInput margin="0em 0em 1.5em 0em" {...rest} />;
+        case 'radio':
+            return <RadioInput {...rest} />
         default:
             return null;
     }

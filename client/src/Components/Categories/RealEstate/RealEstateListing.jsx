@@ -1,6 +1,6 @@
 import {
   Adjustments,
-  Search,  
+  Search,
 } from "heroicons-react";
 import React, { useRef, useEffect, useCallback } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
@@ -28,7 +28,7 @@ import {
   graduallyAppear,
   graduallyDisAppear,
 } from "../Cars/AnimationOrder";
-import { getListings } from "../../../infrastructure/api/user/userRequest";
+import { getCities, getListings, getStates } from "../../../infrastructure/api/user/userRequest";
 import { motion } from "framer-motion";
 import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
@@ -38,13 +38,12 @@ import PaginationButtons from "../../PaginationButtons/PaginationButtons";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const RealEstateListing = () => {
+const RealEstateListing = ({ mainData }) => {
   const top = useRef(null);
   const up = useRef(null);
   const [listing, setListing] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
-
   const [loader, setLoader] = useState(false);
   const [estateId, setEstateId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear);
@@ -57,6 +56,22 @@ const RealEstateListing = () => {
   const [view, setView] = useState("Swimming Pool");
   const [stage, setStage] = useState(0);
   const [activeNav, setActiveNav] = useState(false);
+  const [changing, setChanging] = useState(false);
+  const [stateData, setStateData] = useState([]);
+  const [cityData, setCityData] = useState([]);
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [isos, setIsos] = useState({
+    countryIso: "",
+    stateIso: "",
+    cityId: ""
+  })
+
+  useEffect(() => {
+    setStateData(stateData)
+    setCityData(cityData)
+  }, [changing])
 
   const handleInput = (e) => {
     set_minValue(e.minValue);
@@ -77,6 +92,7 @@ const RealEstateListing = () => {
   useEffect(() => {
     scrollToRef(top);
   }, []);
+
 
   const views = [
     {
@@ -101,6 +117,22 @@ const RealEstateListing = () => {
     },
   ];
 
+
+  const getStateIso = (name) => {
+    var stateObject = stateData.find((state) => state.name === name);
+    setCityData([]);
+    setIsos({ ...isos, stateIso: stateObject["iso2"] });
+    getCities(isos["countryIso"], stateObject["iso2"], setCityData);
+    setChanging(!changing);
+  };
+
+  const getCityId = (name) => {
+    var cityObject = cityData.find((city) => city.name === name);
+    setIsos({ ...isos, cityId: cityObject["id"] });
+    setChanging(!changing);
+  };
+
+
   const searchListing = () => {
     setQuery(query);
     setTitle(title);
@@ -115,8 +147,24 @@ const RealEstateListing = () => {
       .catch((err) => console.log(err));
   };
 
+  const getCountryIso = (name) => {
+    var countryObject = mainData.countryData.find(
+      (country) => country.name === name
+    );
+    setStateData([])
+    setIsos({ ...isos, countryIso: countryObject["iso2"] });
+    getStates(countryObject["iso2"], setStateData);
+    setChanging(!changing)
+  };
+
+  // const handleChange = (e) => {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+  //   setUserInfo({ ...userInfo, [name]: value });
+  //   setChanging(!changing);
+  // };
+
   const getTotalData = async (page) => {
-    scrollToRef(up);
     let totalListing = await getListings(
       page,
       "real-estate",
@@ -156,7 +204,7 @@ const RealEstateListing = () => {
   }, [animate]);
   return (
     <>
-      {stage == 1 && (
+      {stage === 1 && (
         <div className="p-2 w-[100vw] md:hidden top-0 bottom-0 h-[100%] bg-white transition-[1s] z-20">
           <div className="p-4">
             <div className="relative w-full lg:max-w-sm flex flex-col gap-6">
@@ -168,19 +216,78 @@ const RealEstateListing = () => {
                 />
                 <p className="font-bold text-[20px]">Filters</p>
               </div>
-              {/* <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
-              <option>Location</option>
-              <option>Laravel 9 with React</option>
-              <option>React with Tailwind CSS</option>
-              <option>React With Headless UI</option>
-            </select> */}
               <h3 className="font-bold">Location</h3>
-              <input
-                type="text"
-                className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
-                onClick={() => setQuery("location")}
-                onChange={(e) => setTitle(e.target.value)}
-              />
+              <select
+                className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
+                name="Country"
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                  getCountryIso(e.target.value);
+                }}
+              >
+                <option value="Country">None</option>
+                {mainData.countryData.map((country) => {
+                  return (
+                    <>
+                      <option key={country.id} value={country.name}>
+                        {country.name}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
+
+              <div className="input">
+                {stateData.length > 0 && (
+                  <>
+                    <label htmlFor="state">State</label>
+                    <select
+                      name="state"
+                      onChange={(e) => {
+                        setState(e.target.value)
+                        getStateIso(e.target.value);
+                      }}
+                    >
+                      <option value="State">None</option>
+                      {stateData?.map((state) => {
+                        return (
+                          <>
+                            <option key={state.id} value={state.name}>
+                              {state.name}
+                            </option>
+                          </>
+                        );
+                      })}
+                    </select>
+                  </>
+                )}
+              </div>
+
+              <div className="input">
+                {cityData.length > 0 && (
+                  <>
+                    <label htmlFor="city">City</label>
+                    <select
+                      name="city"
+                      onChange={(e) => {
+                        setCity(e.target.value);
+                        getCityId(e.target.value);
+                      }}
+                    >
+                      <option value="City">None</option>
+                      {cityData?.map((city) => {
+                        return (
+                          <>
+                            <option key={city.id} value={city.name}>
+                              {city.name}
+                            </option>
+                          </>
+                        );
+                      })}
+                    </select>
+                  </>
+                )}
+              </div>
 
               <h3 className="font-bold">Title</h3>
               <input
@@ -195,11 +302,10 @@ const RealEstateListing = () => {
                 {views.map((v, i) => {
                   return (
                     <span
-                      className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${
-                        view == v.title
-                          ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center`
-                          : ""
-                      }`}
+                      className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title
+                        ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center`
+                        : ""
+                        }`}
                       key={i}
                       onChange={(e) => setTitle(e.target.value)}
                       onClick={() => {
@@ -301,7 +407,7 @@ const RealEstateListing = () => {
         </div>
       )}
 
-      {stage == 0 && (
+      {stage === 0 && (
         <>
           <Navbar active={1} />
           <nav
@@ -324,12 +430,83 @@ const RealEstateListing = () => {
                       <p className="font-bold text-[20px]">Filters</p>
                     </div>
                     <h3 className="font-bold">Location</h3>
-                    <input
+                    <select
+                      className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
+                      name="Country"
+                      onChange={(e) => {
+                        setCountry(e.target.value);
+                        getCountryIso(e.target.value);
+                      }}
+                    >
+                      <option value="Country">None</option>
+                      {mainData.countryData.map((country) => {
+                        return (
+                          <>
+                            <option key={country.id} value={country.name}>
+                              {country.name}
+                            </option>
+                          </>
+                        );
+                      })}
+                    </select>
+                    
+                    <div className="input">
+                      {stateData.length > 0 && (
+                        <>
+                          <label htmlFor="state">State</label>
+                          <select
+                            name="state"
+                            onChange={(e) => {
+                              setState(e.target.value)
+                              getStateIso(e.target.value);
+                            }}
+                          >
+                            <option value="State">None</option>
+                            {stateData?.map((state) => {
+                              return (
+                                <>
+                                  <option key={state.id} value={state.name}>
+                                    {state.name}
+                                  </option>
+                                </>
+                              );
+                            })}
+                          </select>
+                        </>
+                      )}
+                    </div>
+
+                    <div className="input">
+                      {cityData.length > 0 && (
+                        <>
+                          <label htmlFor="city">City</label>
+                          <select
+                            name="city"
+                            onChange={(e) => {
+                              setCity(e.target.value);
+                              getCityId(e.target.value);
+                            }}
+                          >
+                            <option value="City">None</option>
+                            {cityData?.map((city) => {
+                              return (
+                                <>
+                                  <option key={city.id} value={city.name}>
+                                    {city.name}
+                                  </option>
+                                </>
+                              );
+                            })}
+                          </select>
+                        </>
+                      )}
+                    </div>
+                    {/* <input
                       type="text"
                       className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
                       onClick={() => setQuery("location")}
                       onChange={(e) => setTitle(e.target.value)}
-                    />
+                    /> */}
 
                     <h3 className="font-bold">Title</h3>
                     <input
@@ -344,11 +521,10 @@ const RealEstateListing = () => {
                       {views.map((v, i) => {
                         return (
                           <span
-                            className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${
-                              view == v.title
-                                ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center`
-                                : ""
-                            }`}
+                            className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title
+                              ? `rounded-md h-[8%]  bg-theme-color hover:opacity-[100%] items-center`
+                              : ""
+                              }`}
                             key={i}
                             onChange={(e) => setTitle(e.target.value)}
                             onClick={() => {
