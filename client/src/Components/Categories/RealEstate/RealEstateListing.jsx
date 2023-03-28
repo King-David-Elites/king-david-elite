@@ -61,17 +61,17 @@ const RealEstateListing = ({ mainData }) => {
   const [cityData, setCityData] = useState([]);
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
-  const [city, setCity] = useState("");  
+  const [city, setCity] = useState("");
   const [isos, setIsos] = useState({
-    countryIso:"", 
-    stateIso:"",
-    cityId:""
+    countryIso: "",
+    stateIso: "",
+    cityId: ""
   })
 
-  useEffect(()=>{
+  useEffect(() => {
     setStateData(stateData)
     setCityData(cityData)
-  },[changing])
+  }, [changing])
 
   const handleInput = (e) => {
     set_minValue(e.minValue);
@@ -90,7 +90,7 @@ const RealEstateListing = ({ mainData }) => {
   };
 
   useEffect(() => {
-    scrollToRef(top);    
+    scrollToRef(top);
   }, []);
 
 
@@ -127,8 +127,8 @@ const RealEstateListing = ({ mainData }) => {
   };
 
   const getCityId = (name) => {
-    var cityObject = cityData.find((city) => city.name === name);    
-    setIsos({ ...isos, cityId: cityObject["id"] });       
+    var cityObject = cityData.find((city) => city.name === name);
+    setIsos({ ...isos, cityId: cityObject["id"] });
     setChanging(!changing);
   };
 
@@ -151,7 +151,7 @@ const RealEstateListing = ({ mainData }) => {
     var countryObject = mainData.countryData.find(
       (country) => country.name === name
     );
-    setStateData([])    
+    setStateData([])
     setIsos({ ...isos, countryIso: countryObject["iso2"] });
     getStates(countryObject["iso2"], setStateData);
     setChanging(!changing)
@@ -164,7 +164,7 @@ const RealEstateListing = ({ mainData }) => {
   //   setChanging(!changing);
   // };
 
-  const getTotalData = async (page) => {    
+  const getTotalData = async (page) => {
     let totalListing = await getListings(
       page,
       "real-estate",
@@ -221,7 +221,7 @@ const RealEstateListing = ({ mainData }) => {
                 className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
                 name="Country"
                 onChange={(e) => {
-                  setCountry(e.target.value);                  
+                  setCountry(e.target.value);
                   getCountryIso(e.target.value);
                 }}
               >
@@ -270,7 +270,7 @@ const RealEstateListing = ({ mainData }) => {
                     <select
                       name="city"
                       onChange={(e) => {
-                        setCity(e.target.value);                        
+                        setCity(e.target.value);
                         getCityId(e.target.value);
                       }}
                     >
@@ -288,12 +288,6 @@ const RealEstateListing = ({ mainData }) => {
                   </>
                 )}
               </div>
-              {/* <input
-                type="text"
-                className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
-                onClick={() => setQuery("location")}
-                onChange={(e) => setTitle(e.target.value)}
-              /> */}
 
               <h3 className="font-bold">Title</h3>
               <input
@@ -440,7 +434,7 @@ const RealEstateListing = ({ mainData }) => {
                       className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
                       name="Country"
                       onChange={(e) => {
-                        setCountry(e.target.value);                        
+                        setCountry(e.target.value);
                         getCountryIso(e.target.value);
                       }}
                     >
@@ -455,6 +449,58 @@ const RealEstateListing = ({ mainData }) => {
                         );
                       })}
                     </select>
+                    
+                    <div className="input">
+                      {stateData.length > 0 && (
+                        <>
+                          <label htmlFor="state">State</label>
+                          <select
+                            name="state"
+                            onChange={(e) => {
+                              setState(e.target.value)
+                              getStateIso(e.target.value);
+                            }}
+                          >
+                            <option value="State">None</option>
+                            {stateData?.map((state) => {
+                              return (
+                                <>
+                                  <option key={state.id} value={state.name}>
+                                    {state.name}
+                                  </option>
+                                </>
+                              );
+                            })}
+                          </select>
+                        </>
+                      )}
+                    </div>
+
+                    <div className="input">
+                      {cityData.length > 0 && (
+                        <>
+                          <label htmlFor="city">City</label>
+                          <select
+                            name="city"
+                            onChange={(e) => {
+                              setCity(e.target.value);
+                              getCityId(e.target.value);
+                            }}
+                          >
+                            <option value="City">None</option>
+                            {cityData?.map((city) => {
+                              return (
+                                <>
+                                  <option key={city.id} value={city.name}>
+                                    {city.name}
+                                  </option>
+                                </>
+                              );
+                            })}
+                          </select>
+                        </>
+                      )}
+                    </div>
                     {/* <input
                       type="text"
                       className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
