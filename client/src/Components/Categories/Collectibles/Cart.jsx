@@ -24,7 +24,6 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
   const [changed, setChanged] = useState(false);
   const [loading, setLoading] = useState(true);
-  //   const [numb, setNumb] = useState(0);
 
   const getAList = useCallback(async (Id) => {
     let response;
@@ -44,14 +43,6 @@ const Cart = () => {
       .catch((err) => console.log(err));
     return response;
   }, []);
-
-  //   useEffect(() => {
-  //     if(cartDetails.length === cartItems.length){
-  //         console.log('loaded')
-  //         setLoading(false)
-  //         setLoading(loading);
-  //     }
-  //   }, [changed]);
 
   useEffect(() => {
     getCart();
@@ -81,7 +72,7 @@ const Cart = () => {
     let sum = 0;
     cartItems.forEach(async (item) => {
       let property;
-      if (item.itemData._id !== undefined) {        
+      if (item.itemData._id !== undefined) {
         property = await getAList(item.itemData._id);
         mockCartDetails.push({
           id: item.itemData._id,
@@ -101,7 +92,7 @@ const Cart = () => {
           title: property.title,
           price: property.price,
           quantity: item.quantity,
-        });        
+        });
         sum += parseInt(property.price) * parseInt(item.quantity);
         setTotal(sum);
         setCartDetails(mockCartDetails);
@@ -128,8 +119,8 @@ const Cart = () => {
     });
   };
 
-  const recheckRemoval = async (id, compare) => {    
-    requestCartItems().forEach((item) => {        
+  const recheckRemoval = async (id, compare) => {
+    requestCartItems().forEach((item) => {
       if (item.itemData._id !== undefined) {
         if (item.itemData._id === id) {
           if (item.quantity !== compare) {
@@ -138,7 +129,7 @@ const Cart = () => {
         }
       } else {
         if (item.itemData === id) {
-          if (item.quantity !== compare) {            
+          if (item.quantity !== compare) {
             getCartDetails(requestCartItems());
           }
         }
@@ -174,7 +165,7 @@ const Cart = () => {
           await removeCartItems({ collectibleId: id });
           recheckRemoval(id, compare);
         } else if (element.quantity === 1) {
-          setCartDetails((cartDetails) => { 
+          setCartDetails((cartDetails) => {
             return cartDetails.filter((item) => item.id !== id);
           });
           setTotal(total - parseInt(element.price));
@@ -182,15 +173,22 @@ const Cart = () => {
           recheckRemoval(id, compare);
         }
       }
-    });    
+    });
   };
 
   const deleteCart = async (id) => {
-    setCartDetails((cartDetails) => {
-      return cartDetails.filter((item) => item.id !== id);
+    let sum;
+    cartDetails.forEach(async (item) => {
+      if (item.id === id) {
+        sum =
+          total - parseInt(item.price) * parseInt(item.quantity);        
+        setCartDetails((cartDetails) => {
+          return cartDetails.filter((item) => item.id !== id);
+        });
+        setTotal(sum);
+        await deleteCartItems({ collectibleId: id });
+      }
     });
-    setChanged(!changed);
-    await deleteCartItems({ collectibleId: id });
   };
 
   return (
