@@ -8,65 +8,76 @@ import {
   Input,
   Text,
   FilterBox,
-  Body,  
+  Body,
 } from "./Cars.Style";
 import Navbar from "../../Navbar/Navbar";
 import MainButton from "../../buttons/MainButton";
 import Banner from "../../Banner/Banner";
-import {
-  Search,
-  Adjustments,  
-} from "heroicons-react";
+import { Search, Adjustments } from "heroicons-react";
 import Footer from "../../Footer/Footer";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { getListings } from "../../../infrastructure/api/user/userRequest";
 import { GridContainer } from "../../Listing/Listing.styled";
+import PaginationButtons from "../../PaginationButtons/PaginationButtons";
 import Listing from "../../Listing/Listing";
-import { CarAnimation, graduallyAppear, graduallyDisAppear } from "./AnimationOrder";
+import { SpinnerCircular } from "spinners-react";
+import theme from "../../../application/utils/Theme";
+import {
+  CarAnimation,
+  graduallyAppear,
+  graduallyDisAppear,
+} from "./AnimationOrder";
 import { motion } from "framer-motion";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const CarsListing = ( ) => {
-  const top = useRef(null)  
+const CarsListing = () => {
+  const top = useRef(null);
+  const up = useRef(null);
   const [carId, setCarId] = useState(1);
-  const [animation, setAnimation] = useState(graduallyAppear)
-  const [listing, setListing] = useState([])
+  const [animation, setAnimation] = useState(graduallyAppear);
+  const [listing, setListing] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
 
-  const animate = useCallback(()=>{
-    var timer1
-    var timer2
+  const animate = useCallback(() => {
+    var timer1;
+    var timer2;
     timer1 = setTimeout(() => {
       if (carId < CarAnimation.length) {
-        clearTimeout(timer2)
-        clearTimeout(timer1)
-        setAnimation(graduallyDisAppear)
+        clearTimeout(timer2);
+        clearTimeout(timer1);
+        setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear)
-          setCarId(carId + 1)
-        }, [500])
-      }
-      else if (carId === CarAnimation.length) {
-        clearTimeout(timer2)
-        clearTimeout(timer1)
-        setAnimation(graduallyDisAppear)
+          setAnimation(graduallyAppear);
+          setCarId(carId + 1);
+        }, [500]);
+      } else if (carId === CarAnimation.length) {
+        clearTimeout(timer2);
+        clearTimeout(timer1);
+        setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear)
-          setCarId(1)
-        }, [500])
+          setAnimation(graduallyAppear);
+          setCarId(1);
+        }, [500]);
       }
-    },[8000])
-  },[carId])
+    }, [8000]);
+  }, [carId]);
 
   useEffect(() => {
     scrollToRef(top);
-    getListings(page,"cars",setListing)
   }, []);
 
+  const getTotalData = async (page) => {
+    scrollToRef(up);
+    let totalListing = await getListings(page, "cars", setListing, setLoading);
+
+    return totalListing;
+  };
+
   useEffect(() => {
-    animate()
-  },[animate])  
+    animate();
+  }, [animate]);
 
   return (
     <>
@@ -102,29 +113,58 @@ const CarsListing = ( ) => {
         </HeroSection>
       </Background>
 
-      <Body>
+      <Body ref={up}>
         <Text fontSize="1rem" fontWeight="700" color="black">
           Explore Luxury Automobiles
         </Text>
-
-        <GridContainer>
-          {
-            listing.length > 0 ?
+        {loading ? (
+          <>
+            <SpinnerCircular
+              color="white"
+              className="flex justify-center"
+              secondaryColor={theme.color}
+              size={50}
+              thickness={150}
+            />
+          </>
+        ) : (
+          <GridContainer>
+            {listing.length > 0 ? (
               listing.map((items) => {
-                return (
-                  // <RealEstate key={items._id} {...items} />
+                return (                  
                   <Listing key={items._id} list={items} />
                 );
               })
-              : <h4 className="md:text-lg text-sm font-semibold italic">No Automobile listing available</h4>
-          }
-
-        </GridContainer>
+            ) : (
+              <h4 className="md:text-lg text-sm font-semibold italic">
+                No Automobile listing available
+              </h4>
+            )}
+          </GridContainer>
+        )}
+        <PaginationButtons
+          range={[1, 2, 3]}
+          pagination={3}
+          page={page}
+          setPage={setPage}
+          loading={loading}
+          setLoading={setLoading}
+          getTotalData={getTotalData}
+          background={theme.color}
+        />
       </Body>
       <Banner category="Cars" />
       <Text color="black" fontSize="0.8rem" margin="2em">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Discover the epitome of luxury automobile with King David Elites. Our Platform offers a collection of exclusive high-end vehicles, including sleek sport cars and powerful SUVs, taliored to the society's elite. Our easy and secure payment system allows for direct transfer to verified vendors or though our 1% transaction fee escrow account, which comes with professional check-ups and luxurious inspection services by our expert technicians. Make a lasting statement whereveryou go with our unparalleled selection. At King David Elites, our standard of class is unmatched, and our dedication to luxury is unparalleled. 
+        Discover the epitome of luxury automobile with King David Elites. Our
+        Platform offers a collection of exclusive high-end vehicles, including
+        sleek sport cars and powerful SUVs, taliored to the society's elite. Our
+        easy and secure payment system allows for direct transfer to verified
+        vendors or though our 1% transaction fee escrow account, which comes
+        with professional check-ups and luxurious inspection services by our
+        expert technicians. Make a lasting statement whereveryou go with our
+        unparalleled selection. At King David Elites, our standard of class is
+        unmatched, and our dedication to luxury is unparalleled.
       </Text>
       <Footer />
     </>

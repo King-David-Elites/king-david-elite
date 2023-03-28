@@ -3,8 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { X } from "heroicons-react";
 
-const ImageDisplay = ({ property, setDisplayImg, currentIndex }) => {
-    console.log(currentIndex)
+const ImageDisplay = ({ property, setDisplayImg, currentIndex }) => {    
   return (
     <>
       <div className="ImgContainer">

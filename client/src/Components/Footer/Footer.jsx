@@ -43,7 +43,7 @@ const Footer = () => {
                     <List onClick={() => navigate('/real-estate')}>Real Estates</List>
                     <List onClick={() => navigate('/cars')}>Cars</List>
                     <List onClick={() => navigate('/luxury-service')}>Luxury Service</List>
-                    <List onClick={() => navigate('/collectibles')}>Collectibles</List>
+                    <List onClick={() => navigate('/collectible')}>Collectibles</List>
                 </Section>
                 <Section>
                     <Head>Business</Head>

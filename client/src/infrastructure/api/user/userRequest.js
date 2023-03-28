@@ -1,5 +1,6 @@
 import axios from "axios";
 import globalApi from "../../../api";
+import services from "../../../ioc/services";
 
 const BASEURL = "https://kde.cyclic.app";
 
@@ -108,12 +109,61 @@ export const getListings = async (page, category, setListing, setLoading) => {
   let response;
   await axios
     .get(`${globalApi}/listings/all?page=${page}&category=${category}`)
-    .then((resp) => {      
-      setListing(resp.data.listings);  
+    .then((resp) => {
+      setListing(resp.data.listings);
       setLoading(false);
-      response = resp.data.noOfListings       
+      response = resp.data.noOfListings;
     })
     .catch((err) => console.error(err));
-    return response
+  return response;
 };
 
+export const getCartItems = async () => {    
+  await axios
+    .get(`${globalApi}/carts/`,setConfig())
+    .then((resp) => {            
+      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles))     
+    })
+    .catch((err) => console.error(err));  
+};
+
+export const addToCartItems = async (body) => {  
+  await axios
+    .patch(`${globalApi}/carts/add/`, body, setConfig())
+    .then((resp) => {
+      services.toast.success("Added successfully");           
+      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles))       
+    })
+    .catch((err) => console.error(err));  
+};
+
+export const removeCartItems = async (body) => {  
+  await axios
+    .patch(`${globalApi}/carts/remove/`, body, setConfig())
+    .then((resp) => {
+      services.toast.success("Removed successfully");     
+      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles)) 
+    })
+    .catch((err) => console.error(err));  
+};
+
+export const clearCartItems = async () => {    
+  await axios
+    .patch(`${globalApi}/carts/clear`,{},setConfig())
+    .then((resp) => {            
+      console.log(resp.data)           
+    })
+    .catch((err) => console.error(err));  
+};
+
+export const requestCartItems = () => {
+  let response;    
+  response = localStorage.getItem('cartItems')
+  if(response === null){
+    response = []
+  }
+  else{
+    response = JSON.parse(response)
+  }  
+  return response;
+};

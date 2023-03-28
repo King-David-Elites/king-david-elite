@@ -10,7 +10,8 @@ import { useNavigate } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
 import ImageDisplay from "./ImageDisplay";
 import notFound from "./notFound.png";
-import Loader from "../../Loader/Loader";
+import theme from "../../../application/utils/Theme";
+import { SpinnerCircular } from "spinners-react";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const MediaView = () => {
@@ -22,14 +23,12 @@ const MediaView = () => {
   const [loading, setLoading] = useState(true);
   const [displayImg, setDisplayImg] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const getAList = useCallback(() => {
-    console.log("fetching");
+  const getAList = useCallback(() => {    
     axios
       .get(`${globalApi}/listings/each/${id}`)
       .then((resp) => {
         setProperty(resp.data);
-        setLoading(false);
-        console.log(resp.data);
+        setLoading(false);        
       })
       .catch((err) => console.error(err));
 
@@ -92,7 +91,13 @@ const MediaView = () => {
           <div className="imageGallery">
             {loading ? (
               <>
-                <Loader height="100%" absolute=""/>
+                <SpinnerCircular
+                  color="white"
+                  className="flex justify-center"
+                  secondaryColor={theme.color}
+                  size={50}
+                  thickness={150}
+                />
               </>
             ) : (
               <>
@@ -125,7 +130,7 @@ const MediaView = () => {
             ) : (
               <>
                 {property.videos.length > 0 ? (
-                  <>                    
+                  <>
                     {property.videos.map((video) => {
                       return (
                         <>

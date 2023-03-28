@@ -101,6 +101,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/collectible/:id" element={<EachCollectible />} />
             <Route path="/collectible" element={<CollectiblesListing active={4} />} />
+            <Route path="/collectible/:id/media" element={<MediaView active={0} />} />
             <Route path="/cars/:id" element={<EachCars active={0} />} />
             <Route path="/cars/:id/media" element={<MediaView active={0} />} />
             <Route path="/others" element={<OtherSections />} />

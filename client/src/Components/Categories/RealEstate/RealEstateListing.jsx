@@ -1,10 +1,6 @@
 import {
   Adjustments,
-  Search,
-  ChevronLeft,
-  ChevronDoubleLeft,
-  ChevronRight,
-  ChevronDoubleRight,
+  Search,  
 } from "heroicons-react";
 import React, { useRef, useEffect, useCallback } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
@@ -16,7 +12,7 @@ import {
   Body,
   FilterBox,
 } from "../Cars/Cars.Style";
-import { SearchSection, SearchC, PaginationButtons } from "./RealEstate.Style";
+import { SearchSection, SearchC } from "./RealEstate.Style";
 import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
 import "../../Navbar/Navbar.css";
@@ -38,19 +34,15 @@ import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
 import theme from "../../../application/utils/Theme";
 import { BiArrowBack } from "react-icons/bi";
+import PaginationButtons from "../../PaginationButtons/PaginationButtons";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const RealEstateListing = () => {
   const top = useRef(null);
+  const up = useRef(null);
   const [listing, setListing] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
-  let totalListing = 0;
-  const [buttonRange, setButtonRange] = useState([1, 2, 3]);
-  const PAGINATION = 3;
-  const [flipRight, setFlipRight] = useState(false);
-  const [flipLeft, setFlipLeft] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [loader, setLoader] = useState(false);
@@ -65,10 +57,6 @@ const RealEstateListing = () => {
   const [view, setView] = useState("Swimming Pool");
   const [stage, setStage] = useState(0);
   const [activeNav, setActiveNav] = useState(false);
-  const [start, setStart] = useState(false);
-  const [end, setEnd] = useState(false);
-  const [previous, setPrevious] = useState(false);
-  const [next, setNext] = useState(false);
 
   const handleInput = (e) => {
     set_minValue(e.minValue);
@@ -88,7 +76,6 @@ const RealEstateListing = () => {
 
   useEffect(() => {
     scrollToRef(top);
-    resetPage(page);
   }, []);
 
   const views = [
@@ -128,79 +115,17 @@ const RealEstateListing = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    setButtonRange(resetButtonRange(buttonRange));
-  }, [flipRight, flipLeft]);
-
-  const resetButtonRange = (buttonRange) => {
-    let mockButtonRange = buttonRange;
-    for (var i = 0; i < buttonRange.length; i++) {
-      if (flipRight) {
-        mockButtonRange = [
-          buttonRange[0] + 1,
-          buttonRange[1] + 1,
-          buttonRange[2] + 1,
-        ];
-        setFlipRight(false);
-        break;
-      } else if (flipLeft) {
-        mockButtonRange = [
-          buttonRange[0] - 1,
-          buttonRange[1] - 1,
-          buttonRange[2] - 1,
-        ];
-        setFlipLeft(false);
-        break;
-      }
-    }
-    return mockButtonRange;
-  };
-
-  const resetPage = async (page) => {
-    setLoading(true);
-    setPage(page);
-    totalListing = await getListings(
+  const getTotalData = async (page) => {
+    scrollToRef(up);
+    let totalListing = await getListings(
       page,
       "real-estate",
       setListing,
       setLoading
     );
-    let pageValue = 0;
 
-    if (totalListing !== 0) {
-      if (totalListing % PAGINATION > 0) {
-        pageValue = Math.floor(totalListing / PAGINATION) + 1;
-      } else if (totalListing % PAGINATION === 0) {
-        pageValue = totalListing / PAGINATION;
-      }
-    } else {
-      pageValue = totalListing;
-    }
-    setTotalPage(pageValue);
+    return totalListing;
   };
-
-  useEffect(() => {
-    if (page > 1 && page < buttonRange.length) {
-      console.log(totalPage);
-      setPrevious(true);
-    } else if (page === 1) {
-      setPrevious(false);
-    }
-    if (page === 1 || page <= buttonRange.length) {
-      setStart(false);
-    } else if (page > buttonRange.length && page <= totalPage) {
-      setStart(true);
-      setPrevious(true);
-    }
-    if (totalPage > buttonRange.length) {
-      setNext(true);
-      setEnd(true);
-    }
-    if (page === totalPage) {
-      setNext(false);
-      setEnd(false);
-    }
-  }, [page, totalPage]);
 
   const animate = useCallback(() => {
     var timer1;
@@ -563,7 +488,7 @@ const RealEstateListing = () => {
             </HeroSection>
           </Background>
 
-          <Body>
+          <Body ref={up}>
             <Text fontSize="1rem" fontWeight="700" color="black">
               Luxury Properties For Sale
             </Text>
@@ -615,73 +540,16 @@ const RealEstateListing = () => {
                   })}
               </GridContainer>
             )}
-
-            <PaginationButtons>
-              {/* <div
-                className={start ? "button" : "disable"}
-                onClick={() => {
-                  if (start) {
-                    resetPage(1);
-                    setButtonRange([1,2,3])
-                  }
-                }}
-              >
-                <ChevronDoubleLeft />
-              </div> */}
-              <div
-                className={previous ? "button" : "disable"}
-                onClick={() => {
-                  if (page === buttonRange[0] && previous) {
-                    setFlipLeft(true);
-                  }
-                  if (previous) {
-                    resetPage(page - 1);
-                  }
-                }}
-              >
-                <ChevronLeft />
-              </div>
-              {buttonRange.map((item, i) => {
-                return (
-                  <>
-                    <div
-                      className={
-                        page === buttonRange[i] ? "button" : "unselect"
-                      }
-                      onClick={() => {
-                        resetPage(buttonRange[i]);
-                      }}
-                    >
-                      {item}
-                    </div>
-                  </>
-                );
-              })}
-              <div
-                className={next ? "button" : "disable"}
-                onClick={() => {
-                  if (page === buttonRange[buttonRange.length - 1] && next) {
-                    setFlipRight(true);
-                  }
-                  if (next) {
-                    resetPage(page + 1);
-                  }
-                }}
-              >
-                <ChevronRight />
-              </div>
-              {/* <div
-                className={end ? "button" : "disable"}
-                onClick={() => {
-                  if (end) {
-                    resetPage(totalPage);
-                    setButtonRange([totalPage-2,totalPage-1,totalPage])
-                  }
-                }}
-              >
-                <ChevronDoubleRight />
-              </div> */}
-            </PaginationButtons>
+            <PaginationButtons
+              range={[1, 2, 3]}
+              pagination={3}
+              page={page}
+              setPage={setPage}
+              loading={loading}
+              setLoading={setLoading}
+              getTotalData={getTotalData}
+              background={theme.color}
+            />
           </Body>
           <Banner category="Real Estate" />
           <Text color="black" fontSize="0.8rem" margin="2em" textAlign="center">
@@ -689,9 +557,9 @@ const RealEstateListing = () => {
             Indulge in opulence with King David Elites. Our online marketplace
             boast a collection of exquiste, high-end properties that exude
             luxury living.From stunning homes to sprawling estates and opulent
-            apartment,our offering cater to all your residential,investment and
+            apartment, our offering cater to all your residential,investment and
             for-profit needs. Our secure payment system ensures hassle-free
-            transactions, with the option to transfer funds directly to verifies
+            transactions, with the option to transfer funds directly to verified
             vendors or through our 1% transaction fee escrow account which
             further secures your funds and grants you access to our team of
             experts who provide professional advisory services and arranges

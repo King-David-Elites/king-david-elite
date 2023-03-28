@@ -3,14 +3,13 @@ import { Heart, HeartOutline, LocationMarker } from "heroicons-react";
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { FaCheckCircle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import globalApi from "../../api";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 import { Container } from "./Listing.styled";
 import services from "../../ioc/services";
 
-const Listing = ({ list, type }) => {
+const Listing = ({ list, type }) => {  
   const [loved, setLoved] = useState(false);
   const [id, setId] = useState(list._id);
   const postedBy = list.postedBy?.email;
@@ -24,8 +23,7 @@ const Listing = ({ list, type }) => {
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
         if (resp.data.status == 1) {
-          services.toast.success("You liked this post");
-          console.log(resp);
+          services.toast.success("You liked this post");          
         }
       })
       .catch((err) => services.toast.error(err));
@@ -37,8 +35,7 @@ const Listing = ({ list, type }) => {
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
         if (resp.data.status == 0) {
-          services.toast.success("You unlike this post");
-          console.log(resp);
+          services.toast.success("You unlike this post");          
         }
       })
       .catch((err) => console.log(err));
@@ -54,12 +51,12 @@ const Listing = ({ list, type }) => {
   };
 
   const formatLocation = (location) => {
-    let list=null
-    if(location){
+    let list = null;
+    if (location) {
       list = location.split("#");
       list = list.join(", ");
     }
-    
+
     return list;
   };
 
@@ -71,10 +68,21 @@ const Listing = ({ list, type }) => {
   };
   return (
     <Container>
-      <div className="profile">
-        <img src={list.postedBy.profilePicture} alt="" />
-        <h4>{truncate(fullName, 25)}</h4>
-      </div>
+      {list.category.title !== "Collectibles" && (
+        <Link
+          to={
+            postedBy !== userEmail
+              ? `/profile/${list.postedBy?._id}`
+              : "/profile"
+          }
+          className="btn"
+        >
+          <div className="profile">
+            <img src={list.postedBy.profilePicture} alt="" />
+            <h4>{truncate(fullName, 25)}</h4>
+          </div>
+        </Link>
+      )}
       <div className="image">
         <img src={list.images[0]} alt="" className="relative" />
         <div
