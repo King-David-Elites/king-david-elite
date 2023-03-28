@@ -67,7 +67,7 @@ import CheckoutPage from './Components/Page/CheckoutPage';
 
 function App() {
   const queryClient = new QueryClient();
-  const mainData = useContextAPI()  
+  const mainData = useContextAPI()
   const token = localStorage.getItem("token")
 
   return (

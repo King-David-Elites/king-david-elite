@@ -170,7 +170,6 @@ const BoatCruisePage = () => {
         navigate('/luxury-service/checkout');
     }
 
-
     return (
         <>
             <Return />
