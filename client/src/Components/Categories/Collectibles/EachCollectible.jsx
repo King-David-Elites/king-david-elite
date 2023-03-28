@@ -10,10 +10,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import TimeAgo from "timeago-react";
 import globalApi from "../../../api";
 import { useGetUserDetails } from "../../../application/hooks/queryhooks";
-import {
-  requestCartItems,
-  setConfig,
-} from "../../../infrastructure/api/user/userRequest";
 import Banner from "../../Banner/Banner";
 import MainButton from "../../buttons/MainButton";
 import Footer from "../../Footer/Footer";
@@ -26,6 +22,8 @@ import {
   addToCartItems,
   removeCartItems,
   clearCartItems,
+  requestCartItems,
+  setConfig,
 } from "../../../infrastructure/api/user/userRequest";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
@@ -83,8 +81,7 @@ const EachCollectible = ({ active }) => {
     if (cartItems.length === 0) {
       let mockCart;
       await getCartItems();
-      mockCart = requestCartItems();
-      console.log(mockCart);
+      mockCart = requestCartItems();      
       if (mockCart.length > 0) {
         setCartItems(mockCart);
       }
