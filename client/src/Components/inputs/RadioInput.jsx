@@ -3,11 +3,12 @@ import theme from "../../application/utils/Theme.jsx";
 import { Field, ErrorMessage } from "formik";
 import InputLayout from "./InputLayout";
 import { useState } from "react";
+import { InputField } from "./MainInput.jsx";
 
-const InputField = styled.input`
+const RadioField = styled.input`
     appearance: none;
     background-color: #fff;
-    color: currentColor;
+    color: ${theme.color};
     width: 1.15em;
     height: 1.15em;
     border: 0.15em solid #F2BE5C;
@@ -15,10 +16,9 @@ const InputField = styled.input`
     display: grid;
     place-content: center;
     cursor: pointer;
-    border: 2px solid red;
 
     &::before {
-        content: "";
+    content: "";
      height: 0.65em;
      border-radius: 50%;
      transform: scale(0);
@@ -31,18 +31,6 @@ const InputField = styled.input`
     }
     `;
 
-const InputLabel = styled.label`
-        color: black;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        white-space: nowrap;
-      
-        @media (min-width: ${theme.breakPoint['tablet']}) {
-           font-size: 13px;
-           font-weight: 700;
-        }
-    `;
 
 const TextError = styled.span`
         color: red;
@@ -61,28 +49,42 @@ const RadioInput = (props) => {
     const [selectedOption, setSelectedOption] = useState(options[0]?.value);
 
     const handleOptionChange = (event) => {
-        const value = event.target.value;
+        const value = event.target.name;
         setSelectedOption(value);
         onChange(value);
     };
     return (
         <InputLayout label={label} name={name} >
             <Field name={name} >
-                {({ field }) => {
+                {({ field }) =>
                     options.map((option) => (
-                        <InputField type='radio' id={option.value}
-                            name={option.name}
+                        <RadioField type='radio' id={option.value}
+                            name={option.value}
                             value={option.value}
                             checked={selectedOption === option.value}
-                            onChange={handleOptionChange} {...rest} {...field} />
+                            onChange={(e) => handleOptionChange(e.target.name)} {...rest} {...field} />
                     ))
-                }
+
                 }
             </Field>
             <ErrorMessage name={name} component={TextError} />
         </InputLayout>
+        // <InputLayout label={label} name={name} >
+        //     <Field name={name} >
+        //         {({ field }) =>
+        //             options.map((option) => (
+        //                 <RadioField type='radio' id={options.map(i => i.value)}
+        //                     name={option.value}
+        //                     value={option.value}
+        //                     checked={selectedOption === option.value}
+        //                     onChange={(e) => handleOptionChange(e.target.name)} {...rest} {...field} />
+        //             ))
+        //         }
+        //     </Field>
+        //     <ErrorMessage name={name} component={TextError} />
+        // </InputLayout>
     );
 }
 
 export default RadioInput;
-export { InputLabel, InputField, TextError };
+export { RadioField }

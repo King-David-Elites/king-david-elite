@@ -12,8 +12,9 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDaycation, setLuxuryServiceType } from '../../application/store/actions/user';
 import { MdOutlineRemoveCircle } from 'react-icons/md';
-import { InputField } from '../inputs/MainInput';
 import InputLayout from '../inputs/InputLayout';
+import { InputField } from '../inputs/MainInput';
+import { RadioField } from '../inputs/RadioInput';
 
 const ExclusiveEventPage = () => {
     const [guestsName, setGuestsName] = useState('');
@@ -41,7 +42,7 @@ const ExclusiveEventPage = () => {
         message: '',
         spa: '',
         plan: plan,
-        price: plan === 'silver' ? 500000 : 700000 || plan === 'platinum' ? 900000 : 700000
+        price: 0
     }
 
     const guestDetailsInitialValues = {
@@ -62,7 +63,7 @@ const ExclusiveEventPage = () => {
     ];
 
     const options = [
-        { value: "mobileSession", label: "Mobile Session" },
+        { value: "mobileSession", label: "Mobile Session ~{\n} "},
         { value: "walkInSession", label: "Walk In Session" },
     ];
 
@@ -71,7 +72,6 @@ const ExclusiveEventPage = () => {
 
     const handleOptionChange = (value) => {
         setSelectedOption(value);
-        // Do something with the selected option value
     };
 
     const displayInput = [
@@ -124,20 +124,6 @@ const ExclusiveEventPage = () => {
             options: mealPreferences
         },
         {
-            label: options[0].label,
-            name: options[0].value,
-            control: 'radio',
-            options: options,
-            onChange: handleOptionChange
-        },
-        {
-            label: options[1].label,
-            name: options[1].value,
-            control: 'radio',
-            options: options,
-            onChange: handleOptionChange
-        },
-        {
             label: "Message",
             name: "message",
             control: "textarea2",
@@ -175,18 +161,17 @@ const ExclusiveEventPage = () => {
             contact: values.contact,
             drinkingPreference: values.drinkingPreference,
             mealPreference: values.mealPreference,
-            spa: values.spa,
+            spa: selectedOption,
             plan: plan,
             message: values.message,
-            price: plan === 'silver' ? 500000 : 700000 || plan === 'platinum' ? 900000 : 700000
+            price: (plan === 'silver' && 500000) ||  (plan === 'diamond' && 700000) || (plan === 'platinum' && 900000)
         }
         const payload = {
             data: daycation,
         }
-        dispatch(setLuxuryServiceType('daycation'));
+        dispatch(setLuxuryServiceType('daycation'));    
         dispatch(setDaycation(payload));
-        console.log(payload)
-        // navigate('/luxury-service/checkout');
+        navigate('/luxury-service/checkout');
     }
 
     const onSubmit = () => {
@@ -300,9 +285,9 @@ const ExclusiveEventPage = () => {
                                 }} width='100px' />
                             </InputLayout>
                         </div>
-                        <MainButton width='100px' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
-                    </form>
 
+                        <MainButton width='100px' marginTop='1em' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
+                    </form>
 
                     <Formik
                         initialValues={initialValues}
@@ -322,10 +307,27 @@ const ExclusiveEventPage = () => {
                                             placeholder={d.placeholder}
                                             options={d?.options}
                                             control={d.control}
-                                            onChange={d?.onChange} 
                                         />
                                     ))}
                                 </div>
+
+                                <div className='flex md:flex-row flex-col md:w-[50%] justify-between mr-4'>
+                                    <InputLayout label={options.map(i => i.label)} name={options.map(i => i.value)} >
+                                        <div className='flex justify-between'>
+                                            {
+                                                options.map((option) => (
+                                                    <RadioField type='radio' id={option.value}
+                                                        name={option.value}
+                                                        value={option.value}
+                                                        checked={selectedOption === option.value}
+                                                        onChange={(e) => handleOptionChange(e.target.name)} />
+                                                ))
+                                            }
+                                        </div>
+
+                                    </InputLayout>
+                                </div>
+
                                 <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
                                     <input type="checkbox" className="check cursor-pointer" />
                                     <p className="term text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>

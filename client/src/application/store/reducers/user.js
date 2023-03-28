@@ -12,7 +12,11 @@ const initialState = {
     listWithUs: false,
     luxuryServiceType: '',
     exclusiveEvent: {},
-    daycation: {}
+    daycation: {},
+    chauffeurRide: {},
+    boatCruise: {},
+    helicopterRide: {},
+    conciergeVacation: {},
 }
 
 export default (state = initialState, action) => {
@@ -39,6 +43,16 @@ export default (state = initialState, action) => {
             return { ...state, exclusiveEvent: action.payload }
         case (userActions.SET_LUXURY_SERVICE_TYPE):
             return { ...state, luxuryServiceType: action.payload }
+        case (userActions.SET_DAYCATION):
+            return { ...state, daycation: action.payload }
+        case (userActions.SET_CHAUFFEURRIDE):
+            return { ...state, chauffeurRide: action.payload }
+        case (userActions.SET_BOAT_CRUISE):
+            return { ...state, boatCruise: action.payload }
+        case (userActions.SET_HELICOPTER_RIDE):
+            return { ...state, helicopterRide: action.payload }
+        case (userActions.SET_CONCEIGE_VACATION):
+            return { ...state, conciergeVacation: action.payload }
         default:
             return state;
     }

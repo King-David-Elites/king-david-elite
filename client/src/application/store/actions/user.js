@@ -6,6 +6,10 @@ export const SET_LIST_WITH_US = 'SET_LIST_WITH_US';
 export const SET_EXCLUSIVE_EVENT = 'SET_EXCLUSIVE_EVENT';
 export const SET_LUXURY_SERVICE_TYPE = 'SET_LUXURY_SERVICE_TYPE';
 export const SET_DAYCATION = 'SET_DAYCATION';
+export const SET_CHAUFFEURRIDE = 'SET_CHAUFFEURRIDE';
+export const SET_BOAT_CRUISE = 'SET_BOAT_CRUISE';
+export const SET_HELICOPTER_RIDE = 'SET_HELICOPTER_RIDE'
+export const SET_CONCEIGE_VACATION = 'SET_CONCEIGE_VACATION'
 
 export const setUserRole = userRole => ({
     type: SET_USER_ROLE,
@@ -41,4 +45,24 @@ export const setLuxuryServiceType = luxuryServiceType => ({
 export const setDaycation = daycationDetails => ({
     type: SET_DAYCATION,
     payload: daycationDetails
+})
+
+export const setChauffeurRide = chauffeurDetails => ({
+    type: SET_CHAUFFEURRIDE,
+    payload: chauffeurDetails
+})
+
+export const setBoatCruise = boatCruiseDetails => ({
+    type: SET_BOAT_CRUISE,
+    payload: boatCruiseDetails
+})
+
+export const setHelicopterRide = helicopterRideDetails => ({
+    type: SET_HELICOPTER_RIDE,
+    payload: helicopterRideDetails
+})
+
+export const setConceigeVacation = conceigeVacationDetails => ({
+    type: SET_CONCEIGE_VACATION,
+    payload: conceigeVacationDetails
 })

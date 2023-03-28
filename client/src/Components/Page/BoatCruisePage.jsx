@@ -2,21 +2,27 @@ import { FaRegStar } from 'react-icons/fa';
 import kde_blackBg from '../Navbar/Image/kde_whiteBg.png'
 import { useFormik } from "formik";
 import MainButton from '../buttons/MainButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import boatCruise from '../Categories/LuxuryService/images/pics5.jpg'
 import InputLayout from '../inputs/InputLayout';
 import { InputField } from '../inputs/MainInput';
-import { Dropdown, Option } from '../inputs/DropdownInput';
-import { TextArea } from '../inputs/TextareaInput'
+import { Form, Formik } from "formik";
+import * as Yup from 'yup';
 import { useState } from 'react';
 import { MdOutlineRemoveCircle } from 'react-icons/md';
 import Return from '../Navbar/Return';
+import FormikControl from '../formik/FormikControl';
+import { useDispatch, useSelector } from 'react-redux';
+import { setBoatCruise, setLuxuryServiceType } from '../../application/store/actions/user';
 
 const BoatCruisePage = () => {
     const [guestsName, setGuestsName] = useState('');
     const [guestsEmail, setGuestEmail] = useState('');
     const [items, setItems] = useState([]);
     const [validationError, setValidationError] = useState('');
+    const status = useSelector(state => state.user.status);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const initialValues = {
         guestsName: '',
@@ -43,30 +49,6 @@ const BoatCruisePage = () => {
         { key: "Vegetarian", value: "Vegetarian" },
         { key: "Non-Vegetarian", value: "Non-Vegetarian" },
     ];
-    const createBoatCruise = () => {
-
-    }
-
-    const validate = (values) => {
-        let errors = {};
-        if (!values.guestsName) errors.guestsName = "Required";
-        if (!values.numberOfGuest) errors.numberOfGuest = "Required";
-        if (!values.guestEmail) {
-            errors.guestEmail = "Required";
-        } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.guestEmail)
-        ) {
-            errors.guestEmail = "Invalid email format";
-        }
-        if (!values.contact) errors.contact = "Required";
-        if (!values.date) errors.date = "Required";
-        if (!values.time) errors.time = "Required";
-        if (!values.emergencyContactName) errors.emergencyContactName = "Required";
-        if (!values.emergencyNumber) errors.emergencyNumber = "Required";
-        if (!values.mealPreference) errors.mealPreference = "Required";
-        if (!values.drinkingPreference) errors.drinkingPreference = "Required";
-        return errors;
-    };
 
     const handleRemove = (index) => {
         const list = [...items]
@@ -74,22 +56,120 @@ const BoatCruisePage = () => {
         setItems(list)
     }
 
+    const guestDetailsInitialValues = {
+        guestsEmail: '',
+        guestsName: ''
+    }
+
+    const validationSchema = Yup.object({
+        numberOfGuest: Yup.string().required("Number of guest is required"),
+        emergencyContactNumber: Yup.string().required("Emergency Number is required"),
+        emergencyContactName: Yup.string().required("Emergency Contact Name is required"),
+        contact: Yup.string().required("Contact is required"),
+        date: Yup.string().required("Date is required"),
+        time: Yup.string().required("Time is required"),
+        drinkingPreference: Yup.string().required("Drinking preference is required"),
+        mealPreference: Yup.string().required("Meal preference is required"),
+    });
+
+    const guestValidationSchema = Yup.object({
+        guestsName: Yup.string().required("Guest Name is required"),
+        guestsEmail: Yup.string().email('Must be a valid email').required("E-mail is required"),
+    })
+
     const onSubmit = () => {
-        if (guestsName.trim() === '' || guestsEmail.trim() === '') {
-            setValidationError('Both are required');
-        } else {
-            setValidationError('');
-            setItems([...items, { guestsName, guestsEmail }]);
-            setGuestsName('');
-            setGuestEmail('');
-        }
+        setItems([...items, { guestsName, guestsEmail }]);
+        setGuestsName('');
+        setGuestEmail('');
     }
 
     const formik = useFormik({
-        initialValues,
-        createBoatCruise,
-        validate,
+        guestDetailsInitialValues,
+        onSubmit,
+        guestValidationSchema,
     });
+
+    const displayInput = [
+        {
+            label: "Number of Guest (s)",
+            name: "numberOfGuest",
+            control: "others",
+            type: 'number',
+        },
+        {
+            label: "Contact Information",
+            name: "contact",
+            control: "others",
+            placeholder: "+234",
+        },
+        {
+            label: "Preferred Date for Boat Cruise",
+            name: "date",
+            type: 'date',
+            control: "others"
+        },
+        {
+            label: "Pickup Time",
+            name: "time",
+            type: 'time',
+            control: "others",
+        },
+        {
+            label: "Emergency Number",
+            name: "emergencyContactNumber",
+            control: 'others',
+            placeholder: "+234",
+        },
+        {
+            label: "Emergency Contact Name",
+            name: "emergencyContactName",
+            control: 'others',
+            placeholder: "+234",
+        },
+        {
+            label: "Drinking Preference",
+            name: "drinkingPreference",
+            control: 'select',
+            options: drinkingPreferences,
+        },
+        {
+            label: "Meal Preference",
+            name: "mealPreference",
+            control: 'select',
+            options: mealPreferences
+        },
+        {
+            label: "Message",
+            name: "message",
+            control: "textarea2",
+            placeholder: 'kindly drop personalised info here'
+        },
+    ];
+
+    const createBoatCruise = (values) => {
+        const boatCruise = {
+            guestsEmail: items.map(i => i.guestsEmail),
+            guestsName: items.map(i => i.guestsName),
+            contact: values.contact,
+            date: values.date,
+            numberOfGuest: values.numberOfGuest,
+            emergencyContactNumber: values.emergencyContactNumber,
+            emergencyContactName: values.emergencyContactName,
+            time: values.time,
+            drinkingPreference: values.drinkingPreference,
+            mealPreference: values.mealPreference,
+            plan: status,
+            message: values.message,
+            price: (status === 'silver' && 500000) || (status === 'diamond' && 850000) || (status === 'platinum' && 1200000)
+        }
+        const payload = {
+            data: boatCruise,
+        }
+        dispatch(setLuxuryServiceType('boat-cruise'));
+        dispatch(setBoatCruise(payload));
+        navigate('/luxury-service/checkout');
+    }
+
 
     return (
         <>
@@ -153,97 +233,38 @@ const BoatCruisePage = () => {
                         <MainButton width='100px' type='button' onClick={(e) => onSubmit(e)}>Add Guest</MainButton>
                     </form>
 
-                    <form onSubmit={formik.handleSubmit} className='mt-6'>
-                        <InputLayout label='Number of Guest(s)' name='numberOfGuest'>
-                            <InputField type='number' width='50%' placeholder='0' />{formik.errors.numberOfGuest ? (
-                                <div className=" text-[red] opacity-40">
-                                    {formik.errors.numberOfGuest}
-                                </div>
-                            ) : null}
-                        </InputLayout>
-
-                        <InputLayout label='Contact Information' name='contact'>
-                            <InputField width='50%' placeholder='+(234)' />{formik.errors.contact ? (
-                                <div className=" text-[red] opacity-40">
-                                    {formik.errors.contact}
-                                </div>
-                            ) : null}
-                        </InputLayout>
-
-                        <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-                            <InputLayout label='Preferred Date for Boat Cruise' name='date'>
-                                <InputField type='date' />{formik.errors.date ? (
-                                    <div className=" text-[red] opacity-40">
-                                        {formik.errors.date}
-                                    </div>
-                                ) : null}
-                            </InputLayout>
-
-                            <InputLayout label='Time' name='time'>
-                                <InputField type='time' />{formik.errors.time ? (
-                                    <div className=" text-[red] opacity-40">
-                                        {formik.errors.time}
-                                    </div>
-                                ) : null}
-                            </InputLayout>
-                        </div>
-
-                        <InputLayout label='Emergency Contact Information' name='emergencyContact'>
-                            <InputField width='20px' placeholder='+(234)' />{formik.errors.emergencyContact ? (
-                                <div className=" text-[red] opacity-40">
-                                    {formik.errors.emergencyContact}
-                                </div>
-                            ) : null}
-                        </InputLayout>
-
-                        <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-                            <InputLayout label='Drinking Preference' name='drinkingPreference'>
-                                <Dropdown margin='0.5em 0em'>
-                                    {drinkingPreferences.map((a) => (
-                                        <Option key={a.value} value={a.value}> {a.key}</Option>
+                    <Formik
+                        initialValues={initialValues}
+                        validationSchema={validationSchema}
+                        onSubmit={createBoatCruise}
+                        validateOnChange={false}
+                    >
+                        {formik => (
+                            <Form>
+                                <div className="grid gap-6 pt-4 md:justify-center md:gap-x-[8rem] md:gap-y-8 md:grid-cols-2 md:w-[45%] w-full">
+                                    {displayInput.map((d, index) => (
+                                        <FormikControl
+                                            key={index * 0.5}
+                                            label={d.label}
+                                            name={d.name}
+                                            type={d?.type}
+                                            placeholder={d.placeholder}
+                                            options={d?.options}
+                                            control={d.control}
+                                        />
                                     ))}
-                                </Dropdown>
-                                {formik.errors.drinkingPreference ? (
-                                    <div className=" text-[red] opacity-40">
-                                        {formik.errors.drinkingPreference}
-                                    </div>
-                                ) : null}
-                            </InputLayout>
-
-                            <InputLayout label='Meal Preference' name='mealPreference'>
-                                <Dropdown margin='0.5em 0em'>
-                                    {mealPreferences.map((a) => (
-                                        <Option key={a.value} value={a.value}> {a.key}</Option>
-                                    ))}
-                                </Dropdown>
-                                {formik.errors.mealPreference ? (
-                                    <div className=" text-[red] opacity-40">
-                                        {formik.errors.mealPreference}
-                                    </div>
-                                ) : null}
-                            </InputLayout>
-                        </div>
-
-
-                        <InputLayout label='Message' name='message'>
-                            <TextArea placeholder='kindly explicitly describe your expectations and intended activities and destinations' width='50%' />
-                            {formik.errors.message ? (
-                                <div className=" text-[red] opacity-40">
-                                    {formik.errors.message}
                                 </div>
-                            ) : null}
-                        </InputLayout>
 
-                        <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
-                            <input type="checkbox" className="check cursor-pointer" />
-                            <p className="term mt-3 text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
-                        </div>
-
-                        <div className="flex my-[30px] gap-[10px]">
-                            <MainButton>Submit</MainButton>
-                        </div>
-                    </form>
-
+                                <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
+                                    <input type="checkbox" className="check cursor-pointer" />
+                                    <p className="term text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
+                                </div>
+                                <div className="flex my-[30px] gap-[10px]">
+                                    <MainButton type='submit'>Submit</MainButton>
+                                </div>
+                            </Form>
+                        )}
+                    </Formik>
 
                     <div className='w-[300px] h-[100vh] fixed top-0 right-36 bottom-0 md:block hidden'>
                         <img src={boatCruise}
