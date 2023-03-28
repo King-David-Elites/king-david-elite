@@ -151,7 +151,6 @@ const CheckoutPage = () => {
                                 <p>FullName: <span>{exclusiveEvent.data.fullName} | {exclusiveEvent.data.email}</span></p>
                                 <p>Emergency Contact Information: <span>{exclusiveEvent.data.emergencyNumber}</span></p>
                                 <p>Phone Number: <span>{exclusiveEvent.data.phoneNumber}</span></p>
-                                <p>Number Of Guest: <span>{helicopterRide.data.numberOfGuest}</span></p>
                             </div>
 
                             {
