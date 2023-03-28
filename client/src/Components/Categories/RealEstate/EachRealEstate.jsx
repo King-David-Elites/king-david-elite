@@ -36,7 +36,10 @@ const EachRealEstate = ({ active }) => {
         setLoading(false);
         setProperty(resp.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        getAList()
+        console.error(err);
+      });
 
     axios
       .patch(`${globalApi}/listings/view/${id}`, {}, setConfig())
