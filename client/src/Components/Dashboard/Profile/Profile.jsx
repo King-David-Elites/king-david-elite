@@ -36,6 +36,11 @@ const ProfileAsElement = ({ mainData }) => {
     stateIso: "",
     cityId: "",
   });
+
+  useEffect(() => {
+    getUser();
+  }, [mainData.userData]);
+  
   const [userInfo, setUserInfo] = useState({
     firstName: mainData.userData.firstName,
     lastName: mainData.userData.lastName,
@@ -47,10 +52,6 @@ const ProfileAsElement = ({ mainData }) => {
     city: "",
     locationISO: "",
   });
-
-  useEffect(() => {
-    getUser();
-  }, [mainData.userData]);
 
   useEffect(() => {
     setUserInfo({ ...userInfo, city });

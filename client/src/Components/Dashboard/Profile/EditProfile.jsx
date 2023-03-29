@@ -32,6 +32,10 @@ const EditProfile = ({ mainData }) => {
   const [file, setFile] = useState(mainData.userData.cover);
   const [loader, setLoader] = useState(false);
 
+  useEffect(()=>{
+    getUser()
+  },[])
+  
   const [initialValues, setInitialValues] = useState({
     firstName: mainData.userData.firstName,
     lastName: mainData.userData.lastName,
@@ -65,10 +69,6 @@ const EditProfile = ({ mainData }) => {
     phone2: "",
     cover: file || null,
   };
-
-  useEffect(()=>{
-    getUser()
-  },[])
 
   // const getSignedInUserDetails = async () => {
   //   await services.api.userRequests
