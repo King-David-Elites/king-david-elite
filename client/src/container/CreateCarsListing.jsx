@@ -24,8 +24,11 @@ const CreateCarListing = () => {
 
   const [userListings, setUserListings] = useState({
     title: "",
-    location: "somewhere",
+    location: "Abeokuta#Ogun#Nigeria",
+    locationISO: "76746#OG#NG",
+    category: "cars",
     description: "",
+    forRent:false,
     images: images,
     videos: videos,
     price: "",
