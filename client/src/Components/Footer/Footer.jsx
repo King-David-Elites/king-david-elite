@@ -88,7 +88,7 @@ const Footer = () => {
           {token ? (
             <>
               {data.userData?.accountType === 0 && (
-                <List onClick={() => navigate("/collectible")}>
+                <List onClick={() => navigate("/profile/upgrade")}>
                   List With Us
                 </List>
               )}
@@ -155,7 +155,7 @@ const Footer = () => {
           {token ? (
             <>
               {data.userData?.accountType === 0 && (
-                <List onClick={() => navigate("/collectible")}>
+                <List onClick={() => navigate("/profile/upgrade")}>
                   LIST WITH US
                 </List>
               )}
