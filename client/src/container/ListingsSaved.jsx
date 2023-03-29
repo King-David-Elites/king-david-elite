@@ -39,14 +39,14 @@ export default function ListingsSaved() {
     data.savedListing.length > 0 &&
       data.savedListing.map(async (item) => {
         console.log(item)
-        await getAList(String(item));
-        console.log(property)
-        mockListings.push(property);
-        setSavedListings(mockListings);
+        // await getAList(String(item));        
+        // mockListings.push(property);
+        // setSavedListings(mockListings);
         if(savedListings.length === data.savedListing.length){
-          setLoading(false);
+          // setLoading(false);
         }
       });    
+      // setLoading(false);
   };
 
   useEffect(()=>{

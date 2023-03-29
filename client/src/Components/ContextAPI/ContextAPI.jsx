@@ -3,17 +3,21 @@ import axios from "axios";
 import globalApi from "../../api";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 
-const useContextAPI = () => {  
+const useContextAPI = () => {
   const [mails, setMails] = useState([]);
   const [countryData, setCountryData] = useState([]);
-  const userData = JSON.parse(localStorage.getItem("user"));  
+  const userData = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState({});
 
   const getUser = async () => {
     await axios
       .get(`${globalApi}/users/me`, setConfig())
-      .then((resp) => {        
-        setUser(resp.data);        
+      .then((resp) => {
+        localStorage.setItem(
+          "user",
+          JSON.stringify(resp.data)
+        );        
+        setUser(resp.data);
       })
       .catch((err) => console.error(err));
   };
@@ -50,7 +54,7 @@ const useContextAPI = () => {
 
   const allCallBacks = useCallback(() => {
     email();
-    getUser();   
+    getUser();
     getCountry();
   }, []);
 
@@ -60,9 +64,9 @@ const useContextAPI = () => {
 
   return {
     user: user,
-    userData: userData,    
-    mails: mails,    
-    countryData: countryData,   
+    userData: userData,
+    mails: mails,
+    countryData: countryData,
   };
 };
 
