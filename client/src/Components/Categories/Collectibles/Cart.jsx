@@ -180,8 +180,7 @@ const Cart = () => {
     let sum;
     cartDetails.forEach(async (item) => {
       if (item.id === id) {
-        sum =
-          total - parseInt(item.price) * parseInt(item.quantity);        
+        sum = total - parseInt(item.price) * parseInt(item.quantity);
         setCartDetails((cartDetails) => {
           return cartDetails.filter((item) => item.id !== id);
         });
@@ -195,22 +194,55 @@ const Cart = () => {
     <div className="bg-[#f5f5f5] h-[100vh] overflow-auto">
       <Navbar active={6} />
       <div className="md:p-[8em] px-[1em] py-[4em] flex flex-col md:flex-row md:gap-5 gap-2 w-[100vw] ">
-        <div className="md:hidden block py-[5px] px-0 text-[18px] font-semibold mt-3">
+        {/* <div className="md:hidden block py-[5px] px-0 text-[18px] font-semibold mt-3">
           Cart ({cartDetails.length})
+        </div> */}
+        <div className="py-[5px] flex justify-between items-center px-0 text-[18px] font-semibold mt-3">
+          <div className="md:hidden block">Cart ({cartDetails.length})</div>
+          <div
+            className="md:hidden block"
+            onClick={async () => {
+              if (cartDetails.length > 0) {
+                setCartDetails([]);
+                setTotal(0);
+                await clearCartItems();
+              }
+            }}
+          >
+            Clear all
+          </div>
         </div>
         <GlobalContainer
           margin="10px 0"
           className="shadow-md p-1 flex flex-col justify-center items-center md:px-[1.5em] md:py-[0.5em] md:w-3/4 h-auto "
         >
-          <Text
-            color="black"
-            className="md:block w-full hidden"
-            padding="2px 0"
-            fontSize="18px"
-            font-weight="600"
-          >
-            Cart ({cartDetails.length})
-          </Text>
+          <div className="w-full flex justify-between items-center">
+            <Text
+              color="black"
+              padding="2px 0"
+              fontSize="18px"
+              font-weight="600"
+              className="md:block hidden"
+            >
+              <p>Cart ({cartDetails.length})</p>
+            </Text>
+            <Text
+              color="black"
+              padding="2px 0"
+              fontSize="16px"
+              font-weight="600"
+              onClick={async () => {
+                if (cartDetails.length > 0) {
+                  setCartDetails([]);
+                  setTotal(0);
+                  await clearCartItems();
+                }
+              }}
+              className="md:block cursor-pointer hidden"
+            >
+              <p>Clear all</p>
+            </Text>
+          </div>
           {loading ? (
             <>
               <SpinnerCircular
