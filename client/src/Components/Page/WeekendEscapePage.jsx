@@ -23,6 +23,8 @@ const ExclusiveEventPage = () => {
     const plan = useSelector(state => state.user.status);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [isChecked, setIsChecked] = useState(false);
+
 
     const handleRemove = (index) => {
         const list = [...items]
@@ -63,7 +65,7 @@ const ExclusiveEventPage = () => {
     ];
 
     const options = [
-        { value: "mobileSession", label: "Mobile Session ~{\n} "},
+        { value: "mobileSession", label: "Mobile Session ~{\n} " },
         { value: "walkInSession", label: "Walk In Session" },
     ];
 
@@ -164,12 +166,12 @@ const ExclusiveEventPage = () => {
             spa: selectedOption,
             plan: plan,
             message: values.message,
-            price: (plan === 'silver' && 500000) ||  (plan === 'diamond' && 700000) || (plan === 'platinum' && 900000)
+            price: (plan === 'silver' && 500000) || (plan === 'diamond' && 700000) || (plan === 'platinum' && 900000)
         }
         const payload = {
             data: daycation,
         }
-        dispatch(setLuxuryServiceType('daycation'));    
+        dispatch(setLuxuryServiceType('daycation'));
         dispatch(setDaycation(payload));
         navigate('/luxury-service/checkout');
     }
@@ -329,11 +331,14 @@ const ExclusiveEventPage = () => {
                                 </div>
 
                                 <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
-                                    <input type="checkbox" className="check cursor-pointer" />
+                                    <input type="checkbox" className="check cursor-pointer" checked={isChecked}
+                                        onChange={() => setIsChecked(!isChecked)}
+                                    />
                                     <p className="term text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
                                 </div>
+
                                 <div className="flex my-[30px] gap-[10px]">
-                                    <MainButton type='submit'>Submit</MainButton>
+                                    <MainButton className={` ${!isChecked ? "cursor-not-allowed" : "cursor-pointer"}`} disabled={!isChecked} type='submit'>Submit</MainButton>
                                 </div>
                             </Form>
                         )}

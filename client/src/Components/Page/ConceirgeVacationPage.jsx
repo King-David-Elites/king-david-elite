@@ -22,6 +22,8 @@ const ConceirgeVacationPage = () => {
     const [validationError, setValidationError] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [isChecked, setIsChecked] = useState(false);
+
 
     const initialValues = {
         message: '',
@@ -256,11 +258,14 @@ const ConceirgeVacationPage = () => {
                                 </div>
 
                                 <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
-                                    <input type="checkbox" className="check cursor-pointer" />
+                                    <input type="checkbox" className="check cursor-pointer" checked={isChecked}
+                                        onChange={() => setIsChecked(!isChecked)}
+                                    />
                                     <p className="term text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
                                 </div>
+
                                 <div className="flex my-[30px] gap-[10px]">
-                                    <MainButton type='submit'>Submit</MainButton>
+                                    <MainButton className={` ${!isChecked ? "cursor-not-allowed" : "cursor-pointer"}`} disabled={!isChecked} type='submit'>Submit</MainButton>
                                 </div>
                             </Form>
                         )}
