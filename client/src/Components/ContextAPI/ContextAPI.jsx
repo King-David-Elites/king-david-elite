@@ -1,23 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import globalApi from "../../api";
+import { requestUserData } from "../../infrastructure/api/user/userRequest";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 
 const useContextAPI = () => {
   const [mails, setMails] = useState([]);
   const [countryData, setCountryData] = useState([]);
-  const userData = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState({});
-
-  const getUser = async () => {
-    await axios
-      .get(`${globalApi}/users/me`, setConfig())
-      .then((resp) => {        
-        localStorage.setItem("user",JSON.stringify(resp.data));        
-        setUser(resp.data);
-      })
-      .catch((err) => console.error(err));
-  };
+  const userData = requestUserData(); 
 
   const getCountry = async () => {
     var headers = new Headers();
@@ -50,8 +40,7 @@ const useContextAPI = () => {
   };
 
   const allCallBacks = useCallback(() => {
-    email();
-    getUser();
+    email();    
     getCountry();
   }, []);
 
@@ -59,8 +48,7 @@ const useContextAPI = () => {
     allCallBacks();
   }, [allCallBacks]);
 
-  return {
-    user: user,
+  return {    
     userData: userData,
     mails: mails,
     countryData: countryData,

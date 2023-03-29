@@ -17,6 +17,7 @@ import Advanced_Verf_2 from "./Advanced_verf_2";
 import Advanced_Verf_3 from "./Advanced_Verf_3";
 import Verified from "./Verified";
 import Loader from "../../Loader/Loader";
+import { getUser } from "../../../infrastructure/api/user/userRequest";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -49,6 +50,7 @@ const ProfileAsElement = ({ mainData }) => {
 
   useEffect(() => {
     setUserInfo({ ...userInfo, city });
+    getUser();
   }, [city]);
 
   const position = useRef(null);
@@ -191,6 +193,7 @@ const MobileProfile = ({ mainData }) => {
 
   useEffect(() => {
     setUserInfo({ ...userInfo, city });
+    getUser();
   }, [city]);
   const position = useRef(null);
 

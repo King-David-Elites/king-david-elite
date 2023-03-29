@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   FooterSection,
   Section,
@@ -15,7 +15,7 @@ const Footer = () => {
   const navigate = useNavigate();
   const data = useContextAPI();
   useEffect(() => {
-    console.log(data.user);
+    console.log(data.userData);
   }, []);
 
   const redirectToTwitter = () => {
@@ -35,6 +35,8 @@ const Footer = () => {
       "http://www.linkedin.com/in/king-david-elites-371804256"
     );
   };
+
+  const token = localStorage.getItem("token");
   return (
     <>
       <FooterSection>
@@ -83,8 +85,18 @@ const Footer = () => {
         <Section>
           <Head>Business</Head>
           <List>Affiliate Marketing</List>
-          {data.user.accountType === 0 && (
-            <List onClick={() => navigate("/collectible")}>List With Us</List>
+          {token ? (
+            <>
+              {data.userData?.accountType === 0 && (
+                <List onClick={() => navigate("/collectible")}>
+                  List With Us
+                </List>
+              )}
+            </>
+          ) : (
+            <>
+              <List onClick={() => navigate("/login")}>List With Us</List>
+            </>
           )}
         </Section>
         <Section>
@@ -140,9 +152,19 @@ const Footer = () => {
         <Section>
           <Head>BUSINESS</Head>
           <List>AFFILIATE MARKETING</List>
-          {data.user.accountType === 0 && (
-            <List onClick={() => navigate("/collectible")}>LIST WITH US</List>
-          )}
+          {token ? (
+            <>
+              {data.userData?.accountType === 0 && (
+                <List onClick={() => navigate("/collectible")}>
+                  LIST WITH US
+                </List>
+              )}
+            </>
+          ) : (
+            <>
+              <List onClick={() => navigate("/login")}>LIST WITH US</List>
+            </>
+          )}          
         </Section>
         <Section>
           <Head>SOCIAL MEDIA</Head>

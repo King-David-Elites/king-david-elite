@@ -35,6 +35,29 @@ export const getSignedInUser = async () => {
   }
 };
 
+export const getUser = async () => {
+  await axios
+    .get(`${globalApi}/users/me`, setConfig())
+    .then((resp) => {
+      localStorage.setItem("user", JSON.stringify(resp.data));      
+    })
+    .catch((err) => {      
+      getUser()
+      console.error(err);
+    });
+};
+
+export const requestUserData = () => {
+  let response;
+  response = localStorage.getItem("user");
+  if (response === null || response === undefined) {
+    response = [];
+  } else {
+    response = JSON.parse(response);
+  }
+  return response;
+};
+
 export const updateUserProfile = async (userDetails) => {
   const res = await axios.patch(
     `${BASEURL}/users/update`,
@@ -157,7 +180,7 @@ export const clearCartItems = async () => {
 export const requestCartItems = () => {
   let response;
   response = localStorage.getItem("cartItems");
-  if (response === null) {
+  if (response === null || response === undefined) {
     response = [];
   } else {
     response = JSON.parse(response);

@@ -122,7 +122,7 @@ function App() {
             {/* <Route path="/help/benefits" element={<Benefits />} />           */}
             <Route path="/profile/verification" element={<Verification />} />            
             <Route path='/profile/edit' element={<EditProfile mainData={mainData} />} />
-            <Route path='/profile/upgrade' element={<UpgradeProfile mainData={mainData} />} />
+            <Route path='/profile/upgrade' element={<UpgradeProfile />} />
             <Route path="/profile/create-listings" element={<CreateListing />} />
             <Route path="/profile" element={<LoggedUser mainData={mainData} />} />
             <Route path="/profile/:id" element={<OtherUser />} />
