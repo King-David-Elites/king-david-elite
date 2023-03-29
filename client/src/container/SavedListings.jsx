@@ -1,6 +1,7 @@
 import ListingsSaved from "./ListingsSaved";
-// import Return from "../Components/Navbar/Return";
 import Navbar from "../Components/Navbar/Navbar";
+import Footer from "../Components/Footer/Footer";
+
 const SavedListings = () => {
   return (
     <>
@@ -8,6 +9,7 @@ const SavedListings = () => {
       <div className="flex w-full justify-center items-center pt-20">
         <ListingsSaved />
       </div>
+      <Footer />
     </>
   );
 };
