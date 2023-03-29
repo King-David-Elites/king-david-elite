@@ -13,6 +13,7 @@ import {
   addToCartItems,
   removeCartItems,
   clearCartItems,
+  deleteCartItems,
   requestCartItems,
   setConfig,
 } from "../../../infrastructure/api/user/userRequest";
@@ -21,8 +22,8 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState(requestCartItems());
   const [cartDetails, setCartDetails] = useState([]);
   const [total, setTotal] = useState(0);
-  const [changed, setChanged] = useState(false)
-//   const [numb, setNumb] = useState(0);
+  const [changed, setChanged] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getAList = useCallback(async (Id) => {
     let response;
@@ -43,20 +44,21 @@ const Cart = () => {
     return response;
   }, []);
 
-  useEffect(()=>{
-    setCartDetails(cartDetails)
-  },[changed])
-
   useEffect(() => {
     getCart();
   }, []);
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      getCart();
+    }
+  }, [cartItems]);
 
   const getCart = async () => {
     let mockCart = cartItems;
     if (mockCart.length === 0) {
       await getCartItems();
       mockCart = requestCartItems();
-      console.log(mockCart);
       if (mockCart.length > 0) {
         setCartItems(mockCart);
       }
@@ -80,6 +82,8 @@ const Cart = () => {
           quantity: item.quantity,
         });
         sum += parseInt(property.price) * parseInt(item.quantity);
+        setTotal(sum);
+        setCartDetails(mockCartDetails);
       } else {
         property = await getAList(item.itemData);
         mockCartDetails.push({
@@ -90,35 +94,101 @@ const Cart = () => {
           quantity: item.quantity,
         });
         sum += parseInt(property.price) * parseInt(item.quantity);
-        console.log(sum);
         setTotal(sum);
+        setCartDetails(mockCartDetails);
       }
     });
-    setCartDetails(mockCartDetails);
-  }; 
-
-  const addToCart = async (id) => {
-    cartDetails.forEach((element) => {
-      if (element.id == id) {
-        element.quantity += 1;
-      }
-    });
-    setChanged(!changed)
-    await addToCartItems({ collectibleId: id });    
-    // setCartItems(requestCartItems());
+    setLoading(false);
   };
 
-  const removeFromCart = async (id) => {
-    cartDetails.forEach((element) => {
-      if (element.id == id) {
-        if (element.quantity > 0) {
-          element.quantity -= 1;
+  const recheckAdd = async (id, compare) => {
+    requestCartItems().forEach((item) => {
+      if (item.itemData._id !== undefined) {
+        if (item.itemData._id === id) {
+          if (item.quantity !== compare) {
+            getCartDetails(requestCartItems());
+          }
+        }
+      } else {
+        if (item.itemData === id) {
+          if (item.quantity !== compare) {
+            getCartDetails(requestCartItems());
+          }
         }
       }
     });
-    setChanged(!changed)
-    await removeCartItems({ collectibleId: id });    
-    // setCartItems(requestCartItems());
+  };
+
+  const recheckRemoval = async (id, compare) => {
+    requestCartItems().forEach((item) => {
+      if (item.itemData._id !== undefined) {
+        if (item.itemData._id === id) {
+          if (item.quantity !== compare) {
+            getCartDetails(requestCartItems());
+          }
+        }
+      } else {
+        if (item.itemData === id) {
+          if (item.quantity !== compare) {
+            getCartDetails(requestCartItems());
+          }
+        }
+      }
+    });
+  };
+
+  const addToCart = async (id) => {
+    let compare;
+    let sum;
+    cartDetails.forEach((element) => {
+      if (element.id == id) {
+        element.quantity += 1;
+        compare = element.quantity;
+        sum = total + parseInt(element.price);
+        setTotal(sum);
+      }
+    });
+    await addToCartItems({ collectibleId: id });
+    recheckAdd(id, compare);
+  };
+
+  const removeFromCart = (id) => {
+    let compare;
+    let sum;
+    cartDetails.forEach(async (element) => {
+      if (element.id == id) {
+        if (element.quantity > 1) {
+          element.quantity -= 1;
+          compare = element.quantity;
+          sum = total - parseInt(element.price);
+          setTotal(sum);
+          await removeCartItems({ collectibleId: id });
+          recheckRemoval(id, compare);
+        } else if (element.quantity === 1) {
+          setCartDetails((cartDetails) => {
+            return cartDetails.filter((item) => item.id !== id);
+          });
+          setTotal(total - parseInt(element.price));
+          await deleteCartItems({ collectibleId: id });
+          recheckRemoval(id, compare);
+        }
+      }
+    });
+  };
+
+  const deleteCart = async (id) => {
+    let sum;
+    cartDetails.forEach(async (item) => {
+      if (item.id === id) {
+        sum =
+          total - parseInt(item.price) * parseInt(item.quantity);        
+        setCartDetails((cartDetails) => {
+          return cartDetails.filter((item) => item.id !== id);
+        });
+        setTotal(sum);
+        await deleteCartItems({ collectibleId: id });
+      }
+    });
   };
 
   return (
@@ -130,18 +200,18 @@ const Cart = () => {
         </div>
         <GlobalContainer
           margin="10px 0"
-          className="shadow-md p-3 flex flex-col justify-center items-center md:px-[1.5em] md:py-[0.5em] md:w-3/4 h-auto "
+          className="shadow-md p-1 flex flex-col justify-center items-center md:px-[1.5em] md:py-[0.5em] md:w-3/4 h-auto "
         >
           <Text
             color="black"
-            className="md:block hidden"
-            padding="5px 0"
+            className="md:block w-full hidden"
+            padding="2px 0"
             fontSize="18px"
             font-weight="600"
           >
             Cart ({cartDetails.length})
           </Text>
-          {cartDetails.length !== cartItems.length ? (
+          {loading ? (
             <>
               <SpinnerCircular
                 color="white"
@@ -156,7 +226,7 @@ const Cart = () => {
               {cartDetails.map((cart, i) => {
                 return (
                   <>
-                    <div key={i} className="border-t-2 my-8 w-full">
+                    <div key={i} className="border-t-2 my-6 w-full">
                       <div className="mt-3 flex gap-5 relative">
                         <div className="w-[80px] h-[80px]">
                           <img
@@ -177,7 +247,14 @@ const Cart = () => {
                       </p>
 
                       <div className="flex gap-5 mt-5 relative items-center">
-                        <FaTrashAlt size={20} color={theme.color} />
+                        <FaTrashAlt
+                          size={20}
+                          color={theme.color}
+                          onClick={() => {
+                            deleteCart(cart?.id);
+                          }}
+                          className="cursor-pointer"
+                        />
                         <p className="text-theme-color">REMOVE</p>
                         <div className="absolute right-1 flex gap-7">
                           <span

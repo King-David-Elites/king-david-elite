@@ -152,6 +152,7 @@ const RealEstateListing = ({ mainData }) => {
       (country) => country.name === name
     );
     setStateData([])
+    setCityData([])
     setIsos({ ...isos, countryIso: countryObject["iso2"] });
     getStates(countryObject["iso2"], setStateData);
     setChanging(!changing)
