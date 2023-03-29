@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   FooterSection,
   Section,
@@ -13,7 +13,10 @@ import useContextAPI from "../ContextAPI/ContextAPI";
 
 const Footer = () => {
   const navigate = useNavigate();
-  const userData = useContextAPI();
+  const data = useContextAPI();
+  useEffect(() => {
+    console.log(data.user);
+  }, []);
 
   const redirectToTwitter = () => {
     window.location.replace("https://twitter.com/kingdavidelites");
@@ -80,7 +83,7 @@ const Footer = () => {
         <Section>
           <Head>Business</Head>
           <List>Affiliate Marketing</List>
-          {userData.userData.accountType === 0 && (
+          {data.user.accountType === 0 && (
             <List onClick={() => navigate("/collectible")}>List With Us</List>
           )}
         </Section>
@@ -137,7 +140,7 @@ const Footer = () => {
         <Section>
           <Head>BUSINESS</Head>
           <List>AFFILIATE MARKETING</List>
-          {userData.userData.accountType === 0 && (
+          {data.user.accountType === 0 && (
             <List onClick={() => navigate("/collectible")}>LIST WITH US</List>
           )}
         </Section>

@@ -12,11 +12,8 @@ const useContextAPI = () => {
   const getUser = async () => {
     await axios
       .get(`${globalApi}/users/me`, setConfig())
-      .then((resp) => {
-        localStorage.setItem(
-          "user",
-          JSON.stringify(resp.data)
-        );        
+      .then((resp) => {        
+        localStorage.setItem("user",JSON.stringify(resp.data));        
         setUser(resp.data);
       })
       .catch((err) => console.error(err));
