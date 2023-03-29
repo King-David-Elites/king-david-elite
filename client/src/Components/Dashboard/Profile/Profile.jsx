@@ -21,7 +21,7 @@ import { getUser } from "../../../infrastructure/api/user/userRequest";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const ProfileAsElement = ({ mainData }) => {  
+const ProfileAsElement = ({ mainData }) => {
   const [stage, setStage] = useState(0);
   const [registering, setRegistering] = useState(false);
   const [country, setCountry] = useState("");
@@ -49,8 +49,11 @@ const ProfileAsElement = ({ mainData }) => {
   });
 
   useEffect(() => {
-    setUserInfo({ ...userInfo, city });
     getUser();
+  }, [mainData.userData]);
+
+  useEffect(() => {
+    setUserInfo({ ...userInfo, city });
   }, [city]);
 
   const position = useRef(null);
@@ -192,9 +195,13 @@ const MobileProfile = ({ mainData }) => {
   });
 
   useEffect(() => {
-    setUserInfo({ ...userInfo, city });
     getUser();
+  }, [mainData.userData]);
+
+  useEffect(() => {
+    setUserInfo({ ...userInfo, city });
   }, [city]);
+
   const position = useRef(null);
 
   return (
@@ -218,7 +225,7 @@ const MobileProfile = ({ mainData }) => {
                 setIsos={setIsos}
               />
             )}
-            
+
             {stage === 1 && (
               <BasicInfo
                 city={city}
