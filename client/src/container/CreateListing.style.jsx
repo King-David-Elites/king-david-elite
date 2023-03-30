@@ -27,12 +27,12 @@ export const ListingHead = styled.div`
       .head1 {
         font-weight: 700;
         text-align: center;
-        font-size: 1.2rem;        
+        font-size: 1.2rem;
       }
       .head2 {
         font-weight: 500;
         text-align: center;
-        font-size: 1rem;        
+        font-size: 1rem;
       }
     }
     select {
@@ -91,9 +91,8 @@ export const ListingForm = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
-      gap: 0.5em;
-      margin-bottom: 2em;
+      align-items: flex-start;      
+      margin-bottom: 1em;
     }
     .section hr {
       width: 100%;
@@ -208,7 +207,7 @@ export const ListingForm = styled.div`
     }
     .section input {
       width: 100%;
-      padding: 1em;
+      padding: 1em ;
       padding-left: 1.5em;
       border-radius: 0.5em;
       border: 2px solid black;
@@ -229,8 +228,8 @@ export const ListingForm = styled.div`
       resize: none;
     }
     .section select {
-      width: 80%;
-      margin: 1.5em 1em;
+      width: 43em;
+      margin: 0.5em 0em;
       padding: 12px 16px;
       display: flex;
       justify-content: space-between;
@@ -239,7 +238,22 @@ export const ListingForm = styled.div`
       border-radius: 0.5em;
       cursor: pointer;
       font-weight: bolder;
-      font-size: 1rem;
+      font-size: 0.8rem;
+    }
+    @media (max-width:640px) {
+      .section select {
+        width: 95%;
+        margin: 0.5em 0em;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 0.5em;
+        cursor: pointer;
+        font-weight: bolder;
+        font-size: 0.8rem;
+      }
     }
     .section > .OutProp {
       display: flex;
@@ -274,6 +288,22 @@ export const ListingForm = styled.div`
       align-items: center;
       gap: 1em;
     }
+    .rental{
+      display:flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap:1em;
+    }    
+    .rental > .sect{
+      flex: 0 1 8em;      
+      display:flex;
+      justify-content: flex-start;
+      align-items: center;            
+      gap:1em;
+    }   
+    .rental > .sect input{
+      cursor:pointer;
+    }   
     .NumbB > .sec {
       flex: 0 1 35em;
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { X, LocationMarker } from "heroicons-react";
+import { X } from "heroicons-react";
 import { OutProp, InProp, Views } from "./PropertiesContents";
 import axios from "axios";
 import { useEffect } from "react";
@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import globalApi from "../api";
 import Loader from "../Components/Loader/Loader";
+import useContextAPI from "../Components/ContextAPI/ContextAPI";
+import { getStates, getCities } from "../infrastructure/api/user/userRequest";
 
 const CreateRealEstateListing = () => {
   const [outDoorProp, setOutDoorProp] = useState([]);
@@ -28,14 +30,26 @@ const CreateRealEstateListing = () => {
 
   const navigate = useNavigate();
   const [size, setSize] = useState(0);
+  const [stateData, setStateData] = useState([]);
+  const [cityData, setCityData] = useState([]);
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [isos, setIsos] = useState({
+    countryIso: "",
+    stateIso: "",
+    cityId: "",
+  });
+
+  const mainData = useContextAPI();
 
   const [userListings, setUserListings] = useState({
     title: "",
-    location: "Abeokuta#Ogun#Nigeria",
-    locationISO: "76746#OG#NG",
-    category: "real-estate",    
+    location: "",
+    locationISO: "",
+    category: "real-estate",
     description: "",
-    forRent:false,
+    forRent: false,
     images: images,
     videos: videos,
     price: "",
@@ -65,14 +79,16 @@ const CreateRealEstateListing = () => {
   useEffect(() => {
     userListings["images"] = images;
     userListings["videos"] = videos;
-    userListings["features"] = features;
+    userListings["features"] = features;    
     if (
       userListings["title"] &&
       userListings["description"] &&
       userListings["location"] &&
       userListings["features"].length !== 0 &&
       userListings["price"] &&
-      userListings["images"].length >= 4
+      userListings["images"].length >= 4 &&
+      userListings["location"] && 
+      userListings["locationISO"]
     ) {
       setValid(true);
       setError(false);
@@ -82,6 +98,52 @@ const CreateRealEstateListing = () => {
     }
     setUserListings({ ...userListings, features: features });
   }, [changing, features]);
+
+  const getCountryIso = (name) => {
+    var countryObject = mainData.countryData.find(
+      (country) => country.name === name
+    );
+    setStateData([]);
+    setCityData([]);
+    setIsos({ ...isos, countryIso: countryObject["iso2"] });
+    getStates(countryObject["iso2"], setStateData);
+    var location = `${city}#${state}#${name}`;
+    var locationISO = `${isos["cityId"]}#${isos["stateIso"]}#${countryObject["iso2"]}`;
+    setUserListings({
+      ...userListings,
+      locationISO: locationISO,
+      location: location,
+    });
+    setChanging(!changing);
+  };
+
+  const getStateIso = (name) => {
+    var stateObject = stateData.find((state) => state.name === name);
+    setCityData([]);
+    setIsos({ ...isos, stateIso: stateObject["iso2"] });
+    getCities(isos["countryIso"], stateObject["iso2"], setCityData);
+    var location = `${city}#${name}#${country}`;
+    var locationISO = `${isos["cityId"]}#${stateObject["iso2"]}#${isos["countryIso"]}`;
+    setUserListings({
+      ...userListings,
+      locationISO: locationISO,
+      location: location,
+    });
+    setChanging(!changing);
+  };
+
+  const getCityId = (name) => {
+    var cityObject = cityData.find((city) => city.name === name);
+    setIsos({ ...isos, cityId: cityObject["id"] });    
+    var location = `${name}#${state}#${country}`;
+    var locationISO = `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`;
+    setUserListings({
+      ...userListings,
+      locationISO: locationISO,
+      location: location,
+    });
+    setChanging(!changing);
+  };
 
   const Load = (base64, type, size) => {
     if (type === "image") {
@@ -119,25 +181,6 @@ const CreateRealEstateListing = () => {
     return config;
   };
 
-  const getPosition = async () => {
-    var headers = new Headers();
-    headers.append(
-      "X-CSCAPI-KEY",
-      "bWxLejVmcWtRSTg1ekRyaXlKZ3l1YjN2MHI1OFBwUWVDYkVCbWNNVw=="
-    );
-
-    var requestOptions = {
-      method: "GET",
-      headers: headers,
-      redirect: "follow",
-    };
-
-    fetch("https://api.countrystatecity.in/v1/countries", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));    
-  };
-
   const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -148,12 +191,12 @@ const CreateRealEstateListing = () => {
   const postUserListings = async (userListings) => {
     await axios
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
-      .then((resp) => {
-        console.log(resp.data);
+      .then((resp) => {        
         setLoader(false);
         navigate("/profile");
       })
       .catch((err) => {
+        postUserListings(userListings)
         console.log(err.data);
       });
   };
@@ -167,16 +210,6 @@ const CreateRealEstateListing = () => {
     <>
       {loader && <Loader />}
       <div className="form_Content">
-        <div
-          className="section"
-          id="location"
-          onClick={() => {
-            getPosition();
-          }}
-        >
-          <LocationMarker />
-          <p>Add Location</p>
-        </div>
         <div className="section">
           <p>Title/Name</p>
           <input type="text" name="title" required onChange={handleChange} />
@@ -192,8 +225,76 @@ const CreateRealEstateListing = () => {
           />
         </div>
         <div className="section">
-          <p>Address</p>
-          <input type="text" name="location" required onChange={handleChange} />
+          <p>Country</p>
+          <select
+            className="w-full p-3 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
+            name="Country"
+            onChange={(e) => {
+              setCountry(e.target.value);
+              getCountryIso(e.target.value);
+            }}
+          >
+            <option value="Country">None</option>
+            {mainData.countryData.map((country) => {
+              return (
+                <>
+                  <option key={country.id} value={country.name}>
+                    {country.name}
+                  </option>
+                </>
+              );
+            })}
+          </select>
+        </div>
+        <div className="section">
+          {stateData.length > 0 && (
+            <>
+              <p>State</p>
+              <select
+                name="state"
+                onChange={(e) => {
+                  setState(e.target.value);
+                  getStateIso(e.target.value);
+                }}
+              >
+                <option value="State">None</option>
+                {stateData?.map((state) => {
+                  return (
+                    <>
+                      <option key={state.id} value={state.name}>
+                        {state.name}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
+            </>
+          )}
+        </div>
+        <div className="section">
+          {cityData.length > 0 && (
+            <>
+              <p>City</p>
+              <select
+                name="city"
+                onChange={(e) => {
+                  setCity(e.target.value);
+                  getCityId(e.target.value);
+                }}
+              >
+                <option value="City">None</option>
+                {cityData?.map((city) => {
+                  return (
+                    <>
+                      <option key={city.id} value={city.name}>
+                        {city.name}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
+            </>
+          )}
         </div>
         <div className="section">
           <hr />
@@ -352,6 +453,43 @@ const CreateRealEstateListing = () => {
               name="noOfBathroom"
               placeholder="0"
               onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="section">
+          <hr />
+        </div>
+        <div className="rental">
+          <div className="sect">
+            <p>For Sale</p>
+            <input
+              type="checkbox"
+              name="forRent"
+              checked={userListings["forRent"] === false ? true : false}
+              onClick={() => {
+                if (userListings["forRent"] === true) {
+                  setUserListings({ ...userListings, forRent: false });
+                } else {
+                  setUserListings({ ...userListings, forRent: true });
+                }
+                setChanging(!changing);
+              }}
+            />
+          </div>
+          <div className="sect">
+            <p>For Rent</p>
+            <input
+              type="checkbox"
+              name="forRent"
+              checked={userListings["forRent"] === true ? true : false}
+              onClick={() => {
+                if (userListings["forRent"] === false) {
+                  setUserListings({ ...userListings, forRent: true });
+                } else {
+                  setUserListings({ ...userListings, forRent: false });
+                }
+                setChanging(!changing);
+              }}
             />
           </div>
         </div>
