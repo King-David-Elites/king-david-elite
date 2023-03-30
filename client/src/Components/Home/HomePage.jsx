@@ -31,12 +31,21 @@ import { motion } from "framer-motion";
 import { BlogContent } from "./BlogContent";
 import Scroller from "./Scroller";
 import MainButton from "../buttons/MainButton";
+import globalApi from "../../api";
+import axios from "axios";
+import { setConfig } from "../../infrastructure/api/user/userRequest";
+import services from "../../ioc/services";
+import Loader from "../Loader/Loader";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const position = useRef(null);
   const [homeId, setHomeId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear);
+  const [loader, setLoader] = useState(false);
+  const [value, setValue] = useState({
+    email: ''
+  })
 
   const categories = [
     {
@@ -73,6 +82,15 @@ const HomePage = () => {
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
 
+  const subscribe = () => {
+    setLoader(true);
+    const subscribeURL = `${globalApi}/wait-list`
+    axios.post(subscribeURL, value, setConfig()).then((resp) => {
+      services.toast.success(resp.data.message);
+      setLoader(loader);
+    }).catch((err) => services.toast.error(err));
+  };
+
   useEffect(() => {
     var timer1;
     var timer2;
@@ -99,6 +117,7 @@ const HomePage = () => {
 
   return (
     <Fragment>
+      {loader && <Loader />}
       <Navbar active={0} />
       <Background>
         {HomeAnimation.map((item) => {
@@ -158,10 +177,6 @@ const HomePage = () => {
         </Categories>
       </CategoriesContainer>
 
-      {/* <div className='h-[auto] w-[20%] overflow-hidden'>
-        <img className='w-[100%] block duration-150	hover:scale-125' src={c3} alt="not found" />
-      </div> */}
-
       <InformationContainer>
         <Information>
           <div className="image">
@@ -177,7 +192,7 @@ const HomePage = () => {
             <p className="p mt-[-0.7em]">Find out more about
               us.</p>
 
-            <MainButton color="black" width='120px' padding='24px 12px'>READ MORE</MainButton>
+            <MainButton onClick={() => navigate('/about')} color="black" width='120px' padding='24px 12px'>READ MORE</MainButton>
           </div>
 
           <div className="coffee image md:hidden block">
@@ -192,10 +207,17 @@ const HomePage = () => {
             </h3>
             <p>Let’s keep you updated with what’s trending inLuxury.</p>
 
-            <form action="">
-              <input type="email" placeholder="E-mail" className="mr-4 focus:outline-theme-color" />
-              <MainButton width='132px' color="black" padding='24px 12px'>SUBSCRIBE</MainButton>
-            </form>
+            <div className="flex">
+              <input type="email" placeholder="E-mail" className="mr-4 focus:outline-theme-color" onChange={(e) => setValue({ ...value, email: e.target.value })} />
+
+              {
+                value['email'] === '' && <MainButton width='132px' color="black" className=" cursor-not-allowed" padding='24px 12px'>SUBSCRIBE</MainButton>
+              }
+              {
+                value['email'].length > 0 && <MainButton width='132px' color="black" padding='24px 12px' onClick={() => subscribe()}>SUBSCRIBE</MainButton>
+              }
+
+            </div>
           </div>
 
           <div className="coffee image md:block hidden">

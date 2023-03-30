@@ -16,7 +16,6 @@ import { setHelicopterRide, setLuxuryServiceType } from '../../application/store
 import { useDispatch } from 'react-redux';
 
 const HelicopterRidePage = () => {
-
     const [guestsName, setGuestsName] = useState('');
     const [guestsEmail, setGuestEmail] = useState('');
     const [guestsNationality, setGuestsNationality] = useState('');

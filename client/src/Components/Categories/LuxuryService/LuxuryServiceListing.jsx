@@ -28,13 +28,15 @@ const categories = [
         bg: c2,
         title: "Helicopter Rides",
         other: "Soar above the world with our Helicopter Rides. Whether you’re looking for a scenic tour, a corporate event, or ",
-        link: "/luxury-service/helicopter-ride",
+        // link: "/luxury-service/helicopter-ride",
+        comingSoon: true
     },
     {
         bg: c5,
         title: "Concierge Vacations",
         other: "Leave the planning to us and let us create the ultimate customized vacation experience. Our Concierge Read More",
-        link: "/luxury-service/concierge-vacation"
+        // link: "/luxury-service/concierge-vacation",
+        comingSoon: true
     },
     {
         bg: c6,
@@ -49,8 +51,6 @@ const categories = [
         link: "/luxury-service/pricing"
     },
 ];
-
-
 
 const LuxuryServiceListing = () => {
     const navigate = useNavigate();
@@ -83,9 +83,12 @@ const LuxuryServiceListing = () => {
                                     <IoMdArrowForward size={30} color='black' className="bg-theme-color rounded-full p-2 w-8 h-8" onClick={() => navigate(category.link)} />
                                 </div>
 
-                                <p onClick={toggleText} className="md:text-[#A6A6A6] text-white md:text-[14px] text-[14px]">
-                                    {showLess ? category.other.substring(0, 80).concat("....", "ReadMore") : category.other}
-                                </p>
+                                {
+                                    category.comingSoon ? <p className="md:text-[#A6A6A6] text-white md:text-[14px] text-[14px]">Coming Soon</p> : <p onClick={toggleText} className="md:text-[#A6A6A6] text-white md:text-[14px] text-[14px]">
+                                        {showLess ? category.other.substring(0, 80).concat("....", "ReadMore") : category.other}
+                                    </p>
+                                }
+
                             </div>
                         </Category>
                     );
