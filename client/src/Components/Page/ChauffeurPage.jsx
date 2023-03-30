@@ -128,19 +128,6 @@ const ChauffeurPage = ({ id }) => {
         { key: "ROLLS ROYCE PHANTOM", value: 'ROLLS ROYCE PHANTOM' }
     ];
 
-
-    const drinkingPreferences = [
-        { key: "", value: '' },
-        { key: "Alcholic", value: "Alcholic" },
-        { key: "Non-Alcholic", value: "Non-Alcholic" },
-    ];
-
-    const mealPreferences = [
-        { key: "", value: '' },
-        { key: "Vegetarian", value: "Vegetarian" },
-        { key: "Non-Vegetarian", value: "Non-Vegetarian" },
-    ];
-
     const displayInput = [
         {
             label: "Number of Guest (s)",
@@ -180,18 +167,6 @@ const ChauffeurPage = ({ id }) => {
             placeholder: "+234",
         },
         {
-            label: "Drinking Preference",
-            name: "drinkingPreference",
-            control: 'select',
-            options: drinkingPreferences,
-        },
-        {
-            label: "Meal Preference",
-            name: "mealPreference",
-            control: 'select',
-            options: mealPreferences
-        },
-        {
             label: "Available Vehicles",
             name: "availableVehicles",
             control: 'select',
@@ -211,8 +186,6 @@ const ChauffeurPage = ({ id }) => {
         emergencyContactName: Yup.string().required("Emergency Contact Name is required"),
         DropOffLocation: Yup.string().required("Drop off location is required"),
         pickUpAddress: Yup.string().required("Pick up location is required"),
-        drinkingPreference: Yup.string().required("Drinking preference is required"),
-        mealPreference: Yup.string().required("Meal preference is required"),
         fullName: Yup.string().required("Full Name is required"),
         availableVehicles: Yup.string().required("Required"),
     });
@@ -227,8 +200,6 @@ const ChauffeurPage = ({ id }) => {
             emergencyNumber: values.emergencyNumber,
             emergencyContactName: values.emergencyContactName,
             fullName: values.fullName,
-            drinkingPreference: values.drinkingPreference,
-            mealPreference: values.mealPreference,
             availableVehicles: values.availableVehicles,
             security: securityOption,
             exort: exortOption,
@@ -241,7 +212,6 @@ const ChauffeurPage = ({ id }) => {
         }
         dispatch(setLuxuryServiceType('chauffeur-ride'));
         dispatch(setChauffeurRide(payload));
-        console.log(payload)
         navigate('/luxury-service/checkout');
     }
 
@@ -414,223 +384,3 @@ const ChauffeurPage = ({ id }) => {
 }
 
 export default ChauffeurPage;
-
-{/* <form onSubmit={formik.handleSubmit} className='mt-6'>
-
-<div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-    <InputLayout label='Emergency Contact Phone Number' name='emergencyNumber'>
-        <InputField width='20px' placeholder='+(234)' />{formik.errors.emergencyNumber ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.emergencyNumber}
-            </div>
-        ) : null}
-    </InputLayout>
-
-    <InputLayout label='Emergency Contact Name' name='emergencyContactName'>
-        <InputField width='20px' placeholder='e.g Adeoye Marvellous' />{formik.errors.emergencyContactName ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.emergencyContactName}
-            </div>
-        ) : null}
-    </InputLayout>
-</div>
-
-<div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-    <InputLayout label='Pick-Up Address' name='pickUpAddress'>
-        <InputField />{formik.errors.pickUpAddress ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.pickUpAddress}
-            </div>
-        ) : null}
-    </InputLayout>
-
-    <InputLayout label='Drop-off Location' name='DropOffLocation'>
-        <InputField />{formik.errors.DropOffLocation ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.DropOffLocation}
-            </div>
-        ) : null}
-    </InputLayout>
-</div>
-<div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-    <InputLayout label='Drinking Preference' name='drinkingPreference'>
-        <Dropdown margin='0.5em 0em'>
-            {drinkingPreferences.map((a) => (
-                <Option key={a.value} value={a.value}> {a.key}</Option>
-            ))}
-        </Dropdown>
-        {formik.errors.drinkingPreference ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.drinkingPreference}
-            </div>
-        ) : null}
-    </InputLayout>
-
-    <InputLayout label='Meal Preference' name='mealPreference'>
-        <Dropdown margin='0.5em 0em'>
-            {mealPreferences.map((a) => (
-                <Option key={a.value} value={a.value}> {a.key}</Option>
-            ))}
-        </Dropdown>
-        {formik.errors.mealPreference ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.mealPreference}
-            </div>
-        ) : null}
-    </InputLayout>
-</div>
-
-{
-    status == 'silver' && <InputLayout label='Available Vehicles' name='availableVehicle'>
-        <Dropdown margin='0.5em 0em'>{
-            availableSilverVehicles.map((a) => (
-                <Option key={a.value} value={a.value}> {a.key}</Option>
-            ))}
-        </Dropdown>
-        {formik.errors.availableVehicle ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.availableVehicle}
-            </div>
-        ) : null}
-    </InputLayout>
-}
-{
-    status == 'diamond' && <InputLayout label='Available Vehicles' name='availableVehicle'>
-        <Dropdown margin='0.5em 0em'>{
-            availableDiamondVehicles.map((a) => (
-                <Option key={a.value} value={a.value}> {a.key}</Option>
-            ))}
-        </Dropdown>
-        {formik.errors.availableVehicle ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.availableVehicle}
-            </div>
-        ) : null}
-    </InputLayout>
-}
-{
-    status == 'platinum' && <InputLayout label='Available Vehicles' name='availableVehicle'>
-        <Dropdown margin='0.5em 0em'>{
-            availablePlatinumVehicles.map((a) => (
-                <Option key={a.value} value={a.value}> {a.key}</Option>
-            ))}
-        </Dropdown>
-        {formik.errors.availableVehicle ? (
-            <div className=" text-[red] opacity-40">
-                {formik.errors.availableVehicle}
-            </div>
-        ) : null}
-    </InputLayout>
-}
-
-<label for="noOfHours" className="select-none font-semibold text-[13px]">No. of hours</label>
-<div className="py-4 flex">
-    <div className="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="A3-yes" name="A3-confirmation" value="yes" className="opacity-0 absolute h-8 w-8" />
-        <div className="bg-white border-2 rounded-md border-theme-color w-8 h-8 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-theme-color">
-            <svg className="fill-current hidden w-3 h-3 text-theme-color pointer-events-none" version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(-9 -11)" fill="#F2BE5C" fill-rule="nonzero">
-                        <path d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                    </g>
-                </g>
-            </svg>
-        </div>
-        <span className='text-[12px]'>12 Hours</span>
-    </div>
-
-    <div className="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="A3-yes" name="A3-confirmation" value="yes" className="opacity-0 absolute h-8 w-8" />
-        <div className="bg-white border-2 rounded-md border-theme-color w-8 h-8 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-theme-color">
-            <svg className="fill-current hidden w-3 h-3 text-blue-600 pointer-events-none" version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(-9 -11)" fill="#F2BE5C" fill-rule="nonzero">
-                        <path d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                    </g>
-                </g>
-            </svg>
-        </div>
-        <span className='text-[12px]'>24 Hours</span>
-    </div>
-</div>
-
-<label for="security" className="select-none font-semibold text-[13px]">Request for Security Personnel(Mopol)</label>
-<div class="py-4 flex">
-    <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="A3-yes" name="A3-confirmation" value="yes" className="opacity-0 cursor-pointer absolute h-8 w-8" />
-        <div class="bg-white border-2 rounded-md border-theme-color w-8 h-8 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-theme-color">
-            <svg class="fill-current hidden w-3 h-3 text-theme-color pointer-events-none" version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(-9 -11)" fill="#F2BE5C" fill-rule="nonzero">
-                        <path d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                    </g>
-                </g>
-            </svg>
-        </div>
-        <span className='text-[12px]'>Yes</span>
-    </div>
-
-    <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="A3-yes" name="A3-confirmation" value="yes" className="opacity-0 cursor-pointer absolute h-8 w-8" />
-        <div class="bg-white border-2 rounded-md border-theme-color w-8 h-8 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-theme-color">
-            <svg class="fill-current hidden w-3 h-3 text-blue-600 pointer-events-none" version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(-9 -11)" fill="#F2BE5C" fill-rule="nonzero">
-                        <path d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                    </g>
-                </g>
-            </svg>
-        </div>
-        <span className='text-[12px]'>No</span>
-    </div>
-</div>
-
-<label for="security" className="select-none font-semibold text-[13px]">Request for Hilux Escort</label>
-<div class="py-4 flex">
-    <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="A3-yes" name="A3-confirmation" value="yes" className="opacity-0 cursor-pointer absolute h-8 w-8" />
-        <div class="bg-white border-2 rounded-md border-theme-color w-8 h-8 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-theme-color">
-            <svg class="fill-current hidden w-3 h-3 text-theme-color pointer-events-none" version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(-9 -11)" fill="#F2BE5C" fill-rule="nonzero">
-                        <path d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                    </g>
-                </g>
-            </svg>
-        </div>
-        <span className='text-[12px]'>Yes</span>
-    </div>
-
-    <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="A3-yes" name="A3-confirmation" value="yes" className="opacity-0 cursor-pointer absolute h-8 w-8" />
-        <div class="bg-white border-2 rounded-md border-theme-color w-8 h-8 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-theme-color">
-            <svg class="fill-current hidden w-3 h-3 text-blue-600 pointer-events-none" version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-                <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(-9 -11)" fill="#F2BE5C" fill-rule="nonzero">
-                        <path d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                    </g>
-                </g>
-            </svg>
-        </div>
-        <span className='text-[12px]'>No</span>
-    </div>
-</div>
-
-<InputLayout label='Message' name='message'>
-    <TextArea placeholder='kindly explicitly describe your expectations and intended activities and destinations' width='50%' />
-    {formik.errors.message ? (
-        <div className=" text-[red] opacity-40">
-            {formik.errors.message}
-        </div>
-    ) : null}
-</InputLayout>
-
-<div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
-    <input type="checkbox" className="check cursor-pointer" />
-    <p className="term  text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
-</div>
-
-<div className="flex my-[30px] gap-[10px]">
-    <MainButton type='submit'>Submit</MainButton>
-</div>
-</form> */}

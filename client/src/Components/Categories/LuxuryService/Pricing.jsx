@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setPackagePlan } from '../../../application/store/actions/user';
 import '../../Navbar/Navbar.css'
 import { ImCross } from "react-icons/im";
+import kde_blackBg from "../../Navbar/Image/kde_whiteBg.png";
 
 const Pricing = ({ active = 6 }) => {
     const [activeNav, setActiveNav] = useState(false);
@@ -359,6 +360,7 @@ const Pricing = ({ active = 6 }) => {
         }
     ]
 
+
     return (
         <>
             <Header justifyContent="space-around" z="0" paddingTop='1.5em' className='bg-cover' bg='white' sticky="static" color='black'>
@@ -390,6 +392,13 @@ const Pricing = ({ active = 6 }) => {
                     </ul>
                 </nav>
                 <Brand>
+                    <div className="w-[40px] h-[auto]" onClick={() => navigate("/luxury-service")}>
+                        <img
+                            src={kde_blackBg}
+                            className="w-[100%] h-[100%] cursor-pointer"
+                            alt="brandlogo"
+                        />
+                    </div>
                     <LogoText color="black" fontSize="1.5rem" onClick={() => navigate("/luxury-service")}>Luxury Services</LogoText>
 
                     <div className='menu-icon'>
@@ -431,7 +440,7 @@ const Pricing = ({ active = 6 }) => {
 
                 <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
                     <p className="text-[15px] font-semibold mb-1">Silver</p>
-                    <p className="text-[20px] font-extrabold">500K</p>
+                    <p className="text-[20px] font-extrabold">&#8358;500,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Chauffeur Rides: EXECUTIVE SEDAN (24 HOURS)</p>
@@ -447,12 +456,12 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() =>{ dispatch(setPackagePlan('silver')); navigate('/luxury-service/weekend-escape')}}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/weekend-escape') }}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
                     <p className="text-[15px] font-semibold mb-1">Diamond</p>
-                    <p className="text-[20px] font-extrabold">700K</p>
+                    <p className="text-[20px] font-extrabold">&#8358;700,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Chauffeur Rides: EXECUTIVE SUV (24 HOURS)</p>
@@ -467,12 +476,12 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/weekend-escape')}}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/weekend-escape') }}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
                     <p className="text-[15px] font-semibold mb-1">Platinum</p>
-                    <p className="text-[20px] font-extrabold">900k</p>
+                    <p className="text-[20px] font-extrabold">&#8358;900,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Chauffeur Rides: LUXURY SUV (24 HOURS)</p>
@@ -487,14 +496,14 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/weekend-escape')}}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/weekend-escape') }}>Get Started</MainButton>
                 </div>
 
 
-                <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide">Chauffeur Rides (THE COMFORT ZONE)</h3>
+                <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide" id='chauffeurRide'>Chauffeur Rides (THE COMFORT ZONE)</h3>
                 <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
                     <p className="text-[15px] font-semibold mb-1">Silver</p>
-                    <p className="text-[20px] font-extrabold">100K - 300K</p>
+                    <p className="text-[20px] font-extrabold">&#8358;100,000-&#8358;300,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Luxury Car: 12 HOURS SERVICE</p>
@@ -506,12 +515,12 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
                     <p className="text-[15px] font-semibold mb-1">Diamond</p>
-                    <p className="text-[20px] font-extrabold">300K - 500K</p>
+                    <p className="text-[20px] font-extrabold">&#8358;300,000-&#8358;500,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Luxury Car: 12 HOURS SERVICE</p>
@@ -523,12 +532,12 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
                     <p className="text-[15px] font-semibold mb-1">Platinum</p>
-                    <p className="text-[20px] font-extrabold">500k Upwards</p>
+                    <p className="text-[20px] font-extrabold">&#8358;500,000 Upwards</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Luxury Car: 12 HOURS SERVICE</p>
@@ -540,13 +549,13 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/chauffeur') }}>Get Started</MainButton>
                 </div>
 
                 <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide">Boat Cruises ( The Aqua Way)</h3>
                 <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
                     <p className="text-[15px] font-semibold mb-1">Silver</p>
-                    <p className="text-[20px] font-extrabold">500K</p>
+                    <p className="text-[20px] font-extrabold">&#8358;500,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Boat Size: 8 PASSENGER MINI YACHT</p>
@@ -560,12 +569,12 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/boat-cruise')}}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/boat-cruise') }}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
                     <p className="text-[15px] font-semibold mb-1">Diamond</p>
-                    <p className="text-[20px] font-extrabold">850K</p>
+                    <p className="text-[20px] font-extrabold">&#8358;850,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Boat Size: 10 PASSENGER MINI YACHT</p>
@@ -579,12 +588,12 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/boat-cruise')}}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/boat-cruise') }}>Get Started</MainButton>
                 </div>
 
                 <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
                     <p className="text-[15px] font-semibold mb-1">Platinum</p>
-                    <p className="text-[20px] font-extrabold">#1.2M</p>
+                    <p className="text-[20px] font-extrabold">&#8358;1,200,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Boat Size: 15 PASSENGER MINI YACHT</p>
@@ -598,7 +607,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <MainButton marginTop='2em'
                         width='100px' padding='24px 12px'
-                         onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/boat-cruise')}}>Get Started</MainButton>
+                        onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/boat-cruise') }}>Get Started</MainButton>
                 </div>
             </div>
 
@@ -625,7 +634,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center rounded-md md:px-3 bg-[#F2F2F2] md:py-10">
-                        <p className="font-bold text-[25px]">#500,000</p>
+                        <p className="font-bold text-[25px]">&#8358;500,000</p>
                         <p className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</p>
                         <ul className="text-[12px] text-center  h-[300px]">
                             {
@@ -639,11 +648,11 @@ const Pricing = ({ active = 6 }) => {
 
                         </ul>
                         <p className="text-[13px] font-semibold mt-5">* You can drop personalized orders in the message box and our customer service will respond as soon as possible</p>
-                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => { dispatch(setPackagePlan()); navigate('/luxury-service/weekend-escape') }}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center md:px-3 bg-[#FFECEC] rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">#700,000</p>
+                        <p className="font-bold text-[25px]">&#8358;700,000</p>
                         <p className="text-[#2301F3] text-[16px] cursor-pointer mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/weekend-escape') }}>Get Started</p>
                         <ul className="text-[12px] text-center  h-[300px]">
                             {
@@ -659,7 +668,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center md:px-3 text-white bg-[#333433] rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">#900,000</p>
+                        <p className="font-bold text-[25px]">&#8358;900,000</p>
                         <p className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12" onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/weekend-escape') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[300px]">
                             {
@@ -700,7 +709,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center rounded-md md:px-5 bg-[#F2F2F2] md:py-10">
-                        <p className="font-bold text-[25px] whitespace-nowrap">100K-300K</p>
+                        <p className="font-bold text-[25px] whitespace-nowrap">&#8358;100,000-&#8358;300,000</p>
                         <p className="text-[#2301F3] text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/chauffeur') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[150px]">
                             {
@@ -716,7 +725,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] md:px-3 rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">300K-500K</p>
+                        <p className="font-bold text-[25px]">&#8358;300,000-&#8358;500,000</p>
                         <p className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/chauffeur') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[150px]">
                             {
@@ -732,7 +741,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] md:px-3 rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">500K Upwards</p>
+                        <p className="font-bold text-[25px]">&#8358;500,000 Upwards</p>
                         <p className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12" onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/chauffeur') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[150px]">
                             {
@@ -773,8 +782,8 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center rounded-md md:px-3 bg-[#F2F2F2] md:py-10">
-                        <p className="font-bold text-[25px]">#500,000</p>
-                        <p className="text-[#2301F3] text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/boat-cruise')}}>Get Started</p>
+                        <p className="font-bold text-[25px]">&#8358;500,000</p>
+                        <p className="text-[#2301F3] text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/boat-cruise') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[250px]">
                             {
                                 boatCruiseSilverOption.map((p, i) => {
@@ -785,12 +794,12 @@ const Pricing = ({ active = 6 }) => {
                             }
                         </ul>
                         <p className="text-[13px] font-semibold mt-5">* You can drop personalized orders in the message box and our customer service will respond as soon as possible</p>
-                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() =>{ dispatch(setPackagePlan('silver')); navigate('/luxury-service/boat-cruise')}}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/boat-cruise') }}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] md:px-3 rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">#850, 000</p>
-                        <p className="text-[#2301F3] text-[16px] mt-8 font-bold cursor-pointer border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/boat-cruise')}}>Get Started</p>
+                        <p className="font-bold text-[25px]">&#8358;850, 000</p>
+                        <p className="text-[#2301F3] text-[16px] mt-8 font-bold cursor-pointer border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/boat-cruise') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[250px]">
                             {
                                 boatCruiseDiamondOption.map((p, i) => {
@@ -801,12 +810,12 @@ const Pricing = ({ active = 6 }) => {
                             }
                         </ul>
                         <p className="text-[13px] font-semibold mt-5">* You can drop personalized orders in the message box and our customer service will respond as soon as possible</p>
-                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() =>{ dispatch(setPackagePlan('diamond')); navigate('/luxury-service/boat-cruise')}}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/boat-cruise') }}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] md:px-3 rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">#1.2M</p>
-                        <p className="text-white text-[16px] mt-8 font-bold border-b-2 border-white mb-12" onClick={() =>  { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/boat-cruise cursor-pointer')}}>Get Started</p>
+                        <p className="font-bold text-[25px]">&#8358;1,200,000</p>
+                        <p className="text-white text-[16px] mt-8 font-bold border-b-2 border-white mb-12" onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/boat-cruise cursor-pointer') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[250px]">
                             {
                                 boatCruisePlatinumOption.map((p, i) => {
@@ -817,7 +826,7 @@ const Pricing = ({ active = 6 }) => {
                             }
                         </ul>
                         <p className="text-[13px] font-semibold mt-5">* You can drop personalized orders in the message box and our customer service will respond as soon as possible</p>
-                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/boat-cruise')}}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/boat-cruise') }}>Get Started</MainButton>
                     </div>
                 </div>
 

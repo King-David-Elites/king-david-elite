@@ -84,8 +84,6 @@ const CheckoutPage = () => {
                                 <h3>Details</h3>
                                 <p>Dropoff Location: {chauffeurRide.data.DropOffLocation}</p>
                                 <p>Pickup Location: {chauffeurRide.data.pickUpAddress}</p>
-                                <p>Meal Preference: {chauffeurRide.data.mealPreference}</p>
-                                <p>Drink Preference: {chauffeurRide.data.drinkingPreference}</p>
                                 <p>Security: <span>{chauffeurRide.data.security.toUpperCase()}</span></p>
                                 <p>Exort: <span>{chauffeurRide.data.exort.toUpperCase()}</span></p>
                             </div>
