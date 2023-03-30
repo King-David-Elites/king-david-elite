@@ -13,10 +13,7 @@ import useContextAPI from "../ContextAPI/ContextAPI";
 
 const Footer = () => {
   const navigate = useNavigate();
-  const data = useContextAPI();
-  useEffect(() => {
-    console.log(data.userData);
-  }, []);
+  const data = useContextAPI();  
 
   const redirectToTwitter = () => {
     window.location.replace("https://twitter.com/kingdavidelites");
