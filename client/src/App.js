@@ -19,13 +19,10 @@ import Help from './Components/About/Help';
 import Earning from './Components/About/Earning';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
-import ProfileContainer from './container/ProfileContainer.jsx';
 import Verification from './Components/Verification/Verification';
-import ProfileList from './container/ProfileList';
 import CreateListing from './container/CreateListing';
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
 import UpgradeProfile from './Components/Dashboard/Profile/UpgradeProfile';
-import ProfileStat from './container/ProfileStat';
 import Waitlist from './Components/Page/Waitlist';
 import SignUpPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
@@ -64,6 +61,7 @@ import CollectiblesListing from './Components/Categories/Collectibles/Collectibl
 import EachCollectible from './Components/Categories/Collectibles/EachCollectible';
 import Cart from './Components/Categories/Collectibles/Cart';
 import CheckoutPage from './Components/Page/CheckoutPage';
+import SavedListings from './container/SavedListings';
 
 function App() {
   const queryClient = new QueryClient();
@@ -109,7 +107,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/messages" element={<Messages />} />
             <Route path="/dashboard/notifications" element={<Notifications />} />
-            <Route path="/dashboard/profile/verification" element={<Profile mainData={mainData} />} />
+            <Route path="/dashboard/profile/verification" element={<Profile mainData={mainData}/>} />
             <Route path="/dashboard/" element={<Profile mainData={mainData} />} />
             <Route path="/dashboard/wallet" element={<Wallet />} />
             <Route path="/dashboard/wallet/transfer" element={<Transfer />} />
@@ -121,13 +119,10 @@ function App() {
             <Route path="/help" element={<Help />} />
             <Route path='/success' element={<SuccessPage />} />
             <Route path="/help/earning" element={<Earning />} />
-            {/* <Route path="/help/benefits" element={<Benefits />} />
-          <Route path="/profile" element={<ProfileContainer />} /> */}
-            <Route path="/profile/verification" element={<Verification />} />
-            <Route path="/profile/list" element={<ProfileList />} />
-            <Route path="/profile/stat" element={<ProfileStat />} />
+            {/* <Route path="/help/benefits" element={<Benefits />} />           */}
+            <Route path="/profile/verification" element={<Verification />} />            
             <Route path='/profile/edit' element={<EditProfile mainData={mainData} />} />
-            <Route path='/profile/upgrade' element={<UpgradeProfile mainData={mainData} />} />
+            <Route path='/profile/upgrade' element={<UpgradeProfile />} />
             <Route path="/profile/create-listings" element={<CreateListing />} />
             <Route path="/profile" element={<LoggedUser mainData={mainData} />} />
             <Route path="/profile/:id" element={<OtherUser />} />
@@ -139,6 +134,7 @@ function App() {
             <Route path="/luxury-service/boat-cruise" element={<BoatCruisePage />} />
             <Route path="/luxury-service/chauffeur" element={<ChaffeurPage />} />
             <Route path="/luxury-service/pricing" element={<Pricing />} />
+            <Route path="/saved-listings" element={<SavedListings />}/>
           </Routes>
         </AnimatePresence>
       </Router>

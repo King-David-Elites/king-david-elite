@@ -12,7 +12,7 @@ import {
   FormField,
   UploadFileBtn,
 } from "../../Categories/Cars/Cars.Style";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Country } from "./Profile_Mockdata";
 import DisableButton from "../../buttons/DisabledButton";
 import theme from "../../../application/utils/Theme";
@@ -20,6 +20,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import services from "../../../ioc/services";
 import Loader from "../../Loader/Loader";
 import Return from "../../Navbar/Return";
+import { getUser } from "../../../infrastructure/api/user/userRequest";
 
 const EditProfile = ({ mainData }) => {
   const navigate = useNavigate();
@@ -31,6 +32,10 @@ const EditProfile = ({ mainData }) => {
   const [file, setFile] = useState(mainData.userData.cover);
   const [loader, setLoader] = useState(false);
 
+  useEffect(()=>{
+    getUser()
+  },[])
+  
   const [initialValues, setInitialValues] = useState({
     firstName: mainData.userData.firstName,
     lastName: mainData.userData.lastName,

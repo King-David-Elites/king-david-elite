@@ -35,6 +35,7 @@ const CreateRealEstateListing = () => {
     locationISO: "76746#OG#NG",
     category: "real-estate",    
     description: "",
+    forRent:false,
     images: images,
     videos: videos,
     price: "",

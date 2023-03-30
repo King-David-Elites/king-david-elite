@@ -8,9 +8,9 @@ import axios, { Axios } from 'axios'
 
 export default function Waitlist() {
 
-    useEffect(() => {
-        Axios.get('/waitList')
-    },[])
+    // useEffect(() => {
+    //     Axios.get('/waitList')
+    // },[])
 
     const [display, setDisplay] = useState(false);
     const [error, setError] = useState(false);

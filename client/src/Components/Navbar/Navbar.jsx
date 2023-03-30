@@ -13,14 +13,17 @@ import {
   MdAccountBalanceWallet,
 } from "react-icons/md";
 import { IoMdCar } from "react-icons/io";
-import { BsFillBellFill, BsFillHeartFill, BsCollection, BsCart3 } from "react-icons/bs";
+import {
+  BsFillBellFill,
+  BsFillHeartFill,
+  BsCollection,
+  BsCart3,
+} from "react-icons/bs";
 import "./Navbar.css";
 import MainButton from "../buttons/MainButton";
 import useContextAPI from "../ContextAPI/ContextAPI";
 import { useDispatch } from "react-redux";
-import {
-  setListWithUs,
-} from "../../application/store/actions/user";
+import { setListWithUs } from "../../application/store/actions/user";
 import theme from "../../application/utils/Theme";
 
 const Navbar = ({ bg, sticky, active }) => {
@@ -65,7 +68,9 @@ const Navbar = ({ bg, sticky, active }) => {
       link: "/about",
     },
     {
-      title: <BsCart3 size={18} color={theme.color} className='cursor-pointer'/>,
+      title: (
+        <BsCart3 size={18} color={theme.color} className="cursor-pointer" />
+      ),
       link: "/cart",
     },
   ];
@@ -129,7 +134,7 @@ const Navbar = ({ bg, sticky, active }) => {
       no: 9,
       icon: <BsFillHeartFill size={20} />,
       title: "Saved Listing",
-      link: "/",
+      link: "/saved-listings",
     },
     {
       no: 10,
@@ -149,7 +154,7 @@ const Navbar = ({ bg, sticky, active }) => {
     {
       no: 11,
       title: "Help & FAQs",
-      link: "/help"
+      link: "/help",
     },
     {
       no: 12,
@@ -184,7 +189,12 @@ const Navbar = ({ bg, sticky, active }) => {
           <ul>
             <div className="closed">
               <p>Welcome!</p>
-              <X className="close" size="20px" color="#000" onClick={showMenu} />
+              <X
+                className="close"
+                size="20px"
+                color="#000"
+                onClick={showMenu}
+              />
             </div>
             <div className="line"></div>
             {mobileNavOptions.map((nav, i) => {
@@ -220,14 +230,23 @@ const Navbar = ({ bg, sticky, active }) => {
                             </>
                           ) : (
                             <>
-                              <li key={i} onClick={() => navigate(nav?.link)}>
-                                <div className="list-items">
-                                  {nav?.icon}
-                                  {nav.title}
-                                </div>
-                              </li>
-                              {nav.no === 5 && <div className="line"></div>}
-                              {nav.no === 10 && <div className="line"></div>}
+                              {nav.no !== 9 && (
+                                <>
+                                  <li
+                                    key={i}
+                                    onClick={() => navigate(nav?.link)}
+                                  >
+                                    <div className="list-items">
+                                      {nav?.icon}
+                                      {nav.title}
+                                    </div>
+                                  </li>
+                                  {nav.no === 5 && <div className="line"></div>}
+                                  {nav.no === 10 && (
+                                    <div className="line"></div>
+                                  )}
+                                </>
+                              )}
                             </>
                           )}
                         </>
@@ -269,16 +288,18 @@ const Navbar = ({ bg, sticky, active }) => {
             {otherNav.map((navigation, i) => {
               return (
                 <>
-                  <li key={i} onClick={() => {
-                    if(navigation.title === "Log Out"){
-                      localStorage.clear()
-                      showMenu()
-                      navigate(navigation?.link)                      
-                    }
-                    else{
-                      navigate(navigation?.link)
-                    }
-                  }}>
+                  <li
+                    key={i}
+                    onClick={() => {
+                      if (navigation.title === "Log Out") {
+                        localStorage.clear();
+                        showMenu();
+                        navigate(navigation?.link);
+                      } else {
+                        navigate(navigation?.link);
+                      }
+                    }}
+                  >
                     {token ? (
                       <>
                         {navigation.title !== "Log In" && (
