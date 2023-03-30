@@ -29,6 +29,7 @@ const ProfileImage = ({ data, id, type, setShowImage, setShowCover }) => {
     }
     const userDetails =
       type === "profile" ? { profilePicture: image } : { cover: image };
+    console.log(userDetails)
     services.api.userRequests
       .updateUserProfile(userDetails)
       .then((res) => {

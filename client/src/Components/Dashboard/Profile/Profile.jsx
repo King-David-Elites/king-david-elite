@@ -8,6 +8,7 @@ import {
   Form,
   MobileGenericContainer,
 } from "../Dashboard.Styles";
+import useContextAPI from "../../ContextAPI/ContextAPI";
 import profileImg from "../Dashboard-Image/profileImg.png";
 import GetStarted from "./GetStarted";
 import BasicInfo from "./BasicInfo";
@@ -17,7 +18,6 @@ import Advanced_Verf_2 from "./Advanced_verf_2";
 import Advanced_Verf_3 from "./Advanced_Verf_3";
 import Verified from "./Verified";
 import Loader from "../../Loader/Loader";
-import { getUser } from "../../../infrastructure/api/user/userRequest";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -37,13 +37,9 @@ const ProfileAsElement = ({ mainData }) => {
     cityId: "",
   });
 
-  useEffect(() => {
-    getUser();
-  }, [mainData.userData]);
-  
   const [userInfo, setUserInfo] = useState({
-    firstName: mainData.userData.firstName,
-    lastName: mainData.userData.lastName,
+    firstName: mainData.userData?.firstName,
+    lastName: mainData.userData?.lastName,
     dob: "",
     address: "",
     zipCode: "",
@@ -196,10 +192,6 @@ const MobileProfile = ({ mainData }) => {
   });
 
   useEffect(() => {
-    getUser();
-  }, [mainData.userData]);
-
-  useEffect(() => {
     setUserInfo({ ...userInfo, city });
   }, [city]);
 
@@ -308,8 +300,8 @@ const MobileProfile = ({ mainData }) => {
   );
 };
 
-const Profile = ({ mainData }) => {
-  return (
+const Profile = ({mainData}) => {  
+  return (   
     <Dashboard
       index={4}
       element={<ProfileAsElement mainData={mainData} />}
