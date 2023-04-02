@@ -91,6 +91,9 @@ color: #000000;
         color: #FFDF00;
     }
 
+    .check{
+    }
+
 
 }
 
@@ -175,7 +178,7 @@ border-radius:6px;
         margin:0px;
 
         .check{
-        margin-left:1.4em;
+            margin-left:1.4em;
         }
     }
     
