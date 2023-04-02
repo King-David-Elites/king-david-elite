@@ -27,6 +27,7 @@ const Dashboard = ({ element, index, mobileElement }) => {
   const userLastName = useSelector((state) => state.user?.lastName);
   const dispatch = useDispatch();
 
+
   const logOut = () => {
     // dispatch(setLoggedInUserDetails({ userId: '', }));
     // localStorage.removeItem('user');
@@ -37,7 +38,8 @@ const Dashboard = ({ element, index, mobileElement }) => {
 
   useEffect(() => {
     setLoggedInUser(mainData.userData);
-  }, [mainData.userData]);
+    console.log(mainData.userData)
+  }, []);
 
   return (
     <div>

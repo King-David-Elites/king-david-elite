@@ -13,6 +13,8 @@ const ProfileImage = ({ data, id, type, setShowImage, setShowCover }) => {
   const [imagep, setImageP] = useState(data.profilePicture);
   const [imagec, setImageC] = useState(data.cover);
 
+  console.log(data)
+
   const upload = (image, type) => {
     setLoader(true);
     console.log("updating");
@@ -27,6 +29,7 @@ const ProfileImage = ({ data, id, type, setShowImage, setShowCover }) => {
     }
     const userDetails =
       type === "profile" ? { profilePicture: image } : { cover: image };
+    console.log(userDetails)
     services.api.userRequests
       .updateUserProfile(userDetails)
       .then((res) => {

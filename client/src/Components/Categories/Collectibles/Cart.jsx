@@ -13,6 +13,7 @@ import {
   addToCartItems,
   removeCartItems,
   clearCartItems,
+  deleteCartItems,
   requestCartItems,
   setConfig,
 } from "../../../infrastructure/api/user/userRequest";
@@ -21,8 +22,8 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState(requestCartItems());
   const [cartDetails, setCartDetails] = useState([]);
   const [total, setTotal] = useState(0);
-  const [changed, setChanged] = useState(false)
-//   const [numb, setNumb] = useState(0);
+  const [changed, setChanged] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getAList = useCallback(async (Id) => {
     let response;
@@ -43,20 +44,21 @@ const Cart = () => {
     return response;
   }, []);
 
-  useEffect(()=>{
-    setCartDetails(cartDetails)
-  },[changed])
-
   useEffect(() => {
     getCart();
   }, []);
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      getCart();
+    }
+  }, [cartItems]);
 
   const getCart = async () => {
     let mockCart = cartItems;
     if (mockCart.length === 0) {
       await getCartItems();
       mockCart = requestCartItems();
-      console.log(mockCart);
       if (mockCart.length > 0) {
         setCartItems(mockCart);
       }
@@ -80,6 +82,8 @@ const Cart = () => {
           quantity: item.quantity,
         });
         sum += parseInt(property.price) * parseInt(item.quantity);
+        setTotal(sum);
+        setCartDetails(mockCartDetails);
       } else {
         property = await getAList(item.itemData);
         mockCartDetails.push({
@@ -90,58 +94,156 @@ const Cart = () => {
           quantity: item.quantity,
         });
         sum += parseInt(property.price) * parseInt(item.quantity);
-        console.log(sum);
         setTotal(sum);
+        setCartDetails(mockCartDetails);
       }
     });
-    setCartDetails(mockCartDetails);
-  }; 
-
-  const addToCart = async (id) => {
-    cartDetails.forEach((element) => {
-      if (element.id == id) {
-        element.quantity += 1;
-      }
-    });
-    setChanged(!changed)
-    await addToCartItems({ collectibleId: id });    
-    // setCartItems(requestCartItems());
+    setLoading(false);
   };
 
-  const removeFromCart = async (id) => {
-    cartDetails.forEach((element) => {
-      if (element.id == id) {
-        if (element.quantity > 0) {
-          element.quantity -= 1;
+  const recheckAdd = async (id, compare) => {
+    requestCartItems().forEach((item) => {
+      if (item.itemData._id !== undefined) {
+        if (item.itemData._id === id) {
+          if (item.quantity !== compare) {
+            getCartDetails(requestCartItems());
+          }
+        }
+      } else {
+        if (item.itemData === id) {
+          if (item.quantity !== compare) {
+            getCartDetails(requestCartItems());
+          }
         }
       }
     });
-    setChanged(!changed)
-    await removeCartItems({ collectibleId: id });    
-    // setCartItems(requestCartItems());
+  };
+
+  const recheckRemoval = async (id, compare) => {
+    requestCartItems().forEach((item) => {
+      if (item.itemData._id !== undefined) {
+        if (item.itemData._id === id) {
+          if (item.quantity !== compare) {
+            getCartDetails(requestCartItems());
+          }
+        }
+      } else {
+        if (item.itemData === id) {
+          if (item.quantity !== compare) {
+            getCartDetails(requestCartItems());
+          }
+        }
+      }
+    });
+  };
+
+  const addToCart = async (id) => {
+    let compare;
+    let sum;
+    cartDetails.forEach((element) => {
+      if (element.id == id) {
+        element.quantity += 1;
+        compare = element.quantity;
+        sum = total + parseInt(element.price);
+        setTotal(sum);
+      }
+    });
+    await addToCartItems({ collectibleId: id });
+    recheckAdd(id, compare);
+  };
+
+  const removeFromCart = (id) => {
+    let compare;
+    let sum;
+    cartDetails.forEach(async (element) => {
+      if (element.id == id) {
+        if (element.quantity > 1) {
+          element.quantity -= 1;
+          compare = element.quantity;
+          sum = total - parseInt(element.price);
+          setTotal(sum);
+          await removeCartItems({ collectibleId: id });
+          recheckRemoval(id, compare);
+        } else if (element.quantity === 1) {
+          setCartDetails((cartDetails) => {
+            return cartDetails.filter((item) => item.id !== id);
+          });
+          setTotal(total - parseInt(element.price));
+          await deleteCartItems({ collectibleId: id });
+          recheckRemoval(id, compare);
+        }
+      }
+    });
+  };
+
+  const deleteCart = async (id) => {
+    let sum;
+    cartDetails.forEach(async (item) => {
+      if (item.id === id) {
+        sum = total - parseInt(item.price) * parseInt(item.quantity);
+        setCartDetails((cartDetails) => {
+          return cartDetails.filter((item) => item.id !== id);
+        });
+        setTotal(sum);
+        await deleteCartItems({ collectibleId: id });
+      }
+    });
   };
 
   return (
     <div className="bg-[#f5f5f5] h-[100vh] overflow-auto">
       <Navbar active={6} />
       <div className="md:p-[8em] px-[1em] py-[4em] flex flex-col md:flex-row md:gap-5 gap-2 w-[100vw] ">
-        <div className="md:hidden block py-[5px] px-0 text-[18px] font-semibold mt-3">
+        {/* <div className="md:hidden block py-[5px] px-0 text-[18px] font-semibold mt-3">
           Cart ({cartDetails.length})
+        </div> */}
+        <div className="py-[5px] flex justify-between items-center px-0 text-[18px] font-semibold mt-3">
+          <div className="md:hidden block">Cart ({cartDetails.length})</div>
+          <div
+            className="md:hidden block"
+            onClick={async () => {
+              if (cartDetails.length > 0) {
+                setCartDetails([]);
+                setTotal(0);
+                await clearCartItems();
+              }
+            }}
+          >
+            Clear all
+          </div>
         </div>
         <GlobalContainer
           margin="10px 0"
-          className="shadow-md p-3 flex flex-col justify-center items-center md:px-[1.5em] md:py-[0.5em] md:w-3/4 h-auto "
+          className="shadow-md p-1 flex flex-col justify-center items-center md:px-[1.5em] md:py-[0.5em] md:w-3/4 h-auto "
         >
-          <Text
-            color="black"
-            className="md:block hidden"
-            padding="5px 0"
-            fontSize="18px"
-            font-weight="600"
-          >
-            Cart ({cartDetails.length})
-          </Text>
-          {cartDetails.length !== cartItems.length ? (
+          <div className="w-full flex justify-between items-center">
+            <Text
+              color="black"
+              padding="2px 0"
+              fontSize="18px"
+              font-weight="600"
+              className="md:block hidden"
+            >
+              <p>Cart ({cartDetails.length})</p>
+            </Text>
+            <Text
+              color="black"
+              padding="2px 0"
+              fontSize="16px"
+              font-weight="600"
+              onClick={async () => {
+                if (cartDetails.length > 0) {
+                  setCartDetails([]);
+                  setTotal(0);
+                  await clearCartItems();
+                }
+              }}
+              className="md:block cursor-pointer hidden"
+            >
+              <p>Clear all</p>
+            </Text>
+          </div>
+          {loading ? (
             <>
               <SpinnerCircular
                 color="white"
@@ -156,7 +258,7 @@ const Cart = () => {
               {cartDetails.map((cart, i) => {
                 return (
                   <>
-                    <div key={i} className="border-t-2 my-8 w-full">
+                    <div key={i} className="border-t-2 my-6 w-full">
                       <div className="mt-3 flex gap-5 relative">
                         <div className="w-[80px] h-[80px]">
                           <img
@@ -177,7 +279,14 @@ const Cart = () => {
                       </p>
 
                       <div className="flex gap-5 mt-5 relative items-center">
-                        <FaTrashAlt size={20} color={theme.color} />
+                        <FaTrashAlt
+                          size={20}
+                          color={theme.color}
+                          onClick={() => {
+                            deleteCart(cart?.id);
+                          }}
+                          className="cursor-pointer"
+                        />
                         <p className="text-theme-color">REMOVE</p>
                         <div className="absolute right-1 flex gap-7">
                           <span

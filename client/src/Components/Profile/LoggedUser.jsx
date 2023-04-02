@@ -10,7 +10,7 @@ import {
 import ProfileList from "../../container/ProfileList";
 import ProfileStat from "../../container/ProfileStat";
 import ProfileImage from "./ProfileImage";
-import Verification from "../Verification/Verification";
+import ListingsSaved from "../../container/ListingsSaved";
 import {
   Bio,
   Details,
@@ -21,7 +21,6 @@ import {
   UsersListings,
 } from "./Styled";
 import Account from "../Account/Account";
-import { useGetUserDetails } from "../../application/hooks/queryhooks";
 import { a, useNavigate, useParams } from "react-router-dom";
 import Return from "../Navbar/Return";
 import axios from "axios";
@@ -37,10 +36,10 @@ const LoggedUser = ({ logged }) => {
   const [showImage, setShowImage] = useState(false);
   const [showCover, setShowCover] = useState(false);
   const [data, setData] = useState({});
+  const [btn, setBtn] = useState("Stats");
   const navigate = useNavigate();
   const [file, setFile] = useState(data.cover);
   const { id } = useParams();
-  // let user = useGetUserDetails();
   const [listings, setListings] = useState([]);
   const mainData = useContextAPI();
 
@@ -73,19 +72,26 @@ const LoggedUser = ({ logged }) => {
       .catch((err) => console.log(err));
   };
 
+  const getUserData = async (id) => {
+    await axios
+      .get(`${globalApi}/users/${id}`)
+      .then((resp) => {
+        setData(resp.data);
+        console.log(resp.data);
+        getListings();
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     if (!id) {
       setData(mainData.userData);
     } else {
-      axios.get(`${globalApi}/users/${id}`).then((resp) => {
-        setData(resp.data);
-        console.log(resp.data);
-        getListings();
-      });     
+      getUserData(id);
     }
   }, [id]);
 
-    // const logged = true
+  // const logged = true
   const options = [
     {
       title: "Stats",
@@ -99,7 +105,18 @@ const LoggedUser = ({ logged }) => {
       title: "Account",
       component: <Account />,
     },
+    {
+      title: "Saved Listings",
+      component: <ListingsSaved />,
+    },
   ];
+
+  useEffect(() => {
+    if (data.accountType === 0) {
+      setActive(<ListingsSaved />);
+      setBtn("Saved Listings");
+    }
+  }, [data]);
 
   return (
     <Fragment>
@@ -178,7 +195,6 @@ const LoggedUser = ({ logged }) => {
               <div className="edit">Call</div>
             </>
           )}
-          {/* : } */}
         </div>
       </Details>
 
@@ -209,7 +225,7 @@ const LoggedUser = ({ logged }) => {
         )}
       </Address>
 
-      {!logged && <Update>Update Account</Update>}
+      {!logged && <Update>Ugrade Account</Update>}
 
       {!logged && (
         <Switch>
@@ -218,15 +234,43 @@ const LoggedUser = ({ logged }) => {
             {options.map((option, i) => {
               const { title, component } = option;
               return (
-                <div
-                  key={i}
-                  className="option"
-                  onClick={() => {
-                    setActive(component);
-                  }}
-                >
-                  {title}
-                </div>
+                <>
+                  {data.accountType === 1 ? (
+                    <>
+                      {title !== "Saved Listings" && (
+                        <div
+                          key={i}
+                          className={
+                            btn === title ? "option2" : "option"
+                          }
+                          onClick={() => {
+                            setActive(component);
+                            setBtn(title);
+                          }}
+                        >
+                          {title}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {title === "Saved Listings" && (
+                        <div
+                          key={i}
+                          className={
+                            btn === title ? "option2" : "option"
+                          }
+                          onClick={() => {
+                            setActive(component);
+                            setBtn(title);
+                          }}
+                        >
+                          {title}
+                        </div>
+                      )}
+                    </>
+                  )}
+                </>
               );
             })}
           </div>

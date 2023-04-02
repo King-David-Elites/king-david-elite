@@ -19,7 +19,6 @@ const MainButton = styled.button`
   align-items: center;
   padding: ${(props) => (props.padding ? props.padding : "16px")};
   margin-top: ${(props) => (props.marginTop ? props.marginTop : "0em")};
-  cursor: pointer;
 
   @media (min-width: ${theme.breakPoint["tablet"]}) {
     width: ${(props) => (props.width ? props.width : "88px")};

@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { Upgrade } from "./UpgradeProfile.Style";
 import { ChevronLeft } from "heroicons-react";
 import { useNavigate } from "react-router-dom";
-import useContextAPI from "../../ContextAPI/ContextAPI";
 import { useSelector, useDispatch } from "react-redux";
 import { setListWithUs } from "../../../application/store/actions/user";
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);

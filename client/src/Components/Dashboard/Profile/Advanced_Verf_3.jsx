@@ -99,7 +99,7 @@ const Advanced_Verf_3 = (props) => {
       });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = () => {        
     postVerificationDetails(verificationData)    
     setLoading(true);
   };

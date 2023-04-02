@@ -25,12 +25,11 @@ import {
   requestCartItems,
   setConfig,
 } from "../../../infrastructure/api/user/userRequest";
+import services from "../../../ioc/services";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const EachCollectible = ({ active }) => {
+const EachCollectible = () => {
   const top = useRef(null);
-  const navigate = useNavigate();
-
   const { id } = useParams();
   const [property, setProperty] = useState({});
   const [loading, setLoading] = useState(true);
@@ -114,6 +113,7 @@ const EachCollectible = ({ active }) => {
     setNumb(numb + 1);
     await addToCartItems({ collectibleId: id });
     setCartItems(requestCartItems());
+    services.toast.success('Added to cart successfully');
   };
 
   const removeFromCart = async () => {
@@ -122,6 +122,7 @@ const EachCollectible = ({ active }) => {
     }
     await removeCartItems({ collectibleId: id });
     setCartItems(requestCartItems());
+    services.toast.success("Item removed successfully");
   };
 
   return (

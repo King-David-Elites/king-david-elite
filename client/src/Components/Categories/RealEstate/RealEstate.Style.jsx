@@ -38,6 +38,7 @@ export const SearchSection = styled.div`
   gap: 1em;
   padding-top: 2em;
   width: 100%;
+  height: 52px;
 `;
 
 export const SearchC = styled(SearchSection)`

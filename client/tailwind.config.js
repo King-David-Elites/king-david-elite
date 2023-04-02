@@ -10,6 +10,9 @@ module.exports = {
         "neutral-color": "rgba(166, 166, 166, 1)"
       }
     },
+    fontFamily: {
+      sans: ['Open Sans', 'Poppins', 'sans-serif'],
+    },
   },
   plugins: [],
 }

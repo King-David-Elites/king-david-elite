@@ -42,7 +42,6 @@ const GetStarted = (props) => {
 
       <div className="region">
         <p>Select your country/region</p>
-
         <select
           name="Country"
           onChange={(e) => {

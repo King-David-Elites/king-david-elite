@@ -35,6 +35,29 @@ export const getSignedInUser = async () => {
   }
 };
 
+export const getUser = async () => {
+  await axios
+    .get(`${globalApi}/users/me`, setConfig())
+    .then((resp) => {
+      localStorage.setItem("user", JSON.stringify(resp.data));      
+    })
+    .catch((err) => {      
+      getUser()
+      console.error(err);
+    });
+};
+
+export const requestUserData = () => {
+  let response;
+  response = localStorage.getItem("user");
+  if (response === null || response === undefined) {
+    response = [];
+  } else {
+    response = JSON.parse(response);
+  }
+  return response;
+};
+
 export const updateUserProfile = async (userDetails) => {
   const res = await axios.patch(
     `${BASEURL}/users/update`,
@@ -57,7 +80,7 @@ export const setConfig = () => {
   return config;
 };
 
-export const getStates = async (countryIso, setStateData) => {
+export const getStates = async (countryIso, setStateData) => {  
   var headers = new Headers();
   headers.append(
     "X-CSCAPI-KEY",
@@ -81,7 +104,7 @@ export const getStates = async (countryIso, setStateData) => {
     .catch((error) => console.log("error", error));
 };
 
-export const getCities = async (countryIso, stateIso, setCityData) => {
+export const getCities = async (countryIso, stateIso, setCityData) => { 
   var headers = new Headers();
   headers.append(
     "X-CSCAPI-KEY",
@@ -99,7 +122,7 @@ export const getCities = async (countryIso, stateIso, setCityData) => {
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => {
+    .then((result) => {            
       setCityData(JSON.parse(result));
     })
     .catch((error) => console.log("error", error));
@@ -118,52 +141,59 @@ export const getListings = async (page, category, setListing, setLoading) => {
   return response;
 };
 
-export const getCartItems = async () => {    
+export const getCartItems = async () => {
   await axios
-    .get(`${globalApi}/carts/`,setConfig())
-    .then((resp) => {            
-      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles))     
+    .get(`${globalApi}/carts/`, setConfig())
+    .then((resp) => {
+      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles));
     })
-    .catch((err) => console.error(err));  
+    .catch((err) => console.error(err));
 };
 
-export const addToCartItems = async (body) => {  
+export const addToCartItems = async (body) => {
   await axios
     .patch(`${globalApi}/carts/add/`, body, setConfig())
-    .then((resp) => {
-      services.toast.success("Added successfully");           
-      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles))       
+    .then((resp) => {            
+      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles));
     })
-    .catch((err) => console.error(err));  
+    .catch((err) => console.error(err));
 };
 
-export const removeCartItems = async (body) => {  
+export const removeCartItems = async (body) => {
   await axios
     .patch(`${globalApi}/carts/remove/`, body, setConfig())
-    .then((resp) => {
-      services.toast.success("Removed successfully");     
-      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles)) 
+    .then((resp) => {            
+      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles));
     })
-    .catch((err) => console.error(err));  
+    .catch((err) => console.error(err));
 };
 
-export const clearCartItems = async () => {    
+export const clearCartItems = async () => {
   await axios
-    .patch(`${globalApi}/carts/clear`,{},setConfig())
+    .patch(`${globalApi}/carts/clear`, {}, setConfig())
     .then((resp) => {            
-      console.log(resp.data)           
+      console.log(resp.data);
     })
-    .catch((err) => console.error(err));  
+    .catch((err) => console.error(err));
 };
 
 export const requestCartItems = () => {
-  let response;    
-  response = localStorage.getItem('cartItems')
-  if(response === null){
-    response = []
+  let response;
+  response = localStorage.getItem("cartItems");
+  if (response === null || response === undefined) {
+    response = [];
+  } else {
+    response = JSON.parse(response);
   }
-  else{
-    response = JSON.parse(response)
-  }  
   return response;
+};
+
+export const deleteCartItems = async (body) => {
+  await axios
+    .patch(`${globalApi}/carts/delete-multiple/`, body, setConfig())
+    .then((resp) => {            
+      localStorage.setItem("cartItems", JSON.stringify(resp.data.collectibles));
+      console.log(resp.data);
+    })
+    .catch((err) => console.error(err));
 };

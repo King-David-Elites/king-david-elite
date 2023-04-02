@@ -4,18 +4,25 @@ import FormikControl from '../formik/FormikControl';
 import kde_blackBg from '../Navbar/Image/kde_whiteBg.png'
 import * as Yup from 'yup';
 import MainButton from '../buttons/MainButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import exclusiveImg from '../Categories/LuxuryService/images/alexandre-chambon-aapSemzfsOk-unsplash.jpg'
 import Return from '../Navbar/Return';
+import { useDispatch } from 'react-redux';
+import { setExclusiveEvent, setLuxuryServiceType } from '../../application/store/actions/user';
+import { useState } from 'react';
 
 const ExclusiveEventPage = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [isChecked, setIsChecked] = useState(false);
 
     const initialValues = {
         fullName: '',
         email: '',
         phoneNumber: '',
         emergencyNumber: '',
-        message: ''
+        message: '',
+        price: ''
     }
 
     const validationSchema = Yup.object({
@@ -30,11 +37,11 @@ const ExclusiveEventPage = () => {
             label: "Full name",
             name: "fullName",
             control: "others",
-            placeholder: "e.g Emma Olaosebikan, Williams Ade, Shola Anikulapo",
+            placeholder: "e.g Emma Olaosebikan",
         },
         {
             label: "Email Address",
-            name: "emailAddress",
+            name: "email",
             control: "others",
             placeholder: "Enter email Address",
         },
@@ -54,11 +61,25 @@ const ExclusiveEventPage = () => {
             label: "Message",
             name: "message",
             control: "textarea2",
+            placeholder: 'kindly drop personalised info here'
         },
     ];
 
-    const createEvent = () => {
-
+    const createEvent = (values) => {
+        const event = {
+            fullName: values.fullName,
+            email: values.email,
+            phoneNumber: values.phoneNumber,
+            emergencyNumber: values.emergencyNumber,
+            message: values.message,
+            price: 1000000
+        }
+        const payload = {
+            data: event,
+        }
+        dispatch(setLuxuryServiceType('exclusive-event'));
+        dispatch(setExclusiveEvent(payload));
+        navigate('/luxury-service/checkout');
     }
 
     return (
@@ -106,11 +127,14 @@ const ExclusiveEventPage = () => {
                                     ))}
                                 </div>
                                 <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
-                                    <input type="checkbox" className="check cursor-pointer" />
+                                    <input type="checkbox" className="check cursor-pointer" checked={isChecked}
+                                        onChange={() => setIsChecked(!isChecked)}
+                                    />
                                     <p className="term text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
                                 </div>
+
                                 <div className="flex my-[30px] gap-[10px]">
-                                    <MainButton>Submit</MainButton>
+                                    <MainButton className={` ${!isChecked ? "cursor-not-allowed" : "cursor-pointer"}`} disabled={!isChecked} type='submit'>Submit</MainButton>
                                 </div>
                             </Form>
                         )}
