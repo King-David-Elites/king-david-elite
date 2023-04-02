@@ -22,6 +22,26 @@ export const GlobalContainer = styled.div`
     padding: ${({padding})=> padding};
     margin: ${props => props.margin ? props.margin : "0em"};
 
+    div{
+        h1{
+            font-size:30px;
+            font-weight:600;
+        }
+
+        p{
+            font-size:13px;
+        }
+
+        h5{
+            font-size:17px;
+            font-weight:600;
+        }
+        
+        span{
+            color:blue;
+        }
+    }
+
     @media (max-width: 850px){
         width: 100%;
         margin: ${props => props.margin ? props.margin : "30px 0"};

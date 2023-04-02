@@ -552,7 +552,7 @@ const RealEstateListing = () => {
             />
           </Body>
           <Banner category="Real Estate" />
-          <Text color="black" fontSize="0.8rem" margin="2em" textAlign="center">
+          <Text color="black" fontSize="0.8rem" margin="2em">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Indulge in opulence with King David Elites. Our online marketplace
             boast a collection of exquiste, high-end properties that exude
