@@ -13,7 +13,7 @@ const ProfileImage = ({ data, id, type, setShowImage, setShowCover }) => {
   const [imagep, setImageP] = useState(data.profilePicture);
   const [imagec, setImageC] = useState(data.cover);
 
-  console.log(data)
+  console.log(data);
 
   const upload = (image, type) => {
     setLoader(true);
@@ -29,7 +29,6 @@ const ProfileImage = ({ data, id, type, setShowImage, setShowCover }) => {
     }
     const userDetails =
       type === "profile" ? { profilePicture: image } : { cover: image };
-    console.log(userDetails)
     services.api.userRequests
       .updateUserProfile(userDetails)
       .then((res) => {
@@ -65,9 +64,9 @@ const ProfileImage = ({ data, id, type, setShowImage, setShowCover }) => {
             {type === "profile" && (
               <div className="profileName">
                 <h1>
-                  {data.firstName.toUpperCase() +
+                  {data.firstName?.toUpperCase() +
                     " " +
-                    data.lastName.toUpperCase()}
+                    data.lastName?.toUpperCase()}
                 </h1>
               </div>
             )}

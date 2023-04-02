@@ -164,7 +164,7 @@ const PaginationButtons = ({
   return (
     <>
       <Pagination>
-        {/* <div
+        <div
           className={start ? "button" : "disable"}
           onClick={() => {
             if (start) {
@@ -178,7 +178,7 @@ const PaginationButtons = ({
           }}
         >
           <ChevronDoubleLeft />
-        </div> */}
+        </div>
         <div
           className={previous ? "button" : "disable"}
           onClick={() => {
@@ -224,7 +224,7 @@ const PaginationButtons = ({
         >
           <ChevronRight />
         </div>
-        {/* <div
+        <div
           className={end ? "button" : "disable"}
           onClick={() => {
             if (end) {
@@ -240,7 +240,7 @@ const PaginationButtons = ({
           }}
         >
           <ChevronDoubleRight />
-        </div> */}
+        </div>
       </Pagination>
     </>
   );

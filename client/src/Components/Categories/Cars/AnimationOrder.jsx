@@ -29,6 +29,9 @@ import about7 from "./Img/about7.jpg";
 import about8 from "./Img/about8.jpg";
 import about9 from "./Img/about9.jpg";
 
+import c4 from "../LuxuryService/images/pics4.png"
+import c5 from "../LuxuryService/images/pics5.jpg"
+
 export const graduallyAppear = {
   hidden: {
     opacity: 0.3,
@@ -54,30 +57,32 @@ export const graduallyDisAppear = {
 };
 
 export const CarAnimation = [
-  { id: 1, img: vehicle1 },
-  { id: 2, img: vehicle3 },
+  { id: 1, img: vehicle3 },
+  { id: 2, img: vehicle2 },
   { id: 3, img: vehicle7 },
-  { id: 4, img: vehicle2 },
+  { id: 4, img: vehicle1 },
   { id: 5, img: vehicle4 },
   { id: 6, img: vehicle6 },
   { id: 7, img: vehicle5 },
 ];
 
 export const EstateAnimation = [
-  { id: 1, img: estate1 },
-  { id: 2, img: estate2 },
-  { id: 3, img: estate3 },
-  { id: 4, img: estate4 },
-  { id: 5, img: estate5 },
+  { id: 1, img: estate2 },  
+  { id: 2, img: estate3 },
+  { id: 3, img: estate4 },
+  { id: 4, img: estate5 },
 ];
 
 export const HomeAnimation = [
-  { id: 1, img: home },
-  { id: 2, img: home1 },
-  { id: 3, img: home2 },
-  { id: 4, img: home3 },
-  { id: 5, img: home4 },
-  { id: 6, img: home5 },
+  { id: 1, img: home1 },
+  { id: 2, img: vehicle3 },
+  { id: 3, img: c5 },
+  { id: 4, img: c4 },
+  { id: 5, img: about3 }, 
+  { id: 6, img: estate2},
+  { id: 7, img: vehicle7},
+  { id: 8, img: about6 },
+  { id: 9, img: about7 }
 ];
 
 export const AboutAnimation = [
