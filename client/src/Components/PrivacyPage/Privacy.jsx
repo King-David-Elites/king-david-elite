@@ -1,26 +1,28 @@
 import React from 'react'
 import { Container } from '../TermsPage/Terms.style'
-import Link from 'react-router-dom' 
+import Link, { useNavigate } from 'react-router-dom'
 import kde from '../Navbar/Image/kde_whiteBg.png'
 
 
-export default function Privacy(){
+export default function Privacy() {
+    const navigate = useNavigate();
+
     return (
         <Container>
             <div className='nav'>
 
                 <div className='mini'>
-                    <img src={kde}/>
+                    <img src={kde} />
                     <h2>KING DAVID ELITES</h2>
                 </div>
 
             </div>
 
-             <div className='cont'>
+            <div className='cont'>
                 <h2>PRIVACY AND POLICY</h2>
                 <p>
-                    This Privacy Policy describes our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You. 
-                    King David Elites uses Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.  
+                    This Privacy Policy describes our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
+                    King David Elites uses Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.
                 </p>
 
                 <p>
@@ -31,18 +33,18 @@ export default function Privacy(){
                     </p>
                     <p>
                         <b>Definitions</b>
-                        For the purposes of this Privacy Policy: 
+                        For the purposes of this Privacy Policy:
                     </p>
 
                 </p>
 
                 <p>
-                    <b>ACCOUNT</b>  means a unique account created for You to access our Service or parts of our Service. 
+                    <b>ACCOUNT</b>  means a unique account created for You to access our Service or parts of our Service.
                 </p>
 
                 <p>
                     <b>COMPANY</b>
-                     (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to King David Elites. 
+                    (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to King David Elites.
 
                 </p>
 
@@ -52,36 +54,36 @@ export default function Privacy(){
                 </p>
 
                 <p>
-                  <b> Country</b>  refers to: Nigeria 
+                    <b> Country</b>  refers to: Nigeria
                 </p>
 
                 <p>
                     <b>DEVICE</b>
-                     means any device that can access the Service such as a computer, a cellphone or a digital tablet. 
+                    means any device that can access the Service such as a computer, a cellphone or a digital tablet.
 
                 </p>
 
                 <p>
                     <b>INFORMATION</b>
-                     includes Your personal data as supplied by you, and/or as gathered by us from your use of Our platform. 
+                    includes Your personal data as supplied by you, and/or as gathered by us from your use of Our platform.
 
                 </p>
 
                 <p>
                     <b>PERSONAL DATA</b>
-                     is any information that relates to an identified or identifiable individual. 
+                    is any information that relates to an identified or identifiable individual.
                 </p>
 
 
                 <p>
                     <b>SERVICES</b>
-                    refers to the Website. 
+                    refers to the Website.
                 </p>
 
 
                 <p>
                     <b>SERVICE PROVIDER</b>
-                     means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by, or in partnership with the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.
+                    means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by, or in partnership with the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.
                 </p>
 
 
@@ -92,19 +94,19 @@ export default function Privacy(){
 
                 <p>
                     <b>USAGE DATA</b>
-                    refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit). 
+                    refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).
                 </p>
 
 
                 <p>
                     <b>WEBSITE</b>
-                     refers to King David Elites, accessible from www.kingdavidelites.com 
+                    refers to King David Elites, accessible from <span className="text-theme-color cursor-pointer" onClick={() => navigate(window.location.replace("https://kingdavidelites.com"))}>www.kingdavidelites.com </span>
                 </p>
 
 
                 <p>
                     <b>YOU</b>
-                     means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable. 
+                    means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
                 </p>
 
 
@@ -112,17 +114,17 @@ export default function Privacy(){
                     <b>COLLECTING AND USING YOUR PERSONAL DATA</b>
                     <p>Types of Data Collected
                         <p className='inline'>
-                        Personal Data: while using our service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:
-                        <p>
-                            Address, State, Province, ZIP/Postal code, City
-                        </p>
+                            Personal Data: while using our service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:
+                            <p>
+                                Address, State, Province, ZIP/Postal code, City
+                            </p>
 
-                        <p>Email address</p>
-                        <p>First name and last name</p>
-                        <p>Name</p>
-                        <p>Payment information</p>
-                        <p>Phone number</p>
-                        <p>Usage Data </p>
+                            <p>Email address</p>
+                            <p>First name and last name</p>
+                            <p>Name</p>
+                            <p>Payment information</p>
+                            <p>Phone number</p>
+                            <p>Usage Data </p>
 
                         </p>
                     </p>
@@ -131,9 +133,9 @@ export default function Privacy(){
                 <p>
                     <b>USAGE DATA</b>
                     Usage Data is collected automatically when using the Service.
-                    Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data. 
-                    When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data. 
-                    We may also collect information that Your browser sends whenever you visit our service or when you access the service by or through a mobile device. 
+                    Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.
+                    When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.
+                    We may also collect information that Your browser sends whenever you visit our service or when you access the service by or through a mobile device.
                 </p>
 
                 <p>
@@ -141,20 +143,20 @@ export default function Privacy(){
                     We use cookies and similar tracking technologies to track the activity on our service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze our service. The technologies we use may include:
 
                     <p>
-                    Cookies or Browser Cookies: A cookie is a small file placed on your device. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, You may not be able to use some parts of our service. Unless you have adjusted your browser setting so that it will refuse cookies, our service may use cookies.
+                        Cookies or Browser Cookies: A cookie is a small file placed on your device. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, You may not be able to use some parts of our service. Unless you have adjusted your browser setting so that it will refuse cookies, our service may use cookies.
                     </p>
 
                     <p>
-                    Flash Cookies: Certain features of our service may use local stored objects (or Flash Cookies) to collect and store information about your preferences or your activity on our Service. Flash Cookies are not managed by the same browser settings as those used for browser cookies. For more information on how you can delete flash cookies, please read "Where can I change the settings for disabling, or deleting local shared objects?" available at https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_ 
+                        Flash Cookies: Certain features of our service may use local stored objects (or Flash Cookies) to collect and store information about your preferences or your activity on our Service. Flash Cookies are not managed by the same browser settings as those used for browser cookies. For more information on how you can delete flash cookies, please read "Where can I change the settings for disabling, or deleting local shared objects?" available at <span className="text-theme-color cursor-pointer" onClick={() => navigate(window.location.replace("https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"))}>https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_</span>
                     </p>
 
                 </p>
 
                 <p>
                     <b>WEB BEACONS</b>
-                     Certain sections of our service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the company, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity). 
+                    Certain sections of our service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the company, for example, to count users who have visited those pages or opened an email and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).
 
-                     Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser.   We use both Session and Persistent Cookies for the purposes set out below: 
+                    Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser.   We use both Session and Persistent Cookies for the purposes set out below:
                 </p>
 
                 <p>
@@ -177,80 +179,80 @@ export default function Privacy(){
                     <b>FUNCTIONALITY COOKIES</b>
                     <p>Type: Persistent Cookies </p>
                     <p>Administered by: Us </p>
-                    <p>Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website. 
-                    For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy or the Cookies section of our Privacy Policy. </p>
+                    <p>Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.
+                        For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy or the Cookies section of our Privacy Policy. </p>
                 </p>
 
 
                 <p>
                     <b>USE OF YOUR PERSONAL DATA </b>
-                    The Company may use Personal Data for the following purposes: 
+                    The Company may use Personal Data for the following purposes:
 
                     <p>
-                        To provide You with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or inquired about unless You have opted not to receive such information.  
+                        To provide You with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or inquired about unless You have opted not to receive such information.
                     </p>
 
                     <p>
-                    To provide and maintain our Service, including to monitor the usage of our Service. 
+                        To provide and maintain our Service, including to monitor the usage of our Service.
                     </p>
 
                     <p>
-                    To manage Your Account: to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user. 
+                        To manage Your Account: to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.
                     </p>
 
                     <p>
-                    For the performance of a contract: the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.
+                        For the performance of a contract: the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.
                     </p>
 
                     <p>
-                    To contact You: To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation. 
+                        To contact You: To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.
                     </p>
 
                     <p>
-                    To manage Your requests: To attend and manage Your requests to Us. 
+                        To manage Your requests: To attend and manage Your requests to Us.
                     </p>
 
                     <p>
-                    For business transfers: We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred. 
+                        For business transfers: We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred.
                     </p>
 
                     <p>
-                    For other purposes: We may use Your information for other purposes, such as data analysis, personalizing your experience, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing and your experience. 
+                        For other purposes: We may use Your information for other purposes, such as data analysis, personalizing your experience, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing and your experience.
                     </p>
 
                     <p>
-                         We may share Your personal information in the following situations:
+                        We may share Your personal information in the following situations:
 
-                         <p>
-                         With Service Providers: We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to contact You. 
-                         </p>
+                        <p>
+                            With Service Providers: We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to contact You.
+                        </p>
 
-                         <p>
-                         For business transfers: We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company. 
-                         </p>
+                        <p>
+                            For business transfers: We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.
+                        </p>
 
-                         <p>
-                         With Affiliates: We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us. 
-                         </p>
+                        <p>
+                            With Affiliates: We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.
+                        </p>
 
-                         <p>
-                         With business partners: We may share Your information with Our business partners to offer You certain products, services or promotions. 
-                         </p>
+                        <p>
+                            With business partners: We may share Your information with Our business partners to offer You certain products, services or promotions.
+                        </p>
 
-                         <p>
-                         With other users: when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside. 
-                         </p>
+                        <p>
+                            With other users: when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.
+                        </p>
 
-                         <p>
-                         With Your consent: We may disclose Your personal information for any other purpose with Your consent. 
-                         </p>
+                        <p>
+                            With Your consent: We may disclose Your personal information for any other purpose with Your consent.
+                        </p>
                     </p>
                 </p>
 
 
                 <p>
                     <b>RETENTION OF YOUR PERSONAL DATA</b>
-                    The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies. 
+                    The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.
                     The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.
                 </p>
 
@@ -258,8 +260,8 @@ export default function Privacy(){
                 <p>
                     <b>TRANSFER OF YOUR PERSONAL DATA</b>
                     Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction.
-                    Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer. 
-                    The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information. 
+                    Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer.
+                    The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information.
                 </p>
 
 
@@ -277,7 +279,7 @@ export default function Privacy(){
 
                 <p>
                     <b>OTHER LEGAL REQUIREMENTS</b>
-                    The Company may disclose Your Personal Data in the good faith belief that such action is necessary to: 
+                    The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:
                     <p>Comply with a legal obligation </p>
                     <p>Protect and defend the rights or property of the Company </p>
                     <p>Prevent or investigate possible wrongdoing in connection with the Service</p>
@@ -289,41 +291,41 @@ export default function Privacy(){
 
                 <p>
                     <b>SECURITY OF YOUR PERSONAL DATA</b>
-                    The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security. 
+                    The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.
                 </p>
 
 
                 <p>
                     <b>CHILDREN'S PRIVACY</b>
                     Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.
-                    If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information. 
+                    If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.
                 </p>
 
-                
+
                 <p>
                     <b>LINKS TO OTHER WEBSITES</b>
-                    Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit. 
+                    Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.
                     We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.
                 </p>
 
-                
+
                 <p>
                     <b>CHANGES TO THIS PRIVACY POLICY</b>
-                    We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page. 
-                    We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the "Last updated" date at the top of this Privacy Policy. 
-                    You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page. 
+                    We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.
+                    We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the "Last updated" date at the top of this Privacy Policy.
+                    You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
                 </p>
 
 
                 <p>
                     <b>CONTACT US</b>
-                    If you have any questions about this Privacy Policy, You can contact us: 
-                    <p>By email: kingdavidelites@gmail.com  </p>
-                    <p>By phone: 07041733196.</p>
- 
+                    If you have any questions about this Privacy Policy, You can contact us:
+                    <p>By email: <span className="text-theme-color cursor-pointer" onClick={() => navigate(window.location.replace("https://kingdavidelites@gmail.com"))}>kingdavidelites@gmail.com</span>   </p>
+                    <p>By phone: <span className="text-theme-color cursor-pointer">+2347041733196</span></p>
+
                 </p>
 
-             </div>
+            </div>
         </Container>
     )
 }

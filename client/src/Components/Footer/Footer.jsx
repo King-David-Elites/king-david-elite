@@ -40,9 +40,9 @@ const Footer = () => {
         <Section>
           <Head>King David Elites</Head>
           <List onClick={() => navigate("/about")}>About</List>
-          <List>Team</List>
-          <List onClick={() => navigate("/help")}>Contact Us</List>
-          <List>Terms And Conditions</List>
+          <List onClick={() => navigate("/about")}>Team</List>
+          <List onClick={() => navigate("/contact")}>Contact Us</List>
+          <List onClick={() => navigate("/terms")}>Terms And Conditions</List>
           <div className="icon-bigScreen">
             <BsTwitter
               className="border-circle-bigScreen cursor-pointer"

@@ -54,7 +54,7 @@ height: 300px;
 border-radius: 6px;
 flex:  1 0 70%;
 cursor: pointer;
-transition: transform 2s; 
+transition: transform 300ms; 
 background-size: cover;
 padding: 1em;
   &:hover {

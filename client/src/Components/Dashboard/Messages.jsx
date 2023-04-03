@@ -303,7 +303,7 @@ const MobileMessage = () => {
   const getAllConversations = useCallback(() => {
     axios
       .get(`${globalApi}/conversations/user-conversations`, setConfig())
-      .then((resp) => setConversations(resp.data))
+      .then((resp) => setConversations(resp.data.messageContent ))
       .catch((err) => console.log(err));
   }, []);
 

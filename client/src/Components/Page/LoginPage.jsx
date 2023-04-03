@@ -76,7 +76,7 @@ const LoginPage = ({ stage, setStage }) => {
 
             setTimeout(() => {
               setLoader(false);
-              navigate("/");
+              navigate("/profile");
             }, 2000);
           } else {
             services.toast.error(res.message)
@@ -126,10 +126,7 @@ const LoginPage = ({ stage, setStage }) => {
         <button className="login" onClick={login}>
           login
         </button>
-        <p className="or">- OR -</p>
-        <div>
-          <button className="google">log in with Google</button>
-        </div>
+    
 
         <p className="account">
           Don't have an account?{" "}
