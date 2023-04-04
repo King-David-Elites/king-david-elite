@@ -39,7 +39,7 @@ import cl7 from "../Collectibles/Image/cl7.jpg";
 import cl8 from "../Collectibles/Image/cl8.jpg";
 import cl9 from "../Collectibles/Image/cl9.jpg";
 import cl10 from "../Collectibles/Image/cl10.jpg";
-import cl11 from "../Collectibles/Image/cl1.jpg";
+import cl11 from "../Collectibles/Image/cl11.jpg";
 
 export const graduallyAppear = {
   hidden: {
