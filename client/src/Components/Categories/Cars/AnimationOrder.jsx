@@ -7,6 +7,7 @@ import vehicle6 from "./Img/vehicle6.jpg";
 import vehicle7 from "./Img/vehicle7.jpg";
 import vehicle8 from "./Img/vehicle8.jfif";
 import vehicle9 from "./Img/vehicle9.jpg";
+import vehicle10 from "./Img/vehicle10.jpg";
 
 import estate2 from "./Img/estate2.jpg";
 import estate3 from "./Img/estate3.jpg";
@@ -74,7 +75,8 @@ export const CarAnimation = [
   { id: 6, img: vehicle6 },
   { id: 7, img: vehicle5 },
   { id: 8, img: vehicle8 },
-  { id: 9, img: vehicle9 },
+  { id: 9, img: vehicle10 },  
+  { id: 10, img: vehicle9}
 ];
 
 export const EstateAnimation = [
