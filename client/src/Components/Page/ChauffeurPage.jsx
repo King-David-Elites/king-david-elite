@@ -3,7 +3,7 @@ import kde_blackBg from '../Navbar/Image/kde_whiteBg.png'
 import { useFormik, Form, Formik } from "formik";
 import MainButton from '../buttons/MainButton';
 import { Link, useNavigate } from 'react-router-dom';
-import boatCruise from '../Categories/LuxuryService/images/samuele-errico-piccarini-MyjVReZ5GLQ-unsplash.jpg'
+import boatCruise from '../Categories/LuxuryService/images/samuele-errico-piccarini-MyjVReZ5GLQ-unsplash.webp'
 import InputLayout from '../inputs/InputLayout';
 import * as Yup from 'yup';
 import FormikControl from '../formik/FormikControl';

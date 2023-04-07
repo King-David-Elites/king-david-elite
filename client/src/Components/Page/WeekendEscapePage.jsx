@@ -4,7 +4,7 @@ import kde_blackBg from '../Navbar/Image/kde_whiteBg.png'
 import { Form, Formik, useFormik } from "formik";
 import MainButton from '../buttons/MainButton';
 import { Link, useNavigate } from 'react-router-dom';
-import daycation from '../Categories/LuxuryService/images/pics4.png'
+import daycation from '../Categories/LuxuryService/images/pics4.webp'
 import { useState } from 'react';
 import Return from '../Navbar/Return';
 import FormikControl from '../formik/FormikControl';

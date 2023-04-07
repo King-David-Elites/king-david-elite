@@ -1,11 +1,11 @@
 import { Categories, Category } from "../../Home/Home.Style";
 import LuxuryServiceNavbar from "../../Navbar/LuxuryServiceNavbar";
-import c1 from "../LuxuryService/images/alexandre-chambon-aapSemzfsOk-unsplash.jpg";
-import c2 from "../LuxuryService/images/greg-wilson-ro-GJ-Hlz-s-unsplash.jpg";
-import c3 from "../LuxuryService/images/samuele-errico-piccarini-MyjVReZ5GLQ-unsplash.jpg";
-import c4 from "../LuxuryService/images/pics4.png";
-import c5 from "../LuxuryService/images/ishan-seefromthesky-EOAnV_C1a4w-unsplash.jpg"
-import c6 from '../LuxuryService/images/pics5.jpg'
+import c1 from "../LuxuryService/images/alexandre-chambon-aapSemzfsOk-unsplash.webp";
+import c2 from "../LuxuryService/images/greg-wilson-ro-GJ-Hlz-s-unsplash.webp";
+import c3 from "../LuxuryService/images/samuele-errico-piccarini-MyjVReZ5GLQ-unsplash.webp";
+import c4 from "../LuxuryService/images/pics4.webp";
+import c5 from "../LuxuryService/images/ishan-seefromthesky-EOAnV_C1a4w-unsplash.webp"
+import c6 from '../LuxuryService/images/pics5.webp'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Footer from "../../Footer/Footer";

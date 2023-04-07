@@ -461,7 +461,7 @@ const Pricing = ({ active = 6 }) => {
 
                 <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
                     <p className="text-[15px] font-semibold mb-1">Diamond</p>
-                    <p className="text-[20px] font-extrabold">&#8358;700,000</p>
+                    <p className="text-[20px] font-extrabold">&#8358;750,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Chauffeur Rides: EXECUTIVE SUV (24 HOURS)</p>
@@ -481,7 +481,7 @@ const Pricing = ({ active = 6 }) => {
 
                 <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
                     <p className="text-[15px] font-semibold mb-1">Platinum</p>
-                    <p className="text-[20px] font-extrabold">&#8358;900,000</p>
+                    <p className="text-[20px] font-extrabold">&#8358;1,000,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Chauffeur Rides: LUXURY SUV (24 HOURS)</p>
@@ -574,7 +574,7 @@ const Pricing = ({ active = 6 }) => {
 
                 <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
                     <p className="text-[15px] font-semibold mb-1">Diamond</p>
-                    <p className="text-[20px] font-extrabold">&#8358;850,000</p>
+                    <p className="text-[20px] font-extrabold">&#8358;1,000,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Boat Size: 10 PASSENGER MINI YACHT</p>
@@ -593,7 +593,7 @@ const Pricing = ({ active = 6 }) => {
 
                 <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
                     <p className="text-[15px] font-semibold mb-1">Platinum</p>
-                    <p className="text-[20px] font-extrabold">&#8358;1,200,000</p>
+                    <p className="text-[20px] font-extrabold">&#8358;1,500,000</p>
 
                     <div className="mt-5">
                         <p className="text-[13px] font-semibold mb-1">Boat Size: 15 PASSENGER MINI YACHT</p>
@@ -652,7 +652,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center md:px-3 bg-[#FFECEC] rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">&#8358;700,000</p>
+                        <p className="font-bold text-[25px]">&#8358;750,000</p>
                         <p className="text-[#2301F3] text-[16px] cursor-pointer mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/weekend-escape') }}>Get Started</p>
                         <ul className="text-[12px] text-center  h-[300px]">
                             {
@@ -668,7 +668,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center md:px-3 text-white bg-[#333433] rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">&#8358;900,000</p>
+                        <p className="font-bold text-[25px]">&#8358;1,000,000</p>
                         <p className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12" onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/weekend-escape') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[300px]">
                             {
@@ -798,7 +798,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] md:px-3 rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">&#8358;850, 000</p>
+                        <p className="font-bold text-[25px]">&#8358;1,000, 000</p>
                         <p className="text-[#2301F3] text-[16px] mt-8 font-bold cursor-pointer border-b-2 border-[#2301F3] mb-12" onClick={() => { dispatch(setPackagePlan('diamond')); navigate('/luxury-service/boat-cruise') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[250px]">
                             {
@@ -814,7 +814,7 @@ const Pricing = ({ active = 6 }) => {
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] md:px-3 rounded-md md:py-10">
-                        <p className="font-bold text-[25px]">&#8358;1,200,000</p>
+                        <p className="font-bold text-[25px]">&#8358;1,500,000</p>
                         <p className="text-white text-[16px] mt-8 font-bold border-b-2 border-white mb-12" onClick={() => { dispatch(setPackagePlan('platinum')); navigate('/luxury-service/boat-cruise cursor-pointer') }}>Get Started</p>
                         <ul className="text-[12px] text-center h-[250px]">
                             {

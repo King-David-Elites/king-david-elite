@@ -29,8 +29,8 @@ import about7 from "./Img/about7.jpg";
 import about8 from "./Img/about8.jpg";
 import about9 from "./Img/about9.jpg";
 
-import c4 from "../LuxuryService/images/pics4.png"
-import c5 from "../LuxuryService/images/pics5.jpg"
+import c4 from "../LuxuryService/images/pics4.webp"
+import c5 from "../LuxuryService/images/pics5.webp"
 
 export const graduallyAppear = {
   hidden: {

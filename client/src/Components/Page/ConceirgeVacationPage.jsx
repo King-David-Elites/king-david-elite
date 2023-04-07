@@ -3,7 +3,7 @@ import kde_blackBg from '../Navbar/Image/kde_whiteBg.png'
 import { useFormik } from "formik";
 import MainButton from '../buttons/MainButton';
 import { Link, useNavigate } from 'react-router-dom';
-import conceirgeVacation from '../Categories/LuxuryService/images/pics4.png'
+import conceirgeVacation from '../Categories/LuxuryService/images/pics4.webp'
 import InputLayout from '../inputs/InputLayout';
 import { InputField } from '../inputs/MainInput';
 import { Form, Formik } from "formik";

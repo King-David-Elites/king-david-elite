@@ -5,7 +5,7 @@ import kde_blackBg from '../Navbar/Image/kde_whiteBg.png'
 import * as Yup from 'yup';
 import MainButton from '../buttons/MainButton';
 import { Link, useNavigate } from 'react-router-dom';
-import exclusiveImg from '../Categories/LuxuryService/images/alexandre-chambon-aapSemzfsOk-unsplash.jpg'
+import exclusiveImg from '../Categories/LuxuryService/images/alexandre-chambon-aapSemzfsOk-unsplash.webp'
 import Return from '../Navbar/Return';
 import { useDispatch } from 'react-redux';
 import { setExclusiveEvent, setLuxuryServiceType } from '../../application/store/actions/user';
