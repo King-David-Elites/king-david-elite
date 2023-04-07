@@ -181,7 +181,7 @@ const ChauffeurPage = ({ id }) => {
     ];
 
     const validationSchema = Yup.object({
-        numberOfGuest: Yup.string().required("Number of guest is required"),
+        numberOfGuest: Yup.number().max(4).required("Number of guest is required"),
         emergencyNumber: Yup.string().required("Emergency Number is required"),
         emergencyContactName: Yup.string().required("Emergency Contact Name is required"),
         DropOffLocation: Yup.string().required("Drop off location is required"),

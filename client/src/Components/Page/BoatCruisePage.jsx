@@ -62,8 +62,24 @@ const BoatCruisePage = () => {
         guestsName: ''
     }
 
-    const validationSchema = Yup.object({
-        numberOfGuest: Yup.string().required("Number of guest is required"),
+    const validationSchema = Yup.object().shape({
+        status: Yup
+            .string()
+            .oneOf(['silver', 'diamond', 'platinum']),
+        numberOfGuest: Yup
+            .number()
+            .when('status', {
+                is: 'silver',
+                then: Yup.number().max(2),
+            })
+            .when('status', {
+                is: 'diamond',
+                then: Yup.number().max(4),
+            })
+            .when('status', {
+                is: 'platinum',
+                then: Yup.number().max(6),
+            }).required("Number of guest required"),
         emergencyContactNumber: Yup.string().required("Emergency Number is required"),
         emergencyContactName: Yup.string().required("Emergency Contact Name is required"),
         contact: Yup.string().required("Contact is required"),

@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { MdMenu } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
@@ -635,7 +635,7 @@ const Pricing = ({ active = 6 }) => {
 
                     <div className="w-1/4 flex flex-col items-center rounded-md md:px-3 bg-[#F2F2F2] md:py-10">
                         <p className="font-bold text-[25px]">&#8358;500,000</p>
-                        <p className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() => navigate('/luxury-service/weekend-escape')}>Get Started</p>
+                        <p className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12" onClick={() =>{ dispatch(setPackagePlan('silver')); navigate('/luxury-service/weekend-escape') }}>Get Started</p>
                         <ul className="text-[12px] text-center  h-[300px]">
                             {
                                 dayCationSilverplanOption.map((p, i) => {
@@ -648,7 +648,7 @@ const Pricing = ({ active = 6 }) => {
 
                         </ul>
                         <p className="text-[13px] font-semibold mt-5">* You can drop personalized orders in the message box and our customer service will respond as soon as possible</p>
-                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => { dispatch(setPackagePlan()); navigate('/luxury-service/weekend-escape') }}>Get Started</MainButton>
+                        <MainButton width='100px' padding='12px' marginTop='7em' onClick={() => { dispatch(setPackagePlan('silver')); navigate('/luxury-service/weekend-escape') }}>Get Started</MainButton>
                     </div>
 
                     <div className="w-1/4 flex flex-col items-center md:px-3 bg-[#FFECEC] rounded-md md:py-10">

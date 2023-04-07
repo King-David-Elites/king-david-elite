@@ -16,7 +16,7 @@ import InputLayout from '../inputs/InputLayout';
 import { InputField } from '../inputs/MainInput';
 import { RadioField } from '../inputs/RadioInput';
 
-const ExclusiveEventPage = () => {
+const WeekendEscapePage = () => {
     const [guestsName, setGuestsName] = useState('');
     const [guestsEmail, setGuestEmail] = useState('');
     const [items, setItems] = useState([]);
@@ -24,7 +24,6 @@ const ExclusiveEventPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isChecked, setIsChecked] = useState(false);
-
 
     const handleRemove = (index) => {
         const list = [...items]
@@ -70,7 +69,6 @@ const ExclusiveEventPage = () => {
     ];
 
     const [selectedOption, setSelectedOption] = useState(options[0].value);
-    console.log(selectedOption)
 
     const handleOptionChange = (value) => {
         setSelectedOption(value);
@@ -138,8 +136,24 @@ const ExclusiveEventPage = () => {
         guestsEmail: Yup.string().email('Must be a valid email').required("E-mail is required"),
     })
 
-    const validationSchema = Yup.object({
-        numberOfGuest: Yup.string().required("Number of guest is required"),
+    const validationSchema = Yup.object().shape({
+        plan: Yup
+        .string()
+        .oneOf(['silver', 'diamond', 'platinum']),
+      numberOfGuest: Yup
+        .number()
+        .when('plan', {
+          is: 'silver',
+          then: Yup.number().max(2),
+        })
+        .when('plan', {
+          is: 'diamond',
+          then: Yup.number().max(4),
+        })
+        .when('plan', {
+          is: 'platinum',
+          then: Yup.number().max(6),
+        }).required("Number of guest required"),
         emergencyNumber: Yup.string().required("Emergency Number is required"),
         contact: Yup.string().required("Contact is required"),
         emergencyContactName: Yup.string().required("Emergency Contact Name is required"),
@@ -355,7 +369,7 @@ const ExclusiveEventPage = () => {
     );
 }
 
-export default ExclusiveEventPage;
+export default WeekendEscapePage;
 
 {/* <form onSubmit={formik.handleSubmit} className='mt-6' >
 <div>
