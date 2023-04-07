@@ -35,6 +35,7 @@ import globalApi from "../../../api";
 import theme from "../../../application/utils/Theme";
 import { BiArrowBack } from "react-icons/bi";
 import PaginationButtons from "../../PaginationButtons/PaginationButtons";
+import building6 from "./Image/building6.jpg"
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -565,7 +566,7 @@ const RealEstateListing = ({ mainData }) => {
               background={theme.color}
             />
           </Body>
-          <Banner category="Real Estate" />
+          <Banner category="Real Estate" img={building6}/>
           <Text color="black" fontSize="0.8rem" margin="2em">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Indulge in opulence with King David Elites. Our online marketplace

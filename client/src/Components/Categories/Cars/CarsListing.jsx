@@ -29,6 +29,7 @@ import {
   graduallyDisAppear,
 } from "./AnimationOrder";
 import { motion } from "framer-motion";
+import carspic from "./Image/carspic.jpg"
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const CarsListing = () => {
@@ -153,7 +154,7 @@ const CarsListing = () => {
           background={theme.color}
         />
       </Body>
-      <Banner category="Cars" />
+      <Banner category="Cars" img={carspic}/>
       <Text color="black" fontSize="0.8rem" margin="2em">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Discover the epitome of luxury automobile with King David Elites. Our

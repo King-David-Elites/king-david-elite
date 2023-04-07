@@ -34,6 +34,8 @@ import {
   graduallyDisAppear,
 } from "../Cars/AnimationOrder";
 
+import cl3 from "./Image/cl3.jpg"
+
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const CollectiblesListing = () => {
@@ -208,7 +210,7 @@ const CollectiblesListing = () => {
           background={theme.color}
         />       
       </Body>
-      <Banner category="Collectibles" />
+      <Banner category="Collectibles" img={cl3} />
       <Text color="black" fontSize="0.8rem" margin="2em">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Indulge in opulence with King David Elites. Our online marketplace boast
