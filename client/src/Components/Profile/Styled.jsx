@@ -101,8 +101,7 @@ export const Details = styled.div`
   }
 
   .profile {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1.3fr;
+    display: flex;
     gap: 20px;
     align-items: center;
     cursor: pointer;
@@ -110,6 +109,8 @@ export const Details = styled.div`
 
     @media (max-width: 600px) {
       gap: 5px;
+      display: grid;
+      grid-template-columns: 1fr 3fr 1.3fr;
     }
   }
 
@@ -161,6 +162,7 @@ export const Details = styled.div`
       font-size: 14px;
       gap: 5px;
       cursor: pointer;
+      border-radius: 8px;
 
       @media (max-width: 600px) {
         font-size: 12px;

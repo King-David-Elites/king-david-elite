@@ -202,8 +202,8 @@ const LoggedUser = ({ logged }) => {
         
       </Details>
 
-      {/* <Bio>{data.about}</Bio> */}
-      <UserDetails>
+<Details>
+  <UserDetails>
         <div className="bio">
           {data.about}
         </div>
@@ -211,6 +211,9 @@ const LoggedUser = ({ logged }) => {
           Email: <span className="select">{data.email}</span>
         </div>
       </UserDetails>
+</Details>
+      {/* <Bio>{data.about}</Bio> */}
+      
 
       <Address>
         <p className="address">{data?.address}</p>
