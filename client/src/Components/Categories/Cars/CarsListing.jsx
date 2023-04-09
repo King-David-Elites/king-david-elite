@@ -50,19 +50,19 @@ const CarsListing = () => {
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setCarId(carId + 1);
-        }, [500]);
+          setAnimation(graduallyAppear);          
+        }, [400]);
       } else if (carId === CarAnimation.length) {
         clearTimeout(timer2);
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setCarId(1);
+          setAnimation(graduallyAppear);          
         }, [500]);
       }
-    }, [8000]);
+    }, [6000]);
   }, [carId]);
 
   useEffect(() => {

@@ -27,7 +27,6 @@ import about7 from "./Img/about7.jpg";
 import about8 from "./Img/about8.jpg";
 import about9 from "./Img/about9.jpg";
 
-import c4 from "../LuxuryService/images/pics4.webp"
 import c5 from "../LuxuryService/images/pics5.webp"
 
 import cl1 from "../Collectibles/Image/cl1.jpg";
@@ -89,14 +88,13 @@ export const EstateAnimation = [
 export const HomeAnimation = [
   { id: 1, img: home1 },
   { id: 2, img: vehicle3 },
-  { id: 3, img: c5 },
-  { id: 4, img: c4 },
-  { id: 5, img: about3 }, 
-  { id: 6, img: estate2},
-  { id: 7, img: vehicle7},
-  { id: 8, img: h1},
-  { id: 9, img: about6 },
-  { id: 10, img: about7 }
+  { id: 3, img: c5 },  
+  { id: 4, img: about3 }, 
+  { id: 5, img: estate2},
+  { id: 6, img: vehicle7},
+  { id: 7, img: h1},
+  { id: 8, img: about6 },
+  { id: 9, img: about7 }
 ];
 
 export const AboutAnimation = [

@@ -100,19 +100,19 @@ const HomePage = () => {
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setHomeId(homeId + 1);
-        }, [500]);
+          setAnimation(graduallyAppear);          
+        }, [400]);
       } else if (homeId === HomeAnimation.length) {
         clearTimeout(timer2);
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setHomeId(1);
+          setAnimation(graduallyAppear);          
         }, [500]);
       }
-    }, [8000]);
+    }, [6000]);
   }, [homeId]);
 
   return (
@@ -259,7 +259,7 @@ const HomePage = () => {
           <p className="sub-p1">
             Take your brand to the next level as a{" "}
             <span className="text-[#F2BE5C] font-bold">
-              Luxury Affiliate Vendor
+              Luxury Affiliate Marketer
             </span>
           </p>
         </Text>
