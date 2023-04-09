@@ -200,14 +200,7 @@ const BoatCruisePage = () => {
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
-                        <p className='font-semibold text-lg md:text-2xl'>Boat Cruises</p>
-                        <div className='flex gap-1'>
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} />
-                        </div>
+                        <p className='font-semibold text-lg md:text-2xl'>Boat Cruises</p>                        
                     </div>
 
                     <form onSubmit={formik.handleSubmit} className='mt-1 mb-4' >

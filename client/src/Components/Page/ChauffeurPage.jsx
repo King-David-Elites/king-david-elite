@@ -53,7 +53,7 @@ const ChauffeurPage = ({ id }) => {
     }
 
     const securityOptions = [
-        { value: "Yes", label: "Yes ~{\n} " },
+        { value: "Yes", label: "Yes" },
         { value: "No", label: "No" },
     ];
 
@@ -64,7 +64,7 @@ const ChauffeurPage = ({ id }) => {
     };
 
     const exortOptions = [
-        { value: "Yes", label: "Yes ~{\n} " },
+        { value: "Yes", label: "Yes" },
         { value: "No", label: "No" },
     ];
 
@@ -76,7 +76,7 @@ const ChauffeurPage = ({ id }) => {
 
     const availableSilverVehicles = [
         { key: "", value: '' },
-        { key: "HYUNDAI SONATA(2017) ", value: "HYUNDAI SONATA(2017)" },
+        { key: "HYUNDAI SONATA(2017) ", value: "HYUNDAI SONATA(2017)", price: "100,000" },
         { key: "TOYOTA COROLLA(2017)", value: "TOYOTA COROLLA(2017)" },
         { key: "TOYOTA CAMRY(2017)", value: "TOYOTA CAMRY(2017)" },
         { key: "MERCEDES BENZ C300(2016)", value: "MERCEDES BENZ C300(2016)" },
@@ -251,14 +251,7 @@ const ChauffeurPage = ({ id }) => {
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
-                        <p className='font-semibold text-lg md:text-2xl'>Chauffeur-Driven Services</p>
-                        <div className='flex gap-1'>
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} />
-                        </div>
+                        <p className='font-semibold text-lg md:text-2xl'>Chauffeur-Driven Services</p>                        
                     </div>
 
                     <form onSubmit={formik.handleSubmit} className='mt-6' >
@@ -275,7 +268,7 @@ const ChauffeurPage = ({ id }) => {
                             ))}
                         </div>
 
-                        <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
+                        <div className='flex md:flex-row flex-col gap-[2em] md:w-[50%] justify-between'>
                             <InputLayout label='Names of Passenger(s)' name='guestsName'>
                                 <InputField name='guestsName' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsName') {
