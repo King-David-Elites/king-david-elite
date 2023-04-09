@@ -156,7 +156,6 @@ const CarsListing = () => {
       </Body>
       <Banner category="Cars" img={carspic}/>
       <Text color="black" fontSize="0.8rem" margin="2em">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Discover the epitome of luxury automobile with King David Elites. Our
         Platform offers a collection of exclusive high-end vehicles, including
         sleek sport cars and powerful SUVs, taliored to the society's elite. Our

@@ -535,14 +535,18 @@ const RealEstateListing = ({ mainData }) => {
             ) : (
               <GridContainer>
                 {!loader &&
-                  list.length > 0 &&
+                  list.length > 0 ?
                   list.map((items) => {
                     return (
                       <>
                         <Listing key={items._id} list={items} />
                       </>
                     );
-                  })}
+                  }):
+                  <h4 className="md:text-lg text-sm font-semibold italic">
+                No Automobile listing available
+              </h4>
+                  }
                 
                 {!loader &&
                   listing.length > 0 &&
@@ -568,7 +572,6 @@ const RealEstateListing = ({ mainData }) => {
           </Body>
           <Banner category="Real Estate" img={building6}/>
           <Text color="black" fontSize="0.8rem" margin="2em">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Indulge in opulence with King David Elites. Our online marketplace
             boast a collection of exquiste, high-end properties that exude
             luxury living.From stunning homes to sprawling estates and opulent

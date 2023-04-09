@@ -136,7 +136,7 @@ const LoggedUser = ({ logged }) => {
           setShowCover={setShowCover}
         />
       )}
-      <Return transparent={true} />
+      <Return transparent={false} link={"/"}/>
       <Header
         className="cursor-pointer"
         onClick={() => {
