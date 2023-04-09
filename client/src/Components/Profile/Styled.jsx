@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../../application/utils/Theme";
 
 export const Header = styled.div`
   img {
@@ -104,9 +105,12 @@ export const Details = styled.div`
     gap: 20px;
     align-items: center;
     cursor: pointer;
+    justify-content: space-between;
 
     @media (max-width: 600px) {
       gap: 5px;
+      display: grid;
+      grid-template-columns: 1fr 3fr 1.3fr;
     }
   }
 
@@ -139,8 +143,8 @@ export const Details = styled.div`
     border: 2px solid white;
 
     @media (max-width: 600px) {
-      width: 80px;
-      height: 80px;
+      width: 60px;
+      height: 60px;
     }
   }
 
@@ -148,6 +152,7 @@ export const Details = styled.div`
     display: flex;
     align-items: center;
     gap: 20px;
+    /* color: white; */
 
     .edit {
       display: flex;
@@ -157,6 +162,7 @@ export const Details = styled.div`
       font-size: 14px;
       gap: 5px;
       cursor: pointer;
+      border-radius: 8px;
 
       @media (max-width: 600px) {
         font-size: 12px;
@@ -187,6 +193,17 @@ export const Bio = styled.p`
     font-size: 14px;
   }
 `;
+
+export const UserDetails = styled.div`
+padding: 10px;
+  .bio{
+    color: rgb(100,100,100);
+  }
+
+  .select{
+    color: ${theme.color};
+  }
+`
 
 export const Update = styled.div`
   display: none;

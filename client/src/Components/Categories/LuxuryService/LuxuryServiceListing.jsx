@@ -13,16 +13,28 @@ import { IoMdArrowForward } from "react-icons/io";
 
 const categories = [
     {
-        bg: c1,
-        title: "Exclusive Events",
-        other: "We offer an exceptional and unforgettable experiences to our highly-esteemed clients. From specially curated",
-        link: "/luxury-service/exclusive-event",
-    },
-    {
         bg: c4,
         title: "Daycation",
         other: "Get the ultimate VIP experience with our Concierge Weekends service. Whether you’re looking to relax or explore",
         link: "/luxury-service/pricing"
+    },
+    {
+        bg: c6,
+        title: "Boat Cruises",
+        other: "Set sail on an unforgettable adventure with our Boat Cruises. Whether you,re looking for a romantic getaw",
+        link: "/luxury-service/pricing"
+    },
+    {
+        bg: c3,
+        title: "Chauffeur-Driven Services",
+        other: "Get the ultimate VIP experience with our Concierge Weekends service. Whether you’re looking to relax or explore",
+        link: "/luxury-service/pricing"
+    },
+    {
+        bg: c1,
+        title: "Exclusive Events",
+        other: "We offer an exceptional and unforgettable experiences to our highly-esteemed clients. From specially curated",
+        link: "/luxury-service/exclusive-event",
     },
     {
         bg: c2,
@@ -37,18 +49,6 @@ const categories = [
         other: "Leave the planning to us and let us create the ultimate customized vacation experience. Our Concierge Read More",
         // link: "/luxury-service/concierge-vacation",
         comingSoon: true
-    },
-    {
-        bg: c6,
-        title: "Boat Cruises",
-        other: "Set sail on an unforgettable adventure with our Boat Cruises. Whether you,re looking for a romantic getaw",
-        link: "/luxury-service/pricing"
-    },
-    {
-        bg: c3,
-        title: "Chauffeur-Driven Services",
-        other: "Get the ultimate VIP experience with our Concierge Weekends service. Whether you’re looking to relax or explore",
-        link: "/luxury-service/pricing"
     },
 ];
 

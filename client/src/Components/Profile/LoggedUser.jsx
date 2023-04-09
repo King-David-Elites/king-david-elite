@@ -19,6 +19,7 @@ import {
   Update,
   Address,
   UsersListings,
+  UserDetails,
 } from "./Styled";
 import Account from "../Account/Account";
 import { a, useNavigate, useParams } from "react-router-dom";
@@ -136,7 +137,7 @@ const LoggedUser = ({ logged }) => {
           setShowCover={setShowCover}
         />
       )}
-      <Return transparent={true} />
+      <Return transparent={false} link={"/"}/>
       <Header
         className="cursor-pointer"
         onClick={() => {
@@ -158,15 +159,11 @@ const LoggedUser = ({ logged }) => {
           <div className="title">
             <h3>
               {data.firstName + " " + data.lastName}
-              <span>
-                <FaCheckCircle />
-              </span>
             </h3>
             <p>Joined in {new Date(data.createdAt).getFullYear()}</p>
           </div>
-        </div>
 
-        <div className="btns">
+          <div className="btns">
           {!logged ? (
             <>
               <div
@@ -178,13 +175,17 @@ const LoggedUser = ({ logged }) => {
                 <FaPen />
                 <p>Edit Profile</p>
               </div>
-
-              <div
+              {
+                data.accountType != 0 && 
+                <div
                 className="upgrade"
                 onClick={() => navigate("/profile/upgrade")}
               >
                 <p>Upgrade Account</p>
               </div>
+              }
+
+              
             </>
           ) : (
             <>
@@ -196,9 +197,23 @@ const LoggedUser = ({ logged }) => {
             </>
           )}
         </div>
+        </div>
+
+        
       </Details>
 
-      <Bio>{data.about}</Bio>
+<Details>
+  <UserDetails>
+        <div className="bio">
+          {data.about}
+        </div>
+        <div className="email">
+          Email: <span className="select">{data.email}</span>
+        </div>
+      </UserDetails>
+</Details>
+      {/* <Bio>{data.about}</Bio> */}
+      
 
       <Address>
         <p className="address">{data?.address}</p>
@@ -225,7 +240,7 @@ const LoggedUser = ({ logged }) => {
         )}
       </Address>
 
-      {!logged && <Update>Ugrade Account</Update>}
+      {!logged && data.accountType != 0 && <Update>Ugrade Account</Update>}
 
       {!logged && (
         <Switch>

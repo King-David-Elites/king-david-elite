@@ -133,14 +133,14 @@ const HomePage = () => {
               </motion.div>
             );
           }
-        })}
+        })} 
         <HeroSection>
           <Text fontSize="75px">
             <h3 className="font-bold">
               LUXURY <span className="text-[#F2BE5C] font-bold">REDEFINED</span>
             </h3>
           </Text>
-          <Text>The Greatest Luxury Is Freedom Of All Forms.</Text>
+          <Text>Luxury is a mindset, KDE is all you need.</Text>
           <div className="btn">
             <motion.button onClick={handleExploreButtonClick} animate={exploreAnimation}>
               Explore
