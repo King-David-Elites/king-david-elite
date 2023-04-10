@@ -82,75 +82,135 @@ const ChauffeurPage = ({ id }) => {
     {
       key: "HYUNDAI SONATA(2017) ",
       value: "HYUNDAI SONATA(2017)",
-      price: "100,000",
+      price: "100000",
     },
-    { key: "TOYOTA COROLLA(2017)", value: "TOYOTA COROLLA(2017)" },
-    { key: "TOYOTA CAMRY(2017)", value: "TOYOTA CAMRY(2017)" },
-    { key: "MERCEDES BENZ C300(2016)", value: "MERCEDES BENZ C300(2016)" },
-    { key: "TOYOTA COROLLA(2020)", value: "TOYOTA COROLLA(2020)" },
-    { key: "TOYOTA COASTER BUS", value: "TOYOTA COASTER BUS" },
-    { key: "TOYOTA HIACE BUS", value: "TOYOTA HIACE BUS" },
+    {
+      key: "TOYOTA COROLLA(2017)",
+      value: "TOYOTA COROLLA(2017)",
+      price: "100000",
+    },
+    { key: "TOYOTA CAMRY(2017)", value: "TOYOTA CAMRY(2017)", price: "100000" },
+    {
+      key: "MERCEDES BENZ C300(2016)",
+      value: "MERCEDES BENZ C300(2016)",
+      price: "100000",
+    },
+    {
+      key: "TOYOTA COROLLA(2020)",
+      value: "TOYOTA COROLLA(2020)",
+      price: "100000",
+    },
+    { key: "TOYOTA COASTER BUS", value: "TOYOTA COASTER BUS", price: "100000" },
+    { key: "TOYOTA HIACE BUS", value: "TOYOTA HIACE BUS", price: "100000" },
     {
       key: "TOYOTA COASTER EXECUTIVE BUS",
       value: "TOYOTA COASTER EXECUTIVE BUS",
+      price: "135000",
     },
-    { key: "TOYOTA LANDCRUISER(2016)", value: "TOYOTA LANDCRUISER(2016)" },
-    { key: "TOYOTA HIGHLANDER(2018)", value: "TOYOTA HIGHLANDER(2018)" },
-    { key: "TOYOTA PRADO(2018)", value: "TOYOTA PRADO(2018)" },
-    { key: "LEXUS GX460(2018)", value: "LEXUS GX460(2018)" },
-    { key: "TOYOTA PRADO(2020)", value: "TOYOTA PRADO(2020)" },
-    { key: "LEXUS LX570(2015)", value: "LEXUS LX570(2015)" },
-    { key: "MERCEDES BENZ E300(2017)", value: "MERCEDES BENZ E300(2017)" },
-    { key: "BMW GRAND COUPE(2018)", value: "BMW GRAND COUPE(2018)" },
-    { key: "TOYOTA LANDCRUISER(2019)", value: "TOYOTA LANDCRUISER(2019)" },
-    { key: "LEXUS LX570(2017)", value: "LEXUS LX570(2017)" },
-    { key: "JET MOVER BUS", value: "JET MOVER BUS" },
-    { key: "TOYOTA LANDCRUISER(2021)", value: "TOYOTA LANDCRUISER(2021)" },
-    { key: "JET MOVER EXOTIC BUS", value: "JET MOVER EXOTIC BUS" },
-    { key: "MERCEDES BENZ(VINTAGE CAR)", value: "MERCEDES BENZ(VINTAGE CAR)" },
-    { key: "RANGE ROVER SUV(2016)", value: "RANGE ROVER SUV(2016)" },
+    {
+      key: "TOYOTA LANDCRUISER(2016)",
+      value: "TOYOTA LANDCRUISER(2016)",
+      price: "135000",
+    },
+    {
+      key: "TOYOTA HIGHLANDER(2018)",
+      value: "TOYOTA HIGHLANDER(2018)",
+      price: "135000",
+    },
+    { key: "TOYOTA PRADO(2018)", value: "TOYOTA PRADO(2018)", price: "135000" },
+    { key: "LEXUS GX460(2018)", value: "LEXUS GX460(2018)", price: "135000" },
+    { key: "TOYOTA PRADO(2020)", value: "TOYOTA PRADO(2020)", price: "150000" },
+    { key: "LEXUS LX570(2015)", value: "LEXUS LX570(2015)", price: "150000" },
+    {
+      key: "MERCEDES BENZ E300(2017)",
+      value: "MERCEDES BENZ E300(2017)",
+      price: "150000",
+    },
+    {
+      key: "BMW GRAND COUPE(2018)",
+      value: "BMW GRAND COUPE(2018)",
+      price: "150000",
+    },
+    {
+      key: "TOYOTA LANDCRUISER(2019)",
+      value: "TOYOTA LANDCRUISER(2019)",
+      price: "200000",
+    },
+    { key: "LEXUS LX570(2017)", value: "LEXUS LX570(2017)", price: "200000" },
+    { key: "JET MOVER BUS", value: "JET MOVER BUS", price: "220000" },
+    {
+      key: "TOYOTA LANDCRUISER(2021)",
+      value: "TOYOTA LANDCRUISER(2021)",
+      price: "235000",
+    },
+    {
+      key: "JET MOVER EXOTIC BUS",
+      value: "JET MOVER EXOTIC BUS",
+      price: "250000",
+    },
+    {
+      key: "MERCEDES BENZ(VINTAGE CAR)",
+      value: "MERCEDES BENZ(VINTAGE CAR)",
+      price: "250000",
+    },
+    {
+      key: "RANGE ROVER SUV(2016)",
+      value: "RANGE ROVER SUV(2016)",
+      price: "300000",
+    },
     {
       key: "MERCEDES BENZ G - WAGON(2014)",
       value: "MERCEDES BENZ G - WAGON(2014)",
+      price: "300000",
     },
-    { key: "RANGE ROVER VOGUE(2016)", value: "RANGE ROVER VOGUE(2016)" },
+    {
+      key: "RANGE ROVER VOGUE(2016)",
+      value: "RANGE ROVER VOGUE(2016)",
+      price: "300000",
+    },
   ];
 
   const availableDiamondVehicles = [
     { key: "", value: "" },
-    { key: "FORD MUSTANG", value: "FORD MUSTANG" },
-    { key: "MERCEDES VIANO(LUXURY BUS)", value: "MERCEDES VIANO(LUXURY BUS)" },
+    { key: "FORD MUSTANG", value: "FORD MUSTANG", price: "300000" },
+    {
+      key: "MERCEDES VIANO(LUXURY BUS)",
+      value: "MERCEDES VIANO(LUXURY BUS)",
+      price: "350000",
+    },
     {
       key: "MERCEDES SPRINTER(LUXURY BUS)",
       value: "MERCEDES SPRINTER(LUXURY BUS)",
+      price: "350000",
     },
     {
       key: "CHRYSLER LIMOUSINE(12 SEATER)",
       value: "CHRYSLER LIMOUSINE(12 SEATER)",
+      price: "350000",
     },
-    { key: "DODGE CHARGER ", value: "DODGE CHARGER " },
-    { key: "LEXUS LX570(2020)", value: "LEXUS LX570(2020)" },
-    { key: "MERCEDES BENZ GLE(2019)", value: "MERCEDES BENZ GLE(2019)" },
+    { key: "DODGE CHARGER ", value: "DODGE CHARGER", price: "350000" },
+    { key: "LEXUS LX570(2020)", value: "LEXUS LX570(2020)", price: "375000" },
+    { key: "MERCEDES BENZ GLE(2019)", value: "MERCEDES BENZ GLE(2019)", price: "375000" },
     {
       key: "RANGE ROVER LIMOUSINE(16 SEATER)",
-      value: "RANGE ROVER LIMOUSINE(16 SEATER)",
+      value: "RANGE ROVER LIMOUSINE(16 SEATER)", price: "400000"
     },
-    { key: "RANGE ROVER SUV(2020)", value: "RANGE ROVER SUV(2020)" },
+    { key: "RANGE ROVER SUV(2020)", value: "RANGE ROVER SUV(2020)", price: "400000" },
     {
       key: "MERCEDES G - WAGON(BULLETPROOF)",
-      value: "MERCEDES G - WAGON(BULLETPROOF)",
+      value: "MERCEDES G - WAGON(BULLETPROOF)", price: "450000"
     },
     {
       key: "TOYOTA LANDCRUISER(BULLETPROOF)",
-      value: "TOYOTA LANDCRUISER(BULLETPROOF)",
+      value: "TOYOTA LANDCRUISER(BULLETPROOF)", price: "450000"
     },
-    { key: "TOYOTA PRADO(BULLETPROOF)", value: "TOYOTA PRADO(BULLETPROOF)" },
-    { key: "MERCEDES G - WAGON(2017)", value: "MERCEDES G - WAGON(2017)" },
+    { key: "TOYOTA PRADO(BULLETPROOF)", value: "TOYOTA PRADO(BULLETPROOF)", price: "450000" },
+    { key: "MERCEDES G - WAGON(2017)", value: "MERCEDES G - WAGON(2017)", price: "475000" },
     {
       key: "LEXUS LX570 PREMIUM WHITE(2020)",
-      value: "LEXUS LX570 PREMIUM WHITE(2020)",
+      value: "LEXUS LX570 PREMIUM WHITE(2020)", price: "500000"
     },
-    { key: "MERCEDES S’ CLASS(2017)", value: "MERCEDES S’ CLASS(2017)" },
+    { key: "MERCEDES S’ CLASS(2017)", value: "MERCEDES S’ CLASS(2017)", price: "500000" },
   ];
 
   const availablePlatinumVehicles = [
@@ -409,15 +469,17 @@ const ChauffeurPage = ({ id }) => {
               <Form>
                 <div className="grid gap-6 pt-4 md:justify-center md:gap-x-[8rem] md:gap-y-8 md:grid-cols-2 md:w-[45%] w-full">
                   {displayInput.map((d, index) => (
-                    <FormikControl
-                      key={index * 0.5}
-                      label={d.label}
-                      name={d.name}
-                      type={d?.type}
-                      placeholder={d.placeholder}
-                      options={d?.options}
-                      control={d.control}
-                    />
+                    <>
+                      <FormikControl
+                        key={index * 0.5}
+                        label={d.label}
+                        name={d.name}
+                        type={d?.type}
+                        placeholder={d.placeholder}
+                        options={d?.options}
+                        control={d.control}
+                      />
+                    </>
                   ))}
                 </div>
 

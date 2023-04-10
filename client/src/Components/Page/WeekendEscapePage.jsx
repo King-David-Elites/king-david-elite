@@ -4,7 +4,7 @@ import { Form, Formik, useFormik } from "formik";
 import MainButton from "../buttons/MainButton";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import daycation from "../Categories/LuxuryService/images/pics4.webp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Return from "../Navbar/Return";
 import FormikControl from "../formik/FormikControl";
 import * as Yup from "yup";
@@ -19,7 +19,7 @@ import { InputField } from "../inputs/MainInput";
 import { RadioField } from "../inputs/RadioInput";
 
 const WeekendEscapePage = () => {
-  const { Id } = useParams();
+  const { id } = useParams();
   const [guestsName, setGuestsName] = useState("");
   const [guestsEmail, setGuestEmail] = useState("");
   const [items, setItems] = useState([]);
@@ -27,12 +27,25 @@ const WeekendEscapePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
+  const [price, setPrice] = useState("");
 
   const handleRemove = (index) => {
     const list = [...items];
     list.splice(index, 1);
     setItems(list);
   };
+
+  useEffect(()=>{
+    if(String(id) === "silver"){
+        setPrice("500,000")
+    }
+    else if(String(id) === "diamond"){
+        setPrice("750,000")
+    }
+    else if(String(id) === "platinum"){
+        setPrice("1,000,000")
+    }
+  },[id])
 
   const initialValues = {
     departureDate: "",
@@ -228,7 +241,7 @@ const WeekendEscapePage = () => {
           </div>
 
           <div className="flex gap-2 md:gap-5 mt-5 items-center">
-            <p className="font-semibold text-lg md:text-2xl">Daycation {Id} </p>
+            <p className="font-semibold text-lg md:text-2xl">Daycation &#8358;{price} </p>
           </div>
 
           <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">

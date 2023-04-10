@@ -851,7 +851,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate(`/luxury-service/weekend-escape/500,000`);
+                navigate(`/luxury-service/weekend-escape/silver`);
               }}
             >
               Get Started
@@ -871,7 +871,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/silver");
               }}
             >
               Get Started
@@ -884,7 +884,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] text-[16px] cursor-pointer mt-8 font-bold border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("diamond"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/diamond");
               }}
             >
               Get Started
@@ -904,7 +904,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("diamond"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/diamond");
               }}
             >
               Get Started
@@ -917,7 +917,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("platinum"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/platinum");
               }}
             >
               Get Started
@@ -937,7 +937,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("platinum"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/platinum");
               }}
             >
               Get Started
@@ -1119,7 +1119,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/silver");
               }}
             >
               Get Started
@@ -1139,7 +1139,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/silver");
               }}
             >
               Get Started
@@ -1152,7 +1152,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] text-[16px] mt-8 font-bold cursor-pointer border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("diamond"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/diamond");
               }}
             >
               Get Started
@@ -1172,7 +1172,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("diamond"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/diamond");
               }}
             >
               Get Started
@@ -1182,10 +1182,10 @@ const Pricing = ({ active = 6 }) => {
           <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] md:px-3 rounded-md md:py-10">
             <p className="font-bold text-[25px]">&#8358;1,500,000</p>
             <p
-              className="text-white text-[16px] mt-8 font-bold border-b-2 border-white mb-12"
+              className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("platinum"));
-                navigate("/luxury-service/boat-cruise cursor-pointer");
+                navigate("/luxury-service/boat-cruise/platinum");
               }}
             >
               Get Started
@@ -1205,7 +1205,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("platinum"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/platinum");
               }}
             >
               Get Started

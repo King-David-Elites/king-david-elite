@@ -2,13 +2,13 @@ import { FaRegStar } from "react-icons/fa";
 import kde_blackBg from "../Navbar/Image/kde_whiteBg.png";
 import { useFormik } from "formik";
 import MainButton from "../buttons/MainButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import boatCruise from "../Categories/LuxuryService/images/pics5.webp";
 import InputLayout from "../inputs/InputLayout";
 import { InputField } from "../inputs/MainInput";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdOutlineRemoveCircle } from "react-icons/md";
 import Return from "../Navbar/Return";
 import FormikControl from "../formik/FormikControl";
@@ -19,6 +19,7 @@ import {
 } from "../../application/store/actions/user";
 
 const BoatCruisePage = () => {
+  const { id } = useParams();
   const [guestsName, setGuestsName] = useState("");
   const [guestsEmail, setGuestEmail] = useState("");
   const [items, setItems] = useState([]);
@@ -27,6 +28,17 @@ const BoatCruisePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
+  const [price, setPrice] = useState("");
+
+  useEffect(() => {
+    if (String(id) === "silver") {
+      setPrice("500,000");
+    } else if (String(id) === "diamond") {
+      setPrice("1,000,000");
+    } else if (String(id) === "platinum") {
+      setPrice("1,500,000");
+    }
+  }, [id]);
 
   const initialValues = {
     guestsName: "",
@@ -216,7 +228,7 @@ const BoatCruisePage = () => {
           </div>
 
           <div className="flex gap-2 md:gap-5 mt-5 items-center">
-            <p className="font-semibold text-lg md:text-2xl">Boat Cruises</p>
+            <p className="font-semibold text-lg md:text-2xl">Boat Cruises &#8358;{price}</p>
           </div>
 
           <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">

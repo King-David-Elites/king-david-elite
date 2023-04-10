@@ -131,7 +131,7 @@ function App() {
             <Route path="/luxury-service/weekend-escape/:id" element={<WeekendEscapePage />} />
             <Route path="/luxury-service/helicopter-ride" element={<HelicopterRidePage />} />
             <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage />} />
-            <Route path="/luxury-service/boat-cruise" element={<BoatCruisePage />} />
+            <Route path="/luxury-service/boat-cruise/:id" element={<BoatCruisePage />} />
             <Route path="/luxury-service/chauffeur" element={<ChaffeurPage />} />
             <Route path="/luxury-service/pricing" element={<Pricing />} />
             <Route path="/saved-listings" element={<SavedListings />}/>
