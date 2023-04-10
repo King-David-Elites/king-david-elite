@@ -215,8 +215,8 @@ const ChauffeurPage = ({ id }) => {
 
   const availablePlatinumVehicles = [
     { key: "", value: "" },
-    { key: "ROLLS ROYCE GHOST", value: "ROLLS ROYCE GHOST" },
-    { key: "ROLLS ROYCE PHANTOM", value: "ROLLS ROYCE PHANTOM" },
+    { key: "ROLLS ROYCE GHOST", value: "ROLLS ROYCE GHOST", price: "1000000" },
+    { key: "ROLLS ROYCE PHANTOM", value: "ROLLS ROYCE PHANTOM", price: "1000000" },
   ];
 
   const displayInput = [

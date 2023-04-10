@@ -481,7 +481,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("silver"));
-              navigate("/luxury-service/weekend-escape");
+              navigate("/luxury-service/weekend-escape/silver");
             }}
           >
             Get Started
@@ -525,7 +525,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("diamond"));
-              navigate("/luxury-service/weekend-escape");
+              navigate("/luxury-service/weekend-escape/diamond");
             }}
           >
             Get Started
@@ -569,7 +569,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("platinum"));
-              navigate("/luxury-service/weekend-escape");
+              navigate("/luxury-service/weekend-escape/platinum");
             }}
           >
             Get Started
@@ -725,7 +725,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("silver"));
-              navigate("/luxury-service/boat-cruise");
+              navigate("/luxury-service/boat-cruise/silver");
             }}
           >
             Get Started
@@ -766,7 +766,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("diamond"));
-              navigate("/luxury-service/boat-cruise");
+              navigate("/luxury-service/boat-cruise/diamond");
             }}
           >
             Get Started
@@ -807,7 +807,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("platinum"));
-              navigate("/luxury-service/boat-cruise");
+              navigate("/luxury-service/boat-cruise/platinum");
             }}
           >
             Get Started
