@@ -116,13 +116,9 @@ const Pricing = ({ active = 6 }) => {
     {
       id: 4,
       name: "CHAMPAGNE/SPARKLING WINE",
-    },
+    },    
     {
       id: 5,
-      name: "ONBOARD SPA TREATMENT",
-    },
-    {
-      id: 6,
       name: "EXQUISITE ONBOARD MEALS",
     },
   ];
@@ -143,13 +139,9 @@ const Pricing = ({ active = 6 }) => {
     {
       id: 4,
       name: "3 Cases Of Martini Rose(ALC)/Eisberg Sparkling Rose Wine(Non-ALC)",
-    },
+    },    
     {
       id: 5,
-      name: "Available",
-    },
-    {
-      id: 6,
       name: "Available",
     },
   ];
@@ -170,13 +162,9 @@ const Pricing = ({ active = 6 }) => {
     {
       id: 4,
       name: "3 Cases Of Sensi Prosecco (ALC)/Welch Sparkling Wine(Non-ALC)",
-    },
+    },    
     {
       id: 5,
-      name: "Available",
-    },
-    {
-      id: 6,
       name: "Available",
     },
   ];
@@ -197,13 +185,9 @@ const Pricing = ({ active = 6 }) => {
     {
       id: 4,
       name: "4 Cases Of Moet Chandon (ALC)/St. Regis Sparkling Brut (Non- ALC)",
-    },
+    },    
     {
       id: 5,
-      name: "Available",
-    },
-    {
-      id: 6,
       name: "Available",
     },
   ];
@@ -223,11 +207,11 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 4,
-      name: "2 X Silver Indoor Package ",
+      name: "Adventure for 2 ",
     },
     {
       id: 5,
-      name: "8 Passenger Boat",
+      name: "10 Passenger Boat",
     },
     {
       id: 6,
@@ -254,11 +238,11 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 4,
-      name: "2 X Gold Indoor Package",
+      name: "Adventure for 4",
     },
     {
       id: 5,
-      name: "8 Passenger Mini-Yacht",
+      name: "12 Passenger Mini-Yacht",
     },
     {
       id: 6,
@@ -285,11 +269,11 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 4,
-      name: "3X Gold Indoor Package",
+      name: "Adventure for 6",
     },
     {
       id: 5,
-      name: "3X Gold Indoor Package",
+      name: "15 Passenger Mini-Yacht",
     },
     {
       id: 6,
@@ -477,10 +461,10 @@ const Pricing = ({ active = 6 }) => {
               Exquisite Meals: 1 Standard Meal
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Gaming Adventures: 2X Silver Indoor Package{" "}
+              Gaming Adventures: Adventure for 2{" "}
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Boat Cruise: 8 Passenger Boat
+              Boat Cruise: 10 Passenger Boat
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Spa: Mobile/Walk In Session (2)
@@ -521,10 +505,10 @@ const Pricing = ({ active = 6 }) => {
               Exquisite Meals: 2 Standard Meals
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Gaming Adventures: 2X Gold Indoor Package{" "}
+              Gaming Adventures: Adventure for 4{" "}
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Boat Cruise: 8 Passenger Mini-Yacht
+              Boat Cruise: 12 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Spa: Mobile/Walk In Session (3)
@@ -565,10 +549,10 @@ const Pricing = ({ active = 6 }) => {
               Exquisite Meals: 3 Standard Meals
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Gaming Adventures: 3X Gold Indoor Package{" "}
+              Gaming Adventures: Adventure for 6{" "}
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Boat Cruise: 12 Passenger Mini-Yacht
+              Boat Cruise: 15 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Spa: Mobile/Walk In Session (4)
@@ -867,7 +851,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate("/luxury-service/weekend-escape");
+                navigate(`/luxury-service/weekend-escape/500,000`);
               }}
             >
               Get Started
@@ -994,7 +978,7 @@ const Pricing = ({ active = 6 }) => {
           </div>
 
           <div className="w-1/4 flex flex-col items-center rounded-md md:px-5 bg-[#F2F2F2] md:py-10">
-            <p className="font-bold text-[25px] whitespace-nowrap">
+            <p className="font-bold text-[22px] whitespace-nowrap">
               &#8358;100,000-&#8358;300,000
             </p>
             <p
@@ -1029,7 +1013,7 @@ const Pricing = ({ active = 6 }) => {
           </div>
 
           <div className="w-1/4 flex flex-col items-center  bg-[#FFECEC] md:px-3 rounded-md md:py-10">
-            <p className="font-bold text-[25px]">
+            <p className="font-bold text-[22px]">
               &#8358;300,000-&#8358;500,000
             </p>
             <p
@@ -1064,7 +1048,7 @@ const Pricing = ({ active = 6 }) => {
           </div>
 
           <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] md:px-3 rounded-md md:py-10">
-            <p className="font-bold text-[25px]">&#8358;500,000 Upwards</p>
+            <p className="font-bold text-[22px]">&#8358;500,000 Upwards</p>
             <p
               className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12"
               onClick={() => {
