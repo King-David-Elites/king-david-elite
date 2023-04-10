@@ -564,7 +564,7 @@ const RealEstateListing = ({ mainData }) => {
                     );
                   }):
                   <h4 className="md:text-lg text-sm font-semibold italic">
-                No Automobile listing available
+                No Real-estate listing available
               </h4>
                   }
                 
