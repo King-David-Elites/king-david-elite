@@ -55,7 +55,7 @@ export default function ListingsSaved() {
 
   return (
     <LastContainer>
-      {loading ? (
+      {!loading ? (
         <>
           <SpinnerCircular
             color="white"
@@ -65,20 +65,21 @@ export default function ListingsSaved() {
             thickness={150}
           />
         </>
-      ) : (
-        <>
-          {data.savedListing.length == 0 && (
-            <>
-              <h3>You don't have any listings saved</h3>
-            </>
-          )}
+      ) : 
+      <>
+      {
+          savedListings.length == 0 ?
+          // <h3>You don't have any listings saved</h3>
+          <></>
+          :
           <GridContainer>
             {savedListings.map((items) => {
               return <Listing key={items._id} list={items} />;
             })}
           </GridContainer>
-        </>
-      )}
+        }
+      </>
+}
     </LastContainer>
   );
 }
