@@ -50,19 +50,19 @@ const CarsListing = () => {
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setCarId(carId + 1);
-        }, [500]);
+          setAnimation(graduallyAppear);          
+        }, [400]);
       } else if (carId === CarAnimation.length) {
         clearTimeout(timer2);
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setCarId(1);
+          setAnimation(graduallyAppear);          
         }, [500]);
       }
-    }, [8000]);
+    }, [6000]);
   }, [carId]);
 
   useEffect(() => {
@@ -156,7 +156,6 @@ const CarsListing = () => {
       </Body>
       <Banner category="Cars" img={carspic}/>
       <Text color="black" fontSize="0.8rem" margin="2em">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Discover the epitome of luxury automobile with King David Elites. Our
         Platform offers a collection of exclusive high-end vehicles, including
         sleek sport cars and powerful SUVs, taliored to the society's elite. Our

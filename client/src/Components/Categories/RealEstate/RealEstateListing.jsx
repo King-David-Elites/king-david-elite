@@ -1,7 +1,4 @@
-import {
-  Adjustments,
-  Search,
-} from "heroicons-react";
+import { Adjustments, Search } from "heroicons-react";
 import React, { useRef, useEffect, useCallback } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import {
@@ -28,14 +25,18 @@ import {
   graduallyAppear,
   graduallyDisAppear,
 } from "../Cars/AnimationOrder";
-import { getCities, getListings, getStates } from "../../../infrastructure/api/user/userRequest";
+import {
+  getCities,
+  getListings,
+  getStates,
+} from "../../../infrastructure/api/user/userRequest";
 import { motion } from "framer-motion";
 import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
 import theme from "../../../application/utils/Theme";
 import { BiArrowBack } from "react-icons/bi";
 import PaginationButtons from "../../PaginationButtons/PaginationButtons";
-import building6 from "./Image/building6.jpg"
+import building6 from "./Image/building6.jpg";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -65,15 +66,14 @@ const RealEstateListing = ({ mainData }) => {
   const [isos, setIsos] = useState({
     countryIso: "",
     stateIso: "",
-    cityId: ""
-  })
+    cityId: "",
+  });
 
   useEffect(() => {
-    setStateData(stateData)
-    setCityData(cityData)
-    setValue(value)
-  }, [changing])
-
+    setStateData(stateData);
+    setCityData(cityData);
+    setValue(value);
+  }, [changing]);
 
   const showPage = () => {
     if (window.innerWidth > 900) {
@@ -90,7 +90,6 @@ const RealEstateListing = ({ mainData }) => {
     scrollToRef(top);
   }, []);
 
-
   const getStateIso = (name) => {
     var stateObject = stateData.find((state) => state.name === name);
     setCityData([]);
@@ -102,31 +101,36 @@ const RealEstateListing = ({ mainData }) => {
   const getCityId = (name) => {
     var cityObject = cityData.find((city) => city.name === name);
     setIsos({ ...isos, cityId: cityObject["id"] });
-    setValue({ ...value, location: `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}` })
+    setValue({
+      ...value,
+      location: `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`,
+    });
     setChanging(!changing);
   };
 
   const searchListing = () => {
     setLoader(true);
-    const listingUrl = `${globalApi}/listings/search`
-    axios.get(listingUrl, value, setConfig()).then((resp) => {
-      setList(resp.data);
-      setLoader(false);
-      setStage(0);
-    }).catch((err) => console.log(err));
+    const listingUrl = `${globalApi}/listings/search`;
+    axios
+      .get(listingUrl, value, setConfig())
+      .then((resp) => {
+        setList(resp.data);
+        setLoader(false);
+        setStage(0);
+      })
+      .catch((err) => console.log(err));
   };
 
   const getCountryIso = (name) => {
     var countryObject = mainData.countryData.find(
       (country) => country.name === name
     );
-    setStateData([])
-    setCityData([])
+    setStateData([]);
+    setCityData([]);
     setIsos({ ...isos, countryIso: countryObject["iso2"] });
     getStates(countryObject["iso2"], setStateData);
-    setChanging(!changing)
+    setChanging(!changing);
   };
-
 
   const getTotalData = async (page) => {
     let totalListing = await getListings(
@@ -148,19 +152,19 @@ const RealEstateListing = ({ mainData }) => {
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setEstateId(estateId + 1);
-        }, [500]);
+          setAnimation(graduallyAppear);
+        }, [400]);
       } else if (estateId === EstateAnimation.length) {
         clearTimeout(timer2);
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setEstateId(1);
+          setAnimation(graduallyAppear);
         }, [500]);
       }
-    }, [8000]);
+    }, [6000]);
   }, [estateId]);
 
   useEffect(() => {
@@ -259,7 +263,9 @@ const RealEstateListing = ({ mainData }) => {
                   className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
                   type="number"
                   min={0}
-                  onChange={(e) => setValue({ ...value, noOfBed: e.target.value })}
+                  onChange={(e) =>
+                    setValue({ ...value, noOfBed: e.target.value })
+                  }
                 />
               </div>
 
@@ -269,7 +275,9 @@ const RealEstateListing = ({ mainData }) => {
                   className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
                   type="number"
                   min={0}
-                  onChange={(e) => setValue({ ...value, noOfBathroom: e.target.value })}
+                  onChange={(e) =>
+                    setValue({ ...value, noOfBathroom: e.target.value })
+                  }
                 />
               </div>
 
@@ -278,7 +286,7 @@ const RealEstateListing = ({ mainData }) => {
                 type="range"
                 max={100000000}
                 onChange={(e) => {
-                  setValue({ ...value, price: e.target.value })
+                  setValue({ ...value, price: e.target.value });
                 }}
               />
 
@@ -337,7 +345,9 @@ const RealEstateListing = ({ mainData }) => {
                       <p className="font-bold text-[20px]">Filters</p>
                     </div>
                     <h3 className="font-semibold">Location</h3>
-                    <label htmlFor="country" className="font-bold">Country</label>
+                    <label htmlFor="country" className="font-bold">
+                      Country
+                    </label>
                     <select
                       className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
                       name="Country"
@@ -360,7 +370,9 @@ const RealEstateListing = ({ mainData }) => {
                     <div className="input">
                       {stateData.length > 0 && (
                         <>
-                          <label htmlFor="state" className="font-bold">State</label>
+                          <label htmlFor="state" className="font-bold">
+                            State
+                          </label>
                           <select
                             className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
                             name="state"
@@ -386,7 +398,9 @@ const RealEstateListing = ({ mainData }) => {
                     <div className="input">
                       {cityData.length > 0 && (
                         <>
-                          <label htmlFor="city" className="font-bold">City</label>
+                          <label htmlFor="city" className="font-bold">
+                            City
+                          </label>
                           <select
                             className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
                             name="city"
@@ -415,7 +429,9 @@ const RealEstateListing = ({ mainData }) => {
                         className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
                         type="number"
                         min={0}
-                        onChange={(e) => setValue({...value, noOfBed: e.target.value})}
+                        onChange={(e) =>
+                          setValue({ ...value, noOfBed: e.target.value })
+                        }
                       />
                     </div>
 
@@ -425,7 +441,9 @@ const RealEstateListing = ({ mainData }) => {
                         className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
                         type="number"
                         min={0}
-                        onChange={(e) =>  setValue({...value, noOfBathroom: e.target.value})}
+                        onChange={(e) =>
+                          setValue({ ...value, noOfBathroom: e.target.value })
+                        }
                       />
                     </div>
 
@@ -434,7 +452,7 @@ const RealEstateListing = ({ mainData }) => {
                       type="range"
                       max={100000000}
                       onChange={(e) => {
-                        setValue({ ...value, price: e.target.value })
+                        setValue({ ...value, price: e.target.value });
                       }}
                     />
 
@@ -492,11 +510,13 @@ const RealEstateListing = ({ mainData }) => {
                 <SearchC>
                   <Input
                     placeholder="search desired locations"
-                    onChange={(e) => setValue({ ...value, location:e.target.value})}
+                    onChange={(e) =>
+                      setValue({ ...value, location: e.target.value })
+                    }
                   />
                   <Search
                     width="30px"
-                    onClick={(e) => searchListing(value['location'])}
+                    onClick={(e) => searchListing(value["location"])}
                     className="cursor-pointer"
                   />
                 </SearchC>
@@ -535,14 +555,18 @@ const RealEstateListing = ({ mainData }) => {
             ) : (
               <GridContainer>
                 {!loader &&
-                  list.length > 0 &&
+                  list.length > 0 ?
                   list.map((items) => {
                     return (
                       <>
                         <Listing key={items._id} list={items} />
                       </>
                     );
-                  })}
+                  }):
+                  <h4 className="md:text-lg text-sm font-semibold italic">
+                No Automobile listing available
+              </h4>
+                  }
                 
                 {!loader &&
                   listing.length > 0 &&
@@ -566,9 +590,8 @@ const RealEstateListing = ({ mainData }) => {
               background={theme.color}
             />
           </Body>
-          <Banner category="Real Estate" img={building6}/>
+          <Banner category="Real Estate" img={building6} />
           <Text color="black" fontSize="0.8rem" margin="2em">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Indulge in opulence with King David Elites. Our online marketplace
             boast a collection of exquiste, high-end properties that exude
             luxury living.From stunning homes to sprawling estates and opulent

@@ -104,19 +104,19 @@ const CollectiblesListing = () => {
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setCollectibleId(collectibleId + 1);
-        }, [500]);
+          setAnimation(graduallyAppear);          
+        }, [400]);
       } else if (collectibleId === CollectibleAnimation.length) {
         clearTimeout(timer2);
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setCollectibleId(1);
+          setAnimation(graduallyAppear);          
         }, [500]);
       }
-    }, [8000]);
+    }, [6000]);
   }, [collectibleId]);
 
   useEffect(() => {

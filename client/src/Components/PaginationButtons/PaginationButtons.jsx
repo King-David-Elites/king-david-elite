@@ -94,6 +94,8 @@ const PaginationButtons = ({
       setTotalPage(pageValue);
     }
     if (page > 1 && page <= buttonRange.length) {
+      setNext(true)
+      setEnd(true)
       setPrevious(true);
       setStart(true);
     } else if (page === 1) {

@@ -153,7 +153,7 @@ const EditProfile = ({ mainData }) => {
   return (
     <>
       {loader && <Loader />}
-      <Return />
+      <Return link="/profile"/>
       <EditProfileContainer padding="12px 12px">
         <div className="content-text">
           <h3>Profile</h3>
@@ -444,7 +444,7 @@ const EditProfile = ({ mainData }) => {
         </ContentCard>
       </EditProfileContainer>
 
-      <MidSection>
+      {/* <MidSection>
         <p>This section is not available in your account</p>
         <button type="submit" onClick={() => navigate("/profile/upgrade")}>
           Upgrade
@@ -729,7 +729,7 @@ const EditProfile = ({ mainData }) => {
             </form>
           </div>
         </ContentCard>
-      </EditProfileContainer>
+      </EditProfileContainer> */}
     </>
   );
 };

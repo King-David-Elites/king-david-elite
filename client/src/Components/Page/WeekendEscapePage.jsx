@@ -127,7 +127,7 @@ const WeekendEscapePage = () => {
             label: "Message",
             name: "message",
             control: "textarea2",
-            placeholder: 'kindly drop personalised info here'
+            placeholder: 'kindly drop personalised request here'
         },
     ];
 
@@ -216,14 +216,7 @@ const WeekendEscapePage = () => {
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
-                        <p className='font-semibold text-lg md:text-2xl'>Daycation</p>
-                        <div className='flex gap-1'>
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} />
-                        </div>
+                        <p className='font-semibold text-lg md:text-2xl'>Daycation</p>                        
                     </div>
 
                     <div className='mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color'>
@@ -279,7 +272,7 @@ const WeekendEscapePage = () => {
                             ))}
                         </div>
 
-                        <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
+                        <div className='flex md:flex-row flex-col gap-[2em] md:w-[50%] justify-between'>
                             <InputLayout label='Names of Passenger(s)' name='guestsName'>
                                 <InputField value={guestsName} name='guestsName' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsName') {

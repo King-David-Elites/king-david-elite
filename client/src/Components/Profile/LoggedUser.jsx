@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
+import notFound from "../Categories/MediaView/notFound.png";
 import {
   FaCheckCircle,
   FaFacebook,
@@ -19,6 +20,8 @@ import {
   Update,
   Address,
   UsersListings,
+  UserDetails,
+  SavedContainer,
 } from "./Styled";
 import Account from "../Account/Account";
 import { a, useNavigate, useParams } from "react-router-dom";
@@ -136,7 +139,7 @@ const LoggedUser = ({ logged }) => {
           setShowCover={setShowCover}
         />
       )}
-      <Return transparent={true} />
+      <Return transparent={false} link={"/"}/>
       <Header
         className="cursor-pointer"
         onClick={() => {
@@ -158,15 +161,11 @@ const LoggedUser = ({ logged }) => {
           <div className="title">
             <h3>
               {data.firstName + " " + data.lastName}
-              <span>
-                <FaCheckCircle />
-              </span>
             </h3>
             <p>Joined in {new Date(data.createdAt).getFullYear()}</p>
           </div>
-        </div>
 
-        <div className="btns">
+          <div className="btns">
           {!logged ? (
             <>
               <div
@@ -178,13 +177,17 @@ const LoggedUser = ({ logged }) => {
                 <FaPen />
                 <p>Edit Profile</p>
               </div>
-
-              <div
+              {
+                data.accountType != 0 && 
+                <div
                 className="upgrade"
                 onClick={() => navigate("/profile/upgrade")}
               >
                 <p>Upgrade Account</p>
               </div>
+              }
+
+              
             </>
           ) : (
             <>
@@ -196,38 +199,60 @@ const LoggedUser = ({ logged }) => {
             </>
           )}
         </div>
+        </div>
+
+        
       </Details>
 
-      <Bio>{data.about}</Bio>
+<Details>
+  <UserDetails>
+        <div className="bio">
+          {data.about}
+        </div>
+        <div className="email">
+          Email: <span className="select">{data.email}</span>
+        </div>
+        {
+          data.websiteUrl && (
+            <div>
+              Wesbite: <a href={`https://${data.websiteUrl}`} className="select">{data.websiteUrl}</a>
+            </div>
+          )
+        }
+        <div className="email">
+          {data?.address}
+        </div>
+        
+        <div className="email">
+          
+        </div>
 
-      <Address>
-        <p className="address">{data?.address}</p>
-        {data.websiteUrl && (
-          <a className="website" href={`https://${data.websiteUrl}`}>
-            {data.websiteUrl}
-          </a>
-        )}
-
+        <Address>
         {(data.facebookUrl || data.instagramUrl) && (
           <p className="social">
             Social:
             {data.facebookUrl && (
               <a href={data.facebookUrl}>
-                <FaFacebook color="blue" />
+                <FaFacebook color="blue" size={22}/>
               </a>
             )}
             {data.instagramUrl && (
               <a href={data?.instagramUrl}>
-                <FaInstagram color="#FA5936" />
+                <FaInstagram color="#FA5936" size={22}/>
               </a>
             )}
           </p>
         )}
       </Address>
+      </UserDetails>
+</Details>
+      {/* <Bio>{data.about}</Bio> */}
+      
 
-      {!logged && <Update>Ugrade Account</Update>}
+      {!logged && data.accountType != 0 && <Update>Ugrade Account</Update>}
 
-      {!logged && (
+      {!logged && data.accountType ==1 ?
+       (
         <Switch>
           <div className="line" />
           <div className="options">
@@ -276,7 +301,18 @@ const LoggedUser = ({ logged }) => {
           </div>
           <div className="line" />
         </Switch>
-      )}
+      )
+    :
+      <SavedContainer>
+        <h1>0 of 20 Saved Listings</h1>
+        <p>Note: You cannot save more than 20 listings</p>
+        <div className="notFound">
+          <img src={notFound} alt="" />
+          <p>No Saved Listing Available</p>
+        </div>
+      </SavedContainer>
+
+    }
 
       {!logged && active}
 
