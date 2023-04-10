@@ -177,7 +177,7 @@ const BoatCruisePage = () => {
             mealPreference: values.mealPreference,
             plan: status,
             message: values.message,
-            price: (status === 'silver' && 500000) || (status === 'diamond' && 850000) || (status === 'platinum' && 1200000)
+            price: (status === 'silver' && 500000) || (status === 'diamond' && 1000000) || (status === 'platinum' && 1500000)
         }
         const payload = {
             data: boatCruise,
@@ -215,7 +215,7 @@ const BoatCruisePage = () => {
                             {items.map((item, index) => (
                                 <div>
                                     {
-                                        item.guestsName && item.guestsEmail != '' && <div className='flex gap-5 items-center' key={index}>
+                                        item.guestsName && item.guestsEmail !== '' && <div className='flex gap-5 items-center' key={index}>
                                             <p>{item.guestsName} | {item.guestsEmail}</p>
                                             <button type='button' className='cursor-pointer' onClick={() => handleRemove(index)}><MdOutlineRemoveCircle color='red' /></button>
                                         </div>
@@ -226,7 +226,7 @@ const BoatCruisePage = () => {
 
                         <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
                             <InputLayout label='Names of Passenger(s)' name='guestsName'>
-                                <InputField name='guestsName' type='text' onChange={(e) => {
+                                <InputField value={guestsName} name='guestsName' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsName') {
                                         setGuestsName(e.target.value);
                                     }
@@ -239,7 +239,7 @@ const BoatCruisePage = () => {
                             </InputLayout>
 
                             <InputLayout label='Email Address Of Passengers(s)' name='guestsEmail'>
-                                <InputField name='guestsEmail' type='text' onChange={(e) => {
+                                <InputField value={guestsEmail} name='guestsEmail' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsEmail') {
                                         setGuestEmail(e.target.value);
                                     }
