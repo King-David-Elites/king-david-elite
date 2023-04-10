@@ -212,7 +212,7 @@ const ConceirgeVacationPage = () => {
 
                         <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
                             <InputLayout label='Names of Passenger(s)' name='guestsName'>
-                                <InputField name='guestsName' type='text' onChange={(e) => {
+                                <InputField value={guestsName} name='guestsName' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsName') {
                                         setGuestsName(e.target.value);
                                     }
@@ -225,7 +225,7 @@ const ConceirgeVacationPage = () => {
                             </InputLayout>
 
                             <InputLayout label='Email Address Of Passengers(s)' name='guestsEmail'>
-                                <InputField name='guestsEmail' type='text' onChange={(e) => {
+                                <InputField value={guestsEmail} name='guestsEmail' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsEmail') {
                                         setGuestEmail(e.target.value);
                                     }

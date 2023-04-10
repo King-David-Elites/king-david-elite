@@ -110,7 +110,7 @@ export const Details = styled.div`
     @media (max-width: 600px) {
       gap: 5px;
       display: grid;
-      grid-template-columns: 1fr 3fr 1.3fr;
+      grid-template-columns: 1fr 3fr 1.8fr;
     }
   }
 
@@ -128,6 +128,8 @@ export const Details = styled.div`
     @media (max-width: 600px) {
       h3 {
         font-size: 14px;
+        text-overflow: ellipsis;
+        width: 50vw;
       }
 
       p {
@@ -162,7 +164,7 @@ export const Details = styled.div`
       font-size: 14px;
       gap: 5px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 6px;
 
       @media (max-width: 600px) {
         font-size: 12px;
@@ -194,8 +196,36 @@ export const Bio = styled.p`
   }
 `;
 
+export const SavedContainer = styled.div`
+  padding:0 10px;
+
+  h1{
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  p{
+    color: rgb(180,180,180);
+    font-size: 12px;
+  }
+
+  .notFound{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+
+    img{
+      width: 60vw;
+      height: auto;
+    }
+  }
+`
+
 export const UserDetails = styled.div`
 padding: 10px;
+font-size: 14px;
   .bio{
     color: rgb(100,100,100);
   }
@@ -317,7 +347,7 @@ export const Preview = styled.div`
 
 export const Address = styled.div`
   width: 80%;
-  margin: 10px auto;
+  /* margin: 10px auto; */
 
   .address {
     font-weight: 600;
