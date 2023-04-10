@@ -128,7 +128,7 @@ function App() {
             <Route path="/profile/:id" element={<OtherUser />} />
             <Route path="/waitList" element={<Waitlist />} />
             <Route path="/luxury-service/exclusive-event" element={<ExclusiveEventPage />} />
-            <Route path="/luxury-service/weekend-escape/:id" element={<WeekendEscapePage />} />
+            <Route path="/luxury-service/weekend-escape" element={<WeekendEscapePage />} />
             <Route path="/luxury-service/helicopter-ride" element={<HelicopterRidePage />} />
             <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage />} />
             <Route path="/luxury-service/boat-cruise" element={<BoatCruisePage />} />
