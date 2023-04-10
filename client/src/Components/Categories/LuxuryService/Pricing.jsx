@@ -116,7 +116,7 @@ const Pricing = ({ active = 6 }) => {
     {
       id: 4,
       name: "CHAMPAGNE/SPARKLING WINE",
-    },    
+    },
     {
       id: 5,
       name: "EXQUISITE ONBOARD MEALS",
@@ -139,7 +139,7 @@ const Pricing = ({ active = 6 }) => {
     {
       id: 4,
       name: "3 Cases Of Martini Rose(ALC)/Eisberg Sparkling Rose Wine(Non-ALC)",
-    },    
+    },
     {
       id: 5,
       name: "Available",
@@ -162,7 +162,7 @@ const Pricing = ({ active = 6 }) => {
     {
       id: 4,
       name: "3 Cases Of Sensi Prosecco (ALC)/Welch Sparkling Wine(Non-ALC)",
-    },    
+    },
     {
       id: 5,
       name: "Available",
@@ -185,7 +185,7 @@ const Pricing = ({ active = 6 }) => {
     {
       id: 4,
       name: "4 Cases Of Moet Chandon (ALC)/St. Regis Sparkling Brut (Non- ALC)",
-    },    
+    },
     {
       id: 5,
       name: "Available",
@@ -203,7 +203,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 3,
-      name: "1 Standard Meal",
+      name: "3 Standard Meal",
     },
     {
       id: 4,
@@ -215,7 +215,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 6,
-      name: "Mobile/Walk In Session (2)",
+      name: "Home/Walk In Session (2)",
     },
     {
       id: 7,
@@ -234,7 +234,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 3,
-      name: "2 Standard Meals",
+      name: "3 Standard Meals",
     },
     {
       id: 4,
@@ -246,7 +246,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 6,
-      name: "Mobile/Walk in Session (3) ",
+      name: "Home/Walk in Session (3) ",
     },
     {
       id: 7,
@@ -277,7 +277,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 6,
-      name: "Mobile/Walk In Session(4)",
+      name: "Home/Walk In Session(4)",
     },
     {
       id: 7,
@@ -467,7 +467,7 @@ const Pricing = ({ active = 6 }) => {
               Boat Cruise: 10 Passenger Boat
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Spa: Mobile/Walk In Session (2)
+              Spa: Home/Walk In Session (2)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Champagne/Sparkling Wine: 2 Cases Of Martini Rose(ALC)/Eisberg
@@ -511,7 +511,7 @@ const Pricing = ({ active = 6 }) => {
               Boat Cruise: 12 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Spa: Mobile/Walk In Session (3)
+              Spa: Home/Walk In Session (3)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Champagne/Sparkling Wine: 2 Cases Of Sensi Prosecco (ALC)/Welch
@@ -555,7 +555,7 @@ const Pricing = ({ active = 6 }) => {
               Boat Cruise: 15 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Spa: Mobile/Walk In Session (4)
+              Spa: Home/Walk In Session (4)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Champagne/Sparkling Wine: 2 Cases Of Moet Chandon (ALC)/St. Regis
