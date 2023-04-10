@@ -219,7 +219,54 @@ const BoatCruisePage = () => {
             <p className="font-semibold text-lg md:text-2xl">Boat Cruises</p>
           </div>
 
-          <form onSubmit={formik.handleSubmit} className="mt-1 mb-4">
+          <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">
+            <p>
+              <span className="text-black text-[13px] mr-1 font-bold">
+                Experience:
+              </span>
+              Welcome aboard our luxury mini yacht cruise experience! Our cruise
+              is designed to provide you with the perfect blend of excitement
+              and relaxation on the open water.
+            </p>
+            <br />
+            <p>
+              Our experienced captain and crew will welcome you on board and
+              provide you with a brief orientation of the yacht's amenities and
+              safety features. You will be shown to your elegant cabin,
+              featuring comfortable furnishings and modern finishes for your
+              comfort.
+            </p>
+            <br />
+            <p>
+              During your cruise, you can indulge in various activities, such as
+              taking in the sights of the coastline, feeling the refreshing sea
+              breeze on your skin, and enjoying the sparkling wines or champagne
+              that we have reserved for you. You will be served with suitable
+              spicy refreshments and refreshing beverages prepared by some of
+              the best culinary teams in town.
+            </p>
+            <br />
+            <p>
+              As you cruise, you will enjoy breathtaking views of the sea and
+              sky, as well as a range of onboard amenities such as comfortable
+              seating, a sound system, and a spacious deck for you to socialize,
+              relax and take in the scenery.
+            </p>
+            <br />
+            <p>
+              Whether you're seeking a romantic evening with your loved one or
+              an intimate gathering with your friends, our mini yacht cruise
+              promises to be an unforgettable experience that you will cherish
+              for years to come.
+            </p>
+            <br />
+            <p>
+              We hope to see you soon on board our luxury mini yacht cruise
+              experience!
+            </p>
+          </div>
+
+          <form onSubmit={formik.handleSubmit} className="mt-4 mb-4">
             <div>
               {items.map((item, index) => (
                 <div>
@@ -241,7 +288,7 @@ const BoatCruisePage = () => {
               ))}
             </div>
 
-            <div className="flex md:flex-row flex-col md:w-[50%] justify-between">
+            <div className="flex md:flex-row gap-[2em] flex-col md:w-[50%] justify-between">
               <InputLayout label="Names of Passenger(s)" name="guestsName">
                 <InputField
                   value={guestsName}

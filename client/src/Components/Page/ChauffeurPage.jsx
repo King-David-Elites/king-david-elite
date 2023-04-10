@@ -300,6 +300,34 @@ const ChauffeurPage = ({ id }) => {
             </p>
           </div>
 
+          <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">
+            <p>
+              <span className="text-black text-[13px] mr-1 font-bold">
+                Experience:
+              </span>
+              Welcome to our luxury chauffeur services! Our experienced
+              chauffeurs provide you with seamless and sophisticated
+              transportation, whether for business or pleasure.
+            </p>
+            <br />
+            <p>
+              We pick you up from your location in a meticulously maintained
+              luxury vehicle, featuring plush seating, top notch sound system
+              and high-end amenities. Our knowledgeable drivers can also provide
+              you with insider tips on the best restaurants, shopping, and
+              entertainment options in the city.
+            </p>
+            <br />
+            <p>
+              As a premier provider of chauffeur services, we also offer
+              suitable refreshments during your trip, making your journey all
+              the more enjoyable. Come and experience our first-class
+              transportation service for yourself.
+            </p>
+            <br />
+            <p>Book now and let us take you there in style.</p>
+          </div>
+
           <form onSubmit={formik.handleSubmit} className="mt-6">
             <div>
               {items.map((item, index) => (

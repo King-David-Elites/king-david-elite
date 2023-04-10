@@ -236,58 +236,35 @@ const WeekendEscapePage = () => {
               <span className="text-black text-[13px] mr-1 font-bold">
                 Experience:
               </span>
-              The weekend escape experience begins with a personalized welcome
-              at the hotel's grand lobby, where guests are greeted by a friendly
-              and attentive staff. Upon check-in, guests are escorted to their
-              luxurious guest rooms, which are elegantly decorated with modern
-              furnishings and high-end finishes.
+              Welcome to King David Elites! Our daycation experience is designed
+              to provide you with the perfect blend of relaxation and
+              exploration.
             </p>
             <br />
             <p>
-              During the stay, guests can indulge in a variety of activities and
-              amenities, including a rejuvenating spa treatment at the hotel's
-              full-service spa, a refreshing dip in the outdoor pool, or a
-              workout at the state-of-the-art fitness center. The hotel also
-              features a fine-dining restaurant that offers a diverse menu of
-              gourmet dishes crafted by renowned chefs.
+              Our chauffeurs will pick you up from your preferred location and
+              bring you to our luxurious lodge. Our friendly staff will give you
+              a warm welcome and help you check-in to your elegantly decorated
+              guest room, which is equipped with modern furnishings and high-end
+              finishes for your comfort.
             </p>
             <br />
             <p>
-              In addition to the hotel's amenities, guests can explore the
-              surrounding city and take part in various cultural and
-              entertainment activities. The hotel's concierge team is available
-              to assist guests in planning their itinerary and securing tickets
-              to top shows and events.
+              During your stay, you can enjoy various amenities, such as a
+              rejuvenating spa treatment, a refreshing dip in the outdoor pool,
+              or fun gaming adventures in the city's upper echelon spots. You
+              will be served with fine dishes three times during your 24-hour
+              stay, and also get to unwind and sip some sparkling wine or
+              champagne on a one-hour boat cruise.
             </p>
             <br />
             <p>
-              Overall, the luxury brand's weekend escape experience offers a
-              perfect balance of relaxation and exploration, providing guests
-              with a memorable and indulgent getaway that they will cherish for
-              years to come.
-            </p>
-
-            <p className="mt-3">
-              <span className="text-black text-[13px] mr-1 font-bold">
-                Location: (Gwagwalada, Abuja)
-              </span>
-              The hotel is situated in a prime location that allows guests to
-              easily explore the city's top attractions, including fine dining
-              restaurants, luxury shopping boutiques, and cultural landmarks.
-              Additionally, the hotel is surrounded by lush greenery and
-              breathtaking views of the city skyline, providing a peaceful and
-              tranquil atmosphere for guests to unwind and relax.
-            </p>
-
-            <p className="mt-3">
-              <span className="text-black text-[13px] mr-1 font-bold">
-                Accommodation:
-              </span>
-              The luxury brand offers a weekend escape experience at a five-star
-              hotel located in the heart of a vibrant city. The hotel features
-              lavish and spacious guest rooms, each equipped with
-              top-of-the-line amenities such as premium bedding, plush
-              bathrobes, and high-speed Wi-Fi.
+              Our concierge team is always available to help you plan your
+              itinerary and explore the city's top attractions, including fine
+              dining restaurants, luxury shopping boutiques, and cultural
+              landmarks. Come and experience the King David Elites daycation for
+              a memorable and indulgent getaway that you will cherish for years
+              to come.
             </p>
           </div>
 
@@ -313,7 +290,7 @@ const WeekendEscapePage = () => {
               ))}
             </div>
 
-            <div className="flex md:flex-row flex-col md:w-[50%] justify-between">
+            <div className="flex md:flex-row flex-col gap-[2em] md:w-[50%] justify-between">
               <InputLayout label="Names of Passenger(s)" name="guestsName">
                 <InputField
                   value={guestsName}
