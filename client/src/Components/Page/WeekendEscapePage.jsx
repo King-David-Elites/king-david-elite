@@ -64,7 +64,7 @@ const WeekendEscapePage = () => {
     ];
 
     const options = [
-        { value: "mobileSession", label: "Mobile Session ~{\n} " },
+        { value: "mobileSession", label: "Mobile Session" },
         { value: "walkInSession", label: "Walk In Session" },
     ];
 
@@ -127,7 +127,7 @@ const WeekendEscapePage = () => {
             label: "Message",
             name: "message",
             control: "textarea2",
-            placeholder: 'kindly drop personalised request here'
+            placeholder: 'kindly drop personalised info here'
         },
     ];
 
@@ -138,22 +138,22 @@ const WeekendEscapePage = () => {
 
     const validationSchema = Yup.object().shape({
         plan: Yup
-        .string()
-        .oneOf(['silver', 'diamond', 'platinum']),
-      numberOfGuest: Yup
-        .number()
-        .when('plan', {
-          is: 'silver',
-          then: Yup.number().max(2),
-        })
-        .when('plan', {
-          is: 'diamond',
-          then: Yup.number().max(4),
-        })
-        .when('plan', {
-          is: 'platinum',
-          then: Yup.number().max(6),
-        }).required("Number of guest required"),
+            .string()
+            .oneOf(['silver', 'diamond', 'platinum']),
+        numberOfGuest: Yup
+            .number()
+            .when('plan', {
+                is: 'silver',
+                then: Yup.number().max(2),
+            })
+            .when('plan', {
+                is: 'diamond',
+                then: Yup.number().max(4),
+            })
+            .when('plan', {
+                is: 'platinum',
+                then: Yup.number().max(6),
+            }).required("Number of guest required"),
         emergencyNumber: Yup.string().required("Emergency Number is required"),
         contact: Yup.string().required("Contact is required"),
         emergencyContactName: Yup.string().required("Emergency Contact Name is required"),
@@ -216,7 +216,14 @@ const WeekendEscapePage = () => {
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
-                        <p className='font-semibold text-lg md:text-2xl'>Daycation</p>                        
+                        <p className='font-semibold text-lg md:text-2xl'>Daycation</p>
+                        <div className='flex gap-1'>
+                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
+                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
+                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
+                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
+                            <FaRegStar size={20} />
+                        </div>
                     </div>
 
                     <div className='mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color'>
@@ -272,7 +279,7 @@ const WeekendEscapePage = () => {
                             ))}
                         </div>
 
-                        <div className='flex md:flex-row flex-col gap-[2em] md:w-[50%] justify-between'>
+                        <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
                             <InputLayout label='Names of Passenger(s)' name='guestsName'>
                                 <InputField value={guestsName} name='guestsName' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsName') {
@@ -320,9 +327,19 @@ const WeekendEscapePage = () => {
                                     ))}
                                 </div>
 
-                                <div className='flex md:flex-row flex-col md:w-[50%] justify-between mr-4'>
-                                    <InputLayout label={options.map(i => i.label)} name={options.map(i => i.value)} >
-                                        <div className='flex justify-between'>
+
+                                <div name="spaSession" className='flex gap-[4.5em]'>
+                                    {
+                                        options.map((label, key) => {
+                                            return (
+                                                <div className='font-semibold text-[13px]' key={key}>{label.label}</div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div className='md:w-[20%] mb-5'>
+                                    <InputLayout name={options.map(i => i.value)}>
+                                        <div className='flex gap-[9.5em]'>
                                             {
                                                 options.map((option) => (
                                                     <RadioField type='radio' id={option.value}
@@ -333,7 +350,6 @@ const WeekendEscapePage = () => {
                                                 ))
                                             }
                                         </div>
-
                                     </InputLayout>
                                 </div>
 

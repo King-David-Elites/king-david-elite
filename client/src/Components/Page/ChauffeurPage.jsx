@@ -7,7 +7,7 @@ import boatCruise from '../Categories/LuxuryService/images/samuele-errico-piccar
 import InputLayout from '../inputs/InputLayout';
 import * as Yup from 'yup';
 import FormikControl from '../formik/FormikControl';
-import { InputField } from '../inputs/MainInput';
+import { InputField, InputLabel } from '../inputs/MainInput';
 import { Dropdown, Option } from '../inputs/DropdownInput';
 import { TextArea } from '../inputs/TextareaInput'
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,7 +22,6 @@ const ChauffeurPage = ({ id }) => {
     const [guestsName, setGuestsName] = useState('');
     const [guestsEmail, setGuestEmail] = useState('');
     const [items, setItems] = useState([]);
-    const [validationError, setValidationError] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(false);
@@ -64,8 +63,8 @@ const ChauffeurPage = ({ id }) => {
     };
 
     const exortOptions = [
-        { value: "Yes", label: "Yes" },
-        { value: "No", label: "No" },
+        { value: "Yes1", label: "Yes" },
+        { value: "No1", label: "No" },
     ];
 
     const [exortOption, setExortOption] = useState(exortOptions[0].value);
@@ -251,7 +250,7 @@ const ChauffeurPage = ({ id }) => {
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
-                        <p className='font-semibold text-lg md:text-2xl'>Chauffeur-Driven Services</p>                        
+                        <p className='font-semibold text-lg md:text-2xl'>Chauffeur-Driven Services</p>
                     </div>
 
                     <form onSubmit={formik.handleSubmit} className='mt-6' >
@@ -259,7 +258,7 @@ const ChauffeurPage = ({ id }) => {
                             {items.map((item, index) => (
                                 <div>
                                     {
-                                        item.guestsName && item.guestsEmail != '' && <div className='flex gap-5 items-center' key={index}>
+                                        item.guestsName && item.guestsEmail !== '' && <div className='flex gap-5 items-center' key={index}>
                                             <p>{item.guestsName} | {item.guestsEmail}</p>
                                             <button type='button' className='cursor-pointer' onClick={() => handleRemove(index)}><MdOutlineRemoveCircle color='red' /></button>
                                         </div>
@@ -316,10 +315,20 @@ const ChauffeurPage = ({ id }) => {
                                     ))}
                                 </div>
 
-                                <label name={securityOptions.map(i => i.value)}>Security Personnel: </label>
-                                <div className='flex md:flex-row flex-col md:w-[50%] justify-between mr-4'>
-                                    <InputLayout label={securityOptions.map(i => i.label)}  >
-                                        <div className='flex justify-between'>
+
+                                <label className='font-bold text-[13px]' name="securityOption">Security Personnel: </label>
+                                <div name="securityOption" className='flex gap-[4.5em]'>
+                                    {
+                                        securityOptions.map((label, key) => {
+                                            return (
+                                                <div key={key}>{label.label}</div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div className='md:w-[10%] mb-5'>
+                                    <InputLayout name='securityOption'>
+                                        <div className='flex gap-[5em]'>
                                             {
                                                 securityOptions.map((option) => (
                                                     <RadioField type='radio' id={option.value}
@@ -332,11 +341,20 @@ const ChauffeurPage = ({ id }) => {
                                         </div>
                                     </InputLayout>
                                 </div>
-
-                                <label name={exortOptions.map(i => i.value)}>Request for Exort: </label>
-                                <div className='flex md:flex-row flex-col md:w-[50%] justify-between mr-4'>
-                                    <InputLayout label={exortOptions.map(i => i.label)} name={exortOptions.map(i => i.value)} >
-                                        <div className='flex justify-between'>
+                              
+                                <label className='font-bold text-[13px]' name="excortOption">Request for excort: </label>
+                                <div name="excortOption" className='flex gap-[4.5em]'>
+                                    {
+                                        exortOptions.map((label, key) => {
+                                            return (
+                                                <div key={key}>{label.label}</div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div className='md:w-[10%]'>
+                                    <InputLayout name='exortOption'>
+                                        <div className='flex gap-[5em]'>
                                             {
                                                 exortOptions.map((option) => (
                                                     <RadioField type='radio' id={option.value}
