@@ -702,6 +702,7 @@ export const Form = styled.form`
       }
       .uploading > .pages {
         width: 10em;
+        height: 8em;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -717,7 +718,8 @@ export const Form = styled.form`
       }
       .pages img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
       }
       .uploading > .uploadType {
         width: 12em;

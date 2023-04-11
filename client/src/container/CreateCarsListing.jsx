@@ -7,7 +7,6 @@ import FileBase64 from "react-file-base64";
 import globalApi from "../api";
 import Loader from "../Components/Loader/Loader";
 import useContextAPI from "../Components/ContextAPI/ContextAPI";
-import { getStates, getCities } from "../infrastructure/api/user/userRequest";
 
 const CreateCarListing = () => {
   const [valid, setValid] = useState(false);
@@ -21,17 +20,7 @@ const CreateCarListing = () => {
   const [size, setSize] = useState(0);
   const [loader, setLoader] = useState(false);
   const [loadImage, setLoadImage] = useState(false);
-
-  const [stateData, setStateData] = useState([]);
-  const [cityData, setCityData] = useState([]);
-  const [country, setCountry] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
-  const [isos, setIsos] = useState({
-    countryIso: "",
-    stateIso: "",
-    cityId: "",
-  });
+  const [popUp, setPopUp] = useState(false);
 
   const mainData = useContextAPI();
 
@@ -81,7 +70,7 @@ const CreateCarListing = () => {
       userListings["images"].length >= 4 &&
       userListings["location"] &&
       userListings["locationISO"]
-    ) {      
+    ) {
       setValid(true);
       setError(false);
     } else {
@@ -113,52 +102,6 @@ const CreateCarListing = () => {
     setChanging(!changing);
   };
 
-  const getCountryIso = (name) => {
-    var countryObject = mainData.countryData.find(
-      (country) => country.name === name
-    );
-    setStateData([]);
-    setCityData([]);
-    setIsos({ ...isos, countryIso: countryObject["iso2"] });
-    getStates(countryObject["iso2"], setStateData);
-    var location = `${city}#${state}#${name}`;
-    var locationISO = `${isos["cityId"]}#${isos["stateIso"]}#${countryObject["iso2"]}`;
-    setUserListings({
-      ...userListings,
-      locationISO: locationISO,
-      location: location,
-    });
-    setChanging(!changing);
-  };
-
-  const getStateIso = (name) => {
-    var stateObject = stateData.find((state) => state.name === name);
-    setCityData([]);
-    setIsos({ ...isos, stateIso: stateObject["iso2"] });
-    getCities(isos["countryIso"], stateObject["iso2"], setCityData);
-    var location = `${city}#${name}#${country}`;
-    var locationISO = `${isos["cityId"]}#${stateObject["iso2"]}#${isos["countryIso"]}`;
-    setUserListings({
-      ...userListings,
-      locationISO: locationISO,
-      location: location,
-    });
-    setChanging(!changing);
-  };
-
-  const getCityId = (name) => {
-    var cityObject = cityData.find((city) => city.name === name);
-    setIsos({ ...isos, cityId: cityObject["id"] });
-    var location = `${name}#${state}#${country}`;
-    var locationISO = `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`;
-    setUserListings({
-      ...userListings,
-      locationISO: locationISO,
-      location: location,
-    });
-    setChanging(!changing);
-  };
-
   const setConfig = () => {
     const authToken = localStorage.getItem("token");
 
@@ -183,7 +126,7 @@ const CreateCarListing = () => {
     await axios
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
-        setLoader(false);      
+        setLoader(false);
         navigate("/profile");
       })
       .catch((err) => {
@@ -200,7 +143,29 @@ const CreateCarListing = () => {
   return (
     <>
       {loader && <Loader />}
+      {popUp && (
+        <>
+          <div
+            className="fixed w-full h-[100%] top-0 left-0 bg-transparent flex justify-center items-center"
+            onClick={() => {
+              setPopUp(false);
+            }}
+          >
+            <div className="absolute md:w-1/3 md:h-1/3 w-2/3 h-1/3 bg-[#F2BE5C] flex justify-center rounded-xl items-center">
+              <div className="flex flex-col justify-center items-center p-5">
+                <p className="text-xl text-center font-bold">
+                  Ooops!! looks like you have a Network Error, please try again
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <div className="form_Content">
+        <div className="section">
+          <p>Location</p>
+          <input type="text" name="location" required onChange={handleChange} />
+        </div>
         <div className="section">
           <p>Brand Name</p>
           <input type="text" name="title" required onChange={handleChange} />
@@ -217,78 +182,6 @@ const CreateCarListing = () => {
             required
             onChange={handleChange}
           />
-        </div>
-        <div className="section">
-          <p>Country</p>
-          <select
-            className="w-full p-3 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
-            name="Country"
-            onChange={(e) => {
-              setCountry(e.target.value);
-              getCountryIso(e.target.value);
-            }}
-          >
-            <option value="Country">None</option>
-            {mainData.countryData.map((country) => {
-              return (
-                <>
-                  <option key={country.id} value={country.name}>
-                    {country.name}
-                  </option>
-                </>
-              );
-            })}
-          </select>
-        </div>
-        <div className="section">
-          {stateData.length > 0 && (
-            <>
-              <p>State</p>
-              <select
-                name="state"
-                onChange={(e) => {
-                  setState(e.target.value);
-                  getStateIso(e.target.value);
-                }}
-              >
-                <option value="State">None</option>
-                {stateData?.map((state) => {
-                  return (
-                    <>
-                      <option key={state.id} value={state.name}>
-                        {state.name}
-                      </option>
-                    </>
-                  );
-                })}
-              </select>
-            </>
-          )}
-        </div>
-        <div className="section">
-          {cityData.length > 0 && (
-            <>
-              <p>City</p>
-              <select
-                name="city"
-                onChange={(e) => {
-                  setCity(e.target.value);
-                  getCityId(e.target.value);
-                }}
-              >
-                <option value="City">None</option>
-                {cityData?.map((city) => {
-                  return (
-                    <>
-                      <option key={city.id} value={city.name}>
-                        {city.name}
-                      </option>
-                    </>
-                  );
-                })}
-              </select>
-            </>
-          )}
         </div>
         <div className="section">
           <hr />
@@ -489,7 +382,13 @@ const CreateCarListing = () => {
         </div>
         <div className="NumbB">
           <div className="sect">
-            <p>Price</p>
+            {userListings["forRent"] === true ? (
+              <p>Price per Day</p>
+            ) : (
+              <p>
+                <p>Price</p>
+              </p>
+            )}
             <div className="price">
               <input
                 type="number"
@@ -498,11 +397,7 @@ const CreateCarListing = () => {
                 onChange={handleChange}
               />
               <select>
-                <option>USD</option>
                 <option>NGN</option>
-                <option>INR</option>
-                <option>EU</option>
-                <option>YEN</option>
               </select>
             </div>
           </div>
