@@ -211,7 +211,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 5,
-      name: "10 Passenger Boat",
+      name: "8 Passenger Boat",
     },
     {
       id: 6,
@@ -242,7 +242,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 5,
-      name: "12 Passenger Mini-Yacht",
+      name: "10 Passenger Mini-Yacht",
     },
     {
       id: 6,
@@ -273,7 +273,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 5,
-      name: "15 Passenger Mini-Yacht",
+      name: "12 Passenger Mini-Yacht",
     },
     {
       id: 6,
@@ -464,7 +464,7 @@ const Pricing = ({ active = 6 }) => {
               Gaming Adventures: Adventure for 2{" "}
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Boat Cruise: 10 Passenger Boat
+              Boat Cruise: 8 Passenger Boat
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Spa: Mobile/Walk In Session (2)
@@ -508,7 +508,7 @@ const Pricing = ({ active = 6 }) => {
               Gaming Adventures: Adventure for 4{" "}
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Boat Cruise: 12 Passenger Mini-Yacht
+              Boat Cruise: 10 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Spa: Mobile/Walk In Session (3)
@@ -552,7 +552,7 @@ const Pricing = ({ active = 6 }) => {
               Gaming Adventures: Adventure for 6{" "}
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Boat Cruise: 15 Passenger Mini-Yacht
+              Boat Cruise: 12 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Spa: Mobile/Walk In Session (4)

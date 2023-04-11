@@ -282,7 +282,7 @@ export const ListingForm = styled.div`
       font-weight: 600;
     }
     .NumbB > .sect {
-      flex: 0 1 20em;
+      flex: 0 1 25em;
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -331,7 +331,7 @@ export const ListingForm = styled.div`
       border-radius: 0.5em;
     }
     .NumbB > .sect > .price {
-      flex: 0 1 20em;
+      flex: 0 1 25em;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -339,15 +339,14 @@ export const ListingForm = styled.div`
       border-radius: 0.5em;
     }
     .NumbB > .sect > .price input {
-      width: 70%;
-      padding: 1em;
-      padding-left: 1.5em;
+      width: 65%;
+      padding: 1em;      
       border: 0px;
       outline: none;
       font-weight: 600;
     }
     .NumbB > .sect > .price select {
-      width: 30%;
+      width: 35%;
       border-left: 2px solid black;
       padding: 1em 0em 1em 1em;
       outline: none;
