@@ -49,7 +49,7 @@ const Footer = () => {
               href="https://twitter.com/kingdavidelites"
               target="_blank"
             >
-              <BsTwitter size={40} color="white" />
+              <BsTwitter size={26} color="white" />
             </a>
 
             <a
@@ -57,7 +57,7 @@ const Footer = () => {
               href="https://www.instagram.com/kingdavidelites/"
               target="_blank"
             >
-              <FaInstagram size={40} color="white" />
+              <FaInstagram size={26} color="white" />
             </a>
 
             <a
@@ -65,7 +65,7 @@ const Footer = () => {
               href="https://facebook.com/kingdavidelites"
               target="_blank"
             >
-              <FaFacebookF size={40} color="white" />
+              <FaFacebookF size={26} color="white" />
             </a>
 
             <a
@@ -73,7 +73,7 @@ const Footer = () => {
               href="http://www.linkedin.com/in/king-david-elites-371804256"
               target="_blank"
             >
-              <FaLinkedinIn size={40} color="white" />
+              <FaLinkedinIn size={26} color="white" />
             </a>
           </div>
         </Section>
@@ -137,7 +137,7 @@ const Footer = () => {
             <a href="https://twitter.com/kingdavidelites" target="_blank">
               <BsTwitter
                 className="border-circle-bigScreen cursor-pointer"
-                size={40}
+                size={26}
                 color="white"
               />
             </a>
@@ -148,7 +148,7 @@ const Footer = () => {
             >
               <FaInstagram
                 className="border-circle-bigScreen cursor-pointer"
-                size={40}
+                size={26}
                 color="white"
               />
             </a>
@@ -156,7 +156,7 @@ const Footer = () => {
             <a href="https://facebook.com/kingdavidelites" target="_blank">
               <FaFacebookF
                 className="border-circle-bigScreen cursor-pointer"
-                size={40}
+                size={26}
                 color="white"
               />
             </a>
@@ -167,7 +167,7 @@ const Footer = () => {
             >
               <FaLinkedinIn
                 className="border-circle-bigScreen cursor-pointer"
-                size={40}
+                size={26}
                 color="white"
               />
             </a>
