@@ -1,4 +1,3 @@
-import { FaRegStar } from "react-icons/fa";
 import kde_blackBg from "../Navbar/Image/kde_whiteBg.png";
 import { useFormik } from "formik";
 import MainButton from "../buttons/MainButton";
@@ -24,14 +23,23 @@ const BoatCruisePage = ({ mainData }) => {
     const [guestsName, setGuestsName] = useState("");
     const [guestsEmail, setGuestEmail] = useState("");
     const [items, setItems] = useState([]);
-    const [validationError, setValidationError] = useState("");
     const status = useSelector((state) => state.user.status);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(false);
     const [price, setPrice] = useState("");
-    const [name] = useState(mainData.userData.firstName);
+    const [firstName] = useState(mainData.userData.firstName);
+    const [lastName] = useState(mainData.userData.lastName);
     const [email] = useState(mainData.userData.email);
+    const [fullName] = useState(`${firstName} ${lastName}`,)
+
+    useEffect(() => {
+        items.push({
+            guestsName: fullName,
+            guestsEmail: email
+        })
+    }, [])
+
 
     useEffect(() => {
         if (String(id) === "silver") {
@@ -48,7 +56,6 @@ const BoatCruisePage = ({ mainData }) => {
         guestsEmail: "",
         emergencyContactNumber: "",
         emergencyContactName: "",
-        numberOfGuest: "",
         contact: "",
         time: "",
         date: "",
@@ -69,6 +76,7 @@ const BoatCruisePage = ({ mainData }) => {
         { key: "Non-Vegetarian", value: "Non-Vegetarian" },
     ];
 
+
     const handleRemove = (index) => {
         const list = [...items];
         list.splice(index, 1);
@@ -82,20 +90,6 @@ const BoatCruisePage = ({ mainData }) => {
 
     const validationSchema = Yup.object().shape({
         status: Yup.string().oneOf(["silver", "diamond", "platinum"]),
-        numberOfGuest: Yup.number()
-            .when("status", {
-                is: "silver",
-                then: Yup.number().max(2),
-            })
-            .when("status", {
-                is: "diamond",
-                then: Yup.number().max(4),
-            })
-            .when("status", {
-                is: "platinum",
-                then: Yup.number().max(6),
-            })
-            .required("Number of guest required"),
         emergencyContactNumber: Yup.string().required(
             "Emergency Number is required"
         ),
@@ -123,7 +117,6 @@ const BoatCruisePage = ({ mainData }) => {
         setItems([...items, { guestsName, guestsEmail }]);
         setGuestsName("");
         setGuestEmail("");
-        console.log(items)
     };
 
     const formik = useFormik({
@@ -133,12 +126,6 @@ const BoatCruisePage = ({ mainData }) => {
     });
 
     const displayInput = [
-        {
-            label: "Number of Guest (s)",
-            name: "numberOfGuest",
-            control: "others",
-            type: "number",
-        },
         {
             label: "Contact Information",
             name: "contact",
@@ -195,7 +182,6 @@ const BoatCruisePage = ({ mainData }) => {
             guestsName: items.map((i) => i.guestsName),
             contact: values.contact,
             date: values.date,
-            numberOfGuest: values.numberOfGuest,
             emergencyContactNumber: values.emergencyContactNumber,
             emergencyContactName: values.emergencyContactName,
             time: values.time,
@@ -223,10 +209,8 @@ const BoatCruisePage = ({ mainData }) => {
                             src={kde_blackBg}
                             className="w-[100%] h-[100%] cursor-pointer"
                             alt="brandlogo"
+                            onClick={() => navigate(window.history.back())}
                         />
-                        <p className="text-[10px] whitespace-nowrap font-semibold ml-1 text-[#d4d72eea] bg-gradient-to-r from-[#fcf8bd]-500 to-[#b9a362]-500">
-                            Kind David Logo
-                        </p>
                     </div>
 
                     <div className="flex gap-2 md:gap-5 mt-5 items-center">
@@ -280,9 +264,34 @@ const BoatCruisePage = ({ mainData }) => {
                         </p>
                     </div>
 
+                    <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">
+                        <p>
+                            <span className="text-black text-[13px] mr-1 font-bold">
+                                TERMS OF USAGE:
+                            </span>
+                            Your booking will be confirmed upon receipt of payment, ensuring a seamless and hassle-free experience with King David Elites.
+                        </p>
+                        <br />
+                        <p>
+                            Please note that prices for any additional services may vary, so you can customize your booking to fit your unique needs.
+                        </p>
+                        <br />
+                        <p>
+                            If you have any special requests or personalized orders, please provide all necessary details in the message box provided during the booking process. Our customer support team will reach out to you promptly, typically within an hour, to ensure your needs are met.
+                        </p>
+                        <br />
+                        <p>
+                            As a patron, you are responsible for any damages incurred during your use of our services, so we kindly ask that you treat our facilities and equipment with the utmost care and caution.
+
+                        </p>
+                        <br />
+                        <p>
+                            We sincerely appreciate your choice of King David Elites, and we look forward to providing you with an exceptional luxury experience.
+                        </p>
+                    </div>
+
                     <form onSubmit={formik.handleSubmit} className="mt-4 mb-4">
                         <div>
-                            {mainData.userData.firstName} {mainData.userData.lastName} | {mainData.userData.email}
                             {items.map((item, index) => (
                                 <div>
                                     {item.guestsName && item.guestsEmail !== "" && (
@@ -290,64 +299,71 @@ const BoatCruisePage = ({ mainData }) => {
                                             <p>
                                                 {item.guestsName} | {item.guestsEmail}
                                             </p>
-                                            <button
-                                                type="button"
-                                                className="cursor-pointer"
-                                                onClick={() => handleRemove(index)}
-                                            >
-                                                <MdOutlineRemoveCircle color="red" />
-                                            </button>
+
+                                            <div className={index !== 0 ? "block" : "hidden"}>
+                                                <button
+                                                    type="button"
+                                                    className="cursor-pointer"
+                                                    onClick={() => handleRemove(index)}
+                                                >
+                                                    <MdOutlineRemoveCircle color="red" />
+                                                </button>
+                                            </div>
+
                                         </div>
                                     )}
                                 </div>
                             ))}
                         </div>
 
-                        <div className="flex md:flex-row gap-[2em] flex-col md:w-[50%] justify-between">
-                            <InputLayout label="Names of Passenger(s)" name="guestsName">
-                                <InputField
-                                    value={guestsName}
-                                    name="guestsName"
-                                    type="text"
-                                    onChange={(e) => {
-                                        if (e.target.name === "guestsName") {
-                                            setGuestsName(e.target.value);
-                                        }
-                                    }}
-                                    width="50%"
-                                    placeholder="Enter fullName"
-                                />
-                                <div className=" text-[red] opacity-40">
-                                    {validationError && <p>{validationError}</p>}
+                        {
+                            ((status === "silver" && items.length < 8) || (status === "diamond" && items.length < 12) || (status === "platinum" && items.length < 15)) &&
+                            <>
+                                <div className="flex md:flex-row gap-[2em] flex-col md:w-[50%] justify-between">
+                                    <InputLayout label="Names of Passenger(s)" name="guestsName">
+                                        <InputField
+                                            value={guestsName}
+                                            name="guestsName"
+                                            type="text"
+                                            onChange={(e) => {
+                                                if (e.target.name === "guestsName") {
+                                                    setGuestsName(e.target.value);
+                                                }
+                                            }}
+                                            width="50%"
+                                            placeholder="Enter fullName"
+                                        />
+                                    </InputLayout>
+                                    <InputLayout
+                                        label="Email Address Of Passengers(s)"
+                                        name="guestsEmail"
+                                    >
+                                        <InputField
+                                            value={guestsEmail}
+                                            name="guestsEmail"
+                                            type="text"
+                                            onChange={(e) => {
+                                                if (e.target.name === "guestsEmail") {
+                                                    setGuestEmail(e.target.value);
+                                                }
+                                            }}
+                                            width="100px"
+                                        />
+                                    </InputLayout>
                                 </div>
-                            </InputLayout>
 
-                            <InputLayout
-                                label="Email Address Of Passengers(s)"
-                                name="guestsEmail"
-                            >
-                                <InputField
-                                    value={guestsEmail}
-                                    name="guestsEmail"
-                                    type="text"
-                                    onChange={(e) => {
-                                        if (e.target.name === "guestsEmail") {
-                                            setGuestEmail(e.target.value);
-                                        }
-                                    }}
+                                <MainButton
                                     width="100px"
-                                />
-                            </InputLayout>
-                        </div>
-                        <MainButton
-                            width="100px"
-                            type="button"
-                            onClick={(e) => onSubmit(e)}
-                        >
-                            Add Guest
-                        </MainButton>
-                    </form>
+                                    type="button"
+                                    className={`hidden`}
+                                    onClick={(e) => onSubmit(e)}
+                                >
+                                    Add Guest
+                                </MainButton>
+                            </>
+                        }
 
+                    </form>
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}
@@ -386,7 +402,6 @@ const BoatCruisePage = ({ mainData }) => {
                                         </Link>
                                     </p>
                                 </div>
-
 
                                 <div className="flex my-[30px] gap-[10px]">
                                     {

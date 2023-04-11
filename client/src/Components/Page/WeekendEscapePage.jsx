@@ -19,7 +19,7 @@ import { InputField } from "../inputs/MainInput";
 import { RadioField } from "../inputs/RadioInput";
 import DisableButton from "../buttons/DisabledButton";
 
-const WeekendEscapePage = () => {
+const WeekendEscapePage = ({ mainData }) => {
     const { id } = useParams();
     const [guestsName, setGuestsName] = useState("");
     const [guestsEmail, setGuestEmail] = useState("");
@@ -29,6 +29,10 @@ const WeekendEscapePage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isChecked, setIsChecked] = useState(false);
+    const [firstName] = useState(mainData.userData.firstName);
+    const [lastName] = useState(mainData.userData.lastName);
+    const [email] = useState(mainData.userData.email);
+    const [fullName] = useState(`${firstName} ${lastName}`,)
 
     const handleRemove = (index) => {
         const list = [...items];
@@ -46,9 +50,15 @@ const WeekendEscapePage = () => {
         }
     }, [id]);
 
+    useEffect(() => {
+        items.push({
+            guestsName: fullName,
+            guestsEmail: email
+        })
+    }, [])
+
     const initialValues = {
         departureDate: "",
-        numberOfGuest: "",
         contact: "",
         arrivalDate: "",
         emergencyNumber: "",
@@ -83,7 +93,6 @@ const WeekendEscapePage = () => {
         { key: "Non-Vegetarian", value: "Non-Vegetarian" },
     ];
 
-
     const [selectedOption, setSelectedOption] = useState(options[0].value);
 
     const handleOptionChange = (value) => {
@@ -91,12 +100,6 @@ const WeekendEscapePage = () => {
     };
 
     const displayInput = [
-        {
-            label: "Number of Guest (s)",
-            name: "numberOfGuest",
-            control: "others",
-            type: "number",
-        },
         {
             label: "Contact",
             name: "contact",
@@ -156,20 +159,6 @@ const WeekendEscapePage = () => {
 
     const validationSchema = Yup.object().shape({
         plan: Yup.string().oneOf(["silver", "diamond", "platinum"]),
-        numberOfGuest: Yup.number()
-            .when("plan", {
-                is: "silver",
-                then: Yup.number().max(2),
-            })
-            .when("plan", {
-                is: "diamond",
-                then: Yup.number().max(4),
-            })
-            .when("plan", {
-                is: "platinum",
-                then: Yup.number().max(6),
-            })
-            .required("Number of guest required"),
         emergencyNumber: Yup.string().required("Emergency Number is required"),
         contact: Yup.string().required("Contact is required"),
         emergencyContactName: Yup.string().required(
@@ -181,7 +170,6 @@ const WeekendEscapePage = () => {
             "Drinking preference is required"
         ),
         mealPreference: Yup.string().required("Meal preference is required"),
-        // spa: Yup.string().required("Spa session is required"),
     });
 
     const createDaycation = (values) => {
@@ -190,7 +178,6 @@ const WeekendEscapePage = () => {
             guestsName: items.map((i) => i.guestsName),
             departureDate: values.departureDate,
             arrivalDate: values.arrivalDate,
-            numberOfGuest: values.numberOfGuest,
             emergencyNumber: values.emergencyNumber,
             emergencyContactName: values.emergencyContactName,
             contact: values.contact,
@@ -235,10 +222,8 @@ const WeekendEscapePage = () => {
                             src={kde_blackBg}
                             className="w-[100%] h-[100%] cursor-pointer"
                             alt="brandlogo"
+                            onClick={() => navigate(window.history.back())}
                         />
-                        <p className="text-[10px] whitespace-nowrap font-semibold ml-1 text-[#d4d72eea] bg-gradient-to-r from-[#fcf8bd]-500 to-[#b9a362]-500">
-                            Kind David Logo
-                        </p>
                     </div>
 
                     <div className="flex gap-2 md:gap-5 mt-5 items-center">
@@ -284,6 +269,32 @@ const WeekendEscapePage = () => {
                         </p>
                     </div>
 
+                    <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">
+                        <p>
+                            <span className="text-black text-[13px] mr-1 font-bold">
+                                TERMS OF USAGE:
+                            </span>
+                            Your booking will be confirmed upon receipt of payment, ensuring a seamless and hassle-free experience with King David Elites.
+                        </p>
+                        <br />
+                        <p>
+                            Please note that prices for any additional services may vary, so you can customize your booking to fit your unique needs.
+                        </p>
+                        <br />
+                        <p>
+                            If you have any special requests or personalized orders, please provide all necessary details in the message box provided during the booking process. Our customer support team will reach out to you promptly, typically within an hour, to ensure your needs are met.
+                        </p>
+                        <br />
+                        <p>
+                            As a patron, you are responsible for any damages incurred during your use of our services, so we kindly ask that you treat our facilities and equipment with the utmost care and caution.
+
+                        </p>
+                        <br />
+                        <p>
+                            We sincerely appreciate your choice of King David Elites, and we look forward to providing you with an exceptional luxury experience.
+                        </p>
+                    </div>
+
                     <form onSubmit={formik.handleSubmit} className="mt-6">
                         <div>
                             {items.map((item, index) => (
@@ -293,66 +304,67 @@ const WeekendEscapePage = () => {
                                             <p>
                                                 {item.guestsName} | {item.guestsEmail}
                                             </p>
-                                            <button
-                                                type="button"
-                                                className="cursor-pointer"
-                                                onClick={() => handleRemove(index)}
-                                            >
-                                                <MdOutlineRemoveCircle color="red" />
-                                            </button>
+                                            <div className={index !== 0 ? "block" : "hidden"}>
+                                                <button
+                                                    type="button"
+                                                    className="cursor-pointer"
+                                                    onClick={() => handleRemove(index)}
+                                                >
+                                                    <MdOutlineRemoveCircle color="red" />
+                                                </button>
+                                            </div>
                                         </div>
                                     )}
                                 </div>
                             ))}
                         </div>
 
-                        <div className="flex md:flex-row flex-col gap-[2em] md:w-[50%] justify-between">
-                            <InputLayout label="Names of Passenger(s)" name="guestsName">
-                                <InputField
-                                    value={guestsName}
-                                    name="guestsName"
-                                    type="text"
-                                    onChange={(e) => {
-                                        if (e.target.name === "guestsName") {
-                                            setGuestsName(e.target.value);
-                                        }
-                                    }}
-                                    width="50%"
-                                    placeholder="e.g Emma Olaosebikan"
-                                />
-                                {/* <div className=" text-[red] opacity-40">
-                                    {
-                                        validationError && <p>{validationError}</p>
-                                    }
-                                </div> */}
-                            </InputLayout>
+                        {
+                            ((plan === "silver" && items.length < 2) || (plan === "diamond" && items.length < 4) || (plan === "platinum" && items.length < 6)) &&
+                            <>
+                                <div className="flex md:flex-row gap-[2em] flex-col md:w-[50%] justify-between">
+                                    <InputLayout label="Names of Passenger(s)" name="guestsName">
+                                        <InputField
+                                            value={guestsName}
+                                            name="guestsName"
+                                            type="text"
+                                            onChange={(e) => {
+                                                if (e.target.name === "guestsName") {
+                                                    setGuestsName(e.target.value);
+                                                }
+                                            }}
+                                            width="50%"
+                                            placeholder="Enter fullName"
+                                        />
+                                    </InputLayout>
+                                    <InputLayout
+                                        label="Email Address Of Passengers(s)"
+                                        name="guestsEmail"
+                                    >
+                                        <InputField
+                                            value={guestsEmail}
+                                            name="guestsEmail"
+                                            type="text"
+                                            onChange={(e) => {
+                                                if (e.target.name === "guestsEmail") {
+                                                    setGuestEmail(e.target.value);
+                                                }
+                                            }}
+                                            width="100px"
+                                        />
+                                    </InputLayout>
+                                </div>
 
-                            <InputLayout
-                                label="Email Address Of Passengers(s)"
-                                name="guestsEmail"
-                            >
-                                <InputField
-                                    value={guestsEmail}
-                                    name="guestsEmail"
-                                    type="text"
-                                    onChange={(e) => {
-                                        if (e.target.name === "guestsEmail") {
-                                            setGuestEmail(e.target.value);
-                                        }
-                                    }}
+                                <MainButton
                                     width="100px"
-                                />
-                            </InputLayout>
-                        </div>
-
-                        <MainButton
-                            width="100px"
-                            marginTop="1em"
-                            type="button"
-                            onClick={(e) => onSubmit(e)}
-                        >
-                            Add Guest
-                        </MainButton>
+                                    type="button"
+                                    className={`hidden`}
+                                    onClick={(e) => onSubmit(e)}
+                                >
+                                    Add Guest
+                                </MainButton>
+                            </>
+                        }
                     </form>
 
                     <Formik

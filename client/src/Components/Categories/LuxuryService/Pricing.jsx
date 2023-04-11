@@ -8,10 +8,12 @@ import { setPackagePlan } from "../../../application/store/actions/user";
 import "../../Navbar/Navbar.css";
 import { ImCross } from "react-icons/im";
 import kde_blackBg from "../../Navbar/Image/kde_whiteBg.png";
+import { useRef } from "react";
 
 const Pricing = ({ active = 6 }) => {
   const [activeNav, setActiveNav] = useState(false);
   const dispatch = useDispatch();
+  const position = useRef(null);
 
   const showMenu = () => {
     setActiveNav(!activeNav);
@@ -383,7 +385,7 @@ const Pricing = ({ active = 6 }) => {
         <Brand>
           <div
             className="w-[40px] h-[auto]"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/luxury-service")}
           >
             <img
               src={kde_blackBg}
@@ -423,26 +425,7 @@ const Pricing = ({ active = 6 }) => {
         <h3 className="text-center text-[15px] font-semibold md:text-[19px] tracking-wide">
           Daycation ( 24 HOURS OF BLISS)
         </h3>
-        <p className="font-bold">* SPECIAL NOTES</p>
-        <div className="text-[13px] mb-5 font-semibold">
-          <p>
-            All bookings are to be made at least 1 hour beforehand to ensure
-            efficient delivery.
-          </p>
-          <p>Payment validates booking for all services.</p>
-          <p>
-            Patrons would be held reliable fir any damages caused by them in the
-            course of using our services.
-          </p>
-          <p>
-            Prices are subject to change after selecting certain “extra”
-            services or personalized requests.
-          </p>
-          <p>
-            King David Elites Support Team typically respond within the hour for
-            any requests or inquiries you intend to make.
-          </p>
-        </div>
+       
 
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
           <p className="text-[15px] font-semibold mb-1">
@@ -580,9 +563,6 @@ const Pricing = ({ active = 6 }) => {
           Chauffeur Rides (THE COMFORT ZONE)
         </h3>
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
-          <p className="text-[15px] font-semibold mb-1">
-            Silver ( 4 people max )
-          </p>
           <p className="text-[20px] font-extrabold">
             &#8358;100,000-&#8358;300,000
           </p>
@@ -616,9 +596,7 @@ const Pricing = ({ active = 6 }) => {
         </div>
 
         <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
-          <p className="text-[15px] font-semibold mb-1">
-            Diamond ( 4 people max )
-          </p>
+  
           <p className="text-[20px] font-extrabold">
             &#8358;300,000-&#8358;500,000
           </p>
@@ -652,9 +630,6 @@ const Pricing = ({ active = 6 }) => {
         </div>
 
         <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
-          <p className="text-[15px] font-semibold mb-1">
-            Platinum ( 4 people max )
-          </p>
           <p className="text-[20px] font-extrabold">&#8358;500,000 Upwards</p>
 
           <div className="mt-5">
@@ -947,15 +922,7 @@ const Pricing = ({ active = 6 }) => {
 
         <div className="flex gap-3 w-[100%] items-center h-auto mt-6">
           <p className="w-1/4 font-extrabold text-[22px]">Pricing</p>
-          <p className="w-1/4 text-neutral-color font-medium text-[16px]">
-            Silver ( 4 people max )
-          </p>
-          <p className="w-1/4 text-neutral-color font-medium text-[16px]">
-            Diamond ( 4 people max )
-          </p>
-          <p className="w-1/4 text-neutral-color font-medium text-[16px]">
-            Platinum ( 4 people max )
-          </p>
+         
         </div>
 
         <div className="flex gap-3 w-[100%] h-auto mt-6">
@@ -1205,27 +1172,6 @@ const Pricing = ({ active = 6 }) => {
               Get Started
             </MainButton>
           </div>
-        </div>
-
-        <p className="font-bold text-center pt-10">* SPECIAL NOTES</p>
-        <div className="text-[13px] mb-5 text-center font-semibold px-10">
-          <p>
-            All bookings are to be made at least 1 hour beforehand to ensure
-            efficient delivery.
-          </p>
-          <p>Payment validates booking for all services.</p>
-          <p>
-            Patrons would be held reliable fir any damages caused by them in the
-            course of using our services.
-          </p>
-          <p>
-            Prices are subject to change after selecting certain “extra”
-            services or personalized requests.
-          </p>
-          <p>
-            King David Elites Support Team typically respond within the hour for
-            any requests or inquiries you intend to make.
-          </p>
         </div>
       </div>
     </>

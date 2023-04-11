@@ -194,8 +194,8 @@ const HelicopterRidePage = () => {
                     <div className="w-[70px] h-[auto] flex flex-col">
                         <img src={kde_blackBg}
                             className='w-[100%] h-[100%] cursor-pointer'
-                            alt="brandlogo" />
-                        <p className='text-[10px] whitespace-nowrap font-semibold ml-1 text-[#d4d72eea] bg-gradient-to-r from-[#fcf8bd]-500 to-[#b9a362]-500'>Kind David Logo</p>
+                            alt="brandlogo"
+                            onClick={() => navigate(window.history.back())} />
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
@@ -207,7 +207,7 @@ const HelicopterRidePage = () => {
                             {items.map((item, index) => (
                                 <div>
                                     {
-                                        item.guestsName && item.guestsEmail != '' && <div className='flex gap-5 items-center' key={index}>
+                                        item.guestsName && item.guestsEmail !== '' && <div className='flex gap-5 items-center' key={index}>
                                             <p>{item.guestsName} | {item.guestsEmail} | {item.guestsNationality}</p>
                                             <button type='button' className='cursor-pointer' onClick={() => handleRemove(index)}><MdOutlineRemoveCircle color='red' /></button>
                                         </div>

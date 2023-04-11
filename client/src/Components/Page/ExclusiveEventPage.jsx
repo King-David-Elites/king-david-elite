@@ -91,19 +91,13 @@ const ExclusiveEventPage = () => {
                     <div className="w-[70px] h-[auto] flex flex-col">
                         <img src={kde_blackBg}
                             className='w-[100%] h-[100%] cursor-pointer'
-                            alt="brandlogo" />
-                        <p className='text-[10px] whitespace-nowrap font-semibold ml-1 text-[#d4d72eea] bg-gradient-to-r from-[#fcf8bd]-500 to-[#b9a362]-500'>Kind David Logo</p>
+                            alt="brandlogo"
+                            onClick={() => navigate(window.history.back())} />
+
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
                         <p className='font-semibold text-lg md:text-2xl'>Exclusive Events</p>
-                        <div className='flex gap-1'>
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                            <FaRegStar size={20} />
-                        </div>
                     </div>
 
                     <Formik

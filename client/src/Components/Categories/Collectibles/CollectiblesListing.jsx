@@ -159,16 +159,6 @@ const CollectiblesListing = () => {
         })}
         <HeroSection>
           <Text fontSize="2rem">Collectibles</Text>
-          <SearchSection>
-            <SearchC>
-              <Input placeholder="search" />
-              <Search width="30px" className="cursor-pointer" />
-            </SearchC>
-            <FilterBox>
-              <MainButton width="60px">Filter</MainButton>
-              <Adjustments width="30px" />
-            </FilterBox>
-          </SearchSection>
         </HeroSection>
       </Background>
 

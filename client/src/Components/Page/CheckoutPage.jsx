@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import MainButton from "../buttons/MainButton";
 import Return from "../Navbar/Return";
 
-const CheckoutPage = () => {
+const CheckoutPage = ({ mainData }) => {
     const luxuryServiceType = useSelector(state => state.user.luxuryServiceType);
     const exclusiveEvent = useSelector(state => state.user.exclusiveEvent);
     const daycation = useSelector(state => state.user.daycation);
@@ -12,11 +12,11 @@ const CheckoutPage = () => {
     const conciergeVacation = useSelector(state => state.user.conciergeVacation);
     const plan = useSelector(state => state.user.status);
     const chauffeurTotal = chauffeurRide?.data?.price + chauffeurRide?.data?.vehiclePrice;
-    
+
     return (
         <>
-            <Return/>
-            <div className="w-full h-[100vh]  p-5 flex flex-col md:items-center md:bg-[#EEF0F2] bg-white">
+            <Return />
+            <div className="w-full h-[auto]  p-5 flex flex-col md:items-center md:bg-[#EEF0F2] bg-white">
                 <div className="p-5 bg-white md:shadow-md md:rounded-md md:w-[500px]">
                     <div className="text-center mb-7">
                         <h3 className="font-bold text-[24px]">Almost Done....</h3>
@@ -32,7 +32,7 @@ const CheckoutPage = () => {
 
                             <div className="border-b-2 mb-4">
                                 <h3 className="font-medium text-[18px]">User Details</h3>
-                                <p>User: <span>{daycation.data.guestsName} | {daycation.data.guestsEmail}</span></p>
+                                <p>User: <span>{mainData.userData.firstName} {mainData.userData.lastName} | {mainData.userData.email}</span></p>
                                 <p>Emergency Contact: <span>{daycation.data.emergencyContactName} | {daycation.data.emergencyNumber}</span></p>
                             </div>
 
@@ -46,8 +46,8 @@ const CheckoutPage = () => {
                                 <h3>Details</h3>
                                 <p>Arrival Date: {daycation.data.arrivalDate}</p>
                                 <p>Departure Date Date: {daycation.data.departureDate}</p>
-                                <p>Meal Preference: {daycation.data.mealPreference}</p>
-                                <p>Drink Preference: {daycation.data.drinkingPreference}</p>
+                                <p>Meal Preference: {daycation.data.mealPreference.substring(1)}</p>
+                                <p>Drink Preference: {daycation.data.drinkingPreference.substring(1)}</p>
                                 <p>Spa: <span>{daycation.data.spa.toUpperCase()}</span></p>
                             </div>
                             {
@@ -71,14 +71,19 @@ const CheckoutPage = () => {
 
                             <div className="border-b-2 mb-4">
                                 <h3 className="font-medium text-[18px]">User Details</h3>
-                                <p>User: <span>{chauffeurRide.data.guestsName} | {chauffeurRide.data.guestsEmail}</span></p>
+                                <p>User: <span>{mainData.userData.firstName} {mainData.userData.lastName} | {mainData.userData.email}</span></p>
                                 <p>Emergency Contact: <span>{chauffeurRide.data.emergencyContactName} | {chauffeurRide.data.emergencyNumber}</span></p>
                             </div>
 
                             <div className="border-b-2 mb-4">
                                 <h3>Guests Information</h3>
-                                <p>Number of Guest(s): <span>{chauffeurRide.data.numberOfGuest}</span></p>
-                                <p>{chauffeurRide.data.guestsName} | {chauffeurRide.data.guestsEmail}</p>
+                                <p>Number of Guest(s): <span>{chauffeurRide.data.guestsName.length}</span></p>
+                                <div className="flex gap-2">
+                                    <div className="flex flex-col">
+                                        {chauffeurRide?.data?.guestsName.map((i) => <span>{i}</span>)}
+                                    </div>
+                                    <div className="flex flex-col">{chauffeurRide?.data?.guestsEmail.map((i) => <span>{i}</span>)}</div>
+                                </div>
                             </div>
 
                             <div className="border-b-2 mb-4">
@@ -109,22 +114,27 @@ const CheckoutPage = () => {
 
                             <div className="border-b-2 mb-4">
                                 <h3 className="font-medium text-[18px]">User Details</h3>
-                                <p>User: <span>{boatCruise?.data?.guestsName} | {boatCruise?.data?.guestsEmail}</span></p>
-                                <p>Emergency Contact: <span>{boatCruise.data.emergencyContactName} | {boatCruise.data.emergencyNumber}</span></p>
+                                <p>User: <span>{mainData.userData.firstName} {mainData.userData.lastName} | {mainData.userData.email}</span></p>
+                                <p>Emergency Contact: <span>{boatCruise.data.emergencyContactName} | {boatCruise.data.emergencyContactNumber}</span></p>
                             </div>
 
                             <div className="border-b-2 mb-4">
                                 <h3>Guests Information</h3>
-                                <p>Number of Guest(s): <span>{boatCruise.data.numberOfGuest}</span></p>
-                                <p>{boatCruise.data.guestsName} | {boatCruise.data.guestsEmail}</p>
+                                <p>Number of Guest(s): <span>{boatCruise?.data?.guestsEmail?.length}</span></p>
+                                <div className="flex gap-2">
+                                    <div className="flex flex-col">
+                                        {boatCruise?.data?.guestsName.map((i) => <span>{i}</span>)}
+                                    </div>
+                                    <div className="flex flex-col">{boatCruise?.data?.guestsEmail.map((i) => <span>{i}</span>)}</div>
+                                </div>
                             </div>
 
                             <div className="border-b-2 mb-4">
                                 <h3>Details</h3>
                                 <p>Pickup Date: {boatCruise.data.date}</p>
                                 <p>Pickup Time: {boatCruise.data.time}</p>
-                                <p>Meal Preference: {boatCruise.data.mealPreference}</p>
-                                <p>Drink Preference: {boatCruise.data.drinkingPreference}</p>
+                                <p>Meal Preference: {boatCruise.data.mealPreference.substring(1)}</p>
+                                <p>Drink Preference: {boatCruise.data.drinkingPreference.substring(1)}</p>
                             </div>
                             {
                                 boatCruise.data.message !== '' && <div className="border-b-2 mb-4">
@@ -147,7 +157,7 @@ const CheckoutPage = () => {
 
                             <div className="border-b-2 mb-4">
                                 <h3 className="font-medium text-[18px]">User Details</h3>
-                                <p>FullName: <span>{exclusiveEvent.data.fullName} | {exclusiveEvent.data.email}</span></p>
+                                <p>FullName: <span>{mainData.userData.firstName} {mainData.userData.lastName} | {mainData.userData.email}</span></p>
                                 <p>Emergency Contact Information: <span>{exclusiveEvent.data.emergencyNumber}</span></p>
                                 <p>Phone Number: <span>{exclusiveEvent.data.phoneNumber}</span></p>
                             </div>
@@ -173,7 +183,7 @@ const CheckoutPage = () => {
 
                             <div className="border-b-2 mb-4">
                                 <h3 className="font-medium text-[18px]">User Details</h3>
-                                <p>FullName: <span>{helicopterRide.data.fullName}</span></p>
+                                <p>FullName:<span>{mainData.userData.firstName} {mainData.userData.lastName} | {mainData.userData.email}</span></p>
                                 <p>Emergency Contact Information: <span>{helicopterRide.data.emergencyContactName} | {helicopterRide.data.emergencyContactNumber} | {helicopterRide.data.guestsNationality} </span></p>
                                 <p>Phone Number: <span>{helicopterRide.data.contact}</span></p>
                                 <p>Number Of Guest: <span>{helicopterRide.data.numberOfGuest}</span></p>
@@ -208,7 +218,7 @@ const CheckoutPage = () => {
 
                             <div className="border-b-2 mb-4">
                                 <h3 className="font-medium text-[18px]">User Details</h3>
-                                <p>FullName: <span>{conciergeVacation.data.fullName}</span></p>
+                                <p>FullName:<span>{mainData.userData.firstName} {mainData.userData.lastName} | {mainData.userData.email}</span></p>
                                 <p>Emergency Contact Information: <span>{conciergeVacation.data.emergencyContactName} | {conciergeVacation.data.emergencyContactNumber}  </span></p>
                                 <p>Phone Number: <span>{conciergeVacation.data.mobileNumber}</span></p>
                                 <p>Number Of Guest: {conciergeVacation.data.numberOfGuest}</p>

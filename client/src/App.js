@@ -115,7 +115,7 @@ function App() {
             <Route path="/dashboard/wallet/deposit" element={<Deposit />} />
             <Route path='/dashboard/wallet/transfer/confirm' element={<Transfer2 />} />
             <Route path="/about" element={<About />} />
-            <Route path="/luxury-service/checkout" element={<CheckoutPage />} />
+            <Route path="/luxury-service/checkout" element={<CheckoutPage mainData={mainData} />} />
             <Route path="/help" element={<Help />} />
             <Route path='/success' element={<SuccessPage />} />
             <Route path="/help/earning" element={<Earning />} />
@@ -130,7 +130,7 @@ function App() {
             <Route path="/luxury-service/exclusive-event" element={<ExclusiveEventPage mainData={mainData} />} />
             <Route path="/luxury-service/weekend-escape/:id" element={<WeekendEscapePage mainData={mainData} />} />
             <Route path="/luxury-service/helicopter-ride" element={<HelicopterRidePage mainData={mainData} />} />
-            <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage mainData={mainData} />} />
+            <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage mainData={mainData} />} /> 
             <Route path="/luxury-service/boat-cruise/:id" element={<BoatCruisePage mainData={mainData} />} />
             <Route path="/luxury-service/chauffeur" element={<ChaffeurPage mainData={mainData} />} />
             <Route path="/luxury-service/pricing" element={<Pricing />} />
