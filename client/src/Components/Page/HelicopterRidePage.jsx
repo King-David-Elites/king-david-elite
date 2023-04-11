@@ -14,6 +14,7 @@ import * as Yup from 'yup';
 import FormikControl from '../formik/FormikControl';
 import { setHelicopterRide, setLuxuryServiceType } from '../../application/store/actions/user';
 import { useDispatch } from 'react-redux';
+import DisableButton from '../buttons/DisabledButton';
 
 const HelicopterRidePage = () => {
     const [guestsName, setGuestsName] = useState('');
@@ -198,7 +199,7 @@ const HelicopterRidePage = () => {
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
-                        <p className='font-semibold text-lg md:text-2xl'>Helicopter Rides</p>                       
+                        <p className='font-semibold text-lg md:text-2xl'>Helicopter Rides</p>
                     </div>
 
                     <form onSubmit={formik.handleSubmit} className='mt-6' >
@@ -279,7 +280,14 @@ const HelicopterRidePage = () => {
                                 </div>
 
                                 <div className="flex my-[30px] gap-[10px]">
-                                    <MainButton className={` ${!isChecked ? "cursor-not-allowed" : "cursor-pointer"}`} disabled={!isChecked} type='submit'>Submit</MainButton>
+                                    {
+                                        !isChecked ? <DisableButton className="cursor-not-allowed" disabled={!isChecked}>Submit</DisableButton> : <MainButton
+                                            className="cursor-pointer"
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </MainButton>
+                                    }
                                 </div>
                             </Form>
                         )}

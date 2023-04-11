@@ -9,7 +9,7 @@ const DisableButton = styled.button`
     line-height: 0.8em;
     color: ${props => props.color ? props.color : theme.textColor};
     background-color: ${props => props.background ? props.background : theme.neutralColor};
-    border: 2px solid ${props => props.border ? props.border : theme.color};
+    border: 2px solid ${props => props.border ? props.border : theme.neutralColor};
     border-radius: 6px;
     white-space: nowrap;
     display: flex;
@@ -18,7 +18,7 @@ const DisableButton = styled.button`
     align-items: center;
     padding: ${props => props.padding ? props.padding : "16px"} ;
     margin-top:${props => props.marginTop ? props.marginTop : "0em"};   
-    cursor:pointer; 
+    /* cursor:pointer;  */
     outline   :none ;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {

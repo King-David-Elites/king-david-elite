@@ -138,7 +138,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 4,
-      name: "3 Cases Of Martini Rose(ALC)/Eisberg Sparkling Rose Wine(Non-ALC)",
+      name: "4 bottles of Gold Royal Sparkling Wine ALC) OR 6 bottles of Bosca Toselli (NON ALC)",
     },
     {
       id: 5,
@@ -161,7 +161,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 4,
-      name: "3 Cases Of Sensi Prosecco (ALC)/Welch Sparkling Wine(Non-ALC)",
+      name: "6 bottles of Baileys Irish Cream (ALC) OR 8 bottles of Blue Nun Silver Sparkling Wine (NON ALC)",
     },
     {
       id: 5,
@@ -184,7 +184,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 4,
-      name: "4 Cases Of Moet Chandon (ALC)/St. Regis Sparkling Brut (Non- ALC)",
+      name: "6 bottles of Isolabella Della Croce (ALC) or 12 bottles of Blue Nun Silver (NON ALC)",
     },
     {
       id: 5,
@@ -219,7 +219,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 7,
-      name: "2 Cases Of Martini Rose(ALC)/Eisberg Sparkling Rose Wine(Non-ALC)    ",
+      name: "2 bottles of Martini Rose (ALC) OR 2 bottles of Bosca Toselli (NON ALC)",
     },
   ];
 
@@ -250,7 +250,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 7,
-      name: "2 Cases Of Sensi Prosecco (ALC)/Welch Sparkling Wine(Non-ALC)",
+      name: "2 bottles of Isolabella Della Croce (ALC) OR 4 bottles of Blue Nun Silver Sparkling Wine (NON ALC)",
     },
   ];
 
@@ -281,7 +281,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 7,
-      name: "2 Cases Of Moet Chandon (ALC)/St. Regis Sparkling Brut (Non- ALC)",
+      name: "2 bottles of Moet Imperial Brut (ALC) OR 6 bottles of Blue Nun Silver Sparkling Wine",
     },
   ];
 
@@ -383,7 +383,7 @@ const Pricing = ({ active = 6 }) => {
         <Brand>
           <div
             className="w-[40px] h-[auto]"
-            onClick={() => navigate("/luxury-service")}
+            onClick={() => navigate("/")}
           >
             <img
               src={kde_blackBg}
@@ -470,8 +470,7 @@ const Pricing = ({ active = 6 }) => {
               Spa: Home/Walk In Session (2)
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Champagne/Sparkling Wine: 2 Cases Of Martini Rose(ALC)/Eisberg
-              Sparkling Rose Wine(Non-ALC){" "}
+              2 bottles of Martini Rose (ALC) OR 2 bottles of Bosca Toselli (NON ALC){" "}
             </p>
           </div>
 
@@ -481,7 +480,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("silver"));
-              navigate("/luxury-service/weekend-escape");
+              navigate("/luxury-service/weekend-escape/silver");
             }}
           >
             Get Started
@@ -514,8 +513,7 @@ const Pricing = ({ active = 6 }) => {
               Spa: Home/Walk In Session (3)
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Champagne/Sparkling Wine: 2 Cases Of Sensi Prosecco (ALC)/Welch
-              Sparkling Wine(Non-ALC)
+              2 bottles of Isolabella Della Croce (ALC) OR 4 bottles of Blue Nun Silver Sparkling Wine (NON ALC)
             </p>
           </div>
 
@@ -525,7 +523,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("diamond"));
-              navigate("/luxury-service/weekend-escape");
+              navigate("/luxury-service/weekend-escape/diamond");
             }}
           >
             Get Started
@@ -558,8 +556,7 @@ const Pricing = ({ active = 6 }) => {
               Spa: Home/Walk In Session (4)
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Champagne/Sparkling Wine: 2 Cases Of Moet Chandon (ALC)/St. Regis
-              Sparkling Brut (Non- ALC)
+              2 bottles of Moet Imperial Brut (ALC) OR 6 bottles of Blue Nun Silver Sparkling Wine
             </p>
           </div>
 
@@ -569,7 +566,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("platinum"));
-              navigate("/luxury-service/weekend-escape");
+              navigate("/luxury-service/weekend-escape/platinum");
             }}
           >
             Get Started
@@ -708,8 +705,7 @@ const Pricing = ({ active = 6 }) => {
               Onboard Games+Host: Available On Request
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Champagne/Sparking Wine: 3 Cases Of Martini Rose(ALC)/Eisberg
-              Sparkling Rose Wine(Non-ALC)
+              4 bottles of Gold Royal Sparkling Wine (ALC) OR 6 bottles of Bosca Toselli (NON ALC)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Onboard Spa Treatment: Available
@@ -725,7 +721,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("silver"));
-              navigate("/luxury-service/boat-cruise");
+              navigate("/luxury-service/boat-cruise/silver");
             }}
           >
             Get Started
@@ -749,8 +745,7 @@ const Pricing = ({ active = 6 }) => {
               Onboard Games+Host: Available On Request
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Champagne/Sparking Wine: 3 Cases Of Sensi Prosecco (ALC)/Welch
-              Sparkling Wine(Non-ALC)
+              6 bottles of Baileys Irish Cream (ALC) OR 8 bottles of Blue Nun Silver Sparkling Wine (NON ALC)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Onboard Spa Treatment: Available
@@ -766,7 +761,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("diamond"));
-              navigate("/luxury-service/boat-cruise");
+              navigate("/luxury-service/boat-cruise/diamond");
             }}
           >
             Get Started
@@ -790,8 +785,7 @@ const Pricing = ({ active = 6 }) => {
               Onboard Games+Host: Available On Request
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Champagne/Sparking Wine: 4 Cases Of Moet Chandon (ALC)/St. Regis
-              Sparkling Brut (Non- ALC)
+              6 bottles of Isolabella Della Croce (ALC) or 12 bottles of Blue Nun Silver (NON ALC)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Onboard Spa Treatment: Available
@@ -807,7 +801,7 @@ const Pricing = ({ active = 6 }) => {
             padding="24px 12px"
             onClick={() => {
               dispatch(setPackagePlan("platinum"));
-              navigate("/luxury-service/boat-cruise");
+              navigate("/luxury-service/boat-cruise/platinum");
             }}
           >
             Get Started
@@ -851,7 +845,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] cursor-pointer text-[16px] mt-8 font-bold border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate(`/luxury-service/weekend-escape/500,000`);
+                navigate(`/luxury-service/weekend-escape/silver`);
               }}
             >
               Get Started
@@ -871,7 +865,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/silver");
               }}
             >
               Get Started
@@ -884,7 +878,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] text-[16px] cursor-pointer mt-8 font-bold border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("diamond"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/diamond");
               }}
             >
               Get Started
@@ -904,7 +898,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("diamond"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/diamond");
               }}
             >
               Get Started
@@ -917,7 +911,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("platinum"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/platinum");
               }}
             >
               Get Started
@@ -937,7 +931,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("platinum"));
-                navigate("/luxury-service/weekend-escape");
+                navigate("/luxury-service/weekend-escape/platinum");
               }}
             >
               Get Started
@@ -1119,7 +1113,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/silver");
               }}
             >
               Get Started
@@ -1139,7 +1133,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("silver"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/silver");
               }}
             >
               Get Started
@@ -1152,7 +1146,7 @@ const Pricing = ({ active = 6 }) => {
               className="text-[#2301F3] text-[16px] mt-8 font-bold cursor-pointer border-b-2 border-[#2301F3] mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("diamond"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/diamond");
               }}
             >
               Get Started
@@ -1172,7 +1166,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("diamond"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/diamond");
               }}
             >
               Get Started
@@ -1182,10 +1176,10 @@ const Pricing = ({ active = 6 }) => {
           <div className="w-1/4 flex flex-col items-center text-white bg-[#333433] md:px-3 rounded-md md:py-10">
             <p className="font-bold text-[25px]">&#8358;1,500,000</p>
             <p
-              className="text-white text-[16px] mt-8 font-bold border-b-2 border-white mb-12"
+              className="text-white text-[16px] mt-8 cursor-pointer font-bold border-b-2 border-white mb-12"
               onClick={() => {
                 dispatch(setPackagePlan("platinum"));
-                navigate("/luxury-service/boat-cruise cursor-pointer");
+                navigate("/luxury-service/boat-cruise/platinum");
               }}
             >
               Get Started
@@ -1205,7 +1199,7 @@ const Pricing = ({ active = 6 }) => {
               marginTop="7em"
               onClick={() => {
                 dispatch(setPackagePlan("platinum"));
-                navigate("/luxury-service/boat-cruise");
+                navigate("/luxury-service/boat-cruise/platinum");
               }}
             >
               Get Started

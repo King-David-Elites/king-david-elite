@@ -11,6 +11,7 @@ const CheckoutPage = () => {
     const helicopterRide = useSelector(state => state.user.helicopterRide);
     const conciergeVacation = useSelector(state => state.user.conciergeVacation);
     const plan = useSelector(state => state.user.status);
+    const chauffeurTotal = chauffeurRide?.data?.price + chauffeurRide?.data?.vehiclePrice;
     
     return (
         <>
@@ -64,7 +65,7 @@ const CheckoutPage = () => {
                         luxuryServiceType === 'chauffeur-ride' &&
                         <>
                             <div className="border-b-2 mb-4">
-                                <p className="font-bold text-[18px]">&#8358;{chauffeurRide.data.price.toLocaleString()}</p>
+                                <p className="font-bold text-[18px]">&#8358;{chauffeurTotal.toLocaleString()}</p>
                                 <p className=" font-semibold">{luxuryServiceType.toUpperCase()} ({plan.charAt(0).toUpperCase() + plan.slice(1).toLowerCase()} Plan)</p>
                             </div>
 
@@ -94,7 +95,7 @@ const CheckoutPage = () => {
                                 </div>
                             }
                             <div className="flex justify-center">
-                                <MainButton width='280px' padding='24px 12px' marginTop='1.5em'>Proceed to Checkout (&#8358;{chauffeurRide.data.price.toLocaleString()})</MainButton>
+                                <MainButton width='280px' padding='24px 12px' marginTop='1.5em'>Proceed to Checkout (&#8358;{chauffeurTotal.toLocaleString()})</MainButton>
                             </div>
                         </>
                     }
@@ -102,13 +103,13 @@ const CheckoutPage = () => {
                         luxuryServiceType === 'boat-cruise' &&
                         <>
                             <div className="border-b-2 mb-4">
-                                <p className="font-bold text-[18px]">&#8358;{boatCruise.data.price.toLocaleString()}</p>
-                                <p className=" font-semibold">{luxuryServiceType.toUpperCase()} ({plan.charAt(0).toUpperCase() + plan.slice(1).toLowerCase()} Plan)</p>
+                                <p className="font-bold text-[18px]">&#8358;{boatCruise?.data?.price?.toLocaleString()}</p>
+                                <p className=" font-semibold">{luxuryServiceType?.toUpperCase()} ({plan?.charAt(0).toUpperCase() + plan.slice(1).toLowerCase()} Plan)</p>
                             </div>
 
                             <div className="border-b-2 mb-4">
                                 <h3 className="font-medium text-[18px]">User Details</h3>
-                                <p>User: <span>{boatCruise.data.guestsName} | {boatCruise.data.guestsEmail}</span></p>
+                                <p>User: <span>{boatCruise?.data?.guestsName} | {boatCruise?.data?.guestsEmail}</span></p>
                                 <p>Emergency Contact: <span>{boatCruise.data.emergencyContactName} | {boatCruise.data.emergencyNumber}</span></p>
                             </div>
 
@@ -132,7 +133,7 @@ const CheckoutPage = () => {
                                 </div>
                             }
                             <div className="flex justify-center">
-                                <MainButton width='280px' padding='24px 12px' marginTop='1.5em'>Proceed to Checkout (&#8358;{boatCruise.data.price.toLocaleString()})</MainButton>
+                                <MainButton width='280px' padding='24px 12px' marginTop='1.5em'>Proceed to Checkout (&#8358;{boatCruise.data?.price?.toLocaleString()})</MainButton>
                             </div>
                         </>
                     }

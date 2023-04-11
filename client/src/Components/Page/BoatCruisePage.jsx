@@ -2,13 +2,13 @@ import { FaRegStar } from "react-icons/fa";
 import kde_blackBg from "../Navbar/Image/kde_whiteBg.png";
 import { useFormik } from "formik";
 import MainButton from "../buttons/MainButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import boatCruise from "../Categories/LuxuryService/images/pics5.webp";
 import InputLayout from "../inputs/InputLayout";
 import { InputField } from "../inputs/MainInput";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdOutlineRemoveCircle } from "react-icons/md";
 import Return from "../Navbar/Return";
 import FormikControl from "../formik/FormikControl";
@@ -17,8 +17,10 @@ import {
     setBoatCruise,
     setLuxuryServiceType,
 } from "../../application/store/actions/user";
+import DisableButton from "../buttons/DisabledButton";
 
-const BoatCruisePage = () => {
+const BoatCruisePage = ({ mainData }) => {
+    const { id } = useParams();
     const [guestsName, setGuestsName] = useState("");
     const [guestsEmail, setGuestEmail] = useState("");
     const [items, setItems] = useState([]);
@@ -27,6 +29,19 @@ const BoatCruisePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(false);
+    const [price, setPrice] = useState("");
+    const [name] = useState(mainData.userData.firstName);
+    const [email] = useState(mainData.userData.email);
+
+    useEffect(() => {
+        if (String(id) === "silver") {
+            setPrice("500,000");
+        } else if (String(id) === "diamond") {
+            setPrice("1,000,000");
+        } else if (String(id) === "platinum") {
+            setPrice("1,500,000");
+        }
+    }, [id]);
 
     const initialValues = {
         guestsName: "",
@@ -60,10 +75,10 @@ const BoatCruisePage = () => {
         setItems(list);
     };
 
-    const guestDetailsInitialValues = {
+    const [guestDetailsInitialValues, setGuestDetailsInitialValues] = useState({
         guestsEmail: "",
         guestsName: "",
-    };
+    });
 
     const validationSchema = Yup.object().shape({
         status: Yup.string().oneOf(["silver", "diamond", "platinum"]),
@@ -103,10 +118,12 @@ const BoatCruisePage = () => {
             .required("E-mail is required"),
     });
 
+
     const onSubmit = () => {
         setItems([...items, { guestsName, guestsEmail }]);
         setGuestsName("");
         setGuestEmail("");
+        console.log(items)
     };
 
     const formik = useFormik({
@@ -186,10 +203,7 @@ const BoatCruisePage = () => {
             mealPreference: values.mealPreference,
             plan: status,
             message: values.message,
-            price:
-                (status === "silver" && 500000) ||
-                (status === "diamond" && 1000000) ||
-                (status === "platinum" && 1500000),
+            price: price
         };
         const payload = {
             data: boatCruise,
@@ -216,7 +230,7 @@ const BoatCruisePage = () => {
                     </div>
 
                     <div className="flex gap-2 md:gap-5 mt-5 items-center">
-                        <p className="font-semibold text-lg md:text-2xl">Boat Cruises</p>
+                        <p className="font-semibold text-lg md:text-2xl">Boat Cruises &#8358;{price}</p>
                     </div>
 
                     <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">
@@ -268,6 +282,7 @@ const BoatCruisePage = () => {
 
                     <form onSubmit={formik.handleSubmit} className="mt-4 mb-4">
                         <div>
+                            {mainData.userData.firstName} {mainData.userData.lastName} | {mainData.userData.email}
                             {items.map((item, index) => (
                                 <div>
                                     {item.guestsName && item.guestsEmail !== "" && (
@@ -372,15 +387,16 @@ const BoatCruisePage = () => {
                                     </p>
                                 </div>
 
+
                                 <div className="flex my-[30px] gap-[10px]">
-                                    <MainButton
-                                        className={` ${!isChecked ? "cursor-not-allowed" : "cursor-pointer"
-                                            }`}
-                                        disabled={!isChecked}
-                                        type="submit"
-                                    >
-                                        Submit
-                                    </MainButton>
+                                    {
+                                        !isChecked ? <DisableButton className="cursor-not-allowed" disabled={!isChecked}>Submit</DisableButton> : <MainButton
+                                            className="cursor-pointer"
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </MainButton>
+                                    }
                                 </div>
                             </Form>
                         )}

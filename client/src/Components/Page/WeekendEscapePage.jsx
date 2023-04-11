@@ -4,7 +4,7 @@ import { Form, Formik, useFormik } from "formik";
 import MainButton from "../buttons/MainButton";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import daycation from "../Categories/LuxuryService/images/pics4.webp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Return from "../Navbar/Return";
 import FormikControl from "../formik/FormikControl";
 import * as Yup from "yup";
@@ -17,12 +17,14 @@ import { MdOutlineRemoveCircle } from "react-icons/md";
 import InputLayout from "../inputs/InputLayout";
 import { InputField } from "../inputs/MainInput";
 import { RadioField } from "../inputs/RadioInput";
+import DisableButton from "../buttons/DisabledButton";
 
 const WeekendEscapePage = () => {
-    const { Id } = useParams();
+    const { id } = useParams();
     const [guestsName, setGuestsName] = useState("");
     const [guestsEmail, setGuestEmail] = useState("");
     const [items, setItems] = useState([]);
+    const [price, setPrice] = useState(0);
     const plan = useSelector((state) => state.user.status);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -33,6 +35,16 @@ const WeekendEscapePage = () => {
         list.splice(index, 1);
         setItems(list);
     };
+
+    useEffect(() => {
+        if (String(id) === "silver") {
+            setPrice("500,000");
+        } else if (String(id) === "diamond") {
+            setPrice("750,000");
+        } else if (String(id) === "platinum") {
+            setPrice("1,000,000");
+        }
+    }, [id]);
 
     const initialValues = {
         departureDate: "",
@@ -60,16 +72,17 @@ const WeekendEscapePage = () => {
         { key: "Non-Alcholic", value: "Non-Alcholic" },
     ];
 
+    const options = [
+        { value: "homeSession", label: "Home Session" },
+        { value: "walkInSession", label: "Walk In Session" },
+    ];
+
     const mealPreferences = [
         { key: "", value: "" },
         { key: "Vegetarian", value: "Vegetarian" },
         { key: "Non-Vegetarian", value: "Non-Vegetarian" },
     ];
 
-    const options = [
-        { value: "homeSession", label: "Home Session" },
-        { value: "walkInSession", label: "Walk In Session" },
-    ];
 
     const [selectedOption, setSelectedOption] = useState(options[0].value);
 
@@ -211,6 +224,7 @@ const WeekendEscapePage = () => {
         guestValidationSchema,
     });
 
+
     return (
         <>
             <Return />
@@ -228,7 +242,9 @@ const WeekendEscapePage = () => {
                     </div>
 
                     <div className="flex gap-2 md:gap-5 mt-5 items-center">
-                        <p className="font-semibold text-lg md:text-2xl">Daycation {Id} </p>
+                        <p className="font-semibold text-lg md:text-2xl">
+                            Daycation &#8358;{price}{" "}
+                        </p>
                     </div>
 
                     <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">
@@ -405,14 +421,14 @@ const WeekendEscapePage = () => {
                                 </div>
 
                                 <div className="flex my-[30px] gap-[10px]">
-                                    <MainButton
-                                        className={` ${!isChecked ? "cursor-not-allowed" : "cursor-pointer"
-                                            }`}
-                                        disabled={!isChecked}
-                                        type="submit"
-                                    >
-                                        Submit
-                                    </MainButton>
+                                    {
+                                        !isChecked ? <DisableButton className="cursor-not-allowed" disabled={!isChecked}>Submit</DisableButton> : <MainButton
+                                            className="cursor-pointer"
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </MainButton>
+                                    }
                                 </div>
                             </Form>
                         )}
@@ -430,5 +446,4 @@ const WeekendEscapePage = () => {
         </>
     );
 };
-
 export default WeekendEscapePage;

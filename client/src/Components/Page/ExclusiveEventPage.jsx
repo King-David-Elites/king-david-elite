@@ -10,6 +10,7 @@ import Return from '../Navbar/Return';
 import { useDispatch } from 'react-redux';
 import { setExclusiveEvent, setLuxuryServiceType } from '../../application/store/actions/user';
 import { useState } from 'react';
+import DisableButton from '../buttons/DisabledButton';
 
 const ExclusiveEventPage = () => {
     const dispatch = useDispatch();
@@ -134,7 +135,14 @@ const ExclusiveEventPage = () => {
                                 </div>
 
                                 <div className="flex my-[30px] gap-[10px]">
-                                    <MainButton className={` ${!isChecked ? "cursor-not-allowed" : "cursor-pointer"}`} disabled={!isChecked} type='submit'>Submit</MainButton>
+                                    {
+                                        !isChecked ? <DisableButton className="cursor-not-allowed" disabled={!isChecked}>Submit</DisableButton> : <MainButton
+                                            className="cursor-pointer"
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </MainButton>
+                                    }
                                 </div>
                             </Form>
                         )}
