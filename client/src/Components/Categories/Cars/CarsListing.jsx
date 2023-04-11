@@ -162,7 +162,7 @@ const CarsListing = () => {
         easy and secure payment system allows for direct transfer to verified
         vendors or though our 1% transaction fee escrow account, which comes
         with professional check-ups and luxurious inspection services by our
-        expert technicians. Make a lasting statement whereveryou go with our
+        expert technicians. Make a lasting statement wherever you go with our
         unparalleled selection. At King David Elites, our standard of class is
         unmatched, and our dedication to luxury is unparalleled.
       </Text>

@@ -26,7 +26,7 @@ const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
         {
             no: 2,
             title: "Concierge Weekends",
-            link: "/luxury-service/concierge-vacation"
+            // link: "/luxury-service/concierge-vacation"
         },
         {
             no: 3,

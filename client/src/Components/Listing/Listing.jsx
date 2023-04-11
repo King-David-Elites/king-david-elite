@@ -18,11 +18,10 @@ const Listing = ({ list, type }) => {
 
   const saveListing = async () => {
     setId(id);
-    console.log("yes");
     await axios
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
-        if (resp.data.status == 1) {
+        if (resp.data.status === 1) {
           services.toast.success("You liked this post");          
         }
       })
@@ -30,11 +29,10 @@ const Listing = ({ list, type }) => {
   };
 
   const unSaveListing = async () => {
-    console.log("no");
     await axios
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
-        if (resp.data.status == 0) {
+        if (resp.data.status === 0) {
           services.toast.success("You unlike this post");          
         }
       })
@@ -120,7 +118,7 @@ const Listing = ({ list, type }) => {
       </div>
 
       <p className="title">{list.title}</p>
-      <p className="price">&#x20A6; {list.price}</p>
+      <p className="price">&#x20A6; {list.price.toLocaleString()}</p>
 
       <p className="description">
         <LocationMarker size="16px" />{" "}
