@@ -212,7 +212,7 @@ const CollectiblesListing = () => {
         vendors or through our 1% transaction fee escrow account which further
         secures your funds and grants you access to our team of experts who
         provide professional advisory services and arranges luxurious property
-        inspection, setting a new standardof class and sophistication.
+        inspection, setting a new standard of class and sophistication.
       </Text>
       <Footer />
     </>
