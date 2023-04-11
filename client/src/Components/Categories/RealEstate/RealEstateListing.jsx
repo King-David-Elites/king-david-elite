@@ -554,29 +554,17 @@ const RealEstateListing = ({ mainData }) => {
               </>
             ) : (
               <GridContainer>
-                {!loader &&
-                  list.length > 0 ?
-                  list.map((items) => {
-                    return (
-                      <>
-                        <Listing key={items._id} list={items} />
-                      </>
-                    );
-                  }):
-                  <h4 className="md:text-lg text-sm font-semibold italic">
-                No Automobile listing available
-              </h4>
-                  }
-                
-                {!loader &&
-                  listing.length > 0 &&
+                {!loader && listing.length > 0 ? (
                   listing.map((items) => {
                     return (
-                      <>
-                        <Listing key={items._id} list={items} />
-                      </>
+                      <Listing key={items._id} list={items} />
                     );
-                  })}
+                  })
+                ) : (
+                  <h4 className="md:text-lg text-sm font-semibold italic">
+                    No Real-estate listing available
+                  </h4>
+                )}
               </GridContainer>
             )}
             <PaginationButtons
@@ -601,7 +589,7 @@ const RealEstateListing = ({ mainData }) => {
             vendors or through our 1% transaction fee escrow account which
             further secures your funds and grants you access to our team of
             experts who provide professional advisory services and arranges
-            luxurious property inspection, setting a new standardof class and
+            luxurious property inspection, setting a new standard of class and
             sophistication.
           </Text>
           <Footer />

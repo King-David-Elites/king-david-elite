@@ -139,7 +139,7 @@ const LoggedUser = ({ logged }) => {
           setShowCover={setShowCover}
         />
       )}
-      <Return transparent={false} link={"/"}/>
+      <Return transparent={true} link={"/"}/>
       <Header
         className="cursor-pointer"
         onClick={() => {

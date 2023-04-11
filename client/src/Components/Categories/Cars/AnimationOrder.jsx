@@ -66,16 +66,16 @@ export const graduallyDisAppear = {
 };
 
 export const CarAnimation = [
-  { id: 1, img: vehicle3 },
-  { id: 2, img: vehicle2 },
-  { id: 3, img: vehicle7 },
-  { id: 4, img: vehicle1 },
-  { id: 5, img: vehicle4 },
-  { id: 6, img: vehicle6 },
-  { id: 7, img: vehicle5 },
-  { id: 8, img: vehicle8 },
-  { id: 9, img: vehicle10 },  
-  { id: 10, img: vehicle9}
+  { id: 1, img: vehicle9},
+  { id: 2, img: vehicle3 },
+  { id: 3, img: vehicle2 },
+  { id: 4, img: vehicle7 },
+  { id: 5, img: vehicle1 },
+  { id: 6, img: vehicle4 },
+  { id: 7, img: vehicle6 },
+  { id: 8, img: vehicle5 },
+  { id: 9, img: vehicle8 },
+  { id: 10, img: vehicle10 },    
 ];
 
 export const EstateAnimation = [

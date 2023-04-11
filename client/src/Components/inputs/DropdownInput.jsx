@@ -3,6 +3,7 @@ import theme from "../../application/utils/Theme.jsx";
 import { Field, ErrorMessage } from "formik";
 import { TextError } from "./MainInput"
 import InputLayout from "./InputLayout";
+import { useState } from "react";
 
 export const Dropdown = styled.select`
         min-width: 300px;
@@ -33,13 +34,14 @@ export const Option = styled.option`
 
 const DropdownInput = (props) => {
     const { label, name, type, options, ...rest } = props;
+
     return (
         <InputLayout label={label} name={name} >
             <Field name={name} >
                 {({ field }) =>
                     <Dropdown {...field} {...rest} >
                         {options.map((option) => (
-                            <Option key={option.value} value={option.value}> {option.key}</Option>
+                            <Option key={option.value} value={[option?.price, option.value]}> {option.key}</Option>
                         ))}
                     </Dropdown>
                 }

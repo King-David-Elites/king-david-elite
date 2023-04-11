@@ -35,6 +35,7 @@ const Advanced_Verf_3 = (props) => {
   };
   const [success, setSuccess] = useState(false);
   const [verified, setVerified] = useState(false);
+  const [pop, setPop] = useState(false);
 
   const checkSuccess = useCallback(() => {
     if (success) {
@@ -49,7 +50,6 @@ const Advanced_Verf_3 = (props) => {
 
   useEffect(() => {
     if (verified) {
-      console.log("yes")
       updateUserDetails(userInfo);
       setVerified(false);
     }
@@ -69,43 +69,61 @@ const Advanced_Verf_3 = (props) => {
   };
 
   const postVerificationDetails = async (verificationData) => {
-    console.log(verificationData)
+    console.log(verificationData);
     console.log("verification started ...");
     await axios
       .patch(`${globalApi}/users/verify`, verificationData, setConfig())
-      .then((resp) => {        
-        setVerified(true);  
+      .then((resp) => {
+        setVerified(true);
       })
       .catch((err) => {
         console.log(err);
-        postVerificationDetails(verificationData)
+        setPop(true);        
       });
   };
 
   const updateUserDetails = async (userInfo) => {
-    console.log(userInfo)
+    console.log(userInfo);
     console.log("updating user details ...");
     await axios
       .patch(`${globalApi}/users/update`, userInfo, setConfig())
       .then((resp) => {
         console.log(resp.data);
-        localStorage.setItem("user",JSON.stringify(resp.data))
+        localStorage.setItem("user", JSON.stringify(resp.data));
         setLoading(false);
-        setSuccess(true);        
+        setSuccess(true);
       })
       .catch((err) => {
         console.log(err);
-        updateUserDetails(userInfo)
+        setPop(true);        
       });
   };
 
-  const handleSubmit = () => {        
-    postVerificationDetails(verificationData)    
+  const handleSubmit = () => {
+    postVerificationDetails(verificationData);
     setLoading(true);
   };
 
   return (
     <>
+      {pop && (
+        <>
+          <div
+            className="fixed w-full h-[100%] top-0 left-0 bg-transparent flex justify-center items-center"
+            onClick={() => {
+              setPop(false);
+            }}
+          >
+            <div className="absolute md:w-1/3 md:h-1/3 w-2/3 h-1/3 bg-[#F2BE5C] flex justify-center rounded-xl items-center">
+              <div className="flex flex-col justify-center items-center p-5">
+                <p className="text-xl text-center font-bold">
+                  Ooops!! looks like you have a Network Error, Please click on the <span className="text-white block">Begin-Verification</span> Button  Again.
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <h4>Advanced Verification</h4>
       <div className="id_info" id="verify">
         <p>Facial Verification</p>

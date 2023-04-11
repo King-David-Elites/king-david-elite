@@ -107,7 +107,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/messages" element={<Messages />} />
             <Route path="/dashboard/notifications" element={<Notifications />} />
-            <Route path="/dashboard/profile/verification" element={<Profile mainData={mainData}/>} />
+            <Route path="/dashboard/profile/verification" element={<Profile mainData={mainData} />} />
             <Route path="/dashboard/" element={<Profile mainData={mainData} />} />
             <Route path="/dashboard/wallet" element={<Wallet />} />
             <Route path="/dashboard/wallet/transfer" element={<Transfer />} />
@@ -115,26 +115,26 @@ function App() {
             <Route path="/dashboard/wallet/deposit" element={<Deposit />} />
             <Route path='/dashboard/wallet/transfer/confirm' element={<Transfer2 />} />
             <Route path="/about" element={<About />} />
-            <Route path="/luxury-service/checkout" element={<CheckoutPage />} />
+            <Route path="/luxury-service/checkout" element={<CheckoutPage mainData={mainData} />} />
             <Route path="/help" element={<Help />} />
             <Route path='/success' element={<SuccessPage />} />
             <Route path="/help/earning" element={<Earning />} />
             {/* <Route path="/help/benefits" element={<Benefits />} />           */}
-            <Route path="/profile/verification" element={<Verification />} />            
+            <Route path="/profile/verification" element={<Verification />} />
             <Route path='/profile/edit' element={<EditProfile mainData={mainData} />} />
             <Route path='/profile/upgrade' element={<UpgradeProfile />} />
             <Route path="/profile/create-listings" element={<CreateListing />} />
             <Route path="/profile" element={<LoggedUser mainData={mainData} />} />
             <Route path="/profile/:id" element={<OtherUser />} />
             <Route path="/waitList" element={<Waitlist />} />
-            <Route path="/luxury-service/exclusive-event" element={<ExclusiveEventPage />} />
-            <Route path="/luxury-service/weekend-escape" element={<WeekendEscapePage />} />
-            <Route path="/luxury-service/helicopter-ride" element={<HelicopterRidePage />} />
-            <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage />} />
-            <Route path="/luxury-service/boat-cruise" element={<BoatCruisePage />} />
-            <Route path="/luxury-service/chauffeur" element={<ChaffeurPage />} />
+            <Route path="/luxury-service/exclusive-event" element={<ExclusiveEventPage mainData={mainData} />} />
+            <Route path="/luxury-service/weekend-escape/:id" element={<WeekendEscapePage mainData={mainData} />} />
+            <Route path="/luxury-service/helicopter-ride" element={<HelicopterRidePage mainData={mainData} />} />
+            <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage mainData={mainData} />} /> 
+            <Route path="/luxury-service/boat-cruise/:id" element={<BoatCruisePage mainData={mainData} />} />
+            <Route path="/luxury-service/chauffeur" element={<ChaffeurPage mainData={mainData} />} />
             <Route path="/luxury-service/pricing" element={<Pricing />} />
-            <Route path="/saved-listings" element={<SavedListings />}/>
+            <Route path="/saved-listings" element={<SavedListings />} />
           </Routes>
         </AnimatePresence>
       </Router>

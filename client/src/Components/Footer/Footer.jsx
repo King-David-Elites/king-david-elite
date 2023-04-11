@@ -13,7 +13,7 @@ import useContextAPI from "../ContextAPI/ContextAPI";
 
 const Footer = () => {
   const navigate = useNavigate();
-  const data = useContextAPI();  
+  const data = useContextAPI();
 
   const redirectToTwitter = () => {
     window.location.replace("https://twitter.com/kingdavidelites");
@@ -44,34 +44,37 @@ const Footer = () => {
           <List onClick={() => navigate("/contact")}>Contact Us</List>
           <List onClick={() => navigate("/terms")}>Terms And Conditions</List>
           <div className="icon-bigScreen">
-            <a className="border-circle-bigScreen cursor-pointer" href="https://twitter.com/kingdavidelites" target="_blank">
-              <BsTwitter
-              size={40}
-              color="white"
-            />
+            <a
+              className="border-circle-bigScreen cursor-pointer"
+              href="https://twitter.com/kingdavidelites"
+              target="_blank"
+            >
+              <BsTwitter size={40} color="white" />
             </a>
 
-            <a className="border-circle-bigScreen cursor-pointer" href="https://www.instagram.com/kingdavidelites/" target="_blank">
-              <FaInstagram
-              size={40}
-              color="white"
-            />
+            <a
+              className="border-circle-bigScreen cursor-pointer"
+              href="https://www.instagram.com/kingdavidelites/"
+              target="_blank"
+            >
+              <FaInstagram size={40} color="white" />
             </a>
 
-            <a className="border-circle-bigScreen cursor-pointer" href="https://facebook.com/kingdavidelites" target="_blank">
-              <FaFacebookF
-              size={40}
-              color="white"
-            />
+            <a
+              className="border-circle-bigScreen cursor-pointer"
+              href="https://facebook.com/kingdavidelites"
+              target="_blank"
+            >
+              <FaFacebookF size={40} color="white" />
             </a>
-            
-            <a className="border-circle-bigScreen cursor-pointer" href="http://www.linkedin.com/in/king-david-elites-371804256" target="_blank">
-              <FaLinkedinIn
-              size={40}
-              color="white"
-            />
+
+            <a
+              className="border-circle-bigScreen cursor-pointer"
+              href="http://www.linkedin.com/in/king-david-elites-371804256"
+              target="_blank"
+            >
+              <FaLinkedinIn size={40} color="white" />
             </a>
-            
           </div>
         </Section>
         <Section>
@@ -90,6 +93,11 @@ const Footer = () => {
             <>
               {data.userData?.accountType === 0 && (
                 <List onClick={() => navigate("/profile/upgrade")}>
+                  List With Us
+                </List>
+              )}
+              {data.userData?.accountType === 1 && (
+                <List onClick={() => navigate("/profile/create-listings")}>
                   List With Us
                 </List>
               )}
@@ -112,7 +120,10 @@ const Footer = () => {
           <a href="https://twitter.com/kingdavidelites" target="_blank">
             <List>Twitter</List>
           </a>
-          <a href="http://www.linkedin.com/in/king-david-elites-371804256" target="_blank">
+          <a
+            href="http://www.linkedin.com/in/king-david-elites-371804256"
+            target="_blank"
+          >
             <List>LinkedIn</List>
           </a>
         </Section>
@@ -123,36 +134,42 @@ const Footer = () => {
           <h3>KING DAVID ELITES</h3>
           <p className="text-theme-color">Write your name in gold</p>
           <div className="icons">
-          <a href="https://twitter.com/kingdavidelites" target="_blank">
+            <a href="https://twitter.com/kingdavidelites" target="_blank">
               <BsTwitter
-              className="border-circle-bigScreen cursor-pointer"
-              size={40}
-              color="white"
-            />
+                className="border-circle-bigScreen cursor-pointer"
+                size={40}
+                color="white"
+              />
             </a>
 
-            <a href="https://www.instagram.com/kingdavidelites/" target="_blank">
+            <a
+              href="https://www.instagram.com/kingdavidelites/"
+              target="_blank"
+            >
               <FaInstagram
-              className="border-circle-bigScreen cursor-pointer"
-              size={40}
-              color="white"
-            />
+                className="border-circle-bigScreen cursor-pointer"
+                size={40}
+                color="white"
+              />
             </a>
 
             <a href="https://facebook.com/kingdavidelites" target="_blank">
               <FaFacebookF
-              className="border-circle-bigScreen cursor-pointer"
-              size={40}
-              color="white"
-            />
+                className="border-circle-bigScreen cursor-pointer"
+                size={40}
+                color="white"
+              />
             </a>
-            
-            <a href="http://www.linkedin.com/in/king-david-elites-371804256" target="_blank">
+
+            <a
+              href="http://www.linkedin.com/in/king-david-elites-371804256"
+              target="_blank"
+            >
               <FaLinkedinIn
-              className="border-circle-bigScreen cursor-pointer"
-              size={40}
-              color="white"
-            />
+                className="border-circle-bigScreen cursor-pointer"
+                size={40}
+                color="white"
+              />
             </a>
           </div>
         </div>
@@ -181,7 +198,7 @@ const Footer = () => {
             <>
               <List onClick={() => navigate("/login")}>LIST WITH US</List>
             </>
-          )}          
+          )}
         </Section>
         <Section>
           <Head>SOCIAL MEDIA</Head>

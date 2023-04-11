@@ -80,7 +80,7 @@ const Navbar = ({ bg, sticky, active }) => {
       no: 0,
       icon: <FaUserCircle size={20} />,
       title: "List with us",
-      link: "/dashboard/profile/verification",
+      link: "/profile/create-listings",
     },
     {
       no: 1,
@@ -204,18 +204,14 @@ const Navbar = ({ bg, sticky, active }) => {
                     <>
                       {mainData.userData?.accountType === 1 ? (
                         <>
-                          {nav.no !== 0 && (
-                            <>
-                              <li key={i} onClick={() => navigate(nav?.link)}>
-                                <div className="list-items">
-                                  {nav?.icon}
-                                  {nav.title}
-                                </div>
-                              </li>
-                              {nav.no === 5 && <div className="line"></div>}
-                              {nav.no === 10 && <div className="line"></div>}
-                            </>
-                          )}
+                          <li key={i} onClick={() => navigate(nav?.link)}>
+                            <div className="list-items">
+                              {nav?.icon}
+                              {nav.title}
+                            </div>
+                          </li>
+                          {nav.no === 5 && <div className="line"></div>}
+                          {nav.no === 10 && <div className="line"></div>}
                         </>
                       ) : (
                         <>

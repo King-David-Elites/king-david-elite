@@ -14,6 +14,7 @@ import * as Yup from 'yup';
 import FormikControl from '../formik/FormikControl';
 import { setHelicopterRide, setLuxuryServiceType } from '../../application/store/actions/user';
 import { useDispatch } from 'react-redux';
+import DisableButton from '../buttons/DisabledButton';
 
 const HelicopterRidePage = () => {
     const [guestsName, setGuestsName] = useState('');
@@ -193,12 +194,12 @@ const HelicopterRidePage = () => {
                     <div className="w-[70px] h-[auto] flex flex-col">
                         <img src={kde_blackBg}
                             className='w-[100%] h-[100%] cursor-pointer'
-                            alt="brandlogo" />
-                        <p className='text-[10px] whitespace-nowrap font-semibold ml-1 text-[#d4d72eea] bg-gradient-to-r from-[#fcf8bd]-500 to-[#b9a362]-500'>Kind David Logo</p>
+                            alt="brandlogo"
+                            onClick={() => navigate(window.history.back())} />
                     </div>
 
                     <div className='flex gap-2 md:gap-5 mt-5 items-center'>
-                        <p className='font-semibold text-lg md:text-2xl'>Helicopter Rides</p>                       
+                        <p className='font-semibold text-lg md:text-2xl'>Helicopter Rides</p>
                     </div>
 
                     <form onSubmit={formik.handleSubmit} className='mt-6' >
@@ -206,7 +207,7 @@ const HelicopterRidePage = () => {
                             {items.map((item, index) => (
                                 <div>
                                     {
-                                        item.guestsName && item.guestsEmail != '' && <div className='flex gap-5 items-center' key={index}>
+                                        item.guestsName && item.guestsEmail !== '' && <div className='flex gap-5 items-center' key={index}>
                                             <p>{item.guestsName} | {item.guestsEmail} | {item.guestsNationality}</p>
                                             <button type='button' className='cursor-pointer' onClick={() => handleRemove(index)}><MdOutlineRemoveCircle color='red' /></button>
                                         </div>
@@ -217,7 +218,7 @@ const HelicopterRidePage = () => {
 
                         <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
                             <InputLayout label='Names of Passenger(s)' name='guestsName'>
-                                <InputField name='guestsName' type='text' onChange={(e) => {
+                                <InputField value={guestsName} name='guestsName' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsName') {
                                         setGuestsName(e.target.value);
                                     }
@@ -230,7 +231,7 @@ const HelicopterRidePage = () => {
                             </InputLayout>
 
                             <InputLayout label='Email Address Of Passengers(s)' name='guestsEmail'>
-                                <InputField name='guestsEmail' type='text' onChange={(e) => {
+                                <InputField value={guestsEmail} name='guestsEmail' type='text' onChange={(e) => {
                                     if (e.target.name === 'guestsEmail') {
                                         setGuestEmail(e.target.value);
                                     }
@@ -239,7 +240,7 @@ const HelicopterRidePage = () => {
                         </div>
 
                         <InputLayout label='Nationality Of Passengers(s)' name='guestsNationality'>
-                            <InputField name='guestsNationality' type='text' onChange={(e) => {
+                            <InputField value={guestsNationality} name='guestsNationality' type='text' onChange={(e) => {
                                 if (e.target.name === 'guestsNationality') {
                                     setGuestsNationality(e.target.value);
                                 }
@@ -279,7 +280,14 @@ const HelicopterRidePage = () => {
                                 </div>
 
                                 <div className="flex my-[30px] gap-[10px]">
-                                    <MainButton className={` ${!isChecked ? "cursor-not-allowed" : "cursor-pointer"}`} disabled={!isChecked} type='submit'>Submit</MainButton>
+                                    {
+                                        !isChecked ? <DisableButton className="cursor-not-allowed" disabled={!isChecked}>Submit</DisableButton> : <MainButton
+                                            className="cursor-pointer"
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </MainButton>
+                                    }
                                 </div>
                             </Form>
                         )}
