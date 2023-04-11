@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Check } from "heroicons-react";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,10 @@ const Verified = (props) => {
   let { scrollToRef, position } = props;
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.location.reload();
+  }, []);
 
   return (
     <>
@@ -31,7 +35,7 @@ const Verified = (props) => {
       <div
         className={"enable"}
         id="button"
-        onClick={() => {            
+        onClick={() => {
           navigate("/");
         }}
       >

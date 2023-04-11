@@ -153,6 +153,7 @@ const EditProfile = ({ mainData }) => {
           localStorage.setItem("user", JSON.stringify(res.data));
           setEditUserProfile(res.data);
           setLoader(false);
+          window.location.reload();
           navigate("/profile");
         })
         .catch((error) => {
