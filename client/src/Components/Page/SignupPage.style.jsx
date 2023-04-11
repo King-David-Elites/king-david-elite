@@ -80,8 +80,9 @@ color: #000000;
 
 .cont{
     display:flex;
-    align-items: center;
+    /* align-items: center; */
     margin:2px 10px;
+    padding:0 20px;
 
     .term{
         padding-left:.5rem;
@@ -92,9 +93,9 @@ color: #000000;
     }
 
     .check{
+        display: flex;
+        align-items: start;
     }
-
-
 }
 
 }
@@ -178,7 +179,17 @@ border-radius:6px;
         margin:0px;
 
         .check{
-            margin-left:1.4em;
+            /* margin-left:1.4em; */
+        }
+        input{
+            padding: 0;
+            margin: 0;
+        }
+
+        .checkbox-input{
+            padding: 0;
+            margin: 0;
+            width: 5%;
         }
     }
     
@@ -205,14 +216,14 @@ border-radius:6px;
     margin: 0.3em 1.5em;
     }
 
-    .checkbox-input{
+    /* .checkbox-input{
         margin:0px auto;
         padding:15px 16px;
         gap:10px;
         width:90%;
         height:45px;
         border-radius: 4px;
-    }
+    } */
 }
 
 `
