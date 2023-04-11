@@ -78,7 +78,7 @@ const Advanced_Verf_3 = (props) => {
       })
       .catch((err) => {
         console.log(err);
-        setPop(true);        
+        setPop(true);
       });
   };
 
@@ -95,7 +95,7 @@ const Advanced_Verf_3 = (props) => {
       })
       .catch((err) => {
         console.log(err);
-        setPop(true);        
+        setPop(true);
       });
   };
 
@@ -117,7 +117,10 @@ const Advanced_Verf_3 = (props) => {
             <div className="absolute md:w-1/3 md:h-1/3 w-2/3 h-1/3 bg-[#F2BE5C] flex justify-center rounded-xl items-center">
               <div className="flex flex-col justify-center items-center p-5">
                 <p className="text-xl text-center font-bold">
-                  Ooops!! looks like you have a Network Error, Please click on the <span className="text-white block">Begin-Verification</span> Button  Again.
+                  Ooops!! looks like you have a Network Error, Please click on
+                  the{" "}
+                  <span className="text-white block">Begin-Verification</span>{" "}
+                  Button Again.
                 </p>
               </div>
             </div>
