@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
-import notFound from "../Categories/MediaView/notFound.png";
 import {
   FaCheckCircle,
   FaFacebook,
@@ -305,11 +304,7 @@ const LoggedUser = ({ logged }) => {
     :
       <SavedContainer>
         <h1>0 of 20 Saved Listings</h1>
-        <p>Note: You cannot save more than 20 listings</p>
-        <div className="notFound">
-          <img src={notFound} alt="" />
-          <p>No Saved Listing Available</p>
-        </div>
+        <p>Note: You cannot save more than 20 listings</p>        
       </SavedContainer>
 
     }

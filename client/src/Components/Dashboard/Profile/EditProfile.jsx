@@ -37,15 +37,38 @@ const EditProfile = ({ mainData }) => {
   const [loader, setLoader] = useState(false);
   const [stateData, setStateData] = useState([]);
   const [cityData, setCityData] = useState([]);
+  const [locationISO,setLocationISO] = useState("");
   const [isos, setIsos] = useState({
-    countryIso: "",
-    stateIso: "",
-    cityId: "",
+    countryIso:
+      mainData.userData.locationISO.length > 0
+        ? mainData.userData.locationISO.split("#")[2]
+        : "",
+    stateIso:
+      mainData.userData.locationISO.length > 0
+        ? mainData.userData.locationISO.split("#")[1]
+        : "",
+    cityId:
+      mainData.userData.locationISO.length > 0
+        ? mainData.userData.locationISO.split("#")[0]
+        : "",
   });
 
   useEffect(() => {
     getUser();
-  }, []);  
+    console.log(mainData.userData);
+    if (mainData.userData.locationISO.length > 0) {
+      prepopulateLocation(mainData.userData.locationISO);
+    }
+  }, []);
+
+  const prepopulateLocation = async (location) => {
+    let text = location.split("#");
+    let countryISO = text[2];
+    let stateISO = text[1];
+    // let cityId = text[0]
+    await getStates(countryISO, setStateData);
+    await getCities(countryISO, stateISO, setCityData);
+  };
 
   const [initialValues, setInitialValues] = useState({
     firstName: mainData.userData.firstName,
@@ -58,7 +81,7 @@ const EditProfile = ({ mainData }) => {
     cover: file,
     address: mainData.userData.address,
     country: mainData.userData.country,
-    locationISO: "",
+    locationISO: mainData.userData.locationISO,
     city: mainData.userData.city,
     state: mainData.userData.state,
     postalCode: mainData.userData.postalCode,
@@ -106,6 +129,7 @@ const EditProfile = ({ mainData }) => {
 
   const onSubmit = async (values) => {
     values.cover = file;
+    values.locationISO = locationISO;
     const userDetails = {
       firstName: values.firstName?.trim(),
       lastName: values.lastName?.trim(),
@@ -116,7 +140,8 @@ const EditProfile = ({ mainData }) => {
       instagramUrl: values.instagramURL?.trim(),
       address: values.address,
       country: values.country,
-      locationISO: "",
+      state: values.state,
+      locationISO: values.locationISO,
       city: values.city,
       postalCode: values.postalCode,
     };
@@ -136,12 +161,12 @@ const EditProfile = ({ mainData }) => {
     }
   };
 
-  const handleChanging = (e) => {    
+  const handleChanging = (e) => {
     let name = e.target.name;
     formik.handleChange(e);
-    if (name === "country") {      
+    if (name === "country") {
       getCountryIso(e.target.value);
-    } else if (name === "state") {      
+    } else if (name === "state") {
       getStateISO(e.target.value);
     } else if (name === "city") {
       getCityId(e.target.value);
@@ -152,28 +177,26 @@ const EditProfile = ({ mainData }) => {
     var countryObject = mainData.countryData.find(
       (country) => country.name === name
     );
-    setStateData([])
-    setCityData([])
+    setStateData([]);
+    setCityData([]);
     setIsos({ ...isos, countryIso: countryObject["iso2"] });
     getStates(countryObject["iso2"], setStateData);
+    setLocationISO(`${isos["cityId"]}#${isos["stateIso"]}#${countryObject["iso2"]}`)
   };
 
   const getStateISO = (name) => {
     var stateObject = stateData.find((state) => state.name === name);
-    setCityData([])
+    setCityData([]);
     setIsos({ ...isos, stateIso: stateObject["iso2"] });
     getCities(isos["countryIso"], stateObject["iso2"], setCityData);
+    setLocationISO(`${isos["cityId"]}#${stateObject["iso2"]}#${isos["countryIso"]}`)
     // setChanging(!changing);
   };
 
   const getCityId = (name) => {
     var cityObject = cityData.find((city) => city.name === name);
     setIsos({ ...isos, cityId: cityObject["id"] });
-    // setUserInfo({
-    //   ...userInfo,
-    //   locationISO: `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`,
-    // });
-    // setChanging(!changing);
+    setLocationISO(`${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`)    
   };
 
   const formik = useFormik({
@@ -334,9 +357,19 @@ const EditProfile = ({ mainData }) => {
                     {mainData.countryData.map((country) => {
                       return (
                         <>
-                          <option key={country.id} value={country.name}>
-                            {country.name}
-                          </option>
+                          {mainData.userData.country === country.name ? (
+                            <option
+                              key={country.id}
+                              value={country.name}
+                              selected
+                            >
+                              {country.name}
+                            </option>
+                          ) : (
+                            <option key={country.id} value={country.name}>
+                              {country.name}
+                            </option>
+                          )}
                         </>
                       );
                     })}
@@ -348,7 +381,7 @@ const EditProfile = ({ mainData }) => {
                   ) : null}
                 </div>
                 <div className="sub-dropdown space">
-                  {stateData.length > 0 && (
+                  {mainData.userData.locationISO.length > 0 ? (
                     <>
                       <label htmlFor="state">
                         State <span className="text-[red]">*</span>
@@ -362,9 +395,19 @@ const EditProfile = ({ mainData }) => {
                         {stateData?.map((state) => {
                           return (
                             <>
-                              <option key={state.id} value={state.name}>
-                                {state.name}
-                              </option>
+                              {mainData.userData.state == state.name ? (
+                                <option
+                                  key={state.id}
+                                  value={state.name}
+                                  selected
+                                >
+                                  {state.name}
+                                </option>
+                              ) : (
+                                <option key={state.id} value={state.name}>
+                                  {state.name}
+                                </option>
+                              )}
                             </>
                           );
                         })}
@@ -375,13 +418,44 @@ const EditProfile = ({ mainData }) => {
                         </div>
                       ) : null}
                     </>
+                  ) : (
+                    <>
+                      {stateData.length > 0 && (
+                        <>
+                          <label htmlFor="state">
+                            State <span className="text-[red]">*</span>
+                          </label>
+                          <select
+                            name="state"
+                            onChange={handleChanging}
+                            className="select"
+                          >
+                            <option value="State">None</option>
+                            {stateData?.map((state) => {
+                              return (
+                                <>
+                                  <option key={state.id} value={state.name}>
+                                    {state.name}
+                                  </option>
+                                </>
+                              );
+                            })}
+                          </select>
+                          {formik.errors.state ? (
+                            <div className=" text-[red] opacity-40">
+                              {formik.errors.state}
+                            </div>
+                          ) : null}
+                        </>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
-                  {cityData.length > 0 && (
+                  {mainData.userData.locationISO.length > 0 ? (
                     <>
                       <label htmlFor="city">
                         City <span className=" text-[red]">*</span>
@@ -395,9 +469,19 @@ const EditProfile = ({ mainData }) => {
                         {cityData?.map((city) => {
                           return (
                             <>
-                              <option key={city.id} value={city.name}>
-                                {city.name}
-                              </option>
+                              {mainData.userData.city === city.name ? (
+                                <option
+                                  key={city.id}
+                                  value={city.name}
+                                  selected
+                                >
+                                  {city.name}
+                                </option>
+                              ) : (
+                                <option key={city.id} value={city.name}>
+                                  {city.name}
+                                </option>
+                              )}
                             </>
                           );
                         })}
@@ -407,6 +491,37 @@ const EditProfile = ({ mainData }) => {
                           {formik.errors.city}
                         </div>
                       ) : null}
+                    </>
+                  ) : (
+                    <>
+                      {cityData.length > 0 && (
+                        <>
+                          <label htmlFor="city">
+                            City <span className=" text-[red]">*</span>
+                          </label>
+                          <select
+                            name="city"
+                            onChange={handleChanging}
+                            className="select"
+                          >
+                            <option value="City">None</option>
+                            {cityData?.map((city) => {
+                              return (
+                                <>
+                                  <option key={city.id} value={city.name}>
+                                    {city.name}
+                                  </option>
+                                </>
+                              );
+                            })}
+                          </select>
+                          {formik.errors.city ? (
+                            <div className=" text-[red] opacity-40">
+                              {formik.errors.city}
+                            </div>
+                          ) : null}
+                        </>
+                      )}
                     </>
                   )}
                 </div>
