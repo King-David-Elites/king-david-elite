@@ -13,40 +13,39 @@ import { SpinnerCircular } from "spinners-react";
 export default function ListingsSaved() {
   const data = useGetUserDetails();  
   const [loading, setLoading] = useState(true);
-  const [property, setProperty] = useState({});
   const [savedListings, setSavedListings] = useState([]);
-  const getAList = async (id) => {
-    await axios
-      .get(`${globalApi}/listings/each/${id}`)
-      .then((resp) => {
-        console.log("returned")
-        console.log(resp.data)
-        setProperty(resp.data);
-      })
-      .catch((err) => {
-        getAList();
-        console.error(err);
-      });
 
-    axios
-      .patch(`${globalApi}/listings/view/${id}`, {}, setConfig())
-      .then((resp) => console.log(resp))
-      .catch((err) => console.log(err));
+  const getAList = async (id) => {
+    try{
+      let property = await axios.get(`${globalApi}/listings/each/${id}`)
+      return property
+    }
+     catch(err) {
+      console.log(err)
+     }
   };
 
-  const getSavedListings = () => {
+  //   axios
+  //     .patch(`${globalApi}/listings/view/${id}`, {}, setConfig())
+  //     .then((resp) => console.log(resp))
+  //     .catch((err) => console.log(err));
+  // };
+
+  const getSavedListings = async () => {
     const mockListings = [];
-    data.savedListing.length > 0 &&
-      data.savedListing.map(async (item) => {
-        console.log(item)
-        // await getAList(String(item));        
-        // mockListings.push(property);
-        // setSavedListings(mockListings);
-        if(savedListings.length === data.savedListing.length){
-          // setLoading(false);
-        }
-      });    
-      // setLoading(false);
+    // if(savedListings.length === data.savedListing.length){
+    //   setLoading(false)
+    // }
+    for(let i=0; i < data.savedListing.length; i++){
+      let list = await getAList(data.savedListing[i]);
+      console.log(list.data)
+      if(list.data){
+        mockListings.push(list.data)
+      }
+    }
+    console.log(mockListings)
+    setSavedListings(mockListings)
+    setLoading(false)
   };
 
   useEffect(()=>{
@@ -55,7 +54,7 @@ export default function ListingsSaved() {
 
   return (
     <LastContainer>
-      {!loading ? (
+      {loading ? (
         <>
           <SpinnerCircular
             color="white"
@@ -69,8 +68,8 @@ export default function ListingsSaved() {
       <>
       {
           savedListings.length == 0 ?
-          // <h3>You don't have any listings saved</h3>
-          <></>
+          
+          <><h3>You don't have any listings saved</h3></>
           :
           <GridContainer>
             {savedListings.map((items) => {
