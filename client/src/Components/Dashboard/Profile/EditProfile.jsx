@@ -84,7 +84,7 @@ const EditProfile = ({ mainData }) => {
     locationISO: mainData.userData.locationISO,
     city: mainData.userData.city,
     state: mainData.userData.state,
-    postalCode: mainData.userData.postalCode,
+    zipCode: mainData.userData.zipCode,
   });
 
   const comapanyInitialValues = {
@@ -143,7 +143,7 @@ const EditProfile = ({ mainData }) => {
       state: values.state,
       locationISO: values.locationISO,
       city: values.city,
-      postalCode: values.postalCode,
+      zipCode: values.zipCode,
     };
     if (isEdit) {
       setLoader(true);
@@ -530,9 +530,9 @@ const EditProfile = ({ mainData }) => {
                   <input
                     type="number"
                     className="input"
-                    name="postalCode"
+                    name="zipCode"
                     id="postalCode"
-                    value={formik.values.postalCode}
+                    value={formik.values.zipCode}
                   />
                 </div>
               </div>
