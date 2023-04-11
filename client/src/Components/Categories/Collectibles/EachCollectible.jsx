@@ -27,6 +27,8 @@ import {
 } from "../../../infrastructure/api/user/userRequest";
 import services from "../../../ioc/services";
 
+import cl3 from "./Image/cl3.jpg"
+
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachCollectible = () => {
   const top = useRef(null);
@@ -253,7 +255,7 @@ const EachCollectible = () => {
         )}
       </EachContainer>
 
-      <Banner category="Collectibles" />
+      <Banner category="Collectibles" img={cl3}/>
       <Footer />
     </Fragment>
   );

@@ -99,7 +99,7 @@ export const getStates = async (countryIso, setStateData) => {
   )
     .then((response) => response.text())
     .then((result) => {
-      setStateData(JSON.parse(result));
+      setStateData(JSON.parse(result));      
     })
     .catch((error) => console.log("error", error));
 };
@@ -123,7 +123,7 @@ export const getCities = async (countryIso, stateIso, setCityData) => {
   )
     .then((response) => response.text())
     .then((result) => {            
-      setCityData(JSON.parse(result));
+      setCityData(JSON.parse(result));      
     })
     .catch((error) => console.log("error", error));
 };

@@ -11,47 +11,40 @@ import { useGetUserDetails } from "../application/hooks/queryhooks";
 import { SpinnerCircular } from "spinners-react";
 
 export default function ListingsSaved() {
-  const data = useGetUserDetails();  
+  const data = useGetUserDetails();
   const [loading, setLoading] = useState(true);
   const [property, setProperty] = useState({});
   const [savedListings, setSavedListings] = useState([]);
-  const getAList = async (id) => {
+  const getAList = async (id,mockListings) => {
     await axios
       .get(`${globalApi}/listings/each/${id}`)
       .then((resp) => {
-        console.log("returned")
-        console.log(resp.data)
-        setProperty(resp.data);
+        console.log("returned");
+        console.log(resp.data);
+        mockListings.push(resp.data);        
       })
-      .catch((err) => {
-        getAList();
+      .catch((err) => {        
         console.error(err);
-      });
-
-    axios
-      .patch(`${globalApi}/listings/view/${id}`, {}, setConfig())
-      .then((resp) => console.log(resp))
-      .catch((err) => console.log(err));
+      });    
   };
 
   const getSavedListings = () => {
     const mockListings = [];
     data.savedListing.length > 0 &&
       data.savedListing.map(async (item) => {
-        console.log(item)
-        // await getAList(String(item));        
-        // mockListings.push(property);
-        // setSavedListings(mockListings);
-        if(savedListings.length === data.savedListing.length){
-          // setLoading(false);
+        console.log(item);
+        await getAList(String(item), mockListings);        
+        setSavedListings(mockListings);
+        if (savedListings.length === data.savedListing.length) {
+          setLoading(false);
         }
-      });    
-      // setLoading(false);
+      });
+    // setLoading(false);
   };
 
-  useEffect(()=>{
-    getSavedListings()
-  },[data])
+  useEffect(() => {
+    getSavedListings();
+  }, [data]);
 
   return (
     <LastContainer>
@@ -65,21 +58,21 @@ export default function ListingsSaved() {
             thickness={150}
           />
         </>
-      ) : 
-      <>
-      {
-          savedListings.length == 0 ?
-          // <h3>You don't have any listings saved</h3>
-          <></>
-          :
-          <GridContainer>
-            {savedListings.map((items) => {
-              return <Listing key={items._id} list={items} />;
-            })}
-          </GridContainer>
-        }
-      </>
-}
+      ) : (
+        <>
+          {savedListings.length == 0 ? (
+            <>
+              <h3>You don't have any listings saved</h3>
+            </>
+          ) : (
+            <GridContainer>
+              {savedListings.map((items) => {
+                return <Listing key={items._id} list={items} />;
+              })}
+            </GridContainer>
+          )}
+        </>
+      )}
     </LastContainer>
   );
 }

@@ -21,6 +21,10 @@ import services from "../../../ioc/services";
 import Loader from "../../Loader/Loader";
 import Return from "../../Navbar/Return";
 import { getUser } from "../../../infrastructure/api/user/userRequest";
+import {
+  getStates,
+  getCities,
+} from "../../../infrastructure/api/user/userRequest";
 
 const EditProfile = ({ mainData }) => {
   const navigate = useNavigate();
@@ -31,11 +35,18 @@ const EditProfile = ({ mainData }) => {
   const fileInputField = useRef(null);
   const [file, setFile] = useState(mainData.userData.cover);
   const [loader, setLoader] = useState(false);
+  const [stateData, setStateData] = useState([]);
+  const [cityData, setCityData] = useState([]);
+  const [isos, setIsos] = useState({
+    countryIso: "",
+    stateIso: "",
+    cityId: "",
+  });
 
-  useEffect(()=>{
-    getUser()
-  },[])
-  
+  useEffect(() => {
+    getUser();
+  }, []);  
+
   const [initialValues, setInitialValues] = useState({
     firstName: mainData.userData.firstName,
     lastName: mainData.userData.lastName,
@@ -47,6 +58,7 @@ const EditProfile = ({ mainData }) => {
     cover: file,
     address: mainData.userData.address,
     country: mainData.userData.country,
+    locationISO: "",
     city: mainData.userData.city,
     state: mainData.userData.state,
     postalCode: mainData.userData.postalCode,
@@ -69,22 +81,6 @@ const EditProfile = ({ mainData }) => {
     phone2: "",
     cover: file || null,
   };
-
-  // const getSignedInUserDetails = async () => {
-  //   await services.api.userRequests
-  //     .getSignedInUser()
-  //     .then((resp) => {
-  //       const user = {
-  //         firstName: resp.firstName,
-  //         lastname: resp.lastName,
-  //         email: resp.email,
-  //         cover: resp.cover,
-  //       };
-  //       console.log("res", resp);
-  //       setInitialValues(user);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
 
   const onCompanySubmit = (values) => {
     console.log("data", values);
@@ -120,6 +116,7 @@ const EditProfile = ({ mainData }) => {
       instagramUrl: values.instagramURL?.trim(),
       address: values.address,
       country: values.country,
+      locationISO: "",
       city: values.city,
       postalCode: values.postalCode,
     };
@@ -139,6 +136,46 @@ const EditProfile = ({ mainData }) => {
     }
   };
 
+  const handleChanging = (e) => {    
+    let name = e.target.name;
+    formik.handleChange(e);
+    if (name === "country") {      
+      getCountryIso(e.target.value);
+    } else if (name === "state") {      
+      getStateISO(e.target.value);
+    } else if (name === "city") {
+      getCityId(e.target.value);
+    }
+  };
+
+  const getCountryIso = (name) => {
+    var countryObject = mainData.countryData.find(
+      (country) => country.name === name
+    );
+    setStateData([])
+    setCityData([])
+    setIsos({ ...isos, countryIso: countryObject["iso2"] });
+    getStates(countryObject["iso2"], setStateData);
+  };
+
+  const getStateISO = (name) => {
+    var stateObject = stateData.find((state) => state.name === name);
+    setCityData([])
+    setIsos({ ...isos, stateIso: stateObject["iso2"] });
+    getCities(isos["countryIso"], stateObject["iso2"], setCityData);
+    // setChanging(!changing);
+  };
+
+  const getCityId = (name) => {
+    var cityObject = cityData.find((city) => city.name === name);
+    setIsos({ ...isos, cityId: cityObject["id"] });
+    // setUserInfo({
+    //   ...userInfo,
+    //   locationISO: `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`,
+    // });
+    // setChanging(!changing);
+  };
+
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -153,7 +190,7 @@ const EditProfile = ({ mainData }) => {
   return (
     <>
       {loader && <Loader />}
-      <Return link="/profile"/>
+      <Return link="/profile" />
       <EditProfileContainer padding="12px 12px">
         <div className="content-text">
           <h3>Profile</h3>
@@ -162,7 +199,9 @@ const EditProfile = ({ mainData }) => {
 
         <ContentCard background="none">
           <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="firstName">First Name <span className=" text-[red]">*</span></label>
+            <label htmlFor="firstName">
+              First Name <span className=" text-[red]">*</span>
+            </label>
             <input
               type="text"
               className="input"
@@ -176,7 +215,9 @@ const EditProfile = ({ mainData }) => {
               </div>
             ) : null}
 
-            <label htmlFor="lastName">Last Name <span className="text-[red]">*</span></label>
+            <label htmlFor="lastName">
+              Last Name <span className="text-[red]">*</span>
+            </label>
             <input
               type="text"
               className="input"
@@ -281,22 +322,20 @@ const EditProfile = ({ mainData }) => {
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
-                  <label htmlFor="country">Country <span className=" text-[red]">*</span></label>
+                  <label htmlFor="country">
+                    Country <span className=" text-[red]">*</span>
+                  </label>
                   <select
                     name="country"
-                    onChange={formik.handleChange}
+                    onChange={handleChanging}
                     className="select"
                   >
-                    <option value="country"></option>
-                    {Country.map((list, i) => {
+                    <option value="Country">None</option>
+                    {mainData.countryData.map((country) => {
                       return (
                         <>
-                          <option
-                            key={i}
-                            value={formik.values.country}
-                            selected
-                          >
-                            {list.country}
+                          <option key={country.id} value={country.name}>
+                            {country.name}
                           </option>
                         </>
                       );
@@ -309,59 +348,67 @@ const EditProfile = ({ mainData }) => {
                   ) : null}
                 </div>
                 <div className="sub-dropdown space">
-                  <label htmlFor="state">State <span className="text-[red]">*</span></label>
-                  <select
-                    name="state"
-                    onChange={formik.handleChange}
-                    className="select"
-                  >
-                    <option value="state"></option>
-                    {Country.map((list, i) => {
-                      return (
-                        <>
-                          <option
-                            key={i}
-                            value={formik.values.country}
-                            selected
-                          >
-                            {list.country}
-                          </option>
-                        </>
-                      );
-                    })}
-                  </select>
-                  {formik.errors.state ? (
-                    <div className=" text-[red] opacity-40">
-                      {formik.errors.state}
-                    </div>
-                  ) : null}
+                  {stateData.length > 0 && (
+                    <>
+                      <label htmlFor="state">
+                        State <span className="text-[red]">*</span>
+                      </label>
+                      <select
+                        name="state"
+                        onChange={handleChanging}
+                        className="select"
+                      >
+                        <option value="State">None</option>
+                        {stateData?.map((state) => {
+                          return (
+                            <>
+                              <option key={state.id} value={state.name}>
+                                {state.name}
+                              </option>
+                            </>
+                          );
+                        })}
+                      </select>
+                      {formik.errors.state ? (
+                        <div className=" text-[red] opacity-40">
+                          {formik.errors.state}
+                        </div>
+                      ) : null}
+                    </>
+                  )}
                 </div>
               </div>
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
-                  <label htmlFor="city">City <span className=" text-[red]">*</span></label>
-                  <select
-                    name="city"
-                    onChange={formik.handleChange}
-                    className="select"
-                  >
-                    <option value="city"></option>
-                    {Country.map((list, i) => {
-                      return (
-                        <>
-                          <option key={i} value={formik.values.city} selected>
-                            {list.country}
-                          </option>
-                        </>
-                      );
-                    })}
-                  </select>
-                  {formik.errors.city ? (
-                    <div className=" text-[red] opacity-40">
-                      {formik.errors.city}
-                    </div>
-                  ) : null}
+                  {cityData.length > 0 && (
+                    <>
+                      <label htmlFor="city">
+                        City <span className=" text-[red]">*</span>
+                      </label>
+                      <select
+                        name="city"
+                        onChange={handleChanging}
+                        className="select"
+                      >
+                        <option value="City">None</option>
+                        {cityData?.map((city) => {
+                          return (
+                            <>
+                              <option key={city.id} value={city.name}>
+                                {city.name}
+                              </option>
+                            </>
+                          );
+                        })}
+                      </select>
+                      {formik.errors.city ? (
+                        <div className=" text-[red] opacity-40">
+                          {formik.errors.city}
+                        </div>
+                      ) : null}
+                    </>
+                  )}
                 </div>
                 <div className="sub-dropdown space">
                   <label htmlFor="postalCode">Zip / Postal Code</label>

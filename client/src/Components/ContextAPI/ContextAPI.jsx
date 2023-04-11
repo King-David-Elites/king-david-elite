@@ -1,8 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import axios from "axios";
-import globalApi from "../../api";
+import { useState, useEffect, useCallback } from "react";
 import { requestUserData } from "../../infrastructure/api/user/userRequest";
-import { setConfig } from "../../infrastructure/api/user/userRequest";
 
 const useContextAPI = () => {
   const [mails, setMails] = useState([]);
@@ -30,17 +27,7 @@ const useContextAPI = () => {
       .catch((error) => console.log("error", error));
   };
 
-  const email = async () => {
-    await axios
-      .get(`${globalApi}/wait-list`)
-      .then((resp) => {
-        setMails(resp.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const allCallBacks = useCallback(() => {
-    email();    
+  const allCallBacks = useCallback(() => {    
     getCountry();
   }, []);
 

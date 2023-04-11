@@ -15,6 +15,7 @@ import { useGetUserDetails } from "../../../application/hooks/queryhooks";
 import Swal from "sweetalert2";
 import { SpinnerCircular } from "spinners-react";
 import theme from "../../../application/utils/Theme";
+import carspic from "./Image/carspic.jpg"
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachCars = ({ active }) => {
@@ -205,7 +206,7 @@ const EachCars = ({ active }) => {
           </>
         )}
       </EachContainer>
-      <Banner category="Cars" />
+      <Banner category="Cars" img={carspic}/>
       <Footer />
     </Fragment>
   );
