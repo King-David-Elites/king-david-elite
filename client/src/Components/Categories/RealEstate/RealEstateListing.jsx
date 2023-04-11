@@ -1,6 +1,5 @@
 import { Adjustments, Search } from "heroicons-react";
 import React, { useRef, useEffect, useCallback } from "react";
-import MultiRangeSlider from "multi-range-slider-react";
 import {
   Background,
   HeroSection,
@@ -52,12 +51,10 @@ const RealEstateListing = ({ mainData }) => {
   const [value, setValue] = useState({
     noOfBed: 0,
     noOfBathroom: 0,
-    location: "",
-    price: 100000000,
+    locationISO: "",
+    price: 500,
   });
-  const [list, setList] = useState([]);
   const [activePage, setActivePage] = useState(false);
-
   const [stage, setStage] = useState(0);
   const [activeNav, setActiveNav] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -103,7 +100,7 @@ const RealEstateListing = ({ mainData }) => {
     setIsos({ ...isos, cityId: cityObject["id"] });
     setValue({
       ...value,
-      location: `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`,
+      locationISO: `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`,
     });
     setChanging(!changing);
   };
@@ -112,9 +109,9 @@ const RealEstateListing = ({ mainData }) => {
     setLoader(true);
     const listingUrl = `${globalApi}/listings/search`;
     axios
-      .get(listingUrl, value, setConfig())
+      .post(listingUrl, value, setConfig())
       .then((resp) => {
-        setList(resp.data);
+        setListing(resp.data);
         setLoader(false);
         setStage(0);
       })
@@ -184,7 +181,7 @@ const RealEstateListing = ({ mainData }) => {
                 />
                 <p className="font-bold text-[20px]">Filters</p>
               </div>
-              <h3 className="font-bold">Location</h3>
+              <h3 className="font-bold">LocationISO</h3>
               <label htmlFor="country">Country</label>
               <select
                 className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
@@ -344,84 +341,7 @@ const RealEstateListing = ({ mainData }) => {
                       />
                       <p className="font-bold text-[20px]">Filters</p>
                     </div>
-                    <h3 className="font-semibold">Location</h3>
-                    <label htmlFor="country" className="font-bold">
-                      Country
-                    </label>
-                    <select
-                      className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
-                      name="Country"
-                      onChange={(e) => {
-                        getCountryIso(e.target.value);
-                      }}
-                    >
-                      <option value="Country">None</option>
-                      {mainData.countryData.map((country) => {
-                        return (
-                          <>
-                            <option key={country.id} value={country.name}>
-                              {country.name}
-                            </option>
-                          </>
-                        );
-                      })}
-                    </select>
-
-                    <div className="input">
-                      {stateData.length > 0 && (
-                        <>
-                          <label htmlFor="state" className="font-bold">
-                            State
-                          </label>
-                          <select
-                            className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
-                            name="state"
-                            onChange={(e) => {
-                              getStateIso(e.target.value);
-                            }}
-                          >
-                            <option value="State">None</option>
-                            {stateData?.map((state) => {
-                              return (
-                                <>
-                                  <option key={state.id} value={state.name}>
-                                    {state.name}
-                                  </option>
-                                </>
-                              );
-                            })}
-                          </select>
-                        </>
-                      )}
-                    </div>
-
-                    <div className="input">
-                      {cityData.length > 0 && (
-                        <>
-                          <label htmlFor="city" className="font-bold">
-                            City
-                          </label>
-                          <select
-                            className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
-                            name="city"
-                            onChange={(e) => {
-                              getCityId(e.target.value);
-                            }}
-                          >
-                            <option value="City">None</option>
-                            {cityData?.map((city) => {
-                              return (
-                                <>
-                                  <option key={city.id} value={city.name}>
-                                    {city.name}
-                                  </option>
-                                </>
-                              );
-                            })}
-                          </select>
-                        </>
-                      )}
-                    </div>
+                  
 
                     <h3 className="font-bold">Bedrooms</h3>
                     <div className="rounded-md">
@@ -509,14 +429,14 @@ const RealEstateListing = ({ mainData }) => {
               <SearchSection>
                 <SearchC>
                   <Input
-                    placeholder="search desired locations"
+                    placeholder="search desired locationISOs"
                     onChange={(e) =>
-                      setValue({ ...value, location: e.target.value })
+                      setValue({ ...value, locationISO: e.target.value })
                     }
                   />
                   <Search
                     width="30px"
-                    onClick={(e) => searchListing(value["location"])}
+                    onClick={(e) => searchListing(value["locationISO"])}
                     className="cursor-pointer"
                   />
                 </SearchC>

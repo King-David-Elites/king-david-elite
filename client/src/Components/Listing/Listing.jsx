@@ -9,7 +9,7 @@ import { setConfig } from "../../infrastructure/api/user/userRequest";
 import { Container } from "./Listing.styled";
 import services from "../../ioc/services";
 
-const Listing = ({ list, type }) => {  
+const Listing = ({ list, type }) => {
   const [loved, setLoved] = useState(false);
   const [id, setId] = useState(list._id);
   const postedBy = list.postedBy?.email;
@@ -22,7 +22,7 @@ const Listing = ({ list, type }) => {
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
         if (resp.data.status === 1) {
-          services.toast.success("You liked this post");          
+          services.toast.success("You liked this post");
         }
       })
       .catch((err) => services.toast.error(err));
@@ -33,7 +33,7 @@ const Listing = ({ list, type }) => {
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
         if (resp.data.status === 0) {
-          services.toast.success("You unlike this post");          
+          services.toast.success("You unlike this post");
         }
       })
       .catch((err) => console.log(err));
@@ -75,10 +75,21 @@ const Listing = ({ list, type }) => {
           }
           className="btn"
         >
-          <div className="profile">
+          {
+            postedBy === userEmail ?
+              <div className="profile hidden">
+                <img src={list.postedBy.profilePicture} alt="" />
+                <h4>{truncate(fullName, 25)}</h4>
+              </div> : <div className="profile">
+                <img src={list.postedBy.profilePicture} alt="" />
+                <h4>{truncate(fullName, 25)}</h4>
+              </div>
+
+          }
+          {/* <div className="profile">
             <img src={list.postedBy.profilePicture} alt="" />
             <h4>{truncate(fullName, 25)}</h4>
-          </div>
+          </div> */}
         </Link>
       )}
       <div className="image">
@@ -118,21 +129,33 @@ const Listing = ({ list, type }) => {
       </div>
 
       <p className="title">{list.title}</p>
-      <p className="price">&#x20A6; {list.price.toLocaleString()}</p>
+      {
+        list.forRent === false ? <p className="price">&#x20A6; {list.price.toLocaleString()}</p> : <p className="price">&#x20A6; {list.price.toLocaleString()} /day</p>
+      }
+
 
       <p className="description">
         <LocationMarker size="16px" />{" "}
         {truncate(formatLocation(list.location), 40)}
       </p>
 
-      <div
-        className="enquireNow"
-        onClick={() => {
-          redirect(id);
-        }}
-      >
-        Enquire Now
-      </div>
+      {
+        list.forRent === false ? <div
+          className="enquireNow"
+          onClick={() => {
+            redirect(id);
+          }}
+        >
+          Enquire Now
+        </div> : <div
+          className="enquireNow"
+          onClick={() => {
+            redirect(id);
+          }}
+        >
+          Book Now
+        </div>
+      }
     </Container>
   );
 };
