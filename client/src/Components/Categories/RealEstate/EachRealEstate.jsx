@@ -19,6 +19,7 @@ import { EachContainer } from "./RealEstate.Style";
 import Swal from "sweetalert2";
 import { SpinnerCircular } from "spinners-react";
 import theme from "../../../application/utils/Theme";
+import building6 from "./Image/building6.jpg";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const EachRealEstate = ({ active }) => {
@@ -207,7 +208,7 @@ const EachRealEstate = ({ active }) => {
           </>
         )}
       </EachContainer>
-      <Banner category="Real Estate" />
+      <Banner category="Real Estate" img={building6}/>
       <Footer />
     </Fragment>
   );

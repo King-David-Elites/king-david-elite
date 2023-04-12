@@ -8,7 +8,6 @@ import {
   Form,
   MobileGenericContainer,
 } from "../Dashboard.Styles";
-import useContextAPI from "../../ContextAPI/ContextAPI";
 import profileImg from "../Dashboard-Image/profileImg.png";
 import GetStarted from "./GetStarted";
 import BasicInfo from "./BasicInfo";

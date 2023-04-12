@@ -75,7 +75,7 @@ const LoginPage = ({ stage, setStage }) => {
             services.toast.success(res.message);
 
             setTimeout(() => {
-              setLoader(false);
+              setLoader(false);              
               navigate("/profile");
             }, 2000);
           } else {

@@ -37,9 +37,9 @@ const Advanced_Verf = (props) => {
             }}
           >
             <div className="lsc">
-              <img src={liscence} alt="liscence" />
+              <img src={liscence} alt="licence" />
             </div>
-            <h4>Driver's liscence</h4>
+            <h4>Driver's licence</h4>
           </div>
           <div
             className={idType.text === "Identity card" ? "id_selected" : "id_type"}

@@ -134,6 +134,7 @@ function App() {
             <Route path="/luxury-service/boat-cruise/:id" element={<BoatCruisePage mainData={mainData} />} />
             <Route path="/luxury-service/chauffeur" element={<ChaffeurPage mainData={mainData} />} />
             <Route path="/luxury-service/pricing" element={<Pricing />} />
+            <Route path="/luxury-service/pricing/:id" element={<Pricing />} />
             <Route path="/saved-listings" element={<SavedListings />} />
           </Routes>
         </AnimatePresence>

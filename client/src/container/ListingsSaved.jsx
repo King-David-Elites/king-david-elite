@@ -9,48 +9,39 @@ import Listing from "../Components/Listing/Listing";
 import { useState } from "react";
 import { useGetUserDetails } from "../application/hooks/queryhooks";
 import { SpinnerCircular } from "spinners-react";
+import notFound from "../Components/Categories/MediaView/notFound.png";
 
 export default function ListingsSaved() {
-  const data = useGetUserDetails();  
+  const data = useGetUserDetails();
   const [loading, setLoading] = useState(true);
   const [savedListings, setSavedListings] = useState([]);
 
   const getAList = async (id) => {
-    try{
-      let property = await axios.get(`${globalApi}/listings/each/${id}`)
-      return property
+    try {
+      let property = await axios.get(`${globalApi}/listings/each/${id}`);
+      return property;
+    } catch (err) {
+      console.log(err);
     }
-     catch(err) {
-      console.log(err)
-     }
   };
-
-  //   axios
-  //     .patch(`${globalApi}/listings/view/${id}`, {}, setConfig())
-  //     .then((resp) => console.log(resp))
-  //     .catch((err) => console.log(err));
-  // };
 
   const getSavedListings = async () => {
     const mockListings = [];
-    // if(savedListings.length === data.savedListing.length){
-    //   setLoading(false)
-    // }
-    for(let i=0; i < data.savedListing.length; i++){
+    for (let i = 0; i < data.savedListing.length; i++) {
       let list = await getAList(data.savedListing[i]);
-      console.log(list.data)
-      if(list.data){
-        mockListings.push(list.data)
+      console.log(list.data);
+      if (list.data) {
+        mockListings.push(list.data);
       }
     }
-    console.log(mockListings)
-    setSavedListings(mockListings)
-    setLoading(false)
+    console.log(mockListings);
+    setSavedListings(mockListings);
+    setLoading(false);
   };
 
-  useEffect(()=>{
-    getSavedListings()
-  },[data])
+  useEffect(() => {
+    getSavedListings();
+  }, []);
 
   return (
     <LastContainer>
@@ -64,21 +55,26 @@ export default function ListingsSaved() {
             thickness={150}
           />
         </>
-      ) : 
-      <>
-      {
-          savedListings.length == 0 ?
-          
-          <><h3>You don't have any listings saved</h3></>
-          :
-          <GridContainer>
-            {savedListings.map((items) => {
-              return <Listing key={items._id} list={items} />;
-            })}
-          </GridContainer>
-        }
-      </>
-}
+      ) : (
+        <>
+          {savedListings.length == 0 ? (
+            <>
+              <div className="flex flex-col gap-[0.5em] justify-center items-center w-full">
+                <div className="md:w-[20em]">
+                  <img src={notFound} width="100%" height="auto" alt="" />
+                </div>
+                <p>No Saved Listing Available</p>
+              </div>
+            </>
+          ) : (
+            <GridContainer>
+              {savedListings.map((items) => {
+                return <Listing key={items._id} list={items} />;
+              })}
+            </GridContainer>
+          )}
+        </>
+      )}
     </LastContainer>
   );
 }

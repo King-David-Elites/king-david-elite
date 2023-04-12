@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MdMenu } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MainButton from "../../buttons/MainButton";
 import { Brand, Header, LI, LogoText, UL } from "../../Navbar/Navbar.Style";
 import { useDispatch } from "react-redux";
@@ -8,9 +8,13 @@ import { setPackagePlan } from "../../../application/store/actions/user";
 import "../../Navbar/Navbar.css";
 import { ImCross } from "react-icons/im";
 import kde_blackBg from "../../Navbar/Image/kde_whiteBg.png";
-import { useRef } from "react";
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const Pricing = ({ active = 6 }) => {
+  const { id } = useParams();  
+  const chauffeurRide = useRef(null);
+  const dayCation = useRef(null);
+  const boatCruise = useRef(null);
   const [activeNav, setActiveNav] = useState(false);
   const dispatch = useDispatch();
 
@@ -19,6 +23,18 @@ const Pricing = ({ active = 6 }) => {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(String(id) === "dayCation"){
+      scrollToRef(dayCation)
+    }
+    else if(String(id) === "chauffeur-driven"){
+      scrollToRef(chauffeurRide)
+    }
+    else if(String(id) === "boat-cruise"){
+      scrollToRef(boatCruise)
+    }
+  }, []);
 
   const navOptions = [
     {
@@ -353,6 +369,7 @@ const Pricing = ({ active = 6 }) => {
         bg="white"
         sticky="static"
         color="black"
+        ref={dayCation}
       >
         <nav className={activeNav ? "navigation active" : "navigation"}>
           <ul>
@@ -424,7 +441,6 @@ const Pricing = ({ active = 6 }) => {
         <h3 className="text-center text-[15px] font-semibold md:text-[19px] tracking-wide">
           Daycation ( 24 HOURS OF BLISS)
         </h3>
-       
 
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
           <p className="text-[15px] font-semibold mb-1">
@@ -452,7 +468,8 @@ const Pricing = ({ active = 6 }) => {
               Spa: Home/Walk In Session (2)
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              2 bottles of Martini Rose (ALC) OR 2 bottles of Bosca Toselli (NON ALC){" "}
+              2 bottles of Martini Rose (ALC) OR 2 bottles of Bosca Toselli (NON
+              ALC){" "}
             </p>
           </div>
 
@@ -495,7 +512,8 @@ const Pricing = ({ active = 6 }) => {
               Spa: Home/Walk In Session (3)
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              2 bottles of Isolabella Della Croce (ALC) OR 4 bottles of Blue Nun Silver Sparkling Wine (NON ALC)
+              2 bottles of Isolabella Della Croce (ALC) OR 4 bottles of Blue Nun
+              Silver Sparkling Wine (NON ALC)
             </p>
           </div>
 
@@ -538,7 +556,8 @@ const Pricing = ({ active = 6 }) => {
               Spa: Home/Walk In Session (4)
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              2 bottles of Moet Imperial Brut (ALC) OR 6 bottles of Blue Nun Silver Sparkling Wine
+              2 bottles of Moet Imperial Brut (ALC) OR 6 bottles of Blue Nun
+              Silver Sparkling Wine
             </p>
           </div>
 
@@ -558,6 +577,7 @@ const Pricing = ({ active = 6 }) => {
         <h3
           className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide"
           id="chauffeurRide"
+          ref={chauffeurRide}
         >
           Chauffeur Rides (THE COMFORT ZONE)
         </h3>
@@ -595,7 +615,6 @@ const Pricing = ({ active = 6 }) => {
         </div>
 
         <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
-  
           <p className="text-[20px] font-extrabold">
             &#8358;300,000-&#8358;500,000
           </p>
@@ -659,7 +678,7 @@ const Pricing = ({ active = 6 }) => {
           </MainButton>
         </div>
 
-        <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide">
+        <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide" ref={boatCruise}>
           Boat Cruises ( The Aqua Way)
         </h3>
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
@@ -679,7 +698,8 @@ const Pricing = ({ active = 6 }) => {
               Onboard Games+Host: Available On Request
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              4 bottles of Gold Royal Sparkling Wine (ALC) OR 6 bottles of Bosca Toselli (NON ALC)
+              4 bottles of Gold Royal Sparkling Wine (ALC) OR 6 bottles of Bosca
+              Toselli (NON ALC)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Onboard Spa Treatment: Available
@@ -719,7 +739,8 @@ const Pricing = ({ active = 6 }) => {
               Onboard Games+Host: Available On Request
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              6 bottles of Baileys Irish Cream (ALC) OR 8 bottles of Blue Nun Silver Sparkling Wine (NON ALC)
+              6 bottles of Baileys Irish Cream (ALC) OR 8 bottles of Blue Nun
+              Silver Sparkling Wine (NON ALC)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Onboard Spa Treatment: Available
@@ -759,7 +780,8 @@ const Pricing = ({ active = 6 }) => {
               Onboard Games+Host: Available On Request
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              6 bottles of Isolabella Della Croce (ALC) or 12 bottles of Blue Nun Silver (NON ALC)
+              6 bottles of Isolabella Della Croce (ALC) or 12 bottles of Blue
+              Nun Silver (NON ALC)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Onboard Spa Treatment: Available
@@ -783,7 +805,7 @@ const Pricing = ({ active = 6 }) => {
         </div>
       </div>
 
-      <div className="w-full h-[100%] md:px-[5em] px-[2em] md:py-5 mt-7 md:block hidden">
+      <div className="w-full h-[100%] md:px-[5em] px-[2em] md:py-5 mt-7 md:block hidden" ref={dayCation}>
         <h3 className="text-center text-[15px] font-semibold md:text-[19px] tracking-wide">
           Daycation (24 HOURS OF BLISS)
         </h3>
@@ -914,14 +936,13 @@ const Pricing = ({ active = 6 }) => {
         </div>
       </div>
 
-      <div className="w-full h-[100%] md:px-[5em] md:py-5 mt-7 md:block hidden">
+      <div className="w-full h-[100%] md:px-[5em] md:py-5 mt-7 md:block hidden" ref={chauffeurRide}>
         <h3 className="text-center font-semibold text-[19px] tracking-wide">
           Chauffeur Rides (THE COMFORT ZONE)
         </h3>
 
         <div className="flex gap-3 w-[100%] items-center h-auto mt-6">
           <p className="w-1/4 font-extrabold text-[22px]">Pricing</p>
-         
         </div>
 
         <div className="flex gap-3 w-[100%] h-auto mt-6">
@@ -1042,7 +1063,7 @@ const Pricing = ({ active = 6 }) => {
         </div>
       </div>
 
-      <div className="w-full h-[100%] md:px-[5em] md:py-5 mt-7 md:block hidden">
+      <div className="w-full h-[100%] md:px-[5em] md:py-5 mt-7 md:block hidden" ref={boatCruise}>
         <h3 className="text-center font-semibold text-[19px] tracking-wide">
           Boat Cruises ( The Aqua Way)
         </h3>

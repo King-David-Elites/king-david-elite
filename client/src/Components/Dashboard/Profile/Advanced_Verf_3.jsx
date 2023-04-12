@@ -21,8 +21,6 @@ const Advanced_Verf_3 = (props) => {
     country,
     position,
     setLoading,
-    isos,
-    setIsos,
   } = props;
   const verificationData = {
     verificationId: {
@@ -78,6 +76,7 @@ const Advanced_Verf_3 = (props) => {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false)
         setPop(true);
       });
   };
@@ -95,6 +94,7 @@ const Advanced_Verf_3 = (props) => {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false)
         setPop(true);
       });
   };

@@ -44,8 +44,8 @@ const HomePage = () => {
   const [animation, setAnimation] = useState(graduallyAppear);
   const [loader, setLoader] = useState(false);
   const [value, setValue] = useState({
-    email: ''
-  })
+    email: "",
+  });
 
   const categories = [
     {
@@ -84,11 +84,14 @@ const HomePage = () => {
 
   const subscribe = () => {
     setLoader(true);
-    const subscribeURL = `${globalApi}/wait-list`
-    axios.post(subscribeURL, value, setConfig()).then((resp) => {
-      services.toast.success(resp.data.message);
-      setLoader(loader);
-    }).catch((err) => services.toast.error(err));
+    const subscribeURL = `${globalApi}/wait-list`;
+    axios
+      .post(subscribeURL, value, setConfig())
+      .then((resp) => {
+        services.toast.success(resp.data.message);
+        setLoader(loader);
+      })
+      .catch((err) => services.toast.error(err));
   };
 
   useEffect(() => {
@@ -101,7 +104,7 @@ const HomePage = () => {
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
           setHomeId(homeId + 1);
-          setAnimation(graduallyAppear);          
+          setAnimation(graduallyAppear);
         }, [400]);
       } else if (homeId === HomeAnimation.length) {
         clearTimeout(timer2);
@@ -109,7 +112,7 @@ const HomePage = () => {
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
           setHomeId(1);
-          setAnimation(graduallyAppear);          
+          setAnimation(graduallyAppear);
         }, [500]);
       }
     }, [6000]);
@@ -133,7 +136,7 @@ const HomePage = () => {
               </motion.div>
             );
           }
-        })} 
+        })}
         <HeroSection>
           <Text fontSize="75px">
             <h3 className="font-bold">
@@ -142,7 +145,10 @@ const HomePage = () => {
           </Text>
           <Text>Luxury is a mindset, KDE is all you need.</Text>
           <div className="btn">
-            <motion.button onClick={handleExploreButtonClick} animate={exploreAnimation}>
+            <motion.button
+              onClick={handleExploreButtonClick}
+              animate={exploreAnimation}
+            >
               Explore
             </motion.button>
             <button className="btn_app">Download App</button>
@@ -185,14 +191,20 @@ const HomePage = () => {
           </div>
 
           <div className="textContent">
-            <h3 className="md:font-bold md:text-lg font-semibold text-base">Get To Know Us</h3>
-            <p className="p">
-              Every Brand have an interesting story to tell.
-            </p>
-            <p className="p mt-[-0.7em]">Find out more about
-              us.</p>
+            <h3 className="md:font-bold md:text-lg font-semibold text-base">
+              Get To Know Us
+            </h3>
+            <p className="p">Every Brand have an interesting story to tell.</p>
+            <p className="p mt-[-0.7em]">Find out more about us.</p>
 
-            <MainButton onClick={() => navigate('/about')} color="black" width='120px' padding='24px 12px'>READ MORE</MainButton>
+            <MainButton
+              onClick={() => navigate("/about")}
+              color="black"
+              width="120px"
+              padding="24px 12px"
+            >
+              READ MORE
+            </MainButton>
           </div>
 
           <div className="coffee image md:hidden block">
@@ -208,15 +220,33 @@ const HomePage = () => {
             <p>Let’s keep you updated with what’s trending inLuxury.</p>
 
             <div className="flex">
-              <input type="email" placeholder="E-mail" className="mr-4 focus:outline-theme-color" onChange={(e) => setValue({ ...value, email: e.target.value })} />
+              <input
+                type="email"
+                placeholder="E-mail"
+                className="mr-4 focus:outline-theme-color"
+                onChange={(e) => setValue({ ...value, email: e.target.value })}
+              />
 
-              {
-                value['email'] === '' && <MainButton width='132px' color="black" className=" cursor-not-allowed" padding='24px 12px'>SUBSCRIBE</MainButton>
-              }
-              {
-                value['email'].length > 0 && <MainButton width='132px' color="black" padding='24px 12px' onClick={() => subscribe()}>SUBSCRIBE</MainButton>
-              }
-
+              {value["email"] === "" && (
+                <MainButton
+                  width="132px"
+                  color="black"
+                  className=" cursor-not-allowed"
+                  padding="24px 12px"
+                >
+                  SUBSCRIBE
+                </MainButton>
+              )}
+              {value["email"].length > 0 && (
+                <MainButton
+                  width="132px"
+                  color="black"
+                  padding="24px 12px"
+                  onClick={() => subscribe()}
+                >
+                  SUBSCRIBE
+                </MainButton>
+              )}
             </div>
           </div>
 
@@ -229,27 +259,25 @@ const HomePage = () => {
       <BlogContainer>
         <div className="lt">Latest Blogs</div>
         <div className="blogrw">
-          <Scroller id='blog'>
-            {
-              BlogContent.map((blog, i) => {
-                return (
-                  <>
-                    <Blog key={i}>
-                      <div className="image">
-                        <img src={blog.img} alt="blog" />
-                      </div>
-                      <div className="topic">
-                        <p>{blog.topic}</p>
-                      </div>
-                      <div className="more">
-                        <p>Learn more</p>
-                        <ImArrowUpRight2 size="15px" color="#F2BE5C" />
-                      </div>
-                    </Blog>
-                  </>
-                )
-              })
-            }
+          <Scroller id="blog">
+            {BlogContent.map((blog, i) => {
+              return (
+                <>
+                  <Blog key={i}>
+                    <div className="image">
+                      <img src={blog.img} alt="blog" />
+                    </div>
+                    <div className="topic">
+                      <p>{blog.topic}</p>
+                    </div>
+                    <div className="more">
+                      <p>Learn more</p>
+                      <ImArrowUpRight2 size="15px" color="#F2BE5C" />
+                    </div>
+                  </Blog>
+                </>
+              );
+            })}
           </Scroller>
         </div>
       </BlogContainer>
