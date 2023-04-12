@@ -16,19 +16,19 @@ const categories = [
         bg: c4,
         title: "Daycation",
         other: "Get the ultimate VIP experience with our Concierge Weekends service. Whether you’re looking to relax or explore",
-        link: "/luxury-service/pricing"
+        link: "/luxury-service/pricing/daycation"
     },
     {
         bg: c6,
         title: "Boat Cruises",
         other: "Set sail on an unforgettable adventure with our Boat Cruises. Whether you,re looking for a romantic getaw",
-        link: "/luxury-service/pricing"
+        link: "/luxury-service/pricing/boat-cruise"
     },
     {
         bg: c3,
         title: "Chauffeur-Driven Services",
         other: "Get the ultimate VIP experience with our Concierge Weekends service. Whether you’re looking to relax or explore",
-        link: "/luxury-service/pricing"
+        link: "/luxury-service/pricing/chauffeur-driven"
     },
     {
         bg: c1,
