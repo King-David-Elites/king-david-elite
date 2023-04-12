@@ -2,13 +2,13 @@ import axios from "axios";
 import globalApi from "../../../api";
 import services from "../../../ioc/services";
 
-const BASEURL = "https://kde.cyclic.app";
+const BASEURL = "https://king-david-elites.onrender.com";
 
 // """http://localhost:9099"
 
 export const login = async (userDetails) => {
   try {
-    const res = await axios.post(`${BASEURL}/users/sign-in`, userDetails);
+    const res = await axios.post(`${BASEURL}/users/sign-in`, userDetails);    
     // res.data.data.authToken = res.headers.token;
     return res.data;
   } catch (err) {
