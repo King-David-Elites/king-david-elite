@@ -13,7 +13,6 @@ import { useRef } from "react";
 const Pricing = ({ active = 6 }) => {
   const [activeNav, setActiveNav] = useState(false);
   const dispatch = useDispatch();
-  const position = useRef(null);
 
   const showMenu = () => {
     setActiveNav(!activeNav);
