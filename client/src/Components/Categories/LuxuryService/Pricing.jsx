@@ -11,7 +11,7 @@ import kde_blackBg from "../../Navbar/Image/kde_whiteBg.png";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const Pricing = ({ active = 6 }) => {
-  const { id } = useParams();  
+  const { id } = useParams();
   const chauffeurRide = useRef(null);
   const dayCation = useRef(null);
   const boatCruise = useRef(null);
@@ -25,13 +25,13 @@ const Pricing = ({ active = 6 }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(String(id) === "dayCation"){
+    if (String(id) === "dayCation") {
       scrollToRef(dayCation)
     }
-    else if(String(id) === "chauffeur-driven"){
+    else if (String(id) === "chauffeur-driven") {
       scrollToRef(chauffeurRide)
     }
-    else if(String(id) === "boat-cruise"){
+    else if (String(id) === "boat-cruise") {
       scrollToRef(boatCruise)
     }
   }, []);
@@ -438,8 +438,9 @@ const Pricing = ({ active = 6 }) => {
       </Header>
 
       <div className="w-full h-full p-4 md:hidden flex flex-col gap-4">
-        <h3 className="text-center text-[15px] font-semibold md:text-[19px] tracking-wide">
-          Daycation ( 24 HOURS OF BLISS)
+        <h3 className="text-center text-[15px] font-bold md:text-[19px] tracking-wide"
+          ref={dayCation}>
+          DAYCATION ( 24 HOURS OF BLISS)
         </h3>
 
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
@@ -575,11 +576,11 @@ const Pricing = ({ active = 6 }) => {
         </div>
 
         <h3
-          className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide"
+          className="text-center text-[15px] mt-5 font-bold md:text-[19px] tracking-wide"
           id="chauffeurRide"
           ref={chauffeurRide}
         >
-          Chauffeur Rides (THE COMFORT ZONE)
+          CHAUFFEUR RIDES (THE COMFORT ZONE)
         </h3>
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
           <p className="text-[20px] font-extrabold">
@@ -678,8 +679,9 @@ const Pricing = ({ active = 6 }) => {
           </MainButton>
         </div>
 
-        <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide" ref={boatCruise}>
-          Boat Cruises ( The Aqua Way)
+        <h3 className="text-center text-[15px] mt-5 font-bold md:text-[19px] tracking-wide" id="boatCruise"
+          ref={boatCruise}>
+          BOAT CRUISES ( THE AQUA WAY)
         </h3>
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
           <p className="text-[15px] font-semibold mb-1">
