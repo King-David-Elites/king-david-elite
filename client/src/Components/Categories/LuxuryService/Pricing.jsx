@@ -11,7 +11,7 @@ import kde_blackBg from "../../Navbar/Image/kde_whiteBg.png";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const Pricing = ({ active = 6 }) => {
-  const { id } = useParams();  
+  const { id } = useParams();
   const chauffeurRide = useRef(null);
   const chauffeurRidem = useRef(null);
   const dayCation = useRef(null);
@@ -20,7 +20,6 @@ const Pricing = ({ active = 6 }) => {
   const boatCruisem = useRef(null);
   const [activeNav, setActiveNav] = useState(false);
   const dispatch = useDispatch();
-  const position = useRef(null);
 
   const showMenu = () => {
     setActiveNav(!activeNav);
@@ -270,7 +269,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 6,
-      name: "Home/Walk in Session (3) ",
+      name: "Home/Walk in Session (4) ",
     },
     {
       id: 7,
@@ -301,7 +300,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 6,
-      name: "Home/Walk In Session(4)",
+      name: "Home/Walk In Session(6)",
     },
     {
       id: 7,
@@ -462,7 +461,7 @@ const Pricing = ({ active = 6 }) => {
               Luxury Accomodation: 1 Bedroom Apartment
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Exquisite Meals: 1 Standard Meal
+              Exquisite Meals: 3 Standard Meal
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Gaming Adventures: Adventure for 2{" "}
@@ -506,7 +505,7 @@ const Pricing = ({ active = 6 }) => {
               Luxury Accomodation: 2 Bedroom Apartment
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Exquisite Meals: 2 Standard Meals
+              Exquisite Meals: 3 Standard Meals
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Gaming Adventures: Adventure for 4{" "}
@@ -515,7 +514,7 @@ const Pricing = ({ active = 6 }) => {
               Boat Cruise: 10 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Spa: Home/Walk In Session (3)
+              Spa: Home/Walk In Session (4)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               2 bottles of Isolabella Della Croce (ALC) OR 4 bottles of Blue Nun
@@ -559,7 +558,7 @@ const Pricing = ({ active = 6 }) => {
               Boat Cruise: 12 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Spa: Home/Walk In Session (4)
+              Spa: Home/Walk In Session (6)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               2 bottles of Moet Imperial Brut (ALC) OR 6 bottles of Blue Nun
@@ -581,11 +580,11 @@ const Pricing = ({ active = 6 }) => {
         </div>
 
         <h3
-          className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide"
+          className="text-center text-[15px] mt-5 font-bold md:text-[19px] tracking-wide"
           id="chauffeurRide"
           ref={chauffeurRidem}
         >
-          Chauffeur Rides (THE COMFORT ZONE)
+          CHAUFFEUR RIDES (THE COMFORT ZONE)
         </h3>
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
           <p className="text-[20px] font-extrabold">
@@ -777,7 +776,7 @@ const Pricing = ({ active = 6 }) => {
 
           <div className="mt-5">
             <p className="text-[13px] font-semibold mb-1">
-              Boat Size: 12 Passenger Mini Yacht
+              Boat Size: 15 Passenger Mini Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Duration: 3 Hours Cruise
