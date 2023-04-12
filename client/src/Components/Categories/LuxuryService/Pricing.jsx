@@ -457,7 +457,7 @@ const Pricing = ({ active = 6 }) => {
               Luxury Accomodation: 1 Bedroom Apartment
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Exquisite Meals: 1 Standard Meal
+              Exquisite Meals: 3 Standard Meal
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Gaming Adventures: Adventure for 2{" "}
@@ -501,7 +501,7 @@ const Pricing = ({ active = 6 }) => {
               Luxury Accomodation: 2 Bedroom Apartment
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Exquisite Meals: 2 Standard Meals
+              Exquisite Meals: 3 Standard Meals
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Gaming Adventures: Adventure for 4{" "}
