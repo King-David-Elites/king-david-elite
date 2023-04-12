@@ -263,7 +263,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 6,
-      name: "Home/Walk in Session (3) ",
+      name: "Home/Walk in Session (4) ",
     },
     {
       id: 7,
@@ -294,7 +294,7 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 6,
-      name: "Home/Walk In Session(4)",
+      name: "Home/Walk In Session(6)",
     },
     {
       id: 7,
@@ -509,7 +509,7 @@ const Pricing = ({ active = 6 }) => {
               Boat Cruise: 10 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Spa: Home/Walk In Session (3)
+              Spa: Home/Walk In Session (4)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               2 bottles of Isolabella Della Croce (ALC) OR 4 bottles of Blue Nun
@@ -553,7 +553,7 @@ const Pricing = ({ active = 6 }) => {
               Boat Cruise: 12 Passenger Mini-Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
-              Spa: Home/Walk In Session (4)
+              Spa: Home/Walk In Session (6)
             </p>
             <p className="text-[13px] font-semibold mb-1">
               2 bottles of Moet Imperial Brut (ALC) OR 6 bottles of Blue Nun
@@ -771,7 +771,7 @@ const Pricing = ({ active = 6 }) => {
 
           <div className="mt-5">
             <p className="text-[13px] font-semibold mb-1">
-              Boat Size: 12 Passenger Mini Yacht
+              Boat Size: 15 Passenger Mini Yacht
             </p>
             <p className="text-[13px] font-semibold mb-1">
               Duration: 3 Hours Cruise
