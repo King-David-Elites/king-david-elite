@@ -13,8 +13,11 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const Pricing = ({ active = 6 }) => {
   const { id } = useParams();  
   const chauffeurRide = useRef(null);
+  const chauffeurRidem = useRef(null);
   const dayCation = useRef(null);
+  const dayCationm = useRef(null);
   const boatCruise = useRef(null);
+  const boatCruisem = useRef(null);
   const [activeNav, setActiveNav] = useState(false);
   const dispatch = useDispatch();
   const position = useRef(null);
@@ -27,13 +30,16 @@ const Pricing = ({ active = 6 }) => {
 
   useEffect(() => {
     if(String(id) === "dayCation"){
-      scrollToRef(dayCation)
+      window.innerWidth > 768 && scrollToRef(dayCation)      
+      window.innerWidth < 768 && scrollToRef(dayCationm)
     }
     else if(String(id) === "chauffeur-driven"){
-      scrollToRef(chauffeurRide)
+      window.innerWidth > 768 && scrollToRef(chauffeurRide)
+      window.innerWidth < 768 && scrollToRef(chauffeurRidem)
     }
     else if(String(id) === "boat-cruise"){
-      scrollToRef(boatCruise)
+      window.innerWidth > 768 && scrollToRef(boatCruise)
+      window.innerWidth < 768 && scrollToRef(boatCruisem)
     }
   }, []);
 
@@ -167,7 +173,7 @@ const Pricing = ({ active = 6 }) => {
   const boatCruiseDiamondOption = [
     {
       id: 1,
-      name: "12 Passenger Mini Yacht",
+      name: "10 Passenger Mini Yacht",
     },
     {
       id: 2,
@@ -190,7 +196,7 @@ const Pricing = ({ active = 6 }) => {
   const boatCruisePlatinumOption = [
     {
       id: 1,
-      name: "15 Passenger Mini Yacht",
+      name: "12 Passenger Mini Yacht",
     },
     {
       id: 2,
@@ -369,8 +375,7 @@ const Pricing = ({ active = 6 }) => {
         className="bg-cover"
         bg="white"
         sticky="static"
-        color="black"
-        ref={dayCation}
+        color="black"        
       >
         <nav className={activeNav ? "navigation active" : "navigation"}>
           <ul>
@@ -439,7 +444,7 @@ const Pricing = ({ active = 6 }) => {
       </Header>
 
       <div className="w-full h-full p-4 md:hidden flex flex-col gap-4">
-        <h3 className="text-center text-[15px] font-semibold md:text-[19px] tracking-wide">
+        <h3 className="text-center text-[15px] font-semibold md:text-[19px] tracking-wide" ref={dayCationm}>
           Daycation ( 24 HOURS OF BLISS)
         </h3>
 
@@ -578,7 +583,7 @@ const Pricing = ({ active = 6 }) => {
         <h3
           className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide"
           id="chauffeurRide"
-          ref={chauffeurRide}
+          ref={chauffeurRidem}
         >
           Chauffeur Rides (THE COMFORT ZONE)
         </h3>
@@ -679,7 +684,7 @@ const Pricing = ({ active = 6 }) => {
           </MainButton>
         </div>
 
-        <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide" ref={boatCruise}>
+        <h3 className="text-center text-[15px] mt-5 font-semibold md:text-[19px] tracking-wide" ref={boatCruisem}>
           Boat Cruises ( The Aqua Way)
         </h3>
         <div className="bg-[#F2F2F2] rounded-lg flex-col gap-3 py-4 px-6">
@@ -725,7 +730,7 @@ const Pricing = ({ active = 6 }) => {
 
         <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
           <p className="text-[15px] font-semibold mb-1">
-            Diamond ( 12 people max )
+            Diamond ( 10 people max )
           </p>
           <p className="text-[20px] font-extrabold">&#8358;1,000,000</p>
 
@@ -766,7 +771,7 @@ const Pricing = ({ active = 6 }) => {
 
         <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
           <p className="text-[15px] font-semibold mb-1">
-            Platinum ( 15 people max )
+            Platinum ( 12 people max )
           </p>
           <p className="text-[20px] font-extrabold">&#8358;1,500,000</p>
 
