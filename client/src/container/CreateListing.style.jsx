@@ -60,6 +60,8 @@ export const ListingForm = styled.div`
     padding: 0.5em;
     margin-top: 2em;
 
+    
+
     p {
       font-weight: 600;
       margin: 0.5em 0em;

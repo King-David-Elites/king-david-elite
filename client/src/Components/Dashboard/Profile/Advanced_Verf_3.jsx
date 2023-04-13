@@ -71,7 +71,7 @@ const Advanced_Verf_3 = (props) => {
     console.log("verification started ...");
     await axios
       .patch(`${globalApi}/users/verify`, verificationData, setConfig())
-      .then((resp) => {
+      .then((resp) => {        
         setVerified(true);
       })
       .catch((err) => {
@@ -108,19 +108,17 @@ const Advanced_Verf_3 = (props) => {
     <>
       {pop && (
         <>
-          <div
-            className="fixed w-full h-[100%] top-0 left-0 bg-transparent flex justify-center items-center"
+         <div
+            className="fixed w-full z-50 h-[100%] top-0 left-0 flex justify-center items-center"
+            style={{background:"rgba(0,0,0,0.5"}}
             onClick={() => {
               setPop(false);
             }}
           >
-            <div className="absolute md:w-1/3 md:h-1/3 w-2/3 h-1/3 bg-[#F2BE5C] flex justify-center rounded-xl items-center">
+            <div className="md:w-1/3 md:h-1/3 w-2/3 h-1/4 bg-[white] flex justify-center rounded-xl items-center">
               <div className="flex flex-col justify-center items-center p-5">
                 <p className="text-xl text-center font-bold">
-                  Ooops!! looks like you have a Network Error, Please click on
-                  the{" "}
-                  <span className="text-white block">Begin-Verification</span>{" "}
-                  Button Again.
+                  Seems there is a connection error. <span className="text-[#F2BE5C] block">please try again!</span>
                 </p>
               </div>
             </div>
