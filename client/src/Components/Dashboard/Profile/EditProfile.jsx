@@ -29,6 +29,7 @@ import {
 const EditProfile = ({ mainData }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [popUp, setPopUp] = useState(false);
   const activeOption = location.pathname.split("/")[2];
   const isEdit = activeOption == "edit";
   const [editUserProfile, setEditUserProfile] = useState();
@@ -37,7 +38,7 @@ const EditProfile = ({ mainData }) => {
   const [loader, setLoader] = useState(false);
   const [stateData, setStateData] = useState([]);
   const [cityData, setCityData] = useState([]);
-  const [locationISO,setLocationISO] = useState("");
+  const [locationISO, setLocationISO] = useState(mainData.userData.locationISO);
   const [isos, setIsos] = useState({
     countryIso:
       mainData.userData.locationISO.length > 0
@@ -74,6 +75,8 @@ const EditProfile = ({ mainData }) => {
     firstName: mainData.userData.firstName,
     lastName: mainData.userData.lastName,
     email: mainData.userData.email,
+    phoneNumber1:mainData.userData.phoneNumber1,
+    phoneNumber2:mainData.userData.phoneNumber2,
     about: mainData.userData.about,
     websiteURL: mainData.userData.websiteUrl,
     facebookURL: mainData.userData.facebookUrl,
@@ -87,27 +90,27 @@ const EditProfile = ({ mainData }) => {
     zipCode: mainData.userData.zipCode,
   });
 
-  const comapanyInitialValues = {
-    companyName: "",
-    websiteURL: "",
-    facebookURL: "",
-    instagramURL: "",
-    address1: "",
-    address2: "",
-    country: "",
-    state: "",
-    city: "",
-    zipCode: "",
-    email: "",
-    alternativeEmail: "",
-    phone1: "",
-    phone2: "",
-    cover: file || null,
-  };
+  // const comapanyInitialValues = {
+  //   companyName: "",
+  //   websiteURL: "",
+  //   facebookURL: "",
+  //   instagramURL: "",
+  //   address1: "",
+  //   address2: "",
+  //   country: "",
+  //   state: "",
+  //   city: "",
+  //   zipCode: "",
+  //   email: "",
+  //   alternativeEmail: "",
+  //   phone1: "",
+  //   phone2: "",
+  //   cover: file || null,
+  // };
 
-  const onCompanySubmit = (values) => {
-    console.log("data", values);
-  };
+  // const onCompanySubmit = (values) => {
+  //   console.log("data", values);
+  // };
 
   const validate = (values) => {
     let errors = {};
@@ -135,6 +138,9 @@ const EditProfile = ({ mainData }) => {
       lastName: values.lastName?.trim(),
       cover: values.cover?.trim(),
       about: values?.about,
+      email: values.email,
+      phoneNumber1:values.phoneNumber1,
+      phoneNumber2:values.phoneNumber2,
       websiteUrl: values.websiteURL?.trim(),
       facebookUrl: values.facebookURL?.trim(),
       instagramUrl: values.instagramURL?.trim(),
@@ -158,6 +164,8 @@ const EditProfile = ({ mainData }) => {
         })
         .catch((error) => {
           console.log(error);
+          setLoader(false);
+          setPopUp(true);
         });
     }
   };
@@ -182,7 +190,9 @@ const EditProfile = ({ mainData }) => {
     setCityData([]);
     setIsos({ ...isos, countryIso: countryObject["iso2"] });
     getStates(countryObject["iso2"], setStateData);
-    setLocationISO(`${isos["cityId"]}#${isos["stateIso"]}#${countryObject["iso2"]}`)
+    setLocationISO(
+      `${isos["cityId"]}#${isos["stateIso"]}#${countryObject["iso2"]}`
+    );
   };
 
   const getStateISO = (name) => {
@@ -190,13 +200,17 @@ const EditProfile = ({ mainData }) => {
     setCityData([]);
     setIsos({ ...isos, stateIso: stateObject["iso2"] });
     getCities(isos["countryIso"], stateObject["iso2"], setCityData);
-    setLocationISO(`${isos["cityId"]}#${stateObject["iso2"]}#${isos["countryIso"]}`)    
+    setLocationISO(
+      `${isos["cityId"]}#${stateObject["iso2"]}#${isos["countryIso"]}`
+    );
   };
 
   const getCityId = (name) => {
     var cityObject = cityData.find((city) => city.name === name);
     setIsos({ ...isos, cityId: cityObject["id"] });
-    setLocationISO(`${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`)    
+    setLocationISO(
+      `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`
+    );
   };
 
   const formik = useFormik({
@@ -205,14 +219,33 @@ const EditProfile = ({ mainData }) => {
     validate,
   });
 
-  const companyFormik = useFormik({
-    comapanyInitialValues,
-    onCompanySubmit,
-  });
+  // const companyFormik = useFormik({
+  //   comapanyInitialValues,
+  //   onCompanySubmit,
+  // });
 
   return (
     <>
       {loader && <Loader />}
+      {popUp && (
+        <>
+          <div
+            className="fixed w-full z-50 h-[100%] top-0 left-0 flex justify-center items-center"
+            style={{background:"rgba(0,0,0,0.5"}}
+            onClick={() => {
+              setPopUp(false);
+            }}
+          >
+            <div className="md:w-1/3 md:h-1/3 w-2/3 h-1/4 bg-[white] flex justify-center rounded-xl items-center">
+              <div className="flex flex-col justify-center items-center p-5">
+                <p className="text-xl text-center font-bold">
+                  Seems there is a connection error. <span className="text-[#F2BE5C] block">please try again!</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <Return link="/profile" />
       <EditProfileContainer padding="12px 12px">
         <div className="content-text">
@@ -381,7 +414,7 @@ const EditProfile = ({ mainData }) => {
                   ) : null}
                 </div>
                 <div className="sub-dropdown space">
-                  {mainData.userData.locationISO.length > 0 ? (
+                  {stateData.length > 0 && (
                     <>
                       <label htmlFor="state">
                         State <span className="text-[red]">*</span>
@@ -418,44 +451,13 @@ const EditProfile = ({ mainData }) => {
                         </div>
                       ) : null}
                     </>
-                  ) : (
-                    <>
-                      {stateData.length > 0 && (
-                        <>
-                          <label htmlFor="state">
-                            State <span className="text-[red]">*</span>
-                          </label>
-                          <select
-                            name="state"
-                            onChange={handleChanging}
-                            className="select"
-                          >
-                            <option value="State">None</option>
-                            {stateData?.map((state) => {
-                              return (
-                                <>
-                                  <option key={state.id} value={state.name}>
-                                    {state.name}
-                                  </option>
-                                </>
-                              );
-                            })}
-                          </select>
-                          {formik.errors.state ? (
-                            <div className=" text-[red] opacity-40">
-                              {formik.errors.state}
-                            </div>
-                          ) : null}
-                        </>
-                      )}
-                    </>
                   )}
                 </div>
               </div>
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
-                  {mainData.userData.locationISO.length > 0 ? (
+                  {cityData.length > 0 && (
                     <>
                       <label htmlFor="city">
                         City <span className=" text-[red]">*</span>
@@ -492,37 +494,6 @@ const EditProfile = ({ mainData }) => {
                         </div>
                       ) : null}
                     </>
-                  ) : (
-                    <>
-                      {cityData.length > 0 && (
-                        <>
-                          <label htmlFor="city">
-                            City <span className=" text-[red]">*</span>
-                          </label>
-                          <select
-                            name="city"
-                            onChange={handleChanging}
-                            className="select"
-                          >
-                            <option value="City">None</option>
-                            {cityData?.map((city) => {
-                              return (
-                                <>
-                                  <option key={city.id} value={city.name}>
-                                    {city.name}
-                                  </option>
-                                </>
-                              );
-                            })}
-                          </select>
-                          {formik.errors.city ? (
-                            <div className=" text-[red] opacity-40">
-                              {formik.errors.city}
-                            </div>
-                          ) : null}
-                        </>
-                      )}
-                    </>
                   )}
                 </div>
                 <div className="sub-dropdown space">
@@ -552,7 +523,7 @@ const EditProfile = ({ mainData }) => {
 
           <div className="form2">
             <h3>Contact Information</h3>
-            <form method="post" onClick={formik.handleSubmit}>
+            <form method="post" onSubmit={formik.handleSubmit}>
               <label htmlFor="email" className="space">
                 Email
               </label>
@@ -562,7 +533,7 @@ const EditProfile = ({ mainData }) => {
                 className="input"
                 name="email"
                 value={formik.values.email}
-                onChange={formik.handleChange}
+                onChange={handleChanging}
               />
               {formik.errors.email ? (
                 <div className=" text-[red] opacity-40">
@@ -572,23 +543,23 @@ const EditProfile = ({ mainData }) => {
 
               <div className="dropdown">
                 <div className="sub-dropdown space">
-                  <label htmlFor="phone1">Phone 1</label>
+                  <label htmlFor="phoneNumber1">Phone 1</label>
                   <input
-                    type="text"
+                    type="number"
                     className="input"
-                    name="phone1"
-                    value={formik.values.phone1}
-                    onChange={formik.handleChange}
+                    name="phoneNumber1"
+                    value={formik.values.phoneNumber1}
+                    onChange={handleChanging}
                   />
                 </div>
                 <div className="sub-dropdown space">
-                  <label htmlFor="phone2">Phone 2</label>
+                  <label htmlFor="phoneNumber2">Phone 2</label>
                   <input
-                    type="text"
+                    type="number"
                     className="input"
-                    name="phone2"
-                    value={formik.values.phone2}
-                    onChange={formik.handleChange}
+                    name="phoneNumber2"
+                    value={formik.values.phoneNumber2}
+                    onChange={handleChanging}
                   />
                 </div>
               </div>
