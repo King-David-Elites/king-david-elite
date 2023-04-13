@@ -172,7 +172,7 @@ const Pricing = ({ active = 6 }) => {
   const boatCruiseDiamondOption = [
     {
       id: 1,
-      name: "10 Passenger Mini Yacht",
+      name: "12 Passenger Mini Yacht",
     },
     {
       id: 2,
@@ -195,7 +195,7 @@ const Pricing = ({ active = 6 }) => {
   const boatCruisePlatinumOption = [
     {
       id: 1,
-      name: "12 Passenger Mini Yacht",
+      name: "15 Passenger Mini Yacht",
     },
     {
       id: 2,
@@ -1079,10 +1079,10 @@ const Pricing = ({ active = 6 }) => {
             Silver ( 8 people max )
           </p>
           <p className="w-1/4 text-neutral-color font-medium text-[16px]">
-            Diamond ( 12 people max )
+            Diamond ( 10 people max )
           </p>
           <p className="w-1/4 text-neutral-color font-medium text-[16px]">
-            Platinum ( 15 people max )
+            Platinum ( 12 people max )
           </p>
         </div>
 
