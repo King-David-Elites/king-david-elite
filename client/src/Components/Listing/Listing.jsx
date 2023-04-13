@@ -22,6 +22,7 @@ const Listing = ({ list, type }) => {
       .patch(`${globalApi}/listings/save/${id}`, id, setConfig())
       .then((resp) => {
         if (resp.data.status === 1) {
+          console.log(resp.data)
           services.toast.success("You liked this post");
         }
       })

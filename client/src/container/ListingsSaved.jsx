@@ -3,7 +3,7 @@ import { LastContainer } from "./ListingsSaved.Style";
 import theme from "../application/utils/Theme";
 import axios from "axios";
 import globalApi from "../api";
-import { setConfig } from "../infrastructure/api/user/userRequest";
+import { setConfig, getUser } from "../infrastructure/api/user/userRequest";
 import { GridContainer } from "../Components/Listing/Listing.styled";
 import Listing from "../Components/Listing/Listing";
 import { useState } from "react";
@@ -11,10 +11,13 @@ import { useGetUserDetails } from "../application/hooks/queryhooks";
 import { SpinnerCircular } from "spinners-react";
 import notFound from "../Components/Categories/MediaView/notFound.png";
 
+const GetUserDetails = () => {
+  return useGetUserDetails()
+};
+
 export default function ListingsSaved() {
-  const data = useGetUserDetails();
   const [loading, setLoading] = useState(true);
-  const [savedListings, setSavedListings] = useState([]);
+  const [savedListings, setSavedListings] = useState([]);  
 
   const getAList = async (id) => {
     try {
@@ -27,6 +30,8 @@ export default function ListingsSaved() {
 
   const getSavedListings = async () => {
     const mockListings = [];
+    await getUser();
+    const data = await GetUserDetails();
     for (let i = 0; i < data.savedListing.length; i++) {
       let list = await getAList(data.savedListing[i]);
       console.log(list.data);
