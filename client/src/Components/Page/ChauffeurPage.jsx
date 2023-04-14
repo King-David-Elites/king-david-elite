@@ -64,7 +64,7 @@ const ChauffeurPage = ({ mainData }) => {
     };
 
     const securityOptions = [
-        { value: "Yes", label: "Yes", price: 100000 },
+        { value: "Yes", label: "Yes", price: 50000 },
         { value: "No", label: "No", price: 0 },
     ];
 
@@ -79,7 +79,7 @@ const ChauffeurPage = ({ mainData }) => {
     };
 
     const exortOptions = [
-        { value: "Yes1", label: "Yes", price: 50000 },
+        { value: "Yes1", label: "Yes", price: 100000 },
         { value: "No1", label: "No", price: 0 },
     ];
 
@@ -537,7 +537,7 @@ const ChauffeurPage = ({ mainData }) => {
                                                             setPrice(price + option.price);
                                                         }
                                                         else if (option.price === 0) {
-                                                            setPrice(price - 100000)
+                                                            setPrice(price - 50000)
                                                         }
                                                     }
                                                     }
@@ -571,7 +571,7 @@ const ChauffeurPage = ({ mainData }) => {
                                                             setPrice(price + option.price);
                                                         }
                                                         else if (option.price === 0) {
-                                                            setPrice(price - 50000)
+                                                            setPrice(price - 100000)
                                                         }
                                                     }
                                                     }
