@@ -94,7 +94,7 @@ const EachCars = ({ active }) => {
     <Fragment>
       <Navbar active={2} />
 
-      <EachContainer ref={top}>
+      <EachContainer ref={top}>      
         {loading ? (
           <>
             <div className="loader">
