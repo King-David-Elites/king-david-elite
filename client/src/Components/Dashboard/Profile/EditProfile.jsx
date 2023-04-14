@@ -25,8 +25,10 @@ import {
   getStates,
   getCities,
 } from "../../../infrastructure/api/user/userRequest";
+import useContextAPI from "../../ContextAPI/ContextAPI";
 
-const EditProfile = ({ mainData }) => {
+const EditProfile = () => {
+  const mainData = useContextAPI();
   const navigate = useNavigate();
   const location = useLocation();
   const [popUp, setPopUp] = useState(false);
@@ -158,8 +160,7 @@ const EditProfile = ({ mainData }) => {
         .then((res) => {
           localStorage.setItem("user", JSON.stringify(res.data));
           setEditUserProfile(res.data);
-          setLoader(false);
-          window.location.reload();
+          setLoader(false);          
           navigate("/profile");
         })
         .catch((error) => {
