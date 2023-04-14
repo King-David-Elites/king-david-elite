@@ -147,7 +147,7 @@ const EachCollectible = () => {
           <>
             <div className="titles">
               <h3>{property.title}</h3>
-              <h4>&#x20A6; {property.price}</h4>
+              <h4>&#x20A6; {property.price.toLocaleString()}</h4>
             </div>
 
             <div className="images">
