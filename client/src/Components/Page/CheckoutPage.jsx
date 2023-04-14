@@ -12,6 +12,7 @@ const CheckoutPage = ({ mainData }) => {
     const conciergeVacation = useSelector(state => state.user.conciergeVacation);
     const plan = useSelector(state => state.user.status);
     const chauffeurTotal = chauffeurRide?.data?.price + chauffeurRide?.data?.vehiclePrice;
+    console.log(boatCruise)
 
     return (
         <>
@@ -135,6 +136,7 @@ const CheckoutPage = ({ mainData }) => {
                                 <p>Pickup Time: {boatCruise.data.time}</p>
                                 <p>Meal Preference: {boatCruise.data.mealPreference.substring(1)}</p>
                                 <p>Drink Preference: {boatCruise.data.drinkingPreference.substring(1)}</p>
+                                <p>Onboard Games + Host: {boatCruise.data.host}</p>
                             </div>
                             {
                                 boatCruise.data.message !== '' && <div className="border-b-2 mb-4">

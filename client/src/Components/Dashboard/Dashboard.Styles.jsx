@@ -339,7 +339,6 @@ export const MessagesContainer = styled.div`
   border-radius: 8px;
   height: 80vh;
   width: auto;
-  border: 2px solid red;
 
   .listOfMessages {
     border-right: 2px solid lightgray;
@@ -361,6 +360,7 @@ export const MessagesContainer = styled.div`
 
     .messages {
       display: grid;
+      
     }
 
     .message {
@@ -472,7 +472,6 @@ export const ProfileContainer = styled.div`
 
     @media (min-width: ${theme.breakPoint["tablet"]}) {
       width: 60%;
-      border: 2px solid red;
     }
   }
   .rightSection > .closeField {

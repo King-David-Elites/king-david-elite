@@ -17,6 +17,7 @@ import {
     setLuxuryServiceType,
 } from "../../application/store/actions/user";
 import DisableButton from "../buttons/DisabledButton";
+import { RadioField } from "../inputs/RadioInput";
 
 const BoatCruisePage = ({ mainData }) => {
     const { id } = useParams();
@@ -40,6 +41,13 @@ const BoatCruisePage = ({ mainData }) => {
         })
     }, [])
 
+    const hostOptions = [
+        { value: "Yes", label: "Yes", price: 50000 },
+        { value: "No", label: "No", price: 0 },
+    ];
+
+    const [hostOption, setHostOption] = useState(hostOptions[1].value);
+
 
     useEffect(() => {
         if (String(id) === "silver") {
@@ -61,6 +69,7 @@ const BoatCruisePage = ({ mainData }) => {
         date: "",
         drinkingPreference: "",
         mealPreference: "",
+        host: "",
         message: "",
     };
 
@@ -89,7 +98,6 @@ const BoatCruisePage = ({ mainData }) => {
     });
 
     const validationSchema = Yup.object().shape({
-        status: Yup.string().oneOf(["silver", "diamond", "platinum"]),
         emergencyContactNumber: Yup.string().required(
             "Emergency Number is required"
         ),
@@ -188,6 +196,7 @@ const BoatCruisePage = ({ mainData }) => {
             drinkingPreference: values.drinkingPreference,
             mealPreference: values.mealPreference,
             plan: status,
+            host: hostOption,
             message: values.message,
             price: price
         };
@@ -384,6 +393,33 @@ const BoatCruisePage = ({ mainData }) => {
                                             control={d.control}
                                         />
                                     ))}
+                                </div>
+
+                                <label className="font-bold text-[13px]" name="host">
+                                    Onboard Games + Host{" "}
+                                </label>
+                                <div name="host" className="flex gap-[4.5em]">
+                                    {hostOptions.map((label, key) => {
+                                        return <div key={key}>{label.label}</div>;
+                                    })}
+                                </div>
+                                <div className="md:w-[10%] mb-5">
+                                    <InputLayout name="host">
+                                        <div className="flex gap-[5em]">
+                                            {hostOptions.map((option) => (
+                                                <RadioField
+                                                    type="radio"
+                                                    id={option.value}
+                                                    name={option.value}
+                                                    value={option.value}
+                                                    checked={hostOption === option.value}
+                                                    onChange={(e) => 
+                                                        setHostOption(e.target.name)
+                                                    }
+                                                />
+                                            ))}
+                                        </div>
+                                    </InputLayout>
                                 </div>
 
                                 <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
