@@ -142,6 +142,10 @@ const Pricing = ({ active = 6 }) => {
     },
     {
       id: 5,
+      name: "ONBOARD SPA TREATMENT"
+    },
+    {
+      id: 6,
       name: "EXQUISITE ONBOARD MEALS",
     },
   ];
@@ -167,6 +171,10 @@ const Pricing = ({ active = 6 }) => {
       id: 5,
       name: "Available",
     },
+    {
+      id: 6,
+      name: "Available",
+    },
   ];
 
   const boatCruiseDiamondOption = [
@@ -190,6 +198,10 @@ const Pricing = ({ active = 6 }) => {
       id: 5,
       name: "Available",
     },
+    {
+      id: 6,
+      name: "Available",
+    }
   ];
 
   const boatCruisePlatinumOption = [
@@ -213,6 +225,10 @@ const Pricing = ({ active = 6 }) => {
       id: 5,
       name: "Available",
     },
+    {
+      id: 6,
+      name: "Available",
+    }
   ];
 
   const dayCationSilverplanOption = [
@@ -729,7 +745,7 @@ const Pricing = ({ active = 6 }) => {
 
         <div className="bg-[#FFECEC] rounded-lg flex-col gap-3 py-4 px-6">
           <p className="text-[15px] font-semibold mb-1">
-            Diamond ( 10 people max )
+            Diamond ( 12 people max )
           </p>
           <p className="text-[20px] font-extrabold">&#8358;1,000,000</p>
 
@@ -770,7 +786,7 @@ const Pricing = ({ active = 6 }) => {
 
         <div className="bg-[#333433] rounded-lg flex-col gap-3 py-4 px-6 text-white">
           <p className="text-[15px] font-semibold mb-1">
-            Platinum ( 12 people max )
+            Platinum ( 15 people max )
           </p>
           <p className="text-[20px] font-extrabold">&#8358;1,500,000</p>
 
@@ -1079,10 +1095,10 @@ const Pricing = ({ active = 6 }) => {
             Silver ( 8 people max )
           </p>
           <p className="w-1/4 text-neutral-color font-medium text-[16px]">
-            Diamond ( 10 people max )
+            Diamond ( 12 people max )
           </p>
           <p className="w-1/4 text-neutral-color font-medium text-[16px]">
-            Platinum ( 12 people max )
+            Platinum ( 15 people max )
           </p>
         </div>
 

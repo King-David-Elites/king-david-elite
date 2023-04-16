@@ -548,7 +548,7 @@ const ChauffeurPage = ({ mainData }) => {
                                 </div>
 
                                 <label className="font-bold text-[13px]" name="excortOption">
-                                    Request for excort:{" "}
+                                    Request for escort:{" "}
                                 </label>
                                 <div name="excortOption" className="flex gap-[4.5em]">
                                     {exortOptions.map((label, key) => {

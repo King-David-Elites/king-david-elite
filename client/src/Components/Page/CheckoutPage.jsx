@@ -92,7 +92,7 @@ const CheckoutPage = ({ mainData }) => {
                                 <p>Dropoff Location: {chauffeurRide.data.DropOffLocation}</p>
                                 <p>Pickup Location: {chauffeurRide.data.pickUpAddress}</p>
                                 <p>Security: <span>{chauffeurRide.data.security.toUpperCase()}</span></p>
-                                <p>Exort: <span>{chauffeurRide.data.exort.toUpperCase()}</span></p>
+                                <p>Escort: <span>{chauffeurRide.data.exort.toUpperCase()}</span></p>
                             </div>
                             {
                                 chauffeurRide.data.message !== '' && <div className="border-b-2 mb-4">
