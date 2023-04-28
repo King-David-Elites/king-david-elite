@@ -191,7 +191,7 @@ const CollectiblesListing = () => {
         )}
         <PaginationButtons
           range={[1, 2, 3]}
-          pagination={3}
+          pagination={12}
           page={page}
           setPage={setPage}
           loading={loading}
