@@ -1,230 +1,461 @@
-import { Form, Formik } from 'formik';
-import { FaRegStar } from 'react-icons/fa';
-import FormikControl from '../formik/FormikControl';
-import kde_blackBg from '../Navbar/Image/kde_whiteBg.png'
-import { useFormik } from "formik";
-import MainButton from '../buttons/MainButton';
-import { Link } from 'react-router-dom';
-import weekendEscape from '../Categories/LuxuryService/images/pics4.png'
-import InputLayout from '../inputs/InputLayout';
-import { InputField } from '../inputs/MainInput';
-import { Dropdown, Option } from '../inputs/DropdownInput';
-import {TextArea}  from '../inputs/TextareaInput'
+import { FaRegStar } from "react-icons/fa";
+import kde_blackBg from "../Navbar/Image/kde_whiteBg.png";
+import { Form, Formik, useFormik } from "formik";
+import MainButton from "../buttons/MainButton";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import daycation from "../Categories/LuxuryService/images/pics4.webp";
+import { useState, useEffect } from "react";
+import Return from "../Navbar/Return";
+import FormikControl from "../formik/FormikControl";
+import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    setDaycation,
+    setLuxuryServiceType,
+} from "../../application/store/actions/user";
+import { MdOutlineRemoveCircle } from "react-icons/md";
+import InputLayout from "../inputs/InputLayout";
+import { InputField } from "../inputs/MainInput";
+import { RadioField } from "../inputs/RadioInput";
+import DisableButton from "../buttons/DisabledButton";
 
-const ExclusiveEventPage = () => {
+const WeekendEscapePage = ({ mainData }) => {
+    const { id } = useParams();
+    const [guestsName, setGuestsName] = useState("");
+    const [guestsEmail, setGuestEmail] = useState("");
+    const [items, setItems] = useState([]);
+    const [price, setPrice] = useState(0);
+    const plan = useSelector((state) => state.user.status);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [isChecked, setIsChecked] = useState(false);
+    const [firstName] = useState(mainData.userData.firstName);
+    const [lastName] = useState(mainData.userData.lastName);
+    const [email] = useState(mainData.userData.email);
+    const [fullName] = useState(`${firstName} ${lastName}`,)
+
+    const handleRemove = (index) => {
+        const list = [...items];
+        list.splice(index, 1);
+        setItems(list);
+    };
+
+    useEffect(() => {
+        if (String(id) === "silver") {
+            setPrice("500,000");
+        } else if (String(id) === "diamond") {
+            setPrice("750,000");
+        } else if (String(id) === "platinum") {
+            setPrice("1,000,000");
+        }
+    }, [id]);
+
+    useEffect(() => {
+        items.push({
+            guestsName: fullName,
+            guestsEmail: email
+        })
+    }, [])
 
     const initialValues = {
-        guestName: '',
-        departureDate: '',
-        numberOfGuest: '',
-        contact: '',
-        arrivalDate: '',
-        emergencyNumber: '',
-        accomodationPreference: '',
-        message: ''
-    }
+        departureDate: "",
+        contact: "",
+        arrivalDate: "",
+        emergencyNumber: "",
+        emergencyContactName: "",
+        drinkingPreference: "",
+        mealPreference: "",
+        message: "",
+        spa: "",
+        plan: plan,
+        price: 0,
+    };
 
-    const accomodationPreferences = [
-        { key: "Accomodation Preference", value: '' },
-        { key: "5 Star", value: "5 Star" },
-        { key: "Mainland", value: "Mainland" },
+    const guestDetailsInitialValues = {
+        guestsEmail: "",
+        guestsName: "",
+    };
+
+    const drinkingPreferences = [
+        { key: "", value: "" },
+        { key: "Alcholic", value: "Alcholic" },
+        { key: "Non-Alcholic", value: "Non-Alcholic" },
     ];
 
-    const createEvent = () => {
+    const options = [
+        { value: "homeSession", label: "Home Session" },
+        { value: "walkInSession", label: "Walk In Session" },
+    ];
 
-    }
+    const mealPreferences = [
+        { key: "", value: "" },
+        { key: "Vegetarian", value: "Vegetarian" },
+        { key: "Non-Vegetarian", value: "Non-Vegetarian" },
+    ];
 
-    const validate = (values) => {
-        let errors = {};
-        if (!values.guestName) errors.guestName = "Required";
-        if (!values.numberOfGuest) errors.numberOfGuest = "Required";
-        if (!values.guestEmail) {
-            errors.guestEmail = "Required";
-        } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.guestEmail)
-        ) {
-            errors.guestEmail = "Invalid email format";
-        }
-        if (!values.contact) errors.contact = "Required";
-        if (!values.departureDate) errors.departureDate = "Required";
-        if (!values.arrivalDate) errors.arrivalDate = "Required";
-        if (!values.emergencyContact) errors.emergencyContact = "Required";
-        if (!values.accomodationPreference) errors.accomodationPreference = "Required";
-        return errors;
+    const [selectedOption, setSelectedOption] = useState(options[0].value);
+
+    const handleOptionChange = (value) => {
+        setSelectedOption(value);
+    };
+
+    const displayInput = [
+        {
+            label: "Contact",
+            name: "contact",
+            control: "others",
+            placeholder: "+234",
+        },
+        {
+            label: "Departure Date",
+            name: "departureDate",
+            control: "others",
+            type: "date",
+        },
+        {
+            label: "Arrival Date",
+            name: "arrivalDate",
+            type: "date",
+            control: "others",
+        },
+        {
+            label: "Emergency Number",
+            name: "emergencyNumber",
+            control: "others",
+            placeholder: "+234",
+        },
+        {
+            label: "Emergency Contact Name",
+            name: "emergencyContactName",
+            control: "others",
+            placeholder: "+234",
+        },
+        {
+            label: "Drinking Preference",
+            name: "drinkingPreference",
+            control: "select",
+            options: drinkingPreferences,
+        },
+        {
+            label: "Meal Preference",
+            name: "mealPreference",
+            control: "select",
+            options: mealPreferences,
+        },
+        {
+            label: "Message",
+            name: "message",
+            control: "textarea2",
+            placeholder: "kindly drop personalised request here",
+        },
+    ];
+
+    const guestValidationSchema = Yup.object({
+        guestsName: Yup.string().required("Guest Name is required"),
+        guestsEmail: Yup.string()
+            .email("Must be a valid email")
+            .required("E-mail is required"),
+    });
+
+    const validationSchema = Yup.object().shape({
+        plan: Yup.string().oneOf(["silver", "diamond", "platinum"]),
+        emergencyNumber: Yup.string().required("Emergency Number is required"),
+        contact: Yup.string().required("Contact is required"),
+        emergencyContactName: Yup.string().required(
+            "Emergency Contact Name is required"
+        ),
+        departureDate: Yup.string().required("Departure date is required"),
+        arrivalDate: Yup.string().required("Arrival is required"),
+        drinkingPreference: Yup.string().required(
+            "Drinking preference is required"
+        ),
+        mealPreference: Yup.string().required("Meal preference is required"),
+    });
+
+    const createDaycation = (values) => {
+        const daycation = {
+            guestsEmail: items.map((i) => i.guestsEmail),
+            guestsName: items.map((i) => i.guestsName),
+            departureDate: values.departureDate,
+            arrivalDate: values.arrivalDate,
+            emergencyNumber: values.emergencyNumber,
+            emergencyContactName: values.emergencyContactName,
+            contact: values.contact,
+            drinkingPreference: values.drinkingPreference,
+            mealPreference: values.mealPreference,
+            spa: selectedOption,
+            plan: plan,
+            message: values.message,
+            price:
+                (plan === "silver" && 500000) ||
+                (plan === "diamond" && 750000) ||
+                (plan === "platinum" && 1000000),
+        };
+        const payload = {
+            data: daycation,
+        };
+        dispatch(setLuxuryServiceType("daycation"));
+        dispatch(setDaycation(payload));
+        navigate("/luxury-service/checkout");
+    };
+
+    const onSubmit = () => {
+        setItems([...items, { guestsName, guestsEmail }]);
+        setGuestsName("");
+        setGuestEmail("");
     };
 
     const formik = useFormik({
-        initialValues,
-        createEvent,
-        validate,
+        guestDetailsInitialValues,
+        onSubmit,
+        guestValidationSchema,
     });
 
 
-
     return (
-        <div className="w-full h-[100vh] bg-white md:py-8 md:px-24 py-3 px-5 relative">
-            <div className='h-[95%]'>
-                <div className="w-[70px] h-[auto] flex flex-col">
-                    <img src={kde_blackBg}
-                        className='w-[100%] h-[100%] cursor-pointer'
-                        alt="brandlogo" />
-                    <p className='text-[10px] whitespace-nowrap font-semibold ml-1 text-[#d4d72eea] bg-gradient-to-r from-[#fcf8bd]-500 to-[#b9a362]-500'>Kind David Logo</p>
-                </div>
-
-                <div className='flex gap-2 md:gap-5 mt-5 items-center'>
-                    <p className='font-semibold text-lg md:text-2xl'>Weekend Escapes</p>
-                    <div className='flex gap-1'>
-                        <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                        <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                        <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                        <FaRegStar size={20} className='text-theme-color cursor-pointer' />
-                        <FaRegStar size={20} />
-                    </div>
-                </div>
-
-                <div className='mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color'>
-
-                    <p>
-                        <span className='text-black text-[13px] mr-1 font-bold'>
-                            Experience:
-                        </span>
-                        The weekend escape experience begins with a personalized welcome at the hotel's grand lobby, where guests are greeted by a friendly and attentive staff. Upon check-in, guests are escorted to their luxurious guest rooms, which are elegantly decorated with modern furnishings and high-end finishes.
-                    </p>
-                    <br />
-                    <p>
-                        During the stay, guests can indulge in a variety of activities and amenities, including a rejuvenating spa treatment at the hotel's full-service spa, a refreshing dip in the outdoor pool, or a workout at the state-of-the-art fitness center. The hotel also features a fine-dining restaurant that offers a diverse menu of gourmet dishes crafted by renowned chefs.
-                    </p>
-                    <br />
-                    <p>
-
-                        In addition to the hotel's amenities, guests can explore the surrounding city and take part in various cultural and entertainment activities. The hotel's concierge team is available to assist guests in planning their itinerary and securing tickets to top shows and events.
-                    </p>
-                    <br />
-                    <p>
-                        Overall, the luxury brand's weekend escape experience offers a perfect balance of relaxation and exploration, providing guests with a memorable and indulgent getaway that they will cherish for years to come.
-                    </p>
-
-                    <p className='mt-3'>
-                        <span className='text-black text-[13px] mr-1 font-bold'>
-                            Location: (Gwagwalada, Abuja)
-                        </span>
-
-                        The hotel is situated in a prime location that allows guests to easily explore the city's top attractions, including fine dining restaurants, luxury shopping boutiques, and cultural landmarks. Additionally, the hotel is surrounded by lush greenery and breathtaking views of the city skyline, providing a peaceful and tranquil atmosphere for guests to unwind and relax.
-                    </p>
-
-                    <p className='mt-3'>
-                        <span className='text-black text-[13px] mr-1 font-bold'>
-                            Accommodation:
-                        </span>
-                        The luxury brand offers a weekend escape experience at a five-star hotel located in the heart of a vibrant city. The hotel features lavish and spacious guest rooms, each equipped with top-of-the-line amenities such as premium bedding, plush bathrobes, and high-speed Wi-Fi.
-                    </p>
-
-
-                </div>
-
-                <form onSubmit={formik.handleSubmit} className='mt-6'>
-                    <InputLayout label='Names of Guest(s)' name='guestName'>
-                        <InputField width='50%' placeholder='e.g Emma Olaosebikan, Williams Ade, Shola Anikulapo' />{formik.errors.guestName ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.guestName}
-                            </div>
-                        ) : null}
-                    </InputLayout>
-
-                    <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-                        <InputLayout label='Email address Of Guest(s)' name='guestEmail'>
-                            <InputField width='50%' />{formik.errors.guestName ? (
-                                <div className=" text-[red] opacity-40">
-                                    {formik.errors.guestName}
-                                </div>
-                            ) : null}
-                        </InputLayout>
-
-                        <InputLayout label='No of Guest(s)' name='numberOfGuest'>
-                            <InputField width='20px' type='number' placeholder='0' />{formik.errors.numberOfGuest ? (
-                                <div className=" text-[red] opacity-40">
-                                    {formik.errors.numberOfGuest}
-                                </div>
-                            ) : null}
-                        </InputLayout>
+        <>
+            <Return />
+            <div className="w-full h-[100vh] bg-white md:py-8 md:px-24 py-3 px-5 relative">
+                <div className="h-[95%]">
+                    <div className="w-[70px] h-[auto] flex flex-col">
+                        <img
+                            src={kde_blackBg}
+                            className="w-[100%] h-[100%] cursor-pointer"
+                            alt="brandlogo"
+                            onClick={() => navigate(window.history.back())}
+                        />
                     </div>
 
-                    <InputLayout label='Contact Information' name='contact'>
-                        <InputField width='50%' placeholder='+(234)' />{formik.errors.contact ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.contact}
-                            </div>
-                        ) : null}
-                    </InputLayout>
-
-                    <div className='flex md:flex-row flex-col md:w-[50%] justify-between'>
-                        <InputLayout label='Departure Date' name='departureDate'>
-                            <InputField type='date' />{formik.errors.departureDate ? (
-                                <div className=" text-[red] opacity-40">
-                                    {formik.errors.departureDate}
-                                </div>
-                            ) : null}
-                        </InputLayout>
-
-                        <InputLayout label='Arrival Date' name='arrivalDate'>
-                            <InputField type='date' placeholder='DD / MM / YYYY' />{formik.errors.arrivalDate ? (
-                                <div className=" text-[red] opacity-40">
-                                    {formik.errors.arrivalDate}
-                                </div>
-                            ) : null}
-                        </InputLayout>
+                    <div className="flex gap-2 md:gap-5 mt-5 items-center">
+                        <p className="font-semibold text-lg md:text-2xl">
+                            Daycation &#8358;{price}{" "}
+                        </p>
                     </div>
 
-                    <InputLayout label='Emergency Contact Information' name='emergencyContact'>
-                        <InputField width='20px' placeholder='+(234)' />{formik.errors.emergencyContact ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.emergencyContact}
-                            </div>
-                        ) : null}
-                    </InputLayout>
+                    <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">
+                        <p>
+                            <span className="text-black text-[13px] mr-1 font-bold">
+                                Experience:
+                            </span>
+                            Welcome to King David Elites! Our daycation experience is designed
+                            to provide you with the perfect blend of relaxation and
+                            exploration.
+                        </p>
+                        <br />
+                        <p>
+                            Our chauffeurs will pick you up from your preferred location and
+                            bring you to our luxurious lodge. Our friendly staff will give you
+                            a warm welcome and help you check-in to your elegantly decorated
+                            guest room, which is equipped with modern furnishings and high-end
+                            finishes for your comfort.
+                        </p>
+                        <br />
+                        <p>
+                            During your stay, you can enjoy various amenities, such as a
+                            rejuvenating spa treatment, a refreshing dip in the outdoor pool,
+                            or fun gaming adventures in the city's upper echelon spots. You
+                            will be served with fine dishes three times during your 24-hour
+                            stay, and also get to unwind and sip some sparkling wine or
+                            champagne on a one-hour boat cruise.
+                        </p>
+                        <br />
+                        <p>
+                            Our concierge team is always available to help you plan your
+                            itinerary and explore the city's top attractions, including fine
+                            dining restaurants, luxury shopping boutiques, and cultural
+                            landmarks. Come and experience the King David Elites daycation for
+                            a memorable and indulgent getaway that you will cherish for years
+                            to come.
+                        </p>
+                    </div>
 
-                    <InputLayout label='Accommodation Preference' name='accomodationPreference'>
-                        <Dropdown margin='0.5em 0em'>
-                            {accomodationPreferences.map((a) => (
-                                <Option key={a.value} value={a.value}> {a.key}</Option>
+                    <div className="mt-3 w-[100%] md:w-[60%] text-[12px] font-medium tracking-wide text-neutral-color">
+                        <p>
+                            <span className="text-black text-[13px] mr-1 font-bold">
+                                TERMS OF USAGE:
+                            </span>
+                            Your booking will be confirmed upon receipt of payment, ensuring a seamless and hassle-free experience with King David Elites.
+                        </p>
+                        <br />
+                        <p>
+                            Please note that prices for any additional services may vary, so you can customize your booking to fit your unique needs.
+                        </p>
+                        <br />
+                        <p>
+                            If you have any special requests or personalized orders, please provide all necessary details in the message box provided during the booking process. Our customer support team will reach out to you promptly, typically within an hour, to ensure your needs are met.
+                        </p>
+                        <br />
+                        <p>
+                            As a patron, you are responsible for any damages incurred during your use of our services, so we kindly ask that you treat our facilities and equipment with the utmost care and caution.
+
+                        </p>
+                        <br />
+                        <p>
+                            We sincerely appreciate your choice of King David Elites, and we look forward to providing you with an exceptional luxury experience.
+                        </p>
+                    </div>
+
+                    <form onSubmit={formik.handleSubmit} className="mt-6">
+                        <div>
+                            {items.map((item, index) => (
+                                <div>
+                                    {item.guestsName && item.guestsEmail != "" && (
+                                        <div className="flex gap-5 items-center" key={index}>
+                                            <p>
+                                                {item.guestsName} | {item.guestsEmail}
+                                            </p>
+                                            <div className={index !== 0 ? "block" : "hidden"}>
+                                                <button
+                                                    type="button"
+                                                    className="cursor-pointer"
+                                                    onClick={() => handleRemove(index)}
+                                                >
+                                                    <MdOutlineRemoveCircle color="red" />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             ))}
-                        </Dropdown>
-                        {formik.errors.accomodationPreference ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.accomodationPreference}
-                            </div>
-                        ) : null}
-                    </InputLayout>
+                        </div>
 
-                    <InputLayout label='Message' name='message'>
-                        <TextArea placeholder='kindly explicitly describe your expectations and intended activities and destinations' width='50%'/>
-                        {formik.errors.message ? (
-                            <div className=" text-[red] opacity-40">
-                                {formik.errors.message}
-                            </div>
-                        ) : null}
-                    </InputLayout>
-                   
-                    <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
-                        <input type="checkbox" className="check cursor-pointer" />
-                        <p className="term text-[12px]">I have read and agreed to the <Link to="/terms"><span className='text-[#2301F3]'>KDE's Terms and Condition</span></Link></p>
+                        {
+                            ((plan === "silver" && items.length < 2) || (plan === "diamond" && items.length < 4) || (plan === "platinum" && items.length < 6)) &&
+                            <>
+                                <div className="flex md:flex-row gap-[2em] flex-col md:w-[50%] justify-between">
+                                    <InputLayout label="Names of Passenger(s)" name="guestsName">
+                                        <InputField
+                                            value={guestsName}
+                                            name="guestsName"
+                                            type="text"
+                                            onChange={(e) => {
+                                                if (e.target.name === "guestsName") {
+                                                    setGuestsName(e.target.value);
+                                                }
+                                            }}
+                                            width="50%"
+                                            placeholder="Enter fullName"
+                                        />
+                                    </InputLayout>
+                                    <InputLayout
+                                        label="Email Address Of Passengers(s)"
+                                        name="guestsEmail"
+                                    >
+                                        <InputField
+                                            value={guestsEmail}
+                                            name="guestsEmail"
+                                            type="text"
+                                            onChange={(e) => {
+                                                if (e.target.name === "guestsEmail") {
+                                                    setGuestEmail(e.target.value);
+                                                }
+                                            }}
+                                            width="100px"
+                                        />
+                                    </InputLayout>
+                                </div>
 
+                                <MainButton
+                                    width="100px"
+                                    type="button"
+                                    className={`hidden`}
+                                    onClick={(e) => onSubmit(e)}
+                                >
+                                    Add Guest
+                                </MainButton>
+                            </>
+                        }
+                    </form>
+
+                    <Formik
+                        initialValues={initialValues}
+                        validationSchema={validationSchema}
+                        onSubmit={createDaycation}
+                        validateOnChange={false}
+                    >
+                        {(formik) => (
+                            <Form>
+                                <div className="grid gap-6 pt-4 md:justify-center md:gap-x-[8rem] md:gap-y-8 md:grid-cols-2 md:w-[45%] w-full">
+                                    {displayInput.map((d, index) => (
+                                        <FormikControl
+                                            key={index * 0.5}
+                                            label={d.label}
+                                            name={d.name}
+                                            type={d?.type}
+                                            placeholder={d.placeholder}
+                                            options={d?.options}
+                                            control={d.control}
+                                        />
+                                    ))}
+                                </div>
+
+                                <div name="spaSession" className="flex gap-[4.5em]">
+                                    {options.map((label, key) => {
+                                        return (
+                                            <div className="font-semibold text-[13px]" key={key}>
+                                                {label.label}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                <div className="md:w-[20%] mb-5">
+                                    <InputLayout name={options.map((i) => i.value)}>
+                                        <div className="flex gap-[9.5em]">
+                                            {options.map((option) => (
+                                                <RadioField
+                                                    type="radio"
+                                                    id={option.value}
+                                                    name={option.value}
+                                                    value={option.value}
+                                                    checked={selectedOption === option.value}
+                                                    onChange={(e) => handleOptionChange(e.target.name)}
+                                                />
+                                            ))}
+                                        </div>
+                                    </InputLayout>
+                                </div>
+
+                                <div className="flex gap-2 items-center md:gap-4 font-semibold mt-6">
+                                    <input
+                                        type="checkbox"
+                                        className="check cursor-pointer"
+                                        checked={isChecked}
+                                        onChange={() => setIsChecked(!isChecked)}
+                                    />
+                                    <p className="term text-[12px]">
+                                        I have read and agreed to the{" "}
+                                        <Link to="/terms">
+                                            <span className="text-[#2301F3]">
+                                                KDE's Terms and Condition
+                                            </span>
+                                        </Link>
+                                    </p>
+                                </div>
+
+                                <div className="flex my-[30px] gap-[10px]">
+                                    {
+                                        !isChecked ? <DisableButton className="cursor-not-allowed" disabled={!isChecked}>Submit</DisableButton> : <MainButton
+                                            className="cursor-pointer"
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </MainButton>
+                                    }
+                                </div>
+                            </Form>
+                        )}
+                    </Formik>
+
+                    <div className="w-[300px] h-[100vh] fixed top-0 right-36 bottom-0 md:block hidden">
+                        <img
+                            src={daycation}
+                            className="w-[100%] h-[100%] rounded-md"
+                            alt="exclusiveEventLogo"
+                        />
                     </div>
-
-                    <div className="flex my-[30px] gap-[10px]">
-                        <MainButton>Submit</MainButton>
-                    </div>
-                </form>
-
-
-                <div className='w-[300px] h-[100vh] fixed top-0 right-36 bottom-0 md:block hidden'>
-                    <img src={weekendEscape}
-                        className='w-[100%] h-[100%] rounded-md'
-                        alt="exclusiveEventLogo" />
                 </div>
             </div>
-        </div >
+        </>
     );
-}
-
-export default ExclusiveEventPage;
+};
+export default WeekendEscapePage;

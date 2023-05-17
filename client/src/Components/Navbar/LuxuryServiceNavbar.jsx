@@ -5,6 +5,7 @@ import { useState } from 'react';
 import './Navbar.css'
 import { MdMenu } from 'react-icons/md';
 import { ImCross } from 'react-icons/im';
+import kde_blackBg from "./Image/kde_whiteBg.png";
 
 const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
 
@@ -25,7 +26,7 @@ const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
         {
             no: 2,
             title: "Concierge Weekends",
-            link: "/luxury-service/concierge-vacation"
+            // link: "/luxury-service/concierge-vacation"
         },
         {
             no: 3,
@@ -56,7 +57,7 @@ const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
 
     return (
         <>
-            <Header justifyContent="space-around" z="0" paddingTop='1.5em' className='bg-cover' alignItems='flex-start' height="13em" bg={bg} sticky="static">
+            <Header justifyContent="space-around" z="0" paddingTop='1.5em' className='bg-cover' alignItems='flex-start' height="12em" bg={bg} sticky="static">
                 <nav className={activeNav ? "navigation active" : "navigation"}>
                     <ul>
                         <div className="closed">
@@ -85,7 +86,14 @@ const LuxuryServiceNavbar = ({ bg, sticky, active }) => {
                     </ul>
                 </nav>
                 <Brand>
-                    <LogoText fontSize="1.5rem" onClick={() => navigate("/luxury-service")}>Luxury Services</LogoText>
+                    <div className="w-[40px] h-[auto]" onClick={() => navigate("/")}>
+                        <img
+                            src={kde_blackBg}
+                            className="w-[100%] h-[100%] cursor-pointer"
+                            alt="brandlogo"
+                        />
+                    </div>
+                    <LogoText fontSize="1.5rem" onClick={() => navigate("/")}>Luxury Services</LogoText>
 
                     <div className='menu-icon'>
                         <MdMenu size={30} className='menu' onClick={showMenu} />

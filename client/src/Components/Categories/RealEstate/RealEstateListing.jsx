@@ -1,70 +1,76 @@
-import { Adjustments, BadgeCheck, Heart, HeartOutline, Search } from "heroicons-react";
+import { Adjustments, Search } from "heroicons-react";
 import React, { useRef, useEffect, useCallback } from "react";
-import MultiRangeSlider from "multi-range-slider-react";
 import {
   Background,
   HeroSection,
   Input,
   Text,
   Body,
-  Dealer,
-  PicDealer,
-  PicCar,
-  Reaction,
-  Position,
   FilterBox,
 } from "../Cars/Cars.Style";
 import { SearchSection, SearchC } from "./RealEstate.Style";
 import axios from "axios";
 import Navbar from "../../Navbar/Navbar";
-import '../../Navbar/Navbar.css'
-import { SpinnerCircular } from 'spinners-react';
-import { PropertyType } from "./RealEstate.Style";
+import "../../Navbar/Navbar.css";
+import { SpinnerCircular } from "spinners-react";
 import { useState } from "react";
 import Banner from "../../Banner/Banner";
 import MainButton from "../../buttons/MainButton";
 import Footer from "../../Footer/Footer";
-import { useNavigate, useParams } from "react-router-dom";
 import Listing from "../../Listing/Listing";
 import { GridContainer } from "../../Listing/Listing.styled";
-import { EstateAnimation, graduallyAppear, graduallyDisAppear } from "../Cars/AnimationOrder";
-import useContextAPI from "../../ContextAPI/ContextAPI";
+import {
+  EstateAnimation,
+  graduallyAppear,
+  graduallyDisAppear,
+} from "../Cars/AnimationOrder";
+import {
+  getCities,
+  getListings,
+  getStates,
+} from "../../../infrastructure/api/user/userRequest";
 import { motion } from "framer-motion";
 import { setConfig } from "../../../infrastructure/api/user/userRequest";
 import globalApi from "../../../api";
-import Loader from "../../Loader/Loader";
 import theme from "../../../application/utils/Theme";
-import { ImCross } from "react-icons/im";
-import DropdownInput from "../../inputs/DropdownInput";
 import { BiArrowBack } from "react-icons/bi";
+import PaginationButtons from "../../PaginationButtons/PaginationButtons";
+import building6 from "./Image/building6.jpg";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const RealEstateListing = () => {
+const RealEstateListing = ({ mainData }) => {
   const top = useRef(null);
-  const { listing, setListing } = useContextAPI();
-
-  useEffect(() => {
-    scrollToRef(top);
-  }, []);
-
+  const up = useRef(null);
+  const [listing, setListing] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
   const [loader, setLoader] = useState(false);
   const [estateId, setEstateId] = useState(1);
   const [animation, setAnimation] = useState(graduallyAppear);
-  const [title, setTitle] = useState('');
-  const [list, setList] = useState([]);
-  const [query, setQuery] = useState("title");
+  const [value, setValue] = useState({
+    noOfBed: 0,
+    noOfBathroom: 0,
+    locationISO: "",
+    price: 500,
+  });
   const [activePage, setActivePage] = useState(false);
-  const [minValue, set_minValue] = useState(25);
-  const [maxValue, set_maxValue] = useState(75);
-  const [view, setView] = useState('Porch');
   const [stage, setStage] = useState(0);
   const [activeNav, setActiveNav] = useState(false);
+  const [changing, setChanging] = useState(false);
+  const [stateData, setStateData] = useState([]);
+  const [cityData, setCityData] = useState([]);
+  const [isos, setIsos] = useState({
+    countryIso: "",
+    stateIso: "",
+    cityId: "",
+  });
 
-  const handleInput = (e) => {
-    set_minValue(e.minValue);
-    set_maxValue(e.maxValue);
-  };
+  useEffect(() => {
+    setStateData(stateData);
+    setCityData(cityData);
+    setValue(value);
+  }, [changing]);
 
   const showPage = () => {
     if (window.innerWidth > 900) {
@@ -75,45 +81,64 @@ const RealEstateListing = () => {
       setActivePage(!activePage);
       setActiveNav(activeNav);
     }
+  };
 
-  }
+  useEffect(() => {
+    scrollToRef(top);
+  }, []);
 
+  const getStateIso = (name) => {
+    var stateObject = stateData.find((state) => state.name === name);
+    setCityData([]);
+    setIsos({ ...isos, stateIso: stateObject["iso2"] });
+    getCities(isos["countryIso"], stateObject["iso2"], setCityData);
+    setChanging(!changing);
+  };
 
-  const views = [
-    {
-      Id: 0,
-      title: "Garden"
-    },
-    {
-      id: 1,
-      title: "Porch"
-    },
-    {
-      id: 2,
-      title: "Swimming Pool"
-    },
-    {
-      id: 3,
-      title: "Balcony"
-    },
-    {
-      id: 4,
-      title: "Terrace"
-    },
-  ]
+  const getCityId = (name) => {
+    var cityObject = cityData.find((city) => city.name === name);
+    setIsos({ ...isos, cityId: cityObject["id"] });
+    setValue({
+      ...value,
+      locationISO: `${cityObject["id"]}#${isos["stateIso"]}#${isos["countryIso"]}`,
+    });
+    setChanging(!changing);
+  };
 
   const searchListing = () => {
-    setQuery(query);
-    setTitle(title);
     setLoader(true);
-    axios.get(`${globalApi}/listings/search?${query}=${title}`, setConfig())
-      .then(resp => {
-        setList(resp.data)
-        setLoader(false)
+    const listingUrl = `${globalApi}/listings/search`;
+    axios
+      .post(listingUrl, value, setConfig())
+      .then((resp) => {
+        setListing(resp.data);
+        setLoader(false);
         setStage(0);
       })
-      .catch(err => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
+
+  const getCountryIso = (name) => {
+    var countryObject = mainData.countryData.find(
+      (country) => country.name === name
+    );
+    setStateData([]);
+    setCityData([]);
+    setIsos({ ...isos, countryIso: countryObject["iso2"] });
+    getStates(countryObject["iso2"], setStateData);
+    setChanging(!changing);
+  };
+
+  const getTotalData = async (page) => {
+    let totalListing = await getListings(
+      page,
+      "real-estate",
+      setListing,
+      setLoading
+    );
+
+    return totalListing;
+  };
 
   const animate = useCallback(() => {
     var timer1;
@@ -124,179 +149,266 @@ const RealEstateListing = () => {
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setEstateId(estateId + 1);
-        }, [500]);
+          setAnimation(graduallyAppear);
+        }, [400]);
       } else if (estateId === EstateAnimation.length) {
         clearTimeout(timer2);
         clearTimeout(timer1);
         setAnimation(graduallyDisAppear);
         timer2 = setTimeout(() => {
-          setAnimation(graduallyAppear);
           setEstateId(1);
+          setAnimation(graduallyAppear);
         }, [500]);
       }
-    }, [8000]);
-  },[estateId])
+    }, [6000]);
+  }, [estateId]);
 
   useEffect(() => {
-    animate()
+    animate();
   }, [animate]);
   return (
     <>
-      {
-        stage == 1 && <div className='p-2 w-[100vw] md:hidden top-0 bottom-0 h-[100%] bg-white transition-[1s] z-20'>
-          <div className='p-4'>
+      {stage === 1 && (
+        <div className="p-2 w-[100vw] md:hidden top-0 bottom-0 h-[100%] bg-white transition-[1s] z-20">
+          <div className="p-4">
             <div className="relative w-full lg:max-w-sm flex flex-col gap-6">
               <div className="h-[40px] flex items-center gap-4">
-                <BiArrowBack size={30} className="opacity-[0.5] cursor-pointer" onClick={() => setStage(0)} />
+                <BiArrowBack
+                  size={30}
+                  className="opacity-[0.5] cursor-pointer"
+                  onClick={() => setStage(0)}
+                />
                 <p className="font-bold text-[20px]">Filters</p>
               </div>
-              {/* <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
-              <option>Location</option>
-              <option>Laravel 9 with React</option>
-              <option>React with Tailwind CSS</option>
-              <option>React With Headless UI</option>
-            </select> */}
-              <h3 className="font-bold">Location</h3>
-              <input type="text" className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" onClick={() => setQuery("location")} onChange={(e) => setTitle(e.target.value)} />
+              <h3 className="font-bold">LocationISO</h3>
+              <label htmlFor="country">Country</label>
+              <select
+                className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
+                name="Country"
+                onChange={(e) => {
+                  getCountryIso(e.target.value);
+                }}
+              >
+                <option value="Country">None</option>
+                {mainData.countryData.map((country) => {
+                  return (
+                    <>
+                      <option key={country.id} value={country.name}>
+                        {country.name}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
 
-              <h3 className="font-bold">Title</h3>
-              <input type="text" className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" onClick={() => setQuery("title")} onChange={(e) => setTitle(e.target.value)} />
+              <div className="input">
+                {stateData.length > 0 && (
+                  <>
+                    <label htmlFor="state">State</label>
+                    <select
+                      className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
+                      name="state"
+                      onChange={(e) => {
+                        getStateIso(e.target.value);
+                      }}
+                    >
+                      <option value="State">None</option>
+                      {stateData?.map((state) => {
+                        return (
+                          <>
+                            <option key={state.id} value={state.name}>
+                              {state.name}
+                            </option>
+                          </>
+                        );
+                      })}
+                    </select>
+                  </>
+                )}
+              </div>
 
-              <h3 className="font-bold">Views</h3>
-              <div className="flex gap-3 flex-wrap">
-                {
-                  views.map((v, i) => {
-                    return (
-                      <span className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[10%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
-                    )
-                  })
-                }
+              <div className="input">
+                {cityData.length > 0 && (
+                  <>
+                    <label htmlFor="city">City</label>
+                    <select
+                      className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color"
+                      name="city"
+                      onChange={(e) => {
+                        getCityId(e.target.value);
+                      }}
+                    >
+                      <option value="City">None</option>
+                      {cityData?.map((city) => {
+                        return (
+                          <>
+                            <option key={city.id} value={city.name}>
+                              {city.name}
+                            </option>
+                          </>
+                        );
+                      })}
+                    </select>
+                  </>
+                )}
               </div>
 
               <h3 className="font-bold">Bedrooms</h3>
-              <div className="rounded-md"><input className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" type="number" min={0} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBed")} /></div>
+              <div className="rounded-md">
+                <input
+                  className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
+                  type="number"
+                  min={0}
+                  onChange={(e) =>
+                    setValue({ ...value, noOfBed: e.target.value })
+                  }
+                />
+              </div>
 
               <h3 className="font-bold">Bathrooms</h3>
-              <div className="rounded-md"><input className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" type="number" min={0} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} /></div>
-
+              <div className="rounded-md">
+                <input
+                  className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
+                  type="number"
+                  min={0}
+                  onChange={(e) =>
+                    setValue({ ...value, noOfBathroom: e.target.value })
+                  }
+                />
+              </div>
 
               <h3 className="font-bold">Price</h3>
-              <MultiRangeSlider
-                min={0}
-                max={1000}
-                step={5}
-                minValue={minValue}
-                maxValue={maxValue}
-                onInput={(e) => {
-                  handleInput(e);
+              <input
+                type="range"
+                max={100000000}
+                onChange={(e) => {
+                  setValue({ ...value, price: e.target.value });
                 }}
-                // onChange={() => setTitle(maxValue - minValue)}
-                label={false}
-                ruler={false}
-                style={{ border: "none", boxShadow: "none", padding: "15px 10px" }}
-                barLeftColor={theme.backgroundColor}
-                barInnerColor={theme.color}
-                barRightColor={theme.backgroundColor}
-                thumbLeftColor={theme.color}
-                thumbRightColor={theme.color}
               />
 
               <div className="flex gap-5 w-full mb-5 items-center">
-                <input type="number" className="border-2 p-2 w-[50%]" placeholder={minValue} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} />
-                <span className="font-bold text-[15px]">-</span>
-                <input type="number" className="border-2 p-2 w-[50%]" onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} placeholder={maxValue} />
+                <input
+                  type="number"
+                  className="border-2 p-2 w-[50%]"
+                  value={value["price"]}
+                  readOnly
+                />
               </div>
 
-              <MainButton width='100%' padding='24px 12px' onClick={() => { searchListing(); }}>Apply Filter {
-                loader && <SpinnerCircular color="white" className="mr-4" secondaryColor={theme.color} size={50} thickness={150} />
-              }</MainButton>
+              <MainButton
+                width="100%"
+                padding="24px 12px"
+                onClick={() => {
+                  searchListing();
+                }}
+              >
+                Apply Filter{" "}
+                {loader && (
+                  <SpinnerCircular
+                    color="white"
+                    className="mr-4"
+                    secondaryColor={theme.color}
+                    size={50}
+                    thickness={150}
+                  />
+                )}
+              </MainButton>
             </div>
-
           </div>
-        </div >
-      }
+        </div>
+      )}
 
-      {
-        stage == 0 && <>
+      {stage === 0 && (
+        <>
           <Navbar active={1} />
-          <nav className={activeNav ? 'navigation active overflow-y-auto top-0' : 'navigation hidden'}>
+          <nav
+            className={
+              activeNav
+                ? "navigation active overflow-y-auto top-0"
+                : "navigation hidden"
+            }
+          >
             <ul>
-              <div className='closed'>
-
-                <div className='p-4'>
+              <div className="closed">
+                <div className="p-4">
                   <div className="relative w-full lg:max-w-sm flex flex-col gap-6">
                     <div className="h-[40px] flex items-center gap-4">
-                      <BiArrowBack size={30} className="opacity-[0.5]" onClick={() => setActiveNav(!activeNav)} />
+                      <BiArrowBack
+                        size={30}
+                        className="opacity-[0.5]"
+                        onClick={() => setActiveNav(!activeNav)}
+                      />
                       <p className="font-bold text-[20px]">Filters</p>
                     </div>
-                    {/* <select className="w-full p-3 text-gray-500 bg-white border rounded-md shadow-sm outline-none focus:border-theme-color">
-              <option>Location</option>
-              <option>Laravel 9 with React</option>
-              <option>React with Tailwind CSS</option>
-              <option>React With Headless UI</option>
-            </select> */}
-                    <h3 className="font-bold">Location</h3>
-                    <input type="text" className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" onClick={() => setQuery("location")} onChange={(e) => setTitle(e.target.value)} />
-
-                    <h3 className="font-bold">Title</h3>
-                    <input type="text" className="w-full rounded-md p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" onClick={() => setQuery("title")} onChange={(e) => setTitle(e.target.value)} />
-
-                    <h3 className="font-bold">Views</h3>
-                    <div className="flex gap-3 flex-wrap">
-                      {
-                        views.map((v, i) => {
-                          return (
-                            <span className={`bg-gray-300 font-medium text-[15px] cursor-pointer whitespace-nowrap h-full flex justify-center rounded-3xl p-3 ${view == v.title ? `rounded-md h-[10%]  bg-theme-color hover:opacity-[100%] items-center` : ""}`} key={i} onChange={(e) => setTitle(e.target.value)} onClick={() => { setQuery("view"); setView(v.title) }}>{v.title}</span>
-                          )
-                        })
-                      }
-                    </div>
+                  
 
                     <h3 className="font-bold">Bedrooms</h3>
-                    <div className="rounded-md"><input className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" type="number" min={0} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBed")} /></div>
+                    <div className="rounded-md">
+                      <input
+                        className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
+                        type="number"
+                        min={0}
+                        onChange={(e) =>
+                          setValue({ ...value, noOfBed: e.target.value })
+                        }
+                      />
+                    </div>
 
                     <h3 className="font-bold">Bathrooms</h3>
-                    <div className="rounded-md"><input className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color" type="number" min={0} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} /></div>
-
+                    <div className="rounded-md">
+                      <input
+                        className="w-full p-2 text-gray-500 bg-white border outline-none focus:border-theme-color"
+                        type="number"
+                        min={0}
+                        onChange={(e) =>
+                          setValue({ ...value, noOfBathroom: e.target.value })
+                        }
+                      />
+                    </div>
 
                     <h3 className="font-bold">Price</h3>
-                    <MultiRangeSlider
-                      min={0}
-                      max={1000}
-                      step={5}
-                      minValue={minValue}
-                      maxValue={maxValue}
-                      onInput={(e) => {
-                        handleInput(e);
+                    <input
+                      type="range"
+                      max={100000000}
+                      onChange={(e) => {
+                        setValue({ ...value, price: e.target.value });
                       }}
-                      // onChange={() => setTitle(maxValue - minValue)}
-                      label={false}
-                      ruler={false}
-                      style={{ border: "none", boxShadow: "none", padding: "15px 10px" }}
-                      barLeftColor={theme.backgroundColor}
-                      barInnerColor={theme.color}
-                      barRightColor={theme.backgroundColor}
-                      thumbLeftColor={theme.color}
-                      thumbRightColor={theme.color}
                     />
 
                     <div className="flex gap-5 w-full mb-5 items-center">
-                      <input type="number" className="border-2 p-2 w-[50%]" placeholder={minValue} onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} />
-                      <span className="font-bold text-[15px]">-</span>
-                      <input type="number" className="border-2 p-2 w-[50%]" onChange={(e) => setTitle(e.target.value)} onClick={() => setQuery("noOfBathroom")} placeholder={maxValue} />
+                      <input
+                        type="number"
+                        className="border-2 p-2 w-[50%]"
+                        value={value["price"]}
+                        readOnly
+                      />
                     </div>
 
-                    <MainButton width='100%' padding='24px 12px' onClick={() => { searchListing(); }}>Apply Filter {
-                      loader && <SpinnerCircular color="white" className="mr-4" secondaryColor={theme.color} size={50} thickness={150} />
-                    }</MainButton>
+                    <MainButton
+                      width="100%"
+                      padding="24px 12px"
+                      onClick={() => {
+                        searchListing();
+                      }}
+                    >
+                      Apply Filter{" "}
+                      {loader && (
+                        <SpinnerCircular
+                          color="white"
+                          className="mr-4"
+                          secondaryColor={theme.color}
+                          size={50}
+                          thickness={150}
+                        />
+                      )}
+                    </MainButton>
                   </div>
-
                 </div>
               </div>
             </ul>
           </nav>
+
           <Background ref={top}>
             {EstateAnimation.map((item) => {
               if (item.id === estateId) {
@@ -316,11 +428,20 @@ const RealEstateListing = () => {
               <Text fontSize="2rem">Luxury Real Estate</Text>
               <SearchSection>
                 <SearchC>
-                  <Input placeholder="search desired locations" onChange={(e) => setTitle(e.target.value)} />
-                  <Search width="30px" onClick={(e) => searchListing(title)} className="cursor-pointer" />
+                  <Input
+                    placeholder="search desired locationISOs"
+                    onChange={(e) =>
+                      setValue({ ...value, locationISO: e.target.value })
+                    }
+                  />
+                  <Search
+                    width="30px"
+                    onClick={(e) => searchListing(value["locationISO"])}
+                    className="cursor-pointer"
+                  />
                 </SearchC>
                 <FilterBox onClick={() => showPage()}>
-                  <MainButton width="60px" >Filter</MainButton>
+                  <MainButton width="60px">Filter</MainButton>
                   <Adjustments width="30px" />
                 </FilterBox>
               </SearchSection>
@@ -328,42 +449,72 @@ const RealEstateListing = () => {
             </HeroSection>
           </Background>
 
-          <Body>
+          <Body ref={up}>
             <Text fontSize="1rem" fontWeight="700" color="black">
               Luxury Properties For Sale
             </Text>
-            {
-              loader && <SpinnerCircular color="white" className="flex justify-center" secondaryColor={theme.color} size={50} thickness={150} />
-            }
-            <GridContainer>
-              {
-                (!loader && title && list.length > 0) && list.map((items) => {
-                  return (
-                    <Listing key={items._id} list={items} />
-                  );
-                })
-              }
-              {
-                !loader && title && list.length == 0 && <p className="font-bold text-base md:text-xl">No list found</p>
-              }
-              {
-                !loader && !title && listing.length > 0 && listing.map((items) => {
-                  return (
-                    <Listing key={items._id} list={items} />
-                  );
-                })
-              }
-            </GridContainer>
+            {loader && (
+              <SpinnerCircular
+                color="white"
+                className="flex justify-center"
+                secondaryColor={theme.color}
+                size={50}
+                thickness={150}
+              />
+            )}
+            {loading ? (
+              <>
+                <SpinnerCircular
+                  color="white"
+                  className="flex justify-center"
+                  secondaryColor={theme.color}
+                  size={50}
+                  thickness={150}
+                />
+              </>
+            ) : (
+              <GridContainer>
+                {!loader && listing.length > 0 ? (
+                  listing.map((items) => {
+                    return (
+                      <Listing key={items._id} list={items} />
+                    );
+                  })
+                ) : (
+                  <h4 className="md:text-lg text-sm font-semibold italic">
+                    No Real-estate listing available
+                  </h4>
+                )}
+              </GridContainer>
+            )}
+            <PaginationButtons
+              range={[1, 2, 3]}
+              pagination={12}
+              page={page}
+              setPage={setPage}
+              loading={loading}
+              setLoading={setLoading}
+              getTotalData={getTotalData}
+              background={theme.color}
+            />
           </Body>
-          <Banner category="Real Estate" />
-          <Text color="black" fontSize="16px" margin="5%">
-            Indulge in opulence with King David Elites. Our online marketplace boast a collection of exquiste, high-end properties that exude luxury living.From stunning homes to sprawling estates and opulent apartment,our offering cater to all your residential,investment and for-profit needs. Our secure payment system ensures hassle-free transactions, with the option to transfer funds directly to verifies vendors or through our 1% transaction fee escrow account which further secures your funds and grants you access to our team of experts who provide professional advisory services and arranges luxurious property inspection, setting a new standardof class and sophistication.
-
+          <Banner category="Real Estate" img={building6} />
+          <Text color="black" fontSize="0.8rem" margin="2em">
+            Indulge in opulence with King David Elites. Our online marketplace
+            boast a collection of exquiste, high-end properties that exude
+            luxury living.From stunning homes to sprawling estates and opulent
+            apartment, our offering cater to all your residential,investment and
+            for-profit needs. Our secure payment system ensures hassle-free
+            transactions, with the option to transfer funds directly to verified
+            vendors or through our 1% transaction fee escrow account which
+            further secures your funds and grants you access to our team of
+            experts who provide professional advisory services and arranges
+            luxurious property inspection, setting a new standard of class and
+            sophistication.
           </Text>
           <Footer />
         </>
-      }
-
+      )}
     </>
   );
 };

@@ -31,6 +31,7 @@
     "sweetalert2": "^11.6.16",
     "timeago": "^1.6.7",
     "timeago-react": "^3.0.5",
+    "usememoryleakprevention": "^1.0.0",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },

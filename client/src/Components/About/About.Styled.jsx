@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import theme from "../../application/utils/Theme"
 
 export const Flex = styled.div`
     display: grid;
@@ -19,11 +20,31 @@ export const Flex = styled.div`
 export const GlobalContainer = styled.div`
     width: ${({width})=> width};
     padding: ${({padding})=> padding};
-    margin: ${({margin})=> margin};
+    margin: ${props => props.margin ? props.margin : "0em"};
+
+    div{
+        h1{
+            font-size:30px;
+            font-weight:600;
+        }
+
+        p{
+            font-size:13px;
+        }
+
+        h5{
+            font-size:17px;
+            font-weight:600;
+        }
+        
+        span{
+            color:blue;
+        }
+    }
 
     @media (max-width: 850px){
         width: 100%;
-        margin: 30px 0;
+        margin: ${props => props.margin ? props.margin : "30px 0"};
     }
 `
 
@@ -36,24 +57,25 @@ export const StackedImage = styled.div`
     justify-self: center;
     align-self: center;
     align-content: center;
+    left: ${({left})=> left };
+    position: relative;
 
     img{
     width: ${({width})=> width || "100px"};
     height: ${({height})=> height || "180px"};
-    border-radius: ${({radius})=> radius};
-    
+    border-radius: ${props => props.radius ? props.radius : "6px"};
     }
-    position: relative;
+    
 
     @media(max-width: 850px){
         width: 100%;
         height: 100%;
-        position: static;
+        position: relative;
+        margin-top: 5em;
 
         img{
-            width: 100%;
-            height: 100%;
-            /* margin: 50px 0 0; */
+            width: 90%;
+            /* height: 100%; */
         }
     }
  `
@@ -64,13 +86,15 @@ export const AbsoluteImage = styled.div`
     border-radius: ${({radius})=> radius};
     position: absolute;
     background: ${({color})=> color || "black"};
-    top: ${({top})=> top };
+    top: ${props => props.top ? props.top : '-2em'};
     left: ${({left})=> left };
     right: ${({right})=> right };
     bottom: ${({bottom})=> bottom };
-    z-index: -1;
-
-    @media(max-width: 800px) {
-        display: none;
+    /* z-index: -1; */
+    border-radius: 6px;
+    display: block;
+   
+    @media (min-width: ${theme.breakPoint['tablet']}) {
+        display: block;
     }
 `

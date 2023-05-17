@@ -50,7 +50,6 @@ const TextError = styled.span`
     `
 
 const MainInput = (props) => {
-
     const { label, name, type, ...rest } = props;
     return (
         <InputLayout label={label} name={name} >

@@ -119,7 +119,7 @@ const MessagesAsElement = () => {
             </div>
 
             <div className="eachChat"> */}
-        <div className="bg-[#fff] fixed flex shadow-md w-[60%] z-20 h-[8%] justify-center items-center gap-6">
+        {/* <div className="bg-[#fff] flex fixed shadow-md w-[60%] z-10 h-[8%] justify-center items-center gap-6">
           <div className="chat-wrap">
             <div className="box-content">
               <h4 className=" font-semibold">KingDavid Team</h4>
@@ -129,9 +129,9 @@ const MessagesAsElement = () => {
             <MdCall size={25} />
             <BiVideo size={25} />
           </div>
-        </div>
+        </div> */}
 
-        <div className="h-[92%] overflow-y-auto bg-[#D5DBE3] flex flex-col pt-[3.8em] px-[2em] pb-[0em]">
+        <div className="h-[92%] overflow-y-auto bg-[#D5DBE3] flex flex-col  px-[2em] pb-[0em]">
           <div className="ml-[auto] rounded mr-[auto] mb-6 w-[15%] opacity-60 bg-[#fff] flex justify-center items-center p-2">
             Today
           </div>
@@ -171,7 +171,7 @@ const MessagesAsElement = () => {
           })}
         </div>
 
-        <div className="h-[6%] bg-[#F5F5F5] fixed w-[60%] flex items-center px-[2em]">
+        <div className="h-[10%] bg-[#F5F5F5] mt-[-3em] z-10 flex  items-center px-[2em]">
           <div className="flex items-center basis-1/4 gap-2">
             <FaImages size={25} />
             <BsPaperclip size={25} />
@@ -303,7 +303,7 @@ const MobileMessage = () => {
   const getAllConversations = useCallback(() => {
     axios
       .get(`${globalApi}/conversations/user-conversations`, setConfig())
-      .then((resp) => setConversations(resp.data))
+      .then((resp) => setConversations(resp.data.messageContent ))
       .catch((err) => console.log(err));
   }, []);
 
@@ -505,7 +505,7 @@ const Messages = () => {
   return (
     <Dashboard
       element={<MessagesAsElement />}
-      index="1"
+      index={1}
       mobileElement={<MobileMessage />}
     />
   );

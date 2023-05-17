@@ -4,7 +4,7 @@ import theme from '../../../application/utils/Theme';
 export const Background = styled.div`       
     position:relative;        
     width:100%;
-    height:40em;
+    height:100vh;
     background:rgba(20,20,20);    
 
     .bgImage{
@@ -48,7 +48,7 @@ export const HeroSection = styled.div`
     gap:1em;
     width:inherit;
     height:inherit;    
-
+    padding: 1em;
 
       .btn{
         margin:2rem 0rem;
@@ -87,6 +87,7 @@ export const Text = styled.div`
     margin:${props => props.margin ? props.margin : "0em"}; 
     padding:${props => props.padding ? props.padding : "0em"};  
     text-align: ${props => props.textAlign ? props.textAlign: "start"} ;
+    width:${props => props.width ? props.width : ""};
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         font-size:${props => props.fontSize ? props.fontSize : "1rem"};

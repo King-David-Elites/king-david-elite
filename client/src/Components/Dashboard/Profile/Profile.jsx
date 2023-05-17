@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRef } from "react";
 import Dashboard from "../Dashboard";
 import {
@@ -23,12 +23,34 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 const ProfileAsElement = ({ mainData }) => {
   const [stage, setStage] = useState(0);
   const [registering, setRegistering] = useState(false);
-  const [country, setCountry] = useState("None");
-  const [idType, setIdType] = useState({digit:0, text:""});
+  const [country, setCountry] = useState("");
+  const [idType, setIdType] = useState({ digit: 0, text: "" });
   const [frontImage, setFrontImage] = useState([]);
   const [backImage, setBackImage] = useState([]);
   const [photo, setPhoto] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [city, setCity] = useState("");
+  const [isos, setIsos] = useState({
+    countryIso: "",
+    stateIso: "",
+    cityId: "",
+  });
+
+  const [userInfo, setUserInfo] = useState({
+    firstName: mainData.userData?.firstName,
+    lastName: mainData.userData?.lastName,
+    dob: "",
+    address: "",
+    zipCode: "",
+    country: country,
+    state: "",
+    city: "",
+    locationISO: "",
+  });
+
+  useEffect(() => {
+    setUserInfo({ ...userInfo, city });
+  }, [city]);
 
   const position = useRef(null);
 
@@ -44,11 +66,10 @@ const ProfileAsElement = ({ mainData }) => {
 
         <div className="rightSection">
           <Form ref={position}>
-            {registering ? (
-              <div></div>
-            ) : (
+            {!registering && (
               <GetStarted
-                country={country}
+                setUserInfo={setUserInfo}
+                userInfo={userInfo}
                 setCountry={setCountry}
                 stage={stage}
                 setStage={setStage}
@@ -56,11 +77,17 @@ const ProfileAsElement = ({ mainData }) => {
                 scrollToRef={scrollToRef}
                 position={position}
                 mainData={mainData}
+                isos={isos}
+                setIsos={setIsos}
               />
             )}
 
             {stage === 1 && (
               <BasicInfo
+                city={city}
+                setCity={setCity}
+                userInfo={userInfo}
+                setUserInfo={setUserInfo}
                 country={country}
                 stage={stage}
                 setStage={setStage}
@@ -68,6 +95,8 @@ const ProfileAsElement = ({ mainData }) => {
                 scrollToRef={scrollToRef}
                 position={position}
                 mainData={mainData}
+                isos={isos}
+                setIsos={setIsos}
               />
             )}
 
@@ -109,6 +138,8 @@ const ProfileAsElement = ({ mainData }) => {
 
             {stage === 5 && (
               <Advanced_Verf_3
+                userInfo={userInfo}
+                setUserInfo={setUserInfo}
                 stage={stage}
                 scrollToRef={scrollToRef}
                 frontImage={frontImage}
@@ -119,6 +150,8 @@ const ProfileAsElement = ({ mainData }) => {
                 position={position}
                 setStage={setStage}
                 setLoading={setLoading}
+                isos={isos}
+                setIsos={setIsos}
               />
             )}
 
@@ -133,12 +166,33 @@ const ProfileAsElement = ({ mainData }) => {
 const MobileProfile = ({ mainData }) => {
   const [stage, setStage] = useState(0);
   const [registering, setRegistering] = useState(false);
-  const [country, setCountry] = useState("None");
+  const [country, setCountry] = useState("");
   const [idType, setIdType] = useState("");
   const [frontImage, setFrontImage] = useState([]);
   const [backImage, setBackImage] = useState([]);
   const [photo, setPhoto] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [city, setCity] = useState("");
+  const [isos, setIsos] = useState({
+    countryIso: "",
+    stateIso: "",
+    cityId: "",
+  });
+  const [userInfo, setUserInfo] = useState({
+    firstName: mainData.userData.firstName,
+    lastName: mainData.userData.lastName,
+    dob: "",
+    address: "",
+    zipCode: "",
+    country: country,
+    state: "",
+    city: "",
+    locationISO: "",
+  });
+
+  useEffect(() => {
+    setUserInfo({ ...userInfo, city });
+  }, [city]);
 
   const position = useRef(null);
 
@@ -148,11 +202,10 @@ const MobileProfile = ({ mainData }) => {
       <ProfileContainer>
         <div className="rightSection">
           <Form ref={position}>
-            {registering ? (
-              <div></div>
-            ) : (
+            {!registering && (
               <GetStarted
-                country={country}
+                setUserInfo={setUserInfo}
+                userInfo={userInfo}
                 setCountry={setCountry}
                 stage={stage}
                 setStage={setStage}
@@ -160,11 +213,17 @@ const MobileProfile = ({ mainData }) => {
                 scrollToRef={scrollToRef}
                 position={position}
                 mainData={mainData}
+                isos={isos}
+                setIsos={setIsos}
               />
             )}
 
             {stage === 1 && (
               <BasicInfo
+                city={city}
+                setCity={setCity}
+                userInfo={userInfo}
+                setUserInfo={setUserInfo}
                 country={country}
                 stage={stage}
                 setStage={setStage}
@@ -172,6 +231,8 @@ const MobileProfile = ({ mainData }) => {
                 scrollToRef={scrollToRef}
                 position={position}
                 mainData={mainData}
+                isos={isos}
+                setIsos={setIsos}
               />
             )}
 
@@ -213,6 +274,8 @@ const MobileProfile = ({ mainData }) => {
 
             {stage === 5 && (
               <Advanced_Verf_3
+                userInfo={userInfo}
+                setUserInfo={setUserInfo}
                 stage={stage}
                 scrollToRef={scrollToRef}
                 frontImage={frontImage}
@@ -223,6 +286,8 @@ const MobileProfile = ({ mainData }) => {
                 position={position}
                 setStage={setStage}
                 setLoading={setLoading}
+                isos={isos}
+                setIsos={setIsos}
               />
             )}
 
@@ -234,10 +299,10 @@ const MobileProfile = ({ mainData }) => {
   );
 };
 
-const Profile = ({ mainData }) => {
-  return (
+const Profile = ({mainData}) => {  
+  return (   
     <Dashboard
-      index="4"
+      index={4}
       element={<ProfileAsElement mainData={mainData} />}
       mobileElement={<MobileProfile mainData={mainData} />}
     />

@@ -27,19 +27,21 @@ export const Container = styled.div`
 
     p{
         font-size:.9rem;
-        padding: .5em 6em;
+        padding: .5em 4em;
     }
 
     b{
         display:block;
     }
 
-    i{
-        display: block;
+    .inline{
+        display:block;
     }
+
+
 }
 
-@media only screen and (max-width:500px){   
+@media only screen and (max-width:800px){   
 
     .cont{
     
@@ -49,7 +51,7 @@ export const Container = styled.div`
 
         p{
             font-size:1rem;
-            padding: .5em 3em;
+            padding: .5em 1em;
         }
 
     }

@@ -68,7 +68,7 @@ const Account = () => {
             </form>
 
             <button className='create' type="submit">Save</button>
-            <p className="blue-text" onClick={() => navigate("/dashboard/wallet")}>proceed to dashboard</p>
+            <p className="blue-text" onClick={() => navigate("/dashboard/wallet")}>proceed to wallet</p>
 
 
         </Wrapper >

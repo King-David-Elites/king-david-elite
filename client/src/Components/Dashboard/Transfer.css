@@ -59,9 +59,6 @@ input[type="radio"] {
     height: 1.15em;
     border: 0.15em solid #F2BE5C;
     border-radius: 50%;
-    position: absolute;
-    left: 24em;
-    top: 11em;
     display: grid;
     place-content: center;
     cursor: pointer;

@@ -13,7 +13,7 @@ export const Header = styled.div`
     align-items: ${props => props.alignItems ? props.alignItems : "center"};
     gap:0.2em;
     z-index: ${props => props.z ? props.z : "3"};
-    white-space: nowrap;
+    white-space: nowrap;    
 
     .list-items{
         display: flex;
@@ -83,12 +83,14 @@ export const LogoText = styled.div`
     font-size: ${props => props.fontSize ? props.fontSize : "0.6rem"}; ;   
     font-weight:500;    
     cursor:pointer;
+    padding-left: 2rem;
 
     @media (min-width: ${theme.breakPoint['tablet']}) {
         color:${prop => prop.color ? prop.color : theme.textColor};
         font-size: ${props => props.fontSize ? props.fontSize : "1rem"}; ;     
         font-weight:700;    
         cursor:pointer;
+        padding-left: 0rem;
         }
 
     @media(max-width:650px){

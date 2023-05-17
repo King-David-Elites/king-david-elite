@@ -18,6 +18,7 @@ import { IoMdCar } from 'react-icons/io';
 import { BsFillBellFill, BsFillHeartFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom'
 import '../Navbar/Navbar.css'
+import notFound from "../Categories/MediaView/notFound.png";
 
 const NotificationAsElement = () => {
     const data = useGetUserDetails;
@@ -25,7 +26,7 @@ const NotificationAsElement = () => {
 
     const getNotifications = () => {
         axios.get(`${globalApi}/notifications/all`, setConfig())
-            .then(resp => setNotifications(resp.data))
+            .then(resp => setNotifications(resp.data.notifications))
             .catch(err => console.log(err))
     }
 
@@ -33,24 +34,31 @@ const NotificationAsElement = () => {
         getNotifications()
     }, [])
     return (
+
         <NotificationContainer>
             {
-                notifications.map((notification, i) => {
-                    return (
-                        <ReadMoreReadLess key={i}
-                            message={notification.message}
-                            title={notification.title}
-                            time={notification.createdAt}
-                        />
+                notifications.length == 0 ?
+                    <div className="w-full flex justify-center items-center flex-col gap-4 h-full">
+                        <img src={notFound} alt="notFound" className='w-[20em] h-auto' />
+                        <p>No Notification Available!!</p>
+                    </div>
+                    : notifications.map((notification, i) => {
+                        return (
+                            <ReadMoreReadLess key={i}
+                                message={notification.message}
+                                title={notification.title}
+                                time={notification.createdAt}
+                            />
 
-                    )
-                })
+                        )
+                    })
             }
-            <ReadMoreReadLess
+
+            {/* <ReadMoreReadLess
                 title="Deposit Successful"
                 message=" The system has detected that your account is logged in from an unused IP address."
                 time="4:30pm"
-            />
+            /> */}
         </NotificationContainer>
     )
 }
@@ -60,7 +68,10 @@ const MobileNotification = () => {
 
     const getNotifications = () => {
         axios.get(`${globalApi}/notifications/all`, setConfig())
-            .then(resp => { setNotifications(resp.data); console.log(resp.data) })
+            .then(resp => {
+                setNotifications(resp.data); console.log(resp.data.notifications
+                )
+            })
             .catch(err => console.log(err))
     }
 
@@ -236,7 +247,10 @@ const MobileNotification = () => {
 
             </div>
             {
-                notifications.length == 0 && <div className="font-bold justify-center h-[70vh] flex items-center text-base md:text-xl">No Notification</div>
+                <div className="w-full flex justify-center items-center flex-col gap-4 h-[80vh]">
+                    <img src={notFound} alt="notFound" className='w-[20em] h-auto' />
+                    <p>No Notification Available!!</p>
+                </div>
             }
             {
                 notifications.length > 0 && notifications.map((notification, i) => {
@@ -265,7 +279,7 @@ const MobileNotification = () => {
 
 const Notifications = () => {
     return (
-        <Dashboard element={<NotificationAsElement />} index="3" mobileElement={<MobileNotification />} />
+        <Dashboard element={<NotificationAsElement />} index={3} mobileElement={<MobileNotification />} />
     )
 }
 

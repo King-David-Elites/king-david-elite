@@ -5,24 +5,22 @@ export const Container = styled.div`
     width: 100%;
     padding: 20px;
     border: 1px solid white;
-    border-radius: 10px;
+    border-radius: 10px;    
     
     &:hover{
         border: 1px solid rgb(200,200,200);
     }
 
     @media (max-width: 700px){
-        padding: 0;
+        border: 1px solid rgb(200,200,200);
+        padding: 1em;
         margin:0 0  20px;
-
-        &:hover{
-        border: none;
-    }
+       
     }
 
     .profile{
         display: flex;
-        gap: 5px;
+        gap: 1em;
         align-items: center;
 
         img{
@@ -34,7 +32,7 @@ export const Container = styled.div`
 
         h4{
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 500;
         }
     }
 
@@ -83,7 +81,7 @@ export const Container = styled.div`
     }
 
     .enquireNow{
-        background: linear-gradient(98.99deg, #F2BE5C 6.69%, #592A0F 100%);
+        background:  #F2BE5C;
         border-radius: 4px;
         padding: 10px 20px;
         color: white;

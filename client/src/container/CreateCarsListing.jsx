@@ -1,11 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { X, LocationMarker } from "heroicons-react";
+import { X } from "heroicons-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import globalApi from "../api";
 import Loader from "../Components/Loader/Loader";
+import useContextAPI from "../Components/ContextAPI/ContextAPI";
 
 const CreateCarListing = () => {
   const [valid, setValid] = useState(false);
@@ -19,13 +20,19 @@ const CreateCarListing = () => {
   const [size, setSize] = useState(0);
   const [loader, setLoader] = useState(false);
   const [loadImage, setLoadImage] = useState(false);
+  const [popUp, setPopUp] = useState(false);
+
+  const mainData = useContextAPI();
 
   const navigate = useNavigate();
 
   const [userListings, setUserListings] = useState({
     title: "",
-    location: "somewhere",
+    location: "",
+    locationISO: "",
+    category: "cars",
     description: "",
+    forRent: false,
     images: images,
     videos: videos,
     price: "",
@@ -47,7 +54,7 @@ const CreateCarListing = () => {
     if (allVideos.length !== 0 && loadImage === false) {
       Load(allVideos, "video", size);
     }
-  }, [loaded,Load, loadImage, userListings, allImages, images, videos, size, allVideos]);
+  }, [loaded, loadImage]);
 
   useEffect(() => {
     userListings["images"] = images;
@@ -60,16 +67,16 @@ const CreateCarListing = () => {
       userListings["carCondition"] &&
       userListings["engineType"] &&
       userListings["colour"] &&
-      userListings["images"].length >= 4
+      userListings["images"].length >= 4 &&
+      userListings["location"] 
     ) {
-      console.log("filled");
       setValid(true);
       setError(false);
     } else {
       setValid(false);
       setError(true);
     }
-  }, [changing, userListings, images, videos]);
+  }, [changing]);
 
   const Load = (base64, type, size) => {
     if (type === "image") {
@@ -107,19 +114,6 @@ const CreateCarListing = () => {
     return config;
   };
 
-  const getPosition = async () => {
-    // await navigator.geolocation.getCurrentPosition(
-    //   (position) => {
-    //     setLatitude(position.coords.latitude);
-    //     setLongitude(position.coords.longitude);
-    //     setPosition(true);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
-  };
-
   const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -132,10 +126,11 @@ const CreateCarListing = () => {
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
         setLoader(false);
-        console.log(resp.data);
         navigate("/profile");
       })
       .catch((err) => {
+        setLoader(false);
+        setPopUp(true);        
         console.log(err);
       });
   };
@@ -148,10 +143,29 @@ const CreateCarListing = () => {
   return (
     <>
       {loader && <Loader />}
+      {popUp && (
+        <>
+          <div
+            className="fixed w-full z-50 h-[100%] top-0 left-0 flex justify-center items-center"
+            style={{background:"rgba(0,0,0,0.5"}}
+            onClick={() => {
+              setPopUp(false);
+            }}
+          >
+            <div className="md:w-1/3 md:h-1/3 w-2/3 h-1/4 bg-[white] flex justify-center rounded-xl items-center">
+              <div className="flex flex-col justify-center items-center p-5">
+                <p className="text-xl text-center font-bold">
+                  Seems there is a connection error. <span className="text-[#F2BE5C] block">please try again!</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <div className="form_Content">
-        <div className="section" id="location">
-          <LocationMarker />
-          <p>Add Location</p>
+        <div className="section">
+          <p>Location</p>
+          <input type="text" name="location" required onChange={handleChange} />
         </div>
         <div className="section">
           <p>Brand Name</p>
@@ -207,6 +221,41 @@ const CreateCarListing = () => {
               name="features"
               required
               onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="section">
+          <hr />
+        </div>
+        <div className="rental">
+          <div className="sect">
+            <p>For Sale</p>
+            <input
+              type="checkbox"
+              name="forRent"
+              checked={userListings["forRent"] === false ? true : false}
+              onClick={() => {
+                if (userListings["forRent"] === true) {
+                  setUserListings({ ...userListings, forRent: false });
+                } else {
+                  setUserListings({ ...userListings, forRent: true });
+                }
+              }}
+            />
+          </div>
+          <div className="sect">
+            <p>For Rent</p>
+            <input
+              type="checkbox"
+              name="forRent"
+              checked={userListings["forRent"] === true ? true : false}
+              onClick={() => {
+                if (userListings["forRent"] === false) {
+                  setUserListings({ ...userListings, forRent: true });
+                } else {
+                  setUserListings({ ...userListings, forRent: false });
+                }
+              }}
             />
           </div>
         </div>
@@ -334,7 +383,13 @@ const CreateCarListing = () => {
         </div>
         <div className="NumbB">
           <div className="sect">
-            <p>Price</p>
+            {userListings["forRent"] === true ? (
+              <p>Price per Day</p>
+            ) : (
+              <p>
+                <p>Price</p>
+              </p>
+            )}
             <div className="price">
               <input
                 type="number"
@@ -343,11 +398,7 @@ const CreateCarListing = () => {
                 onChange={handleChange}
               />
               <select>
-                <option>USD</option>
                 <option>NGN</option>
-                <option>INR</option>
-                <option>EU</option>
-                <option>YEN</option>
               </select>
             </div>
           </div>

@@ -1,6 +1,6 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useState } from "react";
-import { X, LocationMarker } from "heroicons-react";
+import { X } from "heroicons-react";
 import { OutProp, InProp, Views } from "./PropertiesContents";
 import axios from "axios";
 import { useEffect } from "react";
@@ -25,16 +25,18 @@ const CreateRealEstateListing = () => {
   const [allVideos, setAllVideos] = useState([]);
   const [loader, setLoader] = useState(false);
   const [loadImage, setLoadImage] = useState(false);
+  const [popUp, setPopUp] = useState(false);
 
   const navigate = useNavigate();
   const [size, setSize] = useState(0);
 
-  
-
   const [userListings, setUserListings] = useState({
     title: "",
-    location: "somewhere",
+    location: "",
+    locationISO: "",
+    category: "real-estate",
     description: "",
+    forRent: false,
     images: images,
     videos: videos,
     price: "",
@@ -48,7 +50,42 @@ const CreateRealEstateListing = () => {
     noOfBathroom: 0,
   });
 
-  const Load = useCallback((base64, type, size) => {
+  useEffect(() => {
+    setLoadImage(loadImage);
+    userListings["images"] = images;
+    userListings["videos"] = videos;
+    userListings["features"] = features;
+    if (allImages.length !== 0 && loadImage === true) {
+      Load(allImages, "image", size);
+    }
+    if (allVideos.length !== 0 && loadImage === false) {
+      Load(allVideos, "video", size);
+    }
+  }, [loaded, loadImage]);
+
+  useEffect(() => {
+    userListings["images"] = images;
+    userListings["videos"] = videos;
+    userListings["features"] = features;
+    if (
+      userListings["title"] &&
+      userListings["description"] &&
+      userListings["location"] &&
+      userListings["features"].length !== 0 &&
+      userListings["price"] &&
+      userListings["images"].length >= 4 &&
+      userListings["location"]
+    ) {
+      setValid(true);
+      setError(false);
+    } else {
+      setValid(false);
+      setError(true);
+    }
+    setUserListings({ ...userListings, features: features });
+  }, [changing, features]);
+
+  const Load = (base64, type, size) => {
     if (type === "image") {
       if (size <= 52428800 && size !== 0) {
         setImages(
@@ -69,52 +106,7 @@ const CreateRealEstateListing = () => {
       }
     }
     setChanging(!changing);
-  }, [changing, images]) 
-  
-
-  const loadImageCB = useCallback(()=>{
-    setLoadImage(loadImage);
-    userListings["images"] = images;
-    userListings["videos"] = videos;
-    userListings["features"] = features;
-    if (allImages.length !== 0 && loadImage === true) {
-      Load(allImages, "image", size);
-    }
-    if (allVideos.length !== 0 && loadImage === false) {
-      Load(allVideos, "video", size);
-    }
-  }, [ Load, size, loadImage, userListings, images, videos, features, allImages, allVideos])
-
-  useEffect(() => {
-    loadImageCB()
-  },[loadImageCB] );
-
-  const updateUserListings = useCallback(()=>{
-    userListings["images"] = images;
-    userListings["videos"] = videos;
-    userListings["features"] = features;
-    if (
-      userListings["title"] &&
-      userListings["description"] &&
-      userListings["location"] &&
-      userListings["features"].length !== 0 &&
-      userListings["price"] &&
-      userListings["images"].length >= 4
-    ) {
-      setValid(true);
-      setError(false);
-    } else {
-      setValid(false);
-      setError(true);
-    }
-    setUserListings({ ...userListings, features: features });
-  }, [features, images, videos, userListings] )
-
-  useEffect(() => {
-    updateUserListings()
-  }, [updateUserListings]);
-
-
+  };
 
   const setConfig = () => {
     const authToken = localStorage.getItem("token");
@@ -129,25 +121,6 @@ const CreateRealEstateListing = () => {
     return config;
   };
 
-  const getPosition = async () => {
-    var headers = new Headers();
-    headers.append(
-      "X-CSCAPI-KEY",
-      "bWxLejVmcWtRSTg1ekRyaXlKZ3l1YjN2MHI1OFBwUWVDYkVCbWNNVw=="
-    );
-
-    var requestOptions = {
-      method: "GET",
-      headers: headers,
-      redirect: "follow",
-    };
-
-    fetch("https://api.countrystatecity.in/v1/countries", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));    
-  };
-
   const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -159,11 +132,12 @@ const CreateRealEstateListing = () => {
     await axios
       .post(`${globalApi}/listings/upload-list`, userListings, setConfig())
       .then((resp) => {
-        console.log(resp.data);
         setLoader(false);
         navigate("/profile");
       })
       .catch((err) => {
+        setLoader(false);
+        setPopUp(true);
         console.log(err.data);
       });
   };
@@ -176,16 +150,29 @@ const CreateRealEstateListing = () => {
   return (
     <>
       {loader && <Loader />}
+      {popUp && (
+        <>
+          <div
+            className="fixed w-full z-50 h-[100%] top-0 left-0 flex justify-center items-center"
+            style={{background:"rgba(0,0,0,0.5"}}
+            onClick={() => {
+              setPopUp(false);
+            }}
+          >
+            <div className="md:w-1/3 md:h-1/3 w-2/3 h-1/4 bg-[white] flex justify-center rounded-xl items-center">
+              <div className="flex flex-col justify-center items-center p-5">
+                <p className="text-xl text-center font-bold">
+                  Seems there is a connection error. <span className="text-[#F2BE5C] block">please try again!</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <div className="form_Content">
-        <div
-          className="section"
-          id="location"
-          onClick={() => {
-            getPosition();
-          }}
-        >
-          <LocationMarker />
-          <p>Add Location</p>
+        <div className="section">
+          <p>Location</p>
+          <input type="text" name="location" required onChange={handleChange} />
         </div>
         <div className="section">
           <p>Title/Name</p>
@@ -200,10 +187,6 @@ const CreateRealEstateListing = () => {
             required
             onChange={handleChange}
           />
-        </div>
-        <div className="section">
-          <p>Address</p>
-          <input type="text" name="location" required onChange={handleChange} />
         </div>
         <div className="section">
           <hr />
@@ -368,6 +351,43 @@ const CreateRealEstateListing = () => {
         <div className="section">
           <hr />
         </div>
+        <div className="rental">
+          <div className="sect">
+            <p>For Sale</p>
+            <input
+              type="checkbox"
+              name="forRent"
+              checked={userListings["forRent"] === false ? true : false}
+              onClick={() => {
+                if (userListings["forRent"] === true) {
+                  setUserListings({ ...userListings, forRent: false });
+                } else {
+                  setUserListings({ ...userListings, forRent: true });
+                }
+                setChanging(!changing);
+              }}
+            />
+          </div>
+          <div className="sect">
+            <p>For Rent</p>
+            <input
+              type="checkbox"
+              name="forRent"
+              checked={userListings["forRent"] === true ? true : false}
+              onClick={() => {
+                if (userListings["forRent"] === false) {
+                  setUserListings({ ...userListings, forRent: true });
+                } else {
+                  setUserListings({ ...userListings, forRent: false });
+                }
+                setChanging(!changing);
+              }}
+            />
+          </div>
+        </div>
+        <div className="section">
+          <hr />
+        </div>
         <div className="section">
           <div className="sectionHead">
             <p>Images ({images.length})</p>
@@ -489,15 +509,17 @@ const CreateRealEstateListing = () => {
         </div>
         <div className="NumbB">
           <div className="sect">
-            <p>Price</p>
+            {userListings["forRent"] === true ? (
+              <p>Price per Day</p>
+            ) : (
+              <p>
+                <p>Price</p>
+              </p>
+            )}
             <div className="price">
               <input name="price" onChange={handleChange} type="number" />
               <select>
-                <option>USD</option>
                 <option>NGN</option>
-                <option>INR</option>
-                <option>EU</option>
-                <option>YEN</option>
               </select>
             </div>
           </div>

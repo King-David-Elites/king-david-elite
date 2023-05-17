@@ -17,16 +17,12 @@ import EachCars from './Components/Categories/Cars/EachCars';
 import About from './Components/About/About';
 import Help from './Components/About/Help';
 import Earning from './Components/About/Earning';
-import Benefits from './Components/About/Benefits';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Savedpost from './Components/Dashboard/Savedpost';
-import ProfileContainer from './container/ProfileContainer.jsx';
 import Verification from './Components/Verification/Verification';
-import ProfileList from './container/ProfileList';
 import CreateListing from './container/CreateListing';
 import EditProfile from './Components/Dashboard/Profile/EditProfile';
 import UpgradeProfile from './Components/Dashboard/Profile/UpgradeProfile';
-import ProfileStat from './container/ProfileStat';
 import Waitlist from './Components/Page/Waitlist';
 import SignUpPage from './Components/Page/SignupPage';
 import LoginPage from './Components/Page/LoginPage';
@@ -61,6 +57,11 @@ import ConceirgeVacationPage from './Components/Page/ConceirgeVacationPage';
 import BoatCruisePage from './Components/Page/BoatCruisePage';
 import ChaffeurPage from './Components/Page/ChauffeurPage';
 import Pricing from './Components/Categories/LuxuryService/Pricing';
+import CollectiblesListing from './Components/Categories/Collectibles/CollectiblesListing';
+import EachCollectible from './Components/Categories/Collectibles/EachCollectible';
+import Cart from './Components/Categories/Collectibles/Cart';
+import CheckoutPage from './Components/Page/CheckoutPage';
+import SavedListings from './container/SavedListings';
 
 function App() {
   const queryClient = new QueryClient();
@@ -90,12 +91,16 @@ function App() {
             <Route path={`/reset/${token}`} element={<ResetPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/savedpost' element={<Savedpost />} />
-            <Route path="/real-estate" element={<RealEstateListing />} />
+            <Route path="/real-estate" element={<RealEstateListing mainData={mainData} />} />
             <Route path="/luxury-service" element={<LuxuryServiceListing />} />
             <Route path="/dashboard/messages/chat/:id" element={<ChatBox />} />
             <Route path="/real-estate/:id" element={<EachRealEstate active={0} />} />
             <Route path="/real-estate/:id/media" element={<MediaView active={0} />} />
             <Route path="/cars" element={<Cars mainData={mainData} />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/collectible/:id" element={<EachCollectible />} />
+            <Route path="/collectible" element={<CollectiblesListing active={4} />} />
+            <Route path="/collectible/:id/media" element={<MediaView active={0} />} />
             <Route path="/cars/:id" element={<EachCars active={0} />} />
             <Route path="/cars/:id/media" element={<MediaView active={0} />} />
             <Route path="/others" element={<OtherSections />} />
@@ -110,27 +115,27 @@ function App() {
             <Route path="/dashboard/wallet/deposit" element={<Deposit />} />
             <Route path='/dashboard/wallet/transfer/confirm' element={<Transfer2 />} />
             <Route path="/about" element={<About />} />
+            <Route path="/luxury-service/checkout" element={<CheckoutPage mainData={mainData} />} />
             <Route path="/help" element={<Help />} />
             <Route path='/success' element={<SuccessPage />} />
             <Route path="/help/earning" element={<Earning />} />
-            {/* <Route path="/help/benefits" element={<Benefits />} />
-          <Route path="/profile" element={<ProfileContainer />} /> */}
+            {/* <Route path="/help/benefits" element={<Benefits />} />           */}
             <Route path="/profile/verification" element={<Verification />} />
-            <Route path="/profile/list" element={<ProfileList />} />
-            <Route path="/profile/stat" element={<ProfileStat />} />
             <Route path='/profile/edit' element={<EditProfile mainData={mainData} />} />
-            <Route path='/profile/upgrade' element={<UpgradeProfile mainData={mainData} />} />
+            <Route path='/profile/upgrade' element={<UpgradeProfile />} />
             <Route path="/profile/create-listings" element={<CreateListing />} />
             <Route path="/profile" element={<LoggedUser mainData={mainData} />} />
             <Route path="/profile/:id" element={<OtherUser />} />
             <Route path="/waitList" element={<Waitlist />} />
-            <Route path="/luxury-service/exclusive-event" element={<ExclusiveEventPage />} />
-            <Route path="/luxury-service/weekend-escape" element={<WeekendEscapePage />} />
-            <Route path="/luxury-service/helicopter-ride" element={<HelicopterRidePage />} />
-            <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage />} />
-            <Route path="/luxury-service/boat-cruise" element={<BoatCruisePage />} />
-            <Route path="/luxury-service/chauffeur" element={<ChaffeurPage />} />
+            <Route path="/luxury-service/exclusive-event" element={<ExclusiveEventPage mainData={mainData} />} />
+            <Route path="/luxury-service/weekend-escape/:id" element={<WeekendEscapePage mainData={mainData} />} />
+            <Route path="/luxury-service/helicopter-ride" element={<HelicopterRidePage mainData={mainData} />} />
+            <Route path="/luxury-service/concierge-vacation" element={<ConceirgeVacationPage mainData={mainData} />} /> 
+            <Route path="/luxury-service/boat-cruise/:id" element={<BoatCruisePage mainData={mainData} />} />
+            <Route path="/luxury-service/chauffeur" element={<ChaffeurPage mainData={mainData} />} />
             <Route path="/luxury-service/pricing" element={<Pricing />} />
+            <Route path="/luxury-service/pricing/:id" element={<Pricing />} />
+            <Route path="/saved-listings" element={<SavedListings />} />
           </Routes>
         </AnimatePresence>
       </Router>
