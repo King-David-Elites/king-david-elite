@@ -89,6 +89,7 @@ const HomePage = () => {
   return (
     <Fragment>
       <Navbar active={0} />
+      
       <Background>
         {HomeAnimation.map((item) => {
           if (item.id === homeId) {

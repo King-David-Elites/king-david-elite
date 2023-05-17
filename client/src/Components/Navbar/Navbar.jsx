@@ -224,6 +224,7 @@ const Navbar = ({ bg, sticky, active }) => {
             </div>
           </ul>
         </nav>
+
         <Brand>
           <div className="w-[40px] h-[auto]" onClick={() => navigate("/")}>
             <img
@@ -232,6 +233,7 @@ const Navbar = ({ bg, sticky, active }) => {
               alt="brandlogo"
             />
           </div>
+          
           <LogoText onClick={() => navigate("/")}>KING DAVID ELITES</LogoText>
 
           <div className="menu-icon">
