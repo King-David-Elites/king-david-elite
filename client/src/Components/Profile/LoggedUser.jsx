@@ -32,6 +32,9 @@ import { GridContainer } from "../Listing/Listing.styled";
 import Listing from "../Listing/Listing";
 import { setConfig } from "../../infrastructure/api/user/userRequest";
 import useContextAPI from "../ContextAPI/ContextAPI";
+import styled from "styled-components";
+import { useCallback } from "react";
+import api from "../../infrastructure/api";
 
 const LoggedUser = ({ logged }) => {
   const [active, setActive] = useState(<ProfileStat />);
@@ -119,6 +122,24 @@ const LoggedUser = ({ logged }) => {
       setBtn("Saved Listings");
     }
   }, [data]);
+
+
+  const [verify, setVerify] = useState("")
+  const getVerification = useCallback(async ()=>{
+    await axios.get(`${globalApi}/verification/my-status`, setConfig())
+    .then(resp => {
+      console.log(resp.data)
+      setVerify(resp.data.status)}
+    )
+    .catch(err => {
+      console.log(err)
+    })
+    
+  }, [])
+
+  useEffect(()=>{
+    getVerification()
+  }, [])
 
   return (
     <Fragment>
@@ -243,12 +264,20 @@ const LoggedUser = ({ logged }) => {
           </p>
         )}
       </Address>
+
+      {
+        !logged && verify && verify != "APPROVED" &&
+        <Verify>
+          Verification status: {verify}
+        </Verify>
+      }
       </UserDetails>
 </Details>
       {/* <Bio>{data.about}</Bio> */}
       
 
       {!logged && data.accountType != 0 && <Update>Ugrade Account</Update>}
+
 
       {!logged && data.accountType ==1 ?
        (
@@ -330,3 +359,7 @@ const LoggedUser = ({ logged }) => {
 };
 
 export default LoggedUser;
+
+const Verify = styled.div`
+  
+`

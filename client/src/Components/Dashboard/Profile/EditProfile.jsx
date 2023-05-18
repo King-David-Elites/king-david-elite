@@ -43,15 +43,15 @@ const EditProfile = () => {
   const [locationISO, setLocationISO] = useState(mainData.userData.locationISO);
   const [isos, setIsos] = useState({
     countryIso:
-      mainData.userData.locationISO.length > 0
+      mainData.userData.locationISO?.length > 0
         ? mainData.userData.locationISO.split("#")[2]
         : "",
     stateIso:
-      mainData.userData.locationISO.length > 0
+      mainData.userData.locationISO?.length > 0
         ? mainData.userData.locationISO.split("#")[1]
         : "",
     cityId:
-      mainData.userData.locationISO.length > 0
+      mainData.userData.locationISO?.length > 0
         ? mainData.userData.locationISO.split("#")[0]
         : "",
   });
@@ -59,7 +59,7 @@ const EditProfile = () => {
   useEffect(() => {
     getUser();
     console.log(mainData.userData);
-    if (mainData.userData.locationISO.length > 0) {
+    if (mainData.userData.locationISO?.length > 0) {
       prepopulateLocation(mainData.userData.locationISO);
     }
   }, []);

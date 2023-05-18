@@ -69,13 +69,15 @@ const Advanced_Verf_3 = (props) => {
   const postVerificationDetails = async (verificationData) => {
     console.log(verificationData);
     console.log("verification started ...");
+
     await axios
       .patch(`${globalApi}/users/verify`, verificationData, setConfig())
       .then((resp) => {        
+        console.log(resp)
         setVerified(true);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
         setLoading(false)
         setPop(true);
       });
