@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import Dashboard from './Dashboard'
 import './Dashboard.Styles'
 import { GenericContainer, MobileDashboardContainer, MobileGenericContainer } from './Dashboard.Styles'
@@ -17,22 +17,52 @@ import { MdRealEstateAgent, MdMessage, MdAccountBalanceWallet } from 'react-icon
 import { IoMdCar } from 'react-icons/io';
 import { BsFillBellFill, BsFillHeartFill } from 'react-icons/bs';
 import '../Navbar/Navbar.css'
+import globalApi from '../../api'
+import { setConfig } from '../../infrastructure/api/user/userRequest'
+import axios from 'axios'
 
 
 const WalletAsElement = () => {
+  const [details, setDetails] = useState({})
+  const [transactions, setTransactions] = useState([])
+
+  const getAccount = useCallback(async ()=>{
+    await axios.get(`${globalApi}/accounts/get-account`, setConfig())
+    .then(resp => {
+      setDetails(resp.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
+
+  const getAllTransactions = useCallback(async ()=>{
+    await axios.get(`${globalApi}/transactions/all-transactions`, setConfig())
+    .then(resp => {
+      setTransactions(resp.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
+
+  useEffect(()=> {
+    getAccount()
+    getAllTransactions()
+  }, [getAccount, getAllTransactions])
 
   return (
     <GenericContainer>
       <div className='flex gap-8'>
         <Leftwallet>
           <h4>Account Balance: </h4>
-          <h2>$32,720.69</h2>
+          <h2>{details.account_balance || "00.00"}</h2>
           <div>
             <button className='transfer'>Transfer</button>
             <button>Withdraw</button>
             <button>Deposit</button>
           </div>
-          <p> Account ID:123345AD</p>
+          <p> Account ID:{details.account_number}</p>
         </Leftwallet>
 
         <Rightwallet>
@@ -43,43 +73,24 @@ const WalletAsElement = () => {
       <Bottom>
         <table>
           <tr>
-            <th>Transaction</th>
+            <th>Transactions</th>
           </tr>
-          <tr>
-            <td><span className='green'>$1,200.00</span></td>
-            <td>112233HR</td>
-            <td>Daniels Whales</td>
-            <td>16 July,2022</td>
-            <td>2:50pm</td>
-          </tr>
-          <tr>
-            <td><span className='red'>$21,710.00</span></td>
-            <td>5413691359</td>
-            <td>Lambo Dealer</td>
-            <td>02 July,2022</td>
-            <td>5:00am</td>
-          </tr>
-          <tr>
-            <td><span className='green'>$7,200.00</span></td>
-            <td>223833AS</td>
-            <td>Leonardo Caprisonne</td>
-            <td>24 March,2022</td>
-            <td>2:51am</td>
-          </tr>
-          <tr>
-            <td><span className='green'>$1,200.00</span></td>
-            <td>112233HR</td>
-            <td>Daniel Whales</td>
-            <td>16 July,2022</td>
-            <td>7:09pm</td>
-          </tr>
-          <tr>
-            <td><span className='red'>$9,450.00</span></td>
-            <td>112233FT</td>
-            <td>Daniel Whales</td>
-            <td>19 July,2022</td>
-            <td>2:50am</td>
-          </tr>
+          {
+            transactions.map((t, i)=>{
+              const {amount, createdAt, transaction_ref, credit, status, message} = t
+              return(
+                <>
+                  <tr key={i}>
+                    <td><span className={credit ? "green" : "red"}>${amount}</span></td>
+                    <td>{transaction_ref}</td>
+                    <td>{"Daniels Whales"}</td>
+                    <td>{createdAt}</td>
+                    <td>2:50pm</td>
+                 </tr>
+                </>
+              )
+            })
+          }
         </table>
 
       </Bottom>
@@ -89,6 +100,34 @@ const WalletAsElement = () => {
 
 const MobileWallet = () => {
   const [activeNav, setActiveNav] = useState(false);
+
+  const [details, setDetails] = useState({})
+  const [transactions, setTransactions] = useState([])
+
+  const getAccount = useCallback(async ()=>{
+    await axios.get(`${globalApi}/accounts/get-account`, setConfig())
+    .then(resp => {
+      setDetails(resp.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
+
+  const getAllTransactions = useCallback(async ()=>{
+    await axios.get(`${globalApi}/transactions/all-transactions`, setConfig())
+    .then(resp => {
+      setTransactions(resp.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
+
+  useEffect(()=> {
+    getAccount()
+    getAllTransactions()
+  }, [getAccount, getAllTransactions])
 
   const showMenu = () => {
     setActiveNav(!activeNav);
@@ -250,8 +289,8 @@ const MobileWallet = () => {
             <img src={walletImage} alt="walletImage" />
             <div>
               <p className='gold-text'>Balance:</p>
-              <h4 className='white-text'>$32,720.69</h4>
-              <p className='align-bottom'>Account ID: 123345AD</p>
+              <h4 className='white-text'>${details.account_balance || "00.00"}</h4>
+              <p className='align-bottom'>Account ID: {details.account_number}</p>
             </div>
           </div>
 
@@ -274,17 +313,29 @@ const MobileWallet = () => {
 
           <div className='transaction'>
             <h3>Transactions</h3>
-            <div className='transaction-content-wrapper'>
-              <div className='content1'>
-                <h5>Daniel Whales</h5>
-                <p className='neutral-text'>112233AB</p>
-              </div>
-              <div className='content1'>
-                <p className='green-text'>$1,200.00</p>
-                <p className='neutral-text'>16 July  2:50pm</p>
-              </div>
-            </div>
-            <div className='border-line'></div>
+
+            {
+              transactions.map((t, i)=>{
+                const {amount, createdAt, transaction_ref, credit, status, message} = t
+                return(
+                    <>
+                      <div className='transaction-content-wrapper'>
+                        <div className='content1'>
+                          <h5>Daniel Whales</h5>
+                          <p className='neutral-text'>{transaction_ref}</p>
+                        </div>
+                        <div className='content1'>
+                          <p className='green-text'>${amount}</p>
+                          <p className='neutral-text'>{createdAt}</p>
+                        </div>
+                      </div>
+
+                      <div className='border-line'></div>
+                    </>
+                )
+              })
+            }
+          
 
             <div className='transaction-content-wrapper'>
               <div className='content1'>
