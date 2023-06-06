@@ -11,7 +11,7 @@ import { BsFillFileArrowUpFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { ImCross } from 'react-icons/im';
 import { useState } from 'react';
-import { FaUserCircle, FaUser } from 'react-icons/fa';
+import { FaUserCircle, FaUser, FaCopy } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import { MdRealEstateAgent, MdMessage, MdAccountBalanceWallet } from 'react-icons/md';
 import { IoMdCar } from 'react-icons/io';
@@ -285,13 +285,19 @@ const MobileWallet = () => {
             </ul>
           </nav>
 
-          <div className='walletImage-div'>
-            <img src={walletImage} alt="walletImage" />
-            <div>
+          <div className='walletImage-div' bg={walletImage}>
+            {/* <img src={walletImage} alt="walletImage" /> */}
+
               <p className='gold-text'>Balance:</p>
               <h4 className='white-text'>${details.account_balance || "00.00"}</h4>
-              <p className='align-bottom'>Account ID: {details.account_number}</p>
-            </div>
+              <div className='align-bottom'>
+                <p>Account ID: {details?.account_number}</p> 
+                <div className='copy-icon'>
+                  <FaCopy/>
+                </div>
+                
+              </div>
+            
           </div>
 
           <div className='menu-list'>

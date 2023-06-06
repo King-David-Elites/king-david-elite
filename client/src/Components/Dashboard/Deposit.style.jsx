@@ -97,8 +97,6 @@ border-radius: 8px;
 
 
 div{
-    position:absolute;
-    top:40px;
     display:flex;
 
     .paystack{

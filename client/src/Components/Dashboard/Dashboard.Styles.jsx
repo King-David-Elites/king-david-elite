@@ -20,11 +20,23 @@ export const MobileDashboardContainer = styled.div`
   }
 
   .upper-sect {
-    height: 15%;
+    /* height: 15%; */
 
     .walletImage-div {
       margin: 1em;
-      position: relative;
+      /* position: relative; */
+      /* height: 15em; */
+      /* width: 100%; */
+      border-radius: 10px;
+      background: black;
+      padding: 20px;
+      box-sizing: border-box;
+
+      .copy-icon{
+        background-color: rgba(200,200,200, 0.3);
+        padding: 10px;
+        border-radius: 50%;
+      }
 
       .gold-text {
         color: ${theme.color};
@@ -35,12 +47,21 @@ export const MobileDashboardContainer = styled.div`
       .white-text {
         color: ${theme.textColor};
         font-weight: 600;
-        font-size: 23px;
+        font-size: 30px;
       }
 
       .align-bottom {
-        margin-top: 60px;
+        margin-top: 20px;
+        width: 100%;
         color: ${theme.textColor};
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+
+        p{
+          width: fit-content;
+        }
       }
     }
 
@@ -49,14 +70,14 @@ export const MobileDashboardContainer = styled.div`
       width: 100%;
     }
 
-    .walletImage-div div {
+    /* .walletImage-div div {
       position: absolute;
       top: 40px;
       left: 40px;
       display: flex;
       flex-direction: column;
       gap: 1em;
-    }
+    } */
   }
 
   .transaction {

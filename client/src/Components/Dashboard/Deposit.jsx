@@ -7,12 +7,15 @@ import theme from '../../application/utils/Theme'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { ImCross } from 'react-icons/im';
-import { FaUserCircle, FaUser } from 'react-icons/fa';
+import { FaUserCircle, FaUser, FaCopy } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import { MdRealEstateAgent, MdMessage, MdAccountBalanceWallet } from 'react-icons/md';
 import { IoMdCar } from 'react-icons/io';
 import { BsFillBellFill, BsFillHeartFill } from 'react-icons/bs';
 import '../Navbar/Navbar.css'
+import { Fragment } from 'react'
+import styled from 'styled-components'
+import Loader from '../Loader/Loader'
 
 const Deposit = () => {
   const [activeNav, setActiveNav] = useState(false);
@@ -20,6 +23,8 @@ const Deposit = () => {
   const showMenu = () => {
     setActiveNav(!activeNav);
   }
+
+  const [load, setLoading] = useState(false);
 
   const navigate = useNavigate()
 
@@ -107,7 +112,10 @@ const otherNav = [
 
 
   return (
-    <div className="transfer-wrapper">
+    <Fragment>
+      {
+        load && <Loader />
+      }
       <div className="top-navigation">
         <div className='flex-nav'>
           <BiArrowBack size={25} onClick={() => navigate("/dashboard/wallet")} />
@@ -176,23 +184,59 @@ const otherNav = [
 
         </ul>
       </nav>
+      
+      <DepositPage>
+        <h2>How To Make A Deposit?</h2>
+        <p>1. Copy your KDE virtual account Number</p>
+        <p>2. Confirm the account name and ensure it tally with yours.</p>
+        <p>3. Transfer the amount you want into the account.</p>
+        <p>4. Click on the <b>"I Have Made The Payment"</b> button below</p>
 
-      <form className="transfer-body">
-        <div className='payment-type'>
-          <button>PayStack</button>
-          <button>FlutterWave</button>
+        <div className="account_details">
+          <p>Account Name: Olamide Williams</p>
+          <p>Bank Name: Fidelity Bank</p>
+          <p>Account Number: 73892382328 <FaCopy /></p>
         </div>
 
-        <div>
-          <p>Deposit Amount ($)</p>
-          <input type="text" />
-        </div>
-
-        <MainButton width="100%" marginTop="20px" padding="1.5em" color={theme.footerColor} onClick={() => navigate("/success")}>Continue</MainButton>
-
-      </form>
-    </div>
+        <button className="btn" onClick={()=> setLoading(true)}>
+          I Have Made The Payment
+        </button>  
+      </DepositPage>
+    </Fragment>
   );
 }
+
+const DepositPage = styled.div`
+  padding: 20px;
+  h2{
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .account_details{
+    background-color: rgb(230,230,230);
+    padding: 10px;
+    margin: 10px 0;
+
+    p{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 5px 0;
+    }
+  }
+
+  button{
+    background-color: ${theme.color};
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 30px;
+    font-weight:600 ;
+  }
+`
 
 export default Deposit;
