@@ -11,6 +11,7 @@ const SignUpPage = () => {
   const emailRef = useRef();
   const fnameRef = useRef();
   const lnameRef = useRef();
+  const phoneNumberRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false)
@@ -57,6 +58,7 @@ const SignUpPage = () => {
       firstName: fnameRef.current.value,
       lastName: lnameRef.current.value,
       password: passwordRef.current.value,
+      phoneNumber1: phoneNumber1Ref.current.value,
     };
 
     console.log(globalApi);
@@ -113,6 +115,7 @@ const SignUpPage = () => {
           />
           <input type="text" ref={fnameRef} placeholder="First name" />
           <input type="text" ref={lnameRef} placeholder="Last name" />
+          <input type="text" ref={phoneNumberRef} placeholder="Phone Number" />
           <div className="relative flex items-center mt-[-2em] md:mt-[0em]">
             <input type={state ? "text" : "password"} value={password} onChange={handleOnChange} onFocus={handleOnFocus} onBlur={handleOnBlur} onKeyUp={handleOnKeyUp} ref={passwordRef} placeholder="Password" />
             <span onClick={toggleBtn} className="border-none absolute right-7 md:right-14 mr-3 cursor-pointer outline-none  bg-transparent">
