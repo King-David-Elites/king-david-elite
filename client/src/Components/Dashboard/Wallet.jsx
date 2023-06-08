@@ -20,6 +20,7 @@ import '../Navbar/Navbar.css'
 import globalApi from '../../api'
 import { setConfig } from '../../infrastructure/api/user/userRequest'
 import axios from 'axios'
+import {format} from "timeago"
 
 
 const WalletAsElement = () => {
@@ -292,12 +293,11 @@ const MobileWallet = () => {
               <h4 className='white-text'>₦{details?.account_balance || "00.00"}</h4>
               <div className='align-bottom'>
                 <p>Account ID: {details?.account_number}</p> 
-                <p>Bank Name: Fidelity</p>
                 <div className='copy-icon'>
                   <FaCopy/>
                 </div>
-                
               </div>
+              <p>Bank Name: Fidelity</p>
             
           </div>
 
@@ -332,7 +332,7 @@ const MobileWallet = () => {
                           <p className='neutral-text'>{status}</p>
                         </div>
                         <div className='content1'>
-                          <p className={credit ? "green-text" : "orange-text"}>₦{amount}</p>
+                          <p className={credit ? "green-text" : "orange-text"}>₦{format(amount)}</p>
                           <p className='neutral-text'>{createdAt}</p>
                         </div>
                       </div>
