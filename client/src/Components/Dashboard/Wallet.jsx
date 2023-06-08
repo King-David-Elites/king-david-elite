@@ -20,7 +20,8 @@ import '../Navbar/Navbar.css'
 import globalApi from '../../api'
 import { setConfig } from '../../infrastructure/api/user/userRequest'
 import axios from 'axios'
-import {format} from "timeago"
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { toast } from 'react-toastify'
 
 
 const WalletAsElement = () => {
@@ -293,11 +294,14 @@ const MobileWallet = () => {
               <h4 className='white-text'>₦{details?.account_balance || "00.00"}</h4>
               <div className='align-bottom'>
                 <p>Account ID: {details?.account_number}</p> 
-                <div className='copy-icon'>
+                <CopyToClipboard text={details?.account_number} onCopy={()=> toast("Copied!")}>
+                  <div className='copy-icon'>
                   <FaCopy/>
                 </div>
+                </CopyToClipboard>
+                
               </div>
-              <p>Bank Name: Fidelity</p>
+              
             
           </div>
 
@@ -332,7 +336,7 @@ const MobileWallet = () => {
                           <p className='neutral-text'>{status}</p>
                         </div>
                         <div className='content1'>
-                          <p className={credit ? "green-text" : "orange-text"}>₦{format(amount)}</p>
+                          <p className={credit ? "green-text" : "orange-text"}>₦{amount}</p>
                           <p className='neutral-text'>{createdAt}</p>
                         </div>
                       </div>
