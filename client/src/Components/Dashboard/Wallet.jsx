@@ -292,6 +292,7 @@ const MobileWallet = () => {
               <h4 className='white-text'>₦{details?.account_balance || "00.00"}</h4>
               <div className='align-bottom'>
                 <p>Account ID: {details?.account_number}</p> 
+                <p>Bank Name: Fidelity</p>
                 <div className='copy-icon'>
                   <FaCopy/>
                 </div>
