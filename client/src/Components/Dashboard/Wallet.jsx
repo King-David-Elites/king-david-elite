@@ -342,7 +342,6 @@ const MobileWallet = () => {
                           <p className={credit ? "green-text" : "orange-text"}>₦{amount}</p>
                           <p className='neutral-text'><TimeAgo
   datetime={createdAt}
-  locale='zh_CN'
 /></p>
                         </div>
                       </div>
