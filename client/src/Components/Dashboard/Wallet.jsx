@@ -289,7 +289,7 @@ const MobileWallet = () => {
             {/* <img src={walletImage} alt="walletImage" /> */}
 
               <p className='gold-text'>Balance:</p>
-              <h4 className='white-text'>${details?.account_balance || "00.00"}</h4>
+              <h4 className='white-text'>₦{details?.account_balance || "00.00"}</h4>
               <div className='align-bottom'>
                 <p>Account ID: {details?.account_number}</p> 
                 <div className='copy-icon'>
@@ -331,7 +331,7 @@ const MobileWallet = () => {
                           <p className='neutral-text'>{status}</p>
                         </div>
                         <div className='content1'>
-                          <p className={credit ? "green-text" : "orange-text"}>${amount}</p>
+                          <p className={credit ? "green-text" : "orange-text"}>₦{amount}</p>
                           <p className='neutral-text'>{createdAt}</p>
                         </div>
                       </div>
@@ -342,54 +342,6 @@ const MobileWallet = () => {
               })
             }
           
-
-            <div className='transaction-content-wrapper'>
-              <div className='content1'>
-                <h5>Daniel Whales</h5>
-                <p className='neutral-text'>112233AB</p>
-              </div>
-              <div className='content1'>
-                <p>$1,200.00</p>
-                <p className='neutral-text'>16 July  2:50pm</p>
-              </div>
-            </div>
-            <div className='border-line'></div>
-
-            <div className='transaction-content-wrapper'>
-              <div className='content1'>
-                <h5>Daniel Whales</h5>
-                <p className='neutral-text'>112233AB</p>
-              </div>
-              <div className='content1'>
-                <p>$1,200.00</p>
-                <p className='neutral-text'>16 July  2:50pm</p>
-              </div>
-            </div>
-            <div className='border-line'></div>
-
-            <div className='transaction-content-wrapper'>
-              <div className='content1'>
-                <h5>Daniel Whales</h5>
-                <p className='neutral-text'>112233AB</p>
-              </div>
-              <div className='content1'>
-                <p className='orange-text'>$1,200.00</p>
-                <p className='neutral-text'>16 July  2:50pm</p>
-              </div>
-            </div>
-            <div className='border-line'></div>
-
-            <div className='transaction-content-wrapper'>
-              <div className='content1'>
-                <h5>Daniel Whales</h5>
-                <p className='neutral-text'>112233AB</p>
-              </div>
-              <div className='content1'>
-                <p className='green-text'>$1,200.00</p>
-                <p className='neutral-text'>16 July  2:50pm</p>
-              </div>
-            </div>
-            <div className='border-line'></div>
           </div>
         </div>
       </MobileDashboardContainer>
