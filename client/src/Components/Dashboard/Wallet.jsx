@@ -22,6 +22,7 @@ import { setConfig } from '../../infrastructure/api/user/userRequest'
 import axios from 'axios'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify'
+import TimeAgo from 'timeago-react';
 
 
 const WalletAsElement = () => {
@@ -337,7 +338,10 @@ const MobileWallet = () => {
                         </div>
                         <div className='content1'>
                           <p className={credit ? "green-text" : "orange-text"}>₦{amount}</p>
-                          <p className='neutral-text'>{createdAt}</p>
+                          <p className='neutral-text'><TimeAgo
+  datetime={createdAt}
+  locale='zh_CN'
+/></p>
                         </div>
                       </div>
 
