@@ -58,7 +58,7 @@ const SignUpPage = () => {
       firstName: fnameRef.current.value,
       lastName: lnameRef.current.value,
       password: passwordRef.current.value,
-      phoneNumber1: phoneNumber1Ref.current.value,
+      phoneNumber1: phoneNumberRef.current.value,
     };
 
     console.log(globalApi);
