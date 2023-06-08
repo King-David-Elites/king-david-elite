@@ -80,6 +80,7 @@ const SignUpPage = () => {
           if (token) {
             localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("account", JSON.stringify(res.account));
             services.toast.success(res.message);
 
             setTimeout(() => {

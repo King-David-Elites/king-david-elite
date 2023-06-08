@@ -104,13 +104,15 @@ const WalletAsElement = () => {
 const MobileWallet = () => {
   const [activeNav, setActiveNav] = useState(false);
 
-  const [details, setDetails] = useState({})
+  const [details, setDetails] = useState(JSON.parse(localStorage.getItem("account")))
   const [transactions, setTransactions] = useState([])
 
   const getAccount = useCallback(async ()=>{
     await axios.get(`${globalApi}/accounts/get-account`, setConfig())
     .then(resp => {
+      let res = resp.data
       setDetails(resp.data)
+      localStorage.setItem("account", JSON.stringify(res));
     })
     .catch(err => {
       console.log(err)
