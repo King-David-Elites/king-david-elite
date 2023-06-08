@@ -118,6 +118,7 @@ const MobileWallet = () => {
     await axios.get(`${globalApi}/transactions/all-transactions`, setConfig())
     .then(resp => {
       setTransactions(resp.data)
+      console.log(resp.data)
     })
     .catch(err => {
       console.log(err)
